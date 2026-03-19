@@ -340,7 +340,7 @@ export default function ClientDashboardPage() {
             ) : (
               <>
                 {/* Same-day / Emergency notice */}
-                <div className="bg-[#FDE68A]/20 border border-[#FDE68A]/30 rounded-lg p-3 mb-4 text-sm">
+                <div className="bg-[#34D399]/20 border border-[#34D399]/30 rounded-lg p-3 mb-4 text-sm">
                   <p className="text-[#D4540A]"><span className="font-medium">Same-day or emergency?</span> Please call or text us directly:</p>
                   <div className="flex gap-3 mt-2">
                     <a href="tel:8333526243" className="flex-1 py-2 bg-[#D4540A] text-white rounded-lg text-center font-medium text-sm hover:bg-[#D4540A]/90">Call (833) 352-6243</a>

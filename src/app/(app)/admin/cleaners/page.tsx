@@ -647,7 +647,7 @@ export default function CleanersPage() {
                   onDrop={(e) => handleDrop(e, c.id)}
                   className={`bg-white rounded-xl border border-gray-200 p-5 cursor-move transition-all hover:shadow-md hover:border-gray-300 ${
                     draggedId === c.id ? 'opacity-50 scale-95' : ''
-                  } ${dragOverId === c.id ? 'border-[#FDE68A] bg-[#FDE68A]/5 shadow-md' : ''} ${!c.active ? 'opacity-60' : ''}`}
+                  } ${dragOverId === c.id ? 'border-[#34D399] bg-[#34D399]/5 shadow-md' : ''} ${!c.active ? 'opacity-60' : ''}`}
                 >
                   {/* Card Header: Avatar + Name + Status */}
                   <div className="flex items-start gap-3 mb-4">

@@ -115,7 +115,7 @@ export default function FAQPage() {
             Frequently Asked Questions About Florida House Cleaning Services
           </h1>
           <p className="text-blue-200/80 text-lg max-w-2xl leading-relaxed mb-10">
-            Everything you need to know about pricing, services, scheduling, and how we work — answered by our team. Can&apos;t find your question? Call <a href="tel:8333526243" className="text-[#FDE68A] underline underline-offset-2">(833) 352-6243</a>.
+            Everything you need to know about pricing, services, scheduling, and how we work — answered by our team. Can&apos;t find your question? Call <a href="tel:8333526243" className="text-[#34D399] underline underline-offset-2">(833) 352-6243</a>.
           </p>
 
           {/* Quick nav */}
@@ -136,7 +136,7 @@ export default function FAQPage() {
         {sections.map(section => (
           <div key={section.label} id={section.label.toLowerCase().replace(/[^a-z]+/g, '-')} className="mb-16 scroll-mt-8">
             <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-2">{section.label}</p>
-            <div className="w-10 h-[2px] bg-[#FDE68A] mb-6" />
+            <div className="w-10 h-[2px] bg-[#34D399] mb-6" />
 
             <div className="space-y-3">
               {section.faqs.map((faq, i) => (
@@ -155,7 +155,7 @@ export default function FAQPage() {
         ))}
 
         {/* Quick pricing reference */}
-        <div className="bg-[#FDE68A] rounded-2xl p-8 md:p-12 mb-16">
+        <div className="bg-[#34D399] rounded-2xl p-8 md:p-12 mb-16">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-xs font-semibold text-[#D4540A]/50 tracking-[0.25em] uppercase mb-2">Quick Pricing Reference</p>
             <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#D4540A] tracking-wide mb-8">Three Simple Rates — No Hidden Fees</p>
@@ -165,7 +165,7 @@ export default function FAQPage() {
                 <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#D4540A] tracking-wide">$49<span className="text-xl text-gray-300">/hr</span></p>
               </div>
               <div className="bg-[#D4540A] rounded-xl p-5">
-                <p className="text-xs font-semibold text-[#FDE68A]/70 tracking-[0.15em] uppercase mb-1">We Bring Everything</p>
+                <p className="text-xs font-semibold text-[#34D399]/70 tracking-[0.15em] uppercase mb-1">We Bring Everything</p>
                 <p className="font-[family-name:var(--font-bebas)] text-4xl text-white tracking-wide">$65<span className="text-xl text-blue-200/40">/hr</span></p>
               </div>
               <div className="bg-white rounded-xl p-5">
@@ -186,7 +186,7 @@ export default function FAQPage() {
             We&apos;re happy to answer anything. Text or call us — most questions are answered within minutes.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-            <a href="sms:8333526243" className="bg-[#FDE68A] text-[#D4540A] px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
+            <a href="sms:8333526243" className="bg-[#34D399] text-[#D4540A] px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
               Text (833) 352-6243
             </a>
             <a href="tel:8333526243" className="text-blue-200/70 font-medium text-lg hover:text-white transition-colors underline underline-offset-4">
@@ -197,15 +197,15 @@ export default function FAQPage() {
 
         {/* Helpful links */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
-          <Link href="/nyc-maid-service-services-offered-by-the-nyc-maid" className="group border border-gray-200 rounded-xl p-6 hover:border-[#FDE68A] transition-all">
+          <Link href="/nyc-maid-service-services-offered-by-the-nyc-maid" className="group border border-gray-200 rounded-xl p-6 hover:border-[#34D399] transition-all">
             <p className="font-semibold text-[#D4540A] group-hover:underline underline-offset-2 mb-1">View All Services</p>
             <p className="text-gray-500 text-sm">10 cleaning services for every situation</p>
           </Link>
-          <Link href="/service-areas-served-by-the-nyc-maid" className="group border border-gray-200 rounded-xl p-6 hover:border-[#FDE68A] transition-all">
+          <Link href="/service-areas-served-by-the-nyc-maid" className="group border border-gray-200 rounded-xl p-6 hover:border-[#34D399] transition-all">
             <p className="font-semibold text-[#D4540A] group-hover:underline underline-offset-2 mb-1">Service Areas</p>
             <p className="text-gray-500 text-sm">Miami, Tampa, Orlando, Fort Lauderdale &amp; Jacksonville</p>
           </Link>
-          <Link href="/nyc-customer-reviews-for-the-nyc-maid" className="group border border-gray-200 rounded-xl p-6 hover:border-[#FDE68A] transition-all">
+          <Link href="/nyc-customer-reviews-for-the-nyc-maid" className="group border border-gray-200 rounded-xl p-6 hover:border-[#34D399] transition-all">
             <p className="font-semibold text-[#D4540A] group-hover:underline underline-offset-2 mb-1">Read Reviews</p>
             <p className="text-gray-500 text-sm">27 verified 5-star Google reviews</p>
           </Link>

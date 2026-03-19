@@ -76,7 +76,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <section className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] py-16 md:py-20">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <span className="text-xs font-medium text-[#FDE68A] bg-[#FDE68A]/15 px-3 py-1 rounded-full uppercase tracking-widest">{post.category}</span>
+            <span className="text-xs font-medium text-[#34D399] bg-[#34D399]/15 px-3 py-1 rounded-full uppercase tracking-widest">{post.category}</span>
             <span className="text-white/50 text-sm">{dateStr}</span>
             <span className="text-white/50 text-sm">{post.readTime} read</span>
           </div>
@@ -98,13 +98,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mt-10 mb-4">{section.heading}</h2>
               )}
               {section.paragraphs.map((p, j) => (
-                <p key={j} className="text-gray-700 leading-relaxed mb-4 [&_a]:text-[#D4540A] [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-[#FDE68A] hover:[&_a]:decoration-[#D4540A]" dangerouslySetInnerHTML={{ __html: p }} />
+                <p key={j} className="text-gray-700 leading-relaxed mb-4 [&_a]:text-[#D4540A] [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-[#34D399] hover:[&_a]:decoration-[#D4540A]" dangerouslySetInnerHTML={{ __html: p }} />
               ))}
               {section.list && (
                 <ul className="space-y-2 mb-4">
                   {section.list.map((item, k) => (
                     <li key={k} className="flex items-start gap-3">
-                      <span className="text-[#FDE68A] mt-1 flex-shrink-0">&#10003;</span>
+                      <span className="text-[#34D399] mt-1 flex-shrink-0">&#10003;</span>
                       <span className="text-gray-700">{item}</span>
                     </li>
                   ))}
@@ -119,7 +119,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <h3 className="font-[family-name:var(--font-bebas)] text-2xl text-white tracking-wide mb-2">Need Help With This?</h3>
           <p className="text-white/70 mb-6">Our professional team handles all of this and more — starting at $49/hr.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="tel:8333526243" className="bg-[#FDE68A] text-[#D4540A] px-8 py-3.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
+            <a href="tel:8333526243" className="bg-[#34D399] text-[#D4540A] px-8 py-3.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
               Call (833) 352-6243
             </a>
             <a href="sms:8333526243" className="text-white font-semibold hover:underline underline-offset-4">
@@ -134,7 +134,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <h3 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-6">Keep Reading</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {related.map(r => (
-                <Link key={r.slug} href={`/nyc-maid-service-blog/${r.slug}`} className="group border border-gray-200 rounded-xl p-6 hover:border-[#FDE68A] hover:shadow-lg transition-all">
+                <Link key={r.slug} href={`/nyc-maid-service-blog/${r.slug}`} className="group border border-gray-200 rounded-xl p-6 hover:border-[#34D399] hover:shadow-lg transition-all">
                   <span className="text-xs font-medium text-[#D4540A]/60 uppercase tracking-widest">{r.category}</span>
                   <h4 className="font-semibold text-[#D4540A] group-hover:text-[#D4540A]/80 mt-2 line-clamp-2">{r.title}</h4>
                   <p className="text-gray-500 text-sm mt-2 line-clamp-2">{r.excerpt}</p>

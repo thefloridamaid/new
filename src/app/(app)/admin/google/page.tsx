@@ -198,7 +198,7 @@ export default function GoogleProfilePage() {
             </div>
 
             <div className="flex gap-3">
-              <span className="flex-shrink-0 w-7 h-7 bg-[#FDE68A] text-[#D4540A] rounded-full flex items-center justify-center text-sm font-bold">6</span>
+              <span className="flex-shrink-0 w-7 h-7 bg-[#34D399] text-[#D4540A] rounded-full flex items-center justify-center text-sm font-bold">6</span>
               <div>
                 <p className="font-medium text-[#D4540A]">Connect</p>
                 <p className="text-sm text-gray-500 mt-0.5">
@@ -359,7 +359,7 @@ export default function GoogleProfilePage() {
                           <button
                             onClick={() => generateReply(review.id, review.reviewer, review.rating, review.comment)}
                             disabled={generatingReply === review.id}
-                            className="px-4 py-2 bg-[#FDE68A]/20 text-[#D4540A] rounded-lg text-sm font-medium hover:bg-[#FDE68A]/30 disabled:opacity-50 border border-[#FDE68A]/30"
+                            className="px-4 py-2 bg-[#34D399]/20 text-[#D4540A] rounded-lg text-sm font-medium hover:bg-[#34D399]/30 disabled:opacity-50 border border-[#34D399]/30"
                           >
                             {generatingReply === review.id ? 'Generating...' : 'AI Reply'}
                           </button>
@@ -466,7 +466,7 @@ export default function GoogleProfilePage() {
                           <button
                             onClick={() => generateReply(review.id, review.reviewer, review.rating, review.comment)}
                             disabled={generatingReply === review.id}
-                            className="px-4 py-2 bg-[#FDE68A]/20 text-[#D4540A] rounded-lg text-sm font-medium hover:bg-[#FDE68A]/30 disabled:opacity-50 border border-[#FDE68A]/30"
+                            className="px-4 py-2 bg-[#34D399]/20 text-[#D4540A] rounded-lg text-sm font-medium hover:bg-[#34D399]/30 disabled:opacity-50 border border-[#34D399]/30"
                           >
                             {generatingReply === review.id ? 'Generating...' : 'AI Reply'}
                           </button>

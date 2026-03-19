@@ -48,7 +48,7 @@ export default function TermsPage() {
                 'If the actual condition of the home differs significantly from what was described, pricing may be adjusted with your approval before cleaning begins.',
               ].map(item => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                  <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                   <span className="text-gray-600 text-sm">{item}</span>
                 </li>
               ))}
@@ -71,11 +71,11 @@ export default function TermsPage() {
                 <h3 className="text-[#D4540A] font-semibold mb-3">Recurring Services (Weekly, Bi-Weekly, Monthly)</h3>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0 font-bold text-sm">7 days</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0 font-bold text-sm">7 days</span>
                     <span className="text-gray-600 text-sm">notice required to <strong>cancel</strong> a recurring service entirely. This gives us time to reassign your cleaner and adjust schedules fairly.</span>
                   </div>
                   <div className="flex items-start gap-3">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0 font-bold text-sm">3 days</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0 font-bold text-sm">3 days</span>
                     <span className="text-gray-600 text-sm">notice required to <strong>reschedule</strong> a recurring cleaning within the same week. Need to move your Thursday to Friday? Just let us know by Monday.</span>
                   </div>
                 </div>
@@ -88,7 +88,7 @@ export default function TermsPage() {
 
           <div>
             <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Payment Terms</h2>
-            <div className="bg-[#F5FBF8] border border-[#FDE68A]/30 rounded-xl p-6">
+            <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-6">
               <ul className="space-y-3">
                 {[
                   'We do not collect any money upfront. There are no deposits, no pre-authorizations, and no advance charges.',
@@ -98,7 +98,7 @@ export default function TermsPage() {
                   'If a cleaning runs longer than expected, we will communicate with you before continuing and adjusting the final amount.',
                 ].map(item => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                     <span className="text-gray-600 text-sm">{item}</span>
                   </li>
                 ))}
@@ -123,7 +123,7 @@ export default function TermsPage() {
                 'Clients are responsible for securing valuables, fragile items, and personal belongings before the cleaning begins.',
               ].map(item => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                  <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                   <span className="text-gray-600 text-sm">{item}</span>
                 </li>
               ))}
@@ -140,7 +140,7 @@ export default function TermsPage() {
                 'If we cannot access your home at the scheduled time due to lockout, the full service charge may still apply.',
               ].map(item => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                  <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                   <span className="text-gray-600 text-sm">{item}</span>
                 </li>
               ))}

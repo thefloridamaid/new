@@ -146,7 +146,7 @@ function ReferrerPortalContent() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-gray-50 rounded-lg p-4 text-center"><p className="text-sm text-gray-500">Total Clicks</p><p className="text-2xl font-bold text-[#D4540A]">{linkStats.clicks}</p></div>
             <div className="bg-gray-50 rounded-lg p-4 text-center"><p className="text-sm text-gray-500">Unique Visitors</p><p className="text-2xl font-bold text-[#D4540A]">{linkStats.uniqueVisitors}</p></div>
-            <div className="bg-[#FDE68A]/20 rounded-lg p-4 text-center"><p className="text-sm text-gray-500">This Week</p><p className="text-2xl font-bold text-[#D4540A]">{linkStats.thisWeek}</p></div>
+            <div className="bg-[#34D399]/20 rounded-lg p-4 text-center"><p className="text-sm text-gray-500">This Week</p><p className="text-2xl font-bold text-[#D4540A]">{linkStats.thisWeek}</p></div>
             <div className="bg-purple-50 rounded-lg p-4 text-center"><p className="text-sm text-gray-500">Book Clicks</p><p className="text-2xl font-bold text-purple-600">{linkStats.bookClicks}</p></div>
           </div>
         </div>

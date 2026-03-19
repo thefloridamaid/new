@@ -275,7 +275,7 @@ export default function AnalyticsPage() {
                 <p className="text-xs text-emerald-400 mt-1.5">single-page sessions</p>
               </div>
 
-              <div className="bg-[#FDE68A]/20 rounded-xl p-4 border border-[#FDE68A]/30">
+              <div className="bg-[#34D399]/20 rounded-xl p-4 border border-[#34D399]/30">
                 <p className="text-xs font-semibold text-[#D4540A]/70 uppercase tracking-wide">CTA Conversion</p>
                 <p className="text-2xl font-bold text-[#D4540A] mt-1">{data.overview.ctaRate.toFixed(1)}%</p>
                 <p className="text-xs text-[#D4540A]/40 mt-1.5">visitors who clicked CTA</p>
@@ -497,7 +497,7 @@ export default function AnalyticsPage() {
                   </div>
                   {/* Device bar */}
                   <div className="mt-4 flex h-3 rounded-full overflow-hidden">
-                    <div className="bg-[#FDE68A] transition-all" style={{ width: `${data.devices.mobile}%` }} title={`Mobile: ${data.devices.mobile}%`} />
+                    <div className="bg-[#34D399] transition-all" style={{ width: `${data.devices.mobile}%` }} title={`Mobile: ${data.devices.mobile}%`} />
                     <div className="bg-[#D4540A]/60 transition-all" style={{ width: `${data.devices.desktop}%` }} title={`Desktop: ${data.devices.desktop}%`} />
                     <div className="bg-amber-300 transition-all" style={{ width: `${data.devices.tablet}%` }} title={`Tablet: ${data.devices.tablet}%`} />
                   </div>
@@ -528,7 +528,7 @@ export default function AnalyticsPage() {
                         <div key={i} className="flex items-center gap-2 text-sm bg-gray-50/80 rounded-lg px-3 py-2 hover:bg-gray-50 transition-colors">
                           <span className="text-gray-300 text-xs w-4 text-right flex-shrink-0">{i + 1}.</span>
                           <span className="text-[#D4540A] font-mono text-xs truncate">{flow.from}</span>
-                          <span className="text-[#FDE68A] flex-shrink-0 font-bold">→</span>
+                          <span className="text-[#34D399] flex-shrink-0 font-bold">→</span>
                           <span className="text-[#D4540A] font-mono text-xs truncate">{flow.to}</span>
                           <span className="ml-auto font-semibold text-[#D4540A]/60 text-xs flex-shrink-0">{flow.count}x</span>
                         </div>
@@ -558,14 +558,14 @@ export default function AnalyticsPage() {
                       const isCurrentHour = h.hour === currentHour
 
                       return (
-                        <div key={h.hour} className={`flex items-center gap-3 py-0.5 px-2 rounded-lg transition-colors ${isCurrentHour ? 'bg-[#FDE68A]/15' : 'hover:bg-gray-50/50'}`}>
+                        <div key={h.hour} className={`flex items-center gap-3 py-0.5 px-2 rounded-lg transition-colors ${isCurrentHour ? 'bg-[#34D399]/15' : 'hover:bg-gray-50/50'}`}>
                           <span className={`text-xs w-12 text-right flex-shrink-0 font-mono ${isCurrentHour ? 'font-bold text-[#D4540A]' : 'text-gray-400'}`}>
                             {formatHour(h.hour)}
                           </span>
                           <div className="flex-1 h-4 bg-gray-50 rounded overflow-hidden">
                             {h.visits > 0 && (
                               <div
-                                className={`h-full rounded transition-all ${isCurrentHour ? 'bg-[#FDE68A]' : 'bg-[#D4540A]/40'}`}
+                                className={`h-full rounded transition-all ${isCurrentHour ? 'bg-[#34D399]' : 'bg-[#D4540A]/40'}`}
                                 style={{ width: `${barWidth}%` }}
                               />
                             )}

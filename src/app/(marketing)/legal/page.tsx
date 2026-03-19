@@ -35,14 +35,14 @@ export default function LegalPage() {
             { title: 'Refund Policy', href: '/refund-policy', desc: 'We don\'t take money upfront — so there\'s nothing to refund. Plus our satisfaction guarantee.' },
             { title: 'Do Not Share Policy', href: '/do-not-share-policy', desc: 'We don\'t sell or share your personal information with anyone. Your rights under CCPA.' },
           ].map(item => (
-            <Link key={item.href} href={item.href} className="block p-6 border border-gray-200 rounded-xl hover:border-[#FDE68A] hover:shadow-md transition-all group">
+            <Link key={item.href} href={item.href} className="block p-6 border border-gray-200 rounded-xl hover:border-[#34D399] hover:shadow-md transition-all group">
               <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide group-hover:text-[#D4540A]/70 mb-2">{item.title}</h2>
               <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
             </Link>
           ))}
         </div>
 
-        <div className="mt-12 bg-[#F5FBF8] border border-[#FDE68A]/30 rounded-xl p-6">
+        <div className="mt-12 bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-6">
           <h2 className="font-[family-name:var(--font-bebas)] text-xl text-[#D4540A] tracking-wide mb-3">The Short Version</h2>
           <ul className="space-y-2.5">
             {[
@@ -55,7 +55,7 @@ export default function LegalPage() {
               'Not happy? Contact us within 24 hours and we\'ll send someone back at no charge',
             ].map(item => (
               <li key={item} className="flex items-start gap-3">
-                <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                 <span className="text-gray-600 text-sm">{item}</span>
               </li>
             ))}

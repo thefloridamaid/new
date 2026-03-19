@@ -205,7 +205,7 @@ export default function TipsPage() {
 
       <section className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-4 text-center">
-          <p className="text-xs font-semibold text-[#FDE68A] tracking-[0.25em] uppercase mb-4">From the Pros Who Clean Florida Homes Every Day</p>
+          <p className="text-xs font-semibold text-[#34D399] tracking-[0.25em] uppercase mb-4">From the Pros Who Clean Florida Homes Every Day</p>
           <h1 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl lg:text-7xl text-white tracking-wide leading-[0.95] mb-4">The 100 Best Cleaning Tips for Florida Homes</h1>
           <p className="text-white/60 text-lg max-w-3xl mx-auto">No fluff, no sponsored products — just the tips our professional cleaning team actually uses in real Florida homes every single day.</p>
         </div>
@@ -219,7 +219,7 @@ export default function TipsPage() {
           <h2 className="font-[family-name:var(--font-bebas)] text-xl text-[#D4540A] tracking-wide mb-4">Jump to a Category</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {categories.map(cat => (
-              <a key={cat.id} href={`#${cat.id}`} className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-[#FDE68A]/20 hover:text-[#D4540A] transition-colors">
+              <a key={cat.id} href={`#${cat.id}`} className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-[#34D399]/20 hover:text-[#D4540A] transition-colors">
                 <span>{cat.icon}</span>
                 <span>{cat.name}</span>
               </a>
@@ -251,7 +251,7 @@ export default function TipsPage() {
 
             {/* Mid-page CTA every 3 categories */}
             {(cat.id === 'bedroom' || cat.id === 'laundry' || cat.id === 'pets') && (
-              <div className="bg-[#FDE68A]/15 border border-[#FDE68A]/30 rounded-xl p-6 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="bg-[#34D399]/15 border border-[#34D399]/30 rounded-xl p-6 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
                 <p className="text-[#D4540A] font-medium">Rather have a pro handle it? We start at $49/hr.</p>
                 <a href="tel:8333526243" className="border-2 border-[#D4540A] text-[#D4540A] px-6 py-2.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#D4540A] hover:text-white transition-colors flex-shrink-0">
                   (833) 352-6243

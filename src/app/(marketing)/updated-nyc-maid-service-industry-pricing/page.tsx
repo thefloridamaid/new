@@ -72,19 +72,19 @@ export default function PricingPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Tier 1 */}
               <div className="bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-2xl p-7 text-center">
-                <p className="text-xs font-semibold text-[#FDE68A]/60 tracking-[0.2em] uppercase mb-3">Your Supplies</p>
+                <p className="text-xs font-semibold text-[#34D399]/60 tracking-[0.2em] uppercase mb-3">Your Supplies</p>
                 <p className="font-[family-name:var(--font-bebas)] text-6xl text-white tracking-wide leading-none">$49<span className="text-2xl text-blue-200/40">/hr</span></p>
-                <div className="w-10 h-[2px] bg-[#FDE68A]/30 mx-auto my-5" />
+                <div className="w-10 h-[2px] bg-[#34D399]/30 mx-auto my-5" />
                 <ul className="space-y-2.5 text-left">
-                  <li className="flex items-start gap-2.5"><span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span><span className="text-blue-100/70 text-sm">You provide cleaning supplies</span></li>
-                  <li className="flex items-start gap-2.5"><span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span><span className="text-blue-100/70 text-sm">You provide vacuum and mop</span></li>
-                  <li className="flex items-start gap-2.5"><span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span><span className="text-blue-100/70 text-sm">Same quality cleaning</span></li>
-                  <li className="flex items-start gap-2.5"><span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span><span className="text-blue-100/70 text-sm">Licensed &amp; insured cleaner</span></li>
+                  <li className="flex items-start gap-2.5"><span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span><span className="text-blue-100/70 text-sm">You provide cleaning supplies</span></li>
+                  <li className="flex items-start gap-2.5"><span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span><span className="text-blue-100/70 text-sm">You provide vacuum and mop</span></li>
+                  <li className="flex items-start gap-2.5"><span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span><span className="text-blue-100/70 text-sm">Same quality cleaning</span></li>
+                  <li className="flex items-start gap-2.5"><span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span><span className="text-blue-100/70 text-sm">Licensed &amp; insured cleaner</span></li>
                 </ul>
               </div>
 
               {/* Tier 2 — featured */}
-              <div className="bg-[#FDE68A] rounded-2xl p-7 text-center relative">
+              <div className="bg-[#34D399] rounded-2xl p-7 text-center relative">
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#D4540A] text-white text-[10px] font-bold tracking-widest uppercase px-4 py-1 rounded-full">Most Popular</span>
                 <p className="text-xs font-semibold text-[#D4540A]/50 tracking-[0.2em] uppercase mb-3">We Bring Everything</p>
                 <p className="font-[family-name:var(--font-bebas)] text-6xl text-[#D4540A] tracking-wide leading-none">$65<span className="text-2xl text-[#D4540A]/40">/hr</span></p>
@@ -99,20 +99,20 @@ export default function PricingPage() {
 
               {/* Tier 3 */}
               <div className="bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-2xl p-7 text-center">
-                <p className="text-xs font-semibold text-[#FDE68A]/60 tracking-[0.2em] uppercase mb-3">Same-Day / Emergency</p>
+                <p className="text-xs font-semibold text-[#34D399]/60 tracking-[0.2em] uppercase mb-3">Same-Day / Emergency</p>
                 <p className="font-[family-name:var(--font-bebas)] text-6xl text-white tracking-wide leading-none">$100<span className="text-2xl text-blue-200/40">/hr</span></p>
-                <div className="w-10 h-[2px] bg-[#FDE68A]/30 mx-auto my-5" />
+                <div className="w-10 h-[2px] bg-[#34D399]/30 mx-auto my-5" />
                 <ul className="space-y-2.5 text-left">
-                  <li className="flex items-start gap-2.5"><span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span><span className="text-blue-100/70 text-sm">Dispatched within hours</span></li>
-                  <li className="flex items-start gap-2.5"><span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span><span className="text-blue-100/70 text-sm">We bring all supplies</span></li>
-                  <li className="flex items-start gap-2.5"><span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span><span className="text-blue-100/70 text-sm">Emergency &amp; last-minute</span></li>
-                  <li className="flex items-start gap-2.5"><span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span><span className="text-blue-100/70 text-sm">Subject to availability</span></li>
+                  <li className="flex items-start gap-2.5"><span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span><span className="text-blue-100/70 text-sm">Dispatched within hours</span></li>
+                  <li className="flex items-start gap-2.5"><span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span><span className="text-blue-100/70 text-sm">We bring all supplies</span></li>
+                  <li className="flex items-start gap-2.5"><span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span><span className="text-blue-100/70 text-sm">Emergency &amp; last-minute</span></li>
+                  <li className="flex items-start gap-2.5"><span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span><span className="text-blue-100/70 text-sm">Subject to availability</span></li>
                 </ul>
               </div>
             </div>
 
             <div className="flex justify-center mt-8">
-              <a href="sms:8333526243" className="bg-[#FDE68A] text-[#D4540A] px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
+              <a href="sms:8333526243" className="bg-[#34D399] text-[#D4540A] px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
                 Text for a Free Quote
               </a>
             </div>
@@ -154,7 +154,7 @@ export default function PricingPage() {
               <Link
                 key={service.slug}
                 href={`/services/${service.urlSlug}`}
-                className="group bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#FDE68A] hover:shadow-lg transition-all"
+                className="group bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#34D399] hover:shadow-lg transition-all"
               >
                 <div className="flex items-start justify-between mb-3">
                   <h3 className="font-[family-name:var(--font-bebas)] text-xl text-[#D4540A] tracking-wide group-hover:text-[#D4540A]/70 transition-colors">{service.name}</h3>
@@ -164,7 +164,7 @@ export default function PricingPage() {
                 <ul className="space-y-2 mb-4">
                   {service.features.slice(0, 4).map(f => (
                     <li key={f} className="flex items-start gap-2 text-sm">
-                      <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                      <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                       <span className="text-gray-600">{f}</span>
                     </li>
                   ))}
@@ -179,7 +179,7 @@ export default function PricingPage() {
       {/* What affects price */}
       <section className="py-16 bg-gradient-to-b from-[#D4540A] to-[#B8470A]">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-xs font-semibold text-[#FDE68A]/60 tracking-[0.25em] uppercase mb-3 text-center">Pricing Factors</h2>
+          <h2 className="text-xs font-semibold text-[#34D399]/60 tracking-[0.25em] uppercase mb-3 text-center">Pricing Factors</h2>
           <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-white tracking-wide text-center mb-12">What Affects Your Final Price?</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -189,7 +189,7 @@ export default function PricingPage() {
               { n: '04', t: 'Supply Choice', d: '$49/hr with your supplies or $65/hr when we bring professional-grade products and equipment. Same quality either way.' },
             ].map(item => (
               <div key={item.n} className="bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-2xl p-7 text-center">
-                <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#FDE68A]/30 leading-none">{item.n}</span>
+                <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#34D399]/30 leading-none">{item.n}</span>
                 <p className="font-[family-name:var(--font-bebas)] text-xl text-white tracking-wide mt-3 mb-2">{item.t}</p>
                 <p className="text-blue-200/50 text-sm leading-relaxed">{item.d}</p>
               </div>
@@ -199,7 +199,7 @@ export default function PricingPage() {
       </section>
 
       {/* Quick cost estimator */}
-      <section className="py-12 bg-[#FDE68A]">
+      <section className="py-12 bg-[#34D399]">
         <div className="max-w-4xl mx-auto px-4 flex flex-col md:flex-row items-start gap-6">
           <div className="flex-shrink-0">
             <div className="w-14 h-14 bg-[#D4540A] rounded-full flex items-center justify-center">
@@ -230,7 +230,7 @@ export default function PricingPage() {
               { n: '03', t: 'Pay After', d: 'We clean, you inspect, you pay. No deposits, no upfront charges. Cash, Venmo, Zelle (hi@thefloridamaid.com), or credit card.' },
             ].map(s => (
               <div key={s.n} className="border border-gray-200 rounded-2xl p-7 text-center">
-                <span className="font-[family-name:var(--font-bebas)] text-5xl text-[#FDE68A] leading-none">{s.n}</span>
+                <span className="font-[family-name:var(--font-bebas)] text-5xl text-[#34D399] leading-none">{s.n}</span>
                 <p className="font-[family-name:var(--font-bebas)] text-xl text-[#D4540A] tracking-wide mt-3 mb-2">{s.t}</p>
                 <p className="text-gray-500 text-sm leading-relaxed">{s.d}</p>
               </div>

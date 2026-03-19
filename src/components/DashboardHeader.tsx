@@ -286,19 +286,19 @@ export default function DashboardHeader({ currentPage = 'dashboard' }: Dashboard
                         <p className="text-sm text-gray-600 mt-0.5">{line2}</p>
                         {line3 && <p className="text-xs text-gray-400 mt-1">{line3}</p>}
                       </div>
-                      {!n.read && <div className="w-2 h-2 bg-[#FDE68A] rounded-full flex-shrink-0 mt-2" />}
+                      {!n.read && <div className="w-2 h-2 bg-[#34D399] rounded-full flex-shrink-0 mt-2" />}
                     </div>
                   )
                   return link ? (
                     <button
                       key={n.id}
                       onClick={() => { setShowNotifications(false); router.push(link) }}
-                      className={`w-full text-left px-6 py-4 hover:bg-gray-50 transition cursor-pointer ${!n.read ? 'bg-[#FDE68A]/10' : ''}`}
+                      className={`w-full text-left px-6 py-4 hover:bg-gray-50 transition cursor-pointer ${!n.read ? 'bg-[#34D399]/10' : ''}`}
                     >
                       {content}
                     </button>
                   ) : (
-                    <div key={n.id} className={`px-6 py-4 ${!n.read ? 'bg-[#FDE68A]/10' : ''}`}>
+                    <div key={n.id} className={`px-6 py-4 ${!n.read ? 'bg-[#34D399]/10' : ''}`}>
                       {content}
                     </div>
                   )

@@ -57,7 +57,7 @@ export default function ContactPage() {
           <p className="text-blue-200/60 text-lg max-w-2xl mx-auto leading-relaxed mb-8">
             Text is fastest. Call if you prefer. Email works too. We respond to everything within 15 minutes during business hours.
           </p>
-          <a href="sms:8333526243" className="inline-block font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-[#FDE68A] tracking-wide hover:text-white transition-colors">
+          <a href="sms:8333526243" className="inline-block font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-[#34D399] tracking-wide hover:text-white transition-colors">
             (833) 352-6243
           </a>
         </div>
@@ -72,15 +72,15 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Text / Call */}
-            <div className="border border-gray-200 rounded-2xl p-8 text-center hover:border-[#FDE68A] hover:shadow-lg transition-all">
-              <div className="w-14 h-14 bg-[#FDE68A] rounded-full flex items-center justify-center mx-auto mb-5">
+            <div className="border border-gray-200 rounded-2xl p-8 text-center hover:border-[#34D399] hover:shadow-lg transition-all">
+              <div className="w-14 h-14 bg-[#34D399] rounded-full flex items-center justify-center mx-auto mb-5">
                 <span className="text-[#D4540A] text-2xl">&#9742;</span>
               </div>
               <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-2">Text or Call</h2>
               <a href="sms:8333526243" className="text-[#D4540A] text-xl font-bold hover:underline underline-offset-4">(833) 352-6243</a>
               <p className="text-gray-500 text-sm mt-3">Fastest way to reach us. Most quotes delivered within 15 minutes.</p>
               <div className="flex flex-col gap-2 mt-5">
-                <a href="sms:8333526243" className="bg-[#FDE68A] text-[#D4540A] px-6 py-3 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
+                <a href="sms:8333526243" className="bg-[#34D399] text-[#D4540A] px-6 py-3 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
                   Text Us
                 </a>
                 <a href="tel:8333526243" className="text-[#D4540A] font-semibold text-sm py-2 hover:underline underline-offset-4">
@@ -90,7 +90,7 @@ export default function ContactPage() {
             </div>
 
             {/* Email */}
-            <div className="border border-gray-200 rounded-2xl p-8 text-center hover:border-[#FDE68A] hover:shadow-lg transition-all">
+            <div className="border border-gray-200 rounded-2xl p-8 text-center hover:border-[#34D399] hover:shadow-lg transition-all">
               <div className="w-14 h-14 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-5">
                 <span className="text-[#D4540A] text-2xl">&#9993;</span>
               </div>
@@ -103,7 +103,7 @@ export default function ContactPage() {
             </div>
 
             {/* Book Online */}
-            <div className="border border-gray-200 rounded-2xl p-8 text-center hover:border-[#FDE68A] hover:shadow-lg transition-all">
+            <div className="border border-gray-200 rounded-2xl p-8 text-center hover:border-[#34D399] hover:shadow-lg transition-all">
               <div className="w-14 h-14 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-5">
                 <span className="text-[#D4540A] text-2xl">&#128197;</span>
               </div>
@@ -135,7 +135,7 @@ export default function ContactPage() {
                   <span className="text-gray-400">Closed</span>
                 </div>
               </div>
-              <div className="bg-[#FDE68A]/15 rounded-lg p-3 mb-8">
+              <div className="bg-[#34D399]/15 rounded-lg p-3 mb-8">
                 <p className="text-[#D4540A] text-sm font-semibold">Sales &amp; Booking: Available 24/7</p>
                 <p className="text-gray-500 text-xs">Call or text (833) 352-6243 anytime — day or night.</p>
               </div>
@@ -159,7 +159,7 @@ export default function ContactPage() {
                   { n: '05', t: 'Any special requests (inside fridge, pets, allergies)' },
                 ].map(item => (
                   <div key={item.n} className="flex items-start gap-4">
-                    <span className="font-[family-name:var(--font-bebas)] text-xl text-[#FDE68A]/40 leading-none mt-0.5">{item.n}</span>
+                    <span className="font-[family-name:var(--font-bebas)] text-xl text-[#34D399]/40 leading-none mt-0.5">{item.n}</span>
                     <span className="text-blue-100/70 text-sm">{item.t}</span>
                   </div>
                 ))}
@@ -186,7 +186,7 @@ export default function ContactPage() {
               <Link
                 key={area.slug}
                 href={`/${area.urlSlug}`}
-                className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center hover:border-[#FDE68A] hover:shadow-sm transition-all"
+                className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center hover:border-[#34D399] hover:shadow-sm transition-all"
               >
                 <p className="font-[family-name:var(--font-bebas)] text-lg text-[#D4540A] tracking-wide">{area.name}</p>
                 <p className="text-gray-400 text-xs mt-1">{getNeighborhoodsByArea(area.slug).length} neighborhoods</p>
@@ -197,7 +197,7 @@ export default function ContactPage() {
       </section>
 
       {/* Mint band — response time promise */}
-      <section className="py-12 bg-[#FDE68A]">
+      <section className="py-12 bg-[#34D399]">
         <div className="max-w-4xl mx-auto px-4 flex flex-col md:flex-row items-start gap-6">
           <div className="flex-shrink-0">
             <div className="w-14 h-14 bg-[#D4540A] rounded-full flex items-center justify-center">

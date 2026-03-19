@@ -146,22 +146,22 @@ export default function HomePage() {
 
           {/* Hero trust points */}
           <div className="flex flex-wrap gap-x-6 gap-y-2 mb-14">
-            <span className="text-[#FDE68A] text-sm font-medium">&#10003; No money upfront</span>
-            <span className="text-[#FDE68A] text-sm font-medium">&#10003; Payment upon completion</span>
-            <span className="text-[#FDE68A] text-sm font-medium">&#10003; No contracts</span>
-            <span className="text-[#FDE68A] text-sm font-medium">&#10003; Flat hourly pricing</span>
+            <span className="text-[#34D399] text-sm font-medium">&#10003; No money upfront</span>
+            <span className="text-[#34D399] text-sm font-medium">&#10003; Payment upon completion</span>
+            <span className="text-[#34D399] text-sm font-medium">&#10003; No contracts</span>
+            <span className="text-[#34D399] text-sm font-medium">&#10003; Flat hourly pricing</span>
           </div>
 
           {/* Pricing tiers */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
             <div className="bg-white/[0.08] backdrop-blur-sm border border-white/15 rounded-2xl p-8">
-              <p className="text-xs font-semibold text-[#FDE68A] tracking-[0.2em] uppercase mb-3">Client Supplies &amp; Equipment</p>
+              <p className="text-xs font-semibold text-[#34D399] tracking-[0.2em] uppercase mb-3">Client Supplies &amp; Equipment</p>
               <p className="font-[family-name:var(--font-bebas)] text-5xl text-white tracking-wide">$49<span className="text-2xl text-blue-200/50">/hr</span></p>
               <p className="text-blue-200/50 text-sm mt-3">You provide the cleaning supplies and equipment. We bring the expertise.</p>
             </div>
-            <div className="bg-[#FDE68A]/10 backdrop-blur-sm border border-[#FDE68A]/30 rounded-2xl p-8 relative">
-              <div className="absolute -top-3 left-6 bg-[#FDE68A] text-[#D4540A] text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full">Most Popular</div>
-              <p className="text-xs font-semibold text-[#FDE68A] tracking-[0.2em] uppercase mb-3">We Bring Everything</p>
+            <div className="bg-[#34D399]/10 backdrop-blur-sm border border-[#34D399]/30 rounded-2xl p-8 relative">
+              <div className="absolute -top-3 left-6 bg-[#34D399] text-[#D4540A] text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full">Most Popular</div>
+              <p className="text-xs font-semibold text-[#34D399] tracking-[0.2em] uppercase mb-3">We Bring Everything</p>
               <div className="flex items-baseline gap-3">
                 <p className="font-[family-name:var(--font-bebas)] text-5xl text-white tracking-wide">$65<span className="text-2xl text-blue-200/50">/hr</span></p>
                 <p className="text-blue-200/40 line-through text-lg">$75</p>
@@ -169,7 +169,7 @@ export default function HomePage() {
               <p className="text-blue-200/50 text-sm mt-3">We bring all supplies and professional-grade equipment. Just open the door.</p>
             </div>
             <div className="bg-white/[0.08] backdrop-blur-sm border border-white/15 rounded-2xl p-8">
-              <p className="text-xs font-semibold text-[#FDE68A] tracking-[0.2em] uppercase mb-3">Same-Day / Emergency</p>
+              <p className="text-xs font-semibold text-[#34D399] tracking-[0.2em] uppercase mb-3">Same-Day / Emergency</p>
               <p className="font-[family-name:var(--font-bebas)] text-5xl text-white tracking-wide">$100<span className="text-2xl text-blue-200/50">/hr</span></p>
               <p className="text-blue-200/50 text-sm mt-3">Need it today? We dispatch a professional cleaner to your door within hours.</p>
             </div>
@@ -177,7 +177,7 @@ export default function HomePage() {
 
           {/* CTA: text or call */}
           <div className="flex flex-col sm:flex-row items-start gap-5">
-            <a href="sms:8333526243" className="bg-[#FDE68A] text-[#D4540A] px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
+            <a href="sms:8333526243" className="bg-[#34D399] text-[#D4540A] px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
               Text (833) 352-6243
             </a>
             <a href="tel:8333526243" className="text-blue-200/70 font-medium text-lg py-4 hover:text-white transition-colors underline underline-offset-4">
@@ -195,7 +195,7 @@ export default function HomePage() {
             <div>
               <p className="text-xs font-semibold text-gray-400 tracking-[0.25em] uppercase mb-3">Florida&apos;s Trusted Home Cleaning Company Since 2018</p>
               <h2 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-[#D4540A] tracking-wide leading-tight mb-4">Welcome to The Florida Maid</h2>
-              <div className="w-12 h-[2px] bg-[#FDE68A] mb-6" />
+              <div className="w-12 h-[2px] bg-[#34D399] mb-6" />
               <p className="text-gray-600 text-lg leading-relaxed mb-5">
                 We&apos;re a small, dedicated cleaning company that treats every home like our own. No apps, no algorithms, no random strangers — just experienced, professional cleaners who show up on time, do beautiful work, and earn your trust visit after visit.
               </p>
@@ -215,7 +215,7 @@ export default function HomePage() {
                 <Link href="/about-the-nyc-maid-service-company" className="inline-block bg-[#D4540A] text-white px-6 py-3 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#D4540A]/90 transition-colors">
                   Learn More About Us
                 </Link>
-                <a href="sms:8333526243" className="inline-block bg-[#FDE68A] text-[#D4540A] px-6 py-3 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
+                <a href="sms:8333526243" className="inline-block bg-[#34D399] text-[#D4540A] px-6 py-3 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
                   Text Us
                 </a>
                 <a href="tel:8333526243" className="text-[#D4540A] font-semibold hover:underline underline-offset-4">
@@ -226,7 +226,7 @@ export default function HomePage() {
 
             {/* Right — at a glance + quick stats */}
             <div className="space-y-6">
-              <div className="bg-[#F5FBF8] border border-[#FDE68A]/30 rounded-2xl p-8">
+              <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-2xl p-8">
                 <h3 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-5">The Florida Maid at a Glance</h3>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
@@ -260,7 +260,7 @@ export default function HomePage() {
                     'Responsive support — text us anytime, we answer fast',
                   ].map(item => (
                     <li key={item} className="flex items-start gap-3">
-                      <span className="text-[#FDE68A] mt-0.5 text-lg">&#10003;</span>
+                      <span className="text-[#34D399] mt-0.5 text-lg">&#10003;</span>
                       <span className="text-gray-700 text-[15px]">{item}</span>
                     </li>
                   ))}
@@ -273,7 +273,7 @@ export default function HomePage() {
       </section>
 
       {/* Pricing Deep Dive */}
-      <section className="py-20 bg-[#FDE68A]">
+      <section className="py-20 bg-[#34D399]">
         <div className="max-w-7xl mx-auto px-4">
           <p className="text-xs font-semibold text-[#D4540A]/50 tracking-[0.25em] uppercase mb-3 text-center">Florida Maid Service Pricing Explained — Hourly Rates, Average Costs &amp; What to Expect</p>
           <h2 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-[#D4540A] tracking-wide text-center mb-4">How Much Does House Cleaning Cost in Florida?</h2>
@@ -287,7 +287,7 @@ export default function HomePage() {
             <div className="bg-white border border-gray-200 rounded-2xl p-8 flex flex-col">
               <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-3">Client Supplies &amp; Equipment</p>
               <p className="font-[family-name:var(--font-bebas)] text-5xl sm:text-6xl lg:text-7xl text-[#D4540A] tracking-wide leading-none mb-1">$49<span className="text-2xl sm:text-3xl text-gray-300">/hr</span></p>
-              <div className="w-10 h-[2px] bg-[#FDE68A] mt-4 mb-5" />
+              <div className="w-10 h-[2px] bg-[#34D399] mt-4 mb-5" />
               <p className="text-gray-600 text-sm leading-relaxed mb-5">
                 You provide all cleaning supplies, equipment, and products. We bring an experienced, background-checked professional cleaner who does the work.
               </p>
@@ -300,7 +300,7 @@ export default function HomePage() {
                   'Small studios and one-bedrooms where a vacuum and basics are enough',
                 ].map(item => (
                   <li key={item} className="flex items-start gap-2.5">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                     <span className="text-gray-600 text-sm">{item}</span>
                   </li>
                 ))}
@@ -317,13 +317,13 @@ export default function HomePage() {
 
             {/* Tier 2 — Most Popular */}
             <div className="bg-[#D4540A] rounded-2xl p-8 pt-10 relative flex flex-col lg:-my-4 shadow-xl">
-              <div className="absolute -top-3.5 left-6 bg-[#FDE68A] text-[#D4540A] text-xs font-bold tracking-widest uppercase px-5 py-1.5 rounded-full">Most Popular</div>
-              <p className="text-xs font-semibold text-[#FDE68A]/70 tracking-[0.2em] uppercase mb-3">We Bring Everything</p>
+              <div className="absolute -top-3.5 left-6 bg-[#34D399] text-[#D4540A] text-xs font-bold tracking-widest uppercase px-5 py-1.5 rounded-full">Most Popular</div>
+              <p className="text-xs font-semibold text-[#34D399]/70 tracking-[0.2em] uppercase mb-3">We Bring Everything</p>
               <div className="flex items-baseline gap-3 mb-1">
                 <p className="font-[family-name:var(--font-bebas)] text-6xl sm:text-7xl lg:text-8xl text-white tracking-wide leading-none">$65<span className="text-2xl sm:text-3xl text-blue-200/40">/hr</span></p>
                 <span className="font-[family-name:var(--font-bebas)] text-3xl text-white/30 line-through">$75</span>
               </div>
-              <div className="w-10 h-[2px] bg-[#FDE68A] mt-4 mb-5" />
+              <div className="w-10 h-[2px] bg-[#34D399] mt-4 mb-5" />
               <p className="text-blue-200/60 text-sm leading-relaxed mb-5">
                 We bring all professional-grade supplies, equipment, vacuums, mops, and cleaning products. Just open the door — we handle everything from start to finish.
               </p>
@@ -336,7 +336,7 @@ export default function HomePage() {
                   'Clients who want consistent, professional-grade results',
                 ].map(item => (
                   <li key={item} className="flex items-start gap-2.5">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                     <span className="text-blue-100/70 text-sm">{item}</span>
                   </li>
                 ))}
@@ -355,7 +355,7 @@ export default function HomePage() {
             <div className="bg-white border border-gray-200 rounded-2xl p-8 flex flex-col">
               <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-3">Same-Day &amp; Emergency</p>
               <p className="font-[family-name:var(--font-bebas)] text-5xl sm:text-6xl lg:text-7xl text-[#D4540A] tracking-wide leading-none mb-1">$100<span className="text-2xl sm:text-3xl text-gray-300">/hr</span></p>
-              <div className="w-10 h-[2px] bg-[#FDE68A] mt-4 mb-5" />
+              <div className="w-10 h-[2px] bg-[#34D399] mt-4 mb-5" />
               <p className="text-gray-600 text-sm leading-relaxed mb-5">
                 Need a cleaner today? We dispatch a professional to your door within hours. Includes all supplies and equipment — <Link href="/services/same-day-cleaning-service-in-nyc" className="text-[#D4540A] underline underline-offset-2">same-day cleaning</Link> when you need it most.
               </p>
@@ -368,7 +368,7 @@ export default function HomePage() {
                   'Airbnb hosts with a same-day turnover',
                 ].map(item => (
                   <li key={item} className="flex items-start gap-2.5">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                     <span className="text-gray-600 text-sm">{item}</span>
                   </li>
                 ))}
@@ -434,20 +434,20 @@ export default function HomePage() {
                 <p className="text-xs text-gray-400 font-semibold tracking-wide uppercase mb-1">Florida Average</p>
                 <p className="font-[family-name:var(--font-bebas)] text-2xl text-gray-400 tracking-wide">$75–$120/hr</p>
               </div>
-              <div className="bg-[#F5FBF8] border border-[#FDE68A]/30 rounded-xl p-4">
-                <p className="text-xs text-[#FDE68A] font-semibold tracking-wide uppercase mb-1">The Florida Maid</p>
+              <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-4">
+                <p className="text-xs text-[#34D399] font-semibold tracking-wide uppercase mb-1">The Florida Maid</p>
                 <p className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide">$49–$65/hr</p>
               </div>
               <div className="bg-gray-50 rounded-xl p-4">
                 <p className="text-xs text-gray-400 font-semibold tracking-wide uppercase mb-1">You Save</p>
-                <p className="font-[family-name:var(--font-bebas)] text-2xl text-[#FDE68A] tracking-wide">25–45%</p>
+                <p className="font-[family-name:var(--font-bebas)] text-2xl text-[#34D399] tracking-wide">25–45%</p>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/updated-nyc-maid-service-industry-pricing" className="inline-block bg-[#D4540A] text-white px-8 py-3.5 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#D4540A]/90 transition-colors">
                 View Full Pricing Details
               </Link>
-              <a href="sms:8333526243" className="inline-block bg-[#FDE68A] text-[#D4540A] px-8 py-3.5 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
+              <a href="sms:8333526243" className="inline-block bg-[#34D399] text-[#D4540A] px-8 py-3.5 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
                 Text for a Quote
               </a>
             </div>
@@ -553,14 +553,14 @@ export default function HomePage() {
       {/* Services */}
       <section className="py-20 bg-gradient-to-b from-[#D4540A] to-[#B8470A]">
         <div className="max-w-7xl mx-auto px-4">
-          <p className="text-xs font-semibold text-[#FDE68A]/70 tracking-[0.25em] uppercase mb-3 text-center">Professional Florida Home &amp; House Cleaning Services</p>
+          <p className="text-xs font-semibold text-[#34D399]/70 tracking-[0.25em] uppercase mb-3 text-center">Professional Florida Home &amp; House Cleaning Services</p>
           <h2 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-white tracking-wide text-center mb-4">Deep Cleaning, Regular Maid Service &amp; More in Florida</h2>
           <p className="text-blue-200/60 text-center max-w-3xl mx-auto mb-14">
-            From <Link href="/services/weekly-maid-service-in-nyc" className="text-[#FDE68A] underline underline-offset-2">weekly maid service</Link> and <Link href="/services/deep-cleaning-service-in-nyc" className="text-[#FDE68A] underline underline-offset-2">deep cleaning</Link> to <Link href="/services/move-in-move-out-cleaning-service-in-nyc" className="text-[#FDE68A] underline underline-offset-2">move-in/move-out cleaning</Link>, <Link href="/services/post-construction-cleanup-service-in-nyc" className="text-[#FDE68A] underline underline-offset-2">post-renovation cleanup</Link>, and <Link href="/services/same-day-cleaning-service-in-nyc" className="text-[#FDE68A] underline underline-offset-2">same-day emergency cleaning</Link> — we handle every type of residential cleaning across Florida. All cleaners are background-checked, licensed, and insured.
+            From <Link href="/services/weekly-maid-service-in-nyc" className="text-[#34D399] underline underline-offset-2">weekly maid service</Link> and <Link href="/services/deep-cleaning-service-in-nyc" className="text-[#34D399] underline underline-offset-2">deep cleaning</Link> to <Link href="/services/move-in-move-out-cleaning-service-in-nyc" className="text-[#34D399] underline underline-offset-2">move-in/move-out cleaning</Link>, <Link href="/services/post-construction-cleanup-service-in-nyc" className="text-[#34D399] underline underline-offset-2">post-renovation cleanup</Link>, and <Link href="/services/same-day-cleaning-service-in-nyc" className="text-[#34D399] underline underline-offset-2">same-day emergency cleaning</Link> — we handle every type of residential cleaning across Florida. All cleaners are background-checked, licensed, and insured.
           </p>
           <ServiceGrid />
           <div className="text-center mt-10">
-            <Link href="/nyc-maid-service-services-offered-by-the-nyc-maid" className="text-[#FDE68A] font-semibold hover:underline underline-offset-4">Browse All Florida Cleaning Services &rarr;</Link>
+            <Link href="/nyc-maid-service-services-offered-by-the-nyc-maid" className="text-[#34D399] font-semibold hover:underline underline-offset-4">Browse All Florida Cleaning Services &rarr;</Link>
           </div>
         </div>
       </section>
@@ -571,7 +571,7 @@ export default function HomePage() {
           <div>
             <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-3">Licensed &amp; Insured Florida Cleaning Company</p>
             <h2 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-[#D4540A] tracking-wide leading-tight mb-6">Why Thousands of Floridians Trust The Florida Maid</h2>
-            <div className="w-12 h-[2px] bg-[#FDE68A] mb-6" />
+            <div className="w-12 h-[2px] bg-[#34D399] mb-6" />
             <p className="text-gray-600 text-lg leading-relaxed mb-4">
               We provide personalized, hourly <Link href="/updated-nyc-maid-service-industry-pricing" className="text-[#D4540A] underline underline-offset-2">cleaning service pricing</Link> for each unique space — ensuring high-quality cleaning tailored to your needs. No contracts, no hidden fees, no surprises.
             </p>
@@ -579,7 +579,7 @@ export default function HomePage() {
               Every cleaner on our team is fully background-checked and insured. Whether you need a <Link href="/services/apartment-cleaning-service-in-nyc" className="text-[#D4540A] underline underline-offset-2">regular home cleaning</Link> in <Link href="/manhattan-maid-service" className="text-[#D4540A] underline underline-offset-2">Manhattan</Link>, a <Link href="/services/deep-cleaning-service-in-nyc" className="text-[#D4540A] underline underline-offset-2">deep clean</Link> in <Link href="/brooklyn-maid-service" className="text-[#D4540A] underline underline-offset-2">Brooklyn</Link>, or <Link href="/services/airbnb-cleaning-in-nyc" className="text-[#D4540A] underline underline-offset-2">Airbnb turnover cleaning</Link> in <Link href="/queens-maid-service" className="text-[#D4540A] underline underline-offset-2">Queens</Link> — we&apos;ve got you covered. <Link href="/about-the-nyc-maid-service-company" className="text-[#D4540A] underline underline-offset-2">Learn more about our company</Link>.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4">
-              <a href="sms:8333526243" className="inline-block bg-[#FDE68A] text-[#D4540A] px-8 py-3.5 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
+              <a href="sms:8333526243" className="inline-block bg-[#34D399] text-[#D4540A] px-8 py-3.5 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
                 Text Us
               </a>
               <a href="tel:8333526243" className="inline-block text-[#D4540A] font-semibold py-3.5 hover:underline underline-offset-4">
@@ -612,7 +612,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-[#FDE68A] py-20">
+      <section className="bg-[#34D399] py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <p className="text-xs font-semibold text-[#D4540A]/50 tracking-[0.25em] uppercase mb-6">Real Florida Cleaning Service Reviews From Verified Customers</p>
           <p className="font-[family-name:var(--font-bebas)] text-2xl md:text-3xl text-[#D4540A] tracking-wide leading-relaxed mb-6">
@@ -646,7 +646,7 @@ export default function HomePage() {
                   'We value consistency over chaos',
                 ].map(item => (
                   <li key={item} className="flex items-start gap-2.5">
-                    <span className="text-[#FDE68A] mt-0.5">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5">&#10003;</span>
                     <span className="text-gray-600 text-sm">{item}</span>
                   </li>
                 ))}
@@ -664,7 +664,7 @@ export default function HomePage() {
                   'Cleaner remains on site until payment is completed',
                 ].map(item => (
                   <li key={item} className="flex items-start gap-2.5">
-                    <span className="text-[#FDE68A] mt-0.5">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5">&#10003;</span>
                     <span className="text-gray-600 text-sm">{item}</span>
                   </li>
                 ))}
@@ -682,7 +682,7 @@ export default function HomePage() {
                   'We don\'t overbook or rush our cleaners',
                 ].map(item => (
                   <li key={item} className="flex items-start gap-2.5">
-                    <span className="text-[#FDE68A] mt-0.5">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5">&#10003;</span>
                     <span className="text-gray-600 text-sm">{item}</span>
                   </li>
                 ))}
@@ -698,7 +698,7 @@ export default function HomePage() {
           <div>
             <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-3">Professional Background-Checked Florida House Cleaners</p>
             <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-6">Our Cleaners Are Paid Well, Equipped &amp; Treated Right</h2>
-            <div className="w-12 h-[2px] bg-[#FDE68A] mb-6" />
+            <div className="w-12 h-[2px] bg-[#34D399] mb-6" />
             <p className="text-gray-600 leading-relaxed mb-5">
               We don&apos;t cut corners on the people who do the work. Our cleaners are experienced professionals — not gig workers pulled from an app. They bring their own professional supplies and equipment, they&apos;re paid well, and they&apos;re paid immediately. Happy cleaners do better work, every time.
             </p>
@@ -713,7 +713,7 @@ export default function HomePage() {
           <div>
             <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-3">The Ideal Florida Maid Service Client</p>
             <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-6">Who We&apos;re Best For</h2>
-            <div className="w-12 h-[2px] bg-[#FDE68A] mb-6" />
+            <div className="w-12 h-[2px] bg-[#34D399] mb-6" />
             <ul className="space-y-4">
               {[
                 'Clients who value reliability and consistency over the cheapest price',
@@ -722,12 +722,12 @@ export default function HomePage() {
                 'Clients who respect professional service and treat cleaners well',
               ].map(item => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="text-[#FDE68A] mt-1 text-lg">&#10003;</span>
+                  <span className="text-[#34D399] mt-1 text-lg">&#10003;</span>
                   <span className="text-gray-700">{item}</span>
                 </li>
               ))}
             </ul>
-            <div className="bg-[#F5FBF8] border border-[#FDE68A]/30 rounded-2xl p-6 mt-8">
+            <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-2xl p-6 mt-8">
               <h3 className="font-[family-name:var(--font-bebas)] text-xl text-[#D4540A] tracking-wide mb-3">Our Standards</h3>
               <ul className="space-y-2">
                 {[

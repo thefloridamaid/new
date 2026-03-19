@@ -33,7 +33,7 @@ export default function DoNotSharePage() {
 
           <div>
             <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Our Position Is Simple</h2>
-            <div className="bg-[#F5FBF8] border border-[#FDE68A]/30 rounded-xl p-6">
+            <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-6">
               <p className="text-gray-600 leading-relaxed mb-3">
                 <strong className="text-[#D4540A]">We do not sell, trade, rent, or share your personal information with anyone.</strong> Not with advertisers, not with data brokers, not with marketing companies, not with any third parties of any kind.
               </p>

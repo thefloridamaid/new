@@ -400,14 +400,14 @@ export default function MarketingPage() {
   const statusBadge = (status: string) => {
     if (status === 'draft') return <span className="px-2.5 py-0.5 bg-gray-100 text-gray-600 rounded-full text-xs font-medium">Draft</span>
     if (status === 'sending') return <span className="px-2.5 py-0.5 bg-yellow-100 text-yellow-700 rounded-full text-xs font-medium">Sending...</span>
-    return <span className="px-2.5 py-0.5 bg-[#FDE68A]/40 text-[#D4540A] rounded-full text-xs font-medium">Sent</span>
+    return <span className="px-2.5 py-0.5 bg-[#34D399]/40 text-[#D4540A] rounded-full text-xs font-medium">Sent</span>
   }
 
   const recipientStatusBadge = (status: string) => {
     const styles: Record<string, string> = {
       pending: 'bg-gray-100 text-gray-600',
       sent: 'bg-blue-100 text-blue-700',
-      delivered: 'bg-[#FDE68A]/40 text-[#D4540A]',
+      delivered: 'bg-[#34D399]/40 text-[#D4540A]',
       opened: 'bg-green-100 text-green-700',
       bounced: 'bg-orange-100 text-orange-700',
       failed: 'bg-red-100 text-red-700',
@@ -732,7 +732,7 @@ export default function MarketingPage() {
                   <button
                     key={f.key}
                     onClick={() => { setContactFilter(f.key); fetchClients(audienceFilter, f.key) }}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${contactFilter === f.key ? 'bg-[#FDE68A] text-[#D4540A] shadow-sm' : 'bg-gray-50 text-gray-500 hover:bg-gray-100 border border-gray-200'}`}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${contactFilter === f.key ? 'bg-[#34D399] text-[#D4540A] shadow-sm' : 'bg-gray-50 text-gray-500 hover:bg-gray-100 border border-gray-200'}`}
                   >
                     {f.label}
                   </button>
@@ -970,7 +970,7 @@ export default function MarketingPage() {
                 {recipients.map(r => (
                   <tr
                     key={r.id}
-                    className={`hover:bg-gray-50/50 transition cursor-pointer ${viewingRecipient?.id === r.id ? 'bg-[#FDE68A]/10' : ''}`}
+                    className={`hover:bg-gray-50/50 transition cursor-pointer ${viewingRecipient?.id === r.id ? 'bg-[#34D399]/10' : ''}`}
                     onClick={() => setViewingRecipient(viewingRecipient?.id === r.id ? null : r)}
                   >
                     <td className="px-5 py-4 font-medium text-[#D4540A]">{r.clients?.name || '—'}</td>

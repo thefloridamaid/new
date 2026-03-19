@@ -69,7 +69,7 @@ export default function TeamLoginPage() {
         </div>
 
         {/* Save to Home Screen Tips */}
-        <div className="mt-6 bg-[#FDE68A]/20 rounded-lg p-4 border border-[#FDE68A]/30">
+        <div className="mt-6 bg-[#34D399]/20 rounded-lg p-4 border border-[#34D399]/30">
           <p className="text-[#D4540A] font-medium text-sm mb-2">📱 Save for Quick Access / Guardar para Acceso Rápido:</p>
           <ul className="text-[#D4540A]/70 text-xs space-y-1">
             <li><strong>iPhone:</strong> Tap Share → &quot;Add to Home Screen&quot; / Toca Compartir → &quot;Agregar a Inicio&quot;</li>

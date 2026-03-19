@@ -253,7 +253,7 @@ export default function LeadsPage() {
             <button
               key={s.label}
               onClick={() => { setPeriod(s.period); setDrilldown(s.type) }}
-              className={`bg-white border rounded-xl shadow-sm px-5 py-4 text-center transition-all hover:shadow-md cursor-pointer ${period === s.period ? 'border-[#FDE68A] ring-1 ring-[#FDE68A]' : 'border-gray-200/80 hover:border-[#FDE68A]'}`}
+              className={`bg-white border rounded-xl shadow-sm px-5 py-4 text-center transition-all hover:shadow-md cursor-pointer ${period === s.period ? 'border-[#34D399] ring-1 ring-[#34D399]' : 'border-gray-200/80 hover:border-[#34D399]'}`}
             >
               <p className="text-2xl font-bold text-[#D4540A]">{s.value.toLocaleString()}</p>
               <p className="text-[10px] font-bold tracking-widest text-[#D4540A]/50 uppercase mt-1">{s.label}</p>
@@ -269,14 +269,14 @@ export default function LeadsPage() {
 
       {/* Row 2 — Conversions (filtered by selected period) */}
       <div>
-        {period !== 'all' && <p className="text-[10px] font-bold tracking-widest text-[#FDE68A] uppercase mb-2">Showing: {periodLabel}</p>}
+        {period !== 'all' && <p className="text-[10px] font-bold tracking-widest text-[#34D399] uppercase mb-2">Showing: {periodLabel}</p>}
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
         {row2Cards.map(s => (
           <button
             key={s.label}
             onClick={() => setDrilldown(s.type)}
-            className="bg-white border border-gray-200/80 rounded-xl shadow-sm px-5 py-4 text-center transition-all hover:border-[#FDE68A] hover:shadow-md cursor-pointer"
+            className="bg-white border border-gray-200/80 rounded-xl shadow-sm px-5 py-4 text-center transition-all hover:border-[#34D399] hover:shadow-md cursor-pointer"
           >
             <p className="text-2xl font-bold text-[#D4540A]">{typeof s.value === 'number' ? s.value.toLocaleString() : s.value}</p>
             <p className="text-[10px] font-bold tracking-widest text-[#D4540A]/50 uppercase mt-1">{s.label}</p>

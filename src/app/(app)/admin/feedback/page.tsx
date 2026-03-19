@@ -119,7 +119,7 @@ export default function FeedbackPage() {
     if (s.includes('widget')) return 'bg-purple-100 text-purple-700'
     if (s.includes('email')) return 'bg-blue-100 text-blue-700'
     if (s.includes('sms') || s.includes('text')) return 'bg-green-100 text-green-700'
-    if (s.includes('portal') || s.includes('client')) return 'bg-[#FDE68A]/30 text-[#D4540A]'
+    if (s.includes('portal') || s.includes('client')) return 'bg-[#34D399]/30 text-[#D4540A]'
     if (s.includes('cleaner')) return 'bg-orange-100 text-orange-700'
     if (s.includes('book')) return 'bg-yellow-100 text-yellow-700'
     if (s.includes('web') || s.includes('site')) return 'bg-indigo-100 text-indigo-700'
@@ -212,7 +212,7 @@ export default function FeedbackPage() {
               <div
                 key={item.id}
                 className={`bg-white border rounded-xl p-5 transition-all hover:shadow-md ${
-                  !item.read ? 'border-l-4 border-l-[#FDE68A] border-t border-r border-b border-t-gray-100 border-r-gray-100 border-b-gray-100 bg-[#FDE68A]/5 shadow-sm' : 'border-gray-100 shadow-sm'
+                  !item.read ? 'border-l-4 border-l-[#34D399] border-t border-r border-b border-t-gray-100 border-r-gray-100 border-b-gray-100 bg-[#34D399]/5 shadow-sm' : 'border-gray-100 shadow-sm'
                 }`}
               >
                 <div className="flex items-start justify-between gap-4">
@@ -223,7 +223,7 @@ export default function FeedbackPage() {
                         {getSourceLabel(item.source)}
                       </span>
                       {!item.read && (
-                        <span className="px-2.5 py-0.5 bg-[#FDE68A]/40 text-[#D4540A] rounded-full text-xs font-semibold">
+                        <span className="px-2.5 py-0.5 bg-[#34D399]/40 text-[#D4540A] rounded-full text-xs font-semibold">
                           New
                         </span>
                       )}

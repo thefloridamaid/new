@@ -91,16 +91,16 @@ export default function AreasIndexPage() {
             Professional house cleaning from $49/hr in every neighborhood we serve. Same rates, same quality, same background-checked cleaners — whether you&apos;re in Manhattan, Brooklyn, Queens, Long Island, or New Jersey.
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <span className="text-[#FDE68A] text-sm font-medium">&#10003; From $49/hr</span>
-            <span className="text-[#FDE68A] text-sm font-medium">&#10003; Same rate everywhere</span>
-            <span className="text-[#FDE68A] text-sm font-medium">&#10003; No travel fees</span>
-            <span className="text-[#FDE68A] text-sm font-medium">&#10003; All services available</span>
+            <span className="text-[#34D399] text-sm font-medium">&#10003; From $49/hr</span>
+            <span className="text-[#34D399] text-sm font-medium">&#10003; Same rate everywhere</span>
+            <span className="text-[#34D399] text-sm font-medium">&#10003; No travel fees</span>
+            <span className="text-[#34D399] text-sm font-medium">&#10003; All services available</span>
           </div>
         </div>
       </section>
 
       {/* Area summary strip */}
-      <section className="bg-[#FDE68A] py-6">
+      <section className="bg-[#34D399] py-6">
         <div className="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-x-10 gap-y-3">
           {AREAS.map(area => {
             const count = getNeighborhoodsByArea(area.slug).length
@@ -132,14 +132,14 @@ export default function AreasIndexPage() {
                 </Link>
               </div>
               <p className="text-gray-500 text-sm mb-6 max-w-2xl">{area.description}</p>
-              <div className="w-10 h-[2px] bg-[#FDE68A] mb-6" />
+              <div className="w-10 h-[2px] bg-[#34D399] mb-6" />
 
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
                 {neighborhoods.map(n => (
                   <Link
                     key={n.slug}
                     href={`/${n.urlSlug}`}
-                    className="group p-4 bg-white border border-gray-200 rounded-xl hover:border-[#FDE68A] hover:shadow-md transition-all"
+                    className="group p-4 bg-white border border-gray-200 rounded-xl hover:border-[#34D399] hover:shadow-md transition-all"
                   >
                     <h3 className="font-semibold text-[#D4540A] group-hover:underline underline-offset-2 text-sm mb-1">{n.name}</h3>
                     <p className="text-xs text-gray-400">{n.zip_codes.slice(0, 2).join(', ')}</p>
@@ -152,7 +152,7 @@ export default function AreasIndexPage() {
 
         {/* Services available everywhere */}
         <section className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] rounded-2xl p-8 md:p-14 mb-20">
-          <p className="text-[#FDE68A] text-xs font-semibold tracking-[0.2em] uppercase mb-2">Available in Every Neighborhood</p>
+          <p className="text-[#34D399] text-xs font-semibold tracking-[0.2em] uppercase mb-2">Available in Every Neighborhood</p>
           <p className="font-[family-name:var(--font-bebas)] text-3xl text-white tracking-wide mb-8">All 10 Services — Same Rate Everywhere</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {SERVICES.map(service => (
@@ -165,7 +165,7 @@ export default function AreasIndexPage() {
                   <p className="text-white font-semibold text-sm group-hover:underline underline-offset-2">{service.name}</p>
                   <p className="text-blue-200/50 text-xs">{service.duration}</p>
                 </div>
-                <span className="text-[#FDE68A] font-bold text-sm whitespace-nowrap ml-3">{service.priceRange}</span>
+                <span className="text-[#34D399] font-bold text-sm whitespace-nowrap ml-3">{service.priceRange}</span>
               </Link>
             ))}
           </div>
@@ -175,7 +175,7 @@ export default function AreasIndexPage() {
         <section className="mb-20">
           <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-2">Common Questions</p>
           <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-2">Service Area FAQ</p>
-          <div className="w-10 h-[2px] bg-[#FDE68A] mb-8" />
+          <div className="w-10 h-[2px] bg-[#34D399] mb-8" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
             {areaFAQs.map((faq, i) => (
@@ -193,7 +193,7 @@ export default function AreasIndexPage() {
         </section>
 
         {/* Don't see your neighborhood */}
-        <section className="bg-[#FDE68A] rounded-2xl p-8 md:p-12 text-center mb-16">
+        <section className="bg-[#34D399] rounded-2xl p-8 md:p-12 text-center mb-16">
           <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#D4540A] tracking-wide mb-3">Don&apos;t See Your Neighborhood?</p>
           <p className="text-[#D4540A]/60 max-w-xl mx-auto mb-8">
             We&apos;re always expanding. Text or call us with your address and we&apos;ll let you know if we cover your area — we probably do.

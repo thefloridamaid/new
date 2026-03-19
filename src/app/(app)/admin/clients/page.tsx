@@ -199,7 +199,7 @@ export default function ClientsPage() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'potential': return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-amber-50 text-amber-700 rounded-full text-[11px] font-medium border border-amber-200"><span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Potential</span>
-      case 'new': return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-[#FDE68A]/20 text-[#D4540A] rounded-full text-[11px] font-medium border border-[#FDE68A]/40"><span className="w-1.5 h-1.5 rounded-full bg-[#FDE68A]"></span>New</span>
+      case 'new': return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-[#34D399]/20 text-[#D4540A] rounded-full text-[11px] font-medium border border-[#34D399]/40"><span className="w-1.5 h-1.5 rounded-full bg-[#34D399]"></span>New</span>
       case 'active': return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-green-50 text-green-700 rounded-full text-[11px] font-medium border border-green-200"><span className="w-1.5 h-1.5 rounded-full bg-green-400"></span>Active</span>
       case 'inactive': return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-gray-50 text-gray-500 rounded-full text-[11px] font-medium border border-gray-200"><span className="w-1.5 h-1.5 rounded-full bg-gray-300"></span>Inactive</span>
       default: return null
@@ -275,7 +275,7 @@ export default function ClientsPage() {
             <p className="text-xs font-semibold uppercase tracking-wider text-amber-500 mb-1">Potential</p>
             <p className="text-2xl font-bold text-amber-700">{stats.potential}</p>
           </button>
-          <button onClick={() => setFilter('new')} className={`p-4 rounded-xl text-left transition-all hover:shadow-md ${filter === 'new' ? 'ring-2 ring-[#D4540A] shadow-md' : 'shadow-sm'} bg-[#FDE68A]/20`}>
+          <button onClick={() => setFilter('new')} className={`p-4 rounded-xl text-left transition-all hover:shadow-md ${filter === 'new' ? 'ring-2 ring-[#D4540A] shadow-md' : 'shadow-sm'} bg-[#34D399]/20`}>
             <p className="text-xs font-semibold uppercase tracking-wider text-[#D4540A]/60 mb-1">New</p>
             <p className="text-2xl font-bold text-[#D4540A]">{stats.new}</p>
           </button>
@@ -310,9 +310,9 @@ export default function ClientsPage() {
         <div className="flex gap-3 mb-6">
           <div className="flex-1 relative">
             <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-            <input type="text" placeholder="Search clients..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white shadow-sm focus:ring-2 focus:ring-[#FDE68A] focus:border-transparent outline-none transition-all" />
+            <input type="text" placeholder="Search clients..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white shadow-sm focus:ring-2 focus:ring-[#34D399] focus:border-transparent outline-none transition-all" />
           </div>
-          <select value={sortBy} onChange={(e) => setSortBy(e.target.value as typeof sortBy)} className="px-4 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white shadow-sm focus:ring-2 focus:ring-[#FDE68A] focus:border-transparent outline-none transition-all">
+          <select value={sortBy} onChange={(e) => setSortBy(e.target.value as typeof sortBy)} className="px-4 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white shadow-sm focus:ring-2 focus:ring-[#34D399] focus:border-transparent outline-none transition-all">
             <option value="created_at">Newest Added</option>
             <option value="name">Name A-Z</option>
             <option value="lastBooking">Last Booking</option>
@@ -428,8 +428,8 @@ export default function ClientsPage() {
                   <button onClick={() => setMapFilter('active')} className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${mapFilter === 'active' ? 'bg-green-600 text-white' : 'bg-green-50 text-green-700 hover:bg-green-100'}`}>
                     <span className="w-2 h-2 rounded-full bg-green-500 inline-block"></span> Active <span className="opacity-70">{mapStatusCounts.active}</span>
                   </button>
-                  <button onClick={() => setMapFilter('new')} className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${mapFilter === 'new' ? 'bg-[#D4540A] text-white' : 'bg-[#FDE68A]/20 text-[#D4540A]/70 hover:bg-[#FDE68A]/20'}`}>
-                    <span className="w-2 h-2 rounded-full bg-[#FDE68A] inline-block"></span> New <span className="opacity-70">{mapStatusCounts.new}</span>
+                  <button onClick={() => setMapFilter('new')} className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${mapFilter === 'new' ? 'bg-[#D4540A] text-white' : 'bg-[#34D399]/20 text-[#D4540A]/70 hover:bg-[#34D399]/20'}`}>
+                    <span className="w-2 h-2 rounded-full bg-[#34D399] inline-block"></span> New <span className="opacity-70">{mapStatusCounts.new}</span>
                   </button>
                   <button onClick={() => setMapFilter('potential')} className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${mapFilter === 'potential' ? 'bg-amber-600 text-white' : 'bg-amber-50 text-amber-700 hover:bg-amber-100'}`}>
                     <span className="w-2 h-2 rounded-full bg-amber-500 inline-block"></span> Potential <span className="opacity-70">{mapStatusCounts.potential}</span>
@@ -498,7 +498,7 @@ export default function ClientsPage() {
                         <p className="text-xs font-semibold uppercase tracking-wider text-green-500 mb-0.5">Total Spent</p>
                         <p className="text-lg font-bold text-green-700">{formatMoney(s.totalSpent)}</p>
                       </div>
-                      <div className="bg-[#FDE68A]/20 rounded-xl p-3 text-center">
+                      <div className="bg-[#34D399]/20 rounded-xl p-3 text-center">
                         <p className="text-xs font-semibold uppercase tracking-wider text-[#D4540A]/50 mb-0.5">Last Booking</p>
                         <p className="text-sm font-semibold text-[#D4540A]">{formatDate(s.lastBooking)}</p>
                       </div>
@@ -512,12 +512,12 @@ export default function ClientsPage() {
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Name *</label>
-                  <input type="text" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#FDE68A] focus:border-transparent outline-none transition-all" placeholder="John Smith" />
+                  <input type="text" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#34D399] focus:border-transparent outline-none transition-all" placeholder="John Smith" />
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Email</label>
                   <div className="flex gap-2">
-                    <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="flex-1 px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#FDE68A] focus:border-transparent outline-none transition-all" placeholder="john@email.com" />
+                    <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="flex-1 px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#34D399] focus:border-transparent outline-none transition-all" placeholder="john@email.com" />
                     {editingClient && form.email && (
                       <a href={`mailto:${form.email}`} className="px-4 py-2.5 bg-purple-50 text-purple-700 border border-purple-200 rounded-xl text-xs font-semibold hover:bg-purple-100 flex items-center transition-colors">Email</a>
                     )}
@@ -526,11 +526,11 @@ export default function ClientsPage() {
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Phone</label>
                   <div className="flex gap-2">
-                    <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })} className="flex-1 px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#FDE68A] focus:border-transparent outline-none transition-all" placeholder="212-555-1234" />
+                    <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })} className="flex-1 px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#34D399] focus:border-transparent outline-none transition-all" placeholder="212-555-1234" />
                     {editingClient && form.phone && (
                       <>
                         <a href={`tel:${form.phone}`} className="px-4 py-2.5 bg-green-50 text-green-700 border border-green-200 rounded-xl text-xs font-semibold hover:bg-green-100 flex items-center transition-colors">Call</a>
-                        <a href={`sms:${form.phone}`} className="px-4 py-2.5 bg-[#FDE68A]/20 text-[#D4540A]/70 border border-[#FDE68A]/40 rounded-xl text-xs font-semibold hover:bg-[#FDE68A]/30 flex items-center transition-colors">Text</a>
+                        <a href={`sms:${form.phone}`} className="px-4 py-2.5 bg-[#34D399]/20 text-[#D4540A]/70 border border-[#34D399]/40 rounded-xl text-xs font-semibold hover:bg-[#34D399]/30 flex items-center transition-colors">Text</a>
                       </>
                     )}
                   </div>
@@ -541,18 +541,18 @@ export default function ClientsPage() {
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Unit / Apt</label>
-                  <input type="text" value={form.unit} onChange={(e) => { setForm({ ...form, unit: e.target.value }); setAddressChanged(true) }} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#FDE68A] focus:border-transparent outline-none transition-all" placeholder="Apt 4B" />
+                  <input type="text" value={form.unit} onChange={(e) => { setForm({ ...form, unit: e.target.value }); setAddressChanged(true) }} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#34D399] focus:border-transparent outline-none transition-all" placeholder="Apt 4B" />
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Referred By</label>
-                  <select value={form.referrer_id} onChange={(e) => setForm({ ...form, referrer_id: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#FDE68A] focus:border-transparent outline-none transition-all">
+                  <select value={form.referrer_id} onChange={(e) => setForm({ ...form, referrer_id: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#34D399] focus:border-transparent outline-none transition-all">
                     <option value="">None</option>
                     {referrers.filter(ref => ref.active).map(ref => <option key={ref.id} value={ref.id}>{ref.name} ({ref.ref_code})</option>)}
                   </select>
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Notes</label>
-                  <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#FDE68A] focus:border-transparent outline-none transition-all" rows={3} placeholder="Any special instructions..." />
+                  <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#34D399] focus:border-transparent outline-none transition-all" rows={3} placeholder="Any special instructions..." />
                 </div>
                 {editingClient && (
                   <div className="pt-4">

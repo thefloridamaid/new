@@ -114,7 +114,7 @@ function CollectFormContent() {
       </div>
 
       {convoId && (
-          <div className="bg-[#FDE68A]/20 border-b border-[#FDE68A]/30 px-6 py-3">
+          <div className="bg-[#34D399]/20 border-b border-[#34D399]/30 px-6 py-3">
             <p className="text-[#D4540A] text-sm font-medium text-center">Almost done! Fill in your info below to complete your booking.</p>
           </div>
         )}

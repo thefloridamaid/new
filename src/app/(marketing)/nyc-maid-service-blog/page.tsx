@@ -38,7 +38,7 @@ export default function BlogIndexPage() {
 
       <section className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] py-16 md:py-20">
         <div className="max-w-5xl mx-auto px-4 text-center">
-          <p className="text-xs font-semibold text-[#FDE68A] tracking-[0.25em] uppercase mb-4">From the Pros</p>
+          <p className="text-xs font-semibold text-[#34D399] tracking-[0.25em] uppercase mb-4">From the Pros</p>
           <h1 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl lg:text-6xl text-white tracking-wide mb-4">The Florida Maid Blog</h1>
           <p className="text-white/60 text-lg max-w-3xl mx-auto">Real cleaning advice from people who do this every day — no fluff, no stock photos, just what actually works in Florida apartments.</p>
         </div>
@@ -48,9 +48,9 @@ export default function BlogIndexPage() {
         <Breadcrumbs items={[{ name: 'Blog', href: '/nyc-maid-service-blog' }]} />
 
         {/* Featured post */}
-        <Link href={`/nyc-maid-service-blog/${featured.slug}`} className="group block border border-gray-200 rounded-xl p-8 md:p-10 mb-12 hover:border-[#FDE68A] hover:shadow-lg transition-all">
+        <Link href={`/nyc-maid-service-blog/${featured.slug}`} className="group block border border-gray-200 rounded-xl p-8 md:p-10 mb-12 hover:border-[#34D399] hover:shadow-lg transition-all">
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-xs font-semibold text-[#FDE68A] bg-[#FDE68A]/15 px-3 py-1 rounded-full uppercase tracking-widest">{featured.category}</span>
+            <span className="text-xs font-semibold text-[#34D399] bg-[#34D399]/15 px-3 py-1 rounded-full uppercase tracking-widest">{featured.category}</span>
             <span className="text-xs text-gray-400">{new Date(featured.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
             <span className="text-xs text-gray-400">{featured.readTime} read</span>
           </div>
@@ -62,7 +62,7 @@ export default function BlogIndexPage() {
         {/* All posts grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {rest.map(post => (
-            <Link key={post.slug} href={`/nyc-maid-service-blog/${post.slug}`} className="group border border-gray-200 rounded-xl p-6 hover:border-[#FDE68A] hover:shadow-lg transition-all">
+            <Link key={post.slug} href={`/nyc-maid-service-blog/${post.slug}`} className="group border border-gray-200 rounded-xl p-6 hover:border-[#34D399] hover:shadow-lg transition-all">
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-xs font-medium text-[#D4540A]/60 uppercase tracking-widest">{post.category}</span>
                 <span className="text-xs text-gray-400">{new Date(post.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>

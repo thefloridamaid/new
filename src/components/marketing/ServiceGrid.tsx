@@ -64,9 +64,9 @@ export default function ServiceGrid() {
         <Link
           key={service.slug}
           href={`/services/${service.urlSlug}`}
-          className="group border border-gray-200 rounded-2xl p-7 hover:border-[#FDE68A] hover:shadow-lg transition-all bg-white"
+          className="group border border-gray-200 rounded-2xl p-7 hover:border-[#34D399] hover:shadow-lg transition-all bg-white"
         >
-          <div className="w-12 h-12 bg-[#F5FBF8] border border-[#FDE68A]/30 rounded-xl flex items-center justify-center text-[#D4540A] mb-5 group-hover:bg-[#FDE68A]/20 transition-colors">
+          <div className="w-12 h-12 bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl flex items-center justify-center text-[#D4540A] mb-5 group-hover:bg-[#34D399]/20 transition-colors">
             {serviceIcons[service.slug]}
           </div>
           <h3 className="font-[family-name:var(--font-bebas)] text-xl text-[#D4540A] tracking-wide mb-2">

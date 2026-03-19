@@ -80,7 +80,7 @@ export default function ReferralSignupPage() {
           </div>
 
           <p className="text-xs text-gray-400 mt-4">📧 Please check your spam/junk folder if you don't see our email in your inbox.</p>
-          <div className="bg-[#FDE68A]/20 rounded-lg p-4 mb-6">
+          <div className="bg-[#34D399]/20 rounded-lg p-4 mb-6">
             <p className="text-sm text-[#D4540A] mb-2">Your referral link</p>
             <p className="text-sm font-mono text-[#D4540A] break-all">https://www.thefloridamaid.com/book?ref={refCode}</p>
             <button

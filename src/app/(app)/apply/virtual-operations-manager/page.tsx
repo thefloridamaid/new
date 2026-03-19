@@ -293,7 +293,7 @@ export default function ApplyOpsManagerPage() {
             <p className="text-xs text-gray-400 italic mb-2">Grabe un video selfie de 60&ndash;90 segundos. Díganos quién es, por qué este puesto es para usted, y por qué podemos confiar en que manejará las operaciones de forma independiente. Si es bilingüe, hable en inglés y español. MP4, MOV o WebM, menor de 100MB.</p>
             <div className="flex items-center gap-4">
               {videoFile ? (
-                <div className="flex items-center gap-2 bg-[#FDE68A]/20 px-3 py-2 rounded-lg flex-1 min-w-0">
+                <div className="flex items-center gap-2 bg-[#34D399]/20 px-3 py-2 rounded-lg flex-1 min-w-0">
                   <span className="text-[#D4540A] text-sm truncate">{videoFile.name}</span>
                   <span className="text-[#D4540A]/50 text-xs flex-shrink-0">({(videoFile.size / 1024 / 1024).toFixed(1)}MB)</span>
                 </div>
@@ -374,7 +374,7 @@ export default function ApplyOpsManagerPage() {
             <p className="text-xs text-gray-500 mb-2">PDF or Word document, under 10MB / Documento PDF o Word, menor de 10MB</p>
             <div className="flex items-center gap-4">
               {resumeFile ? (
-                <div className="flex items-center gap-2 bg-[#FDE68A]/20 px-3 py-2 rounded-lg flex-1 min-w-0">
+                <div className="flex items-center gap-2 bg-[#34D399]/20 px-3 py-2 rounded-lg flex-1 min-w-0">
                   <span className="text-[#D4540A] text-sm truncate">{resumeFile.name}</span>
                   <span className="text-[#D4540A]/50 text-xs flex-shrink-0">({(resumeFile.size / 1024 / 1024).toFixed(1)}MB)</span>
                 </div>

@@ -90,7 +90,7 @@ export default function AboutPage() {
 
             {/* Right — stats */}
             <div className="lg:col-span-2 space-y-4">
-              <div className="bg-[#F5FBF8] border border-[#FDE68A]/30 rounded-2xl p-8">
+              <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-2xl p-8">
                 <h3 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-6">By the Numbers</h3>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
@@ -131,7 +131,7 @@ export default function AboutPage() {
                     'Reliability is the most underrated quality in this industry',
                   ].map(belief => (
                     <li key={belief} className="flex items-start gap-3">
-                      <span className="text-[#FDE68A] mt-0.5 text-lg flex-shrink-0">&#10003;</span>
+                      <span className="text-[#34D399] mt-0.5 text-lg flex-shrink-0">&#10003;</span>
                       <span className="text-blue-100/70 text-sm leading-relaxed">{belief}</span>
                     </li>
                   ))}
@@ -156,7 +156,7 @@ export default function AboutPage() {
               { title: 'Licensed & Insured', detail: 'Full general liability insurance and bonding on every job. Every cleaner is background-checked before their first assignment. Your home, your belongings, and your peace of mind are protected.' },
               { title: 'No Contracts', detail: 'Book when you want, cancel when you want. No long-term commitments, no cancellation penalties for recurring service (with proper notice), and no pressure to upsell or upgrade.' },
             ].map(item => (
-              <div key={item.title} className="bg-white border border-gray-200 rounded-2xl p-7 hover:border-[#FDE68A] hover:shadow-lg transition-all">
+              <div key={item.title} className="bg-white border border-gray-200 rounded-2xl p-7 hover:border-[#34D399] hover:shadow-lg transition-all">
                 <h3 className="font-[family-name:var(--font-bebas)] text-xl text-[#D4540A] tracking-wide mb-3">{item.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{item.detail}</p>
               </div>
@@ -168,7 +168,7 @@ export default function AboutPage() {
       {/* How we work — dark section */}
       <section className="py-16 bg-gradient-to-b from-[#D4540A] to-[#B8470A]">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-xs font-semibold text-[#FDE68A]/60 tracking-[0.25em] uppercase mb-3 text-center">How We Work</h2>
+          <h2 className="text-xs font-semibold text-[#34D399]/60 tracking-[0.25em] uppercase mb-3 text-center">How We Work</h2>
           <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-white tracking-wide text-center mb-4">The Florida Maid Difference</p>
           <p className="text-blue-200/50 text-center max-w-2xl mx-auto mb-12">Here&apos;s what happens when you book with us — no surprises, no fine print.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -183,7 +183,7 @@ export default function AboutPage() {
                   'You pay after, when you\'re satisfied',
                 ].map((step, i) => (
                   <div key={step} className="flex items-start gap-3">
-                    <span className="font-[family-name:var(--font-bebas)] text-lg text-[#FDE68A]/40 leading-none mt-0.5">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="font-[family-name:var(--font-bebas)] text-lg text-[#34D399]/40 leading-none mt-0.5">{String(i + 1).padStart(2, '0')}</span>
                     <span className="text-blue-100/70 text-sm">{step}</span>
                   </div>
                 ))}
@@ -200,7 +200,7 @@ export default function AboutPage() {
                   'Pay after each cleaning — no auto-billing',
                 ].map((step, i) => (
                   <div key={step} className="flex items-start gap-3">
-                    <span className="font-[family-name:var(--font-bebas)] text-lg text-[#FDE68A]/40 leading-none mt-0.5">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="font-[family-name:var(--font-bebas)] text-lg text-[#34D399]/40 leading-none mt-0.5">{String(i + 1).padStart(2, '0')}</span>
                     <span className="text-blue-100/70 text-sm">{step}</span>
                   </div>
                 ))}
@@ -220,7 +220,7 @@ export default function AboutPage() {
               <Link
                 key={area.slug}
                 href={`/${area.urlSlug}`}
-                className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center hover:border-[#FDE68A] hover:shadow-sm transition-all"
+                className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center hover:border-[#34D399] hover:shadow-sm transition-all"
               >
                 <p className="font-[family-name:var(--font-bebas)] text-lg text-[#D4540A] tracking-wide">{area.name}</p>
                 <p className="text-gray-400 text-xs mt-1">{getNeighborhoodsByArea(area.slug).length} neighborhoods</p>
@@ -231,7 +231,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mint band — hiring note */}
-      <section className="py-12 bg-[#FDE68A]">
+      <section className="py-12 bg-[#34D399]">
         <div className="max-w-4xl mx-auto px-4 flex flex-col md:flex-row items-start gap-6">
           <div className="flex-shrink-0">
             <div className="w-14 h-14 bg-[#D4540A] rounded-full flex items-center justify-center">

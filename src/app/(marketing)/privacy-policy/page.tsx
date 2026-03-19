@@ -60,7 +60,7 @@ export default function PrivacyPolicyPage() {
                 'To send you relevant updates about our services (you can opt out at any time)',
               ].map(item => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                  <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                   <span className="text-gray-600 text-sm">{item}</span>
                 </li>
               ))}
@@ -69,7 +69,7 @@ export default function PrivacyPolicyPage() {
 
           <div>
             <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">We Do Not Share Your Information</h2>
-            <div className="bg-[#F5FBF8] border border-[#FDE68A]/30 rounded-xl p-6">
+            <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-6">
               <p className="text-gray-600 leading-relaxed mb-3">
                 We do not sell, trade, rent, or share your personal information with any third parties. Period. Your data stays with us and is used solely to provide and improve your cleaning service.
               </p>
@@ -106,7 +106,7 @@ export default function PrivacyPolicyPage() {
                 'Opt out of any communications at any time',
               ].map(item => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                  <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                   <span className="text-gray-600 text-sm">{item}</span>
                 </li>
               ))}

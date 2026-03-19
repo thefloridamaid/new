@@ -33,7 +33,7 @@ export default function RefundPolicyPage() {
 
           <div>
             <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Why We Don&apos;t Issue Refunds</h2>
-            <div className="bg-[#F5FBF8] border border-[#FDE68A]/30 rounded-xl p-6">
+            <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-6">
               <p className="text-gray-600 leading-relaxed mb-3">
                 <strong className="text-[#D4540A]">We do not collect any money upfront.</strong> There are no deposits, no pre-authorizations, no advance charges, and no pre-payments of any kind.
               </p>
@@ -58,7 +58,7 @@ export default function RefundPolicyPage() {
                 'Our goal is to make it right, not to argue about it',
               ].map(item => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                  <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                   <span className="text-gray-600 text-sm">{item}</span>
                 </li>
               ))}

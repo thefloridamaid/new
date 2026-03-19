@@ -42,7 +42,7 @@ export default function MarketingNav() {
     <>
       <header className="bg-white sticky top-0 z-50 shadow-sm">
         {/* Hiring banner */}
-        <a href="/careers/virtual-operations-manager" className="block bg-[#FDE68A] text-[#D4540A] text-center py-2 font-bold text-xs tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
+        <a href="/careers/virtual-operations-manager" className="block bg-[#34D399] text-[#D4540A] text-center py-2 font-bold text-xs tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
           🔥 Now Hiring: Admin/Operations Manager — Work From Home — Apply Now
         </a>
         {/* Top bar */}
@@ -62,23 +62,23 @@ export default function MarketingNav() {
               <span className="text-white/20 hidden sm:inline">-</span>
               <span className="text-white/80 font-semibold hidden sm:inline">Open 24/7</span>
               <span className="text-white/20 hidden sm:inline">·</span>
-              <a href="tel:8333526243" className="inline-flex items-center gap-1 text-[#FDE68A] font-semibold tracking-widest uppercase text-[10px] hover:text-white transition-colors">
+              <a href="tel:8333526243" className="inline-flex items-center gap-1 text-[#34D399] font-semibold tracking-widest uppercase text-[10px] hover:text-white transition-colors">
                 <svg aria-hidden="true" className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
                 <span>(833) 352-6243</span>
               </a>
-              <a href="sms:8333526243" className="inline-flex items-center gap-1 text-[#FDE68A] font-semibold tracking-widest uppercase text-[10px] hover:text-white transition-colors">
+              <a href="sms:8333526243" className="inline-flex items-center gap-1 text-[#34D399] font-semibold tracking-widest uppercase text-[10px] hover:text-white transition-colors">
                 <svg aria-hidden="true" className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zM7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
                 <span>(833) 352-6243</span>
               </a>
             </div>
             <div className="hidden lg:flex items-center gap-4">
-              <a href="#" target="_blank" rel="noopener noreferrer" className="text-[#FDE68A] font-semibold tracking-widest uppercase text-[10px] hover:text-white transition-colors">Pay Now</a>
+              <a href="#" target="_blank" rel="noopener noreferrer" className="text-[#34D399] font-semibold tracking-widest uppercase text-[10px] hover:text-white transition-colors">Pay Now</a>
               <span className="text-white/30">|</span>
-              <a href="/book" target="_blank" rel="noopener noreferrer" className="text-[#FDE68A] font-semibold tracking-widest uppercase text-[10px] hover:text-white transition-colors">Client Login</a>
+              <a href="/book" target="_blank" rel="noopener noreferrer" className="text-[#34D399] font-semibold tracking-widest uppercase text-[10px] hover:text-white transition-colors">Client Login</a>
               <span className="text-white/30">|</span>
-              <a href="/referral" className="text-[#FDE68A] font-semibold tracking-widest uppercase text-[10px] hover:text-white transition-colors">Referrer Login</a>
+              <a href="/referral" className="text-[#34D399] font-semibold tracking-widest uppercase text-[10px] hover:text-white transition-colors">Referrer Login</a>
               <span className="text-white/30">|</span>
-              <a href="/team" className="text-[#FDE68A] font-semibold tracking-widest uppercase text-[10px] hover:text-white transition-colors">Team Login</a>
+              <a href="/team" className="text-[#34D399] font-semibold tracking-widest uppercase text-[10px] hover:text-white transition-colors">Team Login</a>
             </div>
           </div>
         </div>
@@ -100,7 +100,7 @@ export default function MarketingNav() {
                 <div className="absolute left-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                   <div className="bg-white rounded-xl shadow-xl border border-gray-100 py-3 w-72">
                     {serviceLinks.map(link => (
-                      <Link key={link.href} href={link.href} className="block px-5 py-2.5 text-sm text-gray-600 hover:bg-[#FDE68A]/20 hover:text-[#D4540A] transition-colors">
+                      <Link key={link.href} href={link.href} className="block px-5 py-2.5 text-sm text-gray-600 hover:bg-[#34D399]/20 hover:text-[#D4540A] transition-colors">
                         {link.name}
                       </Link>
                     ))}
@@ -120,7 +120,7 @@ export default function MarketingNav() {
                 <div className="absolute left-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                   <div className="bg-white rounded-xl shadow-xl border border-gray-100 py-3 w-60">
                     {moreLinks.map(link => (
-                      <Link key={link.href} href={link.href} className="block px-5 py-2.5 text-sm text-gray-600 hover:bg-[#FDE68A]/20 hover:text-[#D4540A] transition-colors">
+                      <Link key={link.href} href={link.href} className="block px-5 py-2.5 text-sm text-gray-600 hover:bg-[#34D399]/20 hover:text-[#D4540A] transition-colors">
                         {link.name}
                       </Link>
                     ))}
@@ -129,13 +129,13 @@ export default function MarketingNav() {
               </div>
             </nav>
 
-            <a href="/book/new" className="hidden lg:inline-block bg-[#FDE68A] text-[#D4540A] px-6 py-2.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors whitespace-nowrap">
+            <a href="/book/new" className="hidden lg:inline-block bg-[#34D399] text-[#D4540A] px-6 py-2.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors whitespace-nowrap">
               Book Yourself in 30 Sec
             </a>
 
             {/* Mobile hamburger */}
             <div className="lg:hidden flex items-center gap-3">
-              <a href="/book/new" className="bg-[#FDE68A] text-[#D4540A] px-4 py-2 rounded-md font-bold text-xs tracking-widest uppercase">
+              <a href="/book/new" className="bg-[#34D399] text-[#D4540A] px-4 py-2 rounded-md font-bold text-xs tracking-widest uppercase">
                 Book in 30 Sec
               </a>
               <button onClick={() => setMobileOpen(!mobileOpen)} aria-label="Open navigation menu" aria-expanded={mobileOpen} className="p-2 text-[#D4540A]">
@@ -179,7 +179,7 @@ export default function MarketingNav() {
               {servicesOpen && (
                 <div className="pl-4 pb-2 space-y-1">
                   {serviceLinks.map(link => (
-                    <Link key={link.href} href={link.href} onClick={closeMenu} className="block py-2 text-sm text-white/60 hover:text-[#FDE68A] transition-colors">
+                    <Link key={link.href} href={link.href} onClick={closeMenu} className="block py-2 text-sm text-white/60 hover:text-[#34D399] transition-colors">
                       {link.name}
                     </Link>
                   ))}
@@ -196,7 +196,7 @@ export default function MarketingNav() {
               {moreOpen && (
                 <div className="pl-4 pb-2 space-y-1">
                   {moreLinks.map(link => (
-                    <Link key={link.href} href={link.href} onClick={closeMenu} className="block py-2 text-sm text-white/60 hover:text-[#FDE68A] transition-colors">
+                    <Link key={link.href} href={link.href} onClick={closeMenu} className="block py-2 text-sm text-white/60 hover:text-[#34D399] transition-colors">
                       {link.name}
                     </Link>
                   ))}
@@ -204,18 +204,18 @@ export default function MarketingNav() {
               )}
 
               <div className="border-t border-white/10 mt-4 pt-4 space-y-1">
-                <Link href="/book" onClick={closeMenu} className="block py-3 text-[#FDE68A] font-medium">Client Login</Link>
-                <Link href="/book/new" onClick={closeMenu} className="block py-3 text-[#FDE68A] font-medium">Book Online</Link>
-                <a href="#" target="_blank" rel="noopener noreferrer" onClick={closeMenu} className="block py-3 text-[#FDE68A] font-medium">Pay Now</a>
-                <Link href="/get-paid-for-cleaning-referrals-every-time-they-are-serviced" onClick={closeMenu} className="block py-3 text-[#FDE68A] font-medium">Referral Program</Link>
+                <Link href="/book" onClick={closeMenu} className="block py-3 text-[#34D399] font-medium">Client Login</Link>
+                <Link href="/book/new" onClick={closeMenu} className="block py-3 text-[#34D399] font-medium">Book Online</Link>
+                <a href="#" target="_blank" rel="noopener noreferrer" onClick={closeMenu} className="block py-3 text-[#34D399] font-medium">Pay Now</a>
+                <Link href="/get-paid-for-cleaning-referrals-every-time-they-are-serviced" onClick={closeMenu} className="block py-3 text-[#34D399] font-medium">Referral Program</Link>
               </div>
 
               <div className="border-t border-white/10 mt-4 pt-4">
-                <Link href="/careers/virtual-operations-manager" onClick={closeMenu} className="block bg-white/10 text-[#FDE68A] py-3 rounded-lg font-bold text-sm tracking-widest uppercase text-center animate-pulse">🔥 Hiring: Admin/Operations Mgr</Link>
+                <Link href="/careers/virtual-operations-manager" onClick={closeMenu} className="block bg-white/10 text-[#34D399] py-3 rounded-lg font-bold text-sm tracking-widest uppercase text-center animate-pulse">🔥 Hiring: Admin/Operations Mgr</Link>
               </div>
 
               <div className="border-t border-white/10 mt-4 pt-6 space-y-3 text-center">
-                <a href="sms:8333526243" className="block bg-[#FDE68A] text-[#D4540A] py-3 rounded-lg font-bold text-sm tracking-widest uppercase">Text (833) 352-6243</a>
+                <a href="sms:8333526243" className="block bg-[#34D399] text-[#D4540A] py-3 rounded-lg font-bold text-sm tracking-widest uppercase">Text (833) 352-6243</a>
                 <a href="tel:8333526243" className="block text-white/50 font-medium text-sm">or Call Us</a>
               </div>
             </div>

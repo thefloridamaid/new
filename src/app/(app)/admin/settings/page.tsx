@@ -392,7 +392,7 @@ export default function SettingsPage() {
                     <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Standard Rate</label>
                     <div className="flex items-center">
                       <span className="px-3 py-2.5 bg-gray-50 border border-r-0 rounded-l-lg text-gray-400 text-sm">$</span>
-                      <input type="number" value={settings.standard_rate} onChange={e => update('standard_rate', Number(e.target.value))} className="w-full px-3.5 py-2.5 border rounded-r-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition" />
+                      <input type="number" value={settings.standard_rate} onChange={e => update('standard_rate', Number(e.target.value))} className="w-full px-3.5 py-2.5 border rounded-r-lg text-[#D4540A] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition" />
                       <span className="ml-2 text-gray-400 whitespace-nowrap text-sm">/hr</span>
                     </div>
                   </div>
@@ -400,7 +400,7 @@ export default function SettingsPage() {
                     <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Budget Rate (BYOS)</label>
                     <div className="flex items-center">
                       <span className="px-3 py-2.5 bg-gray-50 border border-r-0 rounded-l-lg text-gray-400 text-sm">$</span>
-                      <input type="number" value={settings.budget_rate} onChange={e => update('budget_rate', Number(e.target.value))} className="w-full px-3.5 py-2.5 border rounded-r-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition" />
+                      <input type="number" value={settings.budget_rate} onChange={e => update('budget_rate', Number(e.target.value))} className="w-full px-3.5 py-2.5 border rounded-r-lg text-[#D4540A] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition" />
                       <span className="ml-2 text-gray-400 whitespace-nowrap text-sm">/hr</span>
                     </div>
                   </div>
@@ -411,7 +411,7 @@ export default function SettingsPage() {
                 <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-4">PAYMENT METHODS</h2>
                 <div className="flex flex-wrap gap-2">
                   {PAYMENT_OPTIONS.map(opt => (
-                    <label key={opt.value} className={`flex items-center gap-2 px-3.5 py-2.5 border rounded-xl cursor-pointer transition-all ${settings.payment_methods.includes(opt.value) ? 'border-[#FDE68A] bg-[#FDE68A]/10' : 'border-gray-100 hover:bg-gray-50'}`}>
+                    <label key={opt.value} className={`flex items-center gap-2 px-3.5 py-2.5 border rounded-xl cursor-pointer transition-all ${settings.payment_methods.includes(opt.value) ? 'border-[#34D399] bg-[#34D399]/10' : 'border-gray-100 hover:bg-gray-50'}`}>
                       <input
                         type="checkbox"
                         checked={settings.payment_methods.includes(opt.value)}
@@ -443,7 +443,7 @@ export default function SettingsPage() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Start Hour</label>
-                    <select value={settings.business_hours_start} onChange={e => update('business_hours_start', Number(e.target.value))} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition">
+                    <select value={settings.business_hours_start} onChange={e => update('business_hours_start', Number(e.target.value))} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition">
                       {Array.from({ length: 24 }, (_, i) => (
                         <option key={i} value={i}>{formatHour(i)}</option>
                       ))}
@@ -451,7 +451,7 @@ export default function SettingsPage() {
                   </div>
                   <div>
                     <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">End Hour</label>
-                    <select value={settings.business_hours_end} onChange={e => update('business_hours_end', Number(e.target.value))} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition">
+                    <select value={settings.business_hours_end} onChange={e => update('business_hours_end', Number(e.target.value))} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition">
                       {Array.from({ length: 24 }, (_, i) => (
                         <option key={i} value={i}>{formatHour(i)}</option>
                       ))}
@@ -552,7 +552,7 @@ export default function SettingsPage() {
                         onChange={e => setReminderInput(e.target.value)}
                         onKeyDown={e => e.key === 'Enter' && addReminderDay()}
                         placeholder="Add days..."
-                        className="w-28 px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] text-sm focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition"
+                        className="w-28 px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] text-sm focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition"
                         min={1}
                       />
                       <button onClick={addReminderDay} className="px-3.5 py-2.5 bg-gray-100 border border-gray-200 rounded-lg text-sm text-[#D4540A] hover:bg-gray-200 font-medium transition-colors">Add</button>
@@ -575,7 +575,7 @@ export default function SettingsPage() {
                         onChange={e => setReminderHoursInput(e.target.value)}
                         onKeyDown={e => e.key === 'Enter' && addReminderHour()}
                         placeholder="Add hours..."
-                        className="w-28 px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] text-sm focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition"
+                        className="w-28 px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] text-sm focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition"
                         min={1}
                       />
                       <button onClick={addReminderHour} className="px-3.5 py-2.5 bg-gray-100 border border-gray-200 rounded-lg text-sm text-[#D4540A] hover:bg-gray-200 font-medium transition-colors">Add</button>
@@ -597,7 +597,7 @@ export default function SettingsPage() {
                 <div className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm">
                   <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-4">CLIENT REMINDER CHANNELS</h2>
                   <div className="flex flex-wrap gap-2">
-                    <label className={`flex items-center gap-2 px-3.5 py-2.5 border rounded-xl cursor-pointer transition-all ${settings.client_reminder_email ? 'border-[#FDE68A] bg-[#FDE68A]/10' : 'border-gray-100 hover:bg-gray-50'}`}>
+                    <label className={`flex items-center gap-2 px-3.5 py-2.5 border rounded-xl cursor-pointer transition-all ${settings.client_reminder_email ? 'border-[#34D399] bg-[#34D399]/10' : 'border-gray-100 hover:bg-gray-50'}`}>
                       <input
                         type="checkbox"
                         checked={settings.client_reminder_email}
@@ -606,7 +606,7 @@ export default function SettingsPage() {
                       />
                       <span className="text-[#D4540A] text-sm font-medium">Email</span>
                     </label>
-                    <label className={`flex items-center gap-2 px-3.5 py-2.5 border rounded-xl cursor-pointer transition-all ${settings.client_reminder_sms ? 'border-[#FDE68A] bg-[#FDE68A]/10' : 'border-gray-100 hover:bg-gray-50'}`}>
+                    <label className={`flex items-center gap-2 px-3.5 py-2.5 border rounded-xl cursor-pointer transition-all ${settings.client_reminder_sms ? 'border-[#34D399] bg-[#34D399]/10' : 'border-gray-100 hover:bg-gray-50'}`}>
                       <input
                         type="checkbox"
                         checked={settings.client_reminder_sms}
@@ -694,7 +694,7 @@ export default function SettingsPage() {
                     onChange={e => updateGuideline('en', e.target.value)}
                     rows={12}
                     placeholder="Enter guidelines in English..."
-                    className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] text-sm focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition font-mono leading-relaxed"
+                    className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] text-sm focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition font-mono leading-relaxed"
                   />
                 </div>
 
@@ -705,7 +705,7 @@ export default function SettingsPage() {
                     onChange={e => updateGuideline('es', e.target.value)}
                     rows={12}
                     placeholder="Ingrese las reglas en español..."
-                    className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] text-sm focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition font-mono leading-relaxed"
+                    className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] text-sm focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition font-mono leading-relaxed"
                   />
                 </div>
               </div>
@@ -808,7 +808,7 @@ export default function SettingsPage() {
                   type="text"
                   value={serviceModal.name}
                   onChange={e => setServiceModal(s => ({ ...s, name: e.target.value }))}
-                  className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition"
+                  className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition"
                   placeholder="e.g. Deep Cleaning"
                   autoFocus
                 />
@@ -819,7 +819,7 @@ export default function SettingsPage() {
                   type="number"
                   value={serviceModal.hours}
                   onChange={e => setServiceModal(s => ({ ...s, hours: Number(e.target.value) }))}
-                  className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition"
+                  className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition"
                   min={1}
                   step={0.5}
                 />
@@ -851,7 +851,7 @@ function Field({ label, value, onChange, type = 'text', hint }: { label: string;
   return (
     <div>
       <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">{label}</label>
-      <input type={type} value={value} onChange={e => onChange(e.target.value)} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition" />
+      <input type={type} value={value} onChange={e => onChange(e.target.value)} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition" />
       {hint && <p className="text-xs text-gray-400 mt-1">{hint}</p>}
     </div>
   )
@@ -862,7 +862,7 @@ function NumberField({ label, value, onChange, suffix, hint }: { label: string; 
     <div>
       <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">{label}</label>
       <div className="flex items-center">
-        <input type="number" value={value} onChange={e => onChange(Number(e.target.value))} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition" />
+        <input type="number" value={value} onChange={e => onChange(Number(e.target.value))} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition" />
         {suffix && <span className="ml-2 text-gray-400 whitespace-nowrap text-sm">{suffix}</span>}
       </div>
       {hint && <p className="text-xs text-gray-400 mt-1">{hint}</p>}

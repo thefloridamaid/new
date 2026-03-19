@@ -261,8 +261,8 @@ export default function WebsitesPage() {
           </div>
 
           {/* Active Regions */}
-          <div className="rounded-xl p-4 bg-[#FDE68A]/20 border border-[#FDE68A]/30 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-[#FDE68A]/10 rounded-full -translate-y-6 translate-x-6" />
+          <div className="rounded-xl p-4 bg-[#34D399]/20 border border-[#34D399]/30 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-[#34D399]/10 rounded-full -translate-y-6 translate-x-6" />
             <p className="text-xs font-medium uppercase tracking-wider text-[#D4540A]/60 mb-1">Active Regions</p>
             <p className="text-3xl font-bold text-[#D4540A]">{activeRegions}</p>
             <p className="text-xs text-[#D4540A]/40 mt-1">Markets covered</p>

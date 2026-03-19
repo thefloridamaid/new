@@ -350,7 +350,7 @@ export default function VirtualOpsManagerPage() {
       <section className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] py-20 md:py-28">
         <div className="max-w-5xl mx-auto px-4">
           <div className="flex items-center gap-3 mb-4 flex-wrap">
-            <p className="text-[#FDE68A] text-sm font-semibold tracking-[0.2em] uppercase">Ground Floor Opportunity</p>
+            <p className="text-[#34D399] text-sm font-semibold tracking-[0.2em] uppercase">Ground Floor Opportunity</p>
             <span className="text-white/30">&middot;</span>
             <p className="text-white/60 text-sm">Work From Home</p>
             <span className="text-white/30">&middot;</span>
@@ -371,13 +371,13 @@ export default function VirtualOpsManagerPage() {
             You own scheduling, customer service, team management, and payment coordination. The owner drives all sales, marketing, and growth. You run the operation.
           </p>
           <div className="flex flex-wrap items-center gap-3 mb-10">
-            <span className="bg-[#FDE68A]/20 text-[#FDE68A] text-xs font-semibold px-4 py-2 rounded-full">$500/wk + 10% Revenue to Start</span>
-            <span className="bg-[#FDE68A]/20 text-[#FDE68A] text-xs font-semibold px-4 py-2 rounded-full">Paid via Zelle Every Friday</span>
-            <span className="bg-[#FDE68A]/20 text-[#FDE68A] text-xs font-semibold px-4 py-2 rounded-full">Work From Home</span>
-            <span className="bg-[#FDE68A]/20 text-[#FDE68A] text-xs font-semibold px-4 py-2 rounded-full">Bilingual Preferred</span>
+            <span className="bg-[#34D399]/20 text-[#34D399] text-xs font-semibold px-4 py-2 rounded-full">$500/wk + 10% Revenue to Start</span>
+            <span className="bg-[#34D399]/20 text-[#34D399] text-xs font-semibold px-4 py-2 rounded-full">Paid via Zelle Every Friday</span>
+            <span className="bg-[#34D399]/20 text-[#34D399] text-xs font-semibold px-4 py-2 rounded-full">Work From Home</span>
+            <span className="bg-[#34D399]/20 text-[#34D399] text-xs font-semibold px-4 py-2 rounded-full">Bilingual Preferred</span>
           </div>
           <div className="flex flex-col sm:flex-row items-start gap-5">
-            <Link href="/apply/virtual-operations-manager" data-track="ops-hero-apply" className="bg-[#FDE68A] text-[#D4540A] px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
+            <Link href="/apply/virtual-operations-manager" data-track="ops-hero-apply" className="bg-[#34D399] text-[#D4540A] px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
               Apply Now
             </Link>
             <a href="sms:8333526243" data-track="ops-hero-text" className="text-blue-200/70 font-medium text-lg py-4 hover:text-white transition-colors underline underline-offset-4">
@@ -388,7 +388,7 @@ export default function VirtualOpsManagerPage() {
       </section>
 
       {/* Highlights Bar */}
-      <section className="bg-[#FDE68A] py-12">
+      <section className="bg-[#34D399] py-12">
         <div className="max-w-5xl mx-auto px-4">
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-6 text-center">
             <div>
@@ -456,7 +456,7 @@ export default function VirtualOpsManagerPage() {
 
         {/* A Day in the Life */}
         <section className="mb-20">
-          <p className="text-xs font-semibold text-[#FDE68A] tracking-[0.2em] uppercase mb-2">What to Expect</p>
+          <p className="text-xs font-semibold text-[#34D399] tracking-[0.2em] uppercase mb-2">What to Expect</p>
           <p className="text-gray-400 text-xs italic mb-2">Qué esperar</p>
           <h2 className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#D4540A] tracking-wide mb-8">A Day in the Life</h2>
           <p className="text-gray-400 text-sm italic mb-8">Un día en la vida</p>
@@ -505,7 +505,7 @@ export default function VirtualOpsManagerPage() {
                 descEs: 'Envías un resumen diario conciso al dueño: cada trabajo completado, cada pago recibido, cada problema que surgió y cómo se resolvió. El día se cierra limpio.',
               },
             ].map(item => (
-              <div key={item.time} className="flex gap-5 p-5 border border-gray-200 rounded-xl hover:border-[#FDE68A] transition-colors">
+              <div key={item.time} className="flex gap-5 p-5 border border-gray-200 rounded-xl hover:border-[#34D399] transition-colors">
                 <div className="flex-shrink-0 w-28">
                   <span className="text-[#D4540A]/40 font-bold text-sm">{item.time}</span>
                 </div>
@@ -542,7 +542,7 @@ export default function VirtualOpsManagerPage() {
                   'Identify system issues and bring them to the owner with a proposed solution',
                 ].map(item => (
                   <div key={item} className="flex gap-3">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                     <p className="text-gray-600 text-sm leading-relaxed">{item}</p>
                   </div>
                 ))}
@@ -562,7 +562,7 @@ export default function VirtualOpsManagerPage() {
                   'Follow up on job completions to ensure every client is happy and coming back',
                 ].map(item => (
                   <div key={item} className="flex gap-3">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                     <p className="text-gray-600 text-sm leading-relaxed">{item}</p>
                   </div>
                 ))}
@@ -586,7 +586,7 @@ export default function VirtualOpsManagerPage() {
                   'Send owner a concise daily summary: completed jobs, payments received, issues handled',
                 ].map(item => (
                   <div key={item} className="flex gap-3">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                     <p className="text-gray-600 text-sm leading-relaxed">{item}</p>
                   </div>
                 ))}
@@ -597,7 +597,7 @@ export default function VirtualOpsManagerPage() {
 
         {/* The Platform You'll Run */}
         <section className="mb-20">
-          <p className="text-xs font-semibold text-[#FDE68A] tracking-[0.2em] uppercase mb-2">What You&apos;re Walking Into</p>
+          <p className="text-xs font-semibold text-[#34D399] tracking-[0.2em] uppercase mb-2">What You&apos;re Walking Into</p>
           <p className="text-gray-400 text-xs italic mb-2">A lo que estás entrando</p>
           <h2 className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#D4540A] tracking-wide mb-3">This Is Not a Startup With Spreadsheets</h2>
           <p className="text-gray-400 text-sm italic mb-3">Esto no es un startup con hojas de cálculo</p>
@@ -621,7 +621,7 @@ export default function VirtualOpsManagerPage() {
                   'Notification center — new bookings, check-ins, payments, applications, and system alerts',
                 ].map(item => (
                   <div key={item} className="flex gap-2">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
                     <p className="text-gray-500 text-xs leading-relaxed">{item}</p>
                   </div>
                 ))}
@@ -644,7 +644,7 @@ export default function VirtualOpsManagerPage() {
                   'Mobile-friendly list view for on-the-go management',
                 ].map(item => (
                   <div key={item} className="flex gap-2">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
                     <p className="text-gray-500 text-xs leading-relaxed">{item}</p>
                   </div>
                 ))}
@@ -668,7 +668,7 @@ export default function VirtualOpsManagerPage() {
                   'Cleaning guidelines — bilingual SOPs you can update and broadcast to the whole team',
                 ].map(item => (
                   <div key={item} className="flex gap-2">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
                     <p className="text-gray-500 text-xs leading-relaxed">{item}</p>
                   </div>
                 ))}
@@ -692,7 +692,7 @@ export default function VirtualOpsManagerPage() {
                   '1099 contractor reporting — export cleaner income data for tax filing',
                 ].map(item => (
                   <div key={item} className="flex gap-2">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
                     <p className="text-gray-500 text-xs leading-relaxed">{item}</p>
                   </div>
                 ))}
@@ -716,7 +716,7 @@ export default function VirtualOpsManagerPage() {
                   'Referrer attribution — see which referrer brought each client',
                 ].map(item => (
                   <div key={item} className="flex gap-2">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
                     <p className="text-gray-500 text-xs leading-relaxed">{item}</p>
                   </div>
                 ))}
@@ -740,7 +740,7 @@ export default function VirtualOpsManagerPage() {
                   'Admin alerts — new bookings, new applications, payment confirmations, expiring schedules',
                 ].map(item => (
                   <div key={item} className="flex gap-2">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
                     <p className="text-gray-500 text-xs leading-relaxed">{item}</p>
                   </div>
                 ))}
@@ -763,7 +763,7 @@ export default function VirtualOpsManagerPage() {
                   'Device breakdown — mobile vs. desktop engagement',
                 ].map(item => (
                   <div key={item} className="flex gap-2">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
                     <p className="text-gray-500 text-xs leading-relaxed">{item}</p>
                   </div>
                 ))}
@@ -783,7 +783,7 @@ export default function VirtualOpsManagerPage() {
                   'Referral program — full tracking, payout processing, and referrer portal',
                 ].map(item => (
                   <div key={item} className="flex gap-2">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
                     <p className="text-gray-500 text-xs leading-relaxed">{item}</p>
                   </div>
                 ))}
@@ -803,7 +803,7 @@ export default function VirtualOpsManagerPage() {
                   'Team guidelines — write SOPs in English, auto-translate to Spanish, broadcast to team',
                 ].map(item => (
                   <div key={item} className="flex gap-2">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
                     <p className="text-gray-500 text-xs leading-relaxed">{item}</p>
                   </div>
                 ))}
@@ -817,7 +817,7 @@ export default function VirtualOpsManagerPage() {
 
         {/* Who Is This Role Perfect For */}
         <section className="mb-20">
-          <p className="text-xs font-semibold text-[#FDE68A] tracking-[0.2em] uppercase mb-2">Is This You?</p>
+          <p className="text-xs font-semibold text-[#34D399] tracking-[0.2em] uppercase mb-2">Is This You?</p>
           <p className="text-gray-400 text-xs italic mb-2">¿Eres tú?</p>
           <h2 className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#D4540A] tracking-wide mb-3">Who This Role Is Perfect For</h2>
           <p className="text-gray-400 text-sm italic mb-3">Para quién es perfecto este puesto</p>
@@ -825,55 +825,55 @@ export default function VirtualOpsManagerPage() {
           <p className="text-gray-400 text-xs italic max-w-3xl mb-10">Esto no es para todos. Pero si te ves reflejado en alguna de estas descripciones, podrías ser exactamente quien estamos buscando.</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#FDE68A] transition-colors">
+            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#34D399] transition-colors">
               <h3 className="font-semibold text-[#D4540A] mb-3">The Secretary or Administrative Assistant Who Wants More</h3>
               <p className="text-gray-400 text-xs italic mb-2">La secretaria o asistente administrativa que quiere más</p>
               <p className="text-gray-500 text-sm leading-relaxed">You&apos;ve been answering phones, managing calendars, and keeping an office running for years. You&apos;re great at it &mdash; but you know you&apos;re capable of more. You want to own something, not just support someone else&apos;s operation. This role lets you take everything you&apos;re already good at and apply it to running a real business &mdash; from home.</p>
             </div>
 
-            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#FDE68A] transition-colors">
+            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#34D399] transition-colors">
               <h3 className="font-semibold text-[#D4540A] mb-3">The Customer Service Rep Ready to Lead</h3>
               <p className="text-gray-400 text-xs italic mb-2">El representante de servicio al cliente listo para liderar</p>
               <p className="text-gray-500 text-sm leading-relaxed">You&apos;ve handled hundreds of client calls. You know how to de-escalate, how to make people feel heard, and how to solve problems on the spot. But you&apos;re tired of being one of fifty reps in a call center. You want to be the person who runs the entire customer experience &mdash; not just answer tickets.</p>
             </div>
 
-            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#FDE68A] transition-colors">
+            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#34D399] transition-colors">
               <h3 className="font-semibold text-[#D4540A] mb-3">The Office Manager in Florida Who&apos;s Over the Commute</h3>
               <p className="text-gray-400 text-xs italic mb-2">El gerente de oficina en Florida que ya no quiere el viaje diario</p>
               <p className="text-gray-500 text-sm leading-relaxed">You&apos;ve been commuting into Manhattan or Brooklyn every day to manage an office, coordinate schedules, and keep things running. You&apos;re good at operations &mdash; but you&apos;re done with the subway, the commute, and the fluorescent lights. This is the same work, from your couch, with real upside.</p>
             </div>
 
-            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#FDE68A] transition-colors">
+            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#34D399] transition-colors">
               <h3 className="font-semibold text-[#D4540A] mb-3">The Scheduling Coordinator Who Wants Ownership</h3>
               <p className="text-gray-400 text-xs italic mb-2">El coordinador de horarios que quiere ser dueño de la operación</p>
               <p className="text-gray-500 text-sm leading-relaxed">You&apos;ve coordinated schedules for medical offices, home services, field teams, or logistics companies. You understand the puzzle &mdash; moving pieces, covering gaps, keeping everyone on time. But you want to own the whole operation, not just the calendar. Here, scheduling is one piece of a much bigger role.</p>
             </div>
 
-            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#FDE68A] transition-colors">
+            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#34D399] transition-colors">
               <h3 className="font-semibold text-[#D4540A] mb-3">The Dispatcher or Service Coordinator</h3>
               <p className="text-gray-400 text-xs italic mb-2">El despachador o coordinador de servicios</p>
               <p className="text-gray-500 text-sm leading-relaxed">You&apos;ve dispatched technicians, cleaners, drivers, or field workers. You know what it takes to keep a service operation running &mdash; the check-ins, the no-shows, the last-minute changes. You&apos;re calm under pressure and you never let a ball drop. This is that same energy, but with revenue share and a path to running the whole show.</p>
             </div>
 
-            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#FDE68A] transition-colors">
+            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#34D399] transition-colors">
               <h3 className="font-semibold text-[#D4540A] mb-3">The Virtual Assistant Who&apos;s Outgrown the Title</h3>
               <p className="text-gray-400 text-xs italic mb-2">La asistente virtual que superó el título</p>
               <p className="text-gray-500 text-sm leading-relaxed">You&apos;ve been a VA for one or more clients. You handle email, scheduling, customer communication, maybe even billing. But you&apos;re not being challenged anymore. You want a single company to invest in &mdash; one where your work directly impacts growth and your income grows with it. This is that company.</p>
             </div>
 
-            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#FDE68A] transition-colors">
+            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#34D399] transition-colors">
               <h3 className="font-semibold text-[#D4540A] mb-3">The Stay-at-Home Parent in Florida or NJ Ready to Work Again</h3>
               <p className="text-gray-400 text-xs italic mb-2">El padre o madre en casa en Florida o NJ listo para volver a trabajar</p>
               <p className="text-gray-500 text-sm leading-relaxed">You stepped away from your career to raise a family. Now you&apos;re ready to get back to work &mdash; but you need flexibility. You need to work from home. You need something that fits around school drop-offs and pickups. This role starts part-time, works from home, and grows at your pace.</p>
             </div>
 
-            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#FDE68A] transition-colors">
+            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#34D399] transition-colors">
               <h3 className="font-semibold text-[#D4540A] mb-3">The Bilingual Professional Looking for Real Opportunity</h3>
               <p className="text-gray-400 text-xs italic mb-2">El profesional bilingüe buscando una oportunidad real</p>
               <p className="text-gray-500 text-sm leading-relaxed">You speak English and Spanish fluently. In most jobs, that gets you a thank you and maybe a small premium. Here, it makes you 10x more effective &mdash; our cleaning team is primarily Spanish-speaking. Your bilingual skills aren&apos;t a nice-to-have, they&apos;re a competitive advantage that directly impacts how well this operation runs.</p>
             </div>
 
-            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#FDE68A] transition-colors">
+            <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#34D399] transition-colors">
               <h3 className="font-semibold text-[#D4540A] mb-3">The Person Who Wants to Put Their Thumbprint on a Real Business</h3>
               <p className="text-gray-400 text-xs italic mb-2">La persona que quiere dejar su huella en un negocio real</p>
               <p className="text-gray-500 text-sm leading-relaxed">You&apos;re not looking for a job. You&apos;re looking for something to build. You want to walk into a growing company, take ownership of the operation, build a team under you, and know that what you built is the reason the business runs. You want your work to matter. At The Florida Maid, it will.</p>
@@ -890,7 +890,7 @@ export default function VirtualOpsManagerPage() {
 
         {/* The Marketing Engine */}
         <section className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] rounded-2xl p-8 md:p-14 mb-20">
-          <p className="text-[#FDE68A] text-xs font-semibold tracking-[0.2em] uppercase mb-2">Why This Is Growing So Fast</p>
+          <p className="text-[#34D399] text-xs font-semibold tracking-[0.2em] uppercase mb-2">Why This Is Growing So Fast</p>
           <p className="text-blue-200/30 text-xs italic mb-2">Por qué esto está creciendo tan rápido</p>
           <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-white tracking-wide mb-3">100+ Websites. Organic Growth. No Paid Ads.</h2>
           <p className="text-blue-200/50 italic mb-3">100+ sitios web. Crecimiento orgánico. Sin anuncios pagados.</p>
@@ -898,21 +898,21 @@ export default function VirtualOpsManagerPage() {
           <p className="text-blue-200/30 text-xs italic max-w-3xl mb-10">El dueño ha construido una red de más de 100 sitios web en Florida, Long Island y Florida — todos generando tráfico orgánico para The Florida Maid. Esta no es una empresa que depende de anuncios pagados o servicios de generación de prospectos. Cada cliente llega por nuestros propios canales. Por eso el crecimiento es real, sostenible y se está acelerando.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <p className="font-[family-name:var(--font-bebas)] text-5xl text-[#FDE68A] tracking-wide mb-2">100+</p>
+              <p className="font-[family-name:var(--font-bebas)] text-5xl text-[#34D399] tracking-wide mb-2">100+</p>
               <p className="text-white font-semibold mb-1">Websites</p>
               <p className="text-blue-200/30 text-xs italic mb-1">Sitios web</p>
               <p className="text-blue-200/50 text-sm">Across every neighborhood in Florida, Long Island, and NJ. Each one ranks on Google and drives organic leads directly to our booking system.</p>
               <p className="text-blue-200/30 text-xs italic mt-1">En cada barrio de Florida. Cada uno posicionado en Google generando prospectos orgánicos directo a nuestro sistema de reservas.</p>
             </div>
             <div>
-              <p className="font-[family-name:var(--font-bebas)] text-5xl text-[#FDE68A] tracking-wide mb-2">225+</p>
+              <p className="font-[family-name:var(--font-bebas)] text-5xl text-[#34D399] tracking-wide mb-2">225+</p>
               <p className="text-white font-semibold mb-1">Neighborhoods</p>
               <p className="text-blue-200/30 text-xs italic mb-1">Vecindarios</p>
               <p className="text-blue-200/50 text-sm">Dedicated landing pages for every neighborhood we serve &mdash; Manhattan, Brooklyn, Queens, Long Island, Florida. Each one optimized for local search.</p>
               <p className="text-blue-200/30 text-xs italic mt-1">Páginas dedicadas para cada vecindario que servimos — Manhattan, Brooklyn, Queens, Long Island, Florida. Cada una optimizada para búsqueda local.</p>
             </div>
             <div>
-              <p className="font-[family-name:var(--font-bebas)] text-5xl text-[#FDE68A] tracking-wide mb-2">$0</p>
+              <p className="font-[family-name:var(--font-bebas)] text-5xl text-[#34D399] tracking-wide mb-2">$0</p>
               <p className="text-white font-semibold mb-1">Ad Spend</p>
               <p className="text-blue-200/30 text-xs italic mb-1">Gasto en anuncios</p>
               <p className="text-blue-200/50 text-sm">Every single client comes through organic search, direct bookings, and referrals. No paid ads. No middlemen. No lead fees. That&apos;s why margins are healthy and growth is sustainable.</p>
@@ -928,7 +928,7 @@ export default function VirtualOpsManagerPage() {
                 <div className="flex justify-between"><span className="text-blue-200/60">March (on pace)</span><span className="text-white font-semibold">75 jobs</span></div>
                 <div className="flex justify-between"><span className="text-blue-200/60">April (projected)</span><span className="text-white font-semibold">125–150 jobs</span></div>
                 <div className="flex justify-between"><span className="text-blue-200/60">May (projected)</span><span className="text-white font-semibold">200–250 jobs</span></div>
-                <div className="flex justify-between border-t border-white/10 pt-2"><span className="text-[#FDE68A]">Winter target</span><span className="text-[#FDE68A] font-bold">100 jobs/week</span></div>
+                <div className="flex justify-between border-t border-white/10 pt-2"><span className="text-[#34D399]">Winter target</span><span className="text-[#34D399] font-bold">100 jobs/week</span></div>
               </div>
             </div>
             <div className="bg-white/10 rounded-xl p-6">
@@ -982,14 +982,14 @@ export default function VirtualOpsManagerPage() {
               },
             ].map(item => (
               <div key={item.phase} className="border border-gray-200 rounded-2xl p-6">
-                <p className="text-[#FDE68A] text-xs font-semibold tracking-[0.15em] uppercase mb-1">{item.phase}</p>
+                <p className="text-[#34D399] text-xs font-semibold tracking-[0.15em] uppercase mb-1">{item.phase}</p>
                 <p className="text-gray-400 text-[10px] italic mb-1">{item.phaseEs}</p>
                 <h3 className="font-semibold text-[#D4540A] mb-3">{item.title}</h3>
                 <p className="text-gray-400 text-xs italic mb-3">{item.titleEs}</p>
                 <div className="space-y-2">
                   {item.items.map(li => (
                     <div key={li} className="flex gap-2">
-                      <span className="text-[#FDE68A] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
+                      <span className="text-[#34D399] mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
                       <p className="text-gray-500 text-xs leading-relaxed">{li}</p>
                     </div>
                   ))}
@@ -1023,7 +1023,7 @@ export default function VirtualOpsManagerPage() {
                   { title: '2+ Years Experience', titleEs: '2+ años de experiencia', desc: 'In customer service, operations, or service coordination preferred.', descEs: 'En servicio al cliente, operaciones, o coordinación de servicios preferido.' },
                 ].map(item => (
                   <div key={item.title} className="flex gap-4 p-4 border border-gray-200 rounded-xl">
-                    <span className="text-[#FDE68A] mt-0.5 text-lg flex-shrink-0">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 text-lg flex-shrink-0">&#10003;</span>
                     <div>
                       <p className="font-semibold text-[#D4540A] text-sm mb-0.5">{item.title}</p>
                       <p className="text-gray-400 text-xs italic mb-0.5">{item.titleEs}</p>
@@ -1038,7 +1038,7 @@ export default function VirtualOpsManagerPage() {
             <div className="lg:col-span-2 space-y-4">
               {/* Ground Floor Opportunity */}
               <div className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] rounded-2xl p-8">
-                <p className="text-[#FDE68A] text-xs font-semibold tracking-[0.2em] uppercase mb-1">Ground Floor Opportunity</p>
+                <p className="text-[#34D399] text-xs font-semibold tracking-[0.2em] uppercase mb-1">Ground Floor Opportunity</p>
                 <p className="text-blue-200/30 text-xs italic mb-4">Oportunidad desde el inicio</p>
                 <div className="space-y-5">
                   <div>
@@ -1060,7 +1060,7 @@ export default function VirtualOpsManagerPage() {
               </div>
 
               {/* Compensation & Real Growth Path */}
-              <div className="bg-[#FDE68A] rounded-2xl p-8">
+              <div className="bg-[#34D399] rounded-2xl p-8">
                 <p className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-1">Compensation &amp; Growth Path</p>
                 <p className="text-[#D4540A]/40 text-xs italic mb-2">Compensación y camino de crecimiento</p>
                 <p className="text-[#D4540A]/50 text-xs mb-1">$500/wk guaranteed base + 10% of gross revenue &mdash; paid via Zelle every Friday</p>
@@ -1137,7 +1137,7 @@ export default function VirtualOpsManagerPage() {
           <p className="text-gray-400 text-xs italic mb-2">Preguntas comunes</p>
           <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-1">Frequently Asked Questions</h2>
           <p className="text-gray-400 text-sm italic mb-2">Preguntas frecuentes</p>
-          <div className="w-10 h-[2px] bg-[#FDE68A] mb-8" />
+          <div className="w-10 h-[2px] bg-[#34D399] mb-8" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
             {faqs.map((faq, i) => (
@@ -1159,13 +1159,13 @@ export default function VirtualOpsManagerPage() {
 
         {/* How to Apply */}
         <section className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] rounded-2xl p-8 md:p-14 mb-20">
-          <p className="text-[#FDE68A] text-xs font-semibold tracking-[0.2em] uppercase mb-1">How to Apply</p>
+          <p className="text-[#34D399] text-xs font-semibold tracking-[0.2em] uppercase mb-1">How to Apply</p>
           <p className="text-blue-200/30 text-xs italic mb-2">Cómo aplicar</p>
           <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-white tracking-wide mb-1">Application Requirements</h2>
           <p className="text-blue-200/50 italic mb-8">Requisitos de la solicitud</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <div className="w-10 h-10 bg-[#FDE68A] text-[#D4540A] rounded-full flex items-center justify-center font-bold mb-4">1</div>
+              <div className="w-10 h-10 bg-[#34D399] text-[#D4540A] rounded-full flex items-center justify-center font-bold mb-4">1</div>
               <h3 className="text-white font-semibold mb-1">Photo &amp; Selfie Video</h3>
               <p className="text-blue-200/30 text-xs italic mb-2">Foto y video selfie</p>
               <p className="text-blue-200/60 text-sm leading-relaxed">
@@ -1176,7 +1176,7 @@ export default function VirtualOpsManagerPage() {
               </p>
             </div>
             <div>
-              <div className="w-10 h-10 bg-[#FDE68A] text-[#D4540A] rounded-full flex items-center justify-center font-bold mb-4">2</div>
+              <div className="w-10 h-10 bg-[#34D399] text-[#D4540A] rounded-full flex items-center justify-center font-bold mb-4">2</div>
               <h3 className="text-white font-semibold mb-1">Resume</h3>
               <p className="text-blue-200/30 text-xs italic mb-2">Currículum</p>
               <p className="text-blue-200/60 text-sm leading-relaxed">
@@ -1187,7 +1187,7 @@ export default function VirtualOpsManagerPage() {
               </p>
             </div>
             <div>
-              <div className="w-10 h-10 bg-[#FDE68A] text-[#D4540A] rounded-full flex items-center justify-center font-bold mb-4">3</div>
+              <div className="w-10 h-10 bg-[#34D399] text-[#D4540A] rounded-full flex items-center justify-center font-bold mb-4">3</div>
               <h3 className="text-white font-semibold mb-1">Complete the Form</h3>
               <p className="text-blue-200/30 text-xs italic mb-2">Completa el formulario</p>
               <p className="text-blue-200/60 text-sm leading-relaxed">
@@ -1199,7 +1199,7 @@ export default function VirtualOpsManagerPage() {
             </div>
           </div>
           <div className="mt-10 text-center">
-            <Link href="/apply/virtual-operations-manager" data-track="ops-howto-apply" className="inline-block bg-[#FDE68A] text-[#D4540A] px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
+            <Link href="/apply/virtual-operations-manager" data-track="ops-howto-apply" className="inline-block bg-[#34D399] text-[#D4540A] px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
               Apply Now
             </Link>
           </div>
@@ -1208,7 +1208,7 @@ export default function VirtualOpsManagerPage() {
         {/* The Bigger Picture */}
         <section className="mb-20">
           <div className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] rounded-2xl p-8 md:p-14">
-            <p className="text-[#FDE68A] text-xs font-semibold tracking-[0.2em] uppercase mb-1">The Bigger Picture</p>
+            <p className="text-[#34D399] text-xs font-semibold tracking-[0.2em] uppercase mb-1">The Bigger Picture</p>
             <p className="text-blue-200/30 text-xs italic mb-2">El panorama completo</p>
             <h2 className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-white tracking-wide mb-1">This Is Not Just an Operations Manager Job</h2>
             <p className="text-blue-200/50 italic mb-6">Este no es solo un trabajo de gerente de operaciones</p>
@@ -1232,7 +1232,7 @@ export default function VirtualOpsManagerPage() {
               </div>
               <div className="space-y-4">
                 <div className="bg-white/10 rounded-xl p-6">
-                  <p className="text-[#FDE68A] text-xs font-semibold tracking-[0.15em] uppercase mb-1">What This Role Becomes</p>
+                  <p className="text-[#34D399] text-xs font-semibold tracking-[0.15em] uppercase mb-1">What This Role Becomes</p>
                   <p className="text-blue-200/30 text-xs italic mb-3">En lo que se convierte este puesto</p>
                   <div className="space-y-3">
                     {[
@@ -1244,13 +1244,13 @@ export default function VirtualOpsManagerPage() {
                       'Build something real — this isn\'t a job, it\'s a career you\'re building',
                     ].map(item => (
                       <div key={item} className="flex gap-2">
-                        <span className="text-[#FDE68A] mt-0.5 flex-shrink-0 text-sm">&#10003;</span>
+                        <span className="text-[#34D399] mt-0.5 flex-shrink-0 text-sm">&#10003;</span>
                         <p className="text-blue-200/60 text-sm">{item}</p>
                       </div>
                     ))}
                   </div>
                 </div>
-                <div className="bg-[#FDE68A]/10 rounded-xl p-6">
+                <div className="bg-[#34D399]/10 rounded-xl p-6">
                   <p className="text-white font-semibold mb-1">Think About It</p>
                   <p className="text-blue-200/30 text-xs italic mb-2">Piénsalo</p>
                   <p className="text-blue-200/60 text-sm leading-relaxed mb-1">
@@ -1266,7 +1266,7 @@ export default function VirtualOpsManagerPage() {
         </section>
 
         {/* Final CTA */}
-        <section className="bg-[#FDE68A] rounded-2xl p-8 md:p-12 text-center mb-16">
+        <section className="bg-[#34D399] rounded-2xl p-8 md:p-12 text-center mb-16">
           <h2 className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#D4540A] tracking-wide mb-1">This Is the Ground Floor. The Door Is Open.</h2>
           <p className="text-[#D4540A]/40 text-sm italic mb-2">Este es el inicio. La puerta está abierta.</p>
           <p className="text-[#D4540A]/60 max-w-xl mx-auto mb-1">

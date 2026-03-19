@@ -240,7 +240,7 @@ export default function ReferralsPage() {
                   {analytics.dailyClicks.map((d, i) => (
                     <div key={d.date} className="flex-1 flex flex-col items-center">
                       <div
-                        className="w-full bg-[#FDE68A] rounded-t-md transition-all hover:bg-[#D4540A] cursor-pointer"
+                        className="w-full bg-[#34D399] rounded-t-md transition-all hover:bg-[#D4540A] cursor-pointer"
                         style={{ height: `${(d.clicks / maxDailyClicks) * 100}%`, minHeight: d.clicks > 0 ? '6px' : '0' }}
                         title={`${d.date}: ${d.clicks} clicks`}
                       />
@@ -452,23 +452,23 @@ export default function ReferralsPage() {
               <div className="space-y-4">
                 <div>
                   <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Name *</label>
-                  <input type="text" value={newReferrer.name} onChange={(e) => setNewReferrer({ ...newReferrer, name: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition" placeholder="John Smith" />
+                  <input type="text" value={newReferrer.name} onChange={(e) => setNewReferrer({ ...newReferrer, name: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition" placeholder="John Smith" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Email *</label>
-                  <input type="email" value={newReferrer.email} onChange={(e) => setNewReferrer({ ...newReferrer, email: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition" placeholder="john@email.com" />
+                  <input type="email" value={newReferrer.email} onChange={(e) => setNewReferrer({ ...newReferrer, email: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition" placeholder="john@email.com" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Phone</label>
-                  <input type="tel" value={newReferrer.phone} onChange={(e) => setNewReferrer({ ...newReferrer, phone: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition" placeholder="212-555-1234" />
+                  <input type="tel" value={newReferrer.phone} onChange={(e) => setNewReferrer({ ...newReferrer, phone: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition" placeholder="212-555-1234" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Zelle Email/Phone</label>
-                  <input type="text" value={newReferrer.zelle_email} onChange={(e) => setNewReferrer({ ...newReferrer, zelle_email: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition" placeholder="Same as email if blank" />
+                  <input type="text" value={newReferrer.zelle_email} onChange={(e) => setNewReferrer({ ...newReferrer, zelle_email: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition" placeholder="Same as email if blank" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Preferred Payout</label>
-                  <select value={newReferrer.preferred_payout} onChange={(e) => setNewReferrer({ ...newReferrer, preferred_payout: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition">
+                  <select value={newReferrer.preferred_payout} onChange={(e) => setNewReferrer({ ...newReferrer, preferred_payout: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition">
                     <option value="zelle">Zelle</option>
                     <option value="apple_cash">Apple Cash</option>
                   </select>

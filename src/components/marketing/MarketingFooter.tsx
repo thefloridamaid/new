@@ -38,7 +38,7 @@ export default function MarketingFooter() {
       {/* Main footer brand */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-8">
         <h2 className="font-[family-name:var(--font-bebas)] text-white text-3xl md:text-4xl tracking-wide text-center mb-2">The Florida Maid</h2>
-        <div className="w-16 h-[2px] bg-[#FDE68A] mx-auto mb-12" />
+        <div className="w-16 h-[2px] bg-[#34D399] mx-auto mb-12" />
       </div>
 
       {/* Links grid */}
@@ -105,7 +105,7 @@ export default function MarketingFooter() {
             <Link href="/legal" className="hover:text-gray-300 transition-colors">Legal</Link>
             <Link href="/do-not-share-policy" className="hover:text-gray-300 transition-colors">Do Not Share</Link>
           </div>
-          <p className="text-xs text-gray-500">&copy; {new Date().getFullYear()} The Florida Maid &middot; <a href="tel:8333526243" className="text-[#FDE68A]/70 hover:text-[#FDE68A]">(833) 352-6243</a> &middot; Florida Web Design by{' '}<a href="https://www.consortiumnyc.com/" target="_blank" rel="noopener noreferrer" className="text-[#FDE68A] font-semibold hover:text-white underline underline-offset-2 decoration-[#FDE68A]/50">Consortium NYC</a></p>
+          <p className="text-xs text-gray-500">&copy; {new Date().getFullYear()} The Florida Maid &middot; <a href="tel:8333526243" className="text-[#34D399]/70 hover:text-[#34D399]">(833) 352-6243</a> &middot; Florida Web Design by{' '}<a href="https://www.consortiumnyc.com/" target="_blank" rel="noopener noreferrer" className="text-[#34D399] font-semibold hover:text-white underline underline-offset-2 decoration-[#34D399]/50">Consortium NYC</a></p>
         </div>
       </div>
     </footer>

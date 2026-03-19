@@ -88,9 +88,9 @@ export default async function NeighborhoodServicePage({ params }: Props) {
         <div className="max-w-6xl mx-auto px-4">
           {/* Inline breadcrumb trail */}
           <div className="flex items-center gap-2 mb-6">
-            <Link href={`/${area.urlSlug}`} className="text-xs font-semibold text-[#FDE68A]/70 tracking-[0.15em] uppercase hover:text-[#FDE68A] transition-colors">{area.name}</Link>
+            <Link href={`/${area.urlSlug}`} className="text-xs font-semibold text-[#34D399]/70 tracking-[0.15em] uppercase hover:text-[#34D399] transition-colors">{area.name}</Link>
             <span className="text-white/20">/</span>
-            <Link href={`/${neighborhood.urlSlug}`} className="text-xs font-semibold text-[#FDE68A]/70 tracking-[0.15em] uppercase hover:text-[#FDE68A] transition-colors">{neighborhood.name}</Link>
+            <Link href={`/${neighborhood.urlSlug}`} className="text-xs font-semibold text-[#34D399]/70 tracking-[0.15em] uppercase hover:text-[#34D399] transition-colors">{neighborhood.name}</Link>
             <span className="text-white/20">/</span>
             <span className="text-xs font-semibold text-white/40 tracking-[0.15em] uppercase">{service.shortName}</span>
           </div>
@@ -99,7 +99,7 @@ export default async function NeighborhoodServicePage({ params }: Props) {
           </h1>
           <p className="text-blue-200/60 text-lg max-w-3xl leading-relaxed mb-8">{content.intro}</p>
           <div className="flex flex-col sm:flex-row items-start gap-4 mb-12">
-            <a href="sms:8333526243" className="bg-[#FDE68A] text-[#D4540A] px-8 py-3.5 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
+            <a href="sms:8333526243" className="bg-[#34D399] text-[#D4540A] px-8 py-3.5 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
               Text (833) 352-6243
             </a>
             <a href="tel:8333526243" className="text-blue-200/60 font-medium py-3.5 hover:text-white transition-colors underline underline-offset-4">
@@ -116,7 +116,7 @@ export default async function NeighborhoodServicePage({ params }: Props) {
                 <p className="text-blue-200/40 text-xs">Typical cost</p>
               </div>
               <div>
-                <p className="font-[family-name:var(--font-bebas)] text-2xl text-[#FDE68A] tracking-wide">{service.duration}</p>
+                <p className="font-[family-name:var(--font-bebas)] text-2xl text-[#34D399] tracking-wide">{service.duration}</p>
                 <p className="text-blue-200/40 text-xs">Average duration</p>
               </div>
               <div>
@@ -164,25 +164,25 @@ export default async function NeighborhoodServicePage({ params }: Props) {
                 <ul className="space-y-4">
                   {content.whyUs.map(reason => (
                     <li key={reason} className="flex items-start gap-3">
-                      <span className="text-[#FDE68A] mt-0.5 text-lg flex-shrink-0">&#10003;</span>
+                      <span className="text-[#34D399] mt-0.5 text-lg flex-shrink-0">&#10003;</span>
                       <span className="text-blue-100/70 text-sm leading-relaxed">{reason}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="bg-[#F5FBF8] border border-[#FDE68A]/30 rounded-2xl p-6 text-center">
+              <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-2xl p-6 text-center">
                 <div className="flex items-center justify-center gap-4 mb-3">
                   <div>
                     <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide leading-none">{service.priceRange}</p>
                     <p className="text-gray-400 text-xs mt-1">Typical cost</p>
                   </div>
-                  <div className="w-px h-10 bg-[#FDE68A]/30" />
+                  <div className="w-px h-10 bg-[#34D399]/30" />
                   <div>
                     <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide leading-none">{service.duration}</p>
                     <p className="text-gray-400 text-xs mt-1">Duration</p>
                   </div>
                 </div>
-                <a href="sms:8333526243" className="inline-block bg-[#FDE68A] text-[#D4540A] px-6 py-3 rounded-lg font-bold text-xs tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors w-full">
+                <a href="sms:8333526243" className="inline-block bg-[#34D399] text-[#D4540A] px-6 py-3 rounded-lg font-bold text-xs tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors w-full">
                   Get a Free Quote
                 </a>
               </div>
@@ -194,7 +194,7 @@ export default async function NeighborhoodServicePage({ params }: Props) {
       {/* Neighborhood expertise — service × housing types */}
       <section className="py-16 bg-gradient-to-b from-[#D4540A] to-[#B8470A]">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-xs font-semibold text-[#FDE68A]/60 tracking-[0.25em] uppercase mb-3 text-center">{service.shortName} Expertise</h2>
+          <h2 className="text-xs font-semibold text-[#34D399]/60 tracking-[0.25em] uppercase mb-3 text-center">{service.shortName} Expertise</h2>
           <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-white tracking-wide text-center mb-4">{service.name} Tailored for {neighborhood.name} Homes</p>
           <p className="text-blue-200/50 text-center max-w-2xl mx-auto mb-12">
             Our cleaners are experienced with the housing types and cleaning challenges specific to {neighborhood.name}. No learning curve — just expert {service.name.toLowerCase()} from day one.
@@ -205,7 +205,7 @@ export default async function NeighborhoodServicePage({ params }: Props) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {neighborhood.housing_types.map(t => (
                   <div key={t} className="flex items-start gap-2.5">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                     <span className="text-blue-100/70 text-sm">{t.charAt(0).toUpperCase() + t.slice(1)}</span>
                   </div>
                 ))}
@@ -216,7 +216,7 @@ export default async function NeighborhoodServicePage({ params }: Props) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {neighborhood.cleaning_challenges.map(c => (
                   <div key={c} className="flex items-start gap-2.5">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                     <span className="text-blue-100/70 text-sm">{c.charAt(0).toUpperCase() + c.slice(1)}</span>
                   </div>
                 ))}
@@ -227,7 +227,7 @@ export default async function NeighborhoodServicePage({ params }: Props) {
       </section>
 
       {/* Pricing — mint band */}
-      <section className="py-12 bg-[#FDE68A]">
+      <section className="py-12 bg-[#34D399]">
         <div className="max-w-4xl mx-auto px-4 flex flex-col md:flex-row items-start gap-6">
           <div className="flex-shrink-0">
             <div className="w-14 h-14 bg-[#D4540A] rounded-full flex items-center justify-center">
@@ -270,7 +270,7 @@ export default async function NeighborhoodServicePage({ params }: Props) {
               <Link
                 key={s.slug}
                 href={`/${neighborhood.urlSlug}/${s.slug}`}
-                className="group border border-gray-200 rounded-2xl p-6 hover:border-[#FDE68A] hover:shadow-lg transition-all bg-white"
+                className="group border border-gray-200 rounded-2xl p-6 hover:border-[#34D399] hover:shadow-lg transition-all bg-white"
               >
                 <div className="flex items-start justify-between mb-3">
                   <h3 className="font-[family-name:var(--font-bebas)] text-xl text-[#D4540A] tracking-wide group-hover:text-[#D4540A]/70 transition-colors">{s.name}</h3>
@@ -290,7 +290,7 @@ export default async function NeighborhoodServicePage({ params }: Props) {
       {/* Book in 3 Steps */}
       <section className="py-20 bg-[#D4540A]">
         <div className="max-w-7xl mx-auto px-4">
-          <p className="text-xs font-semibold text-[#FDE68A]/60 tracking-[0.25em] uppercase mb-3 text-center">How It Works</p>
+          <p className="text-xs font-semibold text-[#34D399]/60 tracking-[0.25em] uppercase mb-3 text-center">How It Works</p>
           <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-white tracking-wide text-center mb-12">Book {service.name} in {neighborhood.name} — 3 Steps</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
@@ -299,14 +299,14 @@ export default async function NeighborhoodServicePage({ params }: Props) {
               { n: '03', t: 'Pay After', d: `Your cleaner arrives on time, completes the ${service.name.toLowerCase()}, and you pay only when you're satisfied. No deposits.` },
             ].map(s => (
               <div key={s.n} className="bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-2xl p-7 text-center">
-                <span className="font-[family-name:var(--font-bebas)] text-5xl text-[#FDE68A]/30 leading-none">{s.n}</span>
+                <span className="font-[family-name:var(--font-bebas)] text-5xl text-[#34D399]/30 leading-none">{s.n}</span>
                 <p className="font-[family-name:var(--font-bebas)] text-xl text-white tracking-wide mt-3 mb-2">{s.t}</p>
                 <p className="text-blue-200/50 text-sm leading-relaxed">{s.d}</p>
               </div>
             ))}
           </div>
           <div className="flex justify-center mt-10">
-            <a href="sms:8333526243" className="bg-[#FDE68A] text-[#D4540A] px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
+            <a href="sms:8333526243" className="bg-[#34D399] text-[#D4540A] px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
               Text (833) 352-6243
             </a>
           </div>

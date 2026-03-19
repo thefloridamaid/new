@@ -1405,7 +1405,7 @@ function BookingsPage() {
               <div className="flex items-center gap-3 mt-2 mb-4">
                 <span className="text-[#D4540A] text-base font-medium">{editingBooking.clients.phone}</span>
                 <a href={`tel:${editingBooking.clients.phone}`} className="px-4 py-1.5 bg-green-50 text-green-700 border border-green-200 rounded-full text-sm font-medium hover:bg-green-100">Call</a>
-                <a href={`sms:${editingBooking.clients.phone}`} className="px-4 py-1.5 bg-[#FDE68A]/20 text-[#D4540A]/70 border border-[#FDE68A]/30 rounded-full text-sm font-medium hover:bg-[#FDE68A]/20">Text</a>
+                <a href={`sms:${editingBooking.clients.phone}`} className="px-4 py-1.5 bg-[#34D399]/20 text-[#D4540A]/70 border border-[#34D399]/30 rounded-full text-sm font-medium hover:bg-[#34D399]/20">Text</a>
               </div>
             )}
             {!editingBooking.clients?.phone && <div className="mb-4" />}
@@ -1512,7 +1512,7 @@ function BookingsPage() {
               <p className="text-purple-600 text-sm mb-4 bg-purple-50 px-3 py-2 rounded-lg">🔄 Recurring: {editingBooking.recurring_type || 'Linked to schedule'}</p>
             )}
             {editingBooking.cleaner_token && (
-              <button type="button" onClick={copyTeamLink} className="w-full mb-4 py-2 px-4 bg-[#FDE68A]/20 text-[#D4540A]/70 border border-[#FDE68A]/30 rounded-lg font-medium hover:bg-[#FDE68A]/20">
+              <button type="button" onClick={copyTeamLink} className="w-full mb-4 py-2 px-4 bg-[#34D399]/20 text-[#D4540A]/70 border border-[#34D399]/30 rounded-lg font-medium hover:bg-[#34D399]/20">
                 {copied ? 'Copied!' : 'Copy Team Link'}
               </button>
             )}

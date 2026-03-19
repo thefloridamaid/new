@@ -12,7 +12,7 @@ const T = ({ headers, rows }: { headers: string[], rows: string[][] }) => (
 
 const Badge = ({ color, children }: { color: string, children: React.ReactNode }) => {
   const colors: Record<string, string> = {
-    blue: 'bg-[#FDE68A]/20 text-[#D4540A] border-[#FDE68A]/30',
+    blue: 'bg-[#34D399]/20 text-[#D4540A] border-[#34D399]/30',
     green: 'bg-green-100 text-green-800 border-green-200',
     yellow: 'bg-yellow-100 text-yellow-800 border-yellow-200',
     red: 'bg-red-100 text-red-800 border-red-200',
@@ -23,7 +23,7 @@ const Badge = ({ color, children }: { color: string, children: React.ReactNode }
 }
 
 const Card = ({ title, children, accent }: { title: string, children: React.ReactNode, accent?: string }) => (
-  <div className={`rounded-lg p-4 mb-4 border ${accent === 'blue' ? 'bg-[#FDE68A]/20 border-[#FDE68A]/30' : accent === 'green' ? 'bg-green-50 border-green-200' : accent === 'yellow' ? 'bg-yellow-50 border-yellow-200' : accent === 'red' ? 'bg-red-50 border-red-200' : 'bg-gray-50 border-gray-200'}`}>
+  <div className={`rounded-lg p-4 mb-4 border ${accent === 'blue' ? 'bg-[#34D399]/20 border-[#34D399]/30' : accent === 'green' ? 'bg-green-50 border-green-200' : accent === 'yellow' ? 'bg-yellow-50 border-yellow-200' : accent === 'red' ? 'bg-red-50 border-red-200' : 'bg-gray-50 border-gray-200'}`}>
     {title && <h3 className="font-semibold text-[#D4540A] mb-2">{title}</h3>}
     <div className="text-sm text-gray-700 space-y-1">{children}</div>
   </div>

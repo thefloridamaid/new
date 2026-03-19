@@ -157,7 +157,7 @@ function BookingFormContent() {
       </header>
 
       <main className="max-w-2xl mx-auto p-6" onFocusCapture={trackStart}>
-        <div className="bg-[#FDE68A]/20 border border-[#FDE68A]/30 rounded-lg p-4 mb-6">
+        <div className="bg-[#34D399]/20 border border-[#34D399]/30 rounded-lg p-4 mb-6">
           <p className="text-sm text-[#D4540A]"><strong>Scheduling:</strong> Mon-Sat, 9AM - 4PM (last start time)</p>
           <p className="text-sm text-[#D4540A]/70 mt-1">Same-day? Call <a href="tel:8333526243" className="underline font-medium">(833) 352-6243</a></p>
         </div>

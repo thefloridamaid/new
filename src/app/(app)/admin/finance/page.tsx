@@ -972,7 +972,7 @@ export default function FinancePage() {
           </div>
         ) : activeTab === '1099' ? (
           <div className="space-y-4">
-            <div className="bg-[#FDE68A]/20 border border-[#FDE68A]/30 rounded-xl p-5 mb-4">
+            <div className="bg-[#34D399]/20 border border-[#34D399]/30 rounded-xl p-5 mb-4">
               <div className="flex justify-between items-center">
                 <div>
                   <h4 className="text-xs font-bold text-[#D4540A] uppercase tracking-wider">📋 1099 YEAR-END REPORT</h4>

@@ -304,17 +304,17 @@ export default function DashboardPage() {
         <div className="mb-4 md:mb-6">
           <h2 className="text-sm font-semibold text-gray-500 mb-2 md:mb-3">📅 SCHEDULED (Upcoming)</h2>
           <div className="flex gap-2 overflow-x-auto pb-2 -mx-3 px-3 md:mx-0 md:px-0">
-            <button onClick={() => openJobsModal('Today - Scheduled', scheduledToday.jobs)} className="flex-shrink-0 w-[120px] md:w-auto md:flex-1 bg-[#FDE68A]/20 rounded-xl p-3 shadow-sm border border-[#FDE68A]/30 text-left hover:shadow-md transition">
+            <button onClick={() => openJobsModal('Today - Scheduled', scheduledToday.jobs)} className="flex-shrink-0 w-[120px] md:w-auto md:flex-1 bg-[#34D399]/20 rounded-xl p-3 shadow-sm border border-[#34D399]/30 text-left hover:shadow-md transition">
               <p className="text-[#D4540A] text-xs">Today</p>
               <p className="text-lg font-bold text-[#D4540A]/70">{formatMoney(scheduledToday.revenue)}</p>
               <p className="text-xs text-[#D4540A]/70">{scheduledToday.jobs.length} jobs</p>
             </button>
-            <button onClick={() => openJobsModal('This Week - Scheduled', scheduledWeek.jobs)} className="flex-shrink-0 w-[120px] md:w-auto md:flex-1 bg-[#FDE68A]/20 rounded-xl p-3 shadow-sm border border-[#FDE68A]/30 text-left hover:shadow-md transition">
+            <button onClick={() => openJobsModal('This Week - Scheduled', scheduledWeek.jobs)} className="flex-shrink-0 w-[120px] md:w-auto md:flex-1 bg-[#34D399]/20 rounded-xl p-3 shadow-sm border border-[#34D399]/30 text-left hover:shadow-md transition">
               <p className="text-[#D4540A] text-xs">Week</p>
               <p className="text-lg font-bold text-[#D4540A]/70">{formatMoney(scheduledWeek.revenue)}</p>
               <p className="text-xs text-[#D4540A]/70">{scheduledWeek.jobs.length} jobs</p>
             </button>
-            <button onClick={() => openJobsModal('This Month - Scheduled', scheduledMonth.jobs)} className="flex-shrink-0 w-[120px] md:w-auto md:flex-1 bg-[#FDE68A]/20 rounded-xl p-3 shadow-sm border border-[#FDE68A]/30 text-left hover:shadow-md transition">
+            <button onClick={() => openJobsModal('This Month - Scheduled', scheduledMonth.jobs)} className="flex-shrink-0 w-[120px] md:w-auto md:flex-1 bg-[#34D399]/20 rounded-xl p-3 shadow-sm border border-[#34D399]/30 text-left hover:shadow-md transition">
               <p className="text-[#D4540A] text-xs">Month</p>
               <p className="text-lg font-bold text-[#D4540A]/70">{formatMoney(scheduledMonth.revenue)}</p>
               <p className="text-xs text-[#D4540A]/70">{scheduledMonth.jobs.length} jobs</p>
@@ -333,7 +333,7 @@ export default function DashboardPage() {
         <div className="mb-4 md:mb-6">
           <h2 className="text-sm font-semibold text-gray-500 mb-2 md:mb-3">📊 OVERVIEW</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
-            <div className="bg-[#FDE68A]/20 rounded-xl p-3 md:p-4 border border-[#FDE68A]/30">
+            <div className="bg-[#34D399]/20 rounded-xl p-3 md:p-4 border border-[#34D399]/30">
               <p className="text-[#D4540A] text-xs md:text-sm">Scheduled</p>
               <p className="text-xl md:text-2xl font-bold text-[#D4540A]/70">{stats.scheduled}</p>
               <p className="text-xs text-[#D4540A]/70">upcoming</p>
@@ -439,7 +439,7 @@ export default function DashboardPage() {
                 <button onClick={() => setStatusFilter('all')} className={'px-2 md:px-3 py-2 rounded-md text-xs font-medium transition whitespace-nowrap ' + (statusFilter === 'all' ? 'bg-white text-[#D4540A] shadow-sm' : 'text-gray-600 hover:text-[#D4540A]')}>
                   All ({statusCounts.all})
                 </button>
-                <button onClick={() => setStatusFilter('scheduled')} className={'px-2 md:px-3 py-2 rounded-md text-xs font-medium transition whitespace-nowrap ' + (statusFilter === 'scheduled' ? 'bg-[#D4540A] text-white' : 'text-[#D4540A] hover:bg-[#FDE68A]/20')}>
+                <button onClick={() => setStatusFilter('scheduled')} className={'px-2 md:px-3 py-2 rounded-md text-xs font-medium transition whitespace-nowrap ' + (statusFilter === 'scheduled' ? 'bg-[#D4540A] text-white' : 'text-[#D4540A] hover:bg-[#34D399]/20')}>
                   Scheduled ({statusCounts.scheduled})
                 </button>
                 <button onClick={() => setStatusFilter('completed')} className={'px-2 md:px-3 py-2 rounded-md text-xs font-medium transition whitespace-nowrap ' + (statusFilter === 'completed' ? 'bg-green-500 text-white' : 'text-green-600 hover:bg-green-50')}>

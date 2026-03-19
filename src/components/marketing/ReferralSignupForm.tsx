@@ -58,7 +58,7 @@ export default function ReferralSignupForm() {
   if (success) {
     return (
       <div className="bg-white border border-gray-200 rounded-xl p-8 text-center">
-        <div className="w-16 h-16 bg-[#FDE68A]/30 rounded-full flex items-center justify-center mx-auto mb-4">
+        <div className="w-16 h-16 bg-[#34D399]/30 rounded-full flex items-center justify-center mx-auto mb-4">
           <svg className="w-8 h-8 text-[#D4540A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
@@ -66,7 +66,7 @@ export default function ReferralSignupForm() {
         <h3 className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-2">You&apos;re In!</h3>
         <p className="text-gray-600 mb-6">Welcome to The Florida Maid referral program.</p>
 
-        <div className="bg-[#F5FBF8] border border-[#FDE68A]/30 rounded-xl p-6 mb-6">
+        <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-6 mb-6">
           <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-2">Your Referral Code</p>
           <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#D4540A] tracking-wide">{refCode}</p>
         </div>
@@ -76,7 +76,7 @@ export default function ReferralSignupForm() {
           <p className="text-sm font-mono text-gray-700 break-all mb-3">https://www.thefloridamaid.com/book?ref={refCode}</p>
           <button
             onClick={copyLink}
-            className="bg-[#FDE68A] text-[#D4540A] px-6 py-2.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors"
+            className="bg-[#34D399] text-[#D4540A] px-6 py-2.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors"
           >
             Copy Link
           </button>
@@ -128,7 +128,7 @@ export default function ReferralSignupForm() {
             required
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 focus:border-[#FDE68A] focus:ring-1 focus:ring-[#FDE68A] outline-none"
+            className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 focus:border-[#34D399] focus:ring-1 focus:ring-[#34D399] outline-none"
             placeholder="John Smith"
           />
         </div>
@@ -140,7 +140,7 @@ export default function ReferralSignupForm() {
             required
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 focus:border-[#FDE68A] focus:ring-1 focus:ring-[#FDE68A] outline-none"
+            className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 focus:border-[#34D399] focus:ring-1 focus:ring-[#34D399] outline-none"
             placeholder="john@email.com"
           />
         </div>
@@ -151,7 +151,7 @@ export default function ReferralSignupForm() {
             type="tel"
             value={form.phone}
             onChange={(e) => setForm({ ...form, phone: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 focus:border-[#FDE68A] focus:ring-1 focus:ring-[#FDE68A] outline-none"
+            className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 focus:border-[#34D399] focus:ring-1 focus:ring-[#34D399] outline-none"
             placeholder="212-555-1234"
           />
         </div>
@@ -161,7 +161,7 @@ export default function ReferralSignupForm() {
           <select
             value={form.preferred_payout}
             onChange={(e) => setForm({ ...form, preferred_payout: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 focus:border-[#FDE68A] focus:ring-1 focus:ring-[#FDE68A] outline-none"
+            className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 focus:border-[#34D399] focus:ring-1 focus:ring-[#34D399] outline-none"
           >
             <option value="zelle">Zelle</option>
             <option value="apple_cash">Apple Cash</option>
@@ -176,7 +176,7 @@ export default function ReferralSignupForm() {
             type="text"
             value={form.zelle_email}
             onChange={(e) => setForm({ ...form, zelle_email: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 focus:border-[#FDE68A] focus:ring-1 focus:ring-[#FDE68A] outline-none"
+            className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 focus:border-[#34D399] focus:ring-1 focus:ring-[#34D399] outline-none"
             placeholder={form.preferred_payout === 'zelle' ? 'Same as email if blank' : 'Your Apple Cash phone number'}
           />
           <p className="text-xs text-gray-500 mt-1">We&apos;ll send your commissions here</p>
@@ -192,7 +192,7 @@ export default function ReferralSignupForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-[#FDE68A] text-[#D4540A] py-3.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors disabled:opacity-50"
+          className="w-full bg-[#34D399] text-[#D4540A] py-3.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors disabled:opacity-50"
         >
           {loading ? 'Signing Up...' : 'Join Referral Program'}
         </button>

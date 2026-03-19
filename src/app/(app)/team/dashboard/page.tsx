@@ -560,7 +560,7 @@ export default function TeamDashboardPage() {
 
         {/* Today's Potential */}
         {earnings && todayJobs.length > 0 && (
-          <div className="mb-4 bg-[#FDE68A]/20 border border-[#FDE68A]/30 rounded-xl p-4">
+          <div className="mb-4 bg-[#34D399]/20 border border-[#34D399]/30 rounded-xl p-4">
             <p className="text-sm text-[#D4540A]/70 font-medium">Today / Hoy</p>
             <div className="flex justify-between items-end">
               <div>
@@ -914,7 +914,7 @@ export default function TeamDashboardPage() {
                     <p className="text-gray-600 mb-1">{job.clients?.name}</p>
                     <p className="text-sm text-gray-500 mb-3">{job.clients?.address}</p>
                     {(job.clients?.notes || job.notes) && (
-                      <div className="text-sm text-[#D4540A]/70 bg-[#FDE68A]/20 p-2 rounded mb-3">
+                      <div className="text-sm text-[#D4540A]/70 bg-[#34D399]/20 p-2 rounded mb-3">
                         <TranslatedNotes text={[job.clients?.notes, job.notes].filter(Boolean).join('\n\n')} label="Notes / Notas" />
                       </div>
                     )}
@@ -1086,7 +1086,7 @@ function JobCard({ job, onUpdate, showDate }: { job: Booking; onUpdate: () => vo
             {(() => {
               const allNotes = [job.clients?.notes, job.notes].filter(Boolean).join('\n\n')
               return (
-                <div className={`p-4 rounded-xl border-2 ${allNotes ? 'bg-[#FDE68A]/20 border-[#FDE68A]/30' : 'bg-gray-50 border-gray-200'}`}>
+                <div className={`p-4 rounded-xl border-2 ${allNotes ? 'bg-[#34D399]/20 border-[#34D399]/30' : 'bg-gray-50 border-gray-200'}`}>
                   {allNotes ? (
                     <TranslatedNotes text={allNotes} label="Notes / Notas" />
                   ) : (

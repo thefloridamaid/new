@@ -1,6 +1,6 @@
 export default function CTABlock({ title, subtitle }: { title?: string; subtitle?: string }) {
   return (
-    <section className="bg-[#FDE68A] py-20">
+    <section className="bg-[#34D399] py-20">
       <div className="max-w-4xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8">
         <div>
           <h2 className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#D4540A] tracking-wide">

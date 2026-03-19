@@ -55,17 +55,17 @@ export default function ReferralPage() {
 
         {/* Benefits */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="bg-[#F5FBF8] border border-[#FDE68A]/30 rounded-xl p-8 text-center">
+          <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-8 text-center">
             <p className="font-[family-name:var(--font-bebas)] text-5xl text-[#D4540A] tracking-wide mb-2">10%</p>
             <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-3">Commission</p>
             <p className="text-gray-600 text-sm">On every cleaning your referral books — not just the first one.</p>
           </div>
-          <div className="bg-[#F5FBF8] border border-[#FDE68A]/30 rounded-xl p-8 text-center">
+          <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-8 text-center">
             <p className="font-[family-name:var(--font-bebas)] text-5xl text-[#D4540A] tracking-wide mb-2">Recurring</p>
             <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-3">Income</p>
             <p className="text-gray-600 text-sm">Every time they book, you earn. Weekly clients mean weekly payouts.</p>
           </div>
-          <div className="bg-[#F5FBF8] border border-[#FDE68A]/30 rounded-xl p-8 text-center">
+          <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-8 text-center">
             <p className="font-[family-name:var(--font-bebas)] text-5xl text-[#D4540A] tracking-wide mb-2">Fast</p>
             <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-3">Payouts</p>
             <p className="text-gray-600 text-sm">Paid via Zelle or Apple Cash after each completed cleaning.</p>
@@ -115,7 +115,7 @@ export default function ReferralPage() {
               </div>
             </div>
 
-            <div className="w-12 h-[2px] bg-[#FDE68A] my-10" />
+            <div className="w-12 h-[2px] bg-[#34D399] my-10" />
 
             <h2 className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-4">Why It Works</h2>
             <ul className="space-y-3">
@@ -127,7 +127,7 @@ export default function ReferralPage() {
                 'Unlimited referrals, unlimited earnings',
               ].map(item => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="text-[#FDE68A] mt-1 text-lg">&#10003;</span>
+                  <span className="text-[#34D399] mt-1 text-lg">&#10003;</span>
                   <span className="text-gray-700">{item}</span>
                 </li>
               ))}
@@ -150,7 +150,7 @@ export default function ReferralPage() {
               <p className="text-sm text-gray-500 mb-1">5 referrals, bi-weekly</p>
               <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide">$60+/mo</p>
             </div>
-            <div className="p-5 bg-[#F5FBF8] border border-[#FDE68A]/30 rounded-xl">
+            <div className="p-5 bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl">
               <p className="text-sm text-gray-500 mb-1">10 referrals, weekly</p>
               <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide">$250+/mo</p>
             </div>

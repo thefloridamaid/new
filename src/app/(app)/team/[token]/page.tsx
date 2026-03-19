@@ -196,7 +196,7 @@ export default function TeamPortalPage() {
             </div>
 
             {(booking.clients?.notes || booking.notes) && (
-              <div className="p-4 rounded-xl border-2 bg-[#FDE68A]/20 border-[#FDE68A]/30">
+              <div className="p-4 rounded-xl border-2 bg-[#34D399]/20 border-[#34D399]/30">
                 <TranslatedNotes text={[booking.clients?.notes, booking.notes].filter(Boolean).join('\n\n')} label="Notes / Notas" />
               </div>
             )}

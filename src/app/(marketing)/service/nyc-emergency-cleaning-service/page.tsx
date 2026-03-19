@@ -310,7 +310,7 @@ export default function EmergencyCleaningPage() {
               <ul className="space-y-2">
                 {['Small mold patches on bathroom caulking', 'Post-break-in cleanup (after police clear scene)', 'Hoarding cleanup', 'Vandalism cleanup', 'Post-storm debris (no standing water)', 'Heavy-duty deep cleaning after neglect'].map(item => (
                   <li key={item} className="flex items-start gap-2 text-gray-700">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                     <span className="text-sm">{item}</span>
                   </li>
                 ))}
@@ -336,7 +336,7 @@ export default function EmergencyCleaningPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-semibold text-[#D4540A] mb-3 flex items-center gap-2">
-                    <span className="text-[#FDE68A]">&#10003;</span> What to Do
+                    <span className="text-[#34D399]">&#10003;</span> What to Do
                   </h4>
                   <ol className="space-y-2">
                     {type.whatToDo.map((step, i) => (
@@ -426,7 +426,7 @@ export default function EmergencyCleaningPage() {
               <ul className="space-y-2">
                 {['Document all damage with photos and video', 'Call your insurance company to open a claim', 'Get your claim number — we\'ll reference it in our documentation', 'Don\'t throw anything away until the adjuster approves (photograph first)'].map(item => (
                   <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -437,7 +437,7 @@ export default function EmergencyCleaningPage() {
               <ul className="space-y-2">
                 {['Detailed scope-of-work report', 'Before and after photo documentation', 'Itemized invoice with labor and materials breakdown', 'Professional assessment of damage severity', 'Direct communication with your adjuster if needed'].map(item => (
                   <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                    <span className="text-[#FDE68A] mt-0.5 flex-shrink-0">&#10003;</span>
+                    <span className="text-[#34D399] mt-0.5 flex-shrink-0">&#10003;</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -470,7 +470,7 @@ export default function EmergencyCleaningPage() {
                 <h3 className="font-semibold text-lg text-[#D4540A] mb-3">{area.name}</h3>
                 <div className="flex flex-wrap gap-2">
                   {neighborhoods.map(n => (
-                    <Link key={n.slug} href={`/${n.urlSlug}`} className="px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-[#FDE68A]/20 hover:text-[#D4540A] transition-colors">
+                    <Link key={n.slug} href={`/${n.urlSlug}`} className="px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-[#34D399]/20 hover:text-[#D4540A] transition-colors">
                       {n.name}
                     </Link>
                   ))}
