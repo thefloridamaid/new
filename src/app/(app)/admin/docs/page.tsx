@@ -5,14 +5,14 @@ const T = ({ headers, rows }: { headers: string[], rows: string[][] }) => (
   <div className="border border-gray-200 rounded-lg overflow-hidden mb-6 overflow-x-auto">
     <table className="w-full text-sm min-w-[500px]">
       <thead><tr className="bg-gray-50 text-left text-gray-600">{headers.map((h, i) => <th key={i} className="px-4 py-3 font-medium">{h}</th>)}</tr></thead>
-      <tbody className="divide-y divide-gray-100">{rows.map((row, i) => <tr key={i} className="hover:bg-gray-50">{row.map((c, j) => <td key={j} className={`px-4 py-3 ${j === 0 ? 'font-mono text-xs text-[#D4540A]' : 'text-gray-700'}`}>{c}</td>)}</tr>)}</tbody>
+      <tbody className="divide-y divide-gray-100">{rows.map((row, i) => <tr key={i} className="hover:bg-gray-50">{row.map((c, j) => <td key={j} className={`px-4 py-3 ${j === 0 ? 'font-mono text-xs text-[#CC6222]' : 'text-gray-700'}`}>{c}</td>)}</tr>)}</tbody>
     </table>
   </div>
 )
 
 const Badge = ({ color, children }: { color: string, children: React.ReactNode }) => {
   const colors: Record<string, string> = {
-    blue: 'bg-[#34D399]/20 text-[#D4540A] border-[#34D399]/30',
+    blue: 'bg-[#34D399]/20 text-white border-[#34D399]/30',
     green: 'bg-green-100 text-green-800 border-green-200',
     yellow: 'bg-yellow-100 text-yellow-800 border-yellow-200',
     red: 'bg-red-100 text-red-800 border-red-200',
@@ -24,7 +24,7 @@ const Badge = ({ color, children }: { color: string, children: React.ReactNode }
 
 const Card = ({ title, children, accent }: { title: string, children: React.ReactNode, accent?: string }) => (
   <div className={`rounded-lg p-4 mb-4 border ${accent === 'blue' ? 'bg-[#34D399]/20 border-[#34D399]/30' : accent === 'green' ? 'bg-green-50 border-green-200' : accent === 'yellow' ? 'bg-yellow-50 border-yellow-200' : accent === 'red' ? 'bg-red-50 border-red-200' : 'bg-gray-50 border-gray-200'}`}>
-    {title && <h3 className="font-semibold text-[#D4540A] mb-2">{title}</h3>}
+    {title && <h3 className="font-semibold text-[#CC6222] mb-2">{title}</h3>}
     <div className="text-sm text-gray-700 space-y-1">{children}</div>
   </div>
 )
@@ -70,7 +70,7 @@ export default function DocsPage() {
         <div className="lg:w-52 lg:shrink-0">
           <nav className="flex lg:flex-col gap-1.5 lg:gap-0.5 overflow-x-auto lg:overflow-x-visible lg:overflow-y-auto lg:sticky lg:top-6 lg:max-h-[calc(100vh-4rem)] pb-2 lg:pb-0">
             {sections.map((sec) => (
-              <button key={sec.id} onClick={() => setS(sec.id)} className={`whitespace-nowrap lg:whitespace-normal block w-auto lg:w-full text-left px-3 py-2 rounded-lg text-sm transition-colors flex-shrink-0 ${s === sec.id ? 'bg-[#D4540A] text-white' : 'text-gray-600 hover:bg-gray-100'}`}>{sec.label}</button>
+              <button key={sec.id} onClick={() => setS(sec.id)} className={`whitespace-nowrap lg:whitespace-normal block w-auto lg:w-full text-left px-3 py-2 rounded-lg text-sm transition-colors flex-shrink-0 ${s === sec.id ? 'bg-[#CC6222] text-white' : 'text-gray-600 hover:bg-gray-100'}`}>{sec.label}</button>
             ))}
           </nav>
         </div>
@@ -79,21 +79,21 @@ export default function DocsPage() {
 
         {s === 'overview' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-2">The Florida Maid Platform</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-2">The Florida Maid Platform</h1>
             <p className="text-gray-500 mb-6">Complete cleaning service management system</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
               <Card title="" accent="blue">
                 <p><strong>Live:</strong> <a href="https://www.thefloridamaid.com" className="underline py-1.5 inline-block">thefloridamaid.com</a></p>
-                <p><strong>GitHub:</strong> <a href="https://github.com/thenycmaid/nycmaid" className="underline py-1.5 inline-block">thenycmaid/nycmaid</a></p>
+                <p><strong>GitHub:</strong> <a href="https://github.com/thefloridamaid/new" className="underline py-1.5 inline-block">thefloridamaid/new</a></p>
               </Card>
               <Card title="" accent="blue">
-                <p><strong>Vercel:</strong> <a href="https://vercel.com/jeff-tuckers-projects/nycmaid" className="underline py-1.5 inline-block">jeff-tuckers-projects/nycmaid</a></p>
+                <p><strong>Vercel:</strong> <a href="https://vercel.com/thefloridamaids-projects/thefloridamaid" className="underline py-1.5 inline-block">thefloridamaids-projects/thefloridamaid</a></p>
                 <p><strong>Supabase:</strong> <a href="https://supabase.com/dashboard/project/ioppmvchszymwswtwsze" className="underline py-1.5 inline-block">ioppmvchszymwswtwsze</a></p>
               </Card>
             </div>
 
-            <h2 className="text-xl font-semibold text-[#D4540A] mt-8 mb-4">Platform Capabilities</h2>
+            <h2 className="text-xl font-semibold text-[#CC6222] mt-8 mb-4">Platform Capabilities</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
@@ -137,7 +137,7 @@ export default function DocsPage() {
               </div>
             </div>
 
-            <h2 className="text-xl font-semibold text-[#D4540A] mt-8 mb-4">Key URLs</h2>
+            <h2 className="text-xl font-semibold text-[#CC6222] mt-8 mb-4">Key URLs</h2>
             <T headers={['URL', 'Purpose', 'Access']} rows={[
               ['/', 'Home page', 'Public'],
               ['/login', 'Admin login', 'Public'],
@@ -157,12 +157,12 @@ export default function DocsPage() {
 
         {s === 'platform-map' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-2">Platform Map</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-2">Platform Map</h1>
             <p className="text-gray-500 mb-6">Complete map of all pages, communications, automations, and integrations</p>
 
-            <h2 className="text-xl font-semibold text-[#D4540A] mt-8 mb-4">All Pages & Portals</h2>
+            <h2 className="text-xl font-semibold text-[#CC6222] mt-8 mb-4">All Pages & Portals</h2>
 
-            <h3 className="text-lg font-semibold text-[#D4540A] mt-6 mb-3">Public Pages</h3>
+            <h3 className="text-lg font-semibold text-[#CC6222] mt-6 mb-3">Public Pages</h3>
             <T headers={['Route', 'What it does']} rows={[
               ['/', 'Redirects to /login'],
               ['/login', 'Admin password login'],
@@ -170,7 +170,7 @@ export default function DocsPage() {
               ['/feedback', 'Anonymous feedback form'],
             ]} />
 
-            <h3 className="text-lg font-semibold text-[#D4540A] mt-6 mb-3">Client Portal</h3>
+            <h3 className="text-lg font-semibold text-[#CC6222] mt-6 mb-3">Client Portal</h3>
             <T headers={['Route', 'What it does']} rows={[
               ['/book', 'Client login (phone + email verification)'],
               ['/book/new', 'New booking wizard (3 steps: info → service → date/confirm)'],
@@ -179,20 +179,20 @@ export default function DocsPage() {
               ['/book/reschedule/[id]', 'Reschedule an existing booking'],
             ]} />
 
-            <h3 className="text-lg font-semibold text-[#D4540A] mt-6 mb-3">Team Portal</h3>
+            <h3 className="text-lg font-semibold text-[#CC6222] mt-6 mb-3">Team Portal</h3>
             <T headers={['Route', 'What it does']} rows={[
               ['/team', 'Cleaner PIN login'],
               ['/team/[token]', 'Job details via unique token link'],
               ['/team/dashboard', 'Cleaner dashboard (jobs, check-in/out, earnings)'],
             ]} />
 
-            <h3 className="text-lg font-semibold text-[#D4540A] mt-6 mb-3">Referral Portal</h3>
+            <h3 className="text-lg font-semibold text-[#CC6222] mt-6 mb-3">Referral Portal</h3>
             <T headers={['Route', 'What it does']} rows={[
               ['/referral', 'Referrer dashboard (earnings, commissions, link stats)'],
               ['/referral/signup', 'Join referral program'],
             ]} />
 
-            <h3 className="text-lg font-semibold text-[#D4540A] mt-6 mb-3">Admin Dashboard (11 pages)</h3>
+            <h3 className="text-lg font-semibold text-[#CC6222] mt-6 mb-3">Admin Dashboard (11 pages)</h3>
             <T headers={['Route', 'What it does']} rows={[
               ['/admin', 'Main dashboard (revenue, stats, map view)'],
               ['/admin/bookings', 'Manage all bookings'],
@@ -207,9 +207,9 @@ export default function DocsPage() {
               ['/admin/docs', 'This documentation'],
             ]} />
 
-            <h2 className="text-xl font-semibold text-[#D4540A] mt-10 mb-4">All Communications — 21 Email Templates</h2>
+            <h2 className="text-xl font-semibold text-[#CC6222] mt-10 mb-4">All Communications — 21 Email Templates</h2>
 
-            <h3 className="text-lg font-semibold text-[#D4540A] mt-6 mb-3">Client Emails</h3>
+            <h3 className="text-lg font-semibold text-[#CC6222] mt-6 mb-3">Client Emails</h3>
             <T headers={['Email', 'Sent To', 'Trigger']} rows={[
               ['Booking Confirmed', 'Client', 'Booking created as "scheduled" or pending→scheduled'],
               ['Reminder (7d, 3d, 1d, 2hr)', 'Client', 'Hourly cron job'],
@@ -219,7 +219,7 @@ export default function DocsPage() {
               ['Verification Code', 'Client', 'Login code request'],
             ]} />
 
-            <h3 className="text-lg font-semibold text-[#D4540A] mt-6 mb-3">Cleaner Emails (Bilingual EN/ES)</h3>
+            <h3 className="text-lg font-semibold text-[#CC6222] mt-6 mb-3">Cleaner Emails (Bilingual EN/ES)</h3>
             <T headers={['Email', 'Sent To', 'Trigger']} rows={[
               ['New Job Assigned', 'Cleaner', 'Booking created/assigned'],
               ["Tomorrow's Schedule", 'All active cleaners', 'Midnight cron job'],
@@ -228,14 +228,14 @@ export default function DocsPage() {
               ['Welcome + PIN', 'Cleaner', 'Manual send from admin'],
             ]} />
 
-            <h3 className="text-lg font-semibold text-[#D4540A] mt-6 mb-3">Referrer Emails</h3>
+            <h3 className="text-lg font-semibold text-[#CC6222] mt-6 mb-3">Referrer Emails</h3>
             <T headers={['Email', 'Sent To', 'Trigger']} rows={[
               ['Welcome + Code', 'Referrer', 'Referrer signs up'],
               ['Commission Earned', 'Referrer', "Referred client's booking completed"],
               ['New Signup Notification', 'Referrer', 'Someone books using their code'],
             ]} />
 
-            <h3 className="text-lg font-semibold text-[#D4540A] mt-6 mb-3">Admin Emails</h3>
+            <h3 className="text-lg font-semibold text-[#CC6222] mt-6 mb-3">Admin Emails</h3>
             <T headers={['Email', 'Sent To', 'Trigger']} rows={[
               ['New Booking Request', 'Admin', 'Client submits booking'],
               ['New Client Added', 'Admin', 'Client created (manual or form)'],
@@ -249,14 +249,14 @@ export default function DocsPage() {
               <p><strong>"Feedback?"</strong> link appears at the top of every email template, linking to /feedback</p>
             </Card>
 
-            <h2 className="text-xl font-semibold text-[#D4540A] mt-10 mb-4">Automations — Cron Jobs</h2>
+            <h2 className="text-xl font-semibold text-[#CC6222] mt-10 mb-4">Automations — Cron Jobs</h2>
             <T headers={['Job', 'Schedule', 'What it does']} rows={[
               ['Reminders', 'Every hour', 'Client reminders (7d/3d/1d/2hr before), thank-you emails (3 days after first booking), pending booking alerts to admin (8am/2pm)'],
               ['Daily Summary', 'Midnight', "Tomorrow's schedule to each cleaner, recurring booking expiration checks (30-day warning)"],
               ['Backup', '5am', 'CSV export of all clients + bookings (6 months), emailed as attachments'],
             ]} />
 
-            <h2 className="text-xl font-semibold text-[#D4540A] mt-10 mb-4">Dashboard Notifications (20 types)</h2>
+            <h2 className="text-xl font-semibold text-[#CC6222] mt-10 mb-4">Dashboard Notifications (20 types)</h2>
             <T headers={['Type', 'Title', 'Trigger']} rows={[
               ['new_booking', 'New booking from {name}', 'Client submits booking'],
               ['new_client', 'New client added/collected', 'Client created'],
@@ -278,9 +278,9 @@ export default function DocsPage() {
               ['hot_lead', 'Book click / Call click', 'Website engagement tracking'],
             ]} />
 
-            <h2 className="text-xl font-semibold text-[#D4540A] mt-10 mb-4">All SMS Templates</h2>
+            <h2 className="text-xl font-semibold text-[#CC6222] mt-10 mb-4">All SMS Templates</h2>
 
-            <h3 className="text-lg font-semibold text-[#D4540A] mt-6 mb-3">Client SMS</h3>
+            <h3 className="text-lg font-semibold text-[#CC6222] mt-6 mb-3">Client SMS</h3>
             <T headers={['SMS', 'Sent To', 'Trigger']} rows={[
               ['Booking Confirmation', 'Client', 'Booking approved (pending → scheduled)'],
               ['Reminder (1d, 2hr)', 'Client', 'Cron job — day before and 2 hours before'],
@@ -290,7 +290,7 @@ export default function DocsPage() {
               ['Verification Code', 'Client', 'Login code request'],
             ]} />
 
-            <h3 className="text-lg font-semibold text-[#D4540A] mt-6 mb-3">Cleaner SMS (Bilingual EN/ES)</h3>
+            <h3 className="text-lg font-semibold text-[#CC6222] mt-6 mb-3">Cleaner SMS (Bilingual EN/ES)</h3>
             <T headers={['SMS', 'Sent To', 'Trigger']} rows={[
               ['Job Assignment', 'Cleaner', 'Booking created/assigned'],
               ['Daily Summary', 'All active cleaners', 'Midnight cron job'],
@@ -299,7 +299,7 @@ export default function DocsPage() {
               ['Urgent Broadcast', 'All cleaners', 'Emergency job broadcast (with pay rate)'],
             ]} />
 
-            <h3 className="text-lg font-semibold text-[#D4540A] mt-6 mb-3">Admin SMS</h3>
+            <h3 className="text-lg font-semibold text-[#CC6222] mt-6 mb-3">Admin SMS</h3>
             <T headers={['SMS', 'Sent To', 'Trigger']} rows={[
               ['New Client Alert', 'Admin', 'Client created via /book/collect'],
               ['New Booking Alert', 'Admin', 'Client submits booking'],
@@ -311,7 +311,7 @@ export default function DocsPage() {
               <p>All system-initiated SMS include <strong>"Reply STOP to opt out"</strong> notice. STOP/UNSUBSCRIBE/CANCEL/QUIT commands automatically revoke sms_consent.</p>
             </Card>
 
-            <h2 className="text-xl font-semibold text-[#D4540A] mt-10 mb-4">External Integrations</h2>
+            <h2 className="text-xl font-semibold text-[#CC6222] mt-10 mb-4">External Integrations</h2>
             <T headers={['Service', 'Purpose', 'Used In']} rows={[
               ['Resend', 'Email delivery (hi@thefloridamaid.com)', 'All emails — 21+ templates'],
               ['Telnyx', 'SMS delivery + inbound webhook', 'Selenas chatbot, booking confirmations, reminders, broadcasts'],
@@ -322,7 +322,7 @@ export default function DocsPage() {
               ['Vercel', 'Hosting + cron jobs', 'Deployment + 4 scheduled jobs'],
             ]} />
 
-            <h2 className="text-xl font-semibold text-[#D4540A] mt-10 mb-4">Payment Flow</h2>
+            <h2 className="text-xl font-semibold text-[#CC6222] mt-10 mb-4">Payment Flow</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Client pays</strong> — Zelle (hi@thefloridamaid.com) or Apple Pay (collected by cleaner on-site)</li>
               <li><strong>Cleaner pay</strong> — actual_hours × cleaner.hourly_rate (stored in cents)</li>
@@ -330,7 +330,7 @@ export default function DocsPage() {
               <li><strong>All money stored in cents</strong> — divide by 100 for display</li>
             </ul>
 
-            <h2 className="text-xl font-semibold text-[#D4540A] mt-10 mb-4">Feedback System</h2>
+            <h2 className="text-xl font-semibold text-[#CC6222] mt-10 mb-4">Feedback System</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Portals</strong> — "Feedback?" button on all client, team, and referral portal pages</li>
               <li><strong>Emails</strong> — "Feedback?" link at the top of every email</li>
@@ -343,7 +343,7 @@ export default function DocsPage() {
 
         {s === 'stack' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Tech Stack</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Tech Stack</h1>
             <T headers={['Component', 'Technology', 'Version', 'Purpose']} rows={[
               ['Framework', 'Next.js', '16.1.6', 'React framework with App Router + API routes'],
               ['UI', 'React', '19', 'Component library'],
@@ -363,7 +363,7 @@ export default function DocsPage() {
 
         {s === 'files' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">File Structure</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">File Structure</h1>
             <pre className="bg-gray-900 text-gray-300 p-4 rounded-lg text-sm overflow-x-auto mb-6">
 {`src/
 ├── app/
@@ -417,33 +417,33 @@ export default function DocsPage() {
 
         {s === 'database' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Database Schema (19 Tables)</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Database Schema (19 Tables)</h1>
             <Card title="" accent="yellow">
               <p><strong>Supabase:</strong> <a href="https://supabase.com/dashboard/project/ioppmvchszymwswtwsze" className="underline">Open Dashboard</a></p>
               <p>RLS is disabled on all tables — API protection handled at route level</p>
             </Card>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">cleaners</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">cleaners</h2>
             <p className="text-gray-500 text-sm mb-2">Team members who perform cleaning services</p>
             <T headers={['Column', 'Type', 'Notes']} rows={[['id', 'uuid', 'Primary key'], ['name', 'text', 'Full name'], ['email', 'text', 'For daily job summary emails'], ['phone', 'text', 'Contact number'], ['address', 'text', 'Home address'], ['pin', 'text', '4-6 digit login PIN'], ['hourly_rate', 'decimal', 'Pay rate per hour'], ['priority', 'integer', 'Display order (1=first)'], ['working_days', 'text[]', 'Array of day names'], ['schedule', 'jsonb', 'Hours per day'], ['sms_consent', 'boolean', 'SMS opt-in (default true, STOP revokes)'], ['active', 'boolean', 'true = active']]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">clients</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">clients</h2>
             <p className="text-gray-500 text-sm mb-2">Customers who book cleaning services</p>
             <T headers={['Column', 'Type', 'Notes']} rows={[['id', 'uuid', 'Primary key'], ['name', 'text', 'Full name'], ['email', 'text', 'For confirmations & reminders'], ['phone', 'text', 'For verification & contact'], ['address', 'text', 'Service address'], ['notes', 'text', 'Special instructions'], ['referrer_id', 'uuid', 'FK → referrers.id (nullable)'], ['do_not_service', 'boolean', 'DNS flag — blocks client from booking (default false)'], ['sms_consent', 'boolean', 'SMS opt-in (default true, STOP revokes)'], ['created_at', 'timestamp', 'When client was added']]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">bookings</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">bookings</h2>
             <p className="text-gray-500 text-sm mb-2">Scheduled cleaning appointments</p>
             <T headers={['Column', 'Type', 'Notes']} rows={[['id', 'uuid', 'Primary key'], ['client_id', 'uuid', 'FK → clients.id'], ['cleaner_id', 'uuid', 'FK → cleaners.id'], ['start_time', 'timestamp', 'Appointment start'], ['end_time', 'timestamp', 'Appointment end'], ['service_type', 'text', 'Standard, Deep, Move In/Out, Post Construction, Emergency'], ['price', 'integer', 'Price in cents (15000 = $150)'], ['hourly_rate', 'integer', '$49, $65, or $75'], ['status', 'text', 'pending, scheduled, in_progress, completed, cancelled'], ['payment_status', 'text', 'pending or paid'], ['payment_method', 'text', 'zelle or apple_pay'], ['recurring_type', 'text', 'weekly, biweekly, monthly (nullable)'], ['recurring_group_id', 'uuid', 'Links recurring series'], ['cleaner_token', 'text', 'Unique token for team portal (24h)'], ['check_in_time', 'timestamp', 'When cleaner arrived (GPS or admin)'], ['check_out_time', 'timestamp', 'When cleaner finished (GPS or admin)'], ['check_in_location', 'jsonb', 'GPS coords at check-in'], ['check_out_location', 'jsonb', 'GPS coords at check-out'], ['actual_hours', 'decimal', 'Calculated hours worked (rounded to half-hour)'], ['cleaner_pay', 'integer', 'Cleaner payment in cents (actual_hours × $25 × 100)'], ['referrer_id', 'uuid', 'FK → referrers.id (nullable)'], ['ref_code', 'text', 'Referral code used at booking'], ['notes', 'text', 'Special instructions']]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">referrers</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">referrers</h2>
             <p className="text-gray-500 text-sm mb-2">People who refer clients for 10% commission</p>
             <T headers={['Column', 'Type', 'Notes']} rows={[['id', 'uuid', 'Primary key'], ['name', 'text', 'Full name'], ['email', 'text', 'UNIQUE — for login'], ['phone', 'text', 'Contact number'], ['ref_code', 'text', 'UNIQUE — e.g., JOHN123'], ['total_earned', 'integer', 'Total commissions (cents)'], ['total_paid', 'integer', 'Total paid out (cents)'], ['preferred_payout', 'text', 'zelle or apple_cash'], ['zelle_info', 'text', 'Zelle email/phone'], ['active', 'boolean', 'Default true']]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">referral_commissions</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">referral_commissions</h2>
             <p className="text-gray-500 text-sm mb-2">Commission records for each completed booking</p>
             <T headers={['Column', 'Type', 'Notes']} rows={[['id', 'uuid', 'Primary key'], ['booking_id', 'uuid', 'FK → bookings.id'], ['referrer_id', 'uuid', 'FK → referrers.id'], ['gross_amount', 'integer', 'Booking price (cents)'], ['commission_amount', 'integer', '10% commission (cents)'], ['status', 'text', 'pending or paid'], ['paid_via', 'text', 'zelle or apple_cash'], ['paid_at', 'timestamp', 'When paid out']]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">SMS & Chatbot Tables</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">SMS & Chatbot Tables</h2>
             <T headers={['Table', 'Purpose']} rows={[
               ['sms_conversations', 'Selenas chatbot state machine — one active conversation per phone (state, collected info, booking link)'],
               ['sms_conversation_messages', 'Full transcript of prospect chatbot conversations (inbound/outbound per conversation_id)'],
@@ -451,7 +451,7 @@ export default function DocsPage() {
               ['sms_logs', 'Delivery tracking — telnyx_message_id, status (sent/delivered/failed), sms_type, recipient'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Other Tables</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Other Tables</h2>
             <T headers={['Table', 'Purpose']} rows={[
               ['cleaner_applications', 'Job applications from /apply form'],
               ['lead_clicks', 'Visitor activity from 99 EMD domains'],
@@ -469,9 +469,9 @@ export default function DocsPage() {
 
         {s === 'pages' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Pages (25 Total)</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Pages (25 Total)</h1>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Public (4)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Public (4)</h2>
             <T headers={['File', 'Route', 'Purpose']} rows={[
               ['app/page.tsx', '/', 'Home/landing page'],
               ['app/login/page.tsx', '/login', 'Admin login form'],
@@ -479,7 +479,7 @@ export default function DocsPage() {
               ['app/feedback/page.tsx', '/feedback', 'Anonymous feedback form (linked from emails + portals)'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Admin Dashboard (11)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Admin Dashboard (11)</h2>
             <T headers={['File', 'Route', 'Purpose']} rows={[
               ['admin/page.tsx', '/admin', 'Revenue stats, today\'s jobs, interactive map'],
               ['admin/bookings/page.tsx', '/admin/bookings', 'Booking CRUD, recurring, emergency broadcast'],
@@ -494,7 +494,7 @@ export default function DocsPage() {
               ['admin/docs/page.tsx', '/admin/docs', 'This documentation'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Client Portal (5)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Client Portal (5)</h2>
             <T headers={['File', 'Route', 'Purpose']} rows={[
               ['book/page.tsx', '/book', 'Client login (email + verification code)'],
               ['book/new/page.tsx', '/book/new', '3-step booking flow with availability check'],
@@ -503,14 +503,14 @@ export default function DocsPage() {
               ['book/reschedule/[id]/page.tsx', '/book/reschedule/:id', 'Self-service reschedule'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Team Portal (3)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Team Portal (3)</h2>
             <T headers={['File', 'Route', 'Purpose']} rows={[
               ['team/page.tsx', '/team', 'PIN login (bilingual English/Spanish)'],
               ['team/dashboard/page.tsx', '/team/dashboard', 'Daily jobs, GPS check-in/out, earnings tracker'],
               ['team/[token]/page.tsx', '/team/:token', 'Token-based single booking access (24h expiry)'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Referrer Portal (2)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Referrer Portal (2)</h2>
             <T headers={['File', 'Route', 'Purpose']} rows={[
               ['referral/page.tsx', '/referral', 'Referrer dashboard (login by email)'],
               ['referral/signup/page.tsx', '/referral/signup', 'Referrer signup form'],
@@ -520,15 +520,15 @@ export default function DocsPage() {
 
         {s === 'api' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">API Routes (60+)</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">API Routes (60+)</h1>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Authentication (2)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Authentication (2)</h2>
             <T headers={['Endpoint', 'Method', 'Purpose']} rows={[
               ['/api/auth/login', 'POST', 'Admin login (rate-limited, 5 attempts / 5 min)'],
               ['/api/auth/logout', 'POST', 'Admin logout (clear cookie)'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Admin CRUD (11) — Protected</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Admin CRUD (11) — Protected</h2>
             <T headers={['Endpoint', 'Methods', 'Purpose']} rows={[
               ['/api/bookings', 'GET, POST', 'List all / Create new (sends emails + SMS)'],
               ['/api/bookings/[id]', 'GET, PUT, DELETE', 'Read / Update (auto-emails+SMS on pending→scheduled) / Cancel (soft) / Hard delete'],
@@ -543,7 +543,7 @@ export default function DocsPage() {
               ['/api/cleaners/upload', 'POST', 'Upload cleaner photo to Supabase Storage'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Client Portal (12)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Client Portal (12)</h2>
             <T headers={['Endpoint', 'Method', 'Purpose']} rows={[
               ['/api/client/check', 'POST', 'Check if email exists'],
               ['/api/client/send-code', 'POST', 'Send SMS verification code'],
@@ -558,7 +558,7 @@ export default function DocsPage() {
               ['/api/client/notes', 'GET, PUT', 'Read / Save client notes for booking instructions'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Team Portal (7)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Team Portal (7)</h2>
             <T headers={['Endpoint', 'Method', 'Purpose']} rows={[
               ['/api/team/login', 'POST', 'Team login (4-6 digit PIN)'],
               ['/api/team/jobs', 'GET', 'Get logged-in cleaner\'s jobs + earnings (weekly/monthly/yearly)'],
@@ -569,7 +569,7 @@ export default function DocsPage() {
               ['/api/team/[token]/check-out', 'POST', 'Record job end + GPS + calculate pay + create referral commission'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Finance (7)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Finance (7)</h2>
             <T headers={['Endpoint', 'Method', 'Purpose']} rows={[
               ['/api/finance/summary', 'GET', 'Revenue, expenses, profit summary'],
               ['/api/finance/pending', 'GET', 'Pending payments list'],
@@ -580,7 +580,7 @@ export default function DocsPage() {
               ['/api/finance/backfill', 'POST', 'Backfill historical financial data'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Referral Program (4)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Referral Program (4)</h2>
             <T headers={['Endpoint', 'Methods', 'Purpose']} rows={[
               ['/api/referrers', 'GET, POST, PUT', 'Referrer CRUD (public lookup by code/email)'],
               ['/api/referral-commissions', 'GET, POST, PUT', 'Commission management + mark paid'],
@@ -588,7 +588,7 @@ export default function DocsPage() {
               ['/api/client-analytics', 'GET', 'LTV, churn, retention, at-risk stats'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Lead Tracking (4)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Lead Tracking (4)</h2>
             <T headers={['Endpoint', 'Method', 'Purpose']} rows={[
               ['/api/track', 'POST', 'Tracking pixel — public (visits, CTAs, scroll, time)'],
               ['/api/leads', 'GET', 'Lead analytics by domain (protected)'],
@@ -596,7 +596,7 @@ export default function DocsPage() {
               ['/api/domain-notes', 'GET, PUT', 'Notes per domain'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Cron Jobs (4) — CRON_SECRET</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Cron Jobs (4) — CRON_SECRET</h2>
             <T headers={['Endpoint', 'Schedule', 'Purpose']} rows={[
               ['/api/cron/reminders', 'Every hour', '7/3/1-day and 2-hour reminders (email+SMS+push) + thank-you emails + pending booking alerts (8am/2pm ET)'],
               ['/api/cron/daily-summary', 'Midnight UTC', 'Email + SMS cleaners tomorrow\'s jobs + recurring booking expiry warnings'],
@@ -604,13 +604,13 @@ export default function DocsPage() {
               ['/api/cron/health-check', 'Periodic', 'Checks Supabase connectivity, error spikes, critical env vars — alerts admin'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Webhooks & Push (2)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Webhooks & Push (2)</h2>
             <T headers={['Endpoint', 'Method', 'Purpose']} rows={[
               ['/api/webhook/telnyx', 'POST', 'Inbound SMS handler — routes to Selenas chatbot (new) or existing client handler, delivery status updates, STOP/START consent'],
               ['/api/push/subscribe', 'POST, DELETE', 'Web push subscription management (admin/cleaner/client roles)'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Other (10)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Other (10)</h2>
             <T headers={['Endpoint', 'Method', 'Purpose']} rows={[
               ['/api/dashboard', 'GET', 'Dashboard stats (protected)'],
               ['/api/notifications', 'GET, POST, PUT', 'Notification list + create + mark read (with push)'],
@@ -628,7 +628,7 @@ export default function DocsPage() {
 
         {s === 'components' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Components (13)</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Components (13)</h1>
             <T headers={['Component', 'File', 'Purpose']} rows={[
               ['DashboardHeader', 'DashboardHeader.tsx', 'Main nav with all dashboard links + notification bell + mobile hamburger menu'],
               ['AdminHeader', 'AdminHeader.tsx', 'Alternative header component'],
@@ -649,7 +649,7 @@ export default function DocsPage() {
 
         {s === 'lib' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Library Files (16)</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Library Files (16)</h1>
             <T headers={['File', 'Purpose', 'Key Exports']} rows={[
               ['supabase.ts', 'Supabase client (lazy-init admin via Proxy)', 'supabase, supabaseAdmin'],
               ['auth.ts', 'Auth utilities (HMAC-SHA256 sessions)', 'protectAdminAPI, protectCronAPI, protectClientAPI, isAdminAuthenticated'],
@@ -673,12 +673,12 @@ export default function DocsPage() {
 
         {s === 'security' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Security</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Security</h1>
             <Card title="" accent="green">
               <p className="font-semibold">All admin APIs are protected (as of Feb 2026)</p>
             </Card>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Authentication Layers</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Authentication Layers</h2>
             <T headers={['Layer', 'Method', 'Protects']} rows={[
               ['Proxy (middleware)', 'Cookie check', '/admin/* pages'],
               ['protectAdminAPI()', 'Cookie check', 'All admin API routes'],
@@ -687,7 +687,7 @@ export default function DocsPage() {
               ['Client auth', 'SMS verification code', 'Client portal actions'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">API Protection Status</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">API Protection Status</h2>
             <T headers={['Route', 'Status', 'Access']} rows={[
               ['/api/bookings', 'Protected', 'Admin only'],
               ['/api/clients', 'Protected', 'Admin only'],
@@ -708,7 +708,7 @@ export default function DocsPage() {
               ['/api/errors', 'Public', 'Client-side error reporting (filters transient errors)'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Login Security</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Login Security</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Rate limiting:</strong> 5 attempts per 5 minutes per IP</li>
               <li><strong>Cookies:</strong> httpOnly, secure, sameSite strict, 24h expiry</li>
@@ -719,20 +719,20 @@ export default function DocsPage() {
 
         {s === 'selenas' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Selenas AI Chatbot</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Selenas AI Chatbot</h1>
             <Card title="" accent="blue">
               <p><strong>Character:</strong> Selenas, 47, from Queens. Married to Carlos. Grammy energy but hip. 20+ years cleaning. Bilingual — naturally drops Spanglish.</p>
               <p><strong>Architecture:</strong> Deterministic state machine — no LLM, no inference costs, no hallucination. Every response is hand-written.</p>
               <p><strong>Phone:</strong> +1 (888) 316-4019 via Telnyx</p>
             </Card>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Two Conversation Paths</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Two Conversation Paths</h2>
             <T headers={['Path', 'Who', 'How It Works']} rows={[
               ['New Prospects', 'Unknown phone numbers', '7-state sales funnel — collects location, service type, bedrooms, bathrooms, pricing choice, then sends booking form link'],
               ['Existing Clients', 'Phone matches active client', 'Regex-based intent matching — schedule check, reschedule, cancel, book again, complaint, thanks, and more'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">New Prospect Flow (State Machine)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">New Prospect Flow (State Machine)</h2>
             <T headers={['State', 'Selenas Asks', 'What She Collects']} rows={[
               ['welcome', '"What part of the city are you in?"', 'Initial greeting'],
               ['ask_location', '"What service do you need? 1-Regular 2-Deep 3-Move 4-Emergency"', 'Neighborhood/area'],
@@ -743,7 +743,7 @@ export default function DocsPage() {
               ['form_sent', 'Conversation complete', 'Booking form: thefloridamaid.com/book/collect?src=sms-chatbot&convo_id={id}'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Existing Client Intents</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Existing Client Intents</h2>
             <T headers={['Intent', 'Example Input', 'What Selenas Does']} rows={[
               ['Schedule check', '"when is my next clean"', 'Shows date, time, service type, cleaner name'],
               ['Reschedule', '"can I change my time"', 'Acknowledges current booking, asks for new preference'],
@@ -757,7 +757,7 @@ export default function DocsPage() {
               ['Bot question', '"are you a bot"', '"Ha yes I\'m real! I\'m Selenas, I run things here..."'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Knowledge Base (12 Topics)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Knowledge Base (12 Topics)</h2>
             <T headers={['Topic', 'Key Info']} rows={[
               ['Pricing', '$49/hr (client supplies), $65/hr (company supplies, normally $75), $100/hr emergency, 2hr minimum'],
               ['Services', 'Regular, deep, move in/out, post-construction, Airbnb turnovers, same-day emergency'],
@@ -773,7 +773,7 @@ export default function DocsPage() {
               ['Deep clean', 'Inside oven, behind fridge, baseboards, ceiling fans, cabinets, ~3 hours'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Smart Features</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Smart Features</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Stale conversation timeout</strong> — Conversations expire after 4 hours of inactivity</li>
               <li><strong>Knowledge at any state</strong> — Questions answered mid-flow without breaking the state machine (appends a flow nudge to guide back)</li>
@@ -784,7 +784,7 @@ export default function DocsPage() {
               <li><strong>Booking context</strong> — Fetches upcoming + last completed booking for existing clients in parallel</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Limitations</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Limitations</h2>
             <ul className="list-disc pl-6 space-y-1 text-gray-700 mb-6">
               <li>No actual booking creation — sends form link, booking completed via web form</li>
               <li>No actual rescheduling/cancellation execution — acknowledges intent, directs to action</li>
@@ -797,14 +797,14 @@ export default function DocsPage() {
 
         {s === 'sms' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">SMS System</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">SMS System</h1>
             <Card title="" accent="blue">
               <p><strong>Provider:</strong> Telnyx</p>
               <p><strong>From:</strong> +1 (888) 316-4019 (TELNYX_FROM_NUMBER)</p>
               <p><strong>Consent model:</strong> Opt-out (default true). Chatbot messages skip consent check.</p>
             </Card>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">SMS Delivery (sms.ts)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">SMS Delivery (sms.ts)</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Retry logic</strong> — 3 attempts with exponential backoff (1s, 2s, 4s delays)</li>
               <li><strong>Validation errors</strong> (400/422) are NOT retried</li>
@@ -813,7 +813,7 @@ export default function DocsPage() {
               <li><strong>Consent check</strong> — Checks sms_consent before sending (skipConsent for chatbot messages)</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Telnyx Webhook (/api/webhook/telnyx)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Telnyx Webhook (/api/webhook/telnyx)</h2>
             <T headers={['Event', 'Action']} rows={[
               ['message.sent / message.delivered', 'Updates sms_logs status'],
               ['message.failed', 'Updates sms_logs status to "failed"'],
@@ -823,7 +823,7 @@ export default function DocsPage() {
               ['Inbound from unknown number', 'Routes to Selenas chatbot (new prospect flow), fallback: notifies admin if error'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">SMS Templates (sms-templates.ts)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">SMS Templates (sms-templates.ts)</h2>
             <p className="text-gray-700 mb-4">All system-initiated SMS (not chatbot) include TCPA-compliant "Reply STOP to opt out" notice.</p>
             <T headers={['Category', 'Templates']} rows={[
               ['Client', 'Confirmation, reminder (standard + 2-hour), cancellation, reschedule, thank-you + 10% off, verification code'],
@@ -831,7 +831,7 @@ export default function DocsPage() {
               ['Admin', 'New client alert, new booking alert, new cleaner application, new referrer'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Transcript Viewer</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Transcript Viewer</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Component:</strong> ClientTranscript.tsx — chat-bubble style viewer in admin client detail panel</li>
               <li><strong>Outbound:</strong> Black background, white text, right-aligned</li>
@@ -844,9 +844,9 @@ export default function DocsPage() {
 
         {s === 'dashboard' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Dashboard Home Features</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Dashboard Home Features</h1>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Revenue Analytics</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Revenue Analytics</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Today/Week/Month collected</strong> — Completed + paid jobs</li>
               <li><strong>Amount owed</strong> — Completed but unpaid jobs</li>
@@ -855,7 +855,7 @@ export default function DocsPage() {
               <li><strong>Click-through modals</strong> — View job details for any metric</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Overview Statistics</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Overview Statistics</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               <Card title="Scheduled Jobs" accent="blue"><p>Upcoming bookings</p></Card>
               <Card title="Completed" accent="green"><p>Last 30 days</p></Card>
@@ -863,14 +863,14 @@ export default function DocsPage() {
               <Card title="New Clients" accent="purple"><p>This month</p></Card>
             </div>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Job Feeds</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Job Feeds</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Today's jobs</strong> — Current day schedule</li>
               <li><strong>Upcoming jobs</strong> — Next 14 days</li>
               <li><strong>Job details</strong> — Client name, service type, cleaner, status</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Interactive Job Map</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Interactive Job Map</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li>Real-time map view of all job locations</li>
               <li>Filter by cleaner, status, time range</li>
@@ -882,9 +882,9 @@ export default function DocsPage() {
 
         {s === 'bookings' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Booking System</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Booking System</h1>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Booking Creation</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Booking Creation</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Client search</strong> — Auto-complete existing clients</li>
               <li><strong>New client inline</strong> — Create client during booking</li>
@@ -896,7 +896,7 @@ export default function DocsPage() {
               <li><strong>Emergency broadcast</strong> — Send to all cleaners, first to claim gets it</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Pending Booking Approval</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Pending Booking Approval</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Public bookings</strong> — All bookings from /book/new are created as "pending"</li>
               <li><strong>Red pending section</strong> — Pending bookings shown at top of bookings page with red styling</li>
@@ -906,7 +906,7 @@ export default function DocsPage() {
               <li><strong>Pending reminders</strong> — Cron sends admin reminders at 8am and 2pm ET for unresolved pending bookings</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Booking Edit Panel</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Booking Edit Panel</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Client info</strong> — Address, phone with Call/Text buttons</li>
               <li><strong>DNS warning</strong> — Red banner if client is flagged Do Not Service</li>
@@ -922,7 +922,7 @@ export default function DocsPage() {
               <li><strong>Cancellation</strong> — Single or entire series, hard delete for cancelled bookings</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Recurring Bookings</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Recurring Bookings</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li>Weekly, biweekly, monthly frequencies</li>
               <li>End options: never, after X occurrences, on specific date</li>
@@ -931,7 +931,7 @@ export default function DocsPage() {
               <li>Time shift applied to entire series</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Booking Statuses</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Booking Statuses</h2>
             <T headers={['Status', 'Color', 'Description']} rows={[
               ['Pending', 'Red', 'New request from client — awaiting admin approval'],
               ['Scheduled', 'Blue', 'Confirmed by admin — cleaner assigned, emails sent'],
@@ -940,7 +940,7 @@ export default function DocsPage() {
               ['Cancelled', 'Gray', 'Cancelled by admin — cancellation emails sent'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Check-In / Check-Out</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Check-In / Check-Out</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Cleaner GPS check-in</strong> — Records location via Radar.io when cleaner starts job</li>
               <li><strong>Cleaner GPS check-out</strong> — Records location, calculates hours (rounded up to nearest half-hour), sets cleaner pay ($25/hr × actual_hours)</li>
@@ -949,7 +949,7 @@ export default function DocsPage() {
               <li><strong>Half-hour rounding</strong> — Math.ceil(hours × 2) / 2 — always rounds up</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Search & Filter</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Search & Filter</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li>Full-text search (client name, phone, address, cleaner)</li>
               <li>Filter by status (including pending), service type, cleaner, date range</li>
@@ -960,9 +960,9 @@ export default function DocsPage() {
 
         {s === 'calendar' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Calendar</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Calendar</h1>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">FullCalendar Features</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">FullCalendar Features</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Views</strong> — Month, week, day switching</li>
               <li><strong>Color-coded</strong> — Each team member has unique color</li>
@@ -973,7 +973,7 @@ export default function DocsPage() {
               <li><strong>Current month only</strong> — No extra days from adjacent months</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Filtering</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Filtering</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li>Filter by team member (dropdown)</li>
               <li>Status checkboxes: pending, scheduled, completed, cancelled</li>
@@ -981,16 +981,16 @@ export default function DocsPage() {
               <li>Color legend showing team member assignments</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Quick Stats</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Quick Stats</h2>
             <p className="text-gray-700 mb-4">Inline counts at bottom: X scheduled, Y completed, Z total (filtered by selected cleaner)</p>
           </div>
         )}
 
         {s === 'clients' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Client Management</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Client Management</h1>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">8 Analytics Cards</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">8 Analytics Cards</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
               <Card title="Total" accent="gray"><p>All clients</p></Card>
               <Card title="New" accent="blue"><p>0 bookings yet</p></Card>
@@ -1002,7 +1002,7 @@ export default function DocsPage() {
               <Card title="Avg LTV" accent="gray"><p>Lifetime value</p></Card>
             </div>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Client List View</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Client List View</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Sort options</strong> — Newest, name A-Z, last booking, total spent, booking count</li>
               <li><strong>Search</strong> — Name, email, phone, or address</li>
@@ -1010,7 +1010,7 @@ export default function DocsPage() {
               <li><strong>Client row shows</strong> — Status badge, name, address, contact, dates, spending, referrer</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Client Edit Panel</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Client Edit Panel</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Stats bar</strong> — Bookings count, total spent, last booking date</li>
               <li><strong>Quick actions</strong> — Call, Text, Email buttons</li>
@@ -1022,7 +1022,7 @@ export default function DocsPage() {
               <li><strong>Activity Feed</strong> — Timeline of bookings, check-in/out (with GPS verification), payments (ClientActivityFeed component)</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Do Not Service (DNS)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Do Not Service (DNS)</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Admin toggle</strong> — Red switch in client edit panel to flag/unflag</li>
               <li><strong>DNS badge</strong> — Red "DNS" badge appears next to client name in table</li>
@@ -1033,7 +1033,7 @@ export default function DocsPage() {
               <li><strong>Booking panel warnings</strong> — Red banners in admin create/edit booking if client is DNS</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Client Status Definitions</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Client Status Definitions</h2>
             <T headers={['Status', 'Color', 'Definition']} rows={[
               ['New', 'Blue', 'No completed bookings yet'],
               ['Active', 'Green', 'Booked within last 45 days'],
@@ -1046,9 +1046,9 @@ export default function DocsPage() {
 
         {s === 'team' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Team Management</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Team Management</h1>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Team Member Features</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Team Member Features</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Drag-and-drop ordering</strong> — Reorder team members by priority</li>
               <li><strong>PIN generation</strong> — 4-6 digit auto-generated PINs</li>
@@ -1057,7 +1057,7 @@ export default function DocsPage() {
               <li><strong>Active/inactive</strong> — Archive without deleting</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Applications Tab</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Applications Tab</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Pending count badge</strong> — Shows new applications</li>
               <li><strong>Application details</strong> — Name, phone, email, experience, availability, notes</li>
@@ -1065,7 +1065,7 @@ export default function DocsPage() {
               <li><strong>Reject / Delete</strong> — Manage application status</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Team Portal</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Team Portal</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Bilingual</strong> — Full English/Spanish interface (TranslatedNotes component for cleaning instructions)</li>
               <li><strong>PIN login</strong> — No password needed</li>
@@ -1079,7 +1079,7 @@ export default function DocsPage() {
               <li><strong>Save to home screen</strong> — PWA-style instructions (iPhone + Android)</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Welcome Email</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Welcome Email</h2>
             <p className="text-gray-700 mb-4">New team members receive comprehensive bilingual email with:</p>
             <ul className="list-disc pl-6 space-y-1 text-gray-700 mb-6">
               <li>Portal URL and PIN</li>
@@ -1093,13 +1093,13 @@ export default function DocsPage() {
 
         {s === 'referrals' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Referral Program</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Referral Program</h1>
             <Card title="" accent="green">
               <p><strong>Commission Rate:</strong> 10% of completed service</p>
               <p><strong>Payout Methods:</strong> Zelle or Apple Cash (manual)</p>
             </Card>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">How It Works</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">How It Works</h2>
             <ol className="list-decimal pl-6 space-y-2 text-gray-700 mb-6">
               <li>Referrer signs up at <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm">/referral/signup</code></li>
               <li>Gets unique ref code and link: <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm">thefloridamaid.com/book?ref=CODE</code></li>
@@ -1110,14 +1110,14 @@ export default function DocsPage() {
               <li>Admin marks as paid in <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm">/admin/referrals</code></li>
             </ol>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Admin Dashboard — 3 Tabs</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Admin Dashboard — 3 Tabs</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Analytics</strong> — KPIs, 14-day click chart, top referrers leaderboard, recent activity</li>
               <li><strong>Payouts</strong> — Pending queue, mark paid (Zelle / Apple), payment history</li>
               <li><strong>Referrers</strong> — All referrers table, codes, earnings, copy link</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Referrer Portal</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Referrer Portal</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li>Login by email or ref code</li>
               <li>View referral link and copy button</li>
@@ -1130,13 +1130,13 @@ export default function DocsPage() {
 
         {s === 'leads' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Lead Tracking</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Lead Tracking</h1>
             <p className="text-gray-700 mb-4">View at <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm">/admin/leads</code></p>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">99 EMD Domains</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">99 EMD Domains</h2>
             <p className="text-gray-700 mb-4">Each NYC neighborhood has an Exact Match Domain pointing to a landing page with tracking.</p>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">What Gets Tracked</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">What Gets Tracked</h2>
             <ul className="list-disc pl-6 space-y-1 text-gray-700 mb-6">
               <li>Page visits (with referrer source, device type)</li>
               <li>CTA clicks — call, text, book, directions</li>
@@ -1146,7 +1146,7 @@ export default function DocsPage() {
               <li>Referral code capture</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Dashboard Features</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Dashboard Features</h2>
             <ul className="list-disc pl-6 space-y-1 text-gray-700 mb-6">
               <li><strong>KPI Row</strong> — Today visits, this week, this month, annual, total visits, total calls, total texts, conversion rate</li>
               <li><strong>Traffic Sources</strong> — Top 20 referrers in 2-column layout (Google, Bing, ChatGPT, Claude, DuckDuckGo, etc.) with percentage bars</li>
@@ -1156,7 +1156,7 @@ export default function DocsPage() {
               <li><strong>Date Ranges</strong> — Today, 7d, 14d, 30d, 90d</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Revenue Attribution</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Revenue Attribution</h2>
             <ol className="list-decimal pl-6 space-y-1 text-gray-700 mb-6">
               <li>Extract zip code from client address</li>
               <li>Match zip to neighborhood</li>
@@ -1168,10 +1168,10 @@ export default function DocsPage() {
 
         {s === 'finance' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Finance</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Finance</h1>
             <p className="text-gray-700 mb-4">View at <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm">/admin/finance</code></p>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Revenue Tracking</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Revenue Tracking</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Summary view</strong> — Total revenue, expenses, profit by period</li>
               <li><strong>Pending payments</strong> — Completed jobs not yet paid</li>
@@ -1179,21 +1179,21 @@ export default function DocsPage() {
               <li><strong>Payment methods</strong> — Track Zelle vs Apple Pay</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Expense Management</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Expense Management</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Add expenses</strong> — Amount, category, date, description</li>
               <li><strong>Receipt upload</strong> — Attach receipts to expenses</li>
               <li><strong>Category tracking</strong> — Supplies, equipment, transport, etc.</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Bank Statements</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Bank Statements</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Upload statements</strong> — PDF/CSV to Supabase storage</li>
               <li><strong>Reconciliation</strong> — Match payments to bookings</li>
               <li><strong>History</strong> — View all uploaded statements</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Export</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Export</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>CSV export</strong> — Download financial data</li>
               <li><strong>Date range selection</strong> — Custom period exports</li>
@@ -1204,16 +1204,16 @@ export default function DocsPage() {
 
         {s === 'portals' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">User Portals</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">User Portals</h1>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Admin Dashboard</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Admin Dashboard</h2>
             <Card title="" accent="gray">
               <p><strong>URL:</strong> /admin</p>
               <p><strong>Login:</strong> /login (password from ADMIN_PASSWORD env var)</p>
               <p><strong>Features:</strong> 11 sub-pages — overview, bookings, calendar, clients, team, finance, websites, leads, referrals, settings, docs</p>
             </Card>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Client Portal</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Client Portal</h2>
             <Card title="" accent="gray">
               <p><strong>URL:</strong> /book</p>
               <p><strong>Login:</strong> Email → SMS verification code</p>
@@ -1223,7 +1223,7 @@ export default function DocsPage() {
               <p><strong>Reschedule rules:</strong> One-time bookings cannot reschedule. Recurring clients need 7+ days notice</p>
             </Card>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Client Info Collection</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Client Info Collection</h2>
             <Card title="" accent="gray">
               <p><strong>URL:</strong> /book/collect</p>
               <p><strong>No login required</strong> — send to clients while on the phone</p>
@@ -1232,7 +1232,7 @@ export default function DocsPage() {
               <p><strong>On submit:</strong> Creates client, checks for duplicate phone, auto-links referrer, sends admin email + SMS</p>
             </Card>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Team Portal</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Team Portal</h2>
             <Card title="" accent="gray">
               <p><strong>URL:</strong> /team</p>
               <p><strong>Login:</strong> 4-6 digit PIN</p>
@@ -1241,14 +1241,14 @@ export default function DocsPage() {
               <p><strong>Token access:</strong> /team/[token] for direct job links (24h expiry)</p>
             </Card>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Referrer Portal</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Referrer Portal</h2>
             <Card title="" accent="gray">
               <p><strong>Signup:</strong> /referral/signup</p>
               <p><strong>Dashboard:</strong> /referral (login by email or ref code)</p>
               <p><strong>Features:</strong> View earnings, copy referral link, analytics, commission history, payout preferences</p>
             </Card>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Team Application</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Team Application</h2>
             <Card title="" accent="gray">
               <p><strong>URL:</strong> /apply</p>
               <p><strong>Bilingual:</strong> Full English/Spanish form</p>
@@ -1260,7 +1260,7 @@ export default function DocsPage() {
 
         {s === 'emails' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Email System</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Email System</h1>
             <Card title="" accent="gray">
               <p><strong>Email Provider:</strong> Resend (from: hi@thefloridamaid.com)</p>
               <p><strong>SMS Provider:</strong> Telnyx (from: +18883164019) — see SMS System section for full details</p>
@@ -1268,7 +1268,7 @@ export default function DocsPage() {
               <p><strong>Email Templates:</strong> 15+ HTML templates in email-templates.ts (Outlook/MSO compatible)</p>
             </Card>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Email Types (18+)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Email Types (18+)</h2>
             <T headers={['Email', 'To', 'When']} rows={[
               ['Booking Confirmation', 'Client', 'When admin approves pending → scheduled (includes cleaner name, prep tips, payment info, supplies, tipping, cancellation policy, portal link)'],
               ['Cleaner Assignment', 'Cleaner', 'When admin approves pending → scheduled (bilingual EN/ES)'],
@@ -1293,7 +1293,7 @@ export default function DocsPage() {
               ['Resend Confirmation', 'Client', 'Manual resend from booking edit'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Email Features</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Email Features</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Deduplication</strong> — email_logs table prevents duplicate sends</li>
               <li><strong>Responsive design</strong> — Mobile-friendly HTML templates</li>
@@ -1304,7 +1304,7 @@ export default function DocsPage() {
               <li><strong>Resend button</strong> — Re-send confirmation from booking edit modal</li>
             </ul>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Confirmation Email Details</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Confirmation Email Details</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Welcome message</strong> — Personalized greeting with assigned cleaner name</li>
               <li><strong>Appointment details</strong> — Date, time, address, service type, cleaner, price</li>
@@ -1320,7 +1320,7 @@ export default function DocsPage() {
 
         {s === 'cron' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Cron Jobs</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Cron Jobs</h1>
             <Card title="" accent="yellow">
               <p><strong>All cron routes require CRON_SECRET header</strong></p>
             </Card>
@@ -1332,7 +1332,7 @@ export default function DocsPage() {
               ['/api/cron/health-check', '*/15 * * * *', 'Every 15 min', 'Supabase connectivity, error spike detection (5+ errors/hr), critical env var check'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">vercel.json</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">vercel.json</h2>
             <pre className="bg-gray-900 text-gray-300 p-4 rounded-lg text-sm overflow-x-auto mb-6">
 {`{
   "crons": [
@@ -1344,7 +1344,7 @@ export default function DocsPage() {
 }`}
             </pre>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Manual Triggers</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Manual Triggers</h2>
             <p className="text-gray-700 mb-4">All cron jobs can be manually triggered from Settings → Tools:</p>
             <ul className="list-disc pl-6 space-y-1 text-gray-700 mb-6">
               <li>Run Daily Summary Now</li>
@@ -1356,10 +1356,10 @@ export default function DocsPage() {
 
         {s === 'notifications' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Notification System</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Notification System</h1>
             <p className="text-gray-700 mb-4">Bell icon in DashboardHeader with unread count badge. Click to see dropdown with mark-as-read.</p>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">20+ Notification Types</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">20+ Notification Types</h2>
             <T headers={['Type', 'Color', 'Trigger']} rows={[
               ['new_booking', 'Blue', 'New booking created'],
               ['booking_cancelled', 'Red', 'Booking cancelled'],
@@ -1388,10 +1388,10 @@ export default function DocsPage() {
 
         {s === 'settings' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Settings</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Settings</h1>
             <p className="text-gray-700 mb-4">Route: <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm">/admin/settings</code></p>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">6 Tabs</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">6 Tabs</h2>
             <T headers={['Tab', 'Contents']} rows={[
               ['Business', 'Business name, phone, email, website, admin notification email, from address'],
               ['Services & Pricing', 'Service types (Standard, Deep, Move In/Out, Post Construction), rates ($49/$65/$75), payment methods (Cash, Zelle, Venmo, Apple Pay, Check)'],
@@ -1401,7 +1401,7 @@ export default function DocsPage() {
               ['Tools', 'Manual triggers: Daily Summary, Reminders, Backup, Test Emails. System info: Environment, Platform, Database, Email Provider'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Tools Section Features</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Tools Section Features</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Run Daily Summary</strong> — Manually send tomorrow's jobs to all cleaners</li>
               <li><strong>Run Reminders</strong> — Manually trigger reminder check</li>
@@ -1413,8 +1413,8 @@ export default function DocsPage() {
 
         {s === 'env' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Environment Variables</h1>
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Core</h2>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Environment Variables</h1>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Core</h2>
             <T headers={['Variable', 'Required', 'Purpose']} rows={[
               ['NEXT_PUBLIC_SUPABASE_URL', 'Yes', 'Supabase project URL'],
               ['NEXT_PUBLIC_SUPABASE_ANON_KEY', 'Yes', 'Supabase public anon key'],
@@ -1425,21 +1425,21 @@ export default function DocsPage() {
               ['ADMIN_EMAIL', 'Yes', 'Email for backups, test emails, error alerts'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">SMS (Telnyx)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">SMS (Telnyx)</h2>
             <T headers={['Variable', 'Required', 'Purpose']} rows={[
               ['TELNYX_API_KEY', 'Yes', 'Telnyx API key for sending SMS'],
               ['TELNYX_FROM_NUMBER', 'Optional', 'SMS sender number (default: +18883164019)'],
               ['ADMIN_PHONE', 'Optional', 'Admin phone for SMS alerts (new bookings, new clients, etc.)'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Push Notifications (VAPID)</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Push Notifications (VAPID)</h2>
             <T headers={['Variable', 'Required', 'Purpose']} rows={[
               ['NEXT_PUBLIC_VAPID_PUBLIC_KEY', 'Yes', 'VAPID public key for push subscription'],
               ['VAPID_PRIVATE_KEY', 'Yes', 'VAPID private key for sending push'],
               ['VAPID_EMAIL', 'Optional', 'Contact email for VAPID (mailto:)'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Other</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Other</h2>
             <T headers={['Variable', 'Required', 'Purpose']} rows={[
               ['RADAR_API_KEY', 'Optional', 'Radar.io geocoding + address autocomplete (server-side)'],
               ['NEXT_PUBLIC_RADAR_API_KEY', 'Optional', 'Radar.io address autocomplete (client-side)'],
@@ -1449,9 +1449,9 @@ export default function DocsPage() {
 
         {s === 'deployment' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Deployment</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Deployment</h1>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Deploy Process</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Deploy Process</h2>
             <pre className="bg-gray-900 text-gray-300 p-4 rounded-lg text-sm overflow-x-auto mb-6">
 {`# 1. Build locally
 npm run build
@@ -1464,15 +1464,15 @@ vercel --prod
 git push origin main`}
             </pre>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Links</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Links</h2>
             <T headers={['Service', 'URL']} rows={[
               ['Live Site', 'www.thefloridamaid.com'],
-              ['Vercel', 'vercel.com/jeff-tuckers-projects/nycmaid'],
-              ['GitHub', 'github.com/thenycmaid/nycmaid'],
+              ['Vercel', 'vercel.com/thefloridamaids-projects/thefloridamaid'],
+              ['GitHub', 'github.com/thefloridamaid/new'],
               ['Supabase', 'supabase.com/dashboard/project/ioppmvchszymwswtwsze'],
             ]} />
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Important Notes</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Important Notes</h2>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li><strong>Next.js 16</strong> uses <code className="bg-gray-100 px-1 rounded">middleware.ts</code> for auth + security headers (HMAC-SHA256 session verification, CSP, HSTS, X-Frame-Options)</li>
               <li><strong>Cron jobs</strong> configured in vercel.json</li>
@@ -1483,7 +1483,7 @@ git push origin main`}
 
         {s === 'troubleshooting' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#D4540A] mb-6">Troubleshooting</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Troubleshooting</h1>
 
             <div className="space-y-4 mb-6">
               <Card title="Emails Going to Spam" accent="red">
@@ -1518,7 +1518,7 @@ git push origin main`}
               </Card>
             </div>
 
-            <h2 className="text-lg font-semibold text-[#D4540A] mt-8 mb-3">Debug Commands</h2>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Debug Commands</h2>
             <pre className="bg-gray-900 text-gray-300 p-4 rounded-lg text-sm overflow-x-auto mb-6">
 {`# Check Vercel logs
 vercel logs --follow

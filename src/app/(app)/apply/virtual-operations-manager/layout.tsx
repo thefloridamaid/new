@@ -21,8 +21,8 @@ export const metadata: Metadata = {
       'Apply for the Operations Manager (Virtual) role. $500–$750/week to start. Work from home. Part-time to start, 7 days/week.',
   },
   other: {
-    'geo.region': 'US-NY',
-    'geo.placename': 'New York',
+    'geo.region': 'US-FL',
+    'geo.placename': 'Orlando',
   },
 }
 

@@ -23,8 +23,7 @@ function getAreaName(areaSlug: string): string {
 }
 
 function getStateAbbr(areaSlug: string): string {
-  if (areaSlug === 'new-jersey') return 'NJ'
-  return 'NY'
+  return 'FL'
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -33,16 +32,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!n) return {}
 
   const title = `🧹 Cleaning Jobs in ${n.name} — Starting $30/hr + Bonuses | Trabajo de Limpieza`
-  const description = `💰 Now hiring cleaners in ${n.name}! Starting $30/hr + bonus programs. Zelle in <30 min. 100% tips. Open 24/7 🇺🇸🇪🇸 | Contratando en ${n.name} — desde $30/hr + bonos. (833) 352-6243`
+  const description = `💰 Now hiring cleaners in ${n.name}! Starting $30/hr + bonus programs. Zelle in <30 min. 100% tips. Open 24/7 🇺🇸🇪🇸 | Contratando en ${n.name} — desde $30/hr + bonos. (954) 710-3636`
 
   return {
     title,
     description,
-    alternates: { canonical: `https://www.thefloridamaid.com/available-nyc-maid-jobs/${n.slug}` },
+    alternates: { canonical: `https://www.thefloridamaid.com/available-florida-maid-jobs/${n.slug}` },
     openGraph: {
       title: `Cleaning Jobs in ${n.name} | The Florida Maid`,
       description,
-      url: `https://www.thefloridamaid.com/available-nyc-maid-jobs/${n.slug}`,
+      url: `https://www.thefloridamaid.com/available-florida-maid-jobs/${n.slug}`,
     },
   }
 }
@@ -61,7 +60,7 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
     '@context': 'https://schema.org',
     '@type': 'JobPosting',
     title: `Professional House Cleaner — ${n.name}`,
-    description: `Now hiring experienced house cleaners in ${n.name}, ${areaName}. Starting at $30/hr paid via Zelle within 30 minutes of every completed job. Bonus programs for retention, client satisfaction, and five-star reviews. 100% of tips are yours. Flexible schedule 24/7. Full bilingual team portal (English/Spanish) with GPS, job details, and payment tracking. Apply at thefloridamaid.com/apply or text (833) 352-6243.`,
+    description: `Now hiring experienced house cleaners in ${n.name}, ${areaName}. Starting at $30/hr paid via Zelle within 30 minutes of every completed job. Bonus programs for retention, client satisfaction, and five-star reviews. 100% of tips are yours. Flexible schedule 24/7. Full bilingual team portal (English/Spanish) with GPS, job details, and payment tracking. Apply at thefloridamaid.com/apply or text (954) 710-3636.`,
     identifier: {
       '@type': 'PropertyValue',
       name: 'The Florida Maid',
@@ -121,14 +120,14 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
         localBusinessSchema(),
         breadcrumbSchema([
           { name: 'Home', url: 'https://www.thefloridamaid.com' },
-          { name: 'Careers', url: 'https://www.thefloridamaid.com/available-nyc-maid-jobs' },
-          { name: `Jobs in ${n.name}`, url: `https://www.thefloridamaid.com/available-nyc-maid-jobs/${n.slug}` },
+          { name: 'Careers', url: 'https://www.thefloridamaid.com/available-florida-maid-jobs' },
+          { name: `Jobs in ${n.name}`, url: `https://www.thefloridamaid.com/available-florida-maid-jobs/${n.slug}` },
         ]),
         jobSchema,
       ]} />
 
       {/* Hero */}
-      <section className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] py-16 md:py-24">
+      <section className="bg-gradient-to-b from-[#CC6222] to-[#CC6222] py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-4">
           <p className="text-[#34D399] text-sm font-semibold tracking-[0.2em] uppercase mb-4">Now Hiring in {n.name}</p>
           <div className="flex items-center gap-3 mb-4">
@@ -146,11 +145,11 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
             Necesitamos limpiadores experimentados en {n.name}. Trae tus habilidades y suministros — nosotros traemos clientes estables, desde $30/hr por Zelle en menos de 30 minutos, programas de bonos, y el 100% de las propinas son tuyas.
           </p>
           <div className="flex flex-col sm:flex-row items-start gap-5 mt-8">
-            <Link href="/apply" className="bg-[#34D399] text-[#D4540A] px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
+            <Link href="/apply" target="_blank" className="bg-[#34D399] text-white px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
               Apply Now / Aplica Ahora
             </Link>
-            <a href="sms:8333526243" className="text-white/70 font-medium text-lg py-4 hover:text-white transition-colors underline underline-offset-4">
-              or Text (833) 352-6243
+            <a href="sms:9547103636" className="text-white/70 font-medium text-lg py-4 hover:text-white transition-colors underline underline-offset-4">
+              or Text (954) 710-3636
             </a>
           </div>
         </div>
@@ -161,24 +160,24 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
         <div className="max-w-5xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
             <div>
-              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide">$30/hr</p>
-              <p className="text-[#D4540A]/60 text-xs font-medium">Every Job</p>
+              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide">$30/hr</p>
+              <p className="text-[#CC6222]/60 text-xs font-medium">Every Job</p>
             </div>
             <div>
-              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide">&lt;30 Min</p>
-              <p className="text-[#D4540A]/60 text-xs font-medium">Zelle Pay</p>
+              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide">&lt;30 Min</p>
+              <p className="text-[#CC6222]/60 text-xs font-medium">Zelle Pay</p>
             </div>
             <div>
-              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide">100%</p>
-              <p className="text-[#D4540A]/60 text-xs font-medium">Tips Are Yours</p>
+              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide">100%</p>
+              <p className="text-[#CC6222]/60 text-xs font-medium">Tips Are Yours</p>
             </div>
             <div>
-              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide">Flexible</p>
-              <p className="text-[#D4540A]/60 text-xs font-medium">Your Schedule</p>
+              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide">Flexible</p>
+              <p className="text-[#CC6222]/60 text-xs font-medium">Your Schedule</p>
             </div>
             <div>
-              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide">Bilingue</p>
-              <p className="text-[#D4540A]/60 text-xs font-medium">EN / ES Portal</p>
+              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide">Bilingue</p>
+              <p className="text-[#CC6222]/60 text-xs font-medium">EN / ES Portal</p>
             </div>
           </div>
         </div>
@@ -186,13 +185,13 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
 
       <div className="max-w-5xl mx-auto px-4 py-12">
         <Breadcrumbs items={[
-          { name: 'Careers', href: '/available-nyc-maid-jobs' },
-          { name: `Jobs in ${n.name}`, href: `/available-nyc-maid-jobs/${n.slug}` },
+          { name: 'Careers', href: '/available-florida-maid-jobs' },
+          { name: `Jobs in ${n.name}`, href: `/available-florida-maid-jobs/${n.slug}` },
         ]} />
 
         {/* About this neighborhood */}
         <section className="mb-16">
-          <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-4">Why Clean in {n.name}? / ¿Por Qué Limpiar en {n.name}?</h2>
+          <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide mb-4">Why Clean in {n.name}? / ¿Por Qué Limpiar en {n.name}?</h2>
           <p className="text-gray-600 text-lg mb-3">
             {n.name} is one of our busiest areas. Residents here have {n.housing_types.slice(0, 3).join(', ')}, and they need reliable, experienced cleaners they can trust. Cleaning in {n.name} means steady recurring clients, short commutes if you live nearby, and consistent work.
           </p>
@@ -207,7 +206,7 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
         {/* What we offer — bilingual */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           <div>
-            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">What You Get</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">What You Get</h2>
             <div className="space-y-3">
               {[
                 { icon: '💰', en: '$30/hr — paid via Zelle within 30 minutes of every completed job', es: '$30/hr — pagado por Zelle en menos de 30 minutos' },
@@ -231,7 +230,7 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
           </div>
 
           <div>
-            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Team Portal / Portal del Equipo</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">Team Portal / Portal del Equipo</h2>
             <p className="text-gray-600 text-sm mb-2">
               Every team member gets access to our full team portal — available in English and Spanish. Here&apos;s what you can do:
             </p>
@@ -249,7 +248,7 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
                 { feature: 'Claim available jobs', detail: 'When new jobs open up in your area, claim them directly from the portal', es: 'Reclama trabajos nuevos en tu área directamente' },
               ].map(item => (
                 <div key={item.feature}>
-                  <p className="font-semibold text-[#D4540A] text-sm">{item.feature}</p>
+                  <p className="font-semibold text-[#CC6222] text-sm">{item.feature}</p>
                   <p className="text-gray-500 text-xs">{item.detail}</p>
                   <p className="text-gray-400 text-xs italic">{item.es}</p>
                 </div>
@@ -259,7 +258,7 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
         </section>
 
         {/* Who we're looking for */}
-        <section className="bg-[#D4540A] rounded-xl p-8 md:p-10 mb-16">
+        <section className="bg-[#CC6222] rounded-xl p-8 md:p-10 mb-16">
           <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-white tracking-wide mb-2">Who We&apos;re Looking For / A Quién Buscamos</h2>
           <p className="text-white/50 text-sm mb-6">We need fully devoted team members who take pride in their work and treat every client&apos;s home like their own.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -284,39 +283,39 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
 
         {/* Earnings */}
         <section className="bg-[#34D399] rounded-xl p-8 md:p-10 mb-16">
-          <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-1">Potential Earnings in {n.name}</h2>
-          <p className="text-[#D4540A]/40 text-xs italic mb-6">Ganancias Potenciales en {n.name}</p>
+          <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-1">Potential Earnings in {n.name}</h2>
+          <p className="text-[#CC6222]/40 text-xs italic mb-6">Ganancias Potenciales en {n.name}</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             <div>
-              <p className="text-[#D4540A]/50 text-xs uppercase tracking-widest mb-1">Part-Time / Medio Tiempo</p>
-              <p className="font-bold text-[#D4540A] text-2xl">$375/week</p>
-              <p className="text-[#D4540A]/50 text-xs mt-1">5 jobs/week + tips / 5 trabajos/semana + propinas</p>
+              <p className="text-[#CC6222]/50 text-xs uppercase tracking-widest mb-1">Part-Time / Medio Tiempo</p>
+              <p className="font-bold text-[#CC6222] text-2xl">$375/week</p>
+              <p className="text-[#CC6222]/50 text-xs mt-1">5 jobs/week + tips / 5 trabajos/semana + propinas</p>
             </div>
             <div>
-              <p className="text-[#D4540A]/50 text-xs uppercase tracking-widest mb-1">Regular</p>
-              <p className="font-bold text-[#D4540A] text-2xl">$750/week</p>
-              <p className="text-[#D4540A]/50 text-xs mt-1">10 jobs/week + tips / 10 trabajos/semana + propinas</p>
+              <p className="text-[#CC6222]/50 text-xs uppercase tracking-widest mb-1">Regular</p>
+              <p className="font-bold text-[#CC6222] text-2xl">$750/week</p>
+              <p className="text-[#CC6222]/50 text-xs mt-1">10 jobs/week + tips / 10 trabajos/semana + propinas</p>
             </div>
             <div>
-              <p className="text-[#D4540A]/50 text-xs uppercase tracking-widest mb-1">Full-Time / Tiempo Completo</p>
-              <p className="font-bold text-[#D4540A] text-2xl">$1,350–$1,500/week</p>
-              <p className="text-[#D4540A]/50 text-xs mt-1">18–20 jobs/week + tips / 18–20 trabajos/semana + propinas</p>
+              <p className="text-[#CC6222]/50 text-xs uppercase tracking-widest mb-1">Full-Time / Tiempo Completo</p>
+              <p className="font-bold text-[#CC6222] text-2xl">$1,350–$1,500/week</p>
+              <p className="text-[#CC6222]/50 text-xs mt-1">18–20 jobs/week + tips / 18–20 trabajos/semana + propinas</p>
             </div>
           </div>
-          <p className="text-center text-[#D4540A]/50 text-xs mt-4">Based on average 2.5 hour job at $30/hr. 100% of tips go to you.</p>
-          <p className="text-center text-[#D4540A]/30 text-xs italic mt-1">Basado en trabajo promedio de 2.5 horas a $30/hr. 100% de las propinas son tuyas.</p>
+          <p className="text-center text-[#CC6222]/50 text-xs mt-4">Based on average 2.5 hour job at $30/hr. 100% of tips go to you.</p>
+          <p className="text-center text-[#CC6222]/30 text-xs italic mt-1">Basado en trabajo promedio de 2.5 horas a $30/hr. 100% de las propinas son tuyas.</p>
         </section>
 
         {/* Apply CTA */}
-        <section className="border-2 border-[#D4540A] rounded-xl p-8 md:p-10 mb-16 text-center">
-          <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-2">Ready to Start? / ¿Listo para Empezar?</h2>
+        <section className="border-2 border-[#CC6222] rounded-xl p-8 md:p-10 mb-16 text-center">
+          <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide mb-2">Ready to Start? / ¿Listo para Empezar?</h2>
           <p className="text-gray-600 mb-6">Apply in 2 minutes. We review applications within 24–48 hours.<br/>Aplica en 2 minutos. Revisamos solicitudes en 24–48 horas.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-            <Link href="/apply" className="bg-[#D4540A] text-white px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#D4540A]/90 transition-colors">
+            <Link href="/apply" target="_blank" className="bg-[#CC6222] text-white px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#CC6222]/90 transition-colors">
               Apply Now / Aplica Ahora
             </Link>
-            <a href="sms:8333526243" className="text-[#D4540A] font-semibold underline underline-offset-4 hover:no-underline">
-              Text (833) 352-6243
+            <a href="sms:9547103636" className="text-[#CC6222] font-semibold underline underline-offset-4 hover:no-underline">
+              Text (954) 710-3636
             </a>
           </div>
         </section>
@@ -324,10 +323,10 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
         {/* Nearby job openings */}
         {nearby.length > 0 && (
           <section className="mb-16">
-            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Also Hiring Nearby / También Contratando Cerca</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">Also Hiring Nearby / También Contratando Cerca</h2>
             <div className="flex flex-wrap gap-2">
               {nearby.map(nb => (
-                <Link key={nb.slug} href={`/available-nyc-maid-jobs/${nb.slug}`} className="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-[#34D399]/20 hover:text-[#D4540A] transition-colors">
+                <Link key={nb.slug} href={`/available-florida-maid-jobs/${nb.slug}`} className="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-[#34D399]/20 hover:text-[#CC6222] transition-colors">
                   {nb.name}
                 </Link>
               ))}
@@ -338,10 +337,10 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
         {/* More jobs in the area */}
         {sameArea.length > 0 && (
           <section className="mb-16">
-            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">More Jobs in {areaName} / Más Trabajos en {areaName}</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">More Jobs in {areaName} / Más Trabajos en {areaName}</h2>
             <div className="flex flex-wrap gap-2">
               {sameArea.map(nb => (
-                <Link key={nb.slug} href={`/available-nyc-maid-jobs/${nb.slug}`} className="px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-[#34D399]/20 hover:text-[#D4540A] transition-colors">
+                <Link key={nb.slug} href={`/available-florida-maid-jobs/${nb.slug}`} className="px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-[#34D399]/20 hover:text-[#CC6222] transition-colors">
                   {nb.name}
                 </Link>
               ))}
@@ -350,7 +349,7 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
         )}
 
         <div className="text-center">
-          <Link href="/available-nyc-maid-jobs" className="text-[#D4540A] font-semibold hover:underline">&larr; View All Positions / Ver Todas las Posiciones</Link>
+          <Link href="/available-florida-maid-jobs" className="text-[#CC6222] font-semibold hover:underline">&larr; View All Positions / Ver Todas las Posiciones</Link>
         </div>
       </div>
     </>

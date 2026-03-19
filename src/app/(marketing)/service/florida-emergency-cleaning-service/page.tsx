@@ -13,7 +13,7 @@ const emergencyTypes = [
     name: 'Water Damage & Flooding',
     icon: '💧',
     isEmergency: true,
-    description: 'Burst pipes, overflowing fixtures, storm flooding, or water intrusion from adjacent apartments. Water damage gets exponentially worse every hour — mold can begin growing within 24–48 hours.',
+    description: 'Burst pipes, overflowing fixtures, storm flooding, or water intrusion from adjacent units. Water damage gets exponentially worse every hour — mold can begin growing within 24–48 hours.',
     whatToDo: [
       'Stop the water source if possible (shut off the valve under the sink or the main water shutoff)',
       'Turn off electricity in affected areas if water is near outlets',
@@ -45,7 +45,7 @@ const emergencyTypes = [
     whatNotToDo: [
       'Don\'t try to wipe soot off walls — smearing it into porous surfaces makes it permanent',
       'Don\'t use water on soot-covered surfaces — it creates a paste that stains',
-      'Don\'t stay in a smoke-damaged apartment — the particles are a serious respiratory hazard',
+      'Don\'t stay in a smoke-damaged home — the particles are a serious respiratory hazard',
     ],
   },
   {
@@ -71,7 +71,7 @@ const emergencyTypes = [
     name: 'Mold Discovery',
     icon: '🦠',
     isEmergency: false,
-    description: 'Finding mold in your apartment ranges from minor (surface mold on bathroom caulking) to serious (black mold behind walls). Small patches can be handled with cleaning. Large areas or mold behind walls require professional assessment.',
+    description: 'Finding mold in your home ranges from minor (surface mold on bathroom caulking) to serious (black mold behind walls). Small patches can be handled with cleaning. Large areas or mold behind walls require professional assessment.',
     whatToDo: [
       'Assess the size — if it\'s smaller than a 3×3 ft area, you can likely handle it yourself',
       'For small patches: spray with white vinegar or hydrogen peroxide, scrub with a stiff brush',
@@ -161,7 +161,7 @@ const emergencyTypes = [
 ]
 
 const process = [
-  { step: '1', title: 'Call Us', description: 'Call (833) 352-6243 and describe the situation. We\'ll ask what happened, when it happened, and the scope of damage. Be honest about severity — it helps us send the right team with the right equipment.' },
+  { step: '1', title: 'Call Us', description: 'Call (954) 710-3636 and describe the situation. We\'ll ask what happened, when it happened, and the scope of damage. Be honest about severity — it helps us send the right team with the right equipment.' },
   { step: '2', title: 'Assessment', description: 'We assess the situation — in person if possible, or by phone/video for faster response. We\'ll give you an honest estimate of time, cost, and what to expect. No surprises.' },
   { step: '3', title: 'Response', description: 'Our team arrives with professional-grade equipment — HEPA vacuums, industrial dehumidifiers, commercial cleaning agents, PPE, and specialized tools for the specific emergency type.' },
   { step: '4', title: 'Cleanup', description: 'Systematic cleanup following industry protocols. We document everything for your insurance claim. For water damage, we monitor moisture levels. For biohazard, we follow OSHA bloodborne pathogen standards.' },
@@ -169,26 +169,26 @@ const process = [
 ]
 
 const faqData = [
-  { q: 'How fast can you respond to an emergency?', a: 'We aim to respond within 2–4 hours for emergencies in Manhattan and within 4–6 hours for outer boroughs. Response time depends on the time of day, current team availability, and your location. For true emergencies (active flooding, biohazard), we prioritize same-day response.' },
+  { q: 'How fast can you respond to an emergency?', a: 'We aim to respond within 2–4 hours for emergencies in Miami-Dade and Broward and within 4–6 hours for surrounding areas. Response time depends on the time of day, current team availability, and your location. For true emergencies (active flooding, biohazard), we prioritize same-day response.' },
   { q: 'How much does emergency cleaning cost?', a: 'Emergency cleaning typically ranges from $500 to $2,000+ depending on the type and severity. Water damage and fire cleanup cost more due to specialized equipment. We provide upfront estimates before work begins — no surprise bills. Many situations are covered by renter\'s or homeowner\'s insurance.' },
   { q: 'Do you work with insurance companies?', a: 'Yes. We provide detailed documentation of all work performed, including before/after photos, itemized invoices, and scope-of-work reports. This documentation is formatted to support your insurance claim. Many clients get full reimbursement for professional emergency cleaning.' },
   { q: 'Is my situation actually an emergency?', a: 'If there\'s active water flow, sewage, biohazard material, or fire/smoke damage — yes, that\'s an emergency requiring immediate professional response. Mold discovery, hoarding cleanup, and vandalism aftermath are urgent but can usually wait 24–48 hours for scheduling. When in doubt, call us and we\'ll help you assess.' },
   { q: 'What should I do while waiting for your team?', a: 'For water damage: stop the water source and move valuables. For fire/smoke: ventilate if safe. For all situations: document with photos, don\'t touch biohazard materials, and keep people and pets away from the affected area. See our detailed guides above for specific situations.' },
   { q: 'Can I clean emergency situations myself?', a: 'Small surface mold patches, minor spills, and general mess — yes. But for standing water, fire/smoke damage, sewage, biohazard, or any situation covering more than a small area — professional cleaning is strongly recommended. DIY attempts often make things worse or miss hidden damage that causes problems later.' },
-  { q: 'Do you handle apartment emergencies or just houses?', a: 'We primarily serve Florida homes — that\'s our specialty. We\'re experienced with the unique challenges of apartment emergencies: limited access, shared building systems, landlord coordination, building management communication, and the tight spaces common in Florida apartments.' },
-  { q: 'What about my landlord\'s responsibility?', a: 'In Florida, landlords are responsible for maintaining habitable conditions. Water damage from building systems (not your negligence), mold from building ventilation issues, and sewage from building plumbing are landlord responsibilities. Document everything, notify them in writing, and know your rights under Florida building codes.' },
+  { q: 'Do you handle condo emergencies or just houses?', a: 'We serve all types of Florida homes — houses, condos, townhomes, and apartments. We\'re experienced with the unique challenges of condo emergencies: limited access, shared building systems, HOA coordination, building management communication, and multi-unit considerations common in Florida.' },
+  { q: 'What about my landlord\'s or HOA\'s responsibility?', a: 'In Florida, landlords are responsible for maintaining habitable conditions. Water damage from building systems (not your negligence), mold from building ventilation issues, and sewage from building plumbing are landlord responsibilities. For condos, your HOA may be responsible for common-area issues. Document everything, notify them in writing, and know your rights under Florida statutes.' },
   { q: 'Are you available on weekends and holidays?', a: 'Yes. Emergencies don\'t wait for business hours. We have team members available 7 days a week including holidays. Weekend and holiday rates may apply for non-urgent situations, but true emergencies are always prioritized regardless of when they happen.' },
-  { q: 'What areas do you cover for emergency service?', a: 'We cover all Florida counties we serve: Manhattan, Brooklyn, Queens, the Bronx, and Staten Island. We also serve parts of Long Island and northern New Jersey for emergency situations. Response times are fastest in Manhattan and Brooklyn.' },
+  { q: 'What areas do you cover for emergency service?', a: 'We cover all Florida service areas: Miami-Dade, Broward, Palm Beach, Tampa Bay, and Orlando. We also serve Jacksonville and surrounding areas for emergency situations. Response times are fastest in Miami-Dade and Broward.' },
 ]
 
 export const metadata: Metadata = {
   title: 'Emergency Cleaning Service Florida — 24/7 Response | The Florida Maid',
-  description: 'Florida emergency cleaning — water damage, fire, sewage, biohazard & mold. 24/7 rapid response with pro equipment. What to do, what not to do. Call (833) 352-6243.',
-  alternates: { canonical: 'https://www.thefloridamaid.com/service/nyc-emergency-cleaning-service' },
+  description: 'Florida emergency cleaning — water damage, fire, sewage, biohazard & mold. 24/7 rapid response with pro equipment. What to do, what not to do. Call (954) 710-3636.',
+  alternates: { canonical: 'https://www.thefloridamaid.com/service/florida-emergency-cleaning-service' },
   openGraph: {
     title: 'Emergency Cleaning Service Florida | The Florida Maid',
     description: 'Rapid-response emergency cleaning across Florida. Water damage, fire, biohazard & more. Available 24/7.',
-    url: 'https://www.thefloridamaid.com/service/nyc-emergency-cleaning-service',
+    url: 'https://www.thefloridamaid.com/service/florida-emergency-cleaning-service',
   },
 }
 
@@ -212,7 +212,7 @@ export default function EmergencyCleaningPage() {
       '@type': 'LocalBusiness',
       name: 'The Florida Maid',
       url: 'https://www.thefloridamaid.com',
-      telephone: '+18333526243',
+      telephone: '+19547103636',
       address: { '@type': 'PostalAddress', addressLocality: 'Miami', addressRegion: 'FL', addressCountry: 'US' },
     },
     areaServed: { '@type': 'City', name: 'Florida' },
@@ -224,7 +224,7 @@ export default function EmergencyCleaningPage() {
     },
     availableChannel: {
       '@type': 'ServiceChannel',
-      servicePhone: { '@type': 'ContactPoint', telephone: '+18333526243', contactType: 'customer service', availableLanguage: ['English', 'Spanish'] },
+      servicePhone: { '@type': 'ContactPoint', telephone: '+19547103636', contactType: 'customer service', availableLanguage: ['English', 'Spanish'] },
     },
     hoursAvailable: {
       '@type': 'OpeningHoursSpecification',
@@ -257,8 +257,8 @@ export default function EmergencyCleaningPage() {
         localBusinessSchema(),
         breadcrumbSchema([
           { name: 'Home', url: 'https://www.thefloridamaid.com' },
-          { name: 'Services', url: 'https://www.thefloridamaid.com/nyc-maid-service-services-offered-by-the-nyc-maid' },
-          { name: 'Emergency Cleaning', url: 'https://www.thefloridamaid.com/service/nyc-emergency-cleaning-service' },
+          { name: 'Services', url: 'https://www.thefloridamaid.com/florida-maid-service-services-offered-by-the-florida-maid' },
+          { name: 'Emergency Cleaning', url: 'https://www.thefloridamaid.com/service/florida-emergency-cleaning-service' },
         ]),
         faqSchema,
         serviceSchema,
@@ -266,16 +266,16 @@ export default function EmergencyCleaningPage() {
       ]} />
 
       {/* Hero */}
-      <section className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] py-16 md:py-24">
+      <section className="bg-gradient-to-b from-[#CC6222] to-[#CC6222] py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <p className="text-xs font-semibold text-red-400 tracking-[0.25em] uppercase mb-4">24/7 Emergency Response</p>
           <h1 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl lg:text-7xl text-white tracking-wide leading-[0.95] mb-6">Emergency Cleaning Service in Florida</h1>
-          <p className="text-white/60 text-lg max-w-3xl mx-auto mb-8">Flooding, fire damage, sewage, biohazard, mold — when disaster hits your apartment, you need professionals who respond fast and know what they&apos;re doing. We&apos;ve handled hundreds of emergency cleanups across all Florida counties we serve.</p>
+          <p className="text-white/60 text-lg max-w-3xl mx-auto mb-8">Flooding, fire damage, sewage, biohazard, mold — when disaster hits your home, you need professionals who respond fast and know what they&apos;re doing. We&apos;ve handled hundreds of emergency cleanups across all Florida counties we serve.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="tel:8333526243" className="bg-red-600 text-white px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-red-700 transition-colors">
-              Call Now — (833) 352-6243
+            <a href="tel:9547103636" className="bg-red-600 text-white px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-red-700 transition-colors">
+              Call Now — (954) 710-3636
             </a>
-            <a href="sms:8333526243" className="text-white font-semibold text-lg hover:underline underline-offset-4">
+            <a href="sms:9547103636" className="text-white font-semibold text-lg hover:underline underline-offset-4">
               or Text Us
             </a>
           </div>
@@ -284,14 +284,14 @@ export default function EmergencyCleaningPage() {
 
       <div className="max-w-5xl mx-auto px-4 py-12">
         <Breadcrumbs items={[
-          { name: 'Services', href: '/nyc-maid-service-services-offered-by-the-nyc-maid' },
-          { name: 'Emergency Cleaning', href: '/service/nyc-emergency-cleaning-service' },
+          { name: 'Services', href: '/florida-maid-service-services-offered-by-the-florida-maid' },
+          { name: 'Emergency Cleaning', href: '/service/florida-emergency-cleaning-service' },
         ]} />
         <TrustBadges />
 
         {/* Quick reference: is it an emergency? */}
         <section className="mb-20">
-          <h2 className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#D4540A] tracking-wide mb-6">Is It an Emergency?</h2>
+          <h2 className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#CC6222] tracking-wide mb-6">Is It an Emergency?</h2>
           <p className="text-gray-600 text-lg mb-8">Not every mess is an emergency. Here&apos;s a quick guide to help you determine what needs immediate professional response and what can wait for a scheduled appointment.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="border-2 border-red-200 bg-red-50/50 rounded-xl p-6">
@@ -306,7 +306,7 @@ export default function EmergencyCleaningPage() {
               </ul>
             </div>
             <div className="border-2 border-gray-200 rounded-xl p-6">
-              <h3 className="font-[family-name:var(--font-bebas)] text-xl text-[#D4540A] tracking-wide mb-4">Can Schedule Within 24–48 Hours</h3>
+              <h3 className="font-[family-name:var(--font-bebas)] text-xl text-[#CC6222] tracking-wide mb-4">Can Schedule Within 24–48 Hours</h3>
               <ul className="space-y-2">
                 {['Small mold patches on bathroom caulking', 'Post-break-in cleanup (after police clear scene)', 'Hoarding cleanup', 'Vandalism cleanup', 'Post-storm debris (no standing water)', 'Heavy-duty deep cleaning after neglect'].map(item => (
                   <li key={item} className="flex items-start gap-2 text-gray-700">
@@ -321,27 +321,27 @@ export default function EmergencyCleaningPage() {
 
         {/* Emergency types — detailed guides */}
         <section className="mb-20">
-          <h2 className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#D4540A] tracking-wide mb-4">Emergency Types: What to Do (and What Not to Do)</h2>
+          <h2 className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#CC6222] tracking-wide mb-4">Emergency Types: What to Do (and What Not to Do)</h2>
           <p className="text-gray-600 text-lg mb-10">Each emergency is different. We&apos;ve put together detailed guides for every type of cleaning emergency so you know exactly what steps to take — even before we arrive.</p>
 
           {emergencyTypes.map(type => (
             <div key={type.name} className="border border-gray-200 rounded-xl p-6 md:p-8 mb-8">
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-2xl">{type.icon}</span>
-                <h3 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide">{type.name}</h3>
+                <h3 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide">{type.name}</h3>
                 {type.isEmergency && <span className="text-xs font-bold text-red-600 bg-red-100 px-2 py-0.5 rounded-full uppercase">Urgent</span>}
               </div>
               <p className="text-gray-600 mb-6">{type.description}</p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="font-semibold text-[#D4540A] mb-3 flex items-center gap-2">
+                  <h4 className="font-semibold text-[#CC6222] mb-3 flex items-center gap-2">
                     <span className="text-[#34D399]">&#10003;</span> What to Do
                   </h4>
                   <ol className="space-y-2">
                     {type.whatToDo.map((step, i) => (
                       <li key={i} className="flex items-start gap-3 text-sm text-gray-700">
-                        <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#D4540A]/10 text-[#D4540A] text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
+                        <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#CC6222]/10 text-[#CC6222] text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
                         <span>{step}</span>
                       </li>
                     ))}
@@ -369,21 +369,21 @@ export default function EmergencyCleaningPage() {
         <div className="bg-red-600 rounded-xl p-8 md:p-10 mb-20 text-center">
           <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-white tracking-wide mb-2">Dealing With an Emergency Right Now?</h2>
           <p className="text-red-100 mb-6">Don&apos;t wait. Our team is available 24/7 for emergency response across all Florida counties we serve.</p>
-          <a href="tel:8333526243" className="inline-block bg-white text-red-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-red-50 transition-colors">
-            Call (833) 352-6243
+          <a href="tel:9547103636" className="inline-block bg-white text-red-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-red-50 transition-colors">
+            Call (954) 710-3636
           </a>
         </div>
 
         {/* Our process */}
         <section className="mb-20">
-          <h2 className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#D4540A] tracking-wide mb-4">Our Emergency Response Process</h2>
+          <h2 className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#CC6222] tracking-wide mb-4">Our Emergency Response Process</h2>
           <p className="text-gray-600 text-lg mb-8">Here&apos;s exactly what happens from the moment you call to the final walkthrough.</p>
           <div className="space-y-6">
             {process.map(p => (
               <div key={p.step} className="flex gap-6 items-start">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#D4540A] text-white font-[family-name:var(--font-bebas)] text-xl flex items-center justify-center">{p.step}</div>
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#CC6222] text-white font-[family-name:var(--font-bebas)] text-xl flex items-center justify-center">{p.step}</div>
                 <div>
-                  <h3 className="font-semibold text-[#D4540A] text-lg">{p.title}</h3>
+                  <h3 className="font-semibold text-[#CC6222] text-lg">{p.title}</h3>
                   <p className="text-gray-600 mt-1">{p.description}</p>
                 </div>
               </div>
@@ -394,22 +394,22 @@ export default function EmergencyCleaningPage() {
         {/* Pricing */}
         <section className="mb-20">
           <div className="bg-gray-50 rounded-xl p-8 md:p-10">
-            <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-6 text-center">Emergency Cleaning Pricing</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide mb-6 text-center">Emergency Cleaning Pricing</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="text-center">
                 <p className="text-sm text-gray-500 uppercase tracking-widest mb-2">Minor Emergency</p>
-                <p className="text-3xl font-bold text-[#D4540A]">$500–$800</p>
+                <p className="text-3xl font-bold text-[#CC6222]">$500–$800</p>
                 <p className="text-sm text-gray-500 mt-2">Small water leak, minor mold, localized damage</p>
               </div>
               <div className="text-center border-x border-gray-200">
                 <p className="text-sm text-gray-500 uppercase tracking-widest mb-2">Standard Emergency</p>
-                <p className="text-3xl font-bold text-[#D4540A]">$800–$1,500</p>
+                <p className="text-3xl font-bold text-[#CC6222]">$800–$1,500</p>
                 <p className="text-sm text-gray-500 mt-2">Flooding cleanup, smoke damage, sewage (1–2 rooms)</p>
               </div>
               <div className="text-center">
                 <p className="text-sm text-gray-500 uppercase tracking-widest mb-2">Major Emergency</p>
-                <p className="text-3xl font-bold text-[#D4540A]">$1,500–$3,000+</p>
-                <p className="text-sm text-gray-500 mt-2">Full-apartment water damage, extensive fire/biohazard</p>
+                <p className="text-3xl font-bold text-[#CC6222]">$1,500–$3,000+</p>
+                <p className="text-sm text-gray-500 mt-2">Full-home water damage, extensive fire/biohazard</p>
               </div>
             </div>
             <p className="text-center text-gray-500 text-sm">Exact pricing depends on the type of emergency, area affected, and equipment required. We always provide an upfront estimate before beginning work. Most emergency cleaning is covered by renter&apos;s or homeowner&apos;s insurance.</p>
@@ -418,11 +418,11 @@ export default function EmergencyCleaningPage() {
 
         {/* Insurance */}
         <section className="mb-20">
-          <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-4">Working With Your Insurance</h2>
+          <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide mb-4">Working With Your Insurance</h2>
           <p className="text-gray-600 mb-6">Most emergency cleaning is covered by renter&apos;s or homeowner&apos;s insurance. Here&apos;s how to make the process smooth:</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
-              <h3 className="font-semibold text-[#D4540A]">Before We Arrive</h3>
+              <h3 className="font-semibold text-[#CC6222]">Before We Arrive</h3>
               <ul className="space-y-2">
                 {['Document all damage with photos and video', 'Call your insurance company to open a claim', 'Get your claim number — we\'ll reference it in our documentation', 'Don\'t throw anything away until the adjuster approves (photograph first)'].map(item => (
                   <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
@@ -433,7 +433,7 @@ export default function EmergencyCleaningPage() {
               </ul>
             </div>
             <div className="space-y-4">
-              <h3 className="font-semibold text-[#D4540A]">What We Provide</h3>
+              <h3 className="font-semibold text-[#CC6222]">What We Provide</h3>
               <ul className="space-y-2">
                 {['Detailed scope-of-work report', 'Before and after photo documentation', 'Itemized invoice with labor and materials breakdown', 'Professional assessment of damage severity', 'Direct communication with your adjuster if needed'].map(item => (
                   <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
@@ -448,11 +448,11 @@ export default function EmergencyCleaningPage() {
 
         {/* FAQ */}
         <section className="mb-20">
-          <h2 className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#D4540A] tracking-wide mb-8">Frequently Asked Questions</h2>
+          <h2 className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#CC6222] tracking-wide mb-8">Frequently Asked Questions</h2>
           <div className="space-y-6">
             {faqData.map(f => (
               <div key={f.q} className="border-b border-gray-200 pb-6">
-                <h3 className="font-semibold text-[#D4540A] text-lg mb-2">{f.q}</h3>
+                <h3 className="font-semibold text-[#CC6222] text-lg mb-2">{f.q}</h3>
                 <p className="text-gray-600">{f.a}</p>
               </div>
             ))}
@@ -461,16 +461,16 @@ export default function EmergencyCleaningPage() {
 
         {/* Coverage */}
         <section className="mb-16">
-          <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-6">Emergency Service Coverage</h2>
-          <p className="text-gray-600 mb-8">We cover all Florida counties we serve for emergency cleaning. Response times are fastest in Manhattan and Brooklyn.</p>
+          <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide mb-6">Emergency Service Coverage</h2>
+          <p className="text-gray-600 mb-8">We cover all Florida service areas for emergency cleaning. Response times are fastest in Miami-Dade and Broward.</p>
           {AREAS.map(area => {
             const neighborhoods = getNeighborhoodsByArea(area.slug)
             return (
               <div key={area.slug} className="mb-6">
-                <h3 className="font-semibold text-lg text-[#D4540A] mb-3">{area.name}</h3>
+                <h3 className="font-semibold text-lg text-[#CC6222] mb-3">{area.name}</h3>
                 <div className="flex flex-wrap gap-2">
                   {neighborhoods.map(n => (
-                    <Link key={n.slug} href={`/${n.urlSlug}`} className="px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-[#34D399]/20 hover:text-[#D4540A] transition-colors">
+                    <Link key={n.slug} href={`/${n.urlSlug}`} className="px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-[#34D399]/20 hover:text-[#CC6222] transition-colors">
                       {n.name}
                     </Link>
                   ))}

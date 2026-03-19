@@ -24,16 +24,16 @@ const serviceFAQs = [
 ]
 
 const schedulingFAQs = [
-  { question: 'How do I book a cleaning?', answer: 'Text or call (833) 352-6243, or book online at thefloridamaid.com/book/new. We typically schedule within 24–48 hours. Same-day availability for urgent requests.' },
+  { question: 'How do I book a cleaning?', answer: 'Text or call (954) 710-3636, or book online at thefloridamaid.com/book/new. We typically schedule within 24–48 hours. Same-day availability for urgent requests.' },
   { question: 'Can I get the same cleaner each time?', answer: 'Yes. For recurring clients, we assign the same dedicated cleaner to your home so they learn your preferences and layout. Consistency is one of the things our clients value most.' },
-  { question: 'Do you offer same-day cleaning?', answer: 'Yes. Call or text (833) 352-6243 and we\'ll dispatch a professional cleaner within hours. Same-day service is $100/hr.' },
+  { question: 'Do you offer same-day cleaning?', answer: 'Yes. Call or text (954) 710-3636 and we\'ll dispatch a professional cleaner within hours. Same-day service is $100/hr.' },
   { question: 'How do I reschedule or cancel?', answer: 'Text or call us at least 24 hours before your scheduled cleaning. We\'ll reschedule at no charge. Cancellations with less than 24 hours notice may incur a fee.' },
-  { question: 'What hours do you operate?', answer: 'Office hours are Monday through Saturday 7am to 7pm. Sales and booking inquiries are available 24/7 — call or text (833) 352-6243 anytime.' },
+  { question: 'What hours do you operate?', answer: 'Office hours are Monday through Saturday 7am to 7pm. Sales and booking inquiries are available 24/7 — call or text (954) 710-3636 anytime.' },
 ]
 
 const trustFAQs = [
   { question: 'Are your cleaners licensed and insured?', answer: 'Yes. All of our cleaners are fully licensed, insured, and background-checked. We carry general liability insurance and bonding for your complete protection and peace of mind.' },
-  { question: 'Do I need to be home during the cleaning?', answer: 'No. Many of our clients provide a key, lockbox code, or doorman access. If you prefer to be home, that\'s perfectly fine too.' },
+  { question: 'Do I need to be home during the cleaning?', answer: 'No. Many of our clients provide a key, lockbox code, or garage code. If you prefer to be home, that\'s perfectly fine too.' },
   { question: 'What if I\'m not satisfied with the cleaning?', answer: 'We offer a satisfaction guarantee. If you\'re not happy with any part of the cleaning, contact us within 24 hours and we\'ll send a team back to address the issue at no extra charge.' },
   { question: 'Do you bring your own supplies?', answer: 'It\'s your choice. At $49/hr you provide the supplies. At $65/hr we bring everything — professional-grade cleaning products and all equipment needed.' },
   { question: 'Are there any contracts or commitments?', answer: 'No contracts. Stay because you\'re happy, not because you\'re locked in. Cancel recurring service anytime with 7 days notice.' },
@@ -43,9 +43,9 @@ const trustFAQs = [
 
 const allFAQs = [...pricingFAQs, ...serviceFAQs, ...schedulingFAQs, ...trustFAQs]
 
-const pageUrl = 'https://www.thefloridamaid.com/nyc-cleaning-service-frequently-asked-questions-in-2025'
+const pageUrl = 'https://www.thefloridamaid.com/florida-cleaning-service-frequently-asked-questions-in-2026'
 const pageTitle = 'Florida Cleaning Service FAQ — Pricing, Services & Scheduling | The Florida Maid'
-const pageDescription = 'Answers to 24 common questions about The Florida Maid — pricing ($49–$100/hr), what\'s included, scheduling, insurance, service areas, and more. Serving Manhattan, Brooklyn, Queens, Long Island & NJ. (833) 352-6243'
+const pageDescription = 'Answers to 24 common questions about The Florida Maid — pricing ($49–$100/hr), what\'s included, scheduling, insurance, service areas, and more. Serving Miami, Fort Lauderdale, West Palm Beach, Tampa & Orlando. (954) 710-3636'
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -105,17 +105,17 @@ export default function FAQPage() {
       ]} />
 
       {/* Hero */}
-      <section className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] py-20 md:py-28">
+      <section className="bg-gradient-to-b from-[#CC6222] to-[#CC6222] py-20 md:py-28">
         <div className="max-w-5xl mx-auto px-4">
           <div className="flex flex-wrap items-center gap-4 mb-6">
             <span className="text-yellow-400 text-lg">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span className="text-blue-200/70 text-sm font-medium">5.0 Google Rating &middot; 27 Reviews</span>
+            <span className="text-white text-sm font-medium">5.0 Google Rating &middot; 27 Reviews</span>
           </div>
           <h1 className="font-[family-name:var(--font-bebas)] text-4xl md:text-6xl lg:text-7xl text-white tracking-wide leading-[0.95] mb-6">
             Frequently Asked Questions About Florida House Cleaning Services
           </h1>
-          <p className="text-blue-200/80 text-lg max-w-2xl leading-relaxed mb-10">
-            Everything you need to know about pricing, services, scheduling, and how we work — answered by our team. Can&apos;t find your question? Call <a href="tel:8333526243" className="text-[#34D399] underline underline-offset-2">(833) 352-6243</a>.
+          <p className="text-white text-lg max-w-2xl leading-relaxed mb-10">
+            Everything you need to know about pricing, services, scheduling, and how we work — answered by our team. Can&apos;t find your question? Call <a href="tel:9547103636" className="text-[#34D399] underline underline-offset-2">(954) 710-3636</a>.
           </p>
 
           {/* Quick nav */}
@@ -130,7 +130,7 @@ export default function FAQPage() {
       </section>
 
       <div className="max-w-5xl mx-auto px-4 py-12">
-        <Breadcrumbs items={[{ name: 'FAQ', href: '/nyc-cleaning-service-frequently-asked-questions-in-2025' }]} />
+        <Breadcrumbs items={[{ name: 'FAQ', href: '/florida-cleaning-service-frequently-asked-questions-in-2026' }]} />
 
         {/* FAQ Sections */}
         {sections.map(section => (
@@ -142,7 +142,7 @@ export default function FAQPage() {
               {section.faqs.map((faq, i) => (
                 <details key={i} className="group border border-gray-200 rounded-xl overflow-hidden">
                   <summary className="flex items-center justify-between p-5 md:p-6 cursor-pointer hover:bg-gray-50 transition-colors">
-                    <h2 className="font-semibold text-[#D4540A] text-left pr-4">{faq.question}</h2>
+                    <h2 className="font-semibold text-[#CC6222] text-left pr-4">{faq.question}</h2>
                     <span className="text-gray-400 group-open:rotate-45 transition-transform text-2xl flex-shrink-0">+</span>
                   </summary>
                   <div className="px-5 md:px-6 pb-5 md:pb-6 text-gray-600 leading-relaxed">
@@ -157,39 +157,39 @@ export default function FAQPage() {
         {/* Quick pricing reference */}
         <div className="bg-[#34D399] rounded-2xl p-8 md:p-12 mb-16">
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-xs font-semibold text-[#D4540A]/50 tracking-[0.25em] uppercase mb-2">Quick Pricing Reference</p>
-            <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#D4540A] tracking-wide mb-8">Three Simple Rates — No Hidden Fees</p>
+            <p className="text-xs font-semibold text-[#CC6222]/50 tracking-[0.25em] uppercase mb-2">Quick Pricing Reference</p>
+            <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#CC6222] tracking-wide mb-8">Three Simple Rates — No Hidden Fees</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="bg-white rounded-xl p-5">
                 <p className="text-xs font-semibold text-gray-400 tracking-[0.15em] uppercase mb-1">Client Supplies</p>
-                <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#D4540A] tracking-wide">$49<span className="text-xl text-gray-300">/hr</span></p>
+                <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#CC6222] tracking-wide">$49<span className="text-xl text-gray-300">/hr</span></p>
               </div>
-              <div className="bg-[#D4540A] rounded-xl p-5">
+              <div className="bg-[#CC6222] rounded-xl p-5">
                 <p className="text-xs font-semibold text-[#34D399]/70 tracking-[0.15em] uppercase mb-1">We Bring Everything</p>
-                <p className="font-[family-name:var(--font-bebas)] text-4xl text-white tracking-wide">$65<span className="text-xl text-blue-200/40">/hr</span></p>
+                <p className="font-[family-name:var(--font-bebas)] text-4xl text-white tracking-wide">$65<span className="text-xl text-white/60">/hr</span></p>
               </div>
               <div className="bg-white rounded-xl p-5">
                 <p className="text-xs font-semibold text-gray-400 tracking-[0.15em] uppercase mb-1">Same-Day</p>
-                <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#D4540A] tracking-wide">$100<span className="text-xl text-gray-300">/hr</span></p>
+                <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#CC6222] tracking-wide">$100<span className="text-xl text-gray-300">/hr</span></p>
               </div>
             </div>
-            <Link href="/updated-nyc-maid-service-industry-pricing" className="inline-block mt-6 text-[#D4540A] font-semibold underline underline-offset-4 hover:no-underline">
+            <Link href="/updated-florida-maid-service-industry-pricing" className="inline-block mt-6 text-[#CC6222] font-semibold underline underline-offset-4 hover:no-underline">
               View Full Pricing Details &rarr;
             </Link>
           </div>
         </div>
 
         {/* Still have questions */}
-        <div className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] rounded-2xl p-8 md:p-12 text-center mb-16">
+        <div className="bg-gradient-to-b from-[#CC6222] to-[#CC6222] rounded-2xl p-8 md:p-12 text-center mb-16">
           <p className="font-[family-name:var(--font-bebas)] text-3xl text-white tracking-wide mb-3">Still Have Questions?</p>
-          <p className="text-blue-200/70 max-w-xl mx-auto mb-8">
+          <p className="text-white max-w-xl mx-auto mb-8">
             We&apos;re happy to answer anything. Text or call us — most questions are answered within minutes.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-            <a href="sms:8333526243" className="bg-[#34D399] text-[#D4540A] px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
-              Text (833) 352-6243
+            <a href="sms:9547103636" className="bg-[#34D399] text-white px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
+              Text (954) 710-3636
             </a>
-            <a href="tel:8333526243" className="text-blue-200/70 font-medium text-lg hover:text-white transition-colors underline underline-offset-4">
+            <a href="tel:9547103636" className="text-white font-medium text-lg hover:text-white transition-colors underline underline-offset-4">
               or Call Us
             </a>
           </div>
@@ -197,16 +197,16 @@ export default function FAQPage() {
 
         {/* Helpful links */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
-          <Link href="/nyc-maid-service-services-offered-by-the-nyc-maid" className="group border border-gray-200 rounded-xl p-6 hover:border-[#34D399] transition-all">
-            <p className="font-semibold text-[#D4540A] group-hover:underline underline-offset-2 mb-1">View All Services</p>
+          <Link href="/florida-maid-service-services-offered-by-the-florida-maid" className="group border border-gray-200 rounded-xl p-6 hover:border-[#34D399] transition-all">
+            <p className="font-semibold text-[#CC6222] group-hover:underline underline-offset-2 mb-1">View All Services</p>
             <p className="text-gray-500 text-sm">10 cleaning services for every situation</p>
           </Link>
-          <Link href="/service-areas-served-by-the-nyc-maid" className="group border border-gray-200 rounded-xl p-6 hover:border-[#34D399] transition-all">
-            <p className="font-semibold text-[#D4540A] group-hover:underline underline-offset-2 mb-1">Service Areas</p>
+          <Link href="/service-areas-served-by-the-florida-maid" className="group border border-gray-200 rounded-xl p-6 hover:border-[#34D399] transition-all">
+            <p className="font-semibold text-[#CC6222] group-hover:underline underline-offset-2 mb-1">Service Areas</p>
             <p className="text-gray-500 text-sm">Miami, Tampa, Orlando, Fort Lauderdale &amp; Jacksonville</p>
           </Link>
-          <Link href="/nyc-customer-reviews-for-the-nyc-maid" className="group border border-gray-200 rounded-xl p-6 hover:border-[#34D399] transition-all">
-            <p className="font-semibold text-[#D4540A] group-hover:underline underline-offset-2 mb-1">Read Reviews</p>
+          <Link href="/florida-customer-reviews-for-the-florida-maid" className="group border border-gray-200 rounded-xl p-6 hover:border-[#34D399] transition-all">
+            <p className="font-semibold text-[#CC6222] group-hover:underline underline-offset-2 mb-1">Read Reviews</p>
             <p className="text-gray-500 text-sm">27 verified 5-star Google reviews</p>
           </Link>
         </div>

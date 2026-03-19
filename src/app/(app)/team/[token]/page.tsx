@@ -127,11 +127,11 @@ export default function TeamPortalPage() {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center p-6">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-[#D4540A] mb-2">Link Expired / Enlace Expirado</h1>
+          <h1 className="text-2xl font-bold text-[#CC6222] mb-2">Link Expired / Enlace Expirado</h1>
           <p className="text-gray-500">This job link is no longer valid. Contact the office for assistance.</p>
           <p className="text-gray-500">Este enlace ya no es válido. Contacta la oficina para ayuda.</p>
           <p className="text-gray-500 mt-4">
-            Office / Oficina: <a href="tel:8333526243" className="text-[#D4540A]">(833) 352-6243</a>
+            Office / Oficina: <a href="tel:9547103636" className="text-[#CC6222]">(954) 710-3636</a>
           </p>
         </div>
       </div>
@@ -147,7 +147,7 @@ export default function TeamPortalPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-[#D4540A] text-white p-4">
+      <div className="bg-[#CC6222] text-white p-4">
         <p className="text-sm opacity-80">The Florida Maid</p>
         <h1 className="text-xl font-semibold">{booking.cleaners?.name || 'Team Member'}</h1>
       </div>
@@ -157,7 +157,7 @@ export default function TeamPortalPage() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
           {/* Date/Time Header */}
           <div className="bg-gray-50 p-4 border-b border-gray-200">
-            <p className="text-lg font-semibold text-[#D4540A]">{formatDate(booking.start_time)}</p>
+            <p className="text-lg font-semibold text-[#CC6222]">{formatDate(booking.start_time)}</p>
             <p className="text-gray-600">{formatTime(booking.start_time)} - {formatTime(booking.end_time)}</p>
           </div>
 
@@ -165,7 +165,7 @@ export default function TeamPortalPage() {
           <div className="p-4 space-y-4">
             <div>
               <p className="text-sm text-gray-500 mb-1">Client / Cliente</p>
-              <p className="text-lg font-medium text-[#D4540A]">{booking.clients?.name || 'N/A'}</p>
+              <p className="text-lg font-medium text-[#CC6222]">{booking.clients?.name || 'N/A'}</p>
             </div>
 
             <div>
@@ -174,7 +174,7 @@ export default function TeamPortalPage() {
                 href={`https://maps.google.com/?q=${encodeURIComponent(booking.clients?.address || '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-lg text-[#D4540A] underline"
+                className="text-lg text-[#CC6222] underline"
               >
                 {booking.clients?.address || 'N/A'}
               </a>
@@ -184,7 +184,7 @@ export default function TeamPortalPage() {
               <p className="text-sm text-gray-500 mb-1">Phone / Teléfono</p>
               <a
                 href={`tel:${booking.clients?.phone}`}
-                className="text-lg text-[#D4540A] underline"
+                className="text-lg text-[#CC6222] underline"
               >
                 {booking.clients?.phone || 'N/A'}
               </a>
@@ -192,7 +192,7 @@ export default function TeamPortalPage() {
 
             <div>
               <p className="text-sm text-gray-500 mb-1">Service / Servicio</p>
-              <p className="text-[#D4540A]">{booking.service_type}</p>
+              <p className="text-[#CC6222]">{booking.service_type}</p>
             </div>
 
             {(booking.clients?.notes || booking.notes) && (
@@ -267,13 +267,13 @@ export default function TeamPortalPage() {
             href={`https://maps.google.com/?q=${encodeURIComponent(booking.clients?.address || '')}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 py-3 bg-white border border-gray-300 text-[#D4540A] text-center font-medium rounded-xl"
+            className="flex-1 py-3 bg-white border border-gray-300 text-[#CC6222] text-center font-medium rounded-xl"
           >
             📍 Navigate / Navegar
           </a>
           <a
             href={`tel:${booking.clients?.phone}`}
-            className="flex-1 py-3 bg-white border border-gray-300 text-[#D4540A] text-center font-medium rounded-xl"
+            className="flex-1 py-3 bg-white border border-gray-300 text-[#CC6222] text-center font-medium rounded-xl"
           >
             📞 Call / Llamar
           </a>

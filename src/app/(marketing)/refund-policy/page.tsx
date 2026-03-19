@@ -6,7 +6,7 @@ import Breadcrumbs from '@/components/marketing/Breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'Refund Policy | The Florida Maid',
-  description: 'The Florida Maid refund policy — no money upfront, pay only after cleaning is complete. No deposits. Service from $49/hr. (833) 352-6243',
+  description: 'The Florida Maid refund policy — no money upfront, pay only after cleaning is complete. No deposits. Service from $49/hr. (954) 710-3636',
   alternates: { canonical: 'https://www.thefloridamaid.com/refund-policy' },
 }
 
@@ -18,10 +18,10 @@ export default function RefundPolicyPage() {
         { name: 'Refund Policy', url: 'https://www.thefloridamaid.com/refund-policy' },
       ])} />
 
-      <section className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] py-16 md:py-20">
+      <section className="bg-gradient-to-b from-[#CC6222] to-[#CC6222] py-16 md:py-20">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <h1 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-white tracking-wide">Refund Policy</h1>
-          <p className="text-blue-200/60 mt-3">No money upfront means no refunds needed</p>
+          <p className="text-white mt-3">No money upfront means no refunds needed</p>
         </div>
       </section>
 
@@ -32,10 +32,10 @@ export default function RefundPolicyPage() {
           <p className="text-gray-400 text-sm">Last updated: February 2026</p>
 
           <div>
-            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Why We Don&apos;t Issue Refunds</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">Why We Don&apos;t Issue Refunds</h2>
             <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-6">
               <p className="text-gray-600 leading-relaxed mb-3">
-                <strong className="text-[#D4540A]">We do not collect any money upfront.</strong> There are no deposits, no pre-authorizations, no advance charges, and no pre-payments of any kind.
+                <strong className="text-[#CC6222]">We do not collect any money upfront.</strong> There are no deposits, no pre-authorizations, no advance charges, and no pre-payments of any kind.
               </p>
               <p className="text-gray-600 leading-relaxed mb-3">
                 Payment is collected only after your cleaning is complete — before the cleaner leaves your home. You see the results before you pay. Because we never take your money in advance, there is nothing to refund.
@@ -47,7 +47,7 @@ export default function RefundPolicyPage() {
           </div>
 
           <div>
-            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Our Satisfaction Guarantee</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">Our Satisfaction Guarantee</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
               If you are not satisfied with any aspect of your cleaning, contact us within 24 hours. We will send a cleaner back to address the specific issues at no additional charge. We stand behind our work — always.
             </p>
@@ -66,7 +66,7 @@ export default function RefundPolicyPage() {
           </div>
 
           <div>
-            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Payment Method</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">Payment Method</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
               Payment is due upon completion of your cleaning service, before the cleaner leaves. We accept:
             </p>
@@ -80,32 +80,32 @@ export default function RefundPolicyPage() {
           </div>
 
           <div>
-            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Cancellation Policy Summary</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">Cancellation Policy Summary</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
               Since we do not take money upfront, cancellation refunds do not apply. However, our cancellation terms still protect our cleaners&apos; time:
             </p>
             <div className="space-y-3">
               <div className="bg-gray-50 rounded-xl p-5">
-                <p className="text-[#D4540A] font-semibold text-sm mb-1">One-Time &amp; First-Time Bookings</p>
+                <p className="text-[#CC6222] font-semibold text-sm mb-1">One-Time &amp; First-Time Bookings</p>
                 <p className="text-gray-600 text-sm">No cancellations once confirmed. We reserve a cleaner exclusively for your slot.</p>
               </div>
               <div className="bg-gray-50 rounded-xl p-5">
-                <p className="text-[#D4540A] font-semibold text-sm mb-1">Recurring Services (Weekly, Bi-Weekly, Monthly)</p>
+                <p className="text-[#CC6222] font-semibold text-sm mb-1">Recurring Services (Weekly, Bi-Weekly, Monthly)</p>
                 <p className="text-gray-600 text-sm">7 days notice to cancel the service. 3 days notice to reschedule within the same week.</p>
               </div>
             </div>
             <p className="text-gray-500 text-sm mt-4">
-              For full cancellation details, see our <Link href="/terms-conditions" className="text-[#D4540A] underline underline-offset-2">Terms &amp; Conditions</Link>.
+              For full cancellation details, see our <Link href="/terms-conditions" className="text-[#CC6222] underline underline-offset-2">Terms &amp; Conditions</Link>.
             </p>
           </div>
 
           <div className="border-t border-gray-200 pt-8">
-            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Contact Us</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">Contact Us</h2>
             <p className="text-gray-600 leading-relaxed">
-              Questions? Contact us at <a href="mailto:hi@thefloridamaid.com" className="text-[#D4540A] underline underline-offset-2">hi@thefloridamaid.com</a> or text/call <a href="tel:8333526243" className="text-[#D4540A] underline underline-offset-2">(833) 352-6243</a>.
+              Questions? Contact us at <a href="mailto:hi@thefloridamaid.com" className="text-[#CC6222] underline underline-offset-2">hi@thefloridamaid.com</a> or text/call <a href="tel:9547103636" className="text-[#CC6222] underline underline-offset-2">(954) 710-3636</a>.
             </p>
             <p className="text-gray-500 text-sm mt-4">
-              See also: <Link href="/privacy-policy" className="text-[#D4540A] underline underline-offset-2">Privacy Policy</Link> &middot; <Link href="/terms-conditions" className="text-[#D4540A] underline underline-offset-2">Terms &amp; Conditions</Link> &middot; <Link href="/do-not-share-policy" className="text-[#D4540A] underline underline-offset-2">Do Not Share Policy</Link>
+              See also: <Link href="/privacy-policy" className="text-[#CC6222] underline underline-offset-2">Privacy Policy</Link> &middot; <Link href="/terms-conditions" className="text-[#CC6222] underline underline-offset-2">Terms &amp; Conditions</Link> &middot; <Link href="/do-not-share-policy" className="text-[#CC6222] underline underline-offset-2">Do Not Share Policy</Link>
             </p>
           </div>
         </div>

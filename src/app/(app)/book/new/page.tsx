@@ -131,16 +131,16 @@ function BookingFormContent() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md text-center">
           <div className="text-6xl mb-4">✨</div>
-          <h1 className="text-2xl font-bold text-[#D4540A] mb-2">Request Submitted!</h1>
+          <h1 className="text-2xl font-bold text-[#CC6222] mb-2">Request Submitted!</h1>
           <p className="text-gray-600 mb-6">Thank you! We appreciate it and look forward to working with you. We'll review your request, assign a cleaner, and confirm your appointment shortly.</p>
           <div className="bg-gray-50 rounded-lg p-4 mb-6 text-left">
             <p className="text-sm text-gray-500">Appointment Details:</p>
-            <p className="font-medium text-[#D4540A]">{formatLocalDate(form.date)}</p>
+            <p className="font-medium text-[#CC6222]">{formatLocalDate(form.date)}</p>
             <p className="text-gray-600">{form.time}</p>
             <p className="text-gray-600">{form.service_type} — ~{form.estimated_hours} hrs</p>
             <p className="text-gray-600 font-medium">Estimated: ${estimatedTotal}</p>
           </div>
-          <p className="text-xs text-gray-400">Questions? Call (833) 352-6243</p>
+          <p className="text-xs text-gray-400">Questions? Call (954) 710-3636</p>
           <p className="text-xs text-gray-400 mt-4">Please check your spam/junk folder if you don't see our email in your inbox.</p>
         </div>
       </div>
@@ -149,7 +149,7 @@ function BookingFormContent() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-[#D4540A] text-white py-4 px-6">
+      <header className="bg-[#CC6222] text-white py-4 px-6">
         <div className="max-w-2xl mx-auto">
           <h1 className="text-xl font-bold">The Florida Maid</h1>
           <p className="text-gray-400 text-sm">Book Your Cleaning</p>
@@ -158,40 +158,40 @@ function BookingFormContent() {
 
       <main className="max-w-2xl mx-auto p-6" onFocusCapture={trackStart}>
         <div className="bg-[#34D399]/20 border border-[#34D399]/30 rounded-lg p-4 mb-6">
-          <p className="text-sm text-[#D4540A]"><strong>Scheduling:</strong> Mon-Sat, 9AM - 4PM (last start time)</p>
-          <p className="text-sm text-[#D4540A]/70 mt-1">Same-day? Call <a href="tel:8333526243" className="underline font-medium">(833) 352-6243</a></p>
+          <p className="text-sm text-[#CC6222]"><strong>Scheduling:</strong> Mon-Sat, 9AM - 4PM (last start time)</p>
+          <p className="text-sm text-[#CC6222]/70 mt-1">Same-day? Call <a href="tel:9547103636" className="underline font-medium">(954) 710-3636</a></p>
         </div>
 
         <div className="flex items-center justify-center mb-8">
-          <div className={'w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ' + (step >= 1 ? 'bg-[#D4540A] text-white' : 'bg-gray-200 text-gray-500')}>1</div>
-          <div className={'w-16 h-1 ' + (step >= 2 ? 'bg-[#D4540A]' : 'bg-gray-200')}></div>
-          <div className={'w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ' + (step >= 2 ? 'bg-[#D4540A] text-white' : 'bg-gray-200 text-gray-500')}>2</div>
-          <div className={'w-16 h-1 ' + (step >= 3 ? 'bg-[#D4540A]' : 'bg-gray-200')}></div>
-          <div className={'w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ' + (step >= 3 ? 'bg-[#D4540A] text-white' : 'bg-gray-200 text-gray-500')}>3</div>
+          <div className={'w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ' + (step >= 1 ? 'bg-[#CC6222] text-white' : 'bg-gray-200 text-gray-500')}>1</div>
+          <div className={'w-16 h-1 ' + (step >= 2 ? 'bg-[#CC6222]' : 'bg-gray-200')}></div>
+          <div className={'w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ' + (step >= 2 ? 'bg-[#CC6222] text-white' : 'bg-gray-200 text-gray-500')}>2</div>
+          <div className={'w-16 h-1 ' + (step >= 3 ? 'bg-[#CC6222]' : 'bg-gray-200')}></div>
+          <div className={'w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ' + (step >= 3 ? 'bg-[#CC6222] text-white' : 'bg-gray-200 text-gray-500')}>3</div>
         </div>
 
         {error && <div className="bg-red-50 text-red-600 p-4 rounded-lg mb-6">{error}</div>}
 
         {step === 1 && (
           <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold text-[#D4540A] mb-6">Your Information</h2>
+            <h2 className="text-xl font-semibold text-[#CC6222] mb-6">Your Information</h2>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
-                <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-4 py-3 border rounded-lg text-[#D4540A] text-base" placeholder="John Smith" />
+                <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-4 py-3 border rounded-lg text-[#CC6222] text-base" placeholder="John Smith" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
-                <input type="email" value={form.email} onChange={(e) => { setForm({ ...form, email: e.target.value }); setEmailSuggestion('') }} className="w-full px-4 py-3 border rounded-lg text-[#D4540A] text-base" placeholder="john@example.com" />
+                <input type="email" value={form.email} onChange={(e) => { setForm({ ...form, email: e.target.value }); setEmailSuggestion('') }} className="w-full px-4 py-3 border rounded-lg text-[#CC6222] text-base" placeholder="john@example.com" />
                 {emailSuggestion && (
-                  <button type="button" onClick={() => { setForm({ ...form, email: emailSuggestion }); setEmailSuggestion(''); setError('') }} className="mt-1 text-sm text-[#D4540A] hover:underline">
+                  <button type="button" onClick={() => { setForm({ ...form, email: emailSuggestion }); setEmailSuggestion(''); setError('') }} className="mt-1 text-sm text-[#CC6222] hover:underline">
                     Use {emailSuggestion}?
                   </button>
                 )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
-                <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })} className="w-full px-4 py-3 border rounded-lg text-[#D4540A] text-base" placeholder="(212) 555-1234" />
+                <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })} className="w-full px-4 py-3 border rounded-lg text-[#CC6222] text-base" placeholder="(954) 555-1234" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Address *</label>
@@ -199,29 +199,29 @@ function BookingFormContent() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Apt/Unit</label>
-                <input type="text" value={form.unit} onChange={(e) => setForm({ ...form, unit: e.target.value })} className="w-full px-4 py-3 border rounded-lg text-[#D4540A] text-base" placeholder="Apt 4B" />
+                <input type="text" value={form.unit} onChange={(e) => setForm({ ...form, unit: e.target.value })} className="w-full px-4 py-3 border rounded-lg text-[#CC6222] text-base" placeholder="Apt 4B" />
               </div>
               <div className="pt-4 border-t">
                 <label className="block text-sm font-medium text-gray-700 mb-2">Referred by someone? <span className="text-gray-400 font-normal">(optional)</span></label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <input type="text" value={form.referrer_name} onChange={(e) => setForm({ ...form, referrer_name: e.target.value })} className="w-full px-4 py-3 border rounded-lg text-[#D4540A] text-base" placeholder="Their name" />
-                  <input type="tel" value={form.referrer_phone} onChange={(e) => setForm({ ...form, referrer_phone: formatPhone(e.target.value) })} className="w-full px-4 py-3 border rounded-lg text-[#D4540A] text-base" placeholder="Their phone" />
+                  <input type="text" value={form.referrer_name} onChange={(e) => setForm({ ...form, referrer_name: e.target.value })} className="w-full px-4 py-3 border rounded-lg text-[#CC6222] text-base" placeholder="Their name" />
+                  <input type="tel" value={form.referrer_phone} onChange={(e) => setForm({ ...form, referrer_phone: formatPhone(e.target.value) })} className="w-full px-4 py-3 border rounded-lg text-[#CC6222] text-base" placeholder="Their phone" />
                 </div>
               </div>
             </div>
-            <button onClick={() => { if (validateStep1()) { trackStep(2); setStep(2) } }} className="w-full mt-6 py-3 bg-[#D4540A] text-white rounded-lg font-medium hover:bg-[#D4540A]/90">Continue</button>
+            <button onClick={() => { if (validateStep1()) { trackStep(2); setStep(2) } }} className="w-full mt-6 py-3 bg-[#CC6222] text-white rounded-lg font-medium hover:bg-[#CC6222]/90">Continue</button>
           </div>
         )}
 
         {step === 2 && (
           <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold text-[#D4540A] mb-6">Service Details</h2>
+            <h2 className="text-xl font-semibold text-[#CC6222] mb-6">Service Details</h2>
             <div className="space-y-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Service Type</label>
                 <div className="grid grid-cols-2 gap-2">
                   {serviceTypes.map(s => (
-                    <button key={s} type="button" onClick={() => updateServiceType(s)} className={'p-3 rounded-lg border text-sm font-medium ' + (form.service_type === s ? 'border-[#D4540A] bg-[#D4540A] text-white' : 'border-gray-200 text-gray-700 hover:bg-gray-50')}>{s}</button>
+                    <button key={s} type="button" onClick={() => updateServiceType(s)} className={'p-3 rounded-lg border text-sm font-medium ' + (form.service_type === s ? 'border-[#CC6222] bg-[#CC6222] text-white' : 'border-gray-200 text-gray-700 hover:bg-gray-50')}>{s}</button>
                   ))}
                 </div>
               </div>
@@ -229,9 +229,9 @@ function BookingFormContent() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Estimated Hours</label>
                 <div className="flex items-center gap-4">
-                  <button type="button" onClick={() => form.estimated_hours > 1 && setForm({ ...form, estimated_hours: form.estimated_hours - 1, time: '' })} className="w-10 h-10 rounded-lg border border-gray-300 flex items-center justify-center text-lg font-bold text-[#D4540A] hover:bg-gray-50 disabled:opacity-30" disabled={form.estimated_hours <= 1}>-</button>
-                  <span className="text-2xl font-bold text-[#D4540A] min-w-[3rem] text-center">{form.estimated_hours}</span>
-                  <button type="button" onClick={() => form.estimated_hours < 8 && setForm({ ...form, estimated_hours: form.estimated_hours + 1, time: '' })} className="w-10 h-10 rounded-lg border border-gray-300 flex items-center justify-center text-lg font-bold text-[#D4540A] hover:bg-gray-50 disabled:opacity-30" disabled={form.estimated_hours >= 8}>+</button>
+                  <button type="button" onClick={() => form.estimated_hours > 1 && setForm({ ...form, estimated_hours: form.estimated_hours - 1, time: '' })} className="w-10 h-10 rounded-lg border border-gray-300 flex items-center justify-center text-lg font-bold text-[#CC6222] hover:bg-gray-50 disabled:opacity-30" disabled={form.estimated_hours <= 1}>-</button>
+                  <span className="text-2xl font-bold text-[#CC6222] min-w-[3rem] text-center">{form.estimated_hours}</span>
+                  <button type="button" onClick={() => form.estimated_hours < 8 && setForm({ ...form, estimated_hours: form.estimated_hours + 1, time: '' })} className="w-10 h-10 rounded-lg border border-gray-300 flex items-center justify-center text-lg font-bold text-[#CC6222] hover:bg-gray-50 disabled:opacity-30" disabled={form.estimated_hours >= 8}>+</button>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">Most {form.service_type.toLowerCase()} appointments take ~{SERVICE_HOURS[form.service_type] || 2} hours</p>
               </div>
@@ -239,11 +239,11 @@ function BookingFormContent() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Rate</label>
                 <div className="grid grid-cols-2 gap-4">
-                  <button type="button" onClick={() => setForm({ ...form, hourly_rate: 49 })} className={'p-4 rounded-lg border text-[#D4540A] ' + (form.hourly_rate === 49 ? 'border-[#D4540A] bg-gray-100' : 'border-gray-200 hover:bg-gray-50')}>
+                  <button type="button" onClick={() => setForm({ ...form, hourly_rate: 49 })} className={'p-4 rounded-lg border text-[#CC6222] ' + (form.hourly_rate === 49 ? 'border-[#CC6222] bg-gray-100' : 'border-gray-200 hover:bg-gray-50')}>
                     <p className="text-2xl font-bold">$49<span className="text-sm font-normal">/hr</span></p>
                     <p className="text-xs mt-1 text-gray-500">You provide supplies</p>
                   </button>
-                  <button type="button" onClick={() => setForm({ ...form, hourly_rate: 75 })} className={'p-4 rounded-lg border text-[#D4540A] ' + (form.hourly_rate === 75 ? 'border-[#D4540A] bg-gray-100' : 'border-gray-200 hover:bg-gray-50')}>
+                  <button type="button" onClick={() => setForm({ ...form, hourly_rate: 75 })} className={'p-4 rounded-lg border text-[#CC6222] ' + (form.hourly_rate === 75 ? 'border-[#CC6222] bg-gray-100' : 'border-gray-200 hover:bg-gray-50')}>
                     <p className="text-2xl font-bold">$75<span className="text-sm font-normal">/hr</span></p>
                     <p className="text-xs mt-1 text-gray-500">We bring supplies</p>
                   </button>
@@ -251,7 +251,7 @@ function BookingFormContent() {
               </div>
 
               <div className="bg-gray-50 rounded-lg p-4">
-                <p className="text-sm text-gray-600">Estimated total: <span className="font-bold text-[#D4540A] text-lg">${estimatedTotal}</span></p>
+                <p className="text-sm text-gray-600">Estimated total: <span className="font-bold text-[#CC6222] text-lg">${estimatedTotal}</span></p>
                 <p className="text-xs text-gray-500 mt-1">Final price based on actual time spent</p>
               </div>
 
@@ -259,29 +259,29 @@ function BookingFormContent() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Frequency</label>
                 <div className="grid grid-cols-2 gap-2">
                   {recurringOptions.map(r => (
-                    <button key={r.value} type="button" onClick={() => setForm({ ...form, recurring_type: r.value })} className={'p-3 rounded-lg border text-sm font-medium ' + (form.recurring_type === r.value ? 'border-[#D4540A] bg-[#D4540A] text-white' : 'border-gray-200 text-gray-700 hover:bg-gray-50')}>{r.label}</button>
+                    <button key={r.value} type="button" onClick={() => setForm({ ...form, recurring_type: r.value })} className={'p-3 rounded-lg border text-sm font-medium ' + (form.recurring_type === r.value ? 'border-[#CC6222] bg-[#CC6222] text-white' : 'border-gray-200 text-gray-700 hover:bg-gray-50')}>{r.label}</button>
                   ))}
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Special Instructions</label>
-                <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="w-full px-4 py-3 border rounded-lg text-[#D4540A] text-base" rows={3} placeholder="Pets, access codes, focus areas..." />
+                <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="w-full px-4 py-3 border rounded-lg text-[#CC6222] text-base" rows={3} placeholder="Pets, access codes, focus areas..." />
               </div>
             </div>
             <div className="flex gap-3 mt-6">
-              <button onClick={() => setStep(1)} className="flex-1 py-3 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 text-[#D4540A]">Back</button>
-              <button onClick={() => { trackStep(3); setStep(3) }} className="flex-1 py-3 bg-[#D4540A] text-white rounded-lg font-medium hover:bg-[#D4540A]/90">Continue</button>
+              <button onClick={() => setStep(1)} className="flex-1 py-3 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 text-[#CC6222]">Back</button>
+              <button onClick={() => { trackStep(3); setStep(3) }} className="flex-1 py-3 bg-[#CC6222] text-white rounded-lg font-medium hover:bg-[#CC6222]/90">Continue</button>
             </div>
           </div>
         )}
 
         {step === 3 && (
           <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold text-[#D4540A] mb-6">Choose Date & Time</h2>
+            <h2 className="text-xl font-semibold text-[#CC6222] mb-6">Choose Date & Time</h2>
             <div className="space-y-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Date *</label>
-                <input type="date" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value, time: '' })} min={getMinDate()} className="w-full px-4 py-3 border rounded-lg text-[#D4540A] text-base" />
+                <input type="date" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value, time: '' })} min={getMinDate()} className="w-full px-4 py-3 border rounded-lg text-[#CC6222] text-base" />
               </div>
 
               {sameDayWarning && (
@@ -289,8 +289,8 @@ function BookingFormContent() {
                   <p className="text-yellow-800 font-medium">Same-Day Booking</p>
                   <p className="text-yellow-700 text-sm mt-1">Same-day appointments require a phone call or text.</p>
                   <div className="flex gap-3 mt-3">
-                    <a href="tel:8333526243" className="flex-1 py-2 bg-yellow-600 text-white rounded-lg text-center font-medium">Call</a>
-                    <a href="sms:8333526243" className="flex-1 py-2 bg-yellow-600 text-white rounded-lg text-center font-medium">Text</a>
+                    <a href="tel:9547103636" className="flex-1 py-2 bg-yellow-600 text-white rounded-lg text-center font-medium">Call</a>
+                    <a href="sms:9547103636" className="flex-1 py-2 bg-yellow-600 text-white rounded-lg text-center font-medium">Text</a>
                   </div>
                 </div>
               )}
@@ -305,7 +305,7 @@ function BookingFormContent() {
                   ) : (
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
                       {availableSlots.filter(s => s.available).map(slot => (
-                        <button key={slot.time} type="button" onClick={() => setForm({ ...form, time: slot.time })} className={'p-3 rounded-lg border text-sm font-medium min-h-[44px] ' + (form.time === slot.time ? 'border-[#D4540A] bg-[#D4540A] text-white' : 'border-gray-200 text-gray-700 hover:bg-gray-50')}>{slot.time}</button>
+                        <button key={slot.time} type="button" onClick={() => setForm({ ...form, time: slot.time })} className={'p-3 rounded-lg border text-sm font-medium min-h-[44px] ' + (form.time === slot.time ? 'border-[#CC6222] bg-[#CC6222] text-white' : 'border-gray-200 text-gray-700 hover:bg-gray-50')}>{slot.time}</button>
                       ))}
                     </div>
                   )}
@@ -321,11 +321,11 @@ function BookingFormContent() {
             {form.date && form.time && !sameDayWarning && (
               <div className="bg-gray-50 rounded-lg p-4 mt-6">
                 <p className="text-sm font-medium text-gray-700 mb-2">Booking Summary</p>
-                <p className="font-semibold text-[#D4540A]">{form.name}</p>
+                <p className="font-semibold text-[#CC6222]">{form.name}</p>
                 <p className="text-gray-600 text-sm">{form.address}{form.unit ? ', ' + form.unit : ''}</p>
                 <p className="text-gray-600 text-sm">{formatLocalDate(form.date)} at {form.time}</p>
                 <p className="text-gray-600 text-sm">{form.service_type} — ~{form.estimated_hours} hrs at ${form.hourly_rate}/hr</p>
-                <p className="text-[#D4540A] font-bold mt-1">Estimated: ${estimatedTotal}</p>
+                <p className="text-[#CC6222] font-bold mt-1">Estimated: ${estimatedTotal}</p>
                 <p className="text-gray-600 text-sm">{recurringOptions.find(r => r.value === form.recurring_type)?.label}</p>
                 {form.referrer_name && <p className="text-gray-600 text-sm">Referred by: {form.referrer_name}{form.referrer_phone ? ' (' + form.referrer_phone + ')' : ''}</p>}
               </div>
@@ -334,13 +334,13 @@ function BookingFormContent() {
             <div className="my-5 p-4 border border-gray-200 rounded-lg bg-gray-50">
               <label className="flex items-start gap-3 cursor-pointer text-[13px] leading-relaxed text-gray-600">
                 <input type="checkbox" name="sms_consent" required className="mt-1 min-w-[18px] min-h-[18px]" />
-                <span>By checking this box, I consent to receive transactional text messages from <strong>The Florida Maid</strong> for appointment confirmations, reminders, and customer support. Reply STOP to opt out. Reply HELP for help. Msg frequency may vary. Msg &amp; data rates may apply. <a href="https://www.thefloridamaid.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#D4540A] hover:underline">Privacy Policy</a> | <a href="https://www.thefloridamaid.com/terms-conditions" target="_blank" rel="noopener noreferrer" className="text-[#D4540A] hover:underline">Terms &amp; Conditions</a></span>
+                <span>By checking this box, I consent to receive transactional text messages from <strong>The Florida Maid</strong> for appointment confirmations, reminders, and customer support. Reply STOP to opt out. Reply HELP for help. Msg frequency may vary. Msg &amp; data rates may apply. <a href="https://www.thefloridamaid.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#CC6222] hover:underline">Privacy Policy</a> | <a href="https://www.thefloridamaid.com/terms-conditions" target="_blank" rel="noopener noreferrer" className="text-[#CC6222] hover:underline">Terms &amp; Conditions</a></span>
               </label>
             </div>
 
             <div className="flex gap-3 mt-4">
-              <button onClick={() => setStep(2)} className="flex-1 py-3 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 text-[#D4540A]">Back</button>
-              <button onClick={handleSubmit} disabled={loading || !form.date || !form.time || sameDayWarning} className="flex-1 py-3 bg-[#D4540A] text-white rounded-lg font-medium hover:bg-[#D4540A]/90 disabled:opacity-50">
+              <button onClick={() => setStep(2)} className="flex-1 py-3 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 text-[#CC6222]">Back</button>
+              <button onClick={handleSubmit} disabled={loading || !form.date || !form.time || sameDayWarning} className="flex-1 py-3 bg-[#CC6222] text-white rounded-lg font-medium hover:bg-[#CC6222]/90 disabled:opacity-50">
                 {loading ? 'Submitting...' : 'Confirm Booking'}
               </button>
             </div>

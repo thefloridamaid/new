@@ -26,21 +26,21 @@ export default function FeedbackWidget({ source }: { source: string }) {
       <div className="text-center py-6">
         <button
           onClick={() => setOpen(true)}
-          className="text-gray-400 text-sm hover:text-[#D4540A] transition-colors"
+          className="text-gray-400 text-sm hover:text-[#CC6222] transition-colors"
         >
           Feedback?
         </button>
       </div>
 
       {open && (
-        <div className="fixed inset-0 bg-[#D4540A]/50 flex items-center justify-center z-[100] p-4" onClick={() => setOpen(false)}>
+        <div className="fixed inset-0 bg-[#CC6222]/50 flex items-center justify-center z-[100] p-4" onClick={() => setOpen(false)}>
           <div className="bg-white rounded-2xl p-6 w-full max-w-sm" onClick={e => e.stopPropagation()}>
-            <h3 className="text-lg font-semibold text-[#D4540A] mb-1">Anonymous Feedback</h3>
+            <h3 className="text-lg font-semibold text-[#CC6222] mb-1">Anonymous Feedback</h3>
             <p className="text-gray-500 text-sm mb-4">Your feedback is completely anonymous.</p>
 
             {submitted ? (
               <div className="text-center py-6">
-                <p className="text-lg font-medium text-[#D4540A]">Thank you!</p>
+                <p className="text-lg font-medium text-[#CC6222]">Thank you!</p>
                 <p className="text-gray-500 text-sm">Your feedback has been submitted.</p>
               </div>
             ) : (
@@ -49,14 +49,14 @@ export default function FeedbackWidget({ source }: { source: string }) {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Suggestions, concerns, compliments — anything helps..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A] text-sm resize-none focus:outline-none focus:border-[#D4540A]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222] text-sm resize-none focus:outline-none focus:border-[#CC6222]"
                   rows={4}
                   required
                   autoFocus
                 />
                 <div className="flex gap-3 mt-4">
-                  <button type="button" onClick={() => setOpen(false)} className="flex-1 py-2 border border-gray-300 rounded-lg text-[#D4540A] text-sm">Cancel</button>
-                  <button type="submit" disabled={sending || !message.trim()} className="flex-1 py-2 bg-[#D4540A] text-white rounded-lg text-sm font-medium disabled:bg-gray-300">
+                  <button type="button" onClick={() => setOpen(false)} className="flex-1 py-2 border border-gray-300 rounded-lg text-[#CC6222] text-sm">Cancel</button>
+                  <button type="submit" disabled={sending || !message.trim()} className="flex-1 py-2 bg-[#CC6222] text-white rounded-lg text-sm font-medium disabled:bg-gray-300">
                     {sending ? '...' : 'Submit'}
                   </button>
                 </div>

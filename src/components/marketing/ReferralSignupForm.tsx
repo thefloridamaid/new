@@ -59,16 +59,16 @@ export default function ReferralSignupForm() {
     return (
       <div className="bg-white border border-gray-200 rounded-xl p-8 text-center">
         <div className="w-16 h-16 bg-[#34D399]/30 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg className="w-8 h-8 text-[#D4540A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-8 h-8 text-[#CC6222]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-2">You&apos;re In!</h3>
+        <h3 className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide mb-2">You&apos;re In!</h3>
         <p className="text-gray-600 mb-6">Welcome to The Florida Maid referral program.</p>
 
         <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-6 mb-6">
           <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-2">Your Referral Code</p>
-          <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#D4540A] tracking-wide">{refCode}</p>
+          <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#CC6222] tracking-wide">{refCode}</p>
         </div>
 
         <div className="bg-gray-50 rounded-xl p-6 mb-6">
@@ -76,7 +76,7 @@ export default function ReferralSignupForm() {
           <p className="text-sm font-mono text-gray-700 break-all mb-3">https://www.thefloridamaid.com/book?ref={refCode}</p>
           <button
             onClick={copyLink}
-            className="bg-[#34D399] text-[#D4540A] px-6 py-2.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors"
+            className="bg-[#34D399] text-white px-6 py-2.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors"
           >
             Copy Link
           </button>
@@ -86,7 +86,7 @@ export default function ReferralSignupForm() {
 
         <Link
           href={`/referral?code=${refCode}`}
-          className="inline-block bg-[#D4540A] text-white px-8 py-3.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#D4540A]/90 transition-colors"
+          className="inline-block bg-[#CC6222] text-white px-8 py-3.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#CC6222]/90 transition-colors"
         >
           Go to My Dashboard
         </Link>
@@ -99,7 +99,7 @@ export default function ReferralSignupForm() {
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-8">
-      <h3 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-6">Sign Up to Start Earning</h3>
+      <h3 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-6">Sign Up to Start Earning</h3>
 
       {error && (
         <div className="bg-red-50 text-red-600 p-3 rounded-lg mb-4 text-sm">
@@ -185,14 +185,14 @@ export default function ReferralSignupForm() {
         <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
           <label className="flex items-start gap-3 cursor-pointer text-sm text-gray-600 leading-relaxed">
             <input type="checkbox" name="sms_consent" required className="mt-1 min-w-[18px] min-h-[18px]" />
-            <span>By checking this box, I consent to receive transactional text messages from <strong>The Florida Maid</strong> for appointment confirmations, reminders, and customer support. Reply STOP to opt out. Reply HELP for help. Msg frequency may vary. Msg &amp; data rates may apply. <a href="/privacy-policy" className="text-[#D4540A] underline underline-offset-2">Privacy Policy</a> | <a href="/terms-conditions" className="text-[#D4540A] underline underline-offset-2">Terms &amp; Conditions</a></span>
+            <span>By checking this box, I consent to receive transactional text messages from <strong>The Florida Maid</strong> for appointment confirmations, reminders, and customer support. Reply STOP to opt out. Reply HELP for help. Msg frequency may vary. Msg &amp; data rates may apply. <a href="/privacy-policy" className="text-[#CC6222] underline underline-offset-2">Privacy Policy</a> | <a href="/terms-conditions" className="text-[#CC6222] underline underline-offset-2">Terms &amp; Conditions</a></span>
           </label>
         </div>
 
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-[#34D399] text-[#D4540A] py-3.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors disabled:opacity-50"
+          className="w-full bg-[#34D399] text-white py-3.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors disabled:opacity-50"
         >
           {loading ? 'Signing Up...' : 'Join Referral Program'}
         </button>
@@ -201,7 +201,7 @@ export default function ReferralSignupForm() {
       <div className="mt-6 pt-6 border-t text-center">
         <p className="text-sm text-gray-500">
           Already a referrer?{' '}
-          <Link href="/referral" className="text-[#D4540A] font-medium underline underline-offset-2">
+          <Link href="/referral" className="text-[#CC6222] font-medium underline underline-offset-2">
             Log in to your dashboard
           </Link>
         </p>

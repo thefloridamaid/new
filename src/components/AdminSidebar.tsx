@@ -312,7 +312,7 @@ export default function AdminSidebar() {
         </div>
         {unreadCount > 0 && (
           <div className="flex justify-end mb-4">
-            <button onClick={markAllRead} className="text-sm text-[#D4540A] hover:text-[#D4540A] font-medium">Mark all read</button>
+            <button onClick={markAllRead} className="text-sm text-[#CC6222] hover:text-[#CC6222] font-medium">Mark all read</button>
           </div>
         )}
         {notifications.length === 0 ? (
@@ -332,7 +332,7 @@ export default function AdminSidebar() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-start gap-2">
-                      <p className="font-medium text-sm text-[#D4540A]">{line1}</p>
+                      <p className="font-medium text-sm text-[#CC6222]">{line1}</p>
                       <span className="text-xs text-gray-400 whitespace-nowrap">{formatTimeAgo(n.created_at)}</span>
                     </div>
                     <p className="text-sm text-gray-600 mt-0.5">{line2}</p>
@@ -366,7 +366,7 @@ export default function AdminSidebar() {
       {/* Mobile hamburger button */}
       <button
         onClick={() => setMobileOpen(true)}
-        className="md:hidden fixed top-3 left-3 z-50 p-2 bg-[#D4540A] text-white rounded-lg shadow-lg"
+        className="md:hidden fixed top-3 left-3 z-50 p-2 bg-[#CC6222] text-white rounded-lg shadow-lg"
       >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -382,7 +382,7 @@ export default function AdminSidebar() {
       <aside
         className={`
           fixed md:sticky top-0 left-0 z-40 h-screen w-60
-          bg-[#D4540A] flex flex-col
+          bg-[#CC6222] flex flex-col
           transition-transform duration-200 ease-out
           md:translate-x-0
           ${mobileOpen ? 'translate-x-0' : '-translate-x-full'}

@@ -8,7 +8,7 @@ import ReferralSignupForm from '@/components/marketing/ReferralSignupForm'
 
 export const metadata: Metadata = {
   title: 'Get Paid for Cleaning Referrals | Earn 10% Commission | The Florida Maid',
-  description: 'Earn 10% commission every time your referral books a cleaning (from $49/hr). Recurring income, fast payouts via Zelle or Apple Cash. (833) 352-6243',
+  description: 'Earn 10% commission every time your referral books a cleaning (from $49/hr). Recurring income, fast payouts via Zelle or Apple Cash. (954) 710-3636',
   alternates: { canonical: 'https://www.thefloridamaid.com/get-paid-for-cleaning-referrals-every-time-they-are-serviced' },
   openGraph: {
     title: 'Get Paid for Cleaning Referrals | The Florida Maid',
@@ -39,7 +39,7 @@ export default function ReferralPage() {
       ]} />
 
       {/* Hero */}
-      <section className="bg-[#D4540A] py-20 md:py-28">
+      <section className="bg-[#CC6222] py-20 md:py-28">
         <div className="max-w-5xl mx-auto px-4">
           <h1 className="font-[family-name:var(--font-bebas)] text-4xl md:text-6xl lg:text-7xl text-white tracking-wide leading-[0.95] mb-6">
             Get Paid for Cleaning Referrals
@@ -56,17 +56,17 @@ export default function ReferralPage() {
         {/* Benefits */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-8 text-center">
-            <p className="font-[family-name:var(--font-bebas)] text-5xl text-[#D4540A] tracking-wide mb-2">10%</p>
+            <p className="font-[family-name:var(--font-bebas)] text-5xl text-[#CC6222] tracking-wide mb-2">10%</p>
             <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-3">Commission</p>
             <p className="text-gray-600 text-sm">On every cleaning your referral books — not just the first one.</p>
           </div>
           <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-8 text-center">
-            <p className="font-[family-name:var(--font-bebas)] text-5xl text-[#D4540A] tracking-wide mb-2">Recurring</p>
+            <p className="font-[family-name:var(--font-bebas)] text-5xl text-[#CC6222] tracking-wide mb-2">Recurring</p>
             <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-3">Income</p>
             <p className="text-gray-600 text-sm">Every time they book, you earn. Weekly clients mean weekly payouts.</p>
           </div>
           <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-8 text-center">
-            <p className="font-[family-name:var(--font-bebas)] text-5xl text-[#D4540A] tracking-wide mb-2">Fast</p>
+            <p className="font-[family-name:var(--font-bebas)] text-5xl text-[#CC6222] tracking-wide mb-2">Fast</p>
             <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-3">Payouts</p>
             <p className="text-gray-600 text-sm">Paid via Zelle or Apple Cash after each completed cleaning.</p>
           </div>
@@ -89,27 +89,27 @@ export default function ReferralPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
           <div>
             <h2 className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-4">How It Works</h2>
-            <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-8">Three Simple Steps</p>
+            <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide mb-8">Three Simple Steps</p>
 
             <div className="space-y-8">
               <div className="flex gap-5">
-                <div className="w-10 h-10 bg-[#D4540A] text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">1</div>
+                <div className="w-10 h-10 bg-[#CC6222] text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">1</div>
                 <div>
-                  <h3 className="font-semibold text-[#D4540A] text-lg mb-1">Sign Up &amp; Get Your Link</h3>
+                  <h3 className="font-semibold text-[#CC6222] text-lg mb-1">Sign Up &amp; Get Your Link</h3>
                   <p className="text-gray-600">Fill out the form — takes 30 seconds. You&apos;ll receive a unique referral link and code.</p>
                 </div>
               </div>
               <div className="flex gap-5">
-                <div className="w-10 h-10 bg-[#D4540A] text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">2</div>
+                <div className="w-10 h-10 bg-[#CC6222] text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">2</div>
                 <div>
-                  <h3 className="font-semibold text-[#D4540A] text-lg mb-1">Share With Friends &amp; Family</h3>
-                  <p className="text-gray-600">Send your link to anyone who needs cleaning in Florida, Long Island, or NJ. They book using your link.</p>
+                  <h3 className="font-semibold text-[#CC6222] text-lg mb-1">Share With Friends &amp; Family</h3>
+                  <p className="text-gray-600">Send your link to anyone who needs cleaning anywhere in Florida. They book using your link.</p>
                 </div>
               </div>
               <div className="flex gap-5">
-                <div className="w-10 h-10 bg-[#D4540A] text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">3</div>
+                <div className="w-10 h-10 bg-[#CC6222] text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">3</div>
                 <div>
-                  <h3 className="font-semibold text-[#D4540A] text-lg mb-1">Earn 10% Every Time</h3>
+                  <h3 className="font-semibold text-[#CC6222] text-lg mb-1">Earn 10% Every Time</h3>
                   <p className="text-gray-600">You get 10% of every cleaning they book — paid after each completed visit. No cap on earnings.</p>
                 </div>
               </div>
@@ -140,19 +140,19 @@ export default function ReferralPage() {
         {/* Earnings example */}
         <div className="bg-white border border-gray-200 rounded-xl p-10 mb-16 text-center">
           <h2 className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-2">Example Earnings</h2>
-          <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-6">See How Quickly It Adds Up</p>
+          <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide mb-6">See How Quickly It Adds Up</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             <div className="p-5 bg-gray-50 rounded-xl">
               <p className="text-sm text-gray-500 mb-1">1 referral, weekly cleaning</p>
-              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide">$25+/mo</p>
+              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide">$25+/mo</p>
             </div>
             <div className="p-5 bg-gray-50 rounded-xl">
               <p className="text-sm text-gray-500 mb-1">5 referrals, bi-weekly</p>
-              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide">$60+/mo</p>
+              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide">$60+/mo</p>
             </div>
             <div className="p-5 bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl">
               <p className="text-sm text-gray-500 mb-1">10 referrals, weekly</p>
-              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide">$250+/mo</p>
+              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide">$250+/mo</p>
             </div>
           </div>
         </div>

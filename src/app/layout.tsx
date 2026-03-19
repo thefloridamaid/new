@@ -7,9 +7,19 @@ export const metadata: Metadata = {
     template: '%s | The Florida Maid',
     default: 'The Florida Maid - Professional Cleaning Services in Florida From $49/hr',
   },
-  description: 'Florida house cleaning & maid service from $49/hr. Orlando, Tampa, Miami, Jacksonville & statewide. Licensed, insured, 5.0★ Google rated. Book online or call (833) 352-6243.',
+  description: 'Florida house cleaning & maid service from $49/hr. Orlando, Tampa, Miami, Jacksonville & statewide. Licensed, insured, 5.0★ Google rated. Book online or call (954) 710-3636.',
   metadataBase: new URL('https://www.thefloridamaid.com'),
   manifest: '/manifest.json',
+  icons: {
+    icon: [
+      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
   applicationName: 'The Florida Maid',
   authors: [{ name: 'The Florida Maid', url: 'https://www.thefloridamaid.com' }],
   creator: 'The Florida Maid Cleaning Service LLC',
@@ -42,7 +52,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'The Florida Maid - Florida Cleaning Service From $49/hr',
-    description: 'Professional house cleaning across Florida. 5.0★ Google. Licensed & insured. Book online or call (833) 352-6243.',
+    description: 'Professional house cleaning across Florida. 5.0★ Google. Licensed & insured. Book online or call (954) 710-3636.',
   },
   robots: {
     index: true,
@@ -73,7 +83,7 @@ export const metadata: Metadata = {
     'revisit-after': '3 days',
     'distribution': 'global',
     'language': 'English',
-    'og:phone_number': '+1-833-352-6243',
+    'og:phone_number': '+1-954-710-3636',
     'og:email': 'hi@thefloridamaid.com',
     'business:contact_data:street_address': '100 S Orange Ave, Suite 400',
     'business:contact_data:locality': 'Orlando',

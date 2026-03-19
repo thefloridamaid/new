@@ -7,6 +7,9 @@ import { ORLANDO_NEIGHBORHOODS } from './data/orlando'
 import { JACKSONVILLE_NEIGHBORHOODS } from './data/jacksonville'
 import { SOUTHWEST_FLORIDA_NEIGHBORHOODS } from './data/southwest-florida'
 import { SPACE_COAST_NEIGHBORHOODS } from './data/space-coast'
+import { FLORIDA_KEYS_NEIGHBORHOODS } from './data/florida-keys'
+import { NORTH_CENTRAL_FLORIDA_NEIGHBORHOODS } from './data/north-central-florida'
+import { PANHANDLE_NEIGHBORHOODS } from './data/panhandle'
 
 export interface Neighborhood {
   slug: string
@@ -31,6 +34,9 @@ export const ALL_NEIGHBORHOODS: Neighborhood[] = [
   ...JACKSONVILLE_NEIGHBORHOODS,
   ...SOUTHWEST_FLORIDA_NEIGHBORHOODS,
   ...SPACE_COAST_NEIGHBORHOODS,
+  ...FLORIDA_KEYS_NEIGHBORHOODS,
+  ...NORTH_CENTRAL_FLORIDA_NEIGHBORHOODS,
+  ...PANHANDLE_NEIGHBORHOODS,
 ]
 
 export function getArea(slug: string): Area | undefined {

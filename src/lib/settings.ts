@@ -52,7 +52,7 @@ export interface Settings {
 
 export const DEFAULT_SETTINGS: Omit<Settings, 'id' | 'updated_at'> = {
   business_name: 'The Florida Maid',
-  business_phone: '(833) 352-6243',
+  business_phone: '(954) 710-3636',
   business_email: 'hi@thefloridamaid.com',
   business_website: 'https://www.thefloridamaid.com',
   admin_email: 'hi@thefloridamaid.com',

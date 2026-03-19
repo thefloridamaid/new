@@ -29,13 +29,13 @@ export async function POST() {
       emailSubject: 'Team Guidelines Updated / Reglas actualizadas',
       emailHtml: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #D4540A;">Team Guidelines Updated</h2>
+          <h2 style="color: #CC6222;">Team Guidelines Updated</h2>
           <p>New team guidelines have been posted. Please log into your portal to review them.</p>
-          <p><a href="https://thefloridamaid.com/team" style="display: inline-block; padding: 12px 24px; background: #D4540A; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">View Guidelines</a></p>
+          <p><a href="https://thefloridamaid.com/team" style="display: inline-block; padding: 12px 24px; background: #CC6222; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">View Guidelines</a></p>
           <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
-          <h2 style="color: #D4540A;">Reglas del equipo actualizadas</h2>
+          <h2 style="color: #CC6222;">Reglas del equipo actualizadas</h2>
           <p>Se han publicado nuevas reglas del equipo. Inicia sesión en tu portal para revisarlas.</p>
-          <p><a href="https://thefloridamaid.com/team" style="display: inline-block; padding: 12px 24px; background: #D4540A; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">Ver Reglas</a></p>
+          <p><a href="https://thefloridamaid.com/team" style="display: inline-block; padding: 12px 24px; background: #CC6222; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">Ver Reglas</a></p>
         </div>
       `,
     })

@@ -344,7 +344,7 @@ export default function CalendarPage() {
       <div className="mb-2 flex flex-col md:flex-row flex-wrap gap-4 items-start md:items-center bg-gray-50 px-3 py-2 rounded-lg overflow-x-hidden">
         <div>
           <label className="block text-xs font-medium text-gray-600 mb-1">Team Member</label>
-          <select value={selectedCleaner} onChange={(e) => setSelectedCleaner(e.target.value)} className="px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A] text-sm">
+          <select value={selectedCleaner} onChange={(e) => setSelectedCleaner(e.target.value)} className="px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222] text-sm">
             <option value="">All Team</option>
             {cleaners.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
           </select>
@@ -356,7 +356,7 @@ export default function CalendarPage() {
             {[
               { key: 'pending', label: 'Pending', cls: 'text-red-700 font-medium', accent: 'accent-red-600' },
               { key: 'scheduled', label: 'Scheduled', cls: 'text-gray-700', accent: '' },
-              { key: 'in_progress', label: 'In Progress', cls: 'text-[#D4540A]/70 font-medium', accent: 'accent-[#D4540A]' },
+              { key: 'in_progress', label: 'In Progress', cls: 'text-[#CC6222]/70 font-medium', accent: 'accent-[#CC6222]' },
               { key: 'completed', label: 'Completed', cls: 'text-gray-700', accent: '' },
               { key: 'cancelled', label: 'Cancelled', cls: 'text-gray-700', accent: '' },
             ].map(s => (
@@ -430,7 +430,7 @@ export default function CalendarPage() {
             {allBookings.filter(b => b.status === 'pending').length > 0 && (
               <><span className="text-red-600 font-medium">{allBookings.filter(b => b.status === 'pending').length}</span> pending<span className="mx-2">•</span></>
             )}
-            <span className="text-[#D4540A] font-medium">{allBookings.filter(b => b.status === 'scheduled').length}</span> scheduled
+            <span className="text-[#CC6222] font-medium">{allBookings.filter(b => b.status === 'scheduled').length}</span> scheduled
             <span className="mx-2">•</span>
             <span className="font-medium">{allBookings.length}</span> total
           </span>
@@ -463,7 +463,7 @@ export default function CalendarPage() {
             const label = isToday ? 'Today' : dayDate.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })
             return (
               <div key={dateKey} className="mb-4">
-                <h3 className={`text-xs font-semibold uppercase tracking-wide mb-1.5 px-1 ${isToday ? 'text-[#D4540A]' : 'text-gray-400'}`}>{label}</h3>
+                <h3 className={`text-xs font-semibold uppercase tracking-wide mb-1.5 px-1 ${isToday ? 'text-[#CC6222]' : 'text-gray-400'}`}>{label}</h3>
                 <div className="space-y-1.5">
                   {grouped[dateKey].map(b => {
                     const color = b.status === 'pending' ? '#dc2626' : cleanerColors[b.cleaner_id] || '#000'
@@ -475,13 +475,13 @@ export default function CalendarPage() {
                       <button key={b.id} onClick={() => openPanel(b)} className="w-full flex items-center gap-3 bg-white rounded-lg p-3 border border-gray-100 active:bg-gray-50 text-left">
                         <div className="w-1 self-stretch rounded-full flex-shrink-0" style={{ backgroundColor: color }} />
                         <div className="flex-1 min-w-0">
-                          <p className="font-medium text-sm text-[#D4540A] truncate">
+                          <p className="font-medium text-sm text-[#CC6222] truncate">
                             {b.status === 'pending' && '\u23F3 '}{b.status === 'in_progress' && '\u25B6\uFE0F '}{b.clients?.name || 'Client'}
                           </p>
                           <p className="text-xs text-gray-500 truncate">{b.service_type} — {b.cleaners?.name || 'Unassigned'}</p>
                         </div>
                         <div className="text-right flex-shrink-0">
-                          <p className="text-sm font-medium text-[#D4540A]">{time}</p>
+                          <p className="text-sm font-medium text-[#CC6222]">{time}</p>
                           <p className="text-xs text-gray-400">{endTime}</p>
                         </div>
                       </button>
@@ -522,7 +522,7 @@ export default function CalendarPage() {
 
             {/* Client info */}
             <div className="space-y-1">
-              <p className="font-semibold text-[#D4540A] text-lg">{panelBooking.clients?.name || 'Unknown Client'}</p>
+              <p className="font-semibold text-[#CC6222] text-lg">{panelBooking.clients?.name || 'Unknown Client'}</p>
               {panelBooking.clients?.phone && (
                 <a href={`tel:${panelBooking.clients.phone}`} className="text-sm text-blue-600 hover:underline block">{panelBooking.clients.phone}</a>
               )}
@@ -535,31 +535,31 @@ export default function CalendarPage() {
             <div className="bg-gray-50 rounded-lg p-4 space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500">Date</span>
-                <span className="text-[#D4540A] font-medium">{formatNaiveDate(panelBooking.start_time)}</span>
+                <span className="text-[#CC6222] font-medium">{formatNaiveDate(panelBooking.start_time)}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500">Time</span>
-                <span className="text-[#D4540A] font-medium">{formatNaiveTime(panelBooking.start_time)} - {formatNaiveTime(panelBooking.end_time)}</span>
+                <span className="text-[#CC6222] font-medium">{formatNaiveTime(panelBooking.start_time)} - {formatNaiveTime(panelBooking.end_time)}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500">Service</span>
-                <span className="text-[#D4540A] font-medium">{panelBooking.service_type}</span>
+                <span className="text-[#CC6222] font-medium">{panelBooking.service_type}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500">Price</span>
-                <span className="text-[#D4540A] font-medium">${(panelBooking.price / 100).toFixed(0)}</span>
+                <span className="text-[#CC6222] font-medium">${(panelBooking.price / 100).toFixed(0)}</span>
               </div>
               {panelBooking.notes && (
                 <div className="pt-2 border-t border-gray-200">
                   <p className="text-xs text-gray-500">Notes</p>
-                  <p className="text-sm text-[#D4540A]">{panelBooking.notes}</p>
+                  <p className="text-sm text-[#CC6222]">{panelBooking.notes}</p>
                 </div>
               )}
             </div>
 
             {/* Cleaner assignment */}
             <div>
-              <label className="block text-sm font-medium text-[#D4540A] mb-2">
+              <label className="block text-sm font-medium text-[#CC6222] mb-2">
                 {panelBooking.status === 'pending' ? 'Assign Cleaner' : 'Cleaner'}
               </label>
               {loadingCleanerAvail ? (
@@ -577,7 +577,7 @@ export default function CalendarPage() {
                           isOff
                             ? 'border-red-200 bg-red-50 opacity-70 cursor-not-allowed'
                             : panelCleanerId === c.id
-                              ? 'border-[#D4540A] bg-[#D4540A]/5'
+                              ? 'border-[#CC6222] bg-[#CC6222]/5'
                               : c.available
                                 ? 'border-gray-200 hover:bg-gray-50'
                                 : 'border-yellow-200 bg-yellow-50'
@@ -585,7 +585,7 @@ export default function CalendarPage() {
                       >
                         <div className="flex items-center gap-2">
                           <div className="w-3 h-3 rounded-full" style={{ backgroundColor: cleanerColors[c.id] || '#666' }} />
-                          <span className={`font-medium ${isOff ? 'text-red-400' : panelCleanerId === c.id ? 'text-[#D4540A]' : 'text-gray-700'}`}>{c.name}</span>
+                          <span className={`font-medium ${isOff ? 'text-red-400' : panelCleanerId === c.id ? 'text-[#CC6222]' : 'text-gray-700'}`}>{c.name}</span>
                         </div>
                         {isOff && (
                           <span className="text-xs text-red-600 font-medium">OFF — Cannot assign</span>
@@ -628,7 +628,7 @@ export default function CalendarPage() {
                 <button
                   onClick={handleAssignCleaner}
                   disabled={panelSaving}
-                  className="w-full py-3 bg-[#D4540A] text-white rounded-lg font-medium hover:bg-[#D4540A]/90 disabled:opacity-50"
+                  className="w-full py-3 bg-[#CC6222] text-white rounded-lg font-medium hover:bg-[#CC6222]/90 disabled:opacity-50"
                 >
                   {panelSaving ? 'Saving...' : 'Reassign Cleaner'}
                 </button>
@@ -636,7 +636,7 @@ export default function CalendarPage() {
 
               <a
                 href={`/admin/bookings?edit=${panelBooking.id}`}
-                className="w-full py-2.5 border border-gray-300 text-[#D4540A] rounded-lg font-medium text-center block hover:bg-gray-50"
+                className="w-full py-2.5 border border-gray-300 text-[#CC6222] rounded-lg font-medium text-center block hover:bg-gray-50"
               >
                 Full Edit
               </a>

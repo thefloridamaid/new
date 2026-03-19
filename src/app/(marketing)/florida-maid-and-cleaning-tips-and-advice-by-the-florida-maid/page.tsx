@@ -41,7 +41,7 @@ const tips: Record<string, { title: string; tip: string }[]> = {
     { title: 'Bath mat maintenance', tip: 'Wash bath mats every 1–2 weeks in hot water. They harbor more bacteria than your toilet seat. Replace every 6 months.' },
     { title: 'Prevent mold on caulking', tip: 'After recaulking, spray the caulk line weekly with vinegar. Mold can\'t establish itself on surfaces regularly treated with acid.' },
     { title: 'Drain maintenance', tip: 'Pour a half cup of baking soda down the drain monthly, follow with vinegar. Let it fizz, then flush with boiling water.' },
-    { title: 'Ventilation is everything', tip: 'Run the bathroom fan for 30 minutes after every shower. If it doesn\'t work, tell your landlord — it\'s required by code in Florida.' },
+    { title: 'Ventilation is everything', tip: 'Run the bathroom fan for 30 minutes after every shower. Florida\'s humidity makes this critical — without it, mold grows fast on ceilings and walls.' },
   ],
   bedroom: [
     { title: 'Wash sheets weekly', tip: 'Hot water, every week. You shed 1.5 grams of skin per day — that\'s dust mite food. Weekly washing is the minimum.' },
@@ -64,7 +64,7 @@ const tips: Record<string, { title: string; tip: string }[]> = {
     { title: 'Light fixture dusting', tip: 'Ceiling lights and sconces collect dead bugs and dust. Clean them quarterly and your room will literally look brighter.' },
     { title: 'Wipe light switches', tip: 'Every light switch and door handle gets touched dozens of times daily. Wipe them with disinfectant weekly.' },
     { title: 'Move furniture occasionally', tip: 'Slide the couch or bookshelf aside and vacuum behind it every 2–3 months. The dust back there is circulating through your air.' },
-    { title: 'Window sill maintenance', tip: 'Wipe sills weekly in Florida. City dust and pollution settle there first, and it tracks into the room when you open the window.' },
+    { title: 'Window sill maintenance', tip: 'Wipe sills weekly in Florida. Pollen, dust, and moisture settle there first, and it tracks into the room when you open the window.' },
     { title: 'Throw pillow and blanket wash', tip: 'Wash throw pillow covers and throw blankets monthly. They absorb body oils, pet dander, and food residue.' },
   ],
   floors: [
@@ -89,19 +89,19 @@ const tips: Record<string, { title: string; tip: string }[]> = {
     { title: 'Zip up zippers before washing', tip: 'Open zippers snag and damage other clothes in the wash. Close them all before throwing clothes in.' },
     { title: 'Wash darks inside out', tip: 'Reduces friction on the visible side of the fabric, which prevents fading. Dark jeans especially benefit from this.' },
     { title: 'Dry clean only? Maybe not', tip: 'Many "dry clean only" items can be hand washed in cold water with mild detergent. Check the fabric — silk and wool usually can handle it.' },
-    { title: 'Shared laundry room etiquette', tip: 'In Florida buildings: set a timer, remove clothes promptly, wipe the lint trap, and don\'t leave detergent residue on machines. Your neighbors will appreciate it.' },
+    { title: 'Shared laundry room etiquette', tip: 'In Florida condo buildings: set a timer, remove clothes promptly, wipe the lint trap, and don\'t leave detergent residue on machines. Your neighbors will appreciate it.' },
   ],
   florida: [
     { title: 'Cockroach prevention is cleaning', tip: 'In Florida, pests are a fact of life — but a clean kitchen denies them food. Wipe counters nightly, seal food in containers, take trash out daily.' },
     { title: 'Window AC filter cleaning', tip: 'Clean or replace your window AC filter every 2 weeks during summer. A dirty filter circulates dust and allergens and kills efficiency.' },
-    { title: 'Radiator cleaning before heating season', tip: 'Clean between the radiator fins in September. That burnt-dust smell when the heat first kicks on? That\'s months of buildup cooking.' },
-    { title: 'City dust requires more frequent dusting', tip: 'Florida homes get dustier than suburban homes due to air pollution and constant construction. Dust weekly minimum, not monthly.' },
+    { title: 'AC filter and ceiling fan cleaning', tip: 'Clean or replace your AC filter monthly and wipe ceiling fan blades every 2 weeks. A dirty filter circulates dust and allergens while running up your electric bill.' },
+    { title: 'Florida dust and pollen require more frequent dusting', tip: 'Florida homes get dustier due to pollen, humidity, and open windows year-round. Dust weekly minimum, not monthly — especially during allergy season.' },
     { title: 'Check under the sink for pests', tip: 'Gaps around pipes under kitchen and bathroom sinks are pest highways. Steel wool + caulk these gaps. Clean under sinks monthly.' },
-    { title: 'De-icing salt on floors', tip: 'Winter salt ruins floors. Put a boot tray by the door and wipe shoes immediately. Mop the entryway weekly in winter with warm water.' },
-    { title: 'Manage building smells', tip: 'Cooking smells from neighbors seep through gaps around pipes and outlets. Seal these with caulk and run an air purifier.' },
-    { title: 'Pre-war window track cleaning', tip: 'Old double-hung windows have deep tracks that collect years of grime. Vacuum, then scrub with a toothbrush and soapy water.' },
-    { title: 'Fire escape access', tip: 'Keep the area near fire escape windows clean and clear. It\'s a safety requirement and your landlord can fine you for obstructions.' },
-    { title: 'Building laundry lint hazard', tip: 'If your building has shared dryers, check the vent ducts. Clogged dryer vents are one of the top causes of apartment fires in Florida.' },
+    { title: 'Sand tracking from the beach', tip: 'Beach sand ruins floors and gets everywhere. Put a mat by the door and rinse shoes outside. Vacuum the entryway frequently and mop weekly to prevent grit buildup.' },
+    { title: 'Manage humidity and musty smells', tip: 'Florida\'s humidity causes musty smells fast. Run a dehumidifier, keep AC at a consistent temperature, and use moisture absorbers in closets and storage areas.' },
+    { title: 'Hurricane shutter and sliding door track cleaning', tip: 'Hurricane shutters and sliding glass door tracks collect dirt, bugs, and moisture. Vacuum the tracks, then scrub with a toothbrush and soapy water regularly.' },
+    { title: 'Lanai and patio maintenance', tip: 'Keep your lanai or patio clean and free of debris. Sweep regularly, wipe down screens, and pressure wash floors quarterly to prevent mold and mildew buildup in Florida\'s humid climate.' },
+    { title: 'Dryer vent lint hazard', tip: 'Check your dryer vent ducts regularly. Clogged dryer vents are one of the top causes of home fires in Florida — especially dangerous in the heat.' },
   ],
   green: [
     { title: 'Vinegar is your best friend', tip: 'White vinegar cuts grease, dissolves mineral deposits, deodorizes, and disinfects. It replaces 5+ commercial products.' },
@@ -132,31 +132,31 @@ const tips: Record<string, { title: string; tip: string }[]> = {
     { title: 'One-touch rule for mail', tip: 'Touch mail once: open it, deal with it, recycle or file it. Never set it down "to deal with later." That pile on the counter? This is why.' },
     { title: 'Clean the kitchen before bed', tip: 'Wipe counters, wash dishes, take out trash. 5 minutes at night means waking up to a clean kitchen instead of yesterday\'s mess.' },
     { title: 'Put things back immediately', tip: 'The number one cause of clutter is putting things down instead of putting them away. It takes the same amount of time.' },
-    { title: 'Weekly 15-minute purge', tip: 'Walk through your apartment for 15 minutes and grab anything to trash or donate. Consistent small purges prevent big clutter.' },
+    { title: 'Weekly 15-minute purge', tip: 'Walk through your home for 15 minutes and grab anything to trash or donate. Consistent small purges prevent big clutter.' },
     { title: 'Deal with dishes immediately', tip: 'Rinse and load the dishwasher (or wash by hand) right after eating. A full sink takes 10 minutes to deal with. One plate takes 30 seconds.' },
     { title: 'Wipe the bathroom sink daily', tip: 'After your morning routine, quick wipe of the sink and counter. 15 seconds. Prevents toothpaste and soap buildup entirely.' },
-    { title: 'Shoe-free home', tip: 'Take shoes off at the door. Florida sidewalks carry bacteria, rat poison residue, and general filth. Your floors stay cleaner for days longer.' },
+    { title: 'Shoe-free home', tip: 'Take shoes off at the door. Florida streets carry sand, lawn chemicals, and general grime. Your floors stay cleaner for days longer.' },
     { title: 'Declutter before you clean', tip: 'Spending 10 minutes putting things away before cleaning means your cleaning time is actually spent cleaning, not organizing.' },
     { title: 'End-of-day reset', tip: 'Before bed, walk through each room for 2 minutes. Straighten pillows, put away stray items, quick counter wipe. Wake up to a reset home.' },
   ],
 }
 
 const faqData = [
-  { q: 'How often should I deep clean my apartment?', a: 'Every 4–6 weeks is ideal for most Florida homes. If you have pets or cook frequently, monthly deep cleaning keeps things manageable. Regular weekly maintenance between deep cleans keeps your space consistently comfortable.' },
+  { q: 'How often should I deep clean my home?', a: 'Every 4–6 weeks is ideal for most Florida homes. If you have pets or cook frequently, monthly deep cleaning keeps things manageable. Regular weekly maintenance between deep cleans keeps your space consistently comfortable.' },
   { q: 'What\'s the most important cleaning habit?', a: 'Making your bed and wiping kitchen counters daily. These two habits take under 2 minutes combined and have the biggest visual and psychological impact on how clean your home feels.' },
   { q: 'Are eco-friendly cleaning products as effective?', a: 'Yes. White vinegar, baking soda, and castile soap handle 90% of household cleaning. For disinfecting, hydrogen peroxide (3%) is as effective as bleach without the toxic fumes. The main exception is truly stubborn mold — that sometimes needs stronger treatment.' },
-  { q: 'How do I keep my Florida home clean between professional cleanings?', a: 'Follow the daily habits section above — make the bed, wipe counters, deal with dishes immediately, and take shoes off at the door. These 5 habits keep your apartment presentable between professional visits.' },
+  { q: 'How do I keep my Florida home clean between professional cleanings?', a: 'Follow the daily habits section above — make the bed, wipe counters, deal with dishes immediately, and take shoes off at the door. These 5 habits keep your home presentable between professional visits.' },
   { q: 'What cleaning products should I avoid with pets?', a: 'Avoid bleach, ammonia, phenol-based products (Lysol, Pine-Sol), and anything with essential oils — especially tea tree, eucalyptus, and citrus, which are toxic to cats. Stick with vinegar, castile soap, and enzyme cleaners.' },
 ]
 
 export const metadata: Metadata = {
   title: 'The 100 Best Cleaning Tips for Florida Homes | The Florida Maid',
-  description: 'The definitive list — 100 expert cleaning tips for Florida homes from professional cleaners. Kitchen, bathroom, floors, pets & more. From $49/hr. (833) 352-6243',
-  alternates: { canonical: 'https://www.thefloridamaid.com/nyc-maid-and-cleaning-tips-and-advice-by-the-nyc-maid' },
+  description: 'The definitive list — 100 expert cleaning tips for Florida homes from professional cleaners. Kitchen, bathroom, floors, pets & more. From $49/hr. (954) 710-3636',
+  alternates: { canonical: 'https://www.thefloridamaid.com/florida-maid-and-cleaning-tips-and-advice-by-the-florida-maid' },
   openGraph: {
     title: '100 Best Cleaning Tips | The Florida Maid',
     description: 'The definitive cleaning tips guide for Florida homes — 100 expert tips organized by room.',
-    url: 'https://www.thefloridamaid.com/nyc-maid-and-cleaning-tips-and-advice-by-the-nyc-maid',
+    url: 'https://www.thefloridamaid.com/florida-maid-and-cleaning-tips-and-advice-by-the-florida-maid',
   },
 }
 
@@ -197,13 +197,13 @@ export default function TipsPage() {
         localBusinessSchema(),
         breadcrumbSchema([
           { name: 'Home', url: 'https://www.thefloridamaid.com' },
-          { name: '100 Cleaning Tips', url: 'https://www.thefloridamaid.com/nyc-maid-and-cleaning-tips-and-advice-by-the-nyc-maid' },
+          { name: '100 Cleaning Tips', url: 'https://www.thefloridamaid.com/florida-maid-and-cleaning-tips-and-advice-by-the-florida-maid' },
         ]),
         faqSchema,
         howToSchema,
       ]} />
 
-      <section className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] py-16 md:py-24">
+      <section className="bg-gradient-to-b from-[#CC6222] to-[#CC6222] py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <p className="text-xs font-semibold text-[#34D399] tracking-[0.25em] uppercase mb-4">From the Pros Who Clean Florida Homes Every Day</p>
           <h1 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl lg:text-7xl text-white tracking-wide leading-[0.95] mb-4">The 100 Best Cleaning Tips for Florida Homes</h1>
@@ -212,14 +212,14 @@ export default function TipsPage() {
       </section>
 
       <div className="max-w-5xl mx-auto px-4 py-12">
-        <Breadcrumbs items={[{ name: '100 Cleaning Tips', href: '/nyc-maid-and-cleaning-tips-and-advice-by-the-nyc-maid' }]} />
+        <Breadcrumbs items={[{ name: '100 Cleaning Tips', href: '/florida-maid-and-cleaning-tips-and-advice-by-the-florida-maid' }]} />
 
         {/* Table of contents */}
         <nav className="border border-gray-200 rounded-xl p-6 md:p-8 mb-16">
-          <h2 className="font-[family-name:var(--font-bebas)] text-xl text-[#D4540A] tracking-wide mb-4">Jump to a Category</h2>
+          <h2 className="font-[family-name:var(--font-bebas)] text-xl text-[#CC6222] tracking-wide mb-4">Jump to a Category</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {categories.map(cat => (
-              <a key={cat.id} href={`#${cat.id}`} className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-[#34D399]/20 hover:text-[#D4540A] transition-colors">
+              <a key={cat.id} href={`#${cat.id}`} className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-[#34D399]/20 hover:text-[#CC6222] transition-colors">
                 <span>{cat.icon}</span>
                 <span>{cat.name}</span>
               </a>
@@ -232,16 +232,16 @@ export default function TipsPage() {
           <section key={cat.id} id={cat.id} className="mb-16 scroll-mt-24">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-2xl">{cat.icon}</span>
-              <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide">{cat.name}</h2>
+              <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide">{cat.name}</h2>
             </div>
             <div className="space-y-4">
               {tips[cat.id].map(tip => {
                 tipNumber++
                 return (
                   <div key={tip.title} className="flex gap-4 items-start p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#D4540A] text-white text-sm font-bold flex items-center justify-center">{tipNumber}</span>
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#CC6222] text-white text-sm font-bold flex items-center justify-center">{tipNumber}</span>
                     <div>
-                      <h3 className="font-semibold text-[#D4540A]">{tip.title}</h3>
+                      <h3 className="font-semibold text-[#CC6222]">{tip.title}</h3>
                       <p className="text-gray-600 text-sm mt-1">{tip.tip}</p>
                     </div>
                   </div>
@@ -252,9 +252,9 @@ export default function TipsPage() {
             {/* Mid-page CTA every 3 categories */}
             {(cat.id === 'bedroom' || cat.id === 'laundry' || cat.id === 'pets') && (
               <div className="bg-[#34D399]/15 border border-[#34D399]/30 rounded-xl p-6 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-                <p className="text-[#D4540A] font-medium">Rather have a pro handle it? We start at $49/hr.</p>
-                <a href="tel:8333526243" className="border-2 border-[#D4540A] text-[#D4540A] px-6 py-2.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#D4540A] hover:text-white transition-colors flex-shrink-0">
-                  (833) 352-6243
+                <p className="text-[#CC6222] font-medium">Rather have a pro handle it? We start at $49/hr.</p>
+                <a href="tel:9547103636" className="border-2 border-[#CC6222] text-[#CC6222] px-6 py-2.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#CC6222] hover:text-white transition-colors flex-shrink-0">
+                  (954) 710-3636
                 </a>
               </div>
             )}
@@ -263,11 +263,11 @@ export default function TipsPage() {
 
         {/* FAQ section */}
         <section className="mt-20 mb-16">
-          <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-8">Frequently Asked Questions</h2>
+          <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide mb-8">Frequently Asked Questions</h2>
           <div className="space-y-6">
             {faqData.map(f => (
               <div key={f.q} className="border-b border-gray-200 pb-6">
-                <h3 className="font-semibold text-[#D4540A] text-lg mb-2">{f.q}</h3>
+                <h3 className="font-semibold text-[#CC6222] text-lg mb-2">{f.q}</h3>
                 <p className="text-gray-600">{f.a}</p>
               </div>
             ))}
@@ -276,7 +276,7 @@ export default function TipsPage() {
 
         <div className="text-center">
           <p className="text-gray-600">
-            Want more in-depth articles? Check out our <Link href="/nyc-maid-service-blog" className="text-[#D4540A] font-semibold hover:underline">blog</Link> for detailed cleaning guides.
+            Want more in-depth articles? Check out our <Link href="/florida-maid-service-blog" className="text-[#CC6222] font-semibold hover:underline">blog</Link> for detailed cleaning guides.
           </p>
         </div>
       </div>

@@ -30,7 +30,7 @@ export const emailWrapper = (content: string) => `
           <tr>
             <td style="padding: 24px 0 0 0; text-align: left;">
               <p style="color: #999; font-size: 12px; margin: 0;">
-                The Florida Maid · <a href="tel:8333526243" style="color: #999;">(833) 352-6243</a>
+                The Florida Maid · <a href="tel:9547103636" style="color: #999;">(954) 710-3636</a>
               </p>
             </td>
           </tr>
@@ -117,7 +117,7 @@ export function clientBookingReceivedEmail(booking: any) {
     </p>
 
     <p style="color: #333; font-size: 14px; line-height: 1.7; margin: 16px 0 0 0;">
-      Questions? Call or text us at <a href="tel:8333526243" style="color: #000; font-weight: 500;">(833) 352-6243</a>
+      Questions? Call or text us at <a href="tel:9547103636" style="color: #000; font-weight: 500;">(954) 710-3636</a>
     </p>
   `
 
@@ -200,7 +200,7 @@ export function clientConfirmationEmail(booking: any) {
     </p>
 
     <p style="color: #666; font-size: 14px; margin: 16px 0 0 0;">
-      Day-of questions? Text or call <a href="tel:8333526243" style="color: #000;">(833) 352-6243</a>
+      Day-of questions? Text or call <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>
     </p>
   `
 
@@ -228,8 +228,8 @@ export function clientReminderEmail(booking: any, daysOut: string) {
 
     <p style="color: #666; font-size: 14px; margin: 24px 0 0 0;">
       ${isRecurring
-        ? `Need to reschedule? Visit your <a href="https://www.thefloridamaid.com/book" style="color: #000;">portal</a> (7 days notice required) or call <a href="tel:8333526243" style="color: #000;">(833) 352-6243</a>`
-        : `Questions? <a href="tel:8333526243" style="color: #000;">(833) 352-6243</a>`}
+        ? `Need to reschedule? Visit your <a href="https://www.thefloridamaid.com/book" style="color: #000;">portal</a> (7 days notice required) or call <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>`
+        : `Questions? <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>`}
     </p>
   `
 
@@ -252,7 +252,7 @@ export function clientCancellationEmail(booking: any) {
     ${primaryButton('Book Again', 'https://www.thefloridamaid.com/book')}
 
     <p style="color: #666; font-size: 14px; margin: 24px 0 0 0;">
-      Questions? <a href="tel:8333526243" style="color: #000;">(833) 352-6243</a>
+      Questions? <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>
     </p>
   `
 
@@ -293,7 +293,7 @@ export function clientThankYouEmail(clientName: string) {
     ${primaryButton('Visit Your Portal', 'https://www.thefloridamaid.com/book')}
 
     <p style="color: #666; font-size: 14px; margin: 24px 0 0 0;">
-      Questions? <a href="tel:8333526243" style="color: #000;">(833) 352-6243</a>
+      Questions? <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>
     </p>
   `
 
@@ -317,7 +317,7 @@ export function clientPaymentDueEmail(booking: any, amount: string) {
 
     ${infoTable(`
       ${infoRow('Zelle', '<a href="mailto:hi@thefloridamaid.com" style="color: #0066cc;">hi@thefloridamaid.com</a>')}
-      ${infoRow('Apple Pay', '<a href="tel:2120292200" style="color: #0066cc;">(212) 029-2200</a>')}
+      ${infoRow('Apple Pay', '<a href="tel:9547103636" style="color: #0066cc;">(954) 710-3636</a>')}
     `)}
 
     ${noteBox('<strong>Important:</strong> Our team cannot leave until payment has been processed. Thank you for your prompt payment!', 'warning')}
@@ -325,7 +325,7 @@ export function clientPaymentDueEmail(booking: any, amount: string) {
     ${noteBox('<strong>Tipping:</strong> Tips are always appreciated but never required. 100% of all tips go directly to your cleaner.', 'info')}
 
     <p style="color: #666; font-size: 14px; margin: 24px 0 0 0;">
-      Questions? <a href="tel:8333526243" style="color: #000;">(833) 352-6243</a>
+      Questions? <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>
     </p>
   `
 
@@ -374,7 +374,7 @@ export function cleanerAssignmentEmail(booking: any) {
     ${primaryButton('Open Team Portal / Abrir Portal', 'https://www.thefloridamaid.com/team')}
 
     <p style="color: #666; font-size: 14px; text-align: left; margin: 24px 0 0 0;">
-      Office / Oficina: <a href="tel:8333526243" style="color: #000;">(833) 352-6243</a>
+      Office / Oficina: <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>
     </p>
   `
 
@@ -426,7 +426,7 @@ export function cleanerDailySummaryEmail(cleanerName: string, bookings: any[]) {
     ${primaryButton('Open Team Portal / Abrir Portal', 'https://www.thefloridamaid.com/team')}
 
     <p style="color: #666; font-size: 14px; text-align: left; margin: 24px 0 0 0;">
-      Office / Oficina: <a href="tel:8333526243" style="color: #000;">(833) 352-6243</a>
+      Office / Oficina: <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>
     </p>
   `
 
@@ -454,7 +454,7 @@ export function cleanerCancellationEmail(booking: any) {
     ${primaryButton('View Schedule / Ver Horario', 'https://www.thefloridamaid.com/team')}
 
     <p style="color: #666; font-size: 14px; text-align: left; margin: 24px 0 0 0;">
-      Office / Oficina: <a href="tel:8333526243" style="color: #000;">(833) 352-6243</a>
+      Office / Oficina: <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>
     </p>
   `
 
@@ -628,11 +628,11 @@ export function cleanerWelcomeEmail(cleaner: { name: string; pin: string; phone:
       <p style="font-size: 13px; color: #555; margin: 0;">Pagamos por hora (redondeado a media hora).<br>Ejemplo: 2h 15min = pago por 2.5 horas<br>Puedes ver tus ganancias en el portal.</p>
 
       <h3 style="font-size: 14px; color: #333; margin: 16px 0 8px 0;">❓ PREGUNTAS</h3>
-      <p style="font-size: 13px; color: #555; margin: 0;">Llama o escribe: <strong>(833) 352-6243</strong></p>
+      <p style="font-size: 13px; color: #555; margin: 0;">Llama o escribe: <strong>(954) 710-3636</strong></p>
     </div>
 
     <p style="color: #666; font-size: 14px; text-align: left; margin: 24px 0 0 0;">
-      Office / Oficina: <a href="tel:8333526243" style="color: #000;">(833) 352-6243</a>
+      Office / Oficina: <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>
     </p>
   `
 
@@ -886,7 +886,7 @@ export function clientRescheduleEmail(booking: any, oldDate: string, oldTime: st
     ${primaryButton('View in Portal', 'https://www.thefloridamaid.com/book')}
 
     <p style="color: #666; font-size: 14px; margin: 24px 0 0 0;">
-      Questions? <a href="tel:8333526243" style="color: #000;">(833) 352-6243</a>
+      Questions? <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>
     </p>
   `
 
@@ -949,7 +949,7 @@ export function cleanerRescheduleEmail(booking: any, oldDate: string, oldTime: s
     ${primaryButton('Open Team Portal / Abrir Portal', 'https://www.thefloridamaid.com/team')}
 
     <p style="color: #666; font-size: 14px; text-align: left; margin: 24px 0 0 0;">
-      Office / Oficina: <a href="tel:8333526243" style="color: #000;">(833) 352-6243</a>
+      Office / Oficina: <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>
     </p>
   `
 
@@ -970,7 +970,7 @@ export function referralSignupNotifyEmail(referrerName: string, bookingDate: str
     ${noteBox("We'll notify you when they're serviced and your 10% commission is ready!", 'success')}
 
     <p style="color: #666; font-size: 14px; margin: 24px 0 0 0;">
-      Questions? <a href="tel:8333526243" style="color: #000;">(833) 352-6243</a>
+      Questions? <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>
     </p>
   `
 

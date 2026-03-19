@@ -102,7 +102,7 @@ export async function POST(request: Request) {
     if (process.env.ADMIN_EMAIL) {
       const html = `
         <div style="font-family: sans-serif; max-width: 600px;">
-          <h2 style="color: #D4540A;">New Application: Operations Manager (Virtual)</h2>
+          <h2 style="color: #CC6222;">New Application: Operations Manager (Virtual)</h2>
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Phone:</strong> ${phone}</p>
@@ -129,11 +129,11 @@ export async function POST(request: Request) {
     if (email) {
       const applicantHtml = `
         <div style="font-family: sans-serif; max-width: 500px;">
-          <h2 style="color: #D4540A;">Application Received!</h2>
+          <h2 style="color: #CC6222;">Application Received!</h2>
           <p>Hi ${name.split(' ')[0]},</p>
           <p>Thanks for applying for the <strong>Operations Manager (Virtual)</strong> position at The Florida Maid. We've received your application, photo, video, and resume.</p>
           <p>We'll review everything and reach out to you soon. If your application moves forward, we'll schedule a brief interview.</p>
-          <p style="margin-top: 20px; color: #666;">Questions?<br><a href="tel:8333526243" style="color: #D4540A;">(833) 352-6243</a></p>
+          <p style="margin-top: 20px; color: #666;">Questions?<br><a href="tel:9547103636" style="color: #CC6222;">(954) 710-3636</a></p>
         </div>
       `
       await sendEmail(email, 'Application Received — Operations Manager (Virtual) | The Florida Maid', applicantHtml)

@@ -6,7 +6,7 @@ import Breadcrumbs from '@/components/marketing/Breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'Terms & Conditions | The Florida Maid',
-  description: 'Terms & conditions for The Florida Maid — cancellation policy, payment terms, scheduling & service agreement. Cleaning from $49/hr. (833) 352-6243',
+  description: 'Terms & conditions for The Florida Maid — cancellation policy, payment terms, scheduling & service agreement. Cleaning from $49/hr. (954) 710-3636',
   alternates: { canonical: 'https://www.thefloridamaid.com/terms-conditions' },
 }
 
@@ -18,10 +18,10 @@ export default function TermsPage() {
         { name: 'Terms & Conditions', url: 'https://www.thefloridamaid.com/terms-conditions' },
       ])} />
 
-      <section className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] py-16 md:py-20">
+      <section className="bg-gradient-to-b from-[#CC6222] to-[#CC6222] py-16 md:py-20">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <h1 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-white tracking-wide">Terms &amp; Conditions</h1>
-          <p className="text-blue-200/60 mt-3">Service agreement for The Florida Maid</p>
+          <p className="text-white mt-3">Service agreement for The Florida Maid</p>
         </div>
       </section>
 
@@ -32,14 +32,14 @@ export default function TermsPage() {
           <p className="text-gray-400 text-sm">Last updated: February 2026</p>
 
           <div>
-            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Service Agreement</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">Service Agreement</h2>
             <p className="text-gray-600 leading-relaxed">
               By booking a cleaning service with The Florida Maid, you agree to the following terms and conditions. We reserve the right to update these terms at any time. Continued use of our services constitutes acceptance of any changes.
             </p>
           </div>
 
           <div>
-            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Booking &amp; Scheduling</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">Booking &amp; Scheduling</h2>
             <ul className="space-y-2.5">
               {[
                 'All bookings are subject to availability and confirmation.',
@@ -56,19 +56,19 @@ export default function TermsPage() {
           </div>
 
           <div>
-            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Cancellation Policy</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">Cancellation Policy</h2>
             <p className="text-gray-600 leading-relaxed mb-5">Our cancellation policy depends on the type of service booked:</p>
 
             <div className="space-y-4">
               <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="text-[#D4540A] font-semibold mb-3">One-Time &amp; First-Time Services</h3>
+                <h3 className="text-[#CC6222] font-semibold mb-3">One-Time &amp; First-Time Services</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   Once a one-time or first-time cleaning is booked and confirmed, <strong>cancellations are not permitted</strong>. When we confirm your appointment, we reserve a cleaner&apos;s time exclusively for you — turning away other clients for that slot. Cancelling a confirmed booking directly impacts our cleaners&apos; income. Please only book when you are certain of your availability.
                 </p>
               </div>
 
               <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="text-[#D4540A] font-semibold mb-3">Recurring Services (Weekly, Bi-Weekly, Monthly)</h3>
+                <h3 className="text-[#CC6222] font-semibold mb-3">Recurring Services (Weekly, Bi-Weekly, Monthly)</h3>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
                     <span className="text-[#34D399] mt-0.5 flex-shrink-0 font-bold text-sm">7 days</span>
@@ -87,7 +87,7 @@ export default function TermsPage() {
           </div>
 
           <div>
-            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Payment Terms</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">Payment Terms</h2>
             <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-6">
               <ul className="space-y-3">
                 {[
@@ -107,14 +107,14 @@ export default function TermsPage() {
           </div>
 
           <div>
-            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Satisfaction Guarantee</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">Satisfaction Guarantee</h2>
             <p className="text-gray-600 leading-relaxed">
               If you are not satisfied with any aspect of your cleaning, contact us within 24 hours. We will send a cleaner back to address the specific issues at no additional charge. We stand behind our work.
             </p>
           </div>
 
           <div>
-            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Liability &amp; Insurance</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">Liability &amp; Insurance</h2>
             <ul className="space-y-2.5">
               {[
                 'The Florida Maid carries full general liability insurance and bonding.',
@@ -131,7 +131,7 @@ export default function TermsPage() {
           </div>
 
           <div>
-            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Access &amp; Security</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">Access &amp; Security</h2>
             <ul className="space-y-2.5">
               {[
                 'Clients are responsible for providing safe, clear access to their home.',
@@ -148,12 +148,12 @@ export default function TermsPage() {
           </div>
 
           <div className="border-t border-gray-200 pt-8">
-            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">Contact Us</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">Contact Us</h2>
             <p className="text-gray-600 leading-relaxed">
-              Questions about these terms? Contact us at <a href="mailto:hi@thefloridamaid.com" className="text-[#D4540A] underline underline-offset-2">hi@thefloridamaid.com</a> or text/call <a href="tel:8333526243" className="text-[#D4540A] underline underline-offset-2">(833) 352-6243</a>.
+              Questions about these terms? Contact us at <a href="mailto:hi@thefloridamaid.com" className="text-[#CC6222] underline underline-offset-2">hi@thefloridamaid.com</a> or text/call <a href="tel:9547103636" className="text-[#CC6222] underline underline-offset-2">(954) 710-3636</a>.
             </p>
             <p className="text-gray-500 text-sm mt-4">
-              See also: <Link href="/privacy-policy" className="text-[#D4540A] underline underline-offset-2">Privacy Policy</Link> &middot; <Link href="/refund-policy" className="text-[#D4540A] underline underline-offset-2">Refund Policy</Link> &middot; <Link href="/do-not-share-policy" className="text-[#D4540A] underline underline-offset-2">Do Not Share Policy</Link>
+              See also: <Link href="/privacy-policy" className="text-[#CC6222] underline underline-offset-2">Privacy Policy</Link> &middot; <Link href="/refund-policy" className="text-[#CC6222] underline underline-offset-2">Refund Policy</Link> &middot; <Link href="/do-not-share-policy" className="text-[#CC6222] underline underline-offset-2">Do Not Share Policy</Link>
             </p>
           </div>
         </div>

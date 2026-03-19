@@ -6,24 +6,24 @@ import Breadcrumbs from '@/components/marketing/Breadcrumbs'
 import CTABlock from '@/components/marketing/CTABlock'
 
 const reviews = [
-  { name: 'Lindsey Hill', time: '3 days ago', text: 'Awesome cleaners and very responsive. I\'ve used them for several months now for my 3 bed 3 bath walk up in Hell\'s Kitchen. Karina is my cleaner. She is so sweet and warm and lovely, I always look forward to when she comes to take care of my apartment.', initial: 'L', color: 'bg-emerald-400' },
+  { name: 'Lindsey Hill', time: '3 days ago', text: 'Awesome cleaners and very responsive. I\'ve used them for several months now for my 3 bed 3 bath home in Fort Lauderdale. Karina is my cleaner. She is so sweet and warm and lovely, I always look forward to when she comes to take care of my home.', initial: 'L', color: 'bg-emerald-400' },
   { name: 'Joseph Busacca', time: 'a day ago', text: 'Karina was great and very helpful.', initial: 'J', color: 'bg-indigo-500' },
   { name: 'Adam Berger', time: '3 days ago', text: 'Great job. Friendly and professional.', initial: 'A', color: 'bg-slate-500' },
   { name: 'Jessica Pace', time: '4 days ago', text: 'Ines Enriquez was incredible. Loved this job. Worth every penny.', initial: 'J', color: 'bg-purple-500' },
-  { name: 'Brad Lieberman', time: '2 weeks ago', text: 'Jeff is a real gem. Super communicative easy going and responsive. In a city with a lot of fly by night operations, Florida Maids is the real deal. I\'ve occasionally had a few feedback points for Jeff\'s team and he has always been receptive and responsive.', initial: 'B', color: 'bg-amber-400' },
-  { name: 'Eeland Stribling', time: '4 weeks ago', text: 'Moving into an apartment clean. Had my daughter\'s room, a bathroom and a kitchen to clean. Cindy came and cleaned very well. Even cleaned up my living room as bonus. Right on time, fast, easy to book and communicate. Will be using again. No complaints!', initial: 'E', color: 'bg-violet-400' },
+  { name: 'Brad Lieberman', time: '2 weeks ago', text: 'Jeff is a real gem. Super communicative easy going and responsive. In an area with a lot of fly by night operations, Florida Maids is the real deal. I\'ve occasionally had a few feedback points for Jeff\'s team and he has always been receptive and responsive.', initial: 'B', color: 'bg-amber-400' },
+  { name: 'Eeland Stribling', time: '4 weeks ago', text: 'Moving into a new place clean. Had my daughter\'s room, a bathroom and a kitchen to clean. Cindy came and cleaned very well. Even cleaned up my living room as bonus. Right on time, fast, easy to book and communicate. Will be using again. No complaints!', initial: 'E', color: 'bg-violet-400' },
   { name: 'Kelsey Wheeler', time: '2 weeks ago', text: 'Great experience. Texted the number on their website on Saturday and had a deep cleaning scheduled for that following Monday at 9am. The cleaner was prompt and super nice/friendly.', initial: 'K', color: 'bg-cyan-400' },
-  { name: 'Jason Klig', time: '2 months ago', text: 'Maria did an amazing job! My apartment is spotless and she is so easy to work with. Was very happy to accommodate all of my requests.', initial: 'J', color: 'bg-lime-500' },
+  { name: 'Jason Klig', time: '2 months ago', text: 'Maria did an amazing job! My home is spotless and she is so easy to work with. Was very happy to accommodate all of my requests.', initial: 'J', color: 'bg-lime-500' },
   { name: 'Jessica Papantoniou', time: '2 months ago', text: 'I called for an emergency cleaning Jeff took care of it right away. Karina did an amazing job and she\'s incredibly sweet. I\'ll definitely be using their services again!', initial: 'J', color: 'bg-fuchsia-400' },
-  { name: 'Endrit Jonuzi', time: '2 months ago', text: 'We hired them for cleaning our offices in Manhattan and no doubt they are the best we ever had. Affordable pricing, staff was friendly and on time. We look forward to using them again.', initial: 'E', color: 'bg-yellow-500' },
-  { name: 'Shannon Atran', time: '2 months ago', text: 'Karina was incredible. She was extremely meticulous and left my apt spotless. 10/10; will definitely use again.', initial: 'S', color: 'bg-red-400' },
+  { name: 'Endrit Jonuzi', time: '2 months ago', text: 'We hired them for cleaning our offices in Miami and no doubt they are the best we ever had. Affordable pricing, staff was friendly and on time. We look forward to using them again.', initial: 'E', color: 'bg-yellow-500' },
+  { name: 'Shannon Atran', time: '2 months ago', text: 'Karina was incredible. She was extremely meticulous and left my home spotless. 10/10; will definitely use again.', initial: 'S', color: 'bg-red-400' },
   { name: 'Will Gags', time: '2 months ago', text: 'Maria is the grandmother you didn\'t know you needed. Couldn\'t recommend a more trustworthy and tidy business.', initial: 'W', color: 'bg-green-400' },
   { name: 'Blair Silver-Matthes', time: '2 months ago', text: 'Karina was wonderful! She left my home in exceptional condition and I\'m looking forward to having her come again!', initial: 'B', color: 'bg-blue-500' },
   { name: 'Vijay Chadderwala', time: '2 months ago', text: 'Gloria was great and very nice. Felt comfortable with her cleaning home.', initial: 'V', color: 'bg-orange-500' },
   { name: 'Priya Vadlamudi', time: '3 months ago', text: 'Service was great and very friendly staff.', initial: 'P', color: 'bg-pink-500' },
   { name: 'Erik Berlin', time: '2 months ago', text: 'Great service, cleaning, and pricing!', initial: 'E', color: 'bg-teal-500' },
   { name: 'Kayli Watson', time: '5 months ago', text: 'Super fast to book, incredibly kind people, and great results!', initial: 'K', color: 'bg-pink-400' },
-  { name: 'Julie Salamon', time: '5 months ago', text: 'We just had our apartment painted and needed a deep clean to get rid of loads of dust. Florida Maid sent a wonderful cleaner who was prompt, professional and did an amazing job. Highly recommend!!!', initial: 'J', color: 'bg-orange-400' },
+  { name: 'Julie Salamon', time: '5 months ago', text: 'We just had our home painted and needed a deep clean to get rid of loads of dust. Florida Maid sent a wonderful cleaner who was prompt, professional and did an amazing job. Highly recommend!!!', initial: 'J', color: 'bg-orange-400' },
   { name: 'Moodap', time: '5 months ago', text: 'Super detailed!', initial: 'M', color: 'bg-green-500' },
   { name: 'Antong', time: '6 months ago', text: 'Everything was spotless, from oven stove to fridge.', initial: 'A', color: 'bg-teal-400' },
   { name: 'Courtney Gamble', time: '6 months ago', text: "Best cleaning service I've used in the 20 years I've lived in Florida! Consistently efficient, thorough...", initial: 'C', color: 'bg-purple-400' },
@@ -37,12 +37,12 @@ const reviews = [
 
 export const metadata: Metadata = {
   title: 'Florida Maid Service Reviews | 5-Star Rated House Cleaning Florida | The Florida Maid',
-  description: '27 verified 5-star Google reviews from real Florida cleaning clients. Background-checked cleaners, from $49/hr, no contracts. Miami, Tampa, Orlando, Fort Lauderdale & Jacksonville. (833) 352-6243',
-  alternates: { canonical: 'https://www.thefloridamaid.com/nyc-customer-reviews-for-the-nyc-maid' },
+  description: '27 verified 5-star Google reviews from real Florida cleaning clients. Background-checked cleaners, from $49/hr, no contracts. Miami, Tampa, Orlando, Fort Lauderdale & Jacksonville. (954) 710-3636',
+  alternates: { canonical: 'https://www.thefloridamaid.com/florida-customer-reviews-for-the-florida-maid' },
   openGraph: {
     title: 'Florida Maid Service Reviews | 5-Star Rated House Cleaning | The Florida Maid',
-    description: '27 verified 5-star Google reviews from real Florida cleaning clients. Professional maid service across Manhattan, Brooklyn, Queens, Long Island & NJ.',
-    url: 'https://www.thefloridamaid.com/nyc-customer-reviews-for-the-nyc-maid',
+    description: '27 verified 5-star Google reviews from real Florida cleaning clients. Professional maid service across Miami, Fort Lauderdale, West Palm Beach, Tampa & Orlando.',
+    url: 'https://www.thefloridamaid.com/florida-customer-reviews-for-the-florida-maid',
   },
 }
 
@@ -53,25 +53,25 @@ export default function ReviewsPage() {
         localBusinessSchema(),
         breadcrumbSchema([
           { name: 'Home', url: 'https://www.thefloridamaid.com' },
-          { name: 'Reviews', url: 'https://www.thefloridamaid.com/nyc-customer-reviews-for-the-nyc-maid' },
+          { name: 'Reviews', url: 'https://www.thefloridamaid.com/florida-customer-reviews-for-the-florida-maid' },
         ]),
         ...reviewSchemas(),
       ]} />
 
       {/* Hero */}
-      <section className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] py-20 md:py-28">
+      <section className="bg-gradient-to-b from-[#CC6222] to-[#CC6222] py-20 md:py-28">
         <div className="max-w-5xl mx-auto px-4">
           <h1 className="font-[family-name:var(--font-bebas)] text-4xl md:text-6xl lg:text-7xl text-white tracking-wide leading-[0.95] mb-6">
             Florida House Cleaning Reviews — What Real Clients Say About The Florida Maid
           </h1>
-          <p className="text-blue-200/80 text-lg max-w-2xl leading-relaxed">
+          <p className="text-white text-lg max-w-2xl leading-relaxed">
             27 verified 5-star Google reviews from real home cleaning, deep cleaning, and maid service clients across Miami, Tampa, Orlando, Fort Lauderdale &amp; Jacksonville. No fake reviews, no cherry-picking — just honest feedback from Floridians who trust us with their homes.
           </p>
         </div>
       </section>
 
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <Breadcrumbs items={[{ name: 'Reviews', href: '/nyc-customer-reviews-for-the-nyc-maid' }]} />
+        <Breadcrumbs items={[{ name: 'Reviews', href: '/florida-customer-reviews-for-the-florida-maid' }]} />
 
         {/* Google Reviews widget */}
         <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden mt-8">

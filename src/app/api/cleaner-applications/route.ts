@@ -122,7 +122,7 @@ export async function POST(request: Request) {
           <p>Hi ${name.split(' ')[0]},</p>
           <p>Thanks for applying to join The Florida Maid team! We've received your application and will review it shortly.</p>
           <p>Gracias por solicitar unirse al equipo de The Florida Maid. Hemos recibido su solicitud y la revisaremos pronto.</p>
-          <p style="margin-top: 20px; color: #666;">Questions? / ¿Preguntas?<br><a href="tel:8333526243" style="color: #000;">(833) 352-6243</a></p>
+          <p style="margin-top: 20px; color: #666;">Questions? / ¿Preguntas?<br><a href="tel:9547103636" style="color: #000;">(954) 710-3636</a></p>
         </div>
       `
       await sendEmail(email, 'Application Received / Solicitud Recibida – The Florida Maid', applicantHtml)

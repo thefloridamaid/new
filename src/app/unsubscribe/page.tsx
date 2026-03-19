@@ -46,7 +46,7 @@ function UnsubscribeContent() {
             including appointment reminders, schedule changes, and specials.
           </p>
           <p className="text-gray-400 text-xs mt-6">
-            Questions? Call <a href="tel:8333526243" className="text-gray-600 underline">(833) 352-6243</a>
+            Questions? Call <a href="tel:9547103636" className="text-gray-600 underline">(954) 710-3636</a>
           </p>
         </div>
       </div>
@@ -61,7 +61,7 @@ function UnsubscribeContent() {
           <h1 className="text-xl font-bold text-gray-900 mb-2">Invalid Link</h1>
           <p className="text-gray-500 text-sm">This unsubscribe link appears to be invalid or expired.</p>
           <p className="text-gray-400 text-xs mt-6">
-            Questions? Call <a href="tel:8333526243" className="text-gray-600 underline">(833) 352-6243</a>
+            Questions? Call <a href="tel:9547103636" className="text-gray-600 underline">(954) 710-3636</a>
           </p>
         </div>
       </div>
@@ -107,7 +107,7 @@ function UnsubscribeContent() {
           </button>
         </div>
         <p className="text-gray-400 text-xs mt-6">
-          Questions? Call <a href="tel:8333526243" className="text-gray-600 underline">(833) 352-6243</a>
+          Questions? Call <a href="tel:9547103636" className="text-gray-600 underline">(954) 710-3636</a>
         </p>
       </div>
     </div>

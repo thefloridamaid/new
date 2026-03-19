@@ -42,7 +42,7 @@ export async function POST(request: Request) {
     if (body.client_id) {
       const { data: dnsCheck } = await supabaseAdmin.from('clients').select('do_not_service').eq('id', body.client_id).single()
       if (dnsCheck?.do_not_service) {
-        return NextResponse.json({ error: 'Please contact us at (833) 352-6243 to schedule your next service.' }, { status: 403 })
+        return NextResponse.json({ error: 'Please contact us at (954) 710-3636 to schedule your next service.' }, { status: 403 })
       }
     }
 
