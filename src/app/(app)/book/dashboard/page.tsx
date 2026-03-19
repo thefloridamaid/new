@@ -236,7 +236,7 @@ export default function ClientDashboardPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-[#1E2A4A] text-white p-4">
+      <div className="bg-[#D4540A] text-white p-4">
         <div className="flex justify-between items-center">
           <div>
             <p className="text-sm opacity-80">The Florida Maid</p>
@@ -259,7 +259,7 @@ export default function ClientDashboardPage() {
         {/* DNS Block Notice */}
         {doNotService && (
           <div className="bg-white rounded-xl border border-gray-200 p-5 mb-6 text-center">
-            <p className="text-lg font-semibold text-[#1E2A4A] mb-2">Account Restricted</p>
+            <p className="text-lg font-semibold text-[#D4540A] mb-2">Account Restricted</p>
             <p className="text-gray-600 text-sm mb-4">
               Due to a cancellation against our no-cancellation policy, we are unable to continue servicing your account. We sincerely apologize for any inconvenience and wish you the best in finding another service provider.
             </p>
@@ -267,8 +267,8 @@ export default function ClientDashboardPage() {
               If you believe this is an error, please contact us:
             </p>
             <div className="flex gap-3 mt-3">
-              <a href="tel:8333526243" className="flex-1 py-3 bg-[#1E2A4A] text-white rounded-lg text-center font-medium">Call (833) 352-6243</a>
-              <a href="sms:8333526243" className="flex-1 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-center font-medium">Text Us</a>
+              <a href="tel:8333526243" className="flex-1 py-3 bg-[#D4540A] text-white rounded-lg text-center font-medium">Call (833) 352-6243</a>
+              <a href="sms:8333526243" className="flex-1 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-center font-medium">Text Us</a>
             </div>
           </div>
         )}
@@ -277,7 +277,7 @@ export default function ClientDashboardPage() {
         {!doNotService && nextBooking ? (
           <div className="bg-white rounded-xl border border-gray-200 p-5 mb-6">
             <p className="text-sm text-gray-500 mb-1">Next Cleaning</p>
-            <p className="text-2xl font-bold text-[#1E2A4A]">{getDaysUntil(nextBooking.start_time)}</p>
+            <p className="text-2xl font-bold text-[#D4540A]">{getDaysUntil(nextBooking.start_time)}</p>
             <p className="text-gray-600 mt-1">{formatDate(nextBooking.start_time)}</p>
             <p className="text-gray-600">{formatTime(nextBooking.start_time)} • {nextBooking.cleaners?.name || 'Cleaner TBD'}</p>
 
@@ -285,14 +285,14 @@ export default function ClientDashboardPage() {
               {canReschedule(nextBooking) && (
                 <button
                   onClick={() => router.push(`/book/reschedule/${nextBooking.id}`)}
-                  className="flex-1 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] font-medium hover:bg-gray-50"
+                  className="flex-1 py-2 border border-gray-300 rounded-lg text-[#D4540A] font-medium hover:bg-gray-50"
                 >
                   Reschedule
                 </button>
               )}
               <button
                 onClick={() => openBookingPanel()}
-                className="flex-1 py-2 bg-[#1E2A4A] text-white rounded-lg font-medium hover:bg-[#1E2A4A]/90"
+                className="flex-1 py-2 bg-[#D4540A] text-white rounded-lg font-medium hover:bg-[#D4540A]/90"
               >
                 Ready for another service?
               </button>
@@ -303,7 +303,7 @@ export default function ClientDashboardPage() {
             <p className="text-gray-500 mb-1">No upcoming cleanings</p>
             <button
               onClick={() => openBookingPanel()}
-              className="mt-3 px-6 py-3 bg-[#1E2A4A] text-white rounded-lg font-medium hover:bg-[#1E2A4A]/90"
+              className="mt-3 px-6 py-3 bg-[#D4540A] text-white rounded-lg font-medium hover:bg-[#D4540A]/90"
             >
               Ready for another service?
             </button>
@@ -315,7 +315,7 @@ export default function ClientDashboardPage() {
         {showBooking && !doNotService && (
           <div className="bg-white rounded-xl border border-gray-200 p-5 mb-6">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-semibold text-[#1E2A4A]">Book a Cleaning</h2>
+              <h2 className="text-lg font-semibold text-[#D4540A]">Book a Cleaning</h2>
               <button
                 onClick={() => setShowBooking(false)}
                 className="text-gray-400 hover:text-gray-600 text-xl leading-none"
@@ -327,12 +327,12 @@ export default function ClientDashboardPage() {
             {bookingSuccess ? (
               <div className="text-center py-6">
                 <div className="text-3xl mb-2">&#10003;</div>
-                <p className="text-lg font-semibold text-[#1E2A4A]">Booking request submitted!</p>
+                <p className="text-lg font-semibold text-[#D4540A]">Booking request submitted!</p>
                 <p className="text-gray-600 text-sm mt-2">Our team will review your booking request and confirm with you soon.</p>
                 <p className="text-gray-500 text-sm mt-1">Thank you and welcome back!</p>
                 <button
                   onClick={() => setShowBooking(false)}
-                  className="mt-4 px-6 py-2 bg-[#1E2A4A] text-white rounded-lg font-medium hover:bg-[#1E2A4A]/90"
+                  className="mt-4 px-6 py-2 bg-[#D4540A] text-white rounded-lg font-medium hover:bg-[#D4540A]/90"
                 >
                   Done
                 </button>
@@ -340,11 +340,11 @@ export default function ClientDashboardPage() {
             ) : (
               <>
                 {/* Same-day / Emergency notice */}
-                <div className="bg-[#A8F0DC]/20 border border-[#A8F0DC]/30 rounded-lg p-3 mb-4 text-sm">
-                  <p className="text-[#1E2A4A]"><span className="font-medium">Same-day or emergency?</span> Please call or text us directly:</p>
+                <div className="bg-[#FDE68A]/20 border border-[#FDE68A]/30 rounded-lg p-3 mb-4 text-sm">
+                  <p className="text-[#D4540A]"><span className="font-medium">Same-day or emergency?</span> Please call or text us directly:</p>
                   <div className="flex gap-3 mt-2">
-                    <a href="tel:8333526243" className="flex-1 py-2 bg-[#1E2A4A] text-white rounded-lg text-center font-medium text-sm hover:bg-[#1E2A4A]/90">Call (833) 352-6243</a>
-                    <a href="sms:8333526243" className="flex-1 py-2 bg-[#1E2A4A] text-white rounded-lg text-center font-medium text-sm hover:bg-[#1E2A4A]/90">Text (833) 352-6243</a>
+                    <a href="tel:8333526243" className="flex-1 py-2 bg-[#D4540A] text-white rounded-lg text-center font-medium text-sm hover:bg-[#D4540A]/90">Call (833) 352-6243</a>
+                    <a href="sms:8333526243" className="flex-1 py-2 bg-[#D4540A] text-white rounded-lg text-center font-medium text-sm hover:bg-[#D4540A]/90">Text (833) 352-6243</a>
                   </div>
                 </div>
 
@@ -357,7 +357,7 @@ export default function ClientDashboardPage() {
                     onChange={(e) => handleDateChange(e.target.value)}
                     min={minDate}
                     max={maxDate}
-                    className="w-full border border-gray-300 rounded-lg p-3 text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-[#1E2A4A]"
+                    className="w-full border border-gray-300 rounded-lg p-3 text-[#D4540A] focus:outline-none focus:ring-2 focus:ring-[#D4540A]"
                   />
                 </div>
 
@@ -386,7 +386,7 @@ export default function ClientDashboardPage() {
                             setBookingHours(hours)
                             setBookingTime('')
                             if (bookingDate) fetchSlots(bookingDate, hours)
-                          }} className={'p-2.5 rounded-lg border text-xs font-medium ' + (bookingServiceType === s ? 'border-[#1E2A4A] bg-[#1E2A4A] text-white' : 'border-gray-200 text-gray-700 hover:bg-gray-50')}>{s}</button>
+                          }} className={'p-2.5 rounded-lg border text-xs font-medium ' + (bookingServiceType === s ? 'border-[#D4540A] bg-[#D4540A] text-white' : 'border-gray-200 text-gray-700 hover:bg-gray-50')}>{s}</button>
                         ))}
                       </div>
                     </div>
@@ -400,8 +400,8 @@ export default function ClientDashboardPage() {
                             setBookingTime('')
                             if (bookingDate) fetchSlots(bookingDate, h)
                           }
-                        }} className="w-8 h-8 rounded-lg border border-gray-300 flex items-center justify-center font-bold text-[#1E2A4A]" disabled={bookingHours <= 1}>-</button>
-                        <span className="text-lg font-bold text-[#1E2A4A] min-w-[2rem] text-center">{bookingHours}</span>
+                        }} className="w-8 h-8 rounded-lg border border-gray-300 flex items-center justify-center font-bold text-[#D4540A]" disabled={bookingHours <= 1}>-</button>
+                        <span className="text-lg font-bold text-[#D4540A] min-w-[2rem] text-center">{bookingHours}</span>
                         <button type="button" onClick={() => {
                           if (bookingHours < 8) {
                             const h = bookingHours + 1
@@ -409,7 +409,7 @@ export default function ClientDashboardPage() {
                             setBookingTime('')
                             if (bookingDate) fetchSlots(bookingDate, h)
                           }
-                        }} className="w-8 h-8 rounded-lg border border-gray-300 flex items-center justify-center font-bold text-[#1E2A4A]" disabled={bookingHours >= 8}>+</button>
+                        }} className="w-8 h-8 rounded-lg border border-gray-300 flex items-center justify-center font-bold text-[#D4540A]" disabled={bookingHours >= 8}>+</button>
                       </div>
                     </div>
                   </div>
@@ -434,7 +434,7 @@ export default function ClientDashboardPage() {
                               !slot.available
                                 ? 'bg-gray-100 text-gray-300 cursor-not-allowed'
                                 : bookingTime === slot.time
-                                  ? 'bg-[#1E2A4A] text-white'
+                                  ? 'bg-[#D4540A] text-white'
                                   : 'bg-green-50 text-green-700 border border-green-200 hover:bg-green-100'
                             }`}
                           >
@@ -454,7 +454,7 @@ export default function ClientDashboardPage() {
                       value={clientNotes}
                       onChange={(e) => setClientNotes(e.target.value.slice(0, 500))}
                       placeholder="Door codes, pet info, special instructions..."
-                      className="w-full border border-gray-300 rounded-lg p-3 text-[#1E2A4A] text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#1E2A4A]"
+                      className="w-full border border-gray-300 rounded-lg p-3 text-[#D4540A] text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#D4540A]"
                       rows={3}
                     />
                     <div className="flex justify-between items-center mt-2">
@@ -464,7 +464,7 @@ export default function ClientDashboardPage() {
                         <button
                           onClick={saveNotes}
                           disabled={savingNotes}
-                          className="px-4 py-1.5 bg-[#1E2A4A] text-white text-sm rounded-lg font-medium hover:bg-[#1E2A4A]/90 disabled:opacity-50"
+                          className="px-4 py-1.5 bg-[#D4540A] text-white text-sm rounded-lg font-medium hover:bg-[#D4540A]/90 disabled:opacity-50"
                         >
                           {savingNotes ? 'Saving...' : 'Save Notes'}
                         </button>
@@ -477,18 +477,18 @@ export default function ClientDashboardPage() {
                 {bookingDate && !isSameDay(bookingDate) && bookingTime && (
                   <div className="border-t border-gray-100 pt-4">
                     <div className="bg-gray-50 rounded-lg p-3 mb-4 text-sm">
-                      <p className="text-gray-600"><span className="font-medium text-[#1E2A4A]">Date:</span> {formatPickedDate(bookingDate)}</p>
-                      <p className="text-gray-600"><span className="font-medium text-[#1E2A4A]">Time:</span> {bookingTime}</p>
-                      <p className="text-gray-600"><span className="font-medium text-[#1E2A4A]">Service:</span> {bookingServiceType} — ~{bookingHours} hrs</p>
-                      <p className="text-gray-600"><span className="font-medium text-[#1E2A4A]">Estimated:</span> ${lastHourlyRate * bookingHours}</p>
+                      <p className="text-gray-600"><span className="font-medium text-[#D4540A]">Date:</span> {formatPickedDate(bookingDate)}</p>
+                      <p className="text-gray-600"><span className="font-medium text-[#D4540A]">Time:</span> {bookingTime}</p>
+                      <p className="text-gray-600"><span className="font-medium text-[#D4540A]">Service:</span> {bookingServiceType} — ~{bookingHours} hrs</p>
+                      <p className="text-gray-600"><span className="font-medium text-[#D4540A]">Estimated:</span> ${lastHourlyRate * bookingHours}</p>
                     </div>
                     <div className="bg-gray-50 rounded-lg p-3 mb-4 text-sm">
-                      <p className="text-gray-700"><span className="font-medium text-[#1E2A4A]">Cancellation Policy:</span> One-time services are non-cancellable. Recurring clients (weekly, bi-weekly, monthly) require 7 days notice for cancellations.</p>
+                      <p className="text-gray-700"><span className="font-medium text-[#D4540A]">Cancellation Policy:</span> One-time services are non-cancellable. Recurring clients (weekly, bi-weekly, monthly) require 7 days notice for cancellations.</p>
                     </div>
                     <button
                       onClick={submitBooking}
                       disabled={submittingBooking}
-                      className="w-full py-3 bg-[#1E2A4A] text-white rounded-lg font-medium hover:bg-[#1E2A4A]/90 disabled:opacity-50"
+                      className="w-full py-3 bg-[#D4540A] text-white rounded-lg font-medium hover:bg-[#D4540A]/90 disabled:opacity-50"
                     >
                       {submittingBooking ? 'Submitting...' : 'Confirm Booking'}
                     </button>
@@ -506,7 +506,7 @@ export default function ClientDashboardPage() {
             value={clientNotes}
             onChange={(e) => setClientNotes(e.target.value.slice(0, 500))}
             placeholder="Door codes, pet info, special instructions..."
-            className="w-full border border-gray-300 rounded-lg p-3 text-[#1E2A4A] text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#1E2A4A]"
+            className="w-full border border-gray-300 rounded-lg p-3 text-[#D4540A] text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#D4540A]"
             rows={3}
           />
           <div className="flex justify-between items-center mt-2">
@@ -516,7 +516,7 @@ export default function ClientDashboardPage() {
               <button
                 onClick={saveNotes}
                 disabled={savingNotes}
-                className="px-4 py-1.5 bg-[#1E2A4A] text-white text-sm rounded-lg font-medium hover:bg-[#1E2A4A]/90 disabled:opacity-50"
+                className="px-4 py-1.5 bg-[#D4540A] text-white text-sm rounded-lg font-medium hover:bg-[#D4540A]/90 disabled:opacity-50"
               >
                 {savingNotes ? 'Saving...' : 'Save'}
               </button>
@@ -528,13 +528,13 @@ export default function ClientDashboardPage() {
         <div className="flex gap-4 mb-4">
           <button
             onClick={() => setActiveTab('upcoming')}
-            className={`pb-2 font-medium ${activeTab === 'upcoming' ? 'text-[#1E2A4A] border-b-2 border-[#1E2A4A]' : 'text-gray-500'}`}
+            className={`pb-2 font-medium ${activeTab === 'upcoming' ? 'text-[#D4540A] border-b-2 border-[#D4540A]' : 'text-gray-500'}`}
           >
             Upcoming ({upcomingBookings.length})
           </button>
           <button
             onClick={() => setActiveTab('past')}
-            className={`pb-2 font-medium ${activeTab === 'past' ? 'text-[#1E2A4A] border-b-2 border-[#1E2A4A]' : 'text-gray-500'}`}
+            className={`pb-2 font-medium ${activeTab === 'past' ? 'text-[#D4540A] border-b-2 border-[#D4540A]' : 'text-gray-500'}`}
           >
             Past ({pastBookings.length})
           </button>
@@ -558,7 +558,7 @@ export default function ClientDashboardPage() {
             return (
               <div
                 key={booking.id}
-                className={`bg-white rounded-xl border transition-all ${isExpanded ? 'border-[#1E2A4A] shadow-md' : 'border-gray-200'}`}
+                className={`bg-white rounded-xl border transition-all ${isExpanded ? 'border-[#D4540A] shadow-md' : 'border-gray-200'}`}
               >
                 {/* Tappable header */}
                 <button
@@ -567,7 +567,7 @@ export default function ClientDashboardPage() {
                 >
                   <div className="flex justify-between items-start">
                     <div className="flex-1 min-w-0">
-                      <p className="font-semibold text-[#1E2A4A]">{formatDate(booking.start_time)}</p>
+                      <p className="font-semibold text-[#D4540A]">{formatDate(booking.start_time)}</p>
                       <p className="text-gray-600 text-sm">{formatTime(booking.start_time)} - {formatTime(booking.end_time)}</p>
                       <p className="text-gray-500 text-sm">{booking.cleaners?.name || 'Cleaner TBD'}</p>
                     </div>
@@ -586,24 +586,24 @@ export default function ClientDashboardPage() {
                     <div className="grid grid-cols-2 gap-3 py-3 text-sm">
                       <div>
                         <p className="text-gray-400 text-xs uppercase tracking-wide">Service</p>
-                        <p className="text-[#1E2A4A] font-medium">{booking.service_type}</p>
+                        <p className="text-[#D4540A] font-medium">{booking.service_type}</p>
                       </div>
                       <div>
                         <p className="text-gray-400 text-xs uppercase tracking-wide">Price</p>
-                        <p className="text-[#1E2A4A] font-medium">${(booking.price / 100).toFixed(0)}</p>
+                        <p className="text-[#D4540A] font-medium">${(booking.price / 100).toFixed(0)}</p>
                       </div>
                       <div>
                         <p className="text-gray-400 text-xs uppercase tracking-wide">Cleaner</p>
-                        <p className="text-[#1E2A4A] font-medium">{booking.cleaners?.name || 'To be assigned'}</p>
+                        <p className="text-[#D4540A] font-medium">{booking.cleaners?.name || 'To be assigned'}</p>
                       </div>
                       <div>
                         <p className="text-gray-400 text-xs uppercase tracking-wide">Status</p>
-                        <p className="text-[#1E2A4A] font-medium">{statusLabel}</p>
+                        <p className="text-[#D4540A] font-medium">{statusLabel}</p>
                       </div>
                       {booking.recurring_type && (
                         <div className="col-span-2">
                           <p className="text-gray-400 text-xs uppercase tracking-wide">Schedule</p>
-                          <p className="text-[#1E2A4A] font-medium capitalize">{booking.recurring_type}</p>
+                          <p className="text-[#D4540A] font-medium capitalize">{booking.recurring_type}</p>
                         </div>
                       )}
                     </div>
@@ -620,7 +620,7 @@ export default function ClientDashboardPage() {
                       {activeTab === 'upcoming' && canReschedule(booking) && !doNotService && (
                         <button
                           onClick={() => router.push(`/book/reschedule/${booking.id}`)}
-                          className="w-full py-2.5 bg-[#1E2A4A] text-white rounded-lg font-medium hover:bg-[#1E2A4A]/90"
+                          className="w-full py-2.5 bg-[#D4540A] text-white rounded-lg font-medium hover:bg-[#D4540A]/90"
                         >
                           Reschedule
                         </button>
@@ -638,14 +638,14 @@ export default function ClientDashboardPage() {
                             const bDate = new Date(booking.start_time).toISOString().split('T')[0]
                             openBookingPanel(bDate >= minDate ? bDate : undefined)
                           }}
-                          className="w-full py-2.5 bg-[#1E2A4A] text-white rounded-lg font-medium hover:bg-[#1E2A4A]/90"
+                          className="w-full py-2.5 bg-[#D4540A] text-white rounded-lg font-medium hover:bg-[#D4540A]/90"
                         >
                           Book Again
                         </button>
                       )}
                       <a
                         href="sms:8333526243"
-                        className="w-full py-2.5 border border-gray-300 rounded-lg text-[#1E2A4A] font-medium text-center hover:bg-gray-50"
+                        className="w-full py-2.5 border border-gray-300 rounded-lg text-[#D4540A] font-medium text-center hover:bg-gray-50"
                       >
                         Text Us About This Booking
                       </a>

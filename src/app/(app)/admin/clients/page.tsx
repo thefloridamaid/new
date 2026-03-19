@@ -199,7 +199,7 @@ export default function ClientsPage() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'potential': return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-amber-50 text-amber-700 rounded-full text-[11px] font-medium border border-amber-200"><span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Potential</span>
-      case 'new': return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-[#A8F0DC]/20 text-[#1E2A4A] rounded-full text-[11px] font-medium border border-[#A8F0DC]/40"><span className="w-1.5 h-1.5 rounded-full bg-[#A8F0DC]"></span>New</span>
+      case 'new': return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-[#FDE68A]/20 text-[#D4540A] rounded-full text-[11px] font-medium border border-[#FDE68A]/40"><span className="w-1.5 h-1.5 rounded-full bg-[#FDE68A]"></span>New</span>
       case 'active': return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-green-50 text-green-700 rounded-full text-[11px] font-medium border border-green-200"><span className="w-1.5 h-1.5 rounded-full bg-green-400"></span>Active</span>
       case 'inactive': return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-gray-50 text-gray-500 rounded-full text-[11px] font-medium border border-gray-200"><span className="w-1.5 h-1.5 rounded-full bg-gray-300"></span>Inactive</span>
       default: return null
@@ -256,28 +256,28 @@ export default function ClientsPage() {
         <div className="flex justify-between items-start mb-2">
           <div>
             <h2 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">&#128100; CLIENTS</h2>
-            <p className="text-2xl font-bold text-[#1E2A4A]">{clients.length} <span className="text-base font-normal text-gray-400">total clients</span></p>
+            <p className="text-2xl font-bold text-[#D4540A]">{clients.length} <span className="text-base font-normal text-gray-400">total clients</span></p>
           </div>
-          <button onClick={() => setShowAddModal(true)} className="px-5 py-2.5 bg-[#1E2A4A] text-white rounded-xl hover:bg-[#1E2A4A]/90 font-medium shadow-sm transition-all hover:shadow-md">+ Add Client</button>
+          <button onClick={() => setShowAddModal(true)} className="px-5 py-2.5 bg-[#D4540A] text-white rounded-xl hover:bg-[#D4540A]/90 font-medium shadow-sm transition-all hover:shadow-md">+ Add Client</button>
         </div>
         <div className="text-sm text-gray-400 mb-6">
-          Client portal: <a href="https://www.thefloridamaid.com/book" target="_blank" className="text-[#1E2A4A]/70 hover:underline py-2 inline-block">thefloridamaid.com/book</a> ·
-          New booking: <a href="https://www.thefloridamaid.com/book/new" target="_blank" className="text-[#1E2A4A]/70 hover:underline ml-1 py-2 inline-block">thefloridamaid.com/book/new</a> ·
-          Collect info: <a href="https://www.thefloridamaid.com/book/collect" target="_blank" className="text-[#1E2A4A]/70 hover:underline ml-1 py-2 inline-block">thefloridamaid.com/book/collect</a>
+          Client portal: <a href="https://www.thefloridamaid.com/book" target="_blank" className="text-[#D4540A]/70 hover:underline py-2 inline-block">thefloridamaid.com/book</a> ·
+          New booking: <a href="https://www.thefloridamaid.com/book/new" target="_blank" className="text-[#D4540A]/70 hover:underline ml-1 py-2 inline-block">thefloridamaid.com/book/new</a> ·
+          Collect info: <a href="https://www.thefloridamaid.com/book/collect" target="_blank" className="text-[#D4540A]/70 hover:underline ml-1 py-2 inline-block">thefloridamaid.com/book/collect</a>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3 mb-6">
-          <button onClick={() => setFilter('all')} className={`p-4 rounded-xl text-left transition-all hover:shadow-md ${filter === 'all' ? 'ring-2 ring-[#1E2A4A] shadow-md' : 'shadow-sm'} bg-gray-50`}>
+          <button onClick={() => setFilter('all')} className={`p-4 rounded-xl text-left transition-all hover:shadow-md ${filter === 'all' ? 'ring-2 ring-[#D4540A] shadow-md' : 'shadow-sm'} bg-gray-50`}>
             <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Total</p>
-            <p className="text-2xl font-bold text-[#1E2A4A]">{stats.total}</p>
+            <p className="text-2xl font-bold text-[#D4540A]">{stats.total}</p>
           </button>
           <button onClick={() => setFilter('potential')} className={`p-4 rounded-xl text-left transition-all hover:shadow-md ${filter === 'potential' ? 'ring-2 ring-amber-500 shadow-md' : 'shadow-sm'} bg-amber-50`}>
             <p className="text-xs font-semibold uppercase tracking-wider text-amber-500 mb-1">Potential</p>
             <p className="text-2xl font-bold text-amber-700">{stats.potential}</p>
           </button>
-          <button onClick={() => setFilter('new')} className={`p-4 rounded-xl text-left transition-all hover:shadow-md ${filter === 'new' ? 'ring-2 ring-[#1E2A4A] shadow-md' : 'shadow-sm'} bg-[#A8F0DC]/20`}>
-            <p className="text-xs font-semibold uppercase tracking-wider text-[#1E2A4A]/60 mb-1">New</p>
-            <p className="text-2xl font-bold text-[#1E2A4A]">{stats.new}</p>
+          <button onClick={() => setFilter('new')} className={`p-4 rounded-xl text-left transition-all hover:shadow-md ${filter === 'new' ? 'ring-2 ring-[#D4540A] shadow-md' : 'shadow-sm'} bg-[#FDE68A]/20`}>
+            <p className="text-xs font-semibold uppercase tracking-wider text-[#D4540A]/60 mb-1">New</p>
+            <p className="text-2xl font-bold text-[#D4540A]">{stats.new}</p>
           </button>
           <button onClick={() => setFilter('active')} className={`p-4 rounded-xl text-left transition-all hover:shadow-md ${filter === 'active' ? 'ring-2 ring-green-500 shadow-md' : 'shadow-sm'} bg-green-50`}>
             <p className="text-xs font-semibold uppercase tracking-wider text-green-500 mb-1">Active</p>
@@ -310,9 +310,9 @@ export default function ClientsPage() {
         <div className="flex gap-3 mb-6">
           <div className="flex-1 relative">
             <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-            <input type="text" placeholder="Search clients..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white shadow-sm focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all" />
+            <input type="text" placeholder="Search clients..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white shadow-sm focus:ring-2 focus:ring-[#FDE68A] focus:border-transparent outline-none transition-all" />
           </div>
-          <select value={sortBy} onChange={(e) => setSortBy(e.target.value as typeof sortBy)} className="px-4 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white shadow-sm focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all">
+          <select value={sortBy} onChange={(e) => setSortBy(e.target.value as typeof sortBy)} className="px-4 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white shadow-sm focus:ring-2 focus:ring-[#FDE68A] focus:border-transparent outline-none transition-all">
             <option value="created_at">Newest Added</option>
             <option value="name">Name A-Z</option>
             <option value="lastBooking">Last Booking</option>
@@ -321,11 +321,11 @@ export default function ClientsPage() {
           </select>
         </div>
 
-        {filter !== 'all' && <button onClick={() => setFilter('all')} className="mb-4 text-xs font-medium text-[#1E2A4A]/70 hover:text-[#1E2A4A] bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-full transition-colors">&larr; Show all clients</button>}
+        {filter !== 'all' && <button onClick={() => setFilter('all')} className="mb-4 text-xs font-medium text-[#D4540A]/70 hover:text-[#D4540A] bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-full transition-colors">&larr; Show all clients</button>}
 
         {loading ? (
           <div className="text-center py-16 text-gray-400">
-            <div className="inline-block w-6 h-6 border-2 border-gray-200 border-t-[#1E2A4A] rounded-full animate-spin mb-3"></div>
+            <div className="inline-block w-6 h-6 border-2 border-gray-200 border-t-[#D4540A] rounded-full animate-spin mb-3"></div>
             <p className="text-sm">Loading clients...</p>
           </div>
         ) : (
@@ -361,11 +361,11 @@ export default function ClientsPage() {
                         </td>
                         <td className="px-3 md:px-4 py-3.5">
                           <div className="flex items-center gap-2.5">
-                            <div className="w-8 h-8 rounded-full bg-[#1E2A4A] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">
+                            <div className="w-8 h-8 rounded-full bg-[#D4540A] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">
                               {client.name ? client.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) : '?'}
                             </div>
                             <div className="min-w-0">
-                              <p className="font-semibold text-[#1E2A4A] text-sm group-hover:text-[#1E2A4A]/80 transition-colors">{client.name}</p>
+                              <p className="font-semibold text-[#D4540A] text-sm group-hover:text-[#D4540A]/80 transition-colors">{client.name}</p>
                               <p className="text-xs text-gray-400 truncate max-w-[120px] md:max-w-[200px]">{client.address}</p>
                             </div>
                           </div>
@@ -377,7 +377,7 @@ export default function ClientsPage() {
                         <td className="px-4 py-3.5 text-sm text-gray-500 hidden lg:table-cell">
                           {formatDate(client.created_at)}
                         </td>
-                        <td className="px-3 md:px-4 py-3.5 font-semibold text-sm text-[#1E2A4A]">{client.totalBookings}</td>
+                        <td className="px-3 md:px-4 py-3.5 font-semibold text-sm text-[#D4540A]">{client.totalBookings}</td>
                         <td className="px-3 md:px-4 py-3.5 font-semibold text-green-600 text-sm">{formatMoney(client.totalSpent)}</td>
                         <td className="px-4 py-3.5 text-sm text-gray-500 hidden md:table-cell">
                           {formatDate(client.lastBooking)}
@@ -390,7 +390,7 @@ export default function ClientsPage() {
                         </td>
                         <td className="px-4 py-3.5 hidden md:table-cell" onClick={(e) => e.stopPropagation()}>
                           <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <button onClick={() => openEditModal(client)} className="text-[#1E2A4A]/70 hover:text-[#1E2A4A] text-xs font-medium px-2 py-1 rounded-lg hover:bg-gray-100 transition-colors">Edit</button>
+                            <button onClick={() => openEditModal(client)} className="text-[#D4540A]/70 hover:text-[#D4540A] text-xs font-medium px-2 py-1 rounded-lg hover:bg-gray-100 transition-colors">Edit</button>
                             <button onClick={() => { if (confirm(`Delete ${client.name}? This cannot be undone.`)) { fetch(`/api/clients/${client.id}`, { method: 'DELETE' }).then(res => { if (res.ok) fetchClients(); else res.json().then(err => alert(err.error || 'Failed to delete')) }) } }} className="text-red-500/70 hover:text-red-600 text-xs font-medium px-2 py-1 rounded-lg hover:bg-red-50 transition-colors">Delete</button>
                           </div>
                         </td>
@@ -422,14 +422,14 @@ export default function ClientsPage() {
                   <p className="text-sm text-gray-500">{mapClients.length} clients with addresses</p>
                 </div>
                 <div className="flex gap-1.5 flex-wrap">
-                  <button onClick={() => setMapFilter('all')} className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${mapFilter === 'all' ? 'bg-[#1E2A4A] text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+                  <button onClick={() => setMapFilter('all')} className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${mapFilter === 'all' ? 'bg-[#D4540A] text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
                     All <span className="opacity-70">{mapStatusCounts.all}</span>
                   </button>
                   <button onClick={() => setMapFilter('active')} className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${mapFilter === 'active' ? 'bg-green-600 text-white' : 'bg-green-50 text-green-700 hover:bg-green-100'}`}>
                     <span className="w-2 h-2 rounded-full bg-green-500 inline-block"></span> Active <span className="opacity-70">{mapStatusCounts.active}</span>
                   </button>
-                  <button onClick={() => setMapFilter('new')} className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${mapFilter === 'new' ? 'bg-[#1E2A4A] text-white' : 'bg-[#A8F0DC]/20 text-[#1E2A4A]/70 hover:bg-[#A8F0DC]/20'}`}>
-                    <span className="w-2 h-2 rounded-full bg-[#A8F0DC] inline-block"></span> New <span className="opacity-70">{mapStatusCounts.new}</span>
+                  <button onClick={() => setMapFilter('new')} className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${mapFilter === 'new' ? 'bg-[#D4540A] text-white' : 'bg-[#FDE68A]/20 text-[#D4540A]/70 hover:bg-[#FDE68A]/20'}`}>
+                    <span className="w-2 h-2 rounded-full bg-[#FDE68A] inline-block"></span> New <span className="opacity-70">{mapStatusCounts.new}</span>
                   </button>
                   <button onClick={() => setMapFilter('potential')} className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${mapFilter === 'potential' ? 'bg-amber-600 text-white' : 'bg-amber-50 text-amber-700 hover:bg-amber-100'}`}>
                     <span className="w-2 h-2 rounded-full bg-amber-500 inline-block"></span> Potential <span className="opacity-70">{mapStatusCounts.potential}</span>
@@ -476,11 +476,11 @@ export default function ClientsPage() {
                   <div className="mb-6">
                     {/* Client Identity Header */}
                     <div className="flex items-center gap-4 mb-5">
-                      <div className="w-14 h-14 rounded-full bg-[#1E2A4A] text-white flex items-center justify-center text-lg font-bold flex-shrink-0 shadow-md">
+                      <div className="w-14 h-14 rounded-full bg-[#D4540A] text-white flex items-center justify-center text-lg font-bold flex-shrink-0 shadow-md">
                         {s.name ? s.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) : '?'}
                       </div>
                       <div className="min-w-0 flex-1">
-                        <h3 className="text-lg font-bold text-[#1E2A4A] truncate">{s.name}</h3>
+                        <h3 className="text-lg font-bold text-[#D4540A] truncate">{s.name}</h3>
                         <div className="flex items-center gap-2 mt-1 flex-wrap">
                           {clientStatus && getStatusBadge(clientStatus)}
                           {s.totalBookings >= 3 && <span className="inline-flex items-center px-2.5 py-0.5 bg-purple-50 text-purple-700 rounded-full text-[11px] font-medium border border-purple-200">Recurring</span>}
@@ -492,15 +492,15 @@ export default function ClientsPage() {
                     <div className="grid grid-cols-3 gap-2.5">
                       <div className="bg-gray-50 rounded-xl p-3 text-center">
                         <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-0.5">Bookings</p>
-                        <p className="text-lg font-bold text-[#1E2A4A]">{s.totalBookings}</p>
+                        <p className="text-lg font-bold text-[#D4540A]">{s.totalBookings}</p>
                       </div>
                       <div className="bg-green-50 rounded-xl p-3 text-center">
                         <p className="text-xs font-semibold uppercase tracking-wider text-green-500 mb-0.5">Total Spent</p>
                         <p className="text-lg font-bold text-green-700">{formatMoney(s.totalSpent)}</p>
                       </div>
-                      <div className="bg-[#A8F0DC]/20 rounded-xl p-3 text-center">
-                        <p className="text-xs font-semibold uppercase tracking-wider text-[#1E2A4A]/50 mb-0.5">Last Booking</p>
-                        <p className="text-sm font-semibold text-[#1E2A4A]">{formatDate(s.lastBooking)}</p>
+                      <div className="bg-[#FDE68A]/20 rounded-xl p-3 text-center">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-[#D4540A]/50 mb-0.5">Last Booking</p>
+                        <p className="text-sm font-semibold text-[#D4540A]">{formatDate(s.lastBooking)}</p>
                       </div>
                     </div>
                   </div>
@@ -512,12 +512,12 @@ export default function ClientsPage() {
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Name *</label>
-                  <input type="text" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all" placeholder="John Smith" />
+                  <input type="text" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#FDE68A] focus:border-transparent outline-none transition-all" placeholder="John Smith" />
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Email</label>
                   <div className="flex gap-2">
-                    <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="flex-1 px-3 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all" placeholder="john@email.com" />
+                    <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="flex-1 px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#FDE68A] focus:border-transparent outline-none transition-all" placeholder="john@email.com" />
                     {editingClient && form.email && (
                       <a href={`mailto:${form.email}`} className="px-4 py-2.5 bg-purple-50 text-purple-700 border border-purple-200 rounded-xl text-xs font-semibold hover:bg-purple-100 flex items-center transition-colors">Email</a>
                     )}
@@ -526,11 +526,11 @@ export default function ClientsPage() {
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Phone</label>
                   <div className="flex gap-2">
-                    <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })} className="flex-1 px-3 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all" placeholder="212-555-1234" />
+                    <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })} className="flex-1 px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#FDE68A] focus:border-transparent outline-none transition-all" placeholder="212-555-1234" />
                     {editingClient && form.phone && (
                       <>
                         <a href={`tel:${form.phone}`} className="px-4 py-2.5 bg-green-50 text-green-700 border border-green-200 rounded-xl text-xs font-semibold hover:bg-green-100 flex items-center transition-colors">Call</a>
-                        <a href={`sms:${form.phone}`} className="px-4 py-2.5 bg-[#A8F0DC]/20 text-[#1E2A4A]/70 border border-[#A8F0DC]/40 rounded-xl text-xs font-semibold hover:bg-[#A8F0DC]/30 flex items-center transition-colors">Text</a>
+                        <a href={`sms:${form.phone}`} className="px-4 py-2.5 bg-[#FDE68A]/20 text-[#D4540A]/70 border border-[#FDE68A]/40 rounded-xl text-xs font-semibold hover:bg-[#FDE68A]/30 flex items-center transition-colors">Text</a>
                       </>
                     )}
                   </div>
@@ -541,18 +541,18 @@ export default function ClientsPage() {
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Unit / Apt</label>
-                  <input type="text" value={form.unit} onChange={(e) => { setForm({ ...form, unit: e.target.value }); setAddressChanged(true) }} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all" placeholder="Apt 4B" />
+                  <input type="text" value={form.unit} onChange={(e) => { setForm({ ...form, unit: e.target.value }); setAddressChanged(true) }} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#FDE68A] focus:border-transparent outline-none transition-all" placeholder="Apt 4B" />
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Referred By</label>
-                  <select value={form.referrer_id} onChange={(e) => setForm({ ...form, referrer_id: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all">
+                  <select value={form.referrer_id} onChange={(e) => setForm({ ...form, referrer_id: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#FDE68A] focus:border-transparent outline-none transition-all">
                     <option value="">None</option>
                     {referrers.filter(ref => ref.active).map(ref => <option key={ref.id} value={ref.id}>{ref.name} ({ref.ref_code})</option>)}
                   </select>
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Notes</label>
-                  <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all" rows={3} placeholder="Any special instructions..." />
+                  <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#D4540A] bg-white focus:ring-2 focus:ring-[#FDE68A] focus:border-transparent outline-none transition-all" rows={3} placeholder="Any special instructions..." />
                 </div>
                 {editingClient && (
                   <div className="pt-4">
@@ -566,7 +566,7 @@ export default function ClientsPage() {
                     <div className="space-y-3">
                       <div className="flex justify-between items-center">
                         <div>
-                          <h4 className="font-medium text-[#1E2A4A] text-sm">Email Marketing</h4>
+                          <h4 className="font-medium text-[#D4540A] text-sm">Email Marketing</h4>
                           <p className="text-[11px] text-gray-400">Receive promotional emails</p>
                         </div>
                         <div
@@ -587,7 +587,7 @@ export default function ClientsPage() {
                       </div>
                       <div className="flex justify-between items-center">
                         <div>
-                          <h4 className="font-medium text-[#1E2A4A] text-sm">SMS Marketing</h4>
+                          <h4 className="font-medium text-[#D4540A] text-sm">SMS Marketing</h4>
                           <p className="text-[11px] text-gray-400">Receive promotional texts</p>
                         </div>
                         <div
@@ -633,7 +633,7 @@ export default function ClientsPage() {
                   </div>
                 )}
                 {editingClient && !editingClient.do_not_service && (
-                  <a href={`/admin/bookings?new=1&client_id=${editingClient.id}`} className="block w-full text-center py-2.5 px-4 bg-[#1E2A4A]/5 text-[#1E2A4A] border border-gray-200 rounded-xl font-semibold hover:bg-[#1E2A4A]/10 transition-colors text-sm">+ Book for {form.name.split(' ')[0] || 'Client'}</a>
+                  <a href={`/admin/bookings?new=1&client_id=${editingClient.id}`} className="block w-full text-center py-2.5 px-4 bg-[#D4540A]/5 text-[#D4540A] border border-gray-200 rounded-xl font-semibold hover:bg-[#D4540A]/10 transition-colors text-sm">+ Book for {form.name.split(' ')[0] || 'Client'}</a>
                 )}
                 {editingClient && (
                   <div className="pt-5 border-t border-gray-100">
@@ -647,7 +647,7 @@ export default function ClientsPage() {
                   ) : <div />}
                   <div className="flex gap-2">
                     <button type="button" onClick={closeModal} className="px-4 py-2.5 text-gray-500 hover:text-gray-700 text-sm font-medium hover:bg-gray-50 rounded-xl transition-colors">Cancel</button>
-                    <button type="submit" className="px-5 py-2.5 bg-[#1E2A4A] text-white rounded-xl hover:bg-[#1E2A4A]/90 font-semibold text-sm shadow-sm hover:shadow-md transition-all">{editingClient ? 'Update' : 'Add Client'}</button>
+                    <button type="submit" className="px-5 py-2.5 bg-[#D4540A] text-white rounded-xl hover:bg-[#D4540A]/90 font-semibold text-sm shadow-sm hover:shadow-md transition-all">{editingClient ? 'Update' : 'Add Client'}</button>
                   </div>
                 </div>
               </form>

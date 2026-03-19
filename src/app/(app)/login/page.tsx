@@ -41,19 +41,19 @@ export default function LoginPage() {
       <div className="w-full max-w-sm">
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="text-center mb-6">
-            <h1 className="text-2xl font-bold text-[#1E2A4A]">The Florida Maid</h1>
+            <h1 className="text-2xl font-bold text-[#D4540A]">The Florida Maid</h1>
             <p className="text-gray-500 mt-1">Admin Portal</p>
           </div>
           <form onSubmit={handleSubmit}>
             <div>
-              <label className="block text-sm font-medium text-[#1E2A4A] mb-1">PIN</label>
+              <label className="block text-sm font-medium text-[#D4540A] mb-1">PIN</label>
               <input
                 type="password"
                 required
                 inputMode="numeric"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#1E2A4A] outline-none"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#D4540A] outline-none"
                 placeholder="Enter your PIN"
                 disabled={attempts >= 5}
               />
@@ -62,7 +62,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading || attempts >= 5}
-              className="w-full mt-4 py-3 bg-[#1E2A4A] text-white font-semibold rounded-lg hover:bg-[#1E2A4A]/90 disabled:opacity-50"
+              className="w-full mt-4 py-3 bg-[#D4540A] text-white font-semibold rounded-lg hover:bg-[#D4540A]/90 disabled:opacity-50"
             >
               {loading ? 'Signing in...' : 'Sign In'}
             </button>

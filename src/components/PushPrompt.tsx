@@ -117,23 +117,23 @@ export default function PushPrompt({ role, userId }: PushPromptProps) {
     <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
       {isIOS && !isStandalone ? (
         <>
-          <p className="font-medium text-sm text-[#1E2A4A] mb-1">Get push notifications</p>
+          <p className="font-medium text-sm text-[#D4540A] mb-1">Get push notifications</p>
           <p className="text-xs text-gray-500 mb-0">Tap the Share button below, then &quot;Add to Home Screen&quot;. Open from your home screen, then come back here to enable.</p>
         </>
       ) : pushSupported ? (
         <>
-          <p className="font-medium text-sm text-[#1E2A4A] mb-2">Get push notifications on this device</p>
+          <p className="font-medium text-sm text-[#D4540A] mb-2">Get push notifications on this device</p>
           <button
             onClick={enablePush}
             disabled={pushLoading}
-            className="w-full py-2 px-4 bg-[#1E2A4A] text-white text-sm font-medium rounded-lg hover:bg-[#1E2A4A]/90 transition disabled:opacity-50"
+            className="w-full py-2 px-4 bg-[#D4540A] text-white text-sm font-medium rounded-lg hover:bg-[#D4540A]/90 transition disabled:opacity-50"
           >
             {pushLoading ? 'Enabling...' : 'Enable Push Notifications'}
           </button>
         </>
       ) : (
         <>
-          <p className="font-medium text-sm text-[#1E2A4A] mb-1">Push notifications unavailable</p>
+          <p className="font-medium text-sm text-[#D4540A] mb-1">Push notifications unavailable</p>
           <p className="text-xs text-gray-500">Your browser doesn&apos;t support push. Try Chrome or open from home screen on iPhone.</p>
         </>
       )}

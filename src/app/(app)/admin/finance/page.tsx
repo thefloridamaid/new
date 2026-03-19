@@ -427,7 +427,7 @@ export default function FinancePage() {
     <>
       <main className="p-3 md:p-6">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-[#1E2A4A]">Finance</h2>
+          <h2 className="text-2xl font-bold text-[#D4540A]">Finance</h2>
           <div className="flex gap-2">
             <button
               onClick={handleBackfill}
@@ -438,7 +438,7 @@ export default function FinancePage() {
             </button>
             <button
               onClick={() => setShowExpenseModal(true)}
-              className="px-4 py-2 bg-[#1E2A4A] text-white rounded-xl hover:bg-[#1E2A4A]/90 text-sm transition-colors"
+              className="px-4 py-2 bg-[#D4540A] text-white rounded-xl hover:bg-[#D4540A]/90 text-sm transition-colors"
             >
               + Add Expense
             </button>
@@ -460,7 +460,7 @@ export default function FinancePage() {
               onClick={() => setActiveTab(tab.key)}
               className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
                 activeTab === tab.key
-                  ? 'bg-[#1E2A4A] text-white'
+                  ? 'bg-[#D4540A] text-white'
                   : 'text-gray-500 hover:bg-gray-100'
               }`}
             >
@@ -509,11 +509,11 @@ export default function FinancePage() {
               {/* Left: Payroll Panel */}
               <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
                 <div className="px-5 py-4 border-b border-gray-100 flex justify-between items-center">
-                  <h3 className="text-xs font-bold text-[#1E2A4A] uppercase tracking-wider">👥 PAYROLL</h3>
+                  <h3 className="text-xs font-bold text-[#D4540A] uppercase tracking-wider">👥 PAYROLL</h3>
                   {pendingPayments.length > 0 && (
                     <button
                       onClick={() => setActiveTab('payroll')}
-                      className="py-2 text-xs text-[#1E2A4A] hover:underline font-medium"
+                      className="py-2 text-xs text-[#D4540A] hover:underline font-medium"
                     >
                       View all {pendingPayments.length} pending →
                     </button>
@@ -524,7 +524,7 @@ export default function FinancePage() {
                     summary.cleanerTotals.map(c => (
                       <div key={c.cleaner_id} className="flex items-center justify-between px-5 py-3 hover:bg-gray-50 transition-colors">
                         <div>
-                          <p className="font-medium text-[#1E2A4A] text-sm">{c.name}</p>
+                          <p className="font-medium text-[#D4540A] text-sm">{c.name}</p>
                           <p className="text-xs text-gray-400">{c.count} jobs</p>
                         </div>
                         <span className="font-semibold text-green-600 text-sm">{formatCurrency(c.total)}</span>
@@ -536,7 +536,7 @@ export default function FinancePage() {
                 </div>
                 {summary?.cleanerTotals && summary.cleanerTotals.length > 0 && (
                   <div className="flex items-center justify-between px-5 py-3 bg-gray-50 border-t border-gray-100">
-                    <span className="font-bold text-[#1E2A4A] text-sm">Total Owed</span>
+                    <span className="font-bold text-[#D4540A] text-sm">Total Owed</span>
                     <span className="font-bold text-orange-600">{formatCurrency(summary?.pendingCleanerPayments || 0)}</span>
                   </div>
                 )}
@@ -545,10 +545,10 @@ export default function FinancePage() {
               {/* Right: Expenses Panel */}
               <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
                 <div className="px-5 py-4 border-b border-gray-100 flex justify-between items-center">
-                  <h3 className="text-xs font-bold text-[#1E2A4A] uppercase tracking-wider">🧾 EXPENSES</h3>
+                  <h3 className="text-xs font-bold text-[#D4540A] uppercase tracking-wider">🧾 EXPENSES</h3>
                   <button
                     onClick={() => setActiveTab('expenses')}
-                    className="py-2 text-xs text-[#1E2A4A] hover:underline font-medium"
+                    className="py-2 text-xs text-[#D4540A] hover:underline font-medium"
                   >
                     View all →
                   </button>
@@ -558,7 +558,7 @@ export default function FinancePage() {
                     expenses.slice(0, 6).map(exp => (
                       <div key={exp.id} className="flex items-center justify-between px-5 py-3 hover:bg-gray-50 transition-colors">
                         <div>
-                          <p className="font-medium text-[#1E2A4A] text-sm">{exp.description}</p>
+                          <p className="font-medium text-[#D4540A] text-sm">{exp.description}</p>
                           <p className="text-xs text-gray-400">{exp.category} · {new Date(exp.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</p>
                         </div>
                         <span className="font-semibold text-red-500 text-sm">-{formatCurrencyDecimal(exp.amount)}</span>
@@ -569,7 +569,7 @@ export default function FinancePage() {
                   )}
                 </div>
                 <div className="flex items-center justify-between px-5 py-3 bg-gray-50 border-t border-gray-100">
-                  <span className="font-bold text-[#1E2A4A] text-sm">Total (Month)</span>
+                  <span className="font-bold text-[#D4540A] text-sm">Total (Month)</span>
                   <span className="font-bold text-red-600">-{formatCurrency(monthExpenses)}</span>
                 </div>
               </div>
@@ -580,7 +580,7 @@ export default function FinancePage() {
               {/* Pending Payments */}
               <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
                 <div className="px-5 py-4 border-b border-gray-100">
-                  <h3 className="text-xs font-bold text-[#1E2A4A] uppercase tracking-wider">⏳ PENDING</h3>
+                  <h3 className="text-xs font-bold text-[#D4540A] uppercase tracking-wider">⏳ PENDING</h3>
                 </div>
                 <div className="p-5 space-y-4">
                   <div className="flex justify-between items-center">
@@ -611,33 +611,33 @@ export default function FinancePage() {
               {/* Margin Analysis */}
               <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
                 <div className="px-5 py-4 border-b border-gray-100">
-                  <h3 className="text-xs font-bold text-[#1E2A4A] uppercase tracking-wider">📊 MARGIN ANALYSIS</h3>
+                  <h3 className="text-xs font-bold text-[#D4540A] uppercase tracking-wider">📊 MARGIN ANALYSIS</h3>
                 </div>
                 <div className="p-5">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <p className="text-xs text-gray-500 uppercase tracking-wide">Gross Margin</p>
-                      <p className="text-2xl font-bold text-[#1E2A4A]">
+                      <p className="text-2xl font-bold text-[#D4540A]">
                         {summary?.monthRevenue ? Math.round(((summary.monthRevenue - (summary?.monthLabor || 0)) / summary.monthRevenue) * 100) : 0}%
                       </p>
                       <p className="text-xs text-gray-400">Revenue - Labor</p>
                     </div>
                     <div>
                       <p className="text-xs text-gray-500 uppercase tracking-wide">Net Margin</p>
-                      <p className="text-2xl font-bold text-[#1E2A4A]">
+                      <p className="text-2xl font-bold text-[#D4540A]">
                         {summary?.monthRevenue ? Math.round((monthProfit / summary.monthRevenue) * 100) : 0}%
                       </p>
                       <p className="text-xs text-gray-400">After all costs</p>
                     </div>
                     <div>
                       <p className="text-xs text-gray-500 uppercase tracking-wide">Avg Job Revenue</p>
-                      <p className="text-2xl font-bold text-[#1E2A4A]">
+                      <p className="text-2xl font-bold text-[#D4540A]">
                         {summary?.monthJobs ? formatCurrency(Math.round((summary?.monthRevenue || 0) / summary.monthJobs)) : '$0'}
                       </p>
                     </div>
                     <div>
                       <p className="text-xs text-gray-500 uppercase tracking-wide">Avg Labor Cost</p>
-                      <p className="text-2xl font-bold text-[#1E2A4A]">
+                      <p className="text-2xl font-bold text-[#D4540A]">
                         {summary?.monthJobs ? formatCurrency(Math.round((summary?.monthLabor || 0) / summary.monthJobs)) : '$0'}
                       </p>
                     </div>
@@ -650,7 +650,7 @@ export default function FinancePage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
                 <div className="px-5 py-4 border-b border-gray-100">
-                  <h3 className="text-xs font-bold text-[#1E2A4A] uppercase tracking-wider">💰 THIS MONTH</h3>
+                  <h3 className="text-xs font-bold text-[#D4540A] uppercase tracking-wider">💰 THIS MONTH</h3>
                 </div>
                 <div className="p-5 space-y-3">
                   <div className="flex justify-between">
@@ -674,7 +674,7 @@ export default function FinancePage() {
                     <span className="font-semibold text-red-600">-{formatCurrency(monthCommissions)}</span>
                   </div>
                   <div className="flex justify-between pt-3 border-t border-gray-100">
-                    <span className="font-bold text-[#1E2A4A]">Profit</span>
+                    <span className="font-bold text-[#D4540A]">Profit</span>
                     <span className={`font-bold text-lg ${monthProfit >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                       {formatCurrency(monthProfit)}
                     </span>
@@ -687,7 +687,7 @@ export default function FinancePage() {
 
               <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
                 <div className="px-5 py-4 border-b border-gray-100">
-                  <h3 className="text-xs font-bold text-[#1E2A4A] uppercase tracking-wider">📅 YEAR TO DATE</h3>
+                  <h3 className="text-xs font-bold text-[#D4540A] uppercase tracking-wider">📅 YEAR TO DATE</h3>
                 </div>
                 <div className="p-5 space-y-3">
                   <div className="flex justify-between">
@@ -711,7 +711,7 @@ export default function FinancePage() {
                     <span className="font-semibold text-red-600">-{formatCurrency(yearCommissions)}</span>
                   </div>
                   <div className="flex justify-between pt-3 border-t border-gray-100">
-                    <span className="font-bold text-[#1E2A4A]">Profit</span>
+                    <span className="font-bold text-[#D4540A]">Profit</span>
                     <span className={`font-bold text-lg ${yearProfit >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                       {formatCurrency(yearProfit)}
                     </span>
@@ -735,7 +735,7 @@ export default function FinancePage() {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   {summary.cleanerTotals.map(c => (
                     <div key={c.cleaner_id} className="bg-white rounded-xl p-3 border border-orange-100">
-                      <p className="font-medium text-[#1E2A4A]">{c.name}</p>
+                      <p className="font-medium text-[#D4540A]">{c.name}</p>
                       <p className="text-xl font-bold text-orange-600">{formatCurrency(c.total)}</p>
                       <p className="text-xs text-gray-500">{c.count} jobs</p>
                     </div>
@@ -771,7 +771,7 @@ export default function FinancePage() {
                     {pendingPayments.map((p) => (
                       <tr key={p.id} className="border-b border-gray-100">
                         <td className="p-4 text-gray-600">{new Date(p.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</td>
-                        <td className="p-4 font-medium text-[#1E2A4A]">{p.client_name}</td>
+                        <td className="p-4 font-medium text-[#D4540A]">{p.client_name}</td>
                         <td className="p-4 text-gray-600">{p.cleaner_name}</td>
                         <td className="p-4 text-gray-600">{p.actual_hours}hrs</td>
                         <td className="p-4 font-semibold text-green-600">{formatCurrencyDecimal(p.amount)}</td>
@@ -811,7 +811,7 @@ export default function FinancePage() {
             {/* Recent Payment History */}
             {summary?.recentPayments && summary.recentPayments.length > 0 && (
               <div className="mt-8">
-                <h3 className="text-xs font-bold text-[#1E2A4A] uppercase tracking-wider mb-4">✅ RECENT PAYMENTS</h3>
+                <h3 className="text-xs font-bold text-[#D4540A] uppercase tracking-wider mb-4">✅ RECENT PAYMENTS</h3>
                 <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
                   <div className="overflow-x-auto">
                   <table className="w-full min-w-[600px]">
@@ -834,7 +834,7 @@ export default function FinancePage() {
                           <td className="p-4 text-gray-600">
                             {new Date(p.start_time).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                           </td>
-                          <td className="p-4 font-medium text-[#1E2A4A]">{p.client_name}</td>
+                          <td className="p-4 font-medium text-[#D4540A]">{p.client_name}</td>
                           <td className="p-4 text-gray-600">{p.cleaner_name}</td>
                           <td className="p-4 text-gray-600">{p.actual_hours}hrs</td>
                           <td className="p-4 font-semibold text-green-600">{formatCurrencyDecimal(p.cleaner_pay)}</td>
@@ -865,13 +865,13 @@ export default function FinancePage() {
             {expenses.length === 0 ? (
               <div className="text-center py-8 text-gray-500">
                 <p>No expenses recorded yet.</p>
-                <button onClick={() => setShowExpenseModal(true)} className="mt-2 text-[#1E2A4A] hover:underline">Add your first expense</button>
+                <button onClick={() => setShowExpenseModal(true)} className="mt-2 text-[#D4540A] hover:underline">Add your first expense</button>
               </div>
             ) : (
               <>
               <div className="flex justify-between items-center mb-4">
                 <span></span>
-                <button onClick={() => exportCSV('expenses')} className="text-sm text-[#1E2A4A] hover:underline">Export CSV</button>
+                <button onClick={() => exportCSV('expenses')} className="text-sm text-[#D4540A] hover:underline">Export CSV</button>
               </div>
               <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
                 <div className="overflow-x-auto">
@@ -892,12 +892,12 @@ export default function FinancePage() {
                       <tr key={exp.id} className="border-b border-gray-100">
                         <td className="p-4 text-gray-600">{new Date(exp.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</td>
                         <td className="p-4"><span className="px-2 py-1 bg-gray-100 rounded text-sm">{exp.category}</span></td>
-                        <td className="p-4 text-[#1E2A4A]">{exp.description}</td>
+                        <td className="p-4 text-[#D4540A]">{exp.description}</td>
                         <td className="p-4 text-gray-600">{exp.vendor || '-'}</td>
-                        <td className="p-4 font-medium text-[#1E2A4A]">{formatCurrencyDecimal(exp.amount)}</td>
+                        <td className="p-4 font-medium text-[#D4540A]">{formatCurrencyDecimal(exp.amount)}</td>
                         <td className="p-4">
                           {exp.receipt_url ? (
-                            <a href={exp.receipt_url} target="_blank" rel="noopener noreferrer" className="text-[#1E2A4A] hover:underline text-sm">View</a>
+                            <a href={exp.receipt_url} target="_blank" rel="noopener noreferrer" className="text-[#D4540A] hover:underline text-sm">View</a>
                           ) : (
                             <span className="text-gray-400 text-sm">-</span>
                           )}
@@ -917,10 +917,10 @@ export default function FinancePage() {
         ) : activeTab === 'statements' ? (
           <div className="space-y-4">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xs font-bold text-[#1E2A4A] uppercase tracking-wider">🏦 BANK STATEMENTS</h3>
+              <h3 className="text-xs font-bold text-[#D4540A] uppercase tracking-wider">🏦 BANK STATEMENTS</h3>
               <button
                 onClick={() => setShowStatementModal(true)}
-                className="px-4 py-2 bg-[#1E2A4A] text-white rounded-xl hover:bg-[#1E2A4A]/90 text-sm"
+                className="px-4 py-2 bg-[#D4540A] text-white rounded-xl hover:bg-[#D4540A]/90 text-sm"
               >
                 Upload Statement
               </button>
@@ -929,7 +929,7 @@ export default function FinancePage() {
             {statements.length === 0 ? (
               <div className="text-center py-8 text-gray-500">
                 <p>No bank statements uploaded yet.</p>
-                <button onClick={() => setShowStatementModal(true)} className="mt-2 text-[#1E2A4A] hover:underline">Upload your first statement</button>
+                <button onClick={() => setShowStatementModal(true)} className="mt-2 text-[#D4540A] hover:underline">Upload your first statement</button>
               </div>
             ) : (
               <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
@@ -947,14 +947,14 @@ export default function FinancePage() {
                   <tbody>
                     {statements.map((stmt) => (
                       <tr key={stmt.id} className="border-b border-gray-100">
-                        <td className="p-4 font-medium text-[#1E2A4A]">
+                        <td className="p-4 font-medium text-[#D4540A]">
                           {new Date(stmt.month).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                         </td>
                         <td className="p-4 text-gray-600">{stmt.account_name}</td>
                         <td className="p-4 text-gray-600">{stmt.notes || '-'}</td>
                         <td className="p-4">
                           {stmt.file_url ? (
-                            <a href={stmt.file_url} target="_blank" rel="noopener noreferrer" className="text-[#1E2A4A] hover:underline text-sm">Download PDF</a>
+                            <a href={stmt.file_url} target="_blank" rel="noopener noreferrer" className="text-[#D4540A] hover:underline text-sm">Download PDF</a>
                           ) : (
                             <span className="text-gray-400 text-sm">No file</span>
                           )}
@@ -972,13 +972,13 @@ export default function FinancePage() {
           </div>
         ) : activeTab === '1099' ? (
           <div className="space-y-4">
-            <div className="bg-[#A8F0DC]/20 border border-[#A8F0DC]/30 rounded-xl p-5 mb-4">
+            <div className="bg-[#FDE68A]/20 border border-[#FDE68A]/30 rounded-xl p-5 mb-4">
               <div className="flex justify-between items-center">
                 <div>
-                  <h4 className="text-xs font-bold text-[#1E2A4A] uppercase tracking-wider">📋 1099 YEAR-END REPORT</h4>
-                  <p className="text-sm text-[#1E2A4A] mt-1">Total paid to each contractor for tax year {new Date().getFullYear()}</p>
+                  <h4 className="text-xs font-bold text-[#D4540A] uppercase tracking-wider">📋 1099 YEAR-END REPORT</h4>
+                  <p className="text-sm text-[#D4540A] mt-1">Total paid to each contractor for tax year {new Date().getFullYear()}</p>
                 </div>
-                <button onClick={() => exportCSV('1099')} className="px-4 py-2 bg-[#1E2A4A] text-white rounded-xl hover:bg-[#1E2A4A]/90 text-sm">
+                <button onClick={() => exportCSV('1099')} className="px-4 py-2 bg-[#D4540A] text-white rounded-xl hover:bg-[#D4540A]/90 text-sm">
                   Export CSV
                 </button>
               </div>
@@ -1001,9 +1001,9 @@ export default function FinancePage() {
                   <tbody>
                     {summary.cleanerTotals.map((c) => (
                       <tr key={c.cleaner_id} className="border-b border-gray-100">
-                        <td className="p-4 font-medium text-[#1E2A4A]">{c.name}</td>
+                        <td className="p-4 font-medium text-[#D4540A]">{c.name}</td>
                         <td className="p-4 text-gray-600">{c.count} jobs</td>
-                        <td className="p-4 font-semibold text-[#1E2A4A]">{formatCurrency(c.total)}</td>
+                        <td className="p-4 font-semibold text-[#D4540A]">{formatCurrency(c.total)}</td>
                         <td className="p-4">
                           {c.total >= 60000 ? (
                             <span className="px-2 py-1 bg-red-100 text-red-700 rounded text-sm font-medium">Yes - Over $600</span>
@@ -1030,7 +1030,7 @@ export default function FinancePage() {
               <select
                 value={incomeCleanerFilter}
                 onChange={(e) => setIncomeCleanerFilter(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] text-sm"
+                className="px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A] text-sm"
               >
                 <option value="">All Cleaners</option>
                 {cleanersList.map(c => (
@@ -1045,7 +1045,7 @@ export default function FinancePage() {
                     onClick={() => setIncomeDateRange(range)}
                     className={`px-3 py-1.5 rounded-full text-sm ${
                       incomeDateRange === range
-                        ? 'bg-[#1E2A4A] text-white'
+                        ? 'bg-[#D4540A] text-white'
                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                     }`}
                   >
@@ -1060,14 +1060,14 @@ export default function FinancePage() {
                     type="date"
                     value={incomeCustomFrom}
                     onChange={(e) => setIncomeCustomFrom(e.target.value)}
-                    className="px-3 py-1.5 border border-gray-300 rounded-lg text-[#1E2A4A] text-sm"
+                    className="px-3 py-1.5 border border-gray-300 rounded-lg text-[#D4540A] text-sm"
                   />
                   <span className="text-gray-400">to</span>
                   <input
                     type="date"
                     value={incomeCustomTo}
                     onChange={(e) => setIncomeCustomTo(e.target.value)}
-                    className="px-3 py-1.5 border border-gray-300 rounded-lg text-[#1E2A4A] text-sm"
+                    className="px-3 py-1.5 border border-gray-300 rounded-lg text-[#D4540A] text-sm"
                   />
                 </div>
               )}
@@ -1079,7 +1079,7 @@ export default function FinancePage() {
                     onClick={() => setIncomePaidFilter(status)}
                     className={`px-3 py-1.5 rounded-full text-sm ${
                       incomePaidFilter === status
-                        ? 'bg-[#1E2A4A] text-white'
+                        ? 'bg-[#D4540A] text-white'
                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                     }`}
                   >
@@ -1090,7 +1090,7 @@ export default function FinancePage() {
 
               <button
                 onClick={() => exportCSV('cleaner-income')}
-                className="ml-auto text-sm text-[#1E2A4A] hover:underline"
+                className="ml-auto text-sm text-[#D4540A] hover:underline"
               >
                 Export CSV
               </button>
@@ -1108,11 +1108,11 @@ export default function FinancePage() {
                         key={cs.cleaner_id}
                         onClick={() => setIncomeCleanerFilter(incomeCleanerFilter === cs.cleaner_id ? '' : cs.cleaner_id)}
                         className={`bg-white border rounded-xl p-4 text-left hover:shadow-sm transition-all ${
-                          incomeCleanerFilter === cs.cleaner_id ? 'border-[#1E2A4A] ring-2 ring-[#1E2A4A]/20' : 'border-gray-200'
+                          incomeCleanerFilter === cs.cleaner_id ? 'border-[#D4540A] ring-2 ring-[#D4540A]/20' : 'border-gray-200'
                         }`}
                       >
-                        <p className="font-medium text-[#1E2A4A]">{cs.name}</p>
-                        <p className="text-xl font-bold text-[#1E2A4A] mt-1">{formatCurrency(cs.totalPay)}</p>
+                        <p className="font-medium text-[#D4540A]">{cs.name}</p>
+                        <p className="text-xl font-bold text-[#D4540A] mt-1">{formatCurrency(cs.totalPay)}</p>
                         <div className="text-xs text-gray-500 mt-2 space-y-0.5">
                           <p>{cs.jobCount} jobs &middot; {cs.totalHours}hrs</p>
                           <p>Avg: {cs.jobCount ? formatCurrency(Math.round(cs.totalPay / cs.jobCount)) : '$0'}/job</p>
@@ -1142,15 +1142,15 @@ export default function FinancePage() {
                       <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
                         <div>
                           <p className="text-xs text-gray-500">Total Income</p>
-                          <p className="text-lg font-bold text-[#1E2A4A]">{formatCurrency(totals.income)}</p>
+                          <p className="text-lg font-bold text-[#D4540A]">{formatCurrency(totals.income)}</p>
                         </div>
                         <div>
                           <p className="text-xs text-gray-500">Total Jobs</p>
-                          <p className="text-lg font-bold text-[#1E2A4A]">{totals.jobs}</p>
+                          <p className="text-lg font-bold text-[#D4540A]">{totals.jobs}</p>
                         </div>
                         <div>
                           <p className="text-xs text-gray-500">Total Hours</p>
-                          <p className="text-lg font-bold text-[#1E2A4A]">{totals.hours}</p>
+                          <p className="text-lg font-bold text-[#D4540A]">{totals.hours}</p>
                         </div>
                         <div>
                           <p className="text-xs text-gray-500">Paid</p>
@@ -1188,10 +1188,10 @@ export default function FinancePage() {
                               <td className="p-4 text-gray-600">
                                 {new Date(b.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                               </td>
-                              <td className="p-4 font-medium text-[#1E2A4A]">{b.client_name}</td>
+                              <td className="p-4 font-medium text-[#D4540A]">{b.client_name}</td>
                               <td className="p-4 text-gray-600">{b.cleaner_name}</td>
                               <td className="p-4 text-gray-600">{b.hours}hrs</td>
-                              <td className="p-4 font-semibold text-[#1E2A4A]">{formatCurrencyDecimal(b.cleaner_pay)}</td>
+                              <td className="p-4 font-semibold text-[#D4540A]">{formatCurrencyDecimal(b.cleaner_pay)}</td>
                               <td className="p-4">
                                 {b.paid ? (
                                   <span className="px-2 py-1 bg-green-100 text-green-700 rounded text-sm">Paid</span>
@@ -1214,22 +1214,22 @@ export default function FinancePage() {
 
       {/* Add Expense Modal */}
       {showExpenseModal && (
-        <div className="fixed inset-0 bg-[#1E2A4A]/50 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowExpenseModal(false)}>
+        <div className="fixed inset-0 bg-[#D4540A]/50 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowExpenseModal(false)}>
           <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-xl" onClick={e => e.stopPropagation()}>
-            <h3 className="text-lg font-bold text-[#1E2A4A] mb-4">Add Expense</h3>
+            <h3 className="text-lg font-bold text-[#D4540A] mb-4">Add Expense</h3>
             <form onSubmit={handleAddExpense} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Date</label>
+                <label className="block text-sm font-medium text-[#D4540A] mb-1">Date</label>
                 <input
                   type="date"
                   required
                   value={expenseForm.date}
                   onChange={(e) => setExpenseForm({ ...expenseForm, date: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Amount</label>
+                <label className="block text-sm font-medium text-[#D4540A] mb-1">Amount</label>
                 <div className="relative">
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
                   <input
@@ -1239,55 +1239,55 @@ export default function FinancePage() {
                     required
                     value={expenseForm.amount}
                     onChange={(e) => setExpenseForm({ ...expenseForm, amount: e.target.value })}
-                    className="w-full pl-7 pr-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]"
+                    className="w-full pl-7 pr-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]"
                     placeholder="0.00"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Category</label>
+                <label className="block text-sm font-medium text-[#D4540A] mb-1">Category</label>
                 <select
                   value={expenseForm.category}
                   onChange={(e) => setExpenseForm({ ...expenseForm, category: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]"
                 >
                   {EXPENSE_CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Description</label>
+                <label className="block text-sm font-medium text-[#D4540A] mb-1">Description</label>
                 <input
                   type="text"
                   required
                   value={expenseForm.description}
                   onChange={(e) => setExpenseForm({ ...expenseForm, description: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]"
                   placeholder="What was this for?"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Vendor (optional)</label>
+                <label className="block text-sm font-medium text-[#D4540A] mb-1">Vendor (optional)</label>
                 <input
                   type="text"
                   value={expenseForm.vendor}
                   onChange={(e) => setExpenseForm({ ...expenseForm, vendor: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]"
                   placeholder="Amazon, Home Depot, etc."
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Receipt (optional)</label>
+                <label className="block text-sm font-medium text-[#D4540A] mb-1">Receipt (optional)</label>
                 <input
                   type="file"
                   accept="image/*,.pdf"
                   onChange={(e) => setReceiptFile(e.target.files?.[0] || null)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A] text-sm"
                 />
                 {receiptFile && <p className="text-xs text-gray-500 mt-1">{receiptFile.name}</p>}
               </div>
               <div className="flex gap-3 pt-2">
-                <button type="button" onClick={() => setShowExpenseModal(false)} className="flex-1 px-4 py-2 border border-gray-200 rounded-xl text-[#1E2A4A] hover:bg-gray-50 transition-colors">Cancel</button>
-                <button type="submit" disabled={saving || uploading} className="flex-1 px-4 py-2 bg-[#1E2A4A] text-white rounded-xl hover:bg-[#1E2A4A]/90 transition-colors">
+                <button type="button" onClick={() => setShowExpenseModal(false)} className="flex-1 px-4 py-2 border border-gray-200 rounded-xl text-[#D4540A] hover:bg-gray-50 transition-colors">Cancel</button>
+                <button type="submit" disabled={saving || uploading} className="flex-1 px-4 py-2 bg-[#D4540A] text-white rounded-xl hover:bg-[#D4540A]/90 transition-colors">
                   {uploading ? 'Uploading...' : saving ? 'Saving...' : 'Add Expense'}
                 </button>
               </div>
@@ -1298,26 +1298,26 @@ export default function FinancePage() {
 
       {/* Upload Statement Modal */}
       {showStatementModal && (
-        <div className="fixed inset-0 bg-[#1E2A4A]/50 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowStatementModal(false)}>
+        <div className="fixed inset-0 bg-[#D4540A]/50 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowStatementModal(false)}>
           <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-xl" onClick={e => e.stopPropagation()}>
-            <h3 className="text-lg font-bold text-[#1E2A4A] mb-4">Upload Bank Statement</h3>
+            <h3 className="text-lg font-bold text-[#D4540A] mb-4">Upload Bank Statement</h3>
             <form onSubmit={handleAddStatement} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Month</label>
+                <label className="block text-sm font-medium text-[#D4540A] mb-1">Month</label>
                 <input
                   type="month"
                   required
                   value={statementForm.month.slice(0, 7)}
                   onChange={(e) => setStatementForm({ ...statementForm, month: e.target.value + '-01' })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Account</label>
+                <label className="block text-sm font-medium text-[#D4540A] mb-1">Account</label>
                 <select
                   value={statementForm.account_name}
                   onChange={(e) => setStatementForm({ ...statementForm, account_name: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]"
                 >
                   <option value="Business Checking">Business Checking</option>
                   <option value="Business Savings">Business Savings</option>
@@ -1328,28 +1328,28 @@ export default function FinancePage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Statement PDF</label>
+                <label className="block text-sm font-medium text-[#D4540A] mb-1">Statement PDF</label>
                 <input
                   type="file"
                   accept=".pdf"
                   onChange={(e) => setStatementFile(e.target.files?.[0] || null)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A] text-sm"
                 />
                 {statementFile && <p className="text-xs text-gray-500 mt-1">{statementFile.name}</p>}
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Notes (optional)</label>
+                <label className="block text-sm font-medium text-[#D4540A] mb-1">Notes (optional)</label>
                 <input
                   type="text"
                   value={statementForm.notes}
                   onChange={(e) => setStatementForm({ ...statementForm, notes: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]"
                   placeholder="Any notes about this statement"
                 />
               </div>
               <div className="flex gap-3 pt-2">
-                <button type="button" onClick={() => setShowStatementModal(false)} className="flex-1 px-4 py-2 border border-gray-200 rounded-xl text-[#1E2A4A] hover:bg-gray-50 transition-colors">Cancel</button>
-                <button type="submit" disabled={saving || uploading} className="flex-1 px-4 py-2 bg-[#1E2A4A] text-white rounded-xl hover:bg-[#1E2A4A]/90 transition-colors">
+                <button type="button" onClick={() => setShowStatementModal(false)} className="flex-1 px-4 py-2 border border-gray-200 rounded-xl text-[#D4540A] hover:bg-gray-50 transition-colors">Cancel</button>
+                <button type="submit" disabled={saving || uploading} className="flex-1 px-4 py-2 bg-[#D4540A] text-white rounded-xl hover:bg-[#D4540A]/90 transition-colors">
                   {uploading ? 'Uploading...' : saving ? 'Saving...' : 'Upload Statement'}
                 </button>
               </div>

@@ -105,7 +105,7 @@ export default function ReschedulePage() {
   if (booking && !canReschedule()) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <div className="bg-[#1E2A4A] text-white p-4">
+        <div className="bg-[#D4540A] text-white p-4">
           <div className="flex items-center gap-4">
             <button onClick={() => router.back()} className="text-white">&larr;</button>
             <div>
@@ -116,7 +116,7 @@ export default function ReschedulePage() {
         </div>
         <div className="p-4">
           <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
-            <p className="text-lg font-semibold text-[#1E2A4A] mb-2">Unable to Reschedule</p>
+            <p className="text-lg font-semibold text-[#D4540A] mb-2">Unable to Reschedule</p>
             <p className="text-gray-600 text-sm mb-4">
               {!booking.recurring_type
                 ? 'One-time services cannot be rescheduled or cancelled.'
@@ -124,8 +124,8 @@ export default function ReschedulePage() {
             </p>
             <p className="text-gray-500 text-sm mb-4">Need help? Contact us directly:</p>
             <div className="flex gap-3">
-              <a href="tel:8333526243" className="flex-1 py-3 bg-[#1E2A4A] text-white rounded-lg text-center font-medium">Call (833) 352-6243</a>
-              <a href="sms:8333526243" className="flex-1 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-center font-medium">Text Us</a>
+              <a href="tel:8333526243" className="flex-1 py-3 bg-[#D4540A] text-white rounded-lg text-center font-medium">Call (833) 352-6243</a>
+              <a href="sms:8333526243" className="flex-1 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-center font-medium">Text Us</a>
             </div>
             <button onClick={() => router.push('/book/dashboard')} className="mt-4 text-gray-500 text-sm">Back to Dashboard</button>
           </div>
@@ -136,7 +136,7 @@ export default function ReschedulePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-[#1E2A4A] text-white p-4">
+      <div className="bg-[#D4540A] text-white p-4">
         <div className="flex items-center gap-4">
           <button onClick={() => router.back()} className="text-white">&larr;</button>
           <div>
@@ -149,22 +149,22 @@ export default function ReschedulePage() {
       <div className="p-4">
         {!selectedDate ? (
           <div>
-            <h2 className="text-lg font-semibold text-[#1E2A4A] mb-4">Select New Date</h2>
+            <h2 className="text-lg font-semibold text-[#D4540A] mb-4">Select New Date</h2>
             <div className="grid grid-cols-3 gap-2">
               {dates.map((date) => (
                 <button
                   key={date}
                   onClick={() => loadAvailability(date)}
-                  className="p-3 rounded-lg border border-gray-200 bg-white text-center hover:border-[#1E2A4A]"
+                  className="p-3 rounded-lg border border-gray-200 bg-white text-center hover:border-[#D4540A]"
                 >
-                  <p className="text-sm text-[#1E2A4A]">{formatDateLabel(date)}</p>
+                  <p className="text-sm text-[#D4540A]">{formatDateLabel(date)}</p>
                 </button>
               ))}
             </div>
           </div>
         ) : !selectedSlot ? (
           <div>
-            <h2 className="text-lg font-semibold text-[#1E2A4A] mb-2">Select Time</h2>
+            <h2 className="text-lg font-semibold text-[#D4540A] mb-2">Select Time</h2>
             <p className="text-gray-500 mb-4">{formatDateLabel(selectedDate)}</p>
             
             {loading ? (
@@ -172,7 +172,7 @@ export default function ReschedulePage() {
             ) : availableSlots.length === 0 ? (
               <div className="text-center py-8">
                 <p className="text-gray-500 mb-4">No available slots</p>
-                <button onClick={() => setSelectedDate('')} className="text-[#1E2A4A] underline">Choose another date</button>
+                <button onClick={() => setSelectedDate('')} className="text-[#D4540A] underline">Choose another date</button>
               </div>
             ) : (
               <div className="space-y-2">
@@ -180,9 +180,9 @@ export default function ReschedulePage() {
                   <button
                     key={slot.time}
                     onClick={() => setSelectedSlot(slot)}
-                    className="w-full p-4 rounded-xl border border-gray-200 bg-white text-left hover:border-[#1E2A4A]"
+                    className="w-full p-4 rounded-xl border border-gray-200 bg-white text-left hover:border-[#D4540A]"
                   >
-                    <p className="font-semibold text-[#1E2A4A]">{slot.time}</p>
+                    <p className="font-semibold text-[#D4540A]">{slot.time}</p>
                   </button>
                 ))}
               </div>
@@ -192,19 +192,19 @@ export default function ReschedulePage() {
         ) : (
           <div>
             <div className="bg-white rounded-xl p-4 mb-6">
-              <h3 className="font-semibold text-[#1E2A4A] mb-2">New Appointment</h3>
+              <h3 className="font-semibold text-[#D4540A] mb-2">New Appointment</h3>
               <p className="text-gray-600">{formatDateLabel(selectedDate)}</p>
               <p className="text-gray-600">{selectedSlot.time}</p>
             </div>
 
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 mb-6 text-sm">
-              <p className="text-gray-700"><span className="font-medium text-[#1E2A4A]">Cancellation Policy:</span> One-time services are non-cancellable. Recurring clients (weekly, bi-weekly, monthly) require 7 days notice for cancellations.</p>
+              <p className="text-gray-700"><span className="font-medium text-[#D4540A]">Cancellation Policy:</span> One-time services are non-cancellable. Recurring clients (weekly, bi-weekly, monthly) require 7 days notice for cancellations.</p>
             </div>
 
             <button
               onClick={handleReschedule}
               disabled={saving}
-              className="w-full py-4 bg-[#1E2A4A] text-white text-lg font-semibold rounded-xl disabled:opacity-50"
+              className="w-full py-4 bg-[#D4540A] text-white text-lg font-semibold rounded-xl disabled:opacity-50"
             >
               {saving ? 'Rescheduling...' : 'Confirm Reschedule'}
             </button>

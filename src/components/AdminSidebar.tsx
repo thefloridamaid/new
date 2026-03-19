@@ -233,7 +233,7 @@ export default function AdminSidebar() {
       {/* Brand */}
       <div className="px-5 pt-6 pb-4">
         <Link href="/admin" className="block">
-          <span className="text-[#A8F0DC] font-bold text-lg tracking-wide">FL MAID</span>
+          <span className="text-[#FDE68A] font-bold text-lg tracking-wide">FL MAID</span>
         </Link>
         <div className="mt-3 h-px bg-white/10" />
       </div>
@@ -255,11 +255,11 @@ export default function AdminSidebar() {
                   href={item.href}
                   className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-medium transition-all duration-150 ${
                     active
-                      ? 'bg-[#A8F0DC]/12 text-[#A8F0DC] border-l-[3px] border-[#A8F0DC] -ml-px'
+                      ? 'bg-[#FDE68A]/12 text-[#FDE68A] border-l-[3px] border-[#FDE68A] -ml-px'
                       : 'text-white/50 hover:text-white/80 hover:bg-white/[0.04]'
                   }`}
                 >
-                  {active && <span className="text-[#A8F0DC] text-xs">▸</span>}
+                  {active && <span className="text-[#FDE68A] text-xs">▸</span>}
                   {item.name}
                   {count > 0 && (
                     <span className="ml-auto bg-white/15 text-white/70 text-[11px] font-semibold min-w-[20px] h-5 flex items-center justify-center rounded-full px-1.5">
@@ -312,7 +312,7 @@ export default function AdminSidebar() {
         </div>
         {unreadCount > 0 && (
           <div className="flex justify-end mb-4">
-            <button onClick={markAllRead} className="text-sm text-[#1E2A4A] hover:text-[#1E2A4A] font-medium">Mark all read</button>
+            <button onClick={markAllRead} className="text-sm text-[#D4540A] hover:text-[#D4540A] font-medium">Mark all read</button>
           </div>
         )}
         {notifications.length === 0 ? (
@@ -332,25 +332,25 @@ export default function AdminSidebar() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-start gap-2">
-                      <p className="font-medium text-sm text-[#1E2A4A]">{line1}</p>
+                      <p className="font-medium text-sm text-[#D4540A]">{line1}</p>
                       <span className="text-xs text-gray-400 whitespace-nowrap">{formatTimeAgo(n.created_at)}</span>
                     </div>
                     <p className="text-sm text-gray-600 mt-0.5">{line2}</p>
                     {line3 && <p className="text-xs text-gray-400 mt-1">{line3}</p>}
                   </div>
-                  {!n.read && <div className="w-2 h-2 bg-[#A8F0DC] rounded-full flex-shrink-0 mt-2" />}
+                  {!n.read && <div className="w-2 h-2 bg-[#FDE68A] rounded-full flex-shrink-0 mt-2" />}
                 </div>
               )
               return link ? (
                 <button
                   key={n.id}
                   onClick={() => { setShowNotifications(false); router.push(link) }}
-                  className={`w-full text-left px-6 py-4 hover:bg-gray-50 transition cursor-pointer ${!n.read ? 'bg-[#A8F0DC]/10' : ''}`}
+                  className={`w-full text-left px-6 py-4 hover:bg-gray-50 transition cursor-pointer ${!n.read ? 'bg-[#FDE68A]/10' : ''}`}
                 >
                   {content}
                 </button>
               ) : (
-                <div key={n.id} className={`px-6 py-4 ${!n.read ? 'bg-[#A8F0DC]/10' : ''}`}>
+                <div key={n.id} className={`px-6 py-4 ${!n.read ? 'bg-[#FDE68A]/10' : ''}`}>
                   {content}
                 </div>
               )
@@ -366,7 +366,7 @@ export default function AdminSidebar() {
       {/* Mobile hamburger button */}
       <button
         onClick={() => setMobileOpen(true)}
-        className="md:hidden fixed top-3 left-3 z-50 p-2 bg-[#1E2A4A] text-white rounded-lg shadow-lg"
+        className="md:hidden fixed top-3 left-3 z-50 p-2 bg-[#D4540A] text-white rounded-lg shadow-lg"
       >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -382,7 +382,7 @@ export default function AdminSidebar() {
       <aside
         className={`
           fixed md:sticky top-0 left-0 z-40 h-screen w-60
-          bg-[#1E2A4A] flex flex-col
+          bg-[#D4540A] flex flex-col
           transition-transform duration-200 ease-out
           md:translate-x-0
           ${mobileOpen ? 'translate-x-0' : '-translate-x-full'}

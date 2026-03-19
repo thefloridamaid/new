@@ -1,6 +1,12 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY?.replace(/\s/g, ''))
+let _resend: Resend | null = null
+function getResend() {
+  if (!_resend) {
+    _resend = new Resend(process.env.RESEND_API_KEY?.replace(/\s/g, ''))
+  }
+  return _resend
+}
 
 export async function sendEmail(to: string, subject: string, html: string, attachments?: any[]) {
   const maxRetries = 3
@@ -8,7 +14,7 @@ export async function sendEmail(to: string, subject: string, html: string, attac
 
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
-      const { data, error } = await resend.emails.send({
+      const { data, error } = await getResend().emails.send({
         from: 'The Florida Maid <hi@thefloridamaid.com>',
         to,
         subject,

@@ -112,7 +112,7 @@ function ClientPortalContent() {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
         <div className="text-center mb-6">
-          <h1 className="text-2xl font-bold text-[#1E2A4A]">Client Portal</h1>
+          <h1 className="text-2xl font-bold text-[#D4540A]">Client Portal</h1>
           <p className="text-gray-500 mt-1">View and manage your bookings</p>
         </div>
 
@@ -128,7 +128,7 @@ function ClientPortalContent() {
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(formatPhone(e.target.value))}
-                className="w-full px-4 py-3 border rounded-lg text-[#1E2A4A] text-lg"
+                className="w-full px-4 py-3 border rounded-lg text-[#D4540A] text-lg"
                 placeholder="(212) 555-1234"
                 required
               />
@@ -136,7 +136,7 @@ function ClientPortalContent() {
             <button
               type="submit"
               disabled={loading || phone.replace(/\D/g, '').length < 10}
-              className="w-full py-3 bg-[#1E2A4A] text-white rounded-lg font-medium hover:bg-[#1E2A4A]/90 disabled:opacity-50"
+              className="w-full py-3 bg-[#D4540A] text-white rounded-lg font-medium hover:bg-[#D4540A]/90 disabled:opacity-50"
             >
               {loading ? 'Checking...' : 'Continue'}
             </button>
@@ -149,7 +149,7 @@ function ClientPortalContent() {
               </p>
             ) : (
               <p className="text-sm text-gray-600 text-center mb-4">
-                No email on file. Call <a href="tel:8333526243" className="text-[#1E2A4A] font-medium">(833) 352-6243</a> to add your email and enable login.
+                No email on file. Call <a href="tel:8333526243" className="text-[#D4540A] font-medium">(833) 352-6243</a> to add your email and enable login.
               </p>
             )}
             <div>
@@ -158,7 +158,7 @@ function ClientPortalContent() {
                 type="text"
                 value={pin}
                 onChange={(e) => setPin(e.target.value.replace(/\D/g, '').slice(0, 6))}
-                className="w-full px-4 py-3 border rounded-lg text-[#1E2A4A] text-center text-2xl tracking-widest"
+                className="w-full px-4 py-3 border rounded-lg text-[#D4540A] text-center text-2xl tracking-widest"
                 placeholder="000000"
                 maxLength={6}
                 required
@@ -167,14 +167,14 @@ function ClientPortalContent() {
             <button
               type="submit"
               disabled={loading || pin.length < 6}
-              className="w-full py-3 bg-[#1E2A4A] text-white rounded-lg font-medium hover:bg-[#1E2A4A]/90 disabled:opacity-50"
+              className="w-full py-3 bg-[#D4540A] text-white rounded-lg font-medium hover:bg-[#D4540A]/90 disabled:opacity-50"
             >
               {loading ? 'Verifying...' : 'Login'}
             </button>
             <button
               type="button"
               onClick={() => { setStep('login'); setPin(''); setError('') }}
-              className="w-full py-2 text-gray-500 text-sm hover:text-[#1E2A4A]"
+              className="w-full py-2 text-gray-500 text-sm hover:text-[#D4540A]"
             >
               ← Back
             </button>
@@ -184,7 +184,7 @@ function ClientPortalContent() {
         <div className="mt-6 pt-6 border-t text-center">
           <p className="text-sm text-gray-500">
             New client?{' '}
-            <a href="/book/new" className="text-[#1E2A4A] hover:underline">Book your first cleaning</a>
+            <a href="/book/new" className="text-[#D4540A] hover:underline">Book your first cleaning</a>
           </p>
         </div>
 

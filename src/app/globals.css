@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #1E2A4A;
+  --foreground: #D4540A;
 }
 
 body {
@@ -14,26 +14,26 @@ body {
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #ffffff;
-    --foreground: #1E2A4A;
+    --foreground: #D4540A;
   }
 }
 
 .fc {
   --fc-border-color: #e5e5e5;
-  --fc-button-bg-color: #1E2A4A;
-  --fc-button-border-color: #1E2A4A;
-  --fc-button-hover-bg-color: #243352;
-  --fc-button-hover-border-color: #243352;
-  --fc-button-active-bg-color: #1E2A4A;
+  --fc-button-bg-color: #D4540A;
+  --fc-button-border-color: #D4540A;
+  --fc-button-hover-bg-color: #B8470A;
+  --fc-button-hover-border-color: #B8470A;
+  --fc-button-active-bg-color: #D4540A;
   --fc-today-bg-color: #f5f5f5;
-  --fc-event-bg-color: #1E2A4A;
-  --fc-event-border-color: #1E2A4A;
+  --fc-event-bg-color: #D4540A;
+  --fc-event-border-color: #D4540A;
 }
 
 .fc .fc-toolbar-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1E2A4A;
+  color: #D4540A;
 }
 
 .fc .fc-button {
@@ -42,12 +42,12 @@ body {
 }
 
 .fc .fc-col-header-cell-cushion {
-  color: #1E2A4A;
+  color: #D4540A;
   font-weight: 500;
 }
 
 .fc .fc-daygrid-day-number {
-  color: #1E2A4A;
+  color: #D4540A;
 }
 
 .fc .fc-timegrid-slot-label {

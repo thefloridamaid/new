@@ -71,21 +71,21 @@ export default function ReferralSignupPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h1 className="text-2xl font-bold text-[#1E2A4A] mb-2">You're In! 🎉</h1>
+          <h1 className="text-2xl font-bold text-[#D4540A] mb-2">You're In! 🎉</h1>
           <p className="text-gray-600 mb-6">Welcome to The Florida Maid referral program</p>
 
           <div className="bg-gray-50 rounded-lg p-4 mb-6">
             <p className="text-sm text-gray-500 mb-2">Your referral code</p>
-            <p className="text-2xl font-bold text-[#1E2A4A]">{refCode}</p>
+            <p className="text-2xl font-bold text-[#D4540A]">{refCode}</p>
           </div>
 
           <p className="text-xs text-gray-400 mt-4">📧 Please check your spam/junk folder if you don't see our email in your inbox.</p>
-          <div className="bg-[#A8F0DC]/20 rounded-lg p-4 mb-6">
-            <p className="text-sm text-[#1E2A4A] mb-2">Your referral link</p>
-            <p className="text-sm font-mono text-[#1E2A4A] break-all">https://www.thefloridamaid.com/book?ref={refCode}</p>
+          <div className="bg-[#FDE68A]/20 rounded-lg p-4 mb-6">
+            <p className="text-sm text-[#D4540A] mb-2">Your referral link</p>
+            <p className="text-sm font-mono text-[#D4540A] break-all">https://www.thefloridamaid.com/book?ref={refCode}</p>
             <button
               onClick={copyLink}
-              className="mt-3 px-4 py-2 bg-[#1E2A4A] text-white rounded-lg text-sm hover:bg-[#1E2A4A]/90"
+              className="mt-3 px-4 py-2 bg-[#D4540A] text-white rounded-lg text-sm hover:bg-[#D4540A]/90"
             >
               Copy Link
             </button>
@@ -94,7 +94,7 @@ export default function ReferralSignupPage() {
           <div className="space-y-3">
             <Link
               href={`/referral?code=${refCode}`}
-              className="block w-full py-3 bg-[#1E2A4A] text-white rounded-lg font-medium hover:bg-[#1E2A4A]/90"
+              className="block w-full py-3 bg-[#D4540A] text-white rounded-lg font-medium hover:bg-[#D4540A]/90"
             >
               Go to My Dashboard
             </Link>
@@ -111,7 +111,7 @@ export default function ReferralSignupPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-[#1E2A4A] text-white py-6 px-4">
+      <header className="bg-[#D4540A] text-white py-6 px-4">
         <div className="max-w-2xl mx-auto text-center">
           <h1 className="text-3xl font-bold mb-2">Get Paid for Referrals</h1>
           <p className="text-gray-300">Earn 10% commission every time we clean for someone you refer</p>
@@ -144,7 +144,7 @@ export default function ReferralSignupPage() {
       {/* Form */}
       <div className="max-w-md mx-auto py-8 px-4">
         <div className="bg-white rounded-lg shadow-lg p-6">
-          <h2 className="text-xl font-bold text-[#1E2A4A] mb-6">Sign Up to Start Earning</h2>
+          <h2 className="text-xl font-bold text-[#D4540A] mb-6">Sign Up to Start Earning</h2>
 
           {error && (
             <div className="bg-red-50 text-red-600 p-3 rounded-lg mb-4 text-sm">
@@ -175,7 +175,7 @@ export default function ReferralSignupPage() {
                 required
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full px-4 py-3 border rounded-lg text-[#1E2A4A]"
+                className="w-full px-4 py-3 border rounded-lg text-[#D4540A]"
                 placeholder="John Smith"
               />
             </div>
@@ -189,7 +189,7 @@ export default function ReferralSignupPage() {
                 required
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full px-4 py-3 border rounded-lg text-[#1E2A4A]"
+                className="w-full px-4 py-3 border rounded-lg text-[#D4540A]"
                 placeholder="john@email.com"
               />
             </div>
@@ -202,7 +202,7 @@ export default function ReferralSignupPage() {
                 type="tel"
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                className="w-full px-4 py-3 border rounded-lg text-[#1E2A4A]"
+                className="w-full px-4 py-3 border rounded-lg text-[#D4540A]"
                 placeholder="212-555-1234"
               />
             </div>
@@ -214,7 +214,7 @@ export default function ReferralSignupPage() {
               <select
                 value={form.preferred_payout}
                 onChange={(e) => setForm({ ...form, preferred_payout: e.target.value })}
-                className="w-full px-4 py-3 border rounded-lg text-[#1E2A4A]"
+                className="w-full px-4 py-3 border rounded-lg text-[#D4540A]"
               >
                 <option value="zelle">Zelle</option>
                 <option value="apple_cash">Apple Cash</option>
@@ -229,7 +229,7 @@ export default function ReferralSignupPage() {
                 type="text"
                 value={form.zelle_email}
                 onChange={(e) => setForm({ ...form, zelle_email: e.target.value })}
-                className="w-full px-4 py-3 border rounded-lg text-[#1E2A4A]"
+                className="w-full px-4 py-3 border rounded-lg text-[#D4540A]"
                 placeholder={form.preferred_payout === 'zelle' ? 'Same as email if blank' : 'Your Apple Cash phone number'}
               />
               <p className="text-xs text-gray-500 mt-1">
@@ -240,14 +240,14 @@ export default function ReferralSignupPage() {
             <div style={{ margin: '20px 0', padding: '15px', border: '1px solid #ddd', borderRadius: '8px', background: '#fafafa' }}>
               <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer', fontSize: '13px', lineHeight: '1.5', color: '#555' }}>
                 <input type="checkbox" name="sms_consent" required style={{ marginTop: '3px', minWidth: '18px', minHeight: '18px' }} />
-                <span>By checking this box, I consent to receive transactional text messages from <strong>The Florida Maid</strong> for appointment confirmations, reminders, and customer support. Reply STOP to opt out. Reply HELP for help. Msg frequency may vary. Msg &amp; data rates may apply. <a href="https://www.thefloridamaid.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#1E2A4A] hover:underline">Privacy Policy</a> | <a href="https://www.thefloridamaid.com/terms-conditions" target="_blank" rel="noopener noreferrer" className="text-[#1E2A4A] hover:underline">Terms &amp; Conditions</a></span>
+                <span>By checking this box, I consent to receive transactional text messages from <strong>The Florida Maid</strong> for appointment confirmations, reminders, and customer support. Reply STOP to opt out. Reply HELP for help. Msg frequency may vary. Msg &amp; data rates may apply. <a href="https://www.thefloridamaid.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#D4540A] hover:underline">Privacy Policy</a> | <a href="https://www.thefloridamaid.com/terms-conditions" target="_blank" rel="noopener noreferrer" className="text-[#D4540A] hover:underline">Terms &amp; Conditions</a></span>
               </label>
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-[#1E2A4A] text-white rounded-lg font-medium hover:bg-[#1E2A4A]/90 disabled:opacity-50"
+              className="w-full py-3 bg-[#D4540A] text-white rounded-lg font-medium hover:bg-[#D4540A]/90 disabled:opacity-50"
             >
               {loading ? 'Signing Up...' : 'Join Referral Program'}
             </button>
@@ -256,7 +256,7 @@ export default function ReferralSignupPage() {
           <div className="mt-6 pt-6 border-t text-center">
             <p className="text-sm text-gray-500">
               Already a referrer?{' '}
-              <Link href="/referral" className="text-[#1E2A4A] hover:underline">
+              <Link href="/referral" className="text-[#D4540A] hover:underline">
                 Log in to your dashboard
               </Link>
             </p>
@@ -265,24 +265,24 @@ export default function ReferralSignupPage() {
 
         {/* How it works */}
         <div className="mt-8 bg-white rounded-lg shadow p-6">
-          <h3 className="font-bold text-[#1E2A4A] mb-4">How It Works</h3>
+          <h3 className="font-bold text-[#D4540A] mb-4">How It Works</h3>
           <div className="space-y-4">
             <div className="flex gap-4">
-              <div className="w-8 h-8 bg-[#1E2A4A] text-white rounded-full flex items-center justify-center flex-shrink-0">1</div>
+              <div className="w-8 h-8 bg-[#D4540A] text-white rounded-full flex items-center justify-center flex-shrink-0">1</div>
               <div>
                 <p className="font-medium">Sign up & get your link</p>
                 <p className="text-sm text-gray-500">Takes 30 seconds</p>
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="w-8 h-8 bg-[#1E2A4A] text-white rounded-full flex items-center justify-center flex-shrink-0">2</div>
+              <div className="w-8 h-8 bg-[#D4540A] text-white rounded-full flex items-center justify-center flex-shrink-0">2</div>
               <div>
                 <p className="font-medium">Share with friends & family</p>
                 <p className="text-sm text-gray-500">They book using your link</p>
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="w-8 h-8 bg-[#1E2A4A] text-white rounded-full flex items-center justify-center flex-shrink-0">3</div>
+              <div className="w-8 h-8 bg-[#D4540A] text-white rounded-full flex items-center justify-center flex-shrink-0">3</div>
               <div>
                 <p className="font-medium">Earn 10% every time</p>
                 <p className="text-sm text-gray-500">Paid after each cleaning</p>

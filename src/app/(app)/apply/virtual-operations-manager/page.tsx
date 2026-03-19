@@ -165,13 +165,13 @@ export default function ApplyOpsManagerPage() {
   if (done) {
     return (
       <div className="min-h-screen bg-white flex flex-col">
-        <div className="bg-[#1E2A4A] px-6 py-4">
+        <div className="bg-[#D4540A] px-6 py-4">
           <h1 className="text-white text-xl font-bold">The Florida Maid</h1>
         </div>
         <div className="flex-1 flex items-center justify-center p-6">
           <div className="text-center max-w-sm">
             <div className="text-5xl mb-4">&#10003;</div>
-            <h2 className="text-2xl font-bold text-[#1E2A4A] mb-2">Application Received! / ¡Solicitud Recibida!</h2>
+            <h2 className="text-2xl font-bold text-[#D4540A] mb-2">Application Received! / ¡Solicitud Recibida!</h2>
             <p className="text-gray-600">Thanks, {form.name.split(' ')[0]}. We&apos;ll review your application for the Operations Manager (Virtual) position and reach out soon.</p>
             <p className="text-gray-500 text-sm mt-2 italic">Gracias, {form.name.split(' ')[0]}. Revisaremos su solicitud para el puesto de Gerente de Operaciones (Virtual) y nos comunicaremos pronto.</p>
             <p className="text-gray-500 text-sm mt-4">Questions? / ¿Preguntas? (833) 352-6243</p>
@@ -183,7 +183,7 @@ export default function ApplyOpsManagerPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-[#1E2A4A] px-6 py-4">
+      <div className="bg-[#D4540A] px-6 py-4">
         <h1 className="text-white text-xl font-bold">The Florida Maid</h1>
         <p className="text-gray-400 text-sm">Operations Manager (Virtual) Application</p>
         <p className="text-gray-500 text-xs italic">Solicitud de Gerente de Operaciones (Virtual)</p>
@@ -192,7 +192,7 @@ export default function ApplyOpsManagerPage() {
       <div className="max-w-lg mx-auto p-4 pt-6">
         <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-gray-200 p-6 space-y-5">
           <div>
-            <h2 className="text-xl font-bold text-[#1E2A4A]">Apply for Operations Manager (Virtual)</h2>
+            <h2 className="text-xl font-bold text-[#D4540A]">Apply for Operations Manager (Virtual)</h2>
             <p className="text-gray-400 text-sm italic">Solicite el Puesto de Gerente de Operaciones (Virtual)</p>
             <p className="text-gray-500 text-sm mt-1">Work From Home | Part-Time to Start | 7 Days/Week | $500/wk + 10% Revenue to Start</p>
             <p className="text-gray-400 text-xs italic">Trabajo Desde Casa | Medio Tiempo para Empezar | 7 Días/Semana | $500/sem + 10% de Ingresos</p>
@@ -201,43 +201,43 @@ export default function ApplyOpsManagerPage() {
 
           {/* Name */}
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Full Name / Nombre Completo *</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Full Name / Nombre Completo *</label>
             <input
               type="text"
               required
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
               placeholder="Your full name / Su nombre completo"
             />
           </div>
 
           {/* Phone */}
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Phone / Teléfono *</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Phone / Teléfono *</label>
             <input
               type="tel"
               required
               value={form.phone}
               onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
               placeholder="(212) 555-1234"
             />
           </div>
 
           {/* Email */}
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Email / Correo Electrónico *</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Email / Correo Electrónico *</label>
             <input
               type="email"
               required
               value={form.email}
               onChange={(e) => { setForm({ ...form, email: e.target.value }); setEmailSuggestion('') }}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
               placeholder="your@email.com / su@correo.com"
             />
             {emailSuggestion && (
-              <button type="button" onClick={() => { setForm({ ...form, email: emailSuggestion }); setEmailSuggestion(''); setError('') }} className="mt-1 text-sm text-[#1E2A4A] hover:underline">
+              <button type="button" onClick={() => { setForm({ ...form, email: emailSuggestion }); setEmailSuggestion(''); setError('') }} className="mt-1 text-sm text-[#D4540A] hover:underline">
                 Use {emailSuggestion}?
               </button>
             )}
@@ -245,20 +245,20 @@ export default function ApplyOpsManagerPage() {
 
           {/* Location */}
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Your Location / Su Ubicación *</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Your Location / Su Ubicación *</label>
             <input
               type="text"
               required
               value={form.location}
               onChange={(e) => setForm({ ...form, location: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
               placeholder="City, State / Ciudad, Estado"
             />
           </div>
 
           {/* Photo Upload */}
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Photo of Yourself / Foto Suya *</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Photo of Yourself / Foto Suya *</label>
             <p className="text-xs text-gray-500 mb-2">Clear, professional headshot. JPEG, PNG, or WebP, under 10MB.</p>
             <p className="text-xs text-gray-400 italic mb-2">Foto clara y profesional. JPEG, PNG o WebP, menor de 10MB.</p>
             <div className="flex items-center gap-4">
@@ -272,7 +272,7 @@ export default function ApplyOpsManagerPage() {
               <button
                 type="button"
                 onClick={() => photoInputRef.current?.click()}
-                className="px-4 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] text-sm hover:bg-gray-50"
+                className="px-4 py-2 border border-gray-300 rounded-lg text-[#D4540A] text-sm hover:bg-gray-50"
               >
                 {photoPreview ? 'Change Photo / Cambiar Foto' : 'Upload Photo / Subir Foto'}
               </button>
@@ -288,20 +288,20 @@ export default function ApplyOpsManagerPage() {
 
           {/* Selfie Video Upload */}
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Selfie Video Introduction / Video de Presentación *</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Selfie Video Introduction / Video de Presentación *</label>
             <p className="text-xs text-gray-500 mb-1">Record a 60&ndash;90 second selfie video. Tell us who you are, why this role fits you, and why we can trust you to own operations independently. If you are bilingual, speak in both English and Spanish. MP4, MOV, or WebM, under 100MB.</p>
             <p className="text-xs text-gray-400 italic mb-2">Grabe un video selfie de 60&ndash;90 segundos. Díganos quién es, por qué este puesto es para usted, y por qué podemos confiar en que manejará las operaciones de forma independiente. Si es bilingüe, hable en inglés y español. MP4, MOV o WebM, menor de 100MB.</p>
             <div className="flex items-center gap-4">
               {videoFile ? (
-                <div className="flex items-center gap-2 bg-[#A8F0DC]/20 px-3 py-2 rounded-lg flex-1 min-w-0">
-                  <span className="text-[#1E2A4A] text-sm truncate">{videoFile.name}</span>
-                  <span className="text-[#1E2A4A]/50 text-xs flex-shrink-0">({(videoFile.size / 1024 / 1024).toFixed(1)}MB)</span>
+                <div className="flex items-center gap-2 bg-[#FDE68A]/20 px-3 py-2 rounded-lg flex-1 min-w-0">
+                  <span className="text-[#D4540A] text-sm truncate">{videoFile.name}</span>
+                  <span className="text-[#D4540A]/50 text-xs flex-shrink-0">({(videoFile.size / 1024 / 1024).toFixed(1)}MB)</span>
                 </div>
               ) : null}
               <button
                 type="button"
                 onClick={() => videoInputRef.current?.click()}
-                className="px-4 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] text-sm hover:bg-gray-50 flex-shrink-0"
+                className="px-4 py-2 border border-gray-300 rounded-lg text-[#D4540A] text-sm hover:bg-gray-50 flex-shrink-0"
               >
                 {videoFile ? 'Change Video / Cambiar Video' : 'Upload Selfie Video / Subir Video'}
               </button>
@@ -318,12 +318,12 @@ export default function ApplyOpsManagerPage() {
 
           {/* Years of Experience */}
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Years of Experience / Años de Experiencia *</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Years of Experience / Años de Experiencia *</label>
             <select
               required
               value={form.years_experience}
               onChange={(e) => setForm({ ...form, years_experience: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
             >
               <option value="">Select... / Seleccionar...</option>
               <option value="less-than-1">Less than 1 year / Menos de 1 año</option>
@@ -336,12 +336,12 @@ export default function ApplyOpsManagerPage() {
 
           {/* Bilingual */}
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Bilingual Proficiency / Nivel Bilingüe (English &amp; Spanish) *</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Bilingual Proficiency / Nivel Bilingüe (English &amp; Spanish) *</label>
             <select
               required
               value={form.bilingual}
               onChange={(e) => setForm({ ...form, bilingual: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
             >
               <option value="">Select... / Seleccionar...</option>
               <option value="fluent-both">Fluent in both / Fluido en ambos</option>
@@ -353,12 +353,12 @@ export default function ApplyOpsManagerPage() {
 
           {/* Availability to Start */}
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Availability to Start / Disponibilidad para Comenzar *</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Availability to Start / Disponibilidad para Comenzar *</label>
             <select
               required
               value={form.availability_start}
               onChange={(e) => setForm({ ...form, availability_start: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
             >
               <option value="">Select... / Seleccionar...</option>
               <option value="immediately">Immediately / Inmediatamente</option>
@@ -370,19 +370,19 @@ export default function ApplyOpsManagerPage() {
 
           {/* Resume Upload */}
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Resume / Currículum *</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Resume / Currículum *</label>
             <p className="text-xs text-gray-500 mb-2">PDF or Word document, under 10MB / Documento PDF o Word, menor de 10MB</p>
             <div className="flex items-center gap-4">
               {resumeFile ? (
-                <div className="flex items-center gap-2 bg-[#A8F0DC]/20 px-3 py-2 rounded-lg flex-1 min-w-0">
-                  <span className="text-[#1E2A4A] text-sm truncate">{resumeFile.name}</span>
-                  <span className="text-[#1E2A4A]/50 text-xs flex-shrink-0">({(resumeFile.size / 1024 / 1024).toFixed(1)}MB)</span>
+                <div className="flex items-center gap-2 bg-[#FDE68A]/20 px-3 py-2 rounded-lg flex-1 min-w-0">
+                  <span className="text-[#D4540A] text-sm truncate">{resumeFile.name}</span>
+                  <span className="text-[#D4540A]/50 text-xs flex-shrink-0">({(resumeFile.size / 1024 / 1024).toFixed(1)}MB)</span>
                 </div>
               ) : null}
               <button
                 type="button"
                 onClick={() => resumeInputRef.current?.click()}
-                className="px-4 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] text-sm hover:bg-gray-50 flex-shrink-0"
+                className="px-4 py-2 border border-gray-300 rounded-lg text-[#D4540A] text-sm hover:bg-gray-50 flex-shrink-0"
               >
                 {resumeFile ? 'Change / Cambiar' : 'Upload Resume / Subir Currículum'}
               </button>
@@ -398,7 +398,7 @@ export default function ApplyOpsManagerPage() {
 
           {/* References */}
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Professional References / Referencias Profesionales *</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Professional References / Referencias Profesionales *</label>
             <p className="text-xs text-gray-500 mb-3">Please provide 3 professional references / Por favor proporcione 3 referencias profesionales</p>
             {form.references.map((ref, i) => (
               <div key={i} className="flex gap-3 mb-3">
@@ -411,7 +411,7 @@ export default function ApplyOpsManagerPage() {
                     updated[i] = { ...updated[i], name: e.target.value }
                     setForm({ ...form, references: updated })
                   }}
-                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
                   placeholder={`Name / Nombre #${i + 1}`}
                 />
                 <input
@@ -423,7 +423,7 @@ export default function ApplyOpsManagerPage() {
                     updated[i] = { ...updated[i], phone: formatPhone(e.target.value) }
                     setForm({ ...form, references: updated })
                   }}
-                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
                   placeholder={`Phone / Teléfono #${i + 1}`}
                 />
               </div>
@@ -432,11 +432,11 @@ export default function ApplyOpsManagerPage() {
 
           {/* Anything Else */}
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Anything else we should know? / ¿Algo más que debamos saber?</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Anything else we should know? / ¿Algo más que debamos saber?</label>
             <textarea
               value={form.notes}
               onChange={(e) => setForm({ ...form, notes: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
               rows={3}
               placeholder="Any additional information... / Cualquier información adicional..."
             />
@@ -454,7 +454,7 @@ export default function ApplyOpsManagerPage() {
                 <br /><br />
                 Al marcar esta casilla, doy mi consentimiento para recibir mensajes de texto de <strong>The Florida Maid</strong> sobre el estado de mi solicitud y comunicaciones relacionadas. Responda STOP para cancelar. Responda HELP para ayuda.
                 <br /><br />
-                <a href="https://www.thefloridamaid.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#1E2A4A] hover:underline">Privacy Policy</a> | <a href="https://www.thefloridamaid.com/terms-conditions" target="_blank" rel="noopener noreferrer" className="text-[#1E2A4A] hover:underline">Terms &amp; Conditions</a>
+                <a href="https://www.thefloridamaid.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#D4540A] hover:underline">Privacy Policy</a> | <a href="https://www.thefloridamaid.com/terms-conditions" target="_blank" rel="noopener noreferrer" className="text-[#D4540A] hover:underline">Terms &amp; Conditions</a>
               </span>
             </label>
           </div>
@@ -462,7 +462,7 @@ export default function ApplyOpsManagerPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 bg-[#1E2A4A] text-white rounded-lg text-lg font-semibold hover:bg-[#1E2A4A]/90 disabled:opacity-50"
+            className="w-full py-4 bg-[#D4540A] text-white rounded-lg text-lg font-semibold hover:bg-[#D4540A]/90 disabled:opacity-50"
           >
             {loading ? 'Submitting... / Enviando...' : 'Submit Application / Enviar Solicitud'}
           </button>

@@ -167,27 +167,27 @@ export default function ReferralsPage() {
       <main className="p-3 md:p-6">
         <div className="flex justify-between items-start mb-2">
           <div>
-            <h2 className="text-2xl font-bold text-[#1E2A4A]">Referral Program</h2>
+            <h2 className="text-2xl font-bold text-[#D4540A]">Referral Program</h2>
             <p className="text-sm text-gray-400 mt-0.5">{referrers.length} referrers &middot; {pendingCommissions.length} pending payouts</p>
           </div>
-          <button onClick={() => setShowAddForm(true)} className="px-4 py-2.5 bg-[#1E2A4A] text-white rounded-xl hover:bg-[#1E2A4A]/90 font-medium text-sm shadow-sm transition-colors">
+          <button onClick={() => setShowAddForm(true)} className="px-4 py-2.5 bg-[#D4540A] text-white rounded-xl hover:bg-[#D4540A]/90 font-medium text-sm shadow-sm transition-colors">
             + Add Referrer
           </button>
         </div>
         <div className="text-sm text-gray-400 mb-6">
-          Referral signup: <a href="https://www.thefloridamaid.com/referral/signup" target="_blank" className="text-[#1E2A4A] hover:underline font-medium py-2 inline-block">thefloridamaid.com/referral/signup</a> &middot;
-          Referral portal: <a href="https://www.thefloridamaid.com/referral" target="_blank" className="text-[#1E2A4A] hover:underline font-medium ml-1 py-2 inline-block">thefloridamaid.com/referral</a>
+          Referral signup: <a href="https://www.thefloridamaid.com/referral/signup" target="_blank" className="text-[#D4540A] hover:underline font-medium py-2 inline-block">thefloridamaid.com/referral/signup</a> &middot;
+          Referral portal: <a href="https://www.thefloridamaid.com/referral" target="_blank" className="text-[#D4540A] hover:underline font-medium ml-1 py-2 inline-block">thefloridamaid.com/referral</a>
         </div>
 
         {/* Tabs */}
         <div className="flex gap-2 mb-6 overflow-x-auto flex-nowrap pb-1">
-          <button onClick={() => setActiveTab('analytics')} className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'analytics' ? 'bg-[#1E2A4A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+          <button onClick={() => setActiveTab('analytics')} className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'analytics' ? 'bg-[#D4540A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
             Analytics
           </button>
-          <button onClick={() => setActiveTab('payouts')} className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'payouts' ? 'bg-[#1E2A4A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+          <button onClick={() => setActiveTab('payouts')} className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'payouts' ? 'bg-[#D4540A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
             Payout Queue ({pendingCommissions.length})
           </button>
-          <button onClick={() => setActiveTab('referrers')} className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'referrers' ? 'bg-[#1E2A4A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+          <button onClick={() => setActiveTab('referrers')} className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'referrers' ? 'bg-[#D4540A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
             Referrers ({referrers.length})
           </button>
         </div>
@@ -240,7 +240,7 @@ export default function ReferralsPage() {
                   {analytics.dailyClicks.map((d, i) => (
                     <div key={d.date} className="flex-1 flex flex-col items-center">
                       <div
-                        className="w-full bg-[#A8F0DC] rounded-t-md transition-all hover:bg-[#1E2A4A] cursor-pointer"
+                        className="w-full bg-[#FDE68A] rounded-t-md transition-all hover:bg-[#D4540A] cursor-pointer"
                         style={{ height: `${(d.clicks / maxDailyClicks) * 100}%`, minHeight: d.clicks > 0 ? '6px' : '0' }}
                         title={`${d.date}: ${d.clicks} clicks`}
                       />
@@ -270,12 +270,12 @@ export default function ReferralsPage() {
                             {i + 1}
                           </span>
                           <div>
-                            <p className="font-medium text-[#1E2A4A]">{r.name}</p>
+                            <p className="font-medium text-[#D4540A]">{r.name}</p>
                             <p className="text-xs text-gray-400 font-mono">{r.ref_code}</p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="font-bold text-[#1E2A4A]">{r.clicks} <span className="text-xs font-normal text-gray-400">clicks</span></p>
+                          <p className="font-bold text-[#D4540A]">{r.clicks} <span className="text-xs font-normal text-gray-400">clicks</span></p>
                           <p className="text-xs text-gray-500">{r.bookings} bookings &middot; {formatMoney(r.earned)}</p>
                         </div>
                       </div>
@@ -300,7 +300,7 @@ export default function ReferralsPage() {
                             {a.action === 'book' ? '🔥' : a.action === 'call' ? '📞' : '👀'}
                           </span>
                           <div>
-                            <p className="text-sm font-medium text-[#1E2A4A]">
+                            <p className="text-sm font-medium text-[#D4540A]">
                               {a.action === 'book' ? 'Book click' : a.action === 'call' ? 'Call click' : 'Page view'}
                             </p>
                             <p className="text-xs text-gray-400">{a.ref_code} &middot; {a.device} &middot; {a.page}</p>
@@ -321,7 +321,7 @@ export default function ReferralsPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               <div className="bg-slate-50 rounded-xl p-4 border border-slate-100 shadow-sm">
                 <p className="text-xs font-medium uppercase tracking-wide text-slate-500">Active Referrers</p>
-                <p className="text-2xl font-bold text-[#1E2A4A] mt-1">{referrers.filter(r => r.active).length}</p>
+                <p className="text-2xl font-bold text-[#D4540A] mt-1">{referrers.filter(r => r.active).length}</p>
               </div>
               <div className="bg-yellow-50 rounded-xl p-4 border border-yellow-100 shadow-sm">
                 <p className="text-xs font-medium uppercase tracking-wide text-yellow-600">Pending Payouts</p>
@@ -354,7 +354,7 @@ export default function ReferralsPage() {
                     <div key={comm.id} className="px-5 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-gray-50/50 transition-colors">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <span className="font-semibold text-[#1E2A4A]">{comm.referrers?.name}</span>
+                          <span className="font-semibold text-[#D4540A]">{comm.referrers?.name}</span>
                           <span className="text-xs font-mono text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">{comm.referrers?.ref_code}</span>
                         </div>
                         <p className="text-sm text-gray-500 mt-0.5">{comm.client_name}&apos;s cleaning &middot; {formatDate(comm.created_at)}</p>
@@ -363,7 +363,7 @@ export default function ReferralsPage() {
                       <div className="flex items-center gap-4 flex-shrink-0">
                         <span className="text-xl font-bold text-green-600">{formatMoney(comm.commission_amount)}</span>
                         <div className="flex gap-2">
-                          <button onClick={() => markPaid(comm.id, 'zelle')} className="px-3 py-2.5 bg-[#1E2A4A] text-white rounded-lg text-sm font-medium hover:bg-[#1E2A4A]/90 transition-colors">Zelle</button>
+                          <button onClick={() => markPaid(comm.id, 'zelle')} className="px-3 py-2.5 bg-[#D4540A] text-white rounded-lg text-sm font-medium hover:bg-[#D4540A]/90 transition-colors">Zelle</button>
                           <button onClick={() => markPaid(comm.id, 'apple_cash')} className="px-3 py-2.5 bg-gray-800 text-white rounded-lg text-sm font-medium hover:bg-gray-900 transition-colors">Apple</button>
                         </div>
                       </div>
@@ -382,7 +382,7 @@ export default function ReferralsPage() {
                   {paidCommissions.slice(0, 10).map(comm => (
                     <div key={comm.id} className="px-5 py-3.5 flex flex-col sm:flex-row sm:items-center justify-between text-sm gap-2 hover:bg-gray-50/50 transition-colors">
                       <div className="min-w-0">
-                        <span className="font-medium text-[#1E2A4A]">{comm.referrers?.name}</span>
+                        <span className="font-medium text-[#D4540A]">{comm.referrers?.name}</span>
                         <span className="text-gray-300 mx-2">&middot;</span>
                         <span className="text-gray-500">{comm.client_name}</span>
                       </div>
@@ -420,7 +420,7 @@ export default function ReferralsPage() {
                   <tr key={ref.id} className="hover:bg-gray-50/50 transition-colors">
                     <td className="px-5 py-3.5">
                       <div>
-                        <p className="font-medium text-[#1E2A4A]">{ref.name}</p>
+                        <p className="font-medium text-[#D4540A]">{ref.name}</p>
                         <p className="text-xs text-gray-400">{ref.email}</p>
                       </div>
                     </td>
@@ -428,11 +428,11 @@ export default function ReferralsPage() {
                     <td className="px-5 py-3.5 text-sm text-gray-600">
                       {ref.preferred_payout === 'zelle' ? <span>Zelle: {ref.zelle_email || ref.zelle_phone}</span> : <span>Apple: {ref.apple_cash_phone}</span>}
                     </td>
-                    <td className="px-5 py-3.5 text-[#1E2A4A] font-semibold">{formatMoney(ref.total_earned)}</td>
+                    <td className="px-5 py-3.5 text-[#D4540A] font-semibold">{formatMoney(ref.total_earned)}</td>
                     <td className="px-5 py-3.5 text-green-600 font-medium">{formatMoney(ref.total_paid)}</td>
                     <td className="px-5 py-3.5"><span className="text-yellow-600 font-medium bg-yellow-50 px-2 py-0.5 rounded-full text-sm">{formatMoney(ref.total_earned - ref.total_paid)}</span></td>
                     <td className="px-5 py-3.5">
-                      <button onClick={() => copyLink(ref.ref_code)} className="px-3 py-1.5 bg-gray-100 text-[#1E2A4A] rounded-lg text-xs font-medium hover:bg-gray-200 transition-colors">Copy Link</button>
+                      <button onClick={() => copyLink(ref.ref_code)} className="px-3 py-1.5 bg-gray-100 text-[#D4540A] rounded-lg text-xs font-medium hover:bg-gray-200 transition-colors">Copy Link</button>
                     </td>
                   </tr>
                 ))}
@@ -445,30 +445,30 @@ export default function ReferralsPage() {
 
         {/* Add Referrer Modal */}
         {showAddForm && (
-          <div className="fixed inset-0 bg-[#1E2A4A]/60 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowAddForm(false)}>
+          <div className="fixed inset-0 bg-[#D4540A]/60 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowAddForm(false)}>
             <div className="bg-white rounded-xl p-6 w-full max-w-md shadow-xl" onClick={e => e.stopPropagation()}>
-              <h3 className="text-lg font-semibold text-[#1E2A4A] mb-1">Add New Referrer</h3>
+              <h3 className="text-lg font-semibold text-[#D4540A] mb-1">Add New Referrer</h3>
               <p className="text-sm text-gray-400 mb-5">Create a new referral partner account</p>
               <div className="space-y-4">
                 <div>
                   <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Name *</label>
-                  <input type="text" value={newReferrer.name} onChange={(e) => setNewReferrer({ ...newReferrer, name: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#A8F0DC] focus:border-[#A8F0DC] outline-none transition" placeholder="John Smith" />
+                  <input type="text" value={newReferrer.name} onChange={(e) => setNewReferrer({ ...newReferrer, name: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition" placeholder="John Smith" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Email *</label>
-                  <input type="email" value={newReferrer.email} onChange={(e) => setNewReferrer({ ...newReferrer, email: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#A8F0DC] focus:border-[#A8F0DC] outline-none transition" placeholder="john@email.com" />
+                  <input type="email" value={newReferrer.email} onChange={(e) => setNewReferrer({ ...newReferrer, email: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition" placeholder="john@email.com" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Phone</label>
-                  <input type="tel" value={newReferrer.phone} onChange={(e) => setNewReferrer({ ...newReferrer, phone: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#A8F0DC] focus:border-[#A8F0DC] outline-none transition" placeholder="212-555-1234" />
+                  <input type="tel" value={newReferrer.phone} onChange={(e) => setNewReferrer({ ...newReferrer, phone: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition" placeholder="212-555-1234" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Zelle Email/Phone</label>
-                  <input type="text" value={newReferrer.zelle_email} onChange={(e) => setNewReferrer({ ...newReferrer, zelle_email: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#A8F0DC] focus:border-[#A8F0DC] outline-none transition" placeholder="Same as email if blank" />
+                  <input type="text" value={newReferrer.zelle_email} onChange={(e) => setNewReferrer({ ...newReferrer, zelle_email: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition" placeholder="Same as email if blank" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Preferred Payout</label>
-                  <select value={newReferrer.preferred_payout} onChange={(e) => setNewReferrer({ ...newReferrer, preferred_payout: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#A8F0DC] focus:border-[#A8F0DC] outline-none transition">
+                  <select value={newReferrer.preferred_payout} onChange={(e) => setNewReferrer({ ...newReferrer, preferred_payout: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#D4540A] focus:ring-2 focus:ring-[#FDE68A] focus:border-[#FDE68A] outline-none transition">
                     <option value="zelle">Zelle</option>
                     <option value="apple_cash">Apple Cash</option>
                   </select>
@@ -476,7 +476,7 @@ export default function ReferralsPage() {
               </div>
               <div className="flex justify-end gap-3 mt-6">
                 <button onClick={() => setShowAddForm(false)} className="px-4 py-2.5 text-gray-500 hover:text-gray-700 font-medium rounded-lg hover:bg-gray-100 transition-colors">Cancel</button>
-                <button onClick={addReferrer} className="px-5 py-2.5 bg-[#1E2A4A] text-white rounded-lg hover:bg-[#1E2A4A]/90 font-medium transition-colors">Add Referrer</button>
+                <button onClick={addReferrer} className="px-5 py-2.5 bg-[#D4540A] text-white rounded-lg hover:bg-[#D4540A]/90 font-medium transition-colors">Add Referrer</button>
               </div>
             </div>
           </div>

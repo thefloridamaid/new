@@ -91,7 +91,7 @@ const tips: Record<string, { title: string; tip: string }[]> = {
     { title: 'Dry clean only? Maybe not', tip: 'Many "dry clean only" items can be hand washed in cold water with mild detergent. Check the fabric — silk and wool usually can handle it.' },
     { title: 'Shared laundry room etiquette', tip: 'In Florida buildings: set a timer, remove clothes promptly, wipe the lint trap, and don\'t leave detergent residue on machines. Your neighbors will appreciate it.' },
   ],
-  nyc: [
+  florida: [
     { title: 'Cockroach prevention is cleaning', tip: 'In Florida, pests are a fact of life — but a clean kitchen denies them food. Wipe counters nightly, seal food in containers, take trash out daily.' },
     { title: 'Window AC filter cleaning', tip: 'Clean or replace your window AC filter every 2 weeks during summer. A dirty filter circulates dust and allergens and kills efficiency.' },
     { title: 'Radiator cleaning before heating season', tip: 'Clean between the radiator fins in September. That burnt-dust smell when the heat first kicks on? That\'s months of buildup cooking.' },
@@ -203,9 +203,9 @@ export default function TipsPage() {
         howToSchema,
       ]} />
 
-      <section className="bg-gradient-to-b from-[#1E2A4A] to-[#243352] py-16 md:py-24">
+      <section className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-4 text-center">
-          <p className="text-xs font-semibold text-[#A8F0DC] tracking-[0.25em] uppercase mb-4">From the Pros Who Clean Florida Homes Every Day</p>
+          <p className="text-xs font-semibold text-[#FDE68A] tracking-[0.25em] uppercase mb-4">From the Pros Who Clean Florida Homes Every Day</p>
           <h1 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl lg:text-7xl text-white tracking-wide leading-[0.95] mb-4">The 100 Best Cleaning Tips for Florida Homes</h1>
           <p className="text-white/60 text-lg max-w-3xl mx-auto">No fluff, no sponsored products — just the tips our professional cleaning team actually uses in real Florida homes every single day.</p>
         </div>
@@ -216,10 +216,10 @@ export default function TipsPage() {
 
         {/* Table of contents */}
         <nav className="border border-gray-200 rounded-xl p-6 md:p-8 mb-16">
-          <h2 className="font-[family-name:var(--font-bebas)] text-xl text-[#1E2A4A] tracking-wide mb-4">Jump to a Category</h2>
+          <h2 className="font-[family-name:var(--font-bebas)] text-xl text-[#D4540A] tracking-wide mb-4">Jump to a Category</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {categories.map(cat => (
-              <a key={cat.id} href={`#${cat.id}`} className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-[#A8F0DC]/20 hover:text-[#1E2A4A] transition-colors">
+              <a key={cat.id} href={`#${cat.id}`} className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-[#FDE68A]/20 hover:text-[#D4540A] transition-colors">
                 <span>{cat.icon}</span>
                 <span>{cat.name}</span>
               </a>
@@ -232,16 +232,16 @@ export default function TipsPage() {
           <section key={cat.id} id={cat.id} className="mb-16 scroll-mt-24">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-2xl">{cat.icon}</span>
-              <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#1E2A4A] tracking-wide">{cat.name}</h2>
+              <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide">{cat.name}</h2>
             </div>
             <div className="space-y-4">
               {tips[cat.id].map(tip => {
                 tipNumber++
                 return (
                   <div key={tip.title} className="flex gap-4 items-start p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#1E2A4A] text-white text-sm font-bold flex items-center justify-center">{tipNumber}</span>
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#D4540A] text-white text-sm font-bold flex items-center justify-center">{tipNumber}</span>
                     <div>
-                      <h3 className="font-semibold text-[#1E2A4A]">{tip.title}</h3>
+                      <h3 className="font-semibold text-[#D4540A]">{tip.title}</h3>
                       <p className="text-gray-600 text-sm mt-1">{tip.tip}</p>
                     </div>
                   </div>
@@ -251,9 +251,9 @@ export default function TipsPage() {
 
             {/* Mid-page CTA every 3 categories */}
             {(cat.id === 'bedroom' || cat.id === 'laundry' || cat.id === 'pets') && (
-              <div className="bg-[#A8F0DC]/15 border border-[#A8F0DC]/30 rounded-xl p-6 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-                <p className="text-[#1E2A4A] font-medium">Rather have a pro handle it? We start at $49/hr.</p>
-                <a href="tel:8333526243" className="border-2 border-[#1E2A4A] text-[#1E2A4A] px-6 py-2.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#1E2A4A] hover:text-white transition-colors flex-shrink-0">
+              <div className="bg-[#FDE68A]/15 border border-[#FDE68A]/30 rounded-xl p-6 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p className="text-[#D4540A] font-medium">Rather have a pro handle it? We start at $49/hr.</p>
+                <a href="tel:8333526243" className="border-2 border-[#D4540A] text-[#D4540A] px-6 py-2.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#D4540A] hover:text-white transition-colors flex-shrink-0">
                   (833) 352-6243
                 </a>
               </div>
@@ -263,11 +263,11 @@ export default function TipsPage() {
 
         {/* FAQ section */}
         <section className="mt-20 mb-16">
-          <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#1E2A4A] tracking-wide mb-8">Frequently Asked Questions</h2>
+          <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-8">Frequently Asked Questions</h2>
           <div className="space-y-6">
             {faqData.map(f => (
               <div key={f.q} className="border-b border-gray-200 pb-6">
-                <h3 className="font-semibold text-[#1E2A4A] text-lg mb-2">{f.q}</h3>
+                <h3 className="font-semibold text-[#D4540A] text-lg mb-2">{f.q}</h3>
                 <p className="text-gray-600">{f.a}</p>
               </div>
             ))}
@@ -276,7 +276,7 @@ export default function TipsPage() {
 
         <div className="text-center">
           <p className="text-gray-600">
-            Want more in-depth articles? Check out our <Link href="/nyc-maid-service-blog" className="text-[#1E2A4A] font-semibold hover:underline">blog</Link> for detailed cleaning guides.
+            Want more in-depth articles? Check out our <Link href="/nyc-maid-service-blog" className="text-[#D4540A] font-semibold hover:underline">blog</Link> for detailed cleaning guides.
           </p>
         </div>
       </div>

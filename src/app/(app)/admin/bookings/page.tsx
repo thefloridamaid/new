@@ -829,8 +829,8 @@ function BookingsPage() {
   const statusPillClass = (status: string) => {
     const isActive = filters.status === status
     const base = 'px-3 py-2 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5'
-    if (status === '' && !filters.status) return base + ' bg-[#1E2A4A] text-white shadow-sm'
-    if (isActive) return base + ' bg-[#1E2A4A] text-white shadow-sm'
+    if (status === '' && !filters.status) return base + ' bg-[#D4540A] text-white shadow-sm'
+    if (isActive) return base + ' bg-[#D4540A] text-white shadow-sm'
     return base + ' bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50'
   }
 
@@ -841,20 +841,20 @@ function BookingsPage() {
         <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3 mb-6">
           <div>
             <h2 className="text-xs font-bold tracking-widest text-gray-400 uppercase mb-1">BOOKINGS</h2>
-            <p className="text-2xl font-bold text-[#1E2A4A]">Manage Bookings</p>
+            <p className="text-2xl font-bold text-[#D4540A]">Manage Bookings</p>
           </div>
           <div className="flex items-center gap-2">
-            <button onClick={() => setShowFilters(!showFilters)} className={'px-4 py-2.5 border rounded-xl font-medium text-sm transition-all ' + (showFilters || activeFilterCount > 0 ? 'border-[#1E2A4A] bg-[#1E2A4A] text-white' : 'border-gray-200 text-[#1E2A4A] hover:border-gray-300 hover:bg-gray-50')}>
+            <button onClick={() => setShowFilters(!showFilters)} className={'px-4 py-2.5 border rounded-xl font-medium text-sm transition-all ' + (showFilters || activeFilterCount > 0 ? 'border-[#D4540A] bg-[#D4540A] text-white' : 'border-gray-200 text-[#D4540A] hover:border-gray-300 hover:bg-gray-50')}>
               <span className="flex items-center gap-2">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" /></svg>
                 Filters{activeFilterCount > 0 ? ` (${activeFilterCount})` : ''}
               </span>
             </button>
-            <button onClick={() => setShowCloseOut(!showCloseOut)} className={'px-4 py-2.5 border rounded-xl font-medium text-sm transition-all flex items-center gap-2 ' + (showCloseOut ? 'border-emerald-600 bg-emerald-600 text-white' : 'border-gray-200 text-[#1E2A4A] hover:border-gray-300 hover:bg-gray-50')}>
+            <button onClick={() => setShowCloseOut(!showCloseOut)} className={'px-4 py-2.5 border rounded-xl font-medium text-sm transition-all flex items-center gap-2 ' + (showCloseOut ? 'border-emerald-600 bg-emerald-600 text-white' : 'border-gray-200 text-[#D4540A] hover:border-gray-300 hover:bg-gray-50')}>
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               Close Out{closeOutJobs.length > 0 ? ` (${closeOutJobs.length})` : ''}
             </button>
-            <button onClick={openCreate} className="bg-[#1E2A4A] text-white px-5 py-2.5 rounded-xl font-medium text-sm hover:bg-[#1E2A4A]/90 transition-all shadow-sm flex items-center gap-2">
+            <button onClick={openCreate} className="bg-[#D4540A] text-white px-5 py-2.5 rounded-xl font-medium text-sm hover:bg-[#D4540A]/90 transition-all shadow-sm flex items-center gap-2">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
               New Booking
             </button>
@@ -863,13 +863,13 @@ function BookingsPage() {
 
         {/* Quick Links */}
         <div className="text-xs text-gray-400 mb-4 hidden md:flex items-center gap-1 flex-wrap">
-          <a href="https://www.thefloridamaid.com/book" target="_blank" className="text-gray-500 hover:text-[#1E2A4A] hover:underline">Client Portal</a>
+          <a href="https://www.thefloridamaid.com/book" target="_blank" className="text-gray-500 hover:text-[#D4540A] hover:underline">Client Portal</a>
           <span className="text-gray-300 mx-1">/</span>
-          <a href="https://www.thefloridamaid.com/book/new" target="_blank" className="text-gray-500 hover:text-[#1E2A4A] hover:underline">New Booking</a>
+          <a href="https://www.thefloridamaid.com/book/new" target="_blank" className="text-gray-500 hover:text-[#D4540A] hover:underline">New Booking</a>
           <span className="text-gray-300 mx-1">/</span>
-          <a href="https://www.thefloridamaid.com/book/collect" target="_blank" className="text-gray-500 hover:text-[#1E2A4A] hover:underline">Collect Info</a>
+          <a href="https://www.thefloridamaid.com/book/collect" target="_blank" className="text-gray-500 hover:text-[#D4540A] hover:underline">Collect Info</a>
           <span className="text-gray-300 mx-1">/</span>
-          <a href="https://www.thefloridamaid.com/team" target="_blank" className="text-gray-500 hover:text-[#1E2A4A] hover:underline">Team Portal</a>
+          <a href="https://www.thefloridamaid.com/team" target="_blank" className="text-gray-500 hover:text-[#D4540A] hover:underline">Team Portal</a>
         </div>
 
         {/* Stat Cards */}
@@ -899,7 +899,7 @@ function BookingsPage() {
           <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
             <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           </div>
-          <input type="text" placeholder="Search client, cleaner, address..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm text-[#1E2A4A] bg-white focus:outline-none focus:ring-2 focus:ring-[#1E2A4A]/10 focus:border-[#1E2A4A] transition-all" />
+          <input type="text" placeholder="Search client, cleaner, address..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm text-[#D4540A] bg-white focus:outline-none focus:ring-2 focus:ring-[#D4540A]/10 focus:border-[#D4540A] transition-all" />
         </div>
 
         {/* Status Filter Pills */}
@@ -932,37 +932,37 @@ function BookingsPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Service</label>
-                <select value={filters.service_type} onChange={(e) => setFilters({ ...filters, service_type: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#1E2A4A] text-sm bg-white focus:outline-none focus:border-[#1E2A4A]">
+                <select value={filters.service_type} onChange={(e) => setFilters({ ...filters, service_type: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#D4540A] text-sm bg-white focus:outline-none focus:border-[#D4540A]">
                   <option value="">All</option>
                   {serviceTypes.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
               </div>
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Cleaner</label>
-                <select value={filters.cleaner_id} onChange={(e) => setFilters({ ...filters, cleaner_id: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#1E2A4A] text-sm bg-white focus:outline-none focus:border-[#1E2A4A]">
+                <select value={filters.cleaner_id} onChange={(e) => setFilters({ ...filters, cleaner_id: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#D4540A] text-sm bg-white focus:outline-none focus:border-[#D4540A]">
                   <option value="">All</option>
                   {cleaners.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                 </select>
               </div>
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Client</label>
-                <select value={filters.client_id} onChange={(e) => setFilters({ ...filters, client_id: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#1E2A4A] text-sm bg-white focus:outline-none focus:border-[#1E2A4A]">
+                <select value={filters.client_id} onChange={(e) => setFilters({ ...filters, client_id: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#D4540A] text-sm bg-white focus:outline-none focus:border-[#D4540A]">
                   <option value="">All</option>
                   {[...clients].sort((a,b) => a.name.localeCompare(b.name)).map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                 </select>
               </div>
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">From</label>
-                <input type="date" value={filters.date_from} onChange={(e) => setFilters({ ...filters, date_from: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#1E2A4A] text-sm bg-white focus:outline-none focus:border-[#1E2A4A]" />
+                <input type="date" value={filters.date_from} onChange={(e) => setFilters({ ...filters, date_from: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#D4540A] text-sm bg-white focus:outline-none focus:border-[#D4540A]" />
               </div>
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">To</label>
-                <input type="date" value={filters.date_to} onChange={(e) => setFilters({ ...filters, date_to: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#1E2A4A] text-sm bg-white focus:outline-none focus:border-[#1E2A4A]" />
+                <input type="date" value={filters.date_to} onChange={(e) => setFilters({ ...filters, date_to: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#D4540A] text-sm bg-white focus:outline-none focus:border-[#D4540A]" />
               </div>
             </div>
             <div className="flex justify-between items-center pt-2">
               <p className="text-sm text-gray-500">{filteredBookings.length} booking{filteredBookings.length !== 1 ? 's' : ''} found</p>
-              <button onClick={clearFilters} className="text-sm text-gray-400 hover:text-[#1E2A4A] transition-colors">Clear All</button>
+              <button onClick={clearFilters} className="text-sm text-gray-400 hover:text-[#D4540A] transition-colors">Clear All</button>
             </div>
           </div>
         )}
@@ -978,13 +978,13 @@ function BookingsPage() {
               {bookings.filter(b => b.status === 'pending').map((b) => (
                 <div key={b.id} onClick={() => openEdit(b)} className="flex items-center justify-between bg-white/80 backdrop-blur-sm border border-red-200/40 rounded-xl p-3.5 cursor-pointer hover:bg-white hover:shadow-sm transition-all">
                   <div>
-                    <p className="text-[#1E2A4A] font-semibold text-sm">{b.clients?.name || '-'}</p>
+                    <p className="text-[#D4540A] font-semibold text-sm">{b.clients?.name || '-'}</p>
                     <p className="text-gray-500 text-xs mt-0.5">{formatDate(b.start_time)} · {b.service_type}</p>
                     <p className="text-gray-400 text-xs mt-0.5">{b.clients?.address || ''}</p>
                   </div>
                   <div className="text-right flex flex-col items-end gap-1.5">
                     <span className="px-2.5 py-1 bg-red-100 text-red-700 rounded-full text-xs font-semibold">Pending</span>
-                    <p className="text-[#1E2A4A] text-sm font-semibold">~${(b.price / 100).toFixed(0)}</p>
+                    <p className="text-[#D4540A] text-sm font-semibold">~${(b.price / 100).toFixed(0)}</p>
                   </div>
                 </div>
               ))}
@@ -1014,12 +1014,12 @@ function BookingsPage() {
                         {/* Job header */}
                         <div className="flex items-start justify-between mb-3">
                           <div>
-                            <p className="text-[#1E2A4A] font-semibold text-sm">{b.clients?.name || '-'}</p>
+                            <p className="text-[#D4540A] font-semibold text-sm">{b.clients?.name || '-'}</p>
                             <p className="text-gray-500 text-xs mt-0.5">{formatDate(b.start_time)} · {b.cleaners?.name || 'Unassigned'}</p>
                             <p className="text-gray-400 text-xs mt-0.5">{b.service_type}</p>
                           </div>
                           <div className="text-right">
-                            <p className="text-[#1E2A4A] font-bold text-lg">${(b.price / 100).toFixed(0)}</p>
+                            <p className="text-[#D4540A] font-bold text-lg">${(b.price / 100).toFixed(0)}</p>
                             {b.cleaner_pay && <p className="text-gray-400 text-xs">Pay: ${Number(b.cleaner_pay).toFixed(0)}</p>}
                           </div>
                         </div>
@@ -1119,13 +1119,13 @@ function BookingsPage() {
                       <div className="flex items-center gap-3">
                         <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                         <div>
-                          <p className="text-sm text-[#1E2A4A] font-medium">{b.clients?.name || '-'}</p>
+                          <p className="text-sm text-[#D4540A] font-medium">{b.clients?.name || '-'}</p>
                           <p className="text-xs text-gray-400">{formatDate(b.start_time)} · {b.cleaners?.name || '-'}</p>
                         </div>
                       </div>
                       <div className="text-right flex items-center gap-3">
                         <span className="text-xs text-gray-400">{b.payment_method === 'zelle' ? 'Zelle' : 'Apple'}</span>
-                        <span className="text-sm font-semibold text-[#1E2A4A]">${(b.price / 100).toFixed(0)}</span>
+                        <span className="text-sm font-semibold text-[#D4540A]">${(b.price / 100).toFixed(0)}</span>
                       </div>
                     </div>
                   ))}
@@ -1140,7 +1140,7 @@ function BookingsPage() {
           {loading ? (
             <div className="flex items-center justify-center py-16">
               <div className="flex flex-col items-center gap-3">
-                <div className="w-8 h-8 border-2 border-[#1E2A4A] border-t-transparent rounded-full animate-spin" />
+                <div className="w-8 h-8 border-2 border-[#D4540A] border-t-transparent rounded-full animate-spin" />
                 <p className="text-gray-400 text-sm">Loading bookings...</p>
               </div>
             </div>
@@ -1183,7 +1183,7 @@ function BookingsPage() {
                   >
                     <td className="px-4 py-3.5">
                       <div>
-                        <p className={'text-sm font-medium ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-[#1E2A4A]')}>{b.clients?.name || '-'}</p>
+                        <p className={'text-sm font-medium ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-[#D4540A]')}>{b.clients?.name || '-'}</p>
                         <p className="text-xs text-gray-400 mt-0.5 truncate max-w-[180px]">{b.clients?.address || ''}</p>
                       </div>
                     </td>
@@ -1191,7 +1191,7 @@ function BookingsPage() {
                       <span className={'text-sm ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-gray-600')}>{b.service_type}</span>
                     </td>
                     <td className="px-4 py-3.5">
-                      <span className={'text-sm ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-[#1E2A4A]')}>{formatDate(b.start_time)}</span>
+                      <span className={'text-sm ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-[#D4540A]')}>{formatDate(b.start_time)}</span>
                     </td>
                     <td className="px-4 py-3.5">
                       <span className={'text-sm ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-gray-600')}>{b.cleaners?.name || <span className="text-gray-300">--</span>}</span>
@@ -1200,7 +1200,7 @@ function BookingsPage() {
                       <span className={'text-sm ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-gray-500')}>${(() => { const hours = Math.max(1, Math.round((new Date(b.end_time).getTime() - new Date(b.start_time).getTime()) / (1000 * 60 * 60))); return b.hourly_rate ? b.hourly_rate : b.price ? Math.round(b.price / 100 / hours) : 75 })()}/hr</span>
                     </td>
                     <td className="px-4 py-3.5">
-                      <span className={'text-sm font-semibold ' + (b.status === 'cancelled' ? 'text-gray-400 line-through' : 'text-[#1E2A4A]')}>~${(b.price / 100).toFixed(0)}</span>
+                      <span className={'text-sm font-semibold ' + (b.status === 'cancelled' ? 'text-gray-400 line-through' : 'text-[#D4540A]')}>~${(b.price / 100).toFixed(0)}</span>
                     </td>
                     <td className="px-4 py-3.5 hidden lg:table-cell">
                       {b.recurring_type ? <span className="px-2 py-1 bg-purple-50 text-purple-600 rounded-full text-xs font-medium border border-purple-100">{b.recurring_type}</span> : <span className="text-gray-300">--</span>}
@@ -1228,13 +1228,13 @@ function BookingsPage() {
                             </button>
                             {resendMenuId === b.id && (
                               <div className="absolute right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-20 py-1 min-w-[100px]">
-                                <button onClick={() => handleResend(b.id, 'email')} className="w-full text-left px-3 py-1.5 text-sm text-[#1E2A4A] hover:bg-gray-50 transition-colors">Email</button>
-                                <button onClick={() => handleResend(b.id, 'sms')} className="w-full text-left px-3 py-1.5 text-sm text-[#1E2A4A] hover:bg-gray-50 transition-colors">Text</button>
+                                <button onClick={() => handleResend(b.id, 'email')} className="w-full text-left px-3 py-1.5 text-sm text-[#D4540A] hover:bg-gray-50 transition-colors">Email</button>
+                                <button onClick={() => handleResend(b.id, 'sms')} className="w-full text-left px-3 py-1.5 text-sm text-[#D4540A] hover:bg-gray-50 transition-colors">Text</button>
                               </div>
                             )}
                           </div>
                         )}
-                        <button onClick={() => openEdit(b)} className="p-1.5 rounded-lg text-gray-400 hover:text-[#1E2A4A] hover:bg-gray-100 transition-colors" title="Edit">
+                        <button onClick={() => openEdit(b)} className="p-1.5 rounded-lg text-gray-400 hover:text-[#D4540A] hover:bg-gray-100 transition-colors" title="Edit">
                           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
                         </button>
                         {b.status === 'cancelled' ? (
@@ -1283,7 +1283,7 @@ function BookingsPage() {
                           onClick={() => setCurrentPage(p as number)}
                           className={
                             'min-w-[28px] h-7 rounded-lg text-xs font-medium transition-colors ' +
-                            (currentPage === p ? 'bg-[#1E2A4A] text-white' : 'text-gray-500 hover:bg-gray-100')
+                            (currentPage === p ? 'bg-[#D4540A] text-white' : 'text-gray-500 hover:bg-gray-100')
                           }
                         >
                           {p}
@@ -1308,7 +1308,7 @@ function BookingsPage() {
         <div className="md:hidden space-y-3">
           {loading ? (
             <div className="flex items-center justify-center py-12">
-              <div className="w-7 h-7 border-2 border-[#1E2A4A] border-t-transparent rounded-full animate-spin" />
+              <div className="w-7 h-7 border-2 border-[#D4540A] border-t-transparent rounded-full animate-spin" />
             </div>
           ) : filteredBookings.length === 0 ? (
             <div className="text-center py-12">
@@ -1330,7 +1330,7 @@ function BookingsPage() {
                 >
                   <div className="flex items-start justify-between mb-2">
                     <div className="flex-1 min-w-0">
-                      <p className={'font-semibold text-sm ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-[#1E2A4A]')}>{b.clients?.name || '-'}</p>
+                      <p className={'font-semibold text-sm ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-[#D4540A]')}>{b.clients?.name || '-'}</p>
                       <p className="text-xs text-gray-400 truncate mt-0.5">{b.clients?.address || ''}</p>
                     </div>
                     <span className={
@@ -1358,7 +1358,7 @@ function BookingsPage() {
                       {b.cleaners?.name && <span className="text-gray-400">/ {b.cleaners.name}</span>}
                       {b.recurring_type && <span className="px-1.5 py-0.5 bg-purple-50 text-purple-600 rounded-full text-xs font-medium">{b.recurring_type}</span>}
                     </div>
-                    <span className={'text-sm font-bold ' + (b.status === 'cancelled' ? 'text-gray-400 line-through' : 'text-[#1E2A4A]')}>~${(b.price / 100).toFixed(0)}</span>
+                    <span className={'text-sm font-bold ' + (b.status === 'cancelled' ? 'text-gray-400 line-through' : 'text-[#D4540A]')}>~${(b.price / 100).toFixed(0)}</span>
                   </div>
                 </div>
               ))}
@@ -1391,7 +1391,7 @@ function BookingsPage() {
 
       {showModal && editingBooking && (
         <SidePanel open={showModal} onClose={() => { setShowModal(false); setEditingBooking(null) }} title="Edit Booking">
-            <p className="text-[#1E2A4A] font-medium">{editingBooking.clients?.name}</p>
+            <p className="text-[#D4540A] font-medium">{editingBooking.clients?.name}</p>
             {editingBooking.client_id && clients.find(c => c.id === editingBooking.client_id)?.do_not_service && (
               <div className="bg-red-50 border-2 border-red-300 rounded-lg p-3 my-2">
                 <p className="text-red-700 font-bold text-sm">DO NOT SERVICE</p>
@@ -1399,13 +1399,13 @@ function BookingsPage() {
               </div>
             )}
             {editingBooking.clients?.address && (
-              <p className="text-[#1E2A4A] text-base">{editingBooking.clients.address}</p>
+              <p className="text-[#D4540A] text-base">{editingBooking.clients.address}</p>
             )}
             {editingBooking.clients?.phone && (
               <div className="flex items-center gap-3 mt-2 mb-4">
-                <span className="text-[#1E2A4A] text-base font-medium">{editingBooking.clients.phone}</span>
+                <span className="text-[#D4540A] text-base font-medium">{editingBooking.clients.phone}</span>
                 <a href={`tel:${editingBooking.clients.phone}`} className="px-4 py-1.5 bg-green-50 text-green-700 border border-green-200 rounded-full text-sm font-medium hover:bg-green-100">Call</a>
-                <a href={`sms:${editingBooking.clients.phone}`} className="px-4 py-1.5 bg-[#A8F0DC]/20 text-[#1E2A4A]/70 border border-[#A8F0DC]/30 rounded-full text-sm font-medium hover:bg-[#A8F0DC]/20">Text</a>
+                <a href={`sms:${editingBooking.clients.phone}`} className="px-4 py-1.5 bg-[#FDE68A]/20 text-[#D4540A]/70 border border-[#FDE68A]/30 rounded-full text-sm font-medium hover:bg-[#FDE68A]/20">Text</a>
               </div>
             )}
             {!editingBooking.clients?.phone && <div className="mb-4" />}
@@ -1449,7 +1449,7 @@ function BookingsPage() {
                   loadBookings()
                   setSaving(false)
                 }}
-                className="w-full mb-3 py-2.5 px-4 bg-[#1E2A4A] text-white rounded-lg font-medium hover:bg-[#1E2A4A]/90"
+                className="w-full mb-3 py-2.5 px-4 bg-[#D4540A] text-white rounded-lg font-medium hover:bg-[#D4540A]/90"
               >
                 Check In (Admin)
               </button>
@@ -1512,7 +1512,7 @@ function BookingsPage() {
               <p className="text-purple-600 text-sm mb-4 bg-purple-50 px-3 py-2 rounded-lg">🔄 Recurring: {editingBooking.recurring_type || 'Linked to schedule'}</p>
             )}
             {editingBooking.cleaner_token && (
-              <button type="button" onClick={copyTeamLink} className="w-full mb-4 py-2 px-4 bg-[#A8F0DC]/20 text-[#1E2A4A]/70 border border-[#A8F0DC]/30 rounded-lg font-medium hover:bg-[#A8F0DC]/20">
+              <button type="button" onClick={copyTeamLink} className="w-full mb-4 py-2 px-4 bg-[#FDE68A]/20 text-[#D4540A]/70 border border-[#FDE68A]/30 rounded-lg font-medium hover:bg-[#FDE68A]/20">
                 {copied ? 'Copied!' : 'Copy Team Link'}
               </button>
             )}
@@ -1521,26 +1521,26 @@ function BookingsPage() {
                 {/* Date & Time */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Date</label>
-                    <input type="date" value={form.start_date} onChange={(e) => setForm({ ...form, start_date: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]" />
+                    <label className="block text-sm font-medium text-[#D4540A] mb-1">Date</label>
+                    <input type="date" value={form.start_date} onChange={(e) => setForm({ ...form, start_date: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Time</label>
-                    <input type="time" value={form.start_time} onChange={(e) => setForm({ ...form, start_time: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]" />
+                    <label className="block text-sm font-medium text-[#D4540A] mb-1">Time</label>
+                    <input type="time" value={form.start_time} onChange={(e) => setForm({ ...form, start_time: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]" />
                   </div>
                 </div>
                 
                 {/* Service & Hours */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Service</label>
-                    <select value={form.service_type} onChange={(e) => setForm({ ...form, service_type: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">
+                    <label className="block text-sm font-medium text-[#D4540A] mb-1">Service</label>
+                    <select value={form.service_type} onChange={(e) => setForm({ ...form, service_type: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]">
                       {serviceTypes.map(s => <option key={s} value={s}>{s}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Hours</label>
-                    <select value={form.hours} onChange={(e) => setForm({ ...form, hours: parseInt(e.target.value) })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">
+                    <label className="block text-sm font-medium text-[#D4540A] mb-1">Hours</label>
+                    <select value={form.hours} onChange={(e) => setForm({ ...form, hours: parseInt(e.target.value) })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]">
                       {[1,2,3,4,5,6,7,8].map(h => <option key={h} value={h}>{h}hr</option>)}
                     </select>
                   </div>
@@ -1548,8 +1548,8 @@ function BookingsPage() {
 
                 {/* Rate */}
                 <div>
-                  <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Rate</label>
-                  <select value={form.hourly_rate} onChange={(e) => setForm({ ...form, hourly_rate: parseInt(e.target.value) })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">
+                  <label className="block text-sm font-medium text-[#D4540A] mb-1">Rate</label>
+                  <select value={form.hourly_rate} onChange={(e) => setForm({ ...form, hourly_rate: parseInt(e.target.value) })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]">
                     <option value={49}>$49/hr</option>
                     <option value={65}>$65/hr (Intro)</option>
                     <option value={75}>$75/hr</option>
@@ -1558,7 +1558,7 @@ function BookingsPage() {
 
                 {/* 10% Discount Toggle */}
                 <div className="flex justify-between items-center py-3 border-t border-b border-gray-200">
-                  <h4 className="font-medium text-[#1E2A4A]">10% Discount</h4>
+                  <h4 className="font-medium text-[#D4540A]">10% Discount</h4>
                   <div
                     onClick={() => setForm({ ...form, discount_enabled: !form.discount_enabled })}
                     className={`w-10 h-6 rounded-full transition-colors ${form.discount_enabled ? 'bg-green-600' : 'bg-gray-300'} relative cursor-pointer`}
@@ -1571,7 +1571,7 @@ function BookingsPage() {
                 <div className="bg-gray-50 rounded-lg p-3">
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">Estimate: ~{getEstimatedHoursRange(form.hours)}hrs × ${form.hourly_rate}/hr{form.discount_enabled ? ' − 10%' : ''}</span>
-                    <span className="font-semibold text-[#1E2A4A]">~${(calculateEditPrice() / 100).toFixed(0)}</span>
+                    <span className="font-semibold text-[#D4540A]">~${(calculateEditPrice() / 100).toFixed(0)}</span>
                   </div>
                 </div>
                 {(form.status === 'completed' || form.actual_hours) && (
@@ -1591,7 +1591,7 @@ function BookingsPage() {
                             setForm({ ...form, actual_hours: hrs, cleaner_pay: hrs ? Math.round(hrs * cleanerRate * 100) : null })
                           }}
                           placeholder="e.g. 3"
-                          className="w-full px-3 py-2 border border-green-300 rounded-lg text-[#1E2A4A] bg-white text-sm"
+                          className="w-full px-3 py-2 border border-green-300 rounded-lg text-[#D4540A] bg-white text-sm"
                         />
                       </div>
                       <div>
@@ -1606,7 +1606,7 @@ function BookingsPage() {
                             setForm({ ...form, cleaner_pay: val })
                           }}
                           placeholder="auto"
-                          className="w-full px-3 py-2 border border-green-300 rounded-lg text-[#1E2A4A] bg-white text-sm"
+                          className="w-full px-3 py-2 border border-green-300 rounded-lg text-[#D4540A] bg-white text-sm"
                         />
                       </div>
                     </div>
@@ -1637,15 +1637,15 @@ function BookingsPage() {
                 />
 
                 <div>
-                  <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Cleaner</label>
-                  <select value={form.cleaner_id} onChange={(e) => setForm({ ...form, cleaner_id: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">
+                  <label className="block text-sm font-medium text-[#D4540A] mb-1">Cleaner</label>
+                  <select value={form.cleaner_id} onChange={(e) => setForm({ ...form, cleaner_id: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]">
                     <option value="">Select...</option>
                     {cleaners.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Status</label>
-                  <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">
+                  <label className="block text-sm font-medium text-[#D4540A] mb-1">Status</label>
+                  <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]">
                     <option value="pending">Pending</option>
                     <option value="scheduled">Scheduled</option>
                     <option value="in_progress">In Progress</option>
@@ -1654,15 +1654,15 @@ function BookingsPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Payment</label>
-                  <select value={form.payment_status} onChange={(e) => setForm({ ...form, payment_status: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">
+                  <label className="block text-sm font-medium text-[#D4540A] mb-1">Payment</label>
+                  <select value={form.payment_status} onChange={(e) => setForm({ ...form, payment_status: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]">
                     <option value="pending">Pending</option>
                     <option value="paid">Paid</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Method</label>
-                  <select value={form.payment_method} onChange={(e) => setForm({ ...form, payment_method: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">
+                  <label className="block text-sm font-medium text-[#D4540A] mb-1">Method</label>
+                  <select value={form.payment_method} onChange={(e) => setForm({ ...form, payment_method: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]">
                     <option value="">-</option>
                     <option value="zelle">Zelle</option>
                     <option value="apple_pay">Apple Pay</option>
@@ -1670,16 +1670,16 @@ function BookingsPage() {
                 </div>
                 {form.status === 'completed' && (
                   <div>
-                    <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Team Paid</label>
-                    <select value={form.cleaner_paid ? 'paid' : 'not_paid'} onChange={(e) => setForm({ ...form, cleaner_paid: e.target.value === 'paid' })} className={'w-full px-3 py-2 border rounded-lg ' + (form.cleaner_paid ? 'border-green-300 text-green-700 bg-green-50' : 'border-gray-300 text-[#1E2A4A]')}>
+                    <label className="block text-sm font-medium text-[#D4540A] mb-1">Team Paid</label>
+                    <select value={form.cleaner_paid ? 'paid' : 'not_paid'} onChange={(e) => setForm({ ...form, cleaner_paid: e.target.value === 'paid' })} className={'w-full px-3 py-2 border rounded-lg ' + (form.cleaner_paid ? 'border-green-300 text-green-700 bg-green-50' : 'border-gray-300 text-[#D4540A]')}>
                       <option value="not_paid">Not Paid</option>
                       <option value="paid">Paid</option>
                     </select>
                   </div>
                 )}
                 <div>
-                  <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Notes</label>
-                  <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]" rows={6} />
+                  <label className="block text-sm font-medium text-[#D4540A] mb-1">Notes</label>
+                  <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]" rows={6} />
                 </div>
               </div>
               <div className="flex gap-3 mt-6">
@@ -1694,29 +1694,29 @@ function BookingsPage() {
                 ) : (
                   <button type="button" onClick={() => handleCancel('single')} className="px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg">Cancel Booking</button>
                 )}
-                <button type="button" onClick={() => { setShowModal(false); setEditingBooking(null) }} className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">Close</button>
-                <button type="submit" disabled={saving} className="flex-1 px-4 py-2 bg-[#1E2A4A] text-white rounded-lg">{saving ? '...' : 'Save'}</button>
+                <button type="button" onClick={() => { setShowModal(false); setEditingBooking(null) }} className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-[#D4540A]">Close</button>
+                <button type="submit" disabled={saving} className="flex-1 px-4 py-2 bg-[#D4540A] text-white rounded-lg">{saving ? '...' : 'Save'}</button>
               </div>
             </form>
         </SidePanel>
       )}
 
       {showUpdateChoice && (
-        <div className="fixed inset-0 bg-[#1E2A4A]/50 flex items-center justify-center z-[10001]" onClick={() => setShowUpdateChoice(false)}>
+        <div className="fixed inset-0 bg-[#D4540A]/50 flex items-center justify-center z-[10001]" onClick={() => setShowUpdateChoice(false)}>
           <div className="bg-white rounded-lg p-6 w-full max-w-sm" onClick={e => e.stopPropagation()}>
-            <h3 className="text-lg font-semibold text-[#1E2A4A] mb-4">Update Recurring Booking</h3>
+            <h3 className="text-lg font-semibold text-[#D4540A] mb-4">Update Recurring Booking</h3>
             <p className="text-gray-600 mb-6">Apply changes to:</p>
             <div className="space-y-3">
-              <button onClick={() => saveBooking('single')} className="w-full py-3 px-4 border border-gray-300 rounded-lg text-[#1E2A4A] hover:bg-gray-50 text-left">
+              <button onClick={() => saveBooking('single')} className="w-full py-3 px-4 border border-gray-300 rounded-lg text-[#D4540A] hover:bg-gray-50 text-left">
                 <p className="font-medium">This booking only</p>
                 <p className="text-sm text-gray-500">Only update this appointment</p>
               </button>
-              <button onClick={() => saveBooking('all')} className="w-full py-3 px-4 border border-gray-300 rounded-lg text-[#1E2A4A] hover:bg-gray-50 text-left">
+              <button onClick={() => saveBooking('all')} className="w-full py-3 px-4 border border-gray-300 rounded-lg text-[#D4540A] hover:bg-gray-50 text-left">
                 <p className="font-medium">All future bookings</p>
                 <p className="text-sm text-gray-500">Update this and all upcoming appointments</p>
               </button>
             </div>
-            <button onClick={() => setShowUpdateChoice(false)} className="w-full mt-4 py-2 text-gray-500 hover:text-[#1E2A4A]">Cancel</button>
+            <button onClick={() => setShowUpdateChoice(false)} className="w-full mt-4 py-2 text-gray-500 hover:text-[#D4540A]">Cancel</button>
           </div>
         </div>
       )}
@@ -1726,7 +1726,7 @@ function BookingsPage() {
             <form onSubmit={handleCreate}>
               <div className="space-y-4">
                 <div className="relative">
-                  <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Client *</label>
+                  <label className="block text-sm font-medium text-[#D4540A] mb-1">Client *</label>
                   <input
                     type="text"
                     required={!createForm.client_id}
@@ -1734,16 +1734,16 @@ function BookingsPage() {
                     onChange={(e) => handleClientSearchChange(e.target.value)}
                     onFocus={() => setShowClientDropdown(true)}
                     placeholder="Search by name or phone..."
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]"
                   />
                   
                   {showClientDropdown && (
                     <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-64 overflow-y-auto">
-                      <button type="button" onClick={handleNewClientClick} className="w-full px-3 py-2 text-left hover:bg-gray-50 border-b border-gray-200 font-medium text-[#1E2A4A]">+ New Client</button>
+                      <button type="button" onClick={handleNewClientClick} className="w-full px-3 py-2 text-left hover:bg-gray-50 border-b border-gray-200 font-medium text-[#D4540A]">+ New Client</button>
                       {filteredClients.length > 0 ? (
                         filteredClients.map((client) => (
                           <button key={client.id} type="button" onClick={() => handleClientSelect(client)} className="w-full px-3 py-2 text-left hover:bg-gray-50 border-b border-gray-100 last:border-b-0">
-                            <div className="font-medium text-[#1E2A4A]">{client.name}</div>
+                            <div className="font-medium text-[#D4540A]">{client.name}</div>
                             <div className="text-sm text-gray-500">{client.phone}</div>
                           </button>
                         ))
@@ -1763,11 +1763,11 @@ function BookingsPage() {
                   </div>
                 )}
                 <div>
-                  <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Service</label>
+                  <label className="block text-sm font-medium text-[#D4540A] mb-1">Service</label>
                   <select value={createForm.service_type} onChange={(e) => {
                     const isEmergency = e.target.value === 'Emergency / Same-Day'
                     setCreateForm({ ...createForm, service_type: e.target.value, is_emergency: isEmergency, cleaner_id: isEmergency ? '' : createForm.cleaner_id })
-                  }} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">
+                  }} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]">
                     {serviceTypes.map(s => <option key={s}>{s}</option>)}
                   </select>
                 </div>
@@ -1776,7 +1776,7 @@ function BookingsPage() {
                     <p className="text-sm text-red-700 mb-3">🚨 Broadcasts to all team - first to claim gets it</p>
                     <label className="block text-sm font-medium text-red-700 mb-1">Team Pay Rate</label>
                     <div className="flex items-center">
-                      <span className="text-[#1E2A4A] text-lg mr-1">$</span>
+                      <span className="text-[#D4540A] text-lg mr-1">$</span>
                       <input
                         type="number"
                         step="1"
@@ -1784,15 +1784,15 @@ function BookingsPage() {
                         max="100"
                         value={createForm.cleaner_pay_rate}
                         onChange={(e) => setCreateForm({ ...createForm, cleaner_pay_rate: parseInt(e.target.value) || 40 })}
-                        className="w-24 px-3 py-2 border border-red-300 rounded-lg text-[#1E2A4A] text-center font-mono bg-white"
+                        className="w-24 px-3 py-2 border border-red-300 rounded-lg text-[#D4540A] text-center font-mono bg-white"
                       />
-                      <span className="text-[#1E2A4A] ml-1">/hr</span>
+                      <span className="text-[#D4540A] ml-1">/hr</span>
                     </div>
                   </div>
                 ) : (
                   <div>
-                    <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Cleaner *</label>
-                    <select required value={createForm.cleaner_id} onChange={(e) => setCreateForm({ ...createForm, cleaner_id: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">
+                    <label className="block text-sm font-medium text-[#D4540A] mb-1">Cleaner *</label>
+                    <select required value={createForm.cleaner_id} onChange={(e) => setCreateForm({ ...createForm, cleaner_id: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]">
                       <option value="">Select...</option>
                       {cleaners.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
                     </select>
@@ -1800,14 +1800,14 @@ function BookingsPage() {
                 )}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Hours</label>
-                    <select value={createForm.hours} onChange={(e) => setCreateForm({ ...createForm, hours: parseInt(e.target.value) })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">
+                    <label className="block text-sm font-medium text-[#D4540A] mb-1">Hours</label>
+                    <select value={createForm.hours} onChange={(e) => setCreateForm({ ...createForm, hours: parseInt(e.target.value) })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]">
                       {[1,2,3,4,5,6,7,8].map(h => <option key={h} value={h}>{h}hr</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Rate</label>
-                    <select value={createForm.hourly_rate} onChange={(e) => setCreateForm({ ...createForm, hourly_rate: parseInt(e.target.value) })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">
+                    <label className="block text-sm font-medium text-[#D4540A] mb-1">Rate</label>
+                    <select value={createForm.hourly_rate} onChange={(e) => setCreateForm({ ...createForm, hourly_rate: parseInt(e.target.value) })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]">
                       <option value={49}>$49/hr</option>
                       <option value={65}>$65/hr (Intro)</option>
                       <option value={75}>$75/hr</option>
@@ -1816,12 +1816,12 @@ function BookingsPage() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Date *</label>
-                    <input type="date" required value={createForm.start_date} onChange={(e) => setCreateForm({ ...createForm, start_date: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]" />
+                    <label className="block text-sm font-medium text-[#D4540A] mb-1">Date *</label>
+                    <input type="date" required value={createForm.start_date} onChange={(e) => setCreateForm({ ...createForm, start_date: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Time *</label>
-                    <input type="time" required value={createForm.start_time} onChange={(e) => setCreateForm({ ...createForm, start_time: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]" />
+                    <label className="block text-sm font-medium text-[#D4540A] mb-1">Time *</label>
+                    <input type="time" required value={createForm.start_time} onChange={(e) => setCreateForm({ ...createForm, start_time: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]" />
                   </div>
                 </div>
 
@@ -1843,7 +1843,7 @@ function BookingsPage() {
                 />
 
                 <div className="flex justify-between items-center py-3 border-t border-b border-gray-200">
-                  <h4 className="font-medium text-[#1E2A4A]">10% Discount</h4>
+                  <h4 className="font-medium text-[#D4540A]">10% Discount</h4>
                   <div
                     onClick={() => setCreateForm({ ...createForm, discount_enabled: !createForm.discount_enabled })}
                     className={`w-10 h-6 rounded-full transition-colors ${createForm.discount_enabled ? 'bg-green-600' : 'bg-gray-300'} relative cursor-pointer`}
@@ -1862,8 +1862,8 @@ function BookingsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Status</label>
-                  <select value={createForm.status} onChange={(e) => setCreateForm({ ...createForm, status: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">
+                  <label className="block text-sm font-medium text-[#D4540A] mb-1">Status</label>
+                  <select value={createForm.status} onChange={(e) => setCreateForm({ ...createForm, status: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]">
                     <option value="pending">Pending</option>
                     <option value="scheduled">Scheduled</option>
                     <option value="completed">Completed</option>
@@ -1871,13 +1871,13 @@ function BookingsPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Notes</label>
-                  <textarea value={createForm.notes} onChange={(e) => setCreateForm({ ...createForm, notes: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]" rows={2} placeholder="Access codes..." />
+                  <label className="block text-sm font-medium text-[#D4540A] mb-1">Notes</label>
+                  <textarea value={createForm.notes} onChange={(e) => setCreateForm({ ...createForm, notes: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#D4540A]" rows={2} placeholder="Access codes..." />
                 </div>
               </div>
               <div className="flex gap-3 mt-6">
-                <button type="button" onClick={() => { setShowCreateModal(false); setShowClientDropdown(false) }} className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">Cancel</button>
-                <button type="submit" disabled={saving || !createForm.client_id} className="flex-1 px-4 py-2 bg-[#1E2A4A] text-white rounded-lg disabled:bg-gray-300">
+                <button type="button" onClick={() => { setShowCreateModal(false); setShowClientDropdown(false) }} className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-[#D4540A]">Cancel</button>
+                <button type="submit" disabled={saving || !createForm.client_id} className="flex-1 px-4 py-2 bg-[#D4540A] text-white rounded-lg disabled:bg-gray-300">
                   {saving ? 'Creating...' : recurringDates.length > 1 ? 'Create Schedule' : 'Create'}
                 </button>
               </div>
@@ -1886,21 +1886,21 @@ function BookingsPage() {
       )}
 
       {showNewClientModal && (
-        <div className="fixed inset-0 bg-[#1E2A4A]/50 flex items-center justify-center z-[60]" onClick={() => setShowNewClientModal(false)}>
+        <div className="fixed inset-0 bg-[#D4540A]/50 flex items-center justify-center z-[60]" onClick={() => setShowNewClientModal(false)}>
           <div className="bg-white rounded-lg p-6 w-full max-w-md max-h-[90vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
-            <h3 className="text-lg font-semibold text-[#1E2A4A] mb-4">New Client</h3>
+            <h3 className="text-lg font-semibold text-[#D4540A] mb-4">New Client</h3>
             <form onSubmit={handleNewClientSubmit} className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Name *</label>
-                <input type="text" required value={newClientForm.name} onChange={(e) => setNewClientForm({ ...newClientForm, name: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#1E2A4A]" placeholder="John Smith" />
+                <input type="text" required value={newClientForm.name} onChange={(e) => setNewClientForm({ ...newClientForm, name: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#D4540A]" placeholder="John Smith" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                <input type="email" value={newClientForm.email} onChange={(e) => setNewClientForm({ ...newClientForm, email: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#1E2A4A]" placeholder="john@email.com" />
+                <input type="email" value={newClientForm.email} onChange={(e) => setNewClientForm({ ...newClientForm, email: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#D4540A]" placeholder="john@email.com" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
-                <input type="tel" required value={newClientForm.phone} onChange={(e) => setNewClientForm({ ...newClientForm, phone: formatPhone(e.target.value) })} className="w-full px-3 py-2 border rounded-lg text-[#1E2A4A]" placeholder="212-555-1234" />
+                <input type="tel" required value={newClientForm.phone} onChange={(e) => setNewClientForm({ ...newClientForm, phone: formatPhone(e.target.value) })} className="w-full px-3 py-2 border rounded-lg text-[#D4540A]" placeholder="212-555-1234" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Address</label>
@@ -1908,22 +1908,22 @@ function BookingsPage() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Unit / Apt</label>
-                <input type="text" value={newClientForm.unit} onChange={(e) => setNewClientForm({ ...newClientForm, unit: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#1E2A4A]" placeholder="Apt 4B" />
+                <input type="text" value={newClientForm.unit} onChange={(e) => setNewClientForm({ ...newClientForm, unit: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#D4540A]" placeholder="Apt 4B" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Referred By</label>
-                <select value={newClientForm.referrer_id} onChange={(e) => setNewClientForm({ ...newClientForm, referrer_id: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#1E2A4A]">
+                <select value={newClientForm.referrer_id} onChange={(e) => setNewClientForm({ ...newClientForm, referrer_id: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#D4540A]">
                   <option value="">None</option>
                   {referrers.filter(ref => ref.active).map(ref => <option key={ref.id} value={ref.id}>{ref.name} ({ref.ref_code})</option>)}
                 </select>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Notes</label>
-                <textarea value={newClientForm.notes} onChange={(e) => setNewClientForm({ ...newClientForm, notes: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#1E2A4A]" rows={3} placeholder="Any special instructions..." />
+                <textarea value={newClientForm.notes} onChange={(e) => setNewClientForm({ ...newClientForm, notes: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#D4540A]" rows={3} placeholder="Any special instructions..." />
               </div>
               <div className="flex gap-3 pt-2">
-                <button type="button" onClick={() => setShowNewClientModal(false)} className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">Cancel</button>
-                <button type="submit" disabled={saving} className="flex-1 px-4 py-2 bg-[#1E2A4A] text-white rounded-lg">{saving ? '...' : 'Create'}</button>
+                <button type="button" onClick={() => setShowNewClientModal(false)} className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-[#D4540A]">Cancel</button>
+                <button type="submit" disabled={saving} className="flex-1 px-4 py-2 bg-[#D4540A] text-white rounded-lg">{saving ? '...' : 'Create'}</button>
               </div>
             </form>
           </div>

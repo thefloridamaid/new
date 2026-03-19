@@ -166,10 +166,10 @@ export default function CareersPage() {
       ]} />
 
       {/* Hero */}
-      <section className="bg-gradient-to-b from-[#1E2A4A] to-[#243352] py-20 md:py-28">
+      <section className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] py-20 md:py-28">
         <div className="max-w-5xl mx-auto px-4">
           <div className="flex items-center gap-3 mb-4">
-            <p className="text-[#A8F0DC] text-sm font-semibold tracking-[0.2em] uppercase">Now Hiring</p>
+            <p className="text-[#FDE68A] text-sm font-semibold tracking-[0.2em] uppercase">Now Hiring</p>
             <span className="text-white/30">·</span>
             <p className="text-white/60 text-sm">Florida</p>
             <span className="text-white/30">·</span>
@@ -191,7 +191,7 @@ export default function CareersPage() {
             Limpiadores de tiempo completo toman 18–20 trabajos por semana y ganan $1,350–$1,500+. Sin esperar día de pago — te pagan el mismo día, cada trabajo.
           </p>
           <div className="flex flex-col sm:flex-row items-start gap-5">
-            <Link href="/apply" className="bg-[#A8F0DC] text-[#1E2A4A] px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
+            <Link href="/apply" className="bg-[#FDE68A] text-[#D4540A] px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
               Apply Now / Aplica Ahora
             </Link>
             <a href="sms:8333526243" className="text-blue-200/70 font-medium text-lg py-4 hover:text-white transition-colors underline underline-offset-4">
@@ -202,32 +202,32 @@ export default function CareersPage() {
       </section>
 
       {/* Pay highlights */}
-      <section className="bg-[#A8F0DC] py-12">
+      <section className="bg-[#FDE68A] py-12">
         <div className="max-w-5xl mx-auto px-4">
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-6 text-center">
             <div>
-              <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#1E2A4A] tracking-wide">$30+</p>
-              <p className="text-[#1E2A4A]/60 text-sm font-medium">Starting Per Hour</p>
-              <p className="text-[#1E2A4A]/40 text-xs italic">Desde por hora</p>
+              <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#D4540A] tracking-wide">$30+</p>
+              <p className="text-[#D4540A]/60 text-sm font-medium">Starting Per Hour</p>
+              <p className="text-[#D4540A]/40 text-xs italic">Desde por hora</p>
             </div>
             <div>
-              <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#1E2A4A] tracking-wide">30 Min</p>
-              <p className="text-[#1E2A4A]/60 text-sm font-medium">Pay After Every Job</p>
-              <p className="text-[#1E2A4A]/40 text-xs italic">Pago después de cada trabajo</p>
+              <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#D4540A] tracking-wide">30 Min</p>
+              <p className="text-[#D4540A]/60 text-sm font-medium">Pay After Every Job</p>
+              <p className="text-[#D4540A]/40 text-xs italic">Pago después de cada trabajo</p>
             </div>
             <div>
-              <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#1E2A4A] tracking-wide">Zelle</p>
-              <p className="text-[#1E2A4A]/60 text-sm font-medium">Direct to Your Bank</p>
-              <p className="text-[#1E2A4A]/40 text-xs italic">Directo a tu banco</p>
+              <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#D4540A] tracking-wide">Zelle</p>
+              <p className="text-[#D4540A]/60 text-sm font-medium">Direct to Your Bank</p>
+              <p className="text-[#D4540A]/40 text-xs italic">Directo a tu banco</p>
             </div>
             <div>
-              <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#1E2A4A] tracking-wide">Bonos</p>
-              <p className="text-[#1E2A4A]/60 text-sm font-medium">Performance Programs</p>
-              <p className="text-[#1E2A4A]/40 text-xs italic">Programas de rendimiento</p>
+              <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#D4540A] tracking-wide">Bonos</p>
+              <p className="text-[#D4540A]/60 text-sm font-medium">Performance Programs</p>
+              <p className="text-[#D4540A]/40 text-xs italic">Programas de rendimiento</p>
             </div>
             <div>
-              <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#1E2A4A] tracking-wide">24/7</p>
-              <p className="text-[#1E2A4A]/60 text-sm font-medium">Florida</p>
+              <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#D4540A] tracking-wide">24/7</p>
+              <p className="text-[#D4540A]/60 text-sm font-medium">Florida</p>
             </div>
           </div>
         </div>
@@ -239,7 +239,7 @@ export default function CareersPage() {
         {/* Open Positions */}
         <section className="mb-20">
           <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-2">Open Positions / Posiciones Abiertas</p>
-          <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#1E2A4A] tracking-wide mb-3">Three Regions, Same Great Pay</p>
+          <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#D4540A] tracking-wide mb-3">Three Regions, Same Great Pay</p>
           <p className="text-gray-500 max-w-2xl mb-2">We&apos;re actively hiring in all three regions. Each position is the same role — professional house cleaner — starting at $30/hr with same-day Zelle payment and bonus programs.</p>
           <p className="text-gray-400 text-sm italic max-w-2xl mb-10">Estamos contratando activamente en las tres regiones. Cada puesto es el mismo rol — limpiador profesional — desde $30/hr con pago Zelle el mismo día y programas de bonos.</p>
 
@@ -247,24 +247,24 @@ export default function CareersPage() {
             {openings.map(opening => {
               const neighborhoods = opening.areaSlugs.flatMap(s => getNeighborhoodsByArea(s))
               return (
-                <div key={opening.id} className="border border-gray-200 rounded-2xl overflow-hidden hover:border-[#A8F0DC] transition-all">
-                  <div className="bg-gradient-to-b from-[#1E2A4A] to-[#243352] p-6">
-                    <p className="text-[#A8F0DC] text-xs font-semibold tracking-[0.2em] uppercase mb-1">Now Hiring · {neighborhoods.length} Neighborhoods</p>
+                <div key={opening.id} className="border border-gray-200 rounded-2xl overflow-hidden hover:border-[#FDE68A] transition-all">
+                  <div className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] p-6">
+                    <p className="text-[#FDE68A] text-xs font-semibold tracking-[0.2em] uppercase mb-1">Now Hiring · {neighborhoods.length} Neighborhoods</p>
                     <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-white tracking-wide">{opening.region}</h2>
                     <p className="text-blue-200/60 text-sm">{opening.locations}</p>
                   </div>
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-4">
-                      <span className="text-[#1E2A4A] font-bold text-lg">Desde $30/hr</span>
-                      <span className="bg-[#A8F0DC]/20 text-[#1E2A4A] text-xs font-semibold px-3 py-1 rounded-full">Pago el Mismo Día</span>
+                      <span className="text-[#D4540A] font-bold text-lg">Desde $30/hr</span>
+                      <span className="bg-[#FDE68A]/20 text-[#D4540A] text-xs font-semibold px-3 py-1 rounded-full">Pago el Mismo Día</span>
                     </div>
                     <p className="text-xs font-semibold text-gray-400 tracking-[0.15em] uppercase mb-2">All Neighborhoods / Todos los Vecindarios</p>
                     <div className="flex flex-wrap gap-1.5 mb-6">
                       {neighborhoods.map(n => (
-                        <Link key={n.slug} href={`/available-nyc-maid-jobs/${n.slug}`} className="bg-gray-50 text-gray-600 text-xs px-2.5 py-1 rounded-full hover:bg-[#A8F0DC]/20 hover:text-[#1E2A4A] transition-colors">{n.name}</Link>
+                        <Link key={n.slug} href={`/available-nyc-maid-jobs/${n.slug}`} className="bg-gray-50 text-gray-600 text-xs px-2.5 py-1 rounded-full hover:bg-[#FDE68A]/20 hover:text-[#D4540A] transition-colors">{n.name}</Link>
                       ))}
                     </div>
-                    <Link href="/apply" className="block text-center bg-[#1E2A4A] text-white py-3 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#1E2A4A]/90 transition-colors">
+                    <Link href="/apply" className="block text-center bg-[#D4540A] text-white py-3 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#D4540A]/90 transition-colors">
                       Apply / Aplica — {opening.region}
                     </Link>
                   </div>
@@ -278,7 +278,7 @@ export default function CareersPage() {
         <section className="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-20">
           <div className="lg:col-span-3">
             <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-2">Requirements / Requisitos</p>
-            <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#1E2A4A] tracking-wide mb-6">What We&apos;re Looking For / Lo Que Buscamos</p>
+            <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-6">What We&apos;re Looking For / Lo Que Buscamos</p>
             <div className="space-y-3">
               {[
                 { title: 'Professional Experience', desc: 'Minimum 1 year of professional cleaning experience. You know how to clean a home top to bottom without supervision.', es: 'Mínimo 1 año de experiencia profesional en limpieza.' },
@@ -289,9 +289,9 @@ export default function CareersPage() {
                 { title: 'Positive Attitude', desc: 'Our clients love friendly, warm cleaners. A smile and a good attitude go a long way.', es: 'Nuestros clientes aman limpiadores amigables y cálidos. Una sonrisa llega lejos.' },
               ].map(item => (
                 <div key={item.title} className="flex gap-4 p-4 border border-gray-200 rounded-xl">
-                  <span className="text-[#A8F0DC] mt-0.5 text-lg flex-shrink-0">&#10003;</span>
+                  <span className="text-[#FDE68A] mt-0.5 text-lg flex-shrink-0">&#10003;</span>
                   <div>
-                    <p className="font-semibold text-[#1E2A4A] text-sm mb-0.5">{item.title}</p>
+                    <p className="font-semibold text-[#D4540A] text-sm mb-0.5">{item.title}</p>
                     <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
                     <p className="text-gray-400 text-xs italic mt-1">{item.es}</p>
                   </div>
@@ -301,8 +301,8 @@ export default function CareersPage() {
           </div>
 
           <div className="lg:col-span-2 space-y-4">
-            <div className="bg-gradient-to-b from-[#1E2A4A] to-[#243352] rounded-2xl p-8">
-              <p className="text-[#A8F0DC] text-xs font-semibold tracking-[0.2em] uppercase mb-4">What You Get / Lo Que Recibes</p>
+            <div className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] rounded-2xl p-8">
+              <p className="text-[#FDE68A] text-xs font-semibold tracking-[0.2em] uppercase mb-4">What You Get / Lo Que Recibes</p>
               <div className="space-y-5">
                 {[
                   { label: 'Starting $30/hr + Bonuses', desc: 'Base rate plus performance bonus programs', es: 'Tarifa base más programas de bonos' },
@@ -322,31 +322,31 @@ export default function CareersPage() {
               </div>
             </div>
 
-            <div className="bg-[#A8F0DC] rounded-2xl p-8">
-              <p className="font-[family-name:var(--font-bebas)] text-2xl text-[#1E2A4A] tracking-wide mb-1">Example Weekly Earnings</p>
-              <p className="text-[#1E2A4A]/40 text-xs italic mb-2">Ganancias Semanales Ejemplo</p>
-              <p className="text-[#1E2A4A]/50 text-xs mb-3">Avg job: 2.5 hrs &times; $30/hr = $75/job</p>
+            <div className="bg-[#FDE68A] rounded-2xl p-8">
+              <p className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-1">Example Weekly Earnings</p>
+              <p className="text-[#D4540A]/40 text-xs italic mb-2">Ganancias Semanales Ejemplo</p>
+              <p className="text-[#D4540A]/50 text-xs mb-3">Avg job: 2.5 hrs &times; $30/hr = $75/job</p>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <div>
-                    <span className="text-[#1E2A4A]/70 text-sm">5 jobs/week (part-time)</span>
-                    <span className="text-[#1E2A4A]/40 text-xs italic block">5 trabajos/semana (medio tiempo)</span>
+                    <span className="text-[#D4540A]/70 text-sm">5 jobs/week (part-time)</span>
+                    <span className="text-[#D4540A]/40 text-xs italic block">5 trabajos/semana (medio tiempo)</span>
                   </div>
-                  <span className="font-bold text-[#1E2A4A]">$375/wk</span>
+                  <span className="font-bold text-[#D4540A]">$375/wk</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <div>
-                    <span className="text-[#1E2A4A]/70 text-sm">10 jobs/week</span>
-                    <span className="text-[#1E2A4A]/40 text-xs italic block">10 trabajos/semana</span>
+                    <span className="text-[#D4540A]/70 text-sm">10 jobs/week</span>
+                    <span className="text-[#D4540A]/40 text-xs italic block">10 trabajos/semana</span>
                   </div>
-                  <span className="font-bold text-[#1E2A4A]">$750/wk</span>
+                  <span className="font-bold text-[#D4540A]">$750/wk</span>
                 </div>
-                <div className="flex justify-between items-center border-t border-[#1E2A4A]/10 pt-3">
+                <div className="flex justify-between items-center border-t border-[#D4540A]/10 pt-3">
                   <div>
-                    <span className="text-[#1E2A4A]/70 text-sm">18–20 jobs/week (full-time)</span>
-                    <span className="text-[#1E2A4A]/40 text-xs italic block">18–20 trabajos/semana (tiempo completo)</span>
+                    <span className="text-[#D4540A]/70 text-sm">18–20 jobs/week (full-time)</span>
+                    <span className="text-[#D4540A]/40 text-xs italic block">18–20 trabajos/semana (tiempo completo)</span>
                   </div>
-                  <span className="font-bold text-[#1E2A4A] text-lg">$1,350–$1,500/wk</span>
+                  <span className="font-bold text-[#D4540A] text-lg">$1,350–$1,500/wk</span>
                 </div>
               </div>
             </div>
@@ -355,67 +355,67 @@ export default function CareersPage() {
 
         {/* Bonus Programs */}
         <section className="mb-20">
-          <p className="text-xs font-semibold text-[#A8F0DC] tracking-[0.2em] uppercase mb-2">Earn More / Gana Más</p>
-          <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#1E2A4A] tracking-wide mb-3">Bonus Programs — Reward Your Excellence</p>
+          <p className="text-xs font-semibold text-[#FDE68A] tracking-[0.2em] uppercase mb-2">Earn More / Gana Más</p>
+          <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#D4540A] tracking-wide mb-3">Bonus Programs — Reward Your Excellence</p>
           <p className="text-gray-600 max-w-2xl mb-4">Starting at $30/hr is just the beginning. Our bonus programs reward cleaners who go above and beyond — retention, client satisfaction, and five-star reviews all earn you more money.</p>
           <p className="text-gray-400 text-sm italic mb-10">Comenzando a $30/hr es solo el inicio. Nuestros programas de bonos recompensan a los limpiadores que van más allá — retención, satisfacción del cliente y reseñas de cinco estrellas te hacen ganar más dinero.</p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            <div className="border-2 border-[#A8F0DC] rounded-2xl p-6">
-              <div className="w-12 h-12 bg-[#A8F0DC]/20 rounded-full flex items-center justify-center mb-4">
+            <div className="border-2 border-[#FDE68A] rounded-2xl p-6">
+              <div className="w-12 h-12 bg-[#FDE68A]/20 rounded-full flex items-center justify-center mb-4">
                 <span className="text-2xl">🔁</span>
               </div>
-              <h3 className="font-[family-name:var(--font-bebas)] text-xl text-[#1E2A4A] tracking-wide mb-2">Retention Bonus</h3>
+              <h3 className="font-[family-name:var(--font-bebas)] text-xl text-[#D4540A] tracking-wide mb-2">Retention Bonus</h3>
               <p className="text-gray-600 text-sm mb-3">Clients who request you back are proof you&apos;re doing great work. When your clients stick with you — and they will — you earn retention bonuses on top of your hourly rate.</p>
               <p className="text-gray-400 text-xs italic">Bono de retención — cuando tus clientes te piden de vuelta, ganas bonos adicionales sobre tu tarifa por hora.</p>
             </div>
 
-            <div className="border-2 border-[#A8F0DC] rounded-2xl p-6">
-              <div className="w-12 h-12 bg-[#A8F0DC]/20 rounded-full flex items-center justify-center mb-4">
+            <div className="border-2 border-[#FDE68A] rounded-2xl p-6">
+              <div className="w-12 h-12 bg-[#FDE68A]/20 rounded-full flex items-center justify-center mb-4">
                 <span className="text-2xl">😊</span>
               </div>
-              <h3 className="font-[family-name:var(--font-bebas)] text-xl text-[#1E2A4A] tracking-wide mb-2">Client Satisfaction Bonus</h3>
+              <h3 className="font-[family-name:var(--font-bebas)] text-xl text-[#D4540A] tracking-wide mb-2">Client Satisfaction Bonus</h3>
               <p className="text-gray-600 text-sm mb-3">Happy clients mean a healthy business. Cleaners who consistently deliver excellent service and receive positive client feedback earn satisfaction bonuses.</p>
               <p className="text-gray-400 text-xs italic">Bono de satisfacción — los limpiadores que entregan un servicio excelente consistentemente ganan bonos de satisfacción.</p>
             </div>
 
-            <div className="border-2 border-[#A8F0DC] rounded-2xl p-6">
-              <div className="w-12 h-12 bg-[#A8F0DC]/20 rounded-full flex items-center justify-center mb-4">
+            <div className="border-2 border-[#FDE68A] rounded-2xl p-6">
+              <div className="w-12 h-12 bg-[#FDE68A]/20 rounded-full flex items-center justify-center mb-4">
                 <span className="text-2xl">⭐</span>
               </div>
-              <h3 className="font-[family-name:var(--font-bebas)] text-xl text-[#1E2A4A] tracking-wide mb-2">Review Tier Bonuses</h3>
+              <h3 className="font-[family-name:var(--font-bebas)] text-xl text-[#D4540A] tracking-wide mb-2">Review Tier Bonuses</h3>
               <p className="text-gray-600 text-sm mb-3">Five-star reviews are gold. As you accumulate verified 5-star reviews from clients, you unlock higher bonus tiers with increasing rewards.</p>
               <p className="text-gray-400 text-xs italic">Bonos por reseñas — las reseñas de 5 estrellas desbloquean niveles de bonos más altos con mayores recompensas.</p>
             </div>
           </div>
 
           {/* Review Tiers */}
-          <div className="bg-gradient-to-r from-[#1E2A4A] to-[#243352] rounded-2xl p-8 md:p-10">
+          <div className="bg-gradient-to-r from-[#D4540A] to-[#B8470A] rounded-2xl p-8 md:p-10">
             <p className="font-[family-name:var(--font-bebas)] text-2xl text-white tracking-wide mb-6 text-center">Review Tier Milestones</p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div className="bg-white/10 rounded-xl p-5">
-                <p className="text-[#A8F0DC] text-3xl mb-1">⭐</p>
+                <p className="text-[#FDE68A] text-3xl mb-1">⭐</p>
                 <p className="font-[family-name:var(--font-bebas)] text-xl text-white tracking-wide">10 Reviews</p>
                 <p className="text-white/50 text-xs mt-1">Rising Star</p>
-                <p className="text-[#A8F0DC] text-sm font-bold mt-2">Tier 1 Bonus</p>
+                <p className="text-[#FDE68A] text-sm font-bold mt-2">Tier 1 Bonus</p>
               </div>
-              <div className="bg-white/10 rounded-xl p-5 ring-1 ring-[#A8F0DC]/30">
-                <p className="text-[#A8F0DC] text-3xl mb-1">⭐⭐</p>
+              <div className="bg-white/10 rounded-xl p-5 ring-1 ring-[#FDE68A]/30">
+                <p className="text-[#FDE68A] text-3xl mb-1">⭐⭐</p>
                 <p className="font-[family-name:var(--font-bebas)] text-xl text-white tracking-wide">25 Reviews</p>
                 <p className="text-white/50 text-xs mt-1">Trusted Pro</p>
-                <p className="text-[#A8F0DC] text-sm font-bold mt-2">Tier 2 Bonus</p>
+                <p className="text-[#FDE68A] text-sm font-bold mt-2">Tier 2 Bonus</p>
               </div>
-              <div className="bg-white/10 rounded-xl p-5 ring-1 ring-[#A8F0DC]/50">
-                <p className="text-[#A8F0DC] text-3xl mb-1">⭐⭐⭐</p>
+              <div className="bg-white/10 rounded-xl p-5 ring-1 ring-[#FDE68A]/50">
+                <p className="text-[#FDE68A] text-3xl mb-1">⭐⭐⭐</p>
                 <p className="font-[family-name:var(--font-bebas)] text-xl text-white tracking-wide">50 Reviews</p>
                 <p className="text-white/50 text-xs mt-1">Elite Cleaner</p>
-                <p className="text-[#A8F0DC] text-sm font-bold mt-2">Tier 3 Bonus</p>
+                <p className="text-[#FDE68A] text-sm font-bold mt-2">Tier 3 Bonus</p>
               </div>
-              <div className="bg-white/15 rounded-xl p-5 ring-2 ring-[#A8F0DC]">
-                <p className="text-[#A8F0DC] text-3xl mb-1">👑</p>
+              <div className="bg-white/15 rounded-xl p-5 ring-2 ring-[#FDE68A]">
+                <p className="text-[#FDE68A] text-3xl mb-1">👑</p>
                 <p className="font-[family-name:var(--font-bebas)] text-xl text-white tracking-wide">100+ Reviews</p>
                 <p className="text-white/50 text-xs mt-1">MVP</p>
-                <p className="text-[#A8F0DC] text-sm font-bold mt-2">Max Tier Bonus</p>
+                <p className="text-[#FDE68A] text-sm font-bold mt-2">Max Tier Bonus</p>
               </div>
             </div>
             <p className="text-white/40 text-xs text-center mt-6">All reviews must be verified 5-star ratings from completed client cleanings. Bonuses are paid monthly on top of your per-job rate.</p>
@@ -424,8 +424,8 @@ export default function CareersPage() {
         </section>
 
         {/* How It Works */}
-        <section className="bg-gradient-to-b from-[#1E2A4A] to-[#243352] rounded-2xl p-8 md:p-14 mb-20">
-          <p className="text-[#A8F0DC] text-xs font-semibold tracking-[0.2em] uppercase mb-2">Getting Started / Cómo Empezar</p>
+        <section className="bg-gradient-to-b from-[#D4540A] to-[#B8470A] rounded-2xl p-8 md:p-14 mb-20">
+          <p className="text-[#FDE68A] text-xs font-semibold tracking-[0.2em] uppercase mb-2">Getting Started / Cómo Empezar</p>
           <p className="font-[family-name:var(--font-bebas)] text-3xl text-white tracking-wide mb-10">How It Works / Cómo Funciona</p>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
@@ -435,7 +435,7 @@ export default function CareersPage() {
               { step: '4', title: 'Start Working', desc: 'Get matched with clients in your area. Complete jobs, get paid $30/hr via Zelle within 30 minutes.', es: 'Te conectamos con clientes en tu área. Completa trabajos, cobra $30/hr por Zelle en 30 minutos.' },
             ].map(item => (
               <div key={item.step}>
-                <div className="w-10 h-10 bg-[#A8F0DC] text-[#1E2A4A] rounded-full flex items-center justify-center font-bold mb-4">{item.step}</div>
+                <div className="w-10 h-10 bg-[#FDE68A] text-[#D4540A] rounded-full flex items-center justify-center font-bold mb-4">{item.step}</div>
                 <h3 className="text-white font-semibold mb-2">{item.title}</h3>
                 <p className="text-blue-200/60 text-sm leading-relaxed">{item.desc}</p>
                 <p className="text-blue-200/30 text-xs italic mt-1">{item.es}</p>
@@ -448,8 +448,8 @@ export default function CareersPage() {
         <section className="mb-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div>
-              <p className="text-xs font-semibold text-[#A8F0DC] tracking-[0.2em] uppercase mb-2">Your Tools / Tus Herramientas</p>
-              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#1E2A4A] tracking-wide mb-4">Full Team Portal — Bilingual 🇺🇸🇪🇸</p>
+              <p className="text-xs font-semibold text-[#FDE68A] tracking-[0.2em] uppercase mb-2">Your Tools / Tus Herramientas</p>
+              <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-4">Full Team Portal — Bilingual 🇺🇸🇪🇸</p>
               <p className="text-gray-600 mb-6">Every team member gets access to our complete team portal — available in English and Spanish. Track everything in one place.</p>
               <p className="text-gray-500 text-sm italic mb-6">Cada miembro del equipo tiene acceso a nuestro portal completo — disponible en inglés y español.</p>
               <div className="space-y-3">
@@ -473,13 +473,13 @@ export default function CareersPage() {
               </div>
             </div>
             <div className="space-y-6">
-              <div className="bg-[#A8F0DC] rounded-2xl p-8">
-                <p className="font-[family-name:var(--font-bebas)] text-2xl text-[#1E2A4A] tracking-wide mb-4">100% of Tips Are Yours</p>
-                <p className="text-[#1E2A4A]/70 text-sm mb-2">We never take a cut of your tips. When a client tips you — cash, Zelle, Venmo, whatever — it&apos;s 100% yours. Always.</p>
-                <p className="text-[#1E2A4A]/50 text-xs italic">El 100% de las propinas son tuyas. Nunca tomamos nada de tus propinas. Siempre.</p>
+              <div className="bg-[#FDE68A] rounded-2xl p-8">
+                <p className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">100% of Tips Are Yours</p>
+                <p className="text-[#D4540A]/70 text-sm mb-2">We never take a cut of your tips. When a client tips you — cash, Zelle, Venmo, whatever — it&apos;s 100% yours. Always.</p>
+                <p className="text-[#D4540A]/50 text-xs italic">El 100% de las propinas son tuyas. Nunca tomamos nada de tus propinas. Siempre.</p>
               </div>
-              <div className="border-2 border-[#1E2A4A] rounded-2xl p-8">
-                <p className="font-[family-name:var(--font-bebas)] text-2xl text-[#1E2A4A] tracking-wide mb-4">We Need Devoted Team Members</p>
+              <div className="border-2 border-[#D4540A] rounded-2xl p-8">
+                <p className="font-[family-name:var(--font-bebas)] text-2xl text-[#D4540A] tracking-wide mb-4">We Need Devoted Team Members</p>
                 <p className="text-gray-600 text-sm mb-4">We&apos;re not looking for people who show up sometimes. We need cleaners who are committed to excellence, who care about their clients, and who take pride in doing outstanding work. In return, we take care of you — fast pay, steady work, and real support.</p>
                 <p className="text-gray-400 text-xs italic">Necesitamos miembros del equipo dedicados. Buscamos limpiadores comprometidos con la excelencia que se enorgullecen de su trabajo. A cambio, cuidamos de ti — pago rápido, trabajo estable y apoyo real.</p>
               </div>
@@ -490,16 +490,16 @@ export default function CareersPage() {
         {/* Neighborhood job links */}
         <section className="mb-20">
           <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-2">Jobs by Neighborhood / Trabajos por Vecindario</p>
-          <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#1E2A4A] tracking-wide mb-3">Every Neighborhood — One Job Page</p>
+          <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-3">Every Neighborhood — One Job Page</p>
           <p className="text-gray-400 text-sm italic mb-8">Cada vecindario — una página de trabajo</p>
           {AREAS.map(area => {
             const neighborhoods = getNeighborhoodsByArea(area.slug)
             return (
               <div key={area.slug} className="mb-6">
-                <h3 className="font-semibold text-lg text-[#1E2A4A] mb-3">{area.name}</h3>
+                <h3 className="font-semibold text-lg text-[#D4540A] mb-3">{area.name}</h3>
                 <div className="flex flex-wrap gap-2">
                   {neighborhoods.map(nb => (
-                    <Link key={nb.slug} href={`/available-nyc-maid-jobs/${nb.slug}`} className="px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-[#A8F0DC]/20 hover:text-[#1E2A4A] transition-colors">
+                    <Link key={nb.slug} href={`/available-nyc-maid-jobs/${nb.slug}`} className="px-3 py-1.5 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-[#FDE68A]/20 hover:text-[#D4540A] transition-colors">
                       {nb.name}
                     </Link>
                   ))}
@@ -512,15 +512,15 @@ export default function CareersPage() {
         {/* FAQ */}
         <section className="mb-20">
           <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-2">Common Questions / Preguntas Frecuentes</p>
-          <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#1E2A4A] tracking-wide mb-2">Careers FAQ / Preguntas Frecuentes</p>
-          <div className="w-10 h-[2px] bg-[#A8F0DC] mb-8" />
+          <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#D4540A] tracking-wide mb-2">Careers FAQ / Preguntas Frecuentes</p>
+          <div className="w-10 h-[2px] bg-[#FDE68A] mb-8" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
             {careerFAQs.map((faq, i) => (
               <details key={i} className="group border border-gray-200 rounded-xl overflow-hidden">
                 <summary className="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50 transition-colors">
                   <div className="pr-4">
-                    <h2 className="font-semibold text-[#1E2A4A] text-sm text-left">{faq.question}</h2>
+                    <h2 className="font-semibold text-[#D4540A] text-sm text-left">{faq.question}</h2>
                     <p className="text-gray-400 text-xs italic text-left">{faq.questionEs}</p>
                   </div>
                   <span className="text-gray-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">+</span>
@@ -536,32 +536,32 @@ export default function CareersPage() {
 
         {/* Operations Manager CTA */}
         <section className="mb-16">
-          <div className="border-2 border-[#1E2A4A] rounded-2xl p-8 md:p-10 flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="border-2 border-[#D4540A] rounded-2xl p-8 md:p-10 flex flex-col lg:flex-row items-center justify-between gap-6">
             <div>
-              <p className="text-[#A8F0DC] text-xs font-semibold tracking-[0.2em] uppercase mb-1">Also Hiring</p>
-              <p className="font-[family-name:var(--font-bebas)] text-2xl md:text-3xl text-[#1E2A4A] tracking-wide">Operations Manager (Virtual) — Work From Home, $500/wk + 10% Revenue to Start</p>
+              <p className="text-[#FDE68A] text-xs font-semibold tracking-[0.2em] uppercase mb-1">Also Hiring</p>
+              <p className="font-[family-name:var(--font-bebas)] text-2xl md:text-3xl text-[#D4540A] tracking-wide">Operations Manager (Virtual) — Work From Home, $500/wk + 10% Revenue to Start</p>
               <p className="text-gray-500 text-sm mt-2 max-w-xl">Part-time to start, growing into full-time. Work from home. Own scheduling, customer service, team management. $500/wk base + 10% of revenue. Currently managing 15–20 cleanings/wk and growing weekly. Bilingual preferred.</p>
             </div>
-            <Link href="/careers/virtual-operations-manager" className="bg-[#1E2A4A] text-white px-8 py-3.5 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#1E2A4A]/90 transition-colors whitespace-nowrap flex-shrink-0">
+            <Link href="/careers/virtual-operations-manager" className="bg-[#D4540A] text-white px-8 py-3.5 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#D4540A]/90 transition-colors whitespace-nowrap flex-shrink-0">
               View Role
             </Link>
           </div>
         </section>
 
         {/* Apply CTA */}
-        <section className="bg-[#A8F0DC] rounded-2xl p-8 md:p-12 text-center mb-16">
-          <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#1E2A4A] tracking-wide mb-2">Ready to Start Earning? / ¿Listo para Empezar a Ganar?</p>
-          <p className="text-[#1E2A4A]/60 max-w-xl mx-auto mb-2">
+        <section className="bg-[#FDE68A] rounded-2xl p-8 md:p-12 text-center mb-16">
+          <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#D4540A] tracking-wide mb-2">Ready to Start Earning? / ¿Listo para Empezar a Ganar?</p>
+          <p className="text-[#D4540A]/60 max-w-xl mx-auto mb-2">
             Apply in 2 minutes. We review applications within 24–48 hours. Get working and get paid — starting $30/hr, same day, every job.
           </p>
-          <p className="text-[#1E2A4A]/40 text-sm italic max-w-xl mx-auto mb-8">
+          <p className="text-[#D4540A]/40 text-sm italic max-w-xl mx-auto mb-8">
             Aplica en 2 minutos. Revisamos solicitudes en 24–48 horas. Empieza a trabajar y cobra — desde $30/hr, el mismo día, cada trabajo.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-            <Link href="/apply" className="bg-[#1E2A4A] text-white px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#1E2A4A]/90 transition-colors">
+            <Link href="/apply" className="bg-[#D4540A] text-white px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#D4540A]/90 transition-colors">
               Apply Now / Aplica Ahora
             </Link>
-            <a href="sms:8333526243" className="text-[#1E2A4A] font-semibold underline underline-offset-4 hover:no-underline">
+            <a href="sms:8333526243" className="text-[#D4540A] font-semibold underline underline-offset-4 hover:no-underline">
               or Text (833) 352-6243
             </a>
           </div>

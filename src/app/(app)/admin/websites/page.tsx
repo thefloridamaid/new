@@ -244,7 +244,7 @@ export default function WebsitesPage() {
       <main className="p-3 md:p-6">
         {/* Page Header */}
         <div className="mb-6">
-          <h2 className="text-2xl font-bold text-[#1E2A4A] mb-1">
+          <h2 className="text-2xl font-bold text-[#D4540A] mb-1">
             Website Network
           </h2>
           <p className="text-sm text-gray-500">Coverage across NYC, NJ, FL, and national reach</p>
@@ -253,7 +253,7 @@ export default function WebsitesPage() {
         {/* Stat Cards Row */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8">
           {/* Total Domains */}
-          <div className="rounded-xl p-4 bg-[#1E2A4A] text-white relative overflow-hidden">
+          <div className="rounded-xl p-4 bg-[#D4540A] text-white relative overflow-hidden">
             <div className="absolute top-0 right-0 w-20 h-20 bg-white/5 rounded-full -translate-y-6 translate-x-6" />
             <p className="text-xs font-medium uppercase tracking-wider text-white/70 mb-1">Total Domains</p>
             <p className="text-3xl font-bold">{websites.length}</p>
@@ -261,11 +261,11 @@ export default function WebsitesPage() {
           </div>
 
           {/* Active Regions */}
-          <div className="rounded-xl p-4 bg-[#A8F0DC]/20 border border-[#A8F0DC]/30 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-[#A8F0DC]/10 rounded-full -translate-y-6 translate-x-6" />
-            <p className="text-xs font-medium uppercase tracking-wider text-[#1E2A4A]/60 mb-1">Active Regions</p>
-            <p className="text-3xl font-bold text-[#1E2A4A]">{activeRegions}</p>
-            <p className="text-xs text-[#1E2A4A]/40 mt-1">Markets covered</p>
+          <div className="rounded-xl p-4 bg-[#FDE68A]/20 border border-[#FDE68A]/30 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-[#FDE68A]/10 rounded-full -translate-y-6 translate-x-6" />
+            <p className="text-xs font-medium uppercase tracking-wider text-[#D4540A]/60 mb-1">Active Regions</p>
+            <p className="text-3xl font-bold text-[#D4540A]">{activeRegions}</p>
+            <p className="text-xs text-[#D4540A]/40 mt-1">Markets covered</p>
           </div>
 
           {/* Neighborhoods */}
@@ -287,13 +287,13 @@ export default function WebsitesPage() {
 
         {/* Region Filter Pills */}
         <div className="mb-6">
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-[#1E2A4A]/50 mb-3">Filter by Region</h3>
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-[#D4540A]/50 mb-3">Filter by Region</h3>
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setSelectedRegion('all')}
               className={`px-3.5 py-2 rounded-full text-xs font-semibold transition-all ${
                 selectedRegion === 'all'
-                  ? 'bg-[#1E2A4A] text-white shadow-md'
+                  ? 'bg-[#D4540A] text-white shadow-md'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
@@ -337,13 +337,13 @@ export default function WebsitesPage() {
               placeholder="Search locations or domains..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm text-[#1E2A4A] bg-white focus:outline-none focus:ring-2 focus:ring-[#1E2A4A]/20 focus:border-[#1E2A4A]/30 transition"
+              className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm text-[#D4540A] bg-white focus:outline-none focus:ring-2 focus:ring-[#D4540A]/20 focus:border-[#D4540A]/30 transition"
             />
           </div>
           <select
             value={selectedRegion}
             onChange={(e) => setSelectedRegion(e.target.value)}
-            className="px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-[#1E2A4A] bg-white focus:outline-none focus:ring-2 focus:ring-[#1E2A4A]/20 focus:border-[#1E2A4A]/30 transition"
+            className="px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-[#D4540A] bg-white focus:outline-none focus:ring-2 focus:ring-[#D4540A]/20 focus:border-[#D4540A]/30 transition"
           >
             {regions.map(region => (
               <option key={region} value={region}>
@@ -355,7 +355,7 @@ export default function WebsitesPage() {
 
         {/* Map Section */}
         <div className="mb-8">
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-[#1E2A4A]/50 mb-3 flex items-center gap-2">
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-[#D4540A]/50 mb-3 flex items-center gap-2">
             <span>MAP VIEW</span>
             <span className="text-xs font-normal text-gray-400">({filteredWebsites.length} pins)</span>
           </h3>
@@ -366,9 +366,9 @@ export default function WebsitesPage() {
 
         {/* Domain Portfolio Section Header */}
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-[#1E2A4A]/50 flex items-center gap-2">
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-[#D4540A]/50 flex items-center gap-2">
             <span>DOMAIN PORTFOLIO</span>
-            <span className="text-xs font-normal bg-[#1E2A4A]/8 text-[#1E2A4A]/60 px-2 py-0.5 rounded-full">
+            <span className="text-xs font-normal bg-[#D4540A]/8 text-[#D4540A]/60 px-2 py-0.5 rounded-full">
               {filteredWebsites.length} domains
             </span>
           </h3>
@@ -387,7 +387,7 @@ export default function WebsitesPage() {
               href={site.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-white border border-gray-100 rounded-xl p-4 hover:border-[#1E2A4A]/20 hover:shadow-lg transition-all duration-200"
+              className="group bg-white border border-gray-100 rounded-xl p-4 hover:border-[#D4540A]/20 hover:shadow-lg transition-all duration-200"
             >
               <div className="flex items-start justify-between">
                 <div className="flex-1 min-w-0">
@@ -397,7 +397,7 @@ export default function WebsitesPage() {
                       className="w-2.5 h-2.5 rounded-full flex-shrink-0 ring-2 ring-white shadow-sm"
                       style={{ backgroundColor: getRegionColor(site.region) }}
                     />
-                    <h3 className="font-semibold text-[#1E2A4A] text-sm truncate">{site.location}</h3>
+                    <h3 className="font-semibold text-[#D4540A] text-sm truncate">{site.location}</h3>
                   </div>
                   {/* Region tag */}
                   <span
@@ -412,7 +412,7 @@ export default function WebsitesPage() {
                   {/* Domain name in monospace */}
                   <p className="text-xs text-gray-400 font-mono truncate">{site.domain}</p>
                 </div>
-                <svg className="w-4 h-4 text-gray-300 group-hover:text-[#1E2A4A] flex-shrink-0 ml-2 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-gray-300 group-hover:text-[#D4540A] flex-shrink-0 ml-2 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </div>
@@ -426,7 +426,7 @@ export default function WebsitesPage() {
             <div className="text-4xl mb-3">
               <span role="img" aria-label="globe">&#127760;</span>
             </div>
-            <h3 className="text-lg font-semibold text-[#1E2A4A] mb-1">No websites found</h3>
+            <h3 className="text-lg font-semibold text-[#D4540A] mb-1">No websites found</h3>
             <p className="text-sm text-gray-500">Try adjusting your search or region filter</p>
           </div>
         )}
@@ -444,14 +444,14 @@ export default function WebsitesPage() {
               <button
                 onClick={() => setCurrentPage(1)}
                 disabled={currentPage === 1}
-                className="px-2.5 py-1.5 text-xs font-medium rounded-lg border border-gray-200 text-[#1E2A4A] hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed transition"
+                className="px-2.5 py-1.5 text-xs font-medium rounded-lg border border-gray-200 text-[#D4540A] hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed transition"
               >
                 First
               </button>
               <button
                 onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
-                className="px-3 py-1.5 text-xs font-medium rounded-lg border border-gray-200 text-[#1E2A4A] hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed transition"
+                className="px-3 py-1.5 text-xs font-medium rounded-lg border border-gray-200 text-[#D4540A] hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed transition"
               >
                 Prev
               </button>
@@ -479,8 +479,8 @@ export default function WebsitesPage() {
                       onClick={() => setCurrentPage(item)}
                       className={`w-8 h-8 text-xs font-medium rounded-lg transition ${
                         currentPage === item
-                          ? 'bg-[#1E2A4A] text-white shadow-sm'
-                          : 'border border-gray-200 text-[#1E2A4A] hover:bg-gray-50'
+                          ? 'bg-[#D4540A] text-white shadow-sm'
+                          : 'border border-gray-200 text-[#D4540A] hover:bg-gray-50'
                       }`}
                     >
                       {item}
@@ -490,14 +490,14 @@ export default function WebsitesPage() {
               <button
                 onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                 disabled={currentPage === totalPages}
-                className="px-3 py-1.5 text-xs font-medium rounded-lg border border-gray-200 text-[#1E2A4A] hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed transition"
+                className="px-3 py-1.5 text-xs font-medium rounded-lg border border-gray-200 text-[#D4540A] hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed transition"
               >
                 Next
               </button>
               <button
                 onClick={() => setCurrentPage(totalPages)}
                 disabled={currentPage === totalPages}
-                className="px-2.5 py-1.5 text-xs font-medium rounded-lg border border-gray-200 text-[#1E2A4A] hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed transition"
+                className="px-2.5 py-1.5 text-xs font-medium rounded-lg border border-gray-200 text-[#D4540A] hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed transition"
               >
                 Last
               </button>

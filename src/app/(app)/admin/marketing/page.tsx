@@ -400,14 +400,14 @@ export default function MarketingPage() {
   const statusBadge = (status: string) => {
     if (status === 'draft') return <span className="px-2.5 py-0.5 bg-gray-100 text-gray-600 rounded-full text-xs font-medium">Draft</span>
     if (status === 'sending') return <span className="px-2.5 py-0.5 bg-yellow-100 text-yellow-700 rounded-full text-xs font-medium">Sending...</span>
-    return <span className="px-2.5 py-0.5 bg-[#A8F0DC]/40 text-[#1E2A4A] rounded-full text-xs font-medium">Sent</span>
+    return <span className="px-2.5 py-0.5 bg-[#FDE68A]/40 text-[#D4540A] rounded-full text-xs font-medium">Sent</span>
   }
 
   const recipientStatusBadge = (status: string) => {
     const styles: Record<string, string> = {
       pending: 'bg-gray-100 text-gray-600',
       sent: 'bg-blue-100 text-blue-700',
-      delivered: 'bg-[#A8F0DC]/40 text-[#1E2A4A]',
+      delivered: 'bg-[#FDE68A]/40 text-[#D4540A]',
       opened: 'bg-green-100 text-green-700',
       bounced: 'bg-orange-100 text-orange-700',
       failed: 'bg-red-100 text-red-700',
@@ -427,12 +427,12 @@ export default function MarketingPage() {
     <main className="p-3 md:p-6">
       <div className="flex justify-between items-start mb-2">
         <div>
-          <h2 className="text-2xl font-bold text-[#1E2A4A]">Marketing</h2>
+          <h2 className="text-2xl font-bold text-[#D4540A]">Marketing</h2>
           <p className="text-sm text-gray-400 mt-0.5">{campaigns.length} campaign{campaigns.length !== 1 ? 's' : ''}</p>
         </div>
         <button
           onClick={() => { resetForm(); setView('create') }}
-          className="px-4 py-2.5 bg-[#1E2A4A] text-white rounded-xl hover:bg-[#1E2A4A]/90 font-medium text-sm shadow-sm transition-colors"
+          className="px-4 py-2.5 bg-[#D4540A] text-white rounded-xl hover:bg-[#D4540A]/90 font-medium text-sm shadow-sm transition-colors"
         >
           New Campaign
         </button>
@@ -473,7 +473,7 @@ export default function MarketingPage() {
       ) : campaigns.length === 0 ? (
         <div className="text-center py-16 bg-white rounded-xl border border-gray-100 shadow-sm">
           <div className="text-4xl mb-3">📢</div>
-          <h3 className="text-lg font-semibold text-[#1E2A4A] mb-1">No campaigns yet</h3>
+          <h3 className="text-lg font-semibold text-[#D4540A] mb-1">No campaigns yet</h3>
           <p className="text-gray-400 text-sm max-w-sm mx-auto">Create your first marketing campaign to reach your clients via email or SMS.</p>
         </div>
       ) : (
@@ -497,7 +497,7 @@ export default function MarketingPage() {
                 <tbody className="divide-y divide-gray-50">
                   {campaigns.map(c => (
                     <tr key={c.id} className="hover:bg-gray-50/50 transition cursor-pointer" onClick={() => openDetail(c)}>
-                      <td className="px-5 py-4 font-medium text-[#1E2A4A]">{c.name}</td>
+                      <td className="px-5 py-4 font-medium text-[#D4540A]">{c.name}</td>
                       <td className="px-5 py-4">{channelBadge(c.channel)}</td>
                       <td className="px-5 py-4">{statusBadge(c.status)}</td>
                       <td className="px-5 py-4 text-gray-600 hidden md:table-cell">{c.sent_count}</td>
@@ -509,7 +509,7 @@ export default function MarketingPage() {
                           <div className="flex gap-2">
                             <button
                               onClick={() => sendCampaign(c.id)}
-                              className="px-3 py-1.5 bg-[#1E2A4A] text-white rounded-lg text-xs font-medium hover:bg-[#1E2A4A]/90 transition-colors"
+                              className="px-3 py-1.5 bg-[#D4540A] text-white rounded-lg text-xs font-medium hover:bg-[#D4540A]/90 transition-colors"
                             >
                               Send
                             </button>
@@ -538,10 +538,10 @@ export default function MarketingPage() {
   if (view === 'create') return (
     <main className="p-3 md:p-6">
       <div className="flex items-center gap-3 mb-6">
-        <button onClick={() => { resetForm(); setView('list') }} className="text-gray-400 hover:text-[#1E2A4A] transition">
+        <button onClick={() => { resetForm(); setView('list') }} className="text-gray-400 hover:text-[#D4540A] transition">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
         </button>
-        <h2 className="text-2xl font-bold text-[#1E2A4A]">New Campaign</h2>
+        <h2 className="text-2xl font-bold text-[#D4540A]">New Campaign</h2>
       </div>
 
       <div className="max-w-2xl space-y-6">
@@ -553,7 +553,7 @@ export default function MarketingPage() {
               <button
                 key={ch}
                 onClick={() => setChannel(ch)}
-                className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${channel === ch ? 'bg-[#1E2A4A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${channel === ch ? 'bg-[#D4540A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
               >
                 {ch === 'both' ? 'Both' : ch === 'email' ? 'Email' : 'SMS'}
               </button>
@@ -569,14 +569,14 @@ export default function MarketingPage() {
             onChange={e => setPrompt(e.target.value)}
             rows={3}
             placeholder="e.g. 20% off spring cleaning special, mention our referral program, book before March 15"
-            className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1E2A4A]/20 focus:border-[#1E2A4A]"
+            className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#D4540A]/20 focus:border-[#D4540A]"
             onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); generateContent() } }}
           />
           <div className="flex items-center gap-3 mt-2">
             <button
               onClick={generateContent}
               disabled={generating || !prompt.trim()}
-              className="px-5 py-2.5 bg-[#1E2A4A] text-white rounded-xl text-sm font-medium hover:bg-[#1E2A4A]/90 transition-colors shadow-sm disabled:opacity-50"
+              className="px-5 py-2.5 bg-[#D4540A] text-white rounded-xl text-sm font-medium hover:bg-[#D4540A]/90 transition-colors shadow-sm disabled:opacity-50"
             >
               {generating ? 'Generating...' : generated ? 'Regenerate' : 'Generate'}
             </button>
@@ -596,7 +596,7 @@ export default function MarketingPage() {
                 type="text"
                 value={name}
                 onChange={e => setName(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1E2A4A]/20 focus:border-[#1E2A4A]"
+                className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#D4540A]/20 focus:border-[#D4540A]"
               />
             </div>
 
@@ -608,7 +608,7 @@ export default function MarketingPage() {
                   type="text"
                   value={subject}
                   onChange={e => setSubject(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1E2A4A]/20 focus:border-[#1E2A4A]"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#D4540A]/20 focus:border-[#D4540A]"
                 />
               </div>
             )}
@@ -668,7 +668,7 @@ export default function MarketingPage() {
                     value={smsBody}
                     onChange={e => setSmsBody(e.target.value)}
                     rows={3}
-                    className="mt-2 w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1E2A4A]/20 focus:border-[#1E2A4A]"
+                    className="mt-2 w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#D4540A]/20 focus:border-[#D4540A]"
                   />
                 </details>
               </div>
@@ -685,7 +685,7 @@ export default function MarketingPage() {
                     value={emailBody}
                     onChange={e => setEmailBody(e.target.value)}
                     rows={12}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm font-mono focus:outline-none focus:ring-2 focus:ring-[#1E2A4A]/20 focus:border-[#1E2A4A]"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm font-mono focus:outline-none focus:ring-2 focus:ring-[#D4540A]/20 focus:border-[#D4540A]"
                   />
                   <button
                     onClick={fetchPreview}
@@ -704,13 +704,13 @@ export default function MarketingPage() {
               <div className="flex gap-2 mb-2">
                 <button
                   onClick={() => { setAudienceFilter('active'); fetchClients('active') }}
-                  className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${audienceFilter === 'active' ? 'bg-[#1E2A4A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                  className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${audienceFilter === 'active' ? 'bg-[#D4540A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
                 >
                   Active Clients
                 </button>
                 <button
                   onClick={() => { setAudienceFilter('all'); fetchClients('all') }}
-                  className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${audienceFilter === 'all' ? 'bg-[#1E2A4A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                  className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${audienceFilter === 'all' ? 'bg-[#D4540A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
                 >
                   All Clients
                 </button>
@@ -732,7 +732,7 @@ export default function MarketingPage() {
                   <button
                     key={f.key}
                     onClick={() => { setContactFilter(f.key); fetchClients(audienceFilter, f.key) }}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${contactFilter === f.key ? 'bg-[#A8F0DC] text-[#1E2A4A] shadow-sm' : 'bg-gray-50 text-gray-500 hover:bg-gray-100 border border-gray-200'}`}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${contactFilter === f.key ? 'bg-[#FDE68A] text-[#D4540A] shadow-sm' : 'bg-gray-50 text-gray-500 hover:bg-gray-100 border border-gray-200'}`}
                   >
                     {f.label}
                   </button>
@@ -752,7 +752,7 @@ export default function MarketingPage() {
                         type="checkbox"
                         checked={selectedClientIds.size === allClients.length}
                         onChange={toggleAll}
-                        className="w-4 h-4 rounded border-gray-300 text-[#1E2A4A] focus:ring-[#1E2A4A]/20"
+                        className="w-4 h-4 rounded border-gray-300 text-[#D4540A] focus:ring-[#D4540A]/20"
                       />
                       <span className="text-xs font-medium text-gray-500">Select All</span>
                     </label>
@@ -761,7 +761,7 @@ export default function MarketingPage() {
                       value={clientSearch}
                       onChange={e => setClientSearch(e.target.value)}
                       placeholder="Search..."
-                      className="ml-auto px-3 py-1.5 border border-gray-200 rounded-lg text-xs w-40 focus:outline-none focus:ring-1 focus:ring-[#1E2A4A]/20"
+                      className="ml-auto px-3 py-1.5 border border-gray-200 rounded-lg text-xs w-40 focus:outline-none focus:ring-1 focus:ring-[#D4540A]/20"
                     />
                   </div>
                   {/* Client list */}
@@ -774,9 +774,9 @@ export default function MarketingPage() {
                             type="checkbox"
                             checked={selectedClientIds.has(c.id)}
                             onChange={() => toggleClient(c.id)}
-                            className="w-4 h-4 rounded border-gray-300 text-[#1E2A4A] focus:ring-[#1E2A4A]/20"
+                            className="w-4 h-4 rounded border-gray-300 text-[#D4540A] focus:ring-[#D4540A]/20"
                           />
-                          <span className="text-sm font-medium text-[#1E2A4A] flex-1">{c.name}</span>
+                          <span className="text-sm font-medium text-[#D4540A] flex-1">{c.name}</span>
                           <span className="flex items-center gap-2">
                             {c.email_marketing_opt_out && (channel === 'email' || channel === 'both') && (
                               <span className="px-1.5 py-0.5 bg-red-50 text-red-500 rounded text-[10px] font-medium">Email Opted Out</span>
@@ -810,7 +810,7 @@ export default function MarketingPage() {
               <button
                 onClick={() => sendCampaign()}
                 disabled={saving || sending}
-                className="px-6 py-3 bg-[#1E2A4A] text-white rounded-xl text-sm font-medium hover:bg-[#1E2A4A]/90 transition-colors shadow-sm disabled:opacity-50"
+                className="px-6 py-3 bg-[#D4540A] text-white rounded-xl text-sm font-medium hover:bg-[#D4540A]/90 transition-colors shadow-sm disabled:opacity-50"
               >
                 {sending ? 'Sending...' : 'Send Now'}
               </button>
@@ -825,11 +825,11 @@ export default function MarketingPage() {
   if (view === 'detail' && selectedCampaign) return (
     <main className="p-3 md:p-6">
       <div className="flex items-center gap-3 mb-6">
-        <button onClick={() => { setView('list'); setSelectedCampaign(null); setRecipients([]) }} className="text-gray-400 hover:text-[#1E2A4A] transition">
+        <button onClick={() => { setView('list'); setSelectedCampaign(null); setRecipients([]) }} className="text-gray-400 hover:text-[#D4540A] transition">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
         </button>
         <div>
-          <h2 className="text-2xl font-bold text-[#1E2A4A]">{selectedCampaign.name}</h2>
+          <h2 className="text-2xl font-bold text-[#D4540A]">{selectedCampaign.name}</h2>
           <div className="flex items-center gap-2 mt-1">
             {channelBadge(selectedCampaign.channel)}
             {statusBadge(selectedCampaign.status)}
@@ -891,7 +891,7 @@ export default function MarketingPage() {
                 setView('create')
                 fetchClients(selectedCampaign.audience_filter as 'active' | 'all')
               }}
-              className="px-4 py-1.5 bg-[#1E2A4A] text-white text-sm rounded-lg hover:bg-[#2a3a5e] transition"
+              className="px-4 py-1.5 bg-[#D4540A] text-white text-sm rounded-lg hover:bg-[#2a3a5e] transition"
             >
               Edit Draft
             </button>
@@ -904,7 +904,7 @@ export default function MarketingPage() {
             {selectedCampaign.subject && (
               <div className="px-5 py-3 border-b border-gray-100">
                 <span className="text-xs text-gray-400">Subject:</span>{' '}
-                <span className="text-sm font-medium text-[#1E2A4A]">{selectedCampaign.subject}</span>
+                <span className="text-sm font-medium text-[#D4540A]">{selectedCampaign.subject}</span>
               </div>
             )}
             {detailPreviewHtml ? (
@@ -970,10 +970,10 @@ export default function MarketingPage() {
                 {recipients.map(r => (
                   <tr
                     key={r.id}
-                    className={`hover:bg-gray-50/50 transition cursor-pointer ${viewingRecipient?.id === r.id ? 'bg-[#A8F0DC]/10' : ''}`}
+                    className={`hover:bg-gray-50/50 transition cursor-pointer ${viewingRecipient?.id === r.id ? 'bg-[#FDE68A]/10' : ''}`}
                     onClick={() => setViewingRecipient(viewingRecipient?.id === r.id ? null : r)}
                   >
-                    <td className="px-5 py-4 font-medium text-[#1E2A4A]">{r.clients?.name || '—'}</td>
+                    <td className="px-5 py-4 font-medium text-[#D4540A]">{r.clients?.name || '—'}</td>
                     <td className="px-5 py-4">{channelBadge(r.channel)}</td>
                     <td className="px-5 py-4 text-gray-600 text-xs">{r.recipient}</td>
                     <td className="px-5 py-4">{recipientStatusBadge(r.status)}</td>
@@ -1002,7 +1002,7 @@ export default function MarketingPage() {
 
           {viewingRecipient.channel === 'email' && detailPreviewHtml ? (
             <div>
-              <p className="text-sm text-gray-500 mb-2">Subject: <span className="font-medium text-[#1E2A4A]">{selectedCampaign.subject}</span></p>
+              <p className="text-sm text-gray-500 mb-2">Subject: <span className="font-medium text-[#D4540A]">{selectedCampaign.subject}</span></p>
               <div className="border border-gray-200 rounded-xl overflow-hidden">
                 <iframe
                   srcDoc={detailPreviewHtml}

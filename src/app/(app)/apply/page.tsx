@@ -108,13 +108,13 @@ export default function ApplyPage() {
   if (done) {
     return (
       <div className="min-h-screen bg-white flex flex-col">
-        <div className="bg-[#1E2A4A] px-6 py-4">
+        <div className="bg-[#D4540A] px-6 py-4">
           <h1 className="text-white text-xl font-bold">The Florida Maid</h1>
         </div>
         <div className="flex-1 flex items-center justify-center p-6">
           <div className="text-center max-w-sm">
             <div className="text-5xl mb-4">✓</div>
-            <h2 className="text-2xl font-bold text-[#1E2A4A] mb-2">Application Received! / ¡Solicitud Recibida!</h2>
+            <h2 className="text-2xl font-bold text-[#D4540A] mb-2">Application Received! / ¡Solicitud Recibida!</h2>
             <p className="text-gray-600">Thanks, {form.name.split(' ')[0]}. We&apos;ll review your application and reach out soon.</p>
             <p className="text-gray-600 mt-2">Gracias, {form.name.split(' ')[0]}. Revisaremos su solicitud y nos comunicaremos pronto.</p>
             <p className="text-gray-500 text-sm mt-4">Questions? / ¿Preguntas? (833) 352-6243</p>
@@ -126,7 +126,7 @@ export default function ApplyPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-[#1E2A4A] px-6 py-4">
+      <div className="bg-[#D4540A] px-6 py-4">
         <h1 className="text-white text-xl font-bold">The Florida Maid</h1>
         <p className="text-gray-400 text-sm">Join Our Team / Únete a Nuestro Equipo</p>
       </div>
@@ -134,53 +134,53 @@ export default function ApplyPage() {
       <div className="max-w-lg mx-auto p-4 pt-6">
         <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-gray-200 p-6 space-y-5">
           <div>
-            <h2 className="text-xl font-bold text-[#1E2A4A]">Apply to Join Our Team / Solicite Unirse a Nuestro Equipo</h2>
+            <h2 className="text-xl font-bold text-[#D4540A]">Apply to Join Our Team / Solicite Unirse a Nuestro Equipo</h2>
             <p className="text-gray-500 text-sm mt-1">We&apos;re looking for reliable, detail-oriented cleaners in Florida.</p>
             <p className="text-gray-500 text-sm">Buscamos limpiadores confiables y detallistas en Florida.</p>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Full Name / Nombre Completo *</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Full Name / Nombre Completo *</label>
             <input
               type="text"
               required
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
               placeholder="Your full name / Su nombre completo"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Phone / Teléfono *</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Phone / Teléfono *</label>
             <input
               type="tel"
               required
               value={form.phone}
               onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
               placeholder="(212) 555-1234"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Email / Correo Electrónico</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Email / Correo Electrónico</label>
             <input
               type="email"
               value={form.email}
               onChange={(e) => { setForm({ ...form, email: e.target.value }); setEmailSuggestion('') }}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
               placeholder="your@email.com / su@correo.com"
             />
             {emailSuggestion && (
-              <button type="button" onClick={() => { setForm({ ...form, email: emailSuggestion }); setEmailSuggestion(''); setError('') }} className="mt-1 text-sm text-[#1E2A4A] hover:underline">
+              <button type="button" onClick={() => { setForm({ ...form, email: emailSuggestion }); setEmailSuggestion(''); setError('') }} className="mt-1 text-sm text-[#D4540A] hover:underline">
                 Use {emailSuggestion}?
               </button>
             )}
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Photo of You Smiling / Foto Suya Sonriendo *</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Photo of You Smiling / Foto Suya Sonriendo *</label>
             <p className="text-xs text-gray-500 mb-2">This photo will be shared with clients / Esta foto se compartirá con los clientes</p>
             <div className="flex items-center gap-4">
               {photoPreview ? (
@@ -193,7 +193,7 @@ export default function ApplyPage() {
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="px-4 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] text-sm hover:bg-gray-50"
+                className="px-4 py-2 border border-gray-300 rounded-lg text-[#D4540A] text-sm hover:bg-gray-50"
               >
                 {photoPreview ? 'Change Photo / Cambiar Foto' : 'Upload Photo / Subir Foto'}
               </button>
@@ -208,32 +208,32 @@ export default function ApplyPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Your Address / Su Dirección *</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Your Address / Su Dirección *</label>
             <AddressAutocomplete
               value={form.address}
               onChange={(val) => setForm({ ...form, address: val })}
               placeholder="Start typing address... / Comience a escribir la dirección..."
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Apt / Unit / Apto</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Apt / Unit / Apto</label>
             <input
               type="text"
               value={form.unit}
               onChange={(e) => setForm({ ...form, unit: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
               placeholder="Apt 4B"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Cleaning Experience / Experiencia de Limpieza</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Cleaning Experience / Experiencia de Limpieza</label>
             <select
               value={form.experience}
               onChange={(e) => setForm({ ...form, experience: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
             >
               <option value="">Select... / Seleccionar...</option>
               <option value="none">No professional experience / Sin experiencia profesional</option>
@@ -244,11 +244,11 @@ export default function ApplyPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Availability / Disponibilidad</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Availability / Disponibilidad</label>
             <select
               value={form.availability}
               onChange={(e) => setForm({ ...form, availability: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
             >
               <option value="">Select... / Seleccionar...</option>
               <option value="full-time">Full-time (5+ days/week) / Tiempo completo (5+ días/semana)</option>
@@ -259,7 +259,7 @@ export default function ApplyPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">References / Referencias *</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">References / Referencias *</label>
             <p className="text-xs text-gray-500 mb-3">Please provide 3 references / Por favor proporcione 3 referencias</p>
             {form.references.map((ref, i) => (
               <div key={i} className="flex gap-3 mb-3">
@@ -272,7 +272,7 @@ export default function ApplyPage() {
                     updated[i] = { ...updated[i], name: e.target.value }
                     setForm({ ...form, references: updated })
                   }}
-                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
                   placeholder={`Name / Nombre #${i + 1}`}
                 />
                 <input
@@ -284,7 +284,7 @@ export default function ApplyPage() {
                     updated[i] = { ...updated[i], phone: formatPhone(e.target.value) }
                     setForm({ ...form, references: updated })
                   }}
-                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
                   placeholder={`Phone / Teléfono #${i + 1}`}
                 />
               </div>
@@ -292,23 +292,23 @@ export default function ApplyPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">How did you hear about us? / ¿Cómo se enteró de nosotros? *</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">How did you hear about us? / ¿Cómo se enteró de nosotros? *</label>
             <input
               type="text"
               required
               value={form.referral_source}
               onChange={(e) => setForm({ ...form, referral_source: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
               placeholder="e.g. Google, friend, Indeed... / ej. Google, amigo, Indeed..."
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Anything else? / ¿Algo más?</label>
+            <label className="block text-sm font-medium text-[#D4540A] mb-1">Anything else? / ¿Algo más?</label>
             <textarea
               value={form.notes}
               onChange={(e) => setForm({ ...form, notes: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#D4540A] text-base"
               rows={3}
               placeholder="Tell us about yourself... / Cuéntenos sobre usted..."
             />
@@ -326,7 +326,7 @@ export default function ApplyPage() {
                 <br /><br />
                 Al marcar esta casilla, doy mi consentimiento para recibir mensajes de texto de <strong>The Florida Maid</strong> para confirmaciones de citas, recordatorios y atención al cliente. Responda STOP para cancelar. Responda HELP para ayuda.
                 <br /><br />
-                <a href="https://www.thefloridamaid.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#1E2A4A] hover:underline">Privacy Policy</a> | <a href="https://www.thefloridamaid.com/terms-conditions" target="_blank" rel="noopener noreferrer" className="text-[#1E2A4A] hover:underline">Terms &amp; Conditions</a>
+                <a href="https://www.thefloridamaid.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#D4540A] hover:underline">Privacy Policy</a> | <a href="https://www.thefloridamaid.com/terms-conditions" target="_blank" rel="noopener noreferrer" className="text-[#D4540A] hover:underline">Terms &amp; Conditions</a>
               </span>
             </label>
           </div>
@@ -334,7 +334,7 @@ export default function ApplyPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 bg-[#1E2A4A] text-white rounded-lg text-lg font-semibold hover:bg-[#1E2A4A]/90 disabled:opacity-50"
+            className="w-full py-4 bg-[#D4540A] text-white rounded-lg text-lg font-semibold hover:bg-[#D4540A]/90 disabled:opacity-50"
           >
             {loading ? 'Submitting... / Enviando...' : 'Submit Application / Enviar Solicitud'}
           </button>

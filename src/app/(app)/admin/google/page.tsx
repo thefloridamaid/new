@@ -126,17 +126,17 @@ export default function GoogleProfilePage() {
   if (!connected) {
     return (
       <main className="p-3 md:p-6 max-w-4xl">
-        <h2 className="text-2xl font-bold text-[#1E2A4A] mb-1">Google Business Profile</h2>
+        <h2 className="text-2xl font-bold text-[#D4540A] mb-1">Google Business Profile</h2>
         <p className="text-sm text-gray-400 mb-6">Connect your Google Business Profile to manage reviews, view insights, and more.</p>
 
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-6">
-          <h3 className="text-lg font-semibold text-[#1E2A4A] mb-4">Setup Instructions</h3>
+          <h3 className="text-lg font-semibold text-[#D4540A] mb-4">Setup Instructions</h3>
 
           <div className="space-y-4">
             <div className="flex gap-3">
-              <span className="flex-shrink-0 w-7 h-7 bg-[#1E2A4A] text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
+              <span className="flex-shrink-0 w-7 h-7 bg-[#D4540A] text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
               <div>
-                <p className="font-medium text-[#1E2A4A]">Create a Google Cloud Project</p>
+                <p className="font-medium text-[#D4540A]">Create a Google Cloud Project</p>
                 <p className="text-sm text-gray-500 mt-0.5">
                   Go to <a href="https://console.cloud.google.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">console.cloud.google.com</a> and create a new project (or use an existing one). It&apos;s free.
                 </p>
@@ -144,9 +144,9 @@ export default function GoogleProfilePage() {
             </div>
 
             <div className="flex gap-3">
-              <span className="flex-shrink-0 w-7 h-7 bg-[#1E2A4A] text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
+              <span className="flex-shrink-0 w-7 h-7 bg-[#D4540A] text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
               <div>
-                <p className="font-medium text-[#1E2A4A]">Enable the Business Profile APIs</p>
+                <p className="font-medium text-[#D4540A]">Enable the Business Profile APIs</p>
                 <p className="text-sm text-gray-500 mt-0.5">
                   In your project, go to APIs &amp; Services &gt; Library and enable:
                 </p>
@@ -159,23 +159,23 @@ export default function GoogleProfilePage() {
             </div>
 
             <div className="flex gap-3">
-              <span className="flex-shrink-0 w-7 h-7 bg-[#1E2A4A] text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
+              <span className="flex-shrink-0 w-7 h-7 bg-[#D4540A] text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
               <div>
-                <p className="font-medium text-[#1E2A4A]">Create OAuth 2.0 Credentials</p>
+                <p className="font-medium text-[#D4540A]">Create OAuth 2.0 Credentials</p>
                 <p className="text-sm text-gray-500 mt-0.5">
                   Go to APIs &amp; Services &gt; Credentials &gt; Create Credentials &gt; OAuth client ID.
                   Choose &quot;Web application&quot;. Add authorized redirect URI:
                 </p>
-                <code className="block mt-1 text-sm bg-gray-100 rounded px-3 py-2 text-[#1E2A4A] break-all">
+                <code className="block mt-1 text-sm bg-gray-100 rounded px-3 py-2 text-[#D4540A] break-all">
                   https://thefloridamaid.com/api/admin/google/callback
                 </code>
               </div>
             </div>
 
             <div className="flex gap-3">
-              <span className="flex-shrink-0 w-7 h-7 bg-[#1E2A4A] text-white rounded-full flex items-center justify-center text-sm font-bold">4</span>
+              <span className="flex-shrink-0 w-7 h-7 bg-[#D4540A] text-white rounded-full flex items-center justify-center text-sm font-bold">4</span>
               <div>
-                <p className="font-medium text-[#1E2A4A]">Configure OAuth Consent Screen</p>
+                <p className="font-medium text-[#D4540A]">Configure OAuth Consent Screen</p>
                 <p className="text-sm text-gray-500 mt-0.5">
                   Set up the consent screen (External is fine — only you will use it). Add your email as a test user.
                   Required scopes:
@@ -187,10 +187,10 @@ export default function GoogleProfilePage() {
             </div>
 
             <div className="flex gap-3">
-              <span className="flex-shrink-0 w-7 h-7 bg-[#1E2A4A] text-white rounded-full flex items-center justify-center text-sm font-bold">5</span>
+              <span className="flex-shrink-0 w-7 h-7 bg-[#D4540A] text-white rounded-full flex items-center justify-center text-sm font-bold">5</span>
               <div>
-                <p className="font-medium text-[#1E2A4A]">Add credentials to .env.local</p>
-                <div className="mt-1 bg-gray-100 rounded-lg px-3 py-2 text-sm font-mono text-[#1E2A4A] space-y-0.5">
+                <p className="font-medium text-[#D4540A]">Add credentials to .env.local</p>
+                <div className="mt-1 bg-gray-100 rounded-lg px-3 py-2 text-sm font-mono text-[#D4540A] space-y-0.5">
                   <p>GOOGLE_CLIENT_ID=your_client_id</p>
                   <p>GOOGLE_CLIENT_SECRET=your_client_secret</p>
                 </div>
@@ -198,9 +198,9 @@ export default function GoogleProfilePage() {
             </div>
 
             <div className="flex gap-3">
-              <span className="flex-shrink-0 w-7 h-7 bg-[#A8F0DC] text-[#1E2A4A] rounded-full flex items-center justify-center text-sm font-bold">6</span>
+              <span className="flex-shrink-0 w-7 h-7 bg-[#FDE68A] text-[#D4540A] rounded-full flex items-center justify-center text-sm font-bold">6</span>
               <div>
-                <p className="font-medium text-[#1E2A4A]">Connect</p>
+                <p className="font-medium text-[#D4540A]">Connect</p>
                 <p className="text-sm text-gray-500 mt-0.5">
                   Once credentials are set, click the button below to authorize access.
                 </p>
@@ -211,7 +211,7 @@ export default function GoogleProfilePage() {
 
         <button
           onClick={handleConnect}
-          className="px-6 py-3 bg-[#1E2A4A] text-white rounded-xl hover:bg-[#1E2A4A]/90 font-semibold text-sm shadow-sm transition-colors"
+          className="px-6 py-3 bg-[#D4540A] text-white rounded-xl hover:bg-[#D4540A]/90 font-semibold text-sm shadow-sm transition-colors"
         >
           Connect Google Business Profile
         </button>
@@ -235,14 +235,14 @@ export default function GoogleProfilePage() {
     <main className="p-3 md:p-6 max-w-7xl mx-auto">
       <div className="flex justify-between items-start mb-2">
         <div>
-          <h2 className="text-2xl font-bold text-[#1E2A4A]">Google Business Profile</h2>
+          <h2 className="text-2xl font-bold text-[#D4540A]">Google Business Profile</h2>
           <p className="text-sm text-gray-400 mt-0.5">
             {totalReviews} reviews &middot; {avgRating.toFixed(1)} avg rating &middot; {unrepliedCount} need replies
           </p>
         </div>
         <button
           onClick={checkConnection}
-          className="px-4 py-2.5 bg-[#1E2A4A] text-white rounded-xl hover:bg-[#1E2A4A]/90 font-medium text-sm shadow-sm transition-colors"
+          className="px-4 py-2.5 bg-[#D4540A] text-white rounded-xl hover:bg-[#D4540A]/90 font-medium text-sm shadow-sm transition-colors"
         >
           Refresh
         </button>
@@ -255,7 +255,7 @@ export default function GoogleProfilePage() {
             key={t}
             onClick={() => setTab(t)}
             className={`px-4 py-2 rounded-full text-sm font-medium transition-all capitalize ${
-              tab === t ? 'bg-[#1E2A4A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              tab === t ? 'bg-[#D4540A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
           >
             {t}
@@ -323,7 +323,7 @@ export default function GoogleProfilePage() {
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="font-medium text-[#1E2A4A]">{review.reviewer}</span>
+                          <span className="font-medium text-[#D4540A]">{review.reviewer}</span>
                           <span className="text-lg">{renderStars(review.rating)}</span>
                         </div>
                         {review.comment && <p className="text-sm text-gray-600">{review.comment}</p>}
@@ -335,14 +335,14 @@ export default function GoogleProfilePage() {
                           <textarea
                             value={replyDraft[review.id]}
                             onChange={e => setReplyDraft(prev => ({ ...prev, [review.id]: e.target.value }))}
-                            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-[#1E2A4A] focus:ring-2 focus:ring-[#1E2A4A] outline-none resize-none"
+                            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-[#D4540A] focus:ring-2 focus:ring-[#D4540A] outline-none resize-none"
                             rows={3}
                           />
                           <div className="flex gap-2">
                             <button
                               onClick={() => sendReply(review.id)}
                               disabled={sendingReply === review.id}
-                              className="px-4 py-2 bg-[#1E2A4A] text-white rounded-lg text-sm font-medium hover:bg-[#1E2A4A]/90 disabled:opacity-50"
+                              className="px-4 py-2 bg-[#D4540A] text-white rounded-lg text-sm font-medium hover:bg-[#D4540A]/90 disabled:opacity-50"
                             >
                               {sendingReply === review.id ? 'Sending...' : 'Send Reply'}
                             </button>
@@ -359,7 +359,7 @@ export default function GoogleProfilePage() {
                           <button
                             onClick={() => generateReply(review.id, review.reviewer, review.rating, review.comment)}
                             disabled={generatingReply === review.id}
-                            className="px-4 py-2 bg-[#A8F0DC]/20 text-[#1E2A4A] rounded-lg text-sm font-medium hover:bg-[#A8F0DC]/30 disabled:opacity-50 border border-[#A8F0DC]/30"
+                            className="px-4 py-2 bg-[#FDE68A]/20 text-[#D4540A] rounded-lg text-sm font-medium hover:bg-[#FDE68A]/30 disabled:opacity-50 border border-[#FDE68A]/30"
                           >
                             {generatingReply === review.id ? 'Generating...' : 'AI Reply'}
                           </button>
@@ -377,7 +377,7 @@ export default function GoogleProfilePage() {
                 {unrepliedCount > 3 && (
                   <button
                     onClick={() => { setTab('reviews'); setReviewFilter('unreplied') }}
-                    className="text-sm text-[#1E2A4A] font-medium hover:underline"
+                    className="text-sm text-[#D4540A] font-medium hover:underline"
                   >
                     View all {unrepliedCount} unreplied reviews
                   </button>
@@ -397,7 +397,7 @@ export default function GoogleProfilePage() {
                 key={f}
                 onClick={() => setReviewFilter(f)}
                 className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
-                  reviewFilter === f ? 'bg-[#1E2A4A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  reviewFilter === f ? 'bg-[#D4540A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
                 {f === 'all' ? `All (${reviews.length})` :
@@ -409,7 +409,7 @@ export default function GoogleProfilePage() {
 
           {filteredReviews.length === 0 ? (
             <div className="text-center py-16 bg-white rounded-xl border border-gray-100 shadow-sm">
-              <h3 className="text-lg font-semibold text-[#1E2A4A] mb-1">No reviews found</h3>
+              <h3 className="text-lg font-semibold text-[#D4540A] mb-1">No reviews found</h3>
               <p className="text-gray-400 text-sm">Try a different filter.</p>
             </div>
           ) : (
@@ -419,7 +419,7 @@ export default function GoogleProfilePage() {
                   <div className="flex items-start justify-between gap-4 mb-2">
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-medium text-[#1E2A4A]">{review.reviewer}</span>
+                        <span className="font-medium text-[#D4540A]">{review.reviewer}</span>
                         <span className="text-lg">{renderStars(review.rating)}</span>
                       </div>
                       <p className="text-xs text-gray-400 mt-0.5">
@@ -442,14 +442,14 @@ export default function GoogleProfilePage() {
                           <textarea
                             value={replyDraft[review.id]}
                             onChange={e => setReplyDraft(prev => ({ ...prev, [review.id]: e.target.value }))}
-                            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-[#1E2A4A] focus:ring-2 focus:ring-[#1E2A4A] outline-none resize-none"
+                            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-[#D4540A] focus:ring-2 focus:ring-[#D4540A] outline-none resize-none"
                             rows={3}
                           />
                           <div className="flex gap-2">
                             <button
                               onClick={() => sendReply(review.id)}
                               disabled={sendingReply === review.id}
-                              className="px-4 py-2 bg-[#1E2A4A] text-white rounded-lg text-sm font-medium hover:bg-[#1E2A4A]/90 disabled:opacity-50"
+                              className="px-4 py-2 bg-[#D4540A] text-white rounded-lg text-sm font-medium hover:bg-[#D4540A]/90 disabled:opacity-50"
                             >
                               {sendingReply === review.id ? 'Sending...' : 'Send Reply'}
                             </button>
@@ -466,7 +466,7 @@ export default function GoogleProfilePage() {
                           <button
                             onClick={() => generateReply(review.id, review.reviewer, review.rating, review.comment)}
                             disabled={generatingReply === review.id}
-                            className="px-4 py-2 bg-[#A8F0DC]/20 text-[#1E2A4A] rounded-lg text-sm font-medium hover:bg-[#A8F0DC]/30 disabled:opacity-50 border border-[#A8F0DC]/30"
+                            className="px-4 py-2 bg-[#FDE68A]/20 text-[#D4540A] rounded-lg text-sm font-medium hover:bg-[#FDE68A]/30 disabled:opacity-50 border border-[#FDE68A]/30"
                           >
                             {generatingReply === review.id ? 'Generating...' : 'AI Reply'}
                           </button>
@@ -526,7 +526,7 @@ export default function GoogleProfilePage() {
             </>
           ) : (
             <div className="text-center py-16 bg-white rounded-xl border border-gray-100 shadow-sm">
-              <h3 className="text-lg font-semibold text-[#1E2A4A] mb-1">No insights data yet</h3>
+              <h3 className="text-lg font-semibold text-[#D4540A] mb-1">No insights data yet</h3>
               <p className="text-gray-400 text-sm">Insights will appear after your profile has been connected for a few days.</p>
             </div>
           )}
