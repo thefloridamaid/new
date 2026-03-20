@@ -123,7 +123,7 @@ function ReferrerPortalContent() {
     <div className="min-h-screen bg-gray-50">
       <header className="bg-[#CC6222] text-white py-4 px-6">
         <div className="max-w-4xl mx-auto flex justify-between items-center">
-          <div><h1 className="text-xl font-bold">The Florida Maid</h1><p className="text-gray-400 text-sm">Referral Portal</p></div>
+          <div><h1 className="text-xl font-bold">The Florida Maid Cleaning Service Cleaning Service</h1><p className="text-gray-400 text-sm">Referral Portal</p></div>
           <div className="text-right"><p className="font-medium">{referrer?.name}</p><p className="text-gray-400 text-sm">{referrer?.ref_code}</p></div>
         </div>
       </header>
@@ -193,6 +193,6 @@ function ReferrerPortalContent() {
 }
 
 export default function ReferrerPortalPage() {
-  useEffect(() => { document.title = 'Referral Program | The Florida Maid' }, []);
+  useEffect(() => { document.title = 'Referral Program | The Florida Maid Cleaning Service Cleaning Service' }, []);
   return <Suspense fallback={<div className="min-h-screen bg-gray-50 flex items-center justify-center"><p className="text-gray-500">Loading...</p></div>}><ReferrerPortalContent /></Suspense>
 }

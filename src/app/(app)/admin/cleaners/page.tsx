@@ -96,7 +96,7 @@ const HOURS = [
 ]
 
 export default function CleanersPage() {
-  useEffect(() => { document.title = 'Team | The Florida Maid' }, []);
+  useEffect(() => { document.title = 'Team | The Florida Maid Cleaning Service Cleaning Service' }, []);
   const [activeTab, setActiveTab] = useState<'team' | 'applications' | 'ops-manager'>('team')
   const [cleaners, setCleaners] = useState<Cleaner[]>([])
   const [applications, setApplications] = useState<Application[]>([])

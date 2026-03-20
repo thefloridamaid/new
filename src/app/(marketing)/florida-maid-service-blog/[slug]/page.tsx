@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return {}
 
   return {
-    title: `${post.title} | The Florida Maid`,
+    title: `${post.title} | The Florida Maid Cleaning Service`,
     description: post.metaDescription,
     alternates: { canonical: `https://www.thefloridamaid.com/florida-maid-service-blog/${post.slug}` },
     openGraph: {
@@ -53,8 +53,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     description: post.excerpt,
     datePublished: post.date,
     dateModified: post.date,
-    author: { '@type': 'Organization', name: 'The Florida Maid', url: 'https://www.thefloridamaid.com' },
-    publisher: { '@type': 'Organization', name: 'The Florida Maid', url: 'https://www.thefloridamaid.com' },
+    author: { '@type': 'Organization', name: 'The Florida Maid Cleaning Service Cleaning Service', url: 'https://www.thefloridamaid.com' },
+    publisher: { '@type': 'Organization', name: 'The Florida Maid Cleaning Service Cleaning Service', url: 'https://www.thefloridamaid.com' },
     mainEntityOfPage: `https://www.thefloridamaid.com/florida-maid-service-blog/${post.slug}`,
   }
 

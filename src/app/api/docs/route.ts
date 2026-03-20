@@ -6,7 +6,7 @@ export async function GET() {
   if (authError) return authError
 
   return NextResponse.json({
-    platform: 'The Florida Maid',
+    platform: 'The Florida Maid Cleaning Service Cleaning Service',
     updated: '2026-02-05',
     stack: { framework: 'Next.js 16', language: 'TypeScript', database: 'Supabase PostgreSQL', hosting: 'Vercel', email: 'Resend', styling: 'Tailwind CSS' },
     domain: 'thefloridamaid.com',

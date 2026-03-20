@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!service) return {}
 
   const url = `https://www.thefloridamaid.com/services/${slug}`
-  const title = `${service.name} in Florida From ${service.priceRange.split('–')[0]} | 5-Star Rated | The Florida Maid`
+  const title = `${service.name} in Florida From ${service.priceRange.split('–')[0]} | 5-Star Rated | The Florida Maid Cleaning Service`
   const description = `Professional ${service.name.toLowerCase()} across Miami, Fort Lauderdale, West Palm Beach, Tampa & Orlando. ${service.features.slice(0, 2).join(', ')} & more. From ${service.priceRange.split('–')[0]}. 5.0★ Google. (954) 710-3636`
 
   return {
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       url,
       type: 'website',
-      siteName: 'The Florida Maid',
+      siteName: 'The Florida Maid Cleaning Service Cleaning Service',
       locale: 'en_US',
     },
     twitter: {

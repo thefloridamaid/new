@@ -28,7 +28,7 @@ export async function POST(request: Request) {
       max_tokens: 4096,
       messages: [{
         role: 'user',
-        content: `You are a marketing copywriter for The Florida Maid, a premium cleaning service in Florida. Generate campaign content based on this prompt:
+        content: `You are a marketing copywriter for The Florida Maid Cleaning Service, a premium cleaning service in Florida. Generate campaign content based on this prompt:
 
 "${prompt}"
 
@@ -42,7 +42,7 @@ ${includeEmail ? `- "email_body": HTML email body content. Use inline styles onl
   - For highlight boxes: <div style="background: #f0fdf4; border-radius: 8px; padding: 20px; margin: 24px 0;">
   - Keep it clean, warm, and professional. No emojis in email.
   - The HTML will be wrapped in the standard email template automatically — just provide the inner content.` : ''}
-${includeSms ? `- "sms_body": a short SMS version (under 160 characters, include "The Florida Maid" and a call to action like "Book at thefloridamaid.com/book" or "Call (954) 710-3636")` : ''}
+${includeSms ? `- "sms_body": a short SMS version (under 160 characters, include "The Florida Maid Cleaning Service Cleaning Service" and a call to action like "Book at thefloridamaid.com/book" or "Call (954) 710-3636")` : ''}
 
 IMPORTANT: Return ONLY the raw JSON object. No markdown, no code fences, no explanation.`
       }]

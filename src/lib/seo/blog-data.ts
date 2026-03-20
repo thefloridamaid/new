@@ -23,12 +23,12 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2026-02-18',
     category: 'Pricing',
     readTime: '5 min',
-    metaDescription: 'Florida house cleaning costs $49–$100/hr in 2026. Honest pricing breakdown by home size, service type & frequency. Call The Florida Maid (954) 710-3636.',
+    metaDescription: 'Florida house cleaning costs $49–$100/hr in 2026. Honest pricing breakdown by home size, service type & frequency. Call The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Let\'s be real — figuring out cleaning prices in Florida is confusing. Every service quotes differently. Some charge by the hour, some by the square foot, some give you a flat rate that somehow doubles once they see your home. We\'re going to break down what cleaning actually costs in this state so you know what\'s fair.'] },
       { heading: 'The Short Answer', paragraphs: ['Most professional cleaning in Florida runs between $49 and $100 per hour, depending on the service and who\'s doing it. A standard <a href="/services/house-cleaning-service-in-florida">house cleaning</a> for a 2-bedroom home typically takes 2–3 hours. So you\'re looking at roughly $100–$250 for a basic clean.', '<a href="/services/deep-cleaning-service-in-florida">Deep cleaning</a> costs more — usually 1.5x to 2x the standard rate — because it includes things like inside the oven, behind the fridge, scrubbing grout, and all those spots you pretend don\'t exist.'] },
       { heading: 'What Affects the Price', paragraphs: ['A few things move the needle on cost:'], list: ['Home size — a 1-bedroom condo takes 1.5–2 hours, a 4-bedroom house takes 4–5', 'Condition — if it hasn\'t been cleaned in months, expect to pay more', 'Frequency — weekly clients always get better rates than one-timers', 'Supplies — some services bring their own, some use yours (and charge accordingly)', 'Location — Miami and Naples generally cost more than smaller cities, but not always'] },
-      { heading: 'Red Flags to Watch For', paragraphs: ['If someone quotes you $50 flat for a deep clean of a 3-bedroom house, run. They\'re either cutting corners, not insured, or planning to upsell you once they\'re in your home. Same goes for prices that seem way too high — luxury doesn\'t mean good.', 'Look for transparent hourly pricing, clear communication about what\'s included, and actual insurance. At The Florida Maid, we start at $49/hr with no hidden fees, and we tell you upfront what to expect.'] },
+      { heading: 'Red Flags to Watch For', paragraphs: ['If someone quotes you $50 flat for a deep clean of a 3-bedroom house, run. They\'re either cutting corners, not insured, or planning to upsell you once they\'re in your home. Same goes for prices that seem way too high — luxury doesn\'t mean good.', 'Look for transparent hourly pricing, clear communication about what\'s included, and actual insurance. At The Florida Maid Cleaning Service, we start at $49/hr with no hidden fees, and we tell you upfront what to expect.'] },
       { heading: 'How to Save Money', paragraphs: ['The best way to save on cleaning is to book recurring service. <a href="/services/weekly-maid-service-in-florida">Weekly</a> clients save the most because their homes stay cleaner between visits, so the cleaner can work more efficiently. <a href="/services/bi-weekly-cleaning-service-in-florida">Biweekly</a> is the sweet spot for most people — your place stays consistently clean without breaking the bank.', 'Also worth noting: having your place somewhat picked up before the cleaner arrives (dishes put away, clothes off the floor) means they spend time actually cleaning instead of organizing your stuff.'] },
     ],
   },
@@ -39,7 +39,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2026-02-12',
     category: 'Guides',
     readTime: '6 min',
-    metaDescription: 'Florida move-out cleaning checklist — every room, every detail. Get your security deposit back. Professional service from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Florida move-out cleaning checklist — every room, every detail. Get your security deposit back. Professional service from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Moving out of a Florida home is stressful enough without worrying about whether your landlord is going to dock your deposit because of a grease stain behind the stove. Here\'s the complete checklist we use for move-out cleanings — the same one that\'s helped hundreds of clients get their full deposits back.'] },
       { heading: 'Kitchen', paragraphs: ['The kitchen is where landlords look hardest. Don\'t skip anything.'], list: ['Clean inside and outside of oven (including racks)', 'Degrease stovetop and burner grates', 'Wipe down all cabinet fronts and inside empty cabinets', 'Clean inside the refrigerator and freezer', 'Scrub the sink and polish the faucet', 'Wipe down countertops, backsplash, and behind small appliances', 'Clean the microwave inside and out', 'Run the dishwasher empty with vinegar (if applicable)', 'Sweep and mop the floor, including under the stove and fridge'] },
@@ -55,7 +55,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2026-02-05',
     category: 'Tips',
     readTime: '4 min',
-    metaDescription: 'Deep clean your Florida kitchen — humidity tips, grease removal, mold prevention. Professional cleaning from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Deep clean your Florida kitchen — humidity tips, grease removal, mold prevention. Professional cleaning from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Florida kitchens have their own challenges. The humidity means grease and moisture combine to coat every surface, mold can sneak into corners faster than you\'d think, and the warm climate invites pests if things aren\'t kept clean. Here\'s how to deep clean it without wanting to move.'] },
       { heading: 'Start Top to Bottom', paragraphs: ['Always clean from the highest point down. Dust and grease drip, so if you mop the floor first, you\'ll be mopping it again. Start with the tops of cabinets (that layer of greasy dust up there is real), then work down to the counters, appliances, and finally the floor.'] },
@@ -71,7 +71,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2026-01-29',
     category: 'Lifestyle',
     readTime: '4 min',
-    metaDescription: 'Cleaning schedule for busy Florida professionals — daily, weekly & monthly tasks that actually work. Service from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Cleaning schedule for busy Florida professionals — daily, weekly & monthly tasks that actually work. Service from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['You\'re working long days, commuting, trying to have some semblance of a social life, and your home looks like a disaster zone. Sound familiar? You don\'t need to become a clean freak — you just need a system that works with your actual schedule.'] },
       { heading: 'Daily (5 Minutes)', paragraphs: ['These take literally 5 minutes and prevent your home from spiraling:'], list: ['Make your bed (takes 60 seconds, changes how the whole room feels)', 'Wipe kitchen counters after cooking', 'Put dishes in the dishwasher or wash them immediately', 'Hang up clothes instead of throwing them on the chair', 'Quick wipe of bathroom sink after getting ready'] },
@@ -87,7 +87,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2026-01-22',
     category: 'Tips',
     readTime: '5 min',
-    metaDescription: 'Florida pet owner cleaning tips — remove pet hair, odors & stains safely. Pet-friendly products we trust. Service from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Florida pet owner cleaning tips — remove pet hair, odors & stains safely. Pet-friendly products we trust. Service from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Having a pet in a Florida home means double the love and triple the cleaning. Between the fur tumbleweeds rolling across your tile floors, the muddy paw prints from the yard after a rainstorm, and whatever your cat knocked off the counter, keeping up is a full-time job. Here\'s what actually works.'] },
       { heading: 'Pet Hair Is the Main Event', paragraphs: ['Forget regular vacuuming once a week — with a shedding pet, you need to vacuum at least twice a week. A rubber squeegee dragged across upholstered furniture picks up hair better than any lint roller. For tile and laminate floors, a microfiber dust mop works better than a vacuum because it traps hair instead of blowing it around.', 'Pro tip: Put a dryer sheet in your Swiffer pad holder. It creates static that attracts pet hair like a magnet.'] },
@@ -103,7 +103,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2026-01-15',
     category: 'Tips',
     readTime: '5 min',
-    metaDescription: 'Prevent and remove bathroom mold in Florida homes — causes, DIY fixes & when to call pros. Cleaning service from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Prevent and remove bathroom mold in Florida homes — causes, DIY fixes & when to call pros. Cleaning service from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['If you live in Florida and you\'ve never had mold in your bathroom, you\'re either lying or you\'ve never looked closely at your shower caulking. The combination of year-round humidity, warm temperatures, and steam from hot showers creates the perfect environment for mold. Here\'s what to do about it.'] },
       { heading: 'Why Florida Bathrooms Are Mold Magnets', paragraphs: ['Florida\'s climate is essentially a mold incubator. Outdoor humidity regularly exceeds 80%, and that moisture creeps into every room — especially bathrooms. Even with air conditioning, bathrooms that lack proper ventilation trap moisture after every shower. Add in tile grout that\'s lost its seal, and you\'ve got mold growing in places you can\'t even see.'] },
@@ -119,7 +119,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2026-01-08',
     category: 'Guides',
     readTime: '5 min',
-    metaDescription: 'Florida home cleaning guide — tile floors, terrazzo, pool decks, lanais. Expert care from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Florida home cleaning guide — tile floors, terrazzo, pool decks, lanais. Expert care from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Florida homes have unique surfaces — tile floors throughout, terrazzo in older homes, screened-in lanais, and pool decks that need regular attention. Using the wrong products or techniques can damage finishes and surfaces that define your home\'s character.'] },
       { heading: 'Tile and Grout Floors', paragraphs: ['Most Florida homes have tile floors throughout — great for the climate but grout lines are a magnet for dirt and mold. The biggest rules:'], list: ['Sweep or vacuum before mopping — grit scratches the tile finish', 'Use a pH-neutral tile cleaner (avoid vinegar on natural stone tile)', 'Deep clean grout lines monthly with a baking soda paste and stiff brush', 'Seal grout every 1–2 years to prevent staining and mold growth', 'Never use a steam mop on natural stone tile — it can crack or discolor', 'Dry mop after wet mopping to prevent water spots and mineral deposits'] },
@@ -135,7 +135,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2026-01-01',
     category: 'Guides',
     readTime: '4 min',
-    metaDescription: 'First time hiring a cleaning service? What to expect, how to prepare & what\'s included. Florida service from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'First time hiring a cleaning service? What to expect, how to prepare & what\'s included. Florida service from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Hiring a professional cleaner for the first time feels weird. Is it awkward? Should you leave? Do you need to clean before they clean? We get these questions all the time, so here\'s the honest rundown.'] },
       { heading: 'Before the Cleaning', paragraphs: ['You don\'t need to deep clean before your cleaner arrives — that defeats the purpose. But doing a quick 10-minute pickup helps them be more efficient:'], list: ['Put away personal items, dishes, and clothes', 'Clear countertops so they can actually clean the surfaces', 'Make sure they can access the bathroom and kitchen', 'Secure pets or let them know about any animals', 'Leave a note if there are specific areas you want them to focus on'] },
@@ -151,7 +151,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2025-12-26',
     category: 'Guides',
     readTime: '5 min',
-    metaDescription: 'Florida Airbnb turnover cleaning checklist for 5-star reviews — complete room-by-room guide. Host cleaning from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Florida Airbnb turnover cleaning checklist for 5-star reviews — complete room-by-room guide. Host cleaning from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Your Airbnb rating lives and dies by cleanliness. One "the bathroom wasn\'t clean" review can tank your listing. Here\'s the exact checklist our team uses for Florida Airbnb turnovers — it\'s the difference between 4 stars and 5 stars.'] },
       { heading: 'The Non-Negotiables', paragraphs: ['These get checked every single turnover, no exceptions:'], list: ['Fresh sheets and pillowcases on all beds', 'Fresh towels (bath, hand, and face) folded or rolled', 'Toilet scrubbed inside and out', 'Shower/tub cleaned with no hair anywhere', 'Kitchen sink empty and clean', 'All dishes washed, dried, and put away', 'Counters wiped and cleared of previous guest items', 'Trash emptied in every room (including bathroom)', 'Floors vacuumed/mopped throughout', 'Mirrors streak-free', 'Pool area and lanai tidied (if applicable)'] },
@@ -166,7 +166,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2025-12-19',
     category: 'Sustainability',
     readTime: '4 min',
-    metaDescription: 'Safe eco-friendly cleaning products for homes with kids & pets — what works and what to avoid. Green cleaning from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Safe eco-friendly cleaning products for homes with kids & pets — what works and what to avoid. Green cleaning from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Here\'s something the cleaning industry doesn\'t talk about enough: a lot of "green" products aren\'t actually safe for kids or pets. The word "natural" is unregulated — anyone can slap it on a label. We\'ve done the research so you don\'t have to.'] },
       { heading: 'What We Actually Use', paragraphs: ['After years of testing, these are the products our team trusts:'], list: ['White vinegar + water for glass, mirrors, and general surfaces', 'Castile soap (Dr. Bronner\'s) diluted for mopping and all-purpose cleaning', 'Baking soda for scrubbing, deodorizing, and gentle abrasion', 'Hydrogen peroxide (3%) for disinfecting and whitening', 'Microfiber cloths — they clean effectively with just water', 'Enzyme cleaners for biological stains and pet messes'] },
@@ -181,7 +181,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2025-12-12',
     category: 'Tips',
     readTime: '3 min',
-    metaDescription: 'Clean Florida ceiling fans & AC vents — remove dust, improve air quality & cooling efficiency. Professional cleaning from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Clean Florida ceiling fans & AC vents — remove dust, improve air quality & cooling efficiency. Professional cleaning from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Florida ceiling fans and AC vents are the most neglected part of every home. Your fans run practically year-round, collecting dust, allergens, and moisture-related grime on every blade. And your AC vents? They\'re circulating whatever\'s built up inside them through every room in your house.'] },
       { heading: 'What You Need', paragraphs: ['Cleaning ceiling fans and vents is easier than you\'d think:'], list: ['A step ladder', 'An old pillowcase (the best fan blade cleaning hack)', 'Vacuum with a crevice attachment', 'Damp microfiber cloths', 'An old towel to catch falling dust', 'Warm soapy water for the blades and vent covers'] },
@@ -196,7 +196,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2025-12-05',
     category: 'Guides',
     readTime: '5 min',
-    metaDescription: 'Florida hurricane season cleaning prep guide — before and after the storm. Professional deep cleaning from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Florida hurricane season cleaning prep guide — before and after the storm. Professional deep cleaning from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Hurricane season in Florida runs June through November, and whether you\'re a native or just moved here, being prepared makes all the difference. Beyond the obvious storm prep, there\'s a cleaning and home maintenance angle that most guides skip.'] },
       { heading: 'Pre-Storm Deep Clean', paragraphs: ['Before hurricane season, do a thorough clean and prep:'], list: ['Clean and organize your garage — you\'ll need space for patio furniture and supplies', 'Deep clean lanai and remove or secure all outdoor items', 'Clean gutters and downspouts thoroughly', 'Wash windows inside and out (may be your last chance for a while)', 'Stock cleaning supplies for post-storm cleanup: bleach, mold killer, trash bags, paper towels', 'Clean out the fridge and freezer — if power goes out, you don\'t want rotting food'] },
@@ -212,7 +212,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2025-11-28',
     category: 'Tips',
     readTime: '4 min',
-    metaDescription: 'Remove cigarette smoke smell from Florida home — walls, carpets, HVAC & more. Professional cleaning from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Remove cigarette smoke smell from Florida home — walls, carpets, HVAC & more. Professional cleaning from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['You moved into what seemed like a great place, and then the AC kicked on and suddenly the whole house smells like an ashtray. Cigarette smoke gets into everything — walls, floors, fabrics, and especially the HVAC system. Here\'s how to actually get rid of it.'] },
       { heading: 'Why It\'s So Stubborn', paragraphs: ['Smoke residue (nicotine and tar) is oily and bonds to surfaces. It seeps into paint, carpet padding, drywall, and ductwork. Air fresheners and candles just mask it temporarily — you have to physically remove the residue from every surface.'] },
@@ -228,7 +228,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2025-11-21',
     category: 'Tips',
     readTime: '3 min',
-    metaDescription: 'Florida condo cleaning tips — small space hacks that actually work. Professional cleaning from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Florida condo cleaning tips — small space hacks that actually work. Professional cleaning from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Florida condo living means maximizing every square foot. The good news? There\'s not as much space to cover. The bad news? Humidity, sand tracked in from the beach, and Florida\'s year-round dust mean things get dirty fast. Here\'s how to keep a condo clean without making it your whole personality.'] },
       { heading: 'The 10-Minute Daily Reset', paragraphs: ['In a condo, small messes compound fast. A 10-minute daily routine prevents the spiral:'], list: ['Make the bed immediately (this is a huge percentage of your visible space)', 'Wipe the kitchen counter and stove', 'Put everything back where it belongs — in a condo, every item needs a home', 'Quick sweep of the floor (condos are small enough to sweep in 2 minutes)', 'Deal with dishes immediately — a full sink in a small condo is a disaster'] },
@@ -244,7 +244,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2025-11-14',
     category: 'Pricing',
     readTime: '4 min',
-    metaDescription: 'Weekly vs biweekly cleaning comparison — cost, time & results for Florida homes. Service from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Weekly vs biweekly cleaning comparison — cost, time & results for Florida homes. Service from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Most people assume biweekly cleaning is obviously cheaper because it\'s half the visits. And yeah, you pay less per month — but you might not be getting the better deal. Let us explain.'] },
       { heading: 'The Simple Math', paragraphs: ['Weekly cleaning: 4 visits/month at ~2 hours each = 8 hours. Biweekly cleaning: 2 visits/month at ~2.5–3 hours each = 5–6 hours. You save 2–3 hours of labor per month with biweekly — but each visit takes longer because more dirt and grime accumulates between cleanings.', 'Monthly cost difference for a 2-bedroom: roughly $150–$200 less for biweekly. But here\'s what the math doesn\'t show.'] },
@@ -260,7 +260,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2025-11-07',
     category: 'Guides',
     readTime: '4 min',
-    metaDescription: 'Post-renovation cleaning in Florida — why you need pros for construction dust & debris. Service from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Post-renovation cleaning in Florida — why you need pros for construction dust & debris. Service from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Your renovation is done. The new kitchen looks amazing. And there\'s a fine layer of white dust on literally everything you own, including inside your drawers, on top of your books, and somehow inside your refrigerator. Welcome to post-renovation cleaning.'] },
       { heading: 'Why It\'s Not a Normal Cleaning Job', paragraphs: ['Construction dust isn\'t regular dust. It\'s a mix of drywall powder, plaster, concrete dust, and potentially silica particles — all of which are much finer than household dust. A regular vacuum cleaner doesn\'t have a fine enough filter to capture it. You\'ll vacuum, the home will look clean, and 24 hours later there\'s another layer of dust because you just redistributed it.', 'This dust also gets into your HVAC system, behind outlet covers, inside light fixtures, and in every crack and crevice. In Florida, where your AC runs constantly, construction dust circulates through your entire home within hours. It takes professional equipment and technique to actually remove it.'] },
@@ -276,7 +276,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2025-10-31',
     category: 'Guides',
     readTime: '3 min',
-    metaDescription: 'Prepare your Florida home for a cleaning service — quick tips for better results. Professional cleaning from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Prepare your Florida home for a cleaning service — quick tips for better results. Professional cleaning from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['We get this question a lot: "Should I clean before the cleaner comes?" No. But a 10-minute pickup makes a massive difference in what your cleaner can accomplish. They\'re there to clean, not organize. Here\'s how to prep.'] },
       { heading: 'The 10-Minute Pickup', paragraphs: ['These small actions let your cleaner focus on actual cleaning:'], list: ['Put dishes in the dishwasher or stack them neatly in the sink', 'Pick clothes up off the floor and furniture', 'Clear off countertops (bathroom and kitchen)', 'Put away personal items you don\'t want moved', 'Make sure all rooms are accessible (unlocked doors, clear paths)'] },
@@ -292,7 +292,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2025-10-24',
     category: 'Tips',
     readTime: '3 min',
-    metaDescription: 'High-rise condo window cleaning tips Florida — safe methods for interior glass & tracks. Cleaning from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'High-rise condo window cleaning tips Florida — safe methods for interior glass & tracks. Cleaning from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Florida\'s salt air, rain, and humidity coat high-rise condo windows faster than you\'d expect — especially near the coast. You can\'t exactly hang out the window with a squeegee on the 30th floor, but you can make the inside spotless and deal with what you can reach.'] },
       { heading: 'Interior Window Cleaning', paragraphs: ['For the inside of your windows, this is the professional method:'], list: ['Spray glass cleaner (or 50/50 vinegar and water) on the glass', 'Wipe with a microfiber cloth in an S-pattern from top to bottom', 'Buff dry with a second clean microfiber cloth', 'For stubborn spots, a razor blade held at a 45-degree angle works on glass (careful on tinted windows)', 'Don\'t forget the window frame and sill — wipe those down too'] },
@@ -307,7 +307,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2025-10-17',
     category: 'Lifestyle',
     readTime: '4 min',
-    metaDescription: 'Benefits of recurring cleaning service — save money, time & stress with weekly or biweekly cleaning in Florida. From $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Benefits of recurring cleaning service — save money, time & stress with weekly or biweekly cleaning in Florida. From $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Most people think of recurring cleaning as a luxury. It\'s not. When you run the real numbers — including the time you get back, the maintenance costs you avoid, and the mental health benefits — it\'s one of the most practical investments you can make.'] },
       { heading: 'The Time Math', paragraphs: ['The average person spends 6 hours per week on household cleaning tasks. That\'s 312 hours a year — almost 8 full work weeks. If your time is worth more than what you\'d pay a cleaner, you\'re losing money by doing it yourself. And this isn\'t theoretical — this is actual time you spend vacuuming, scrubbing, and mopping instead of working, resting, or enjoying Florida\'s beautiful weather.'] },
@@ -323,7 +323,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2025-10-31',
     category: 'Guides',
     readTime: '4 min',
-    metaDescription: 'Florida move-in cleaning guide — what to clean before unpacking in your new home. Service from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Florida move-in cleaning guide — what to clean before unpacking in your new home. Service from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['You got the keys to your new place. It looks clean. It\'s not. The previous occupant did a move-out cleaning that ranged from "minimal effort" to "they tried, kinda." Before you put a single box down, here\'s what needs to happen.'] },
       { heading: 'Why Move-In Cleaning Matters', paragraphs: ['Even if the home looks clean on the surface, you\'re moving into a space that someone else lived in. Their skin cells, cooking residue, pet dander (even if the listing said no pets), and general grime are on every surface. In Florida, you\'re also dealing with whatever grew in the humidity between tenants — mold in bathrooms, mildew under sinks, and dust in the AC system.', 'Cleaning before you unpack is 10x easier than doing it after your furniture is in. Take advantage of the empty home.'] },
@@ -339,7 +339,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2025-10-24',
     category: 'Tips',
     readTime: '3 min',
-    metaDescription: 'Streak-free stainless steel cleaning — the pro method for Florida kitchens. Professional cleaning from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Streak-free stainless steel cleaning — the pro method for Florida kitchens. Professional cleaning from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Stainless steel appliances look incredible for about 30 seconds after you clean them, and then someone touches the fridge and it\'s covered in fingerprints again. Here\'s how to clean them properly and keep them cleaner longer.'] },
       { heading: 'The Professional Method', paragraphs: ['Forget all the specialty stainless steel cleaners — most of them leave residue that actually attracts more fingerprints. Here\'s what our cleaners use:'], list: ['Spray a small amount of dish soap mixed with warm water onto the surface', 'Wipe WITH the grain of the steel (look closely — stainless steel has a direction)', 'Dry immediately with a clean microfiber cloth, again going with the grain', 'For the final buff, put a tiny drop of mineral oil or baby oil on a cloth and go over the surface lightly', 'The oil creates a barrier that repels fingerprints and water spots'] },
@@ -354,7 +354,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2025-10-17',
     category: 'Guides',
     readTime: '5 min',
-    metaDescription: 'Florida bathroom deep cleaning guide — grout, mold, hard water & humidity. Professional cleaning from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Florida bathroom deep cleaning guide — grout, mold, hard water & humidity. Professional cleaning from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['The bathroom is the room that gets dirty fastest and takes the most effort to deep clean. In Florida homes, you\'re dealing with extreme humidity, hard water, and a climate that breeds mold faster than anywhere in the country. Here\'s the complete deep cleaning approach.'] },
       { heading: 'Start With the Shower/Tub', paragraphs: ['This is the hardest part, so tackle it first while you have energy:'], list: ['Spray the entire shower with your cleaning solution and let it sit for 10 minutes', 'Scrub tile grout with a stiff brush — baking soda paste works best on stained grout', 'Clean the showerhead by soaking it in a bag of white vinegar for an hour (tie it on with a rubber band)', 'Scrub the tub basin — for porcelain, use baking soda; for acrylic, use a non-abrasive cleaner', 'Clean the glass door or shower curtain (wash curtains in the washing machine with vinegar)', 'Check and clean the drain — pull out the hair catcher and clear any buildup'] },
@@ -370,7 +370,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2025-10-10',
     category: 'Tips',
     readTime: '3 min',
-    metaDescription: 'Florida closet organization tips — maximize space and prevent mold & mildew. Professional cleaning from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Florida closet organization tips — maximize space and prevent mold & mildew. Professional cleaning from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Florida closets have a unique challenge that most organizing guides ignore: humidity. Your closet might be perfectly organized, but if moisture isn\'t controlled, you\'ll end up with mildewed clothes, musty shoes, and mold on the walls. Here\'s how to organize and protect your belongings.'] },
       { heading: 'Humidity Control First', paragraphs: ['Before organizing, address the moisture:'], list: ['Place moisture absorbers (DampRid) in every closet', 'Keep closet doors slightly open or use louvered doors for air circulation', 'Never store damp items — always ensure clothes are fully dry before hanging', 'Use a small dehumidifier in large walk-in closets', 'Check closet walls periodically for mold, especially exterior walls'] },
@@ -386,7 +386,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2025-10-03',
     category: 'Tips',
     readTime: '3 min',
-    metaDescription: 'Remove hard water stains from Florida faucets — white vinegar method & pro tips. Professional cleaning from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'Remove hard water stains from Florida faucets — white vinegar method & pro tips. Professional cleaning from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['Florida has some of the hardest water in the country. Over time, calcium and lime deposits build up on faucets, showerheads, and glass shower doors. That white, crusty buildup makes even a clean bathroom look dirty. Here\'s how to get rid of it.'] },
       { heading: 'The Vinegar Method (Works 90% of the Time)', paragraphs: ['White vinegar dissolves mineral deposits naturally:'], list: ['Soak a cloth or paper towel in undiluted white vinegar', 'Wrap it around the faucet or affected area', 'Secure with a rubber band and let it sit for 1–2 hours (or overnight for heavy buildup)', 'Remove, scrub gently with a soft brush, and rinse', 'Dry and buff with a clean cloth'] },
@@ -401,7 +401,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: '2025-10-31',
     category: 'Lifestyle',
     readTime: '4 min',
-    metaDescription: 'How a clean home improves mental health — stress, sleep & focus. Florida cleaning service from $49/hr. The Florida Maid (954) 710-3636.',
+    metaDescription: 'How a clean home improves mental health — stress, sleep & focus. Florida cleaning service from $49/hr. The Florida Maid Cleaning Service (954) 710-3636.',
     sections: [
       { paragraphs: ['There\'s a reason you feel better when your home is clean. It\'s not just aesthetics — there\'s real science behind the connection between your environment and your mental state. And in Florida, where your home is your sanctuary from the heat and humidity outside, it matters more than most people realize.'] },
       { heading: 'The Cortisol Connection', paragraphs: ['A study from UCLA\'s Center on Everyday Lives and Families found that people who described their homes as "cluttered" or "messy" had higher cortisol levels throughout the day. Cortisol is the stress hormone — elevated levels are linked to anxiety, poor sleep, weight gain, and weakened immune function.', 'The research showed that women in particular were affected, likely because of societal expectations around home maintenance. But the effect was measurable across all participants: messy home = higher stress, clean home = lower stress.'] },

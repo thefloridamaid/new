@@ -15,7 +15,7 @@ export async function sendEmail(to: string, subject: string, html: string, attac
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
       const { data, error } = await getResend().emails.send({
-        from: 'The Florida Maid <hi@thefloridamaid.com>',
+        from: 'The Florida Maid Cleaning Service <hi@thefloridamaid.com>',
         to,
         subject,
         html,

@@ -30,7 +30,7 @@ const Card = ({ title, children, accent }: { title: string, children: React.Reac
 )
 
 export default function DocsPage() {
-  useEffect(() => { document.title = 'Documentation | The Florida Maid' }, [])
+  useEffect(() => { document.title = 'Documentation | The Florida Maid Cleaning Service Cleaning Service' }, [])
   const [s, setS] = useState('overview')
 
   const sections = [
@@ -79,7 +79,7 @@ export default function DocsPage() {
 
         {s === 'overview' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#CC6222] mb-2">The Florida Maid Platform</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-2">The Florida Maid Cleaning Service Cleaning Service Platform</h1>
             <p className="text-gray-500 mb-6">Complete cleaning service management system</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">

@@ -82,7 +82,7 @@ interface AnalyticsData {
 }
 
 export default function AnalyticsPage() {
-  useEffect(() => { document.title = 'Analytics | The Florida Maid' }, [])
+  useEffect(() => { document.title = 'Analytics | The Florida Maid Cleaning Service Cleaning Service' }, [])
 
   const [data, setData] = useState<AnalyticsData | null>(null)
   const [loading, setLoading] = useState(true)

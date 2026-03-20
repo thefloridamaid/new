@@ -21,7 +21,7 @@ interface Insights {
 }
 
 export default function GoogleProfilePage() {
-  useEffect(() => { document.title = 'Google Profile | The Florida Maid' }, [])
+  useEffect(() => { document.title = 'Google Profile | The Florida Maid Cleaning Service Cleaning Service' }, [])
 
   const [connected, setConnected] = useState(false)
   const [loading, setLoading] = useState(true)

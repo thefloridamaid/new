@@ -37,7 +37,7 @@ export default function MarketingFooter() {
     <footer className="bg-[#CC6222] text-white">
       {/* Main footer brand */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-8">
-        <h2 className="font-[family-name:var(--font-bebas)] text-white text-3xl md:text-4xl tracking-wide text-center mb-2">The Florida Maid</h2>
+        <h2 className="font-[family-name:var(--font-bebas)] text-white text-3xl md:text-4xl tracking-wide text-center mb-2">The Florida Maid Cleaning Service Cleaning Service</h2>
         <div className="w-16 h-[2px] bg-[#34D399] mx-auto mb-12" />
       </div>
 
@@ -105,7 +105,7 @@ export default function MarketingFooter() {
             <Link href="/legal" className="hover:text-white transition-colors">Legal</Link>
             <Link href="/do-not-share-policy" className="hover:text-white transition-colors">Do Not Share</Link>
           </div>
-          <p className="text-xs text-white/80">&copy; {new Date().getFullYear()} The Florida Maid &middot; <a href="tel:9547103636" className="text-[#34D399] hover:text-white">(954) 710-3636</a> &middot; Florida Web Design by{' '}<a href="https://www.consortiumnyc.com/" target="_blank" rel="noopener noreferrer" className="text-[#34D399] font-semibold hover:text-white underline underline-offset-2">Consortium NYC</a></p>
+          <p className="text-xs text-white/80">&copy; {new Date().getFullYear()} The Florida Maid Cleaning Service &middot; <a href="tel:9547103636" className="text-[#34D399] hover:text-white">(954) 710-3636</a> &middot; Florida Web Design by{' '}<a href="https://www.consortiumnyc.com/" target="_blank" rel="noopener noreferrer" className="text-[#34D399] font-semibold hover:text-white underline underline-offset-2">Consortium NYC</a></p>
         </div>
       </div>
     </footer>

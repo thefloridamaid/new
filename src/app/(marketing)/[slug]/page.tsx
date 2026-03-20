@@ -30,13 +30,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (area) {
     const content = areaContent(area)
     const url = `https://www.thefloridamaid.com/${slug}`
-    const title = `${area.name} Maid Service & House Cleaning From $49/hr | The Florida Maid`
+    const title = `${area.name} Maid Service & House Cleaning From $49/hr | The Florida Maid Cleaning Service`
     const description = `Professional house cleaning in ${area.name} from $49/hr. Deep cleaning, weekly maid service, move-in/out & more. Licensed, insured, 5.0★ Google. (954) 710-3636`
     return {
       title: { absolute: title },
       description,
       alternates: { canonical: url },
-      openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid', locale: 'en_US' },
+      openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid Cleaning Service Cleaning Service', locale: 'en_US' },
       twitter: { card: 'summary_large_image', title, description },
       other: { 'geo.region': `US-${area.state}`, 'geo.placename': area.name, 'geo.position': `${area.lat};${area.lng}`, 'ICBM': `${area.lat}, ${area.lng}` },
     }
@@ -47,13 +47,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const neighborhoodArea = getArea(neighborhood.area)!
     const content = neighborhoodContent(neighborhood, neighborhoodArea)
     const url = `https://www.thefloridamaid.com/${slug}`
-    const title = `${neighborhood.name} Maid Service & House Cleaning From $49/hr | The Florida Maid`
+    const title = `${neighborhood.name} Maid Service & House Cleaning From $49/hr | The Florida Maid Cleaning Service`
     const description = `Professional cleaning in ${neighborhood.name}, ${neighborhoodArea.name}. Serving ${neighborhood.housing_types.slice(0, 2).join(', ')} near ${neighborhood.landmarks[0]}. From $49/hr. 5.0★ Google. (954) 710-3636`
     return {
       title: { absolute: title },
       description,
       alternates: { canonical: url },
-      openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid', locale: 'en_US' },
+      openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid Cleaning Service Cleaning Service', locale: 'en_US' },
       twitter: { card: 'summary_large_image', title, description },
       other: { 'geo.region': `US-${neighborhoodArea.state}`, 'geo.placename': neighborhood.name, 'geo.position': `${neighborhood.lat};${neighborhood.lng}`, 'ICBM': `${neighborhood.lat}, ${neighborhood.lng}` },
     }

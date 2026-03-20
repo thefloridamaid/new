@@ -5,8 +5,8 @@ import JsonLd from '@/components/marketing/JsonLd'
 import Breadcrumbs from '@/components/marketing/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions | The Florida Maid',
-  description: 'Terms & conditions for The Florida Maid — cancellation policy, payment terms, scheduling & service agreement. Cleaning from $49/hr. (954) 710-3636',
+  title: 'Terms & Conditions | The Florida Maid Cleaning Service Cleaning Service',
+  description: 'Terms & conditions for The Florida Maid Cleaning Service Cleaning Service — cancellation policy, payment terms, scheduling & service agreement. Cleaning from $49/hr. (954) 710-3636',
   alternates: { canonical: 'https://www.thefloridamaid.com/terms-conditions' },
 }
 
@@ -21,7 +21,7 @@ export default function TermsPage() {
       <section className="bg-gradient-to-b from-[#CC6222] to-[#CC6222] py-16 md:py-20">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <h1 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-white tracking-wide">Terms &amp; Conditions</h1>
-          <p className="text-white mt-3">Service agreement for The Florida Maid</p>
+          <p className="text-white mt-3">Service agreement for The Florida Maid Cleaning Service</p>
         </div>
       </section>
 
@@ -34,7 +34,7 @@ export default function TermsPage() {
           <div>
             <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">Service Agreement</h2>
             <p className="text-gray-600 leading-relaxed">
-              By booking a cleaning service with The Florida Maid, you agree to the following terms and conditions. We reserve the right to update these terms at any time. Continued use of our services constitutes acceptance of any changes.
+              By booking a cleaning service with The Florida Maid Cleaning Service, you agree to the following terms and conditions. We reserve the right to update these terms at any time. Continued use of our services constitutes acceptance of any changes.
             </p>
           </div>
 
@@ -117,7 +117,7 @@ export default function TermsPage() {
             <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-4">Liability &amp; Insurance</h2>
             <ul className="space-y-2.5">
               {[
-                'The Florida Maid carries full general liability insurance and bonding.',
+                'The Florida Maid Cleaning Service carries full general liability insurance and bonding.',
                 'Any damage claims must be reported within 24 hours of service completion.',
                 'We are not responsible for pre-existing damage, normal wear and tear, or items left in accessible areas during cleaning.',
                 'Clients are responsible for securing valuables, fragile items, and personal belongings before the cleaning begins.',

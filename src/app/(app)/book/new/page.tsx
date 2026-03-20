@@ -151,7 +151,7 @@ function BookingFormContent() {
     <div className="min-h-screen bg-gray-50">
       <header className="bg-[#CC6222] text-white py-4 px-6">
         <div className="max-w-2xl mx-auto">
-          <h1 className="text-xl font-bold">The Florida Maid</h1>
+          <h1 className="text-xl font-bold">The Florida Maid Cleaning Service Cleaning Service</h1>
           <p className="text-gray-400 text-sm">Book Your Cleaning</p>
         </div>
       </header>
@@ -334,7 +334,7 @@ function BookingFormContent() {
             <div className="my-5 p-4 border border-gray-200 rounded-lg bg-gray-50">
               <label className="flex items-start gap-3 cursor-pointer text-[13px] leading-relaxed text-gray-600">
                 <input type="checkbox" name="sms_consent" required className="mt-1 min-w-[18px] min-h-[18px]" />
-                <span>By checking this box, I consent to receive transactional text messages from <strong>The Florida Maid</strong> for appointment confirmations, reminders, and customer support. Reply STOP to opt out. Reply HELP for help. Msg frequency may vary. Msg &amp; data rates may apply. <a href="https://www.thefloridamaid.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#CC6222] hover:underline">Privacy Policy</a> | <a href="https://www.thefloridamaid.com/terms-conditions" target="_blank" rel="noopener noreferrer" className="text-[#CC6222] hover:underline">Terms &amp; Conditions</a></span>
+                <span>By checking this box, I consent to receive transactional text messages from <strong>The Florida Maid Cleaning Service Cleaning Service</strong> for appointment confirmations, reminders, and customer support. Reply STOP to opt out. Reply HELP for help. Msg frequency may vary. Msg &amp; data rates may apply. <a href="https://www.thefloridamaid.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#CC6222] hover:underline">Privacy Policy</a> | <a href="https://www.thefloridamaid.com/terms-conditions" target="_blank" rel="noopener noreferrer" className="text-[#CC6222] hover:underline">Terms &amp; Conditions</a></span>
               </label>
             </div>
 
@@ -354,6 +354,6 @@ function BookingFormContent() {
 }
 
 export default function NewBookingPage() {
-  useEffect(() => { document.title = 'Book a Cleaning | The Florida Maid' }, []);
+  useEffect(() => { document.title = 'Book a Cleaning | The Florida Maid Cleaning Service Cleaning Service' }, []);
   return <Suspense fallback={<div className="min-h-screen bg-gray-50 flex items-center justify-center"><p className="text-gray-500">Loading...</p></div>}><BookingFormContent /></Suspense>
 }

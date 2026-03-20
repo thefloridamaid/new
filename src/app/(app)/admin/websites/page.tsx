@@ -14,7 +14,7 @@ interface Website {
 const ITEMS_PER_PAGE = 24
 
 export default function WebsitesPage() {
-  useEffect(() => { document.title = 'Websites | The Florida Maid' }, []);
+  useEffect(() => { document.title = 'Websites | The Florida Maid Cleaning Service Cleaning Service' }, []);
   const [websites, setWebsites] = useState<Website[]>([])
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedRegion, setSelectedRegion] = useState('all')

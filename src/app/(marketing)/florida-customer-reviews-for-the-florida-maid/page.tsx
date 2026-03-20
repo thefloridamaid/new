@@ -29,18 +29,18 @@ const reviews = [
   { name: 'Courtney Gamble', time: '6 months ago', text: "Best cleaning service I've used in the 20 years I've lived in Florida! Consistently efficient, thorough...", initial: 'C', color: 'bg-purple-400' },
   { name: 'Shilpa Ray', time: '6 months ago', text: 'Perfect for post move deep cleaning. Appliances were spotless. Looked brand new.', initial: 'S', color: 'bg-blue-400' },
   { name: 'Greg Farr', time: '6 months ago', text: 'The very best service every time, amazing!!', initial: 'G', color: 'bg-indigo-400' },
-  { name: 'Maria Lina', time: '6 months ago', text: 'The Florida Maid Cleaning Service is so efficient and professional! I know I can always count on them.', initial: 'M', color: 'bg-rose-400' },
+  { name: 'Maria Lina', time: '6 months ago', text: 'The Florida Maid Cleaning Service Cleaning Service is so efficient and professional! I know I can always count on them.', initial: 'M', color: 'bg-rose-400' },
   { name: 'Timothy Wojcik', time: '7 months ago', text: 'Excellent service and a great price! Prompt and thorough, would highly recommend!', initial: 'T', color: 'bg-amber-500' },
-  { name: 'Jenni Martinez', time: '7 months ago', text: '5 Stars \u2013 Absolutely the Best Cleaning Service in Florida! I gotta say, The Florida Maid is truly the best.', initial: 'J', color: 'bg-emerald-500' },
-  { name: 'Jenna M', time: '7 months ago', text: 'After trying three different cleaning companies in Florida, The Florida Maid is hands down the most affordable and thorough.', initial: 'J', color: 'bg-sky-500' },
+  { name: 'Jenni Martinez', time: '7 months ago', text: '5 Stars \u2013 Absolutely the Best Cleaning Service in Florida! I gotta say, The Florida Maid Cleaning Service is truly the best.', initial: 'J', color: 'bg-emerald-500' },
+  { name: 'Jenna M', time: '7 months ago', text: 'After trying three different cleaning companies in Florida, The Florida Maid Cleaning Service is hands down the most affordable and thorough.', initial: 'J', color: 'bg-sky-500' },
 ]
 
 export const metadata: Metadata = {
-  title: 'Florida Maid Service Reviews | 5-Star Rated House Cleaning Florida | The Florida Maid',
+  title: 'Florida Maid Service Reviews | 5-Star Rated House Cleaning Florida | The Florida Maid Cleaning Service Cleaning Service',
   description: '27 verified 5-star Google reviews from real Florida cleaning clients. Background-checked cleaners, from $49/hr, no contracts. Miami, Tampa, Orlando, Fort Lauderdale & Jacksonville. (954) 710-3636',
   alternates: { canonical: 'https://www.thefloridamaid.com/florida-customer-reviews-for-the-florida-maid' },
   openGraph: {
-    title: 'Florida Maid Service Reviews | 5-Star Rated House Cleaning | The Florida Maid',
+    title: 'Florida Maid Service Reviews | 5-Star Rated House Cleaning | The Florida Maid Cleaning Service Cleaning Service',
     description: '27 verified 5-star Google reviews from real Florida cleaning clients. Professional maid service across Miami, Fort Lauderdale, West Palm Beach, Tampa & Orlando.',
     url: 'https://www.thefloridamaid.com/florida-customer-reviews-for-the-florida-maid',
   },
@@ -62,7 +62,7 @@ export default function ReviewsPage() {
       <section className="bg-gradient-to-b from-[#CC6222] to-[#CC6222] py-20 md:py-28">
         <div className="max-w-5xl mx-auto px-4">
           <h1 className="font-[family-name:var(--font-bebas)] text-4xl md:text-6xl lg:text-7xl text-white tracking-wide leading-[0.95] mb-6">
-            Florida House Cleaning Reviews — What Real Clients Say About The Florida Maid
+            Florida House Cleaning Reviews — What Real Clients Say About The Florida Maid Cleaning Service
           </h1>
           <p className="text-white text-lg max-w-2xl leading-relaxed">
             27 verified 5-star Google reviews from real home cleaning, deep cleaning, and maid service clients across Miami, Tampa, Orlando, Fort Lauderdale &amp; Jacksonville. No fake reviews, no cherry-picking — just honest feedback from Floridians who trust us with their homes.

@@ -21,7 +21,7 @@ function ClientPortalContent() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    document.title = 'Client Portal | The Florida Maid'
+    document.title = 'Client Portal | The Florida Maid Cleaning Service Cleaning Service'
     const ref = searchParams.get('ref')
     if (ref) {
       router.replace('/book/new?ref=' + ref)

@@ -8,7 +8,7 @@ interface TimeSlot {
 }
 
 export default function ReschedulePage() {
-  useEffect(() => { document.title = 'Reschedule | The Florida Maid' }, []);
+  useEffect(() => { document.title = 'Reschedule | The Florida Maid Cleaning Service Cleaning Service' }, []);
   const router = useRouter()
   const params = useParams()
   const bookingId = params.id as string
@@ -109,7 +109,7 @@ export default function ReschedulePage() {
           <div className="flex items-center gap-4">
             <button onClick={() => router.back()} className="text-white">&larr;</button>
             <div>
-              <p className="text-sm opacity-80">The Florida Maid</p>
+              <p className="text-sm opacity-80">The Florida Maid Cleaning Service Cleaning Service</p>
               <h1 className="text-xl font-semibold">Reschedule</h1>
             </div>
           </div>
@@ -140,7 +140,7 @@ export default function ReschedulePage() {
         <div className="flex items-center gap-4">
           <button onClick={() => router.back()} className="text-white">&larr;</button>
           <div>
-            <p className="text-sm opacity-80">The Florida Maid</p>
+            <p className="text-sm opacity-80">The Florida Maid Cleaning Service Cleaning Service</p>
             <h1 className="text-xl font-semibold">Reschedule</h1>
           </div>
         </div>

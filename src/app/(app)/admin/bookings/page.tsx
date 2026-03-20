@@ -50,7 +50,7 @@ interface Referrer { id: string; name: string; ref_code: string; active: boolean
 
 function BookingsPage() {
   const searchParams = useSearchParams()
-  useEffect(() => { document.title = 'Bookings | The Florida Maid' }, []);
+  useEffect(() => { document.title = 'Bookings | The Florida Maid Cleaning Service Cleaning Service' }, []);
   const formatPhone = (value: string) => {
     const cleaned = value.replace(/\D/g, '')
     if (cleaned.length <= 3) return cleaned

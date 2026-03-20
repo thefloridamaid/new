@@ -8,11 +8,11 @@ import ServiceGrid from '@/components/marketing/ServiceGrid'
 import CTABlock from '@/components/marketing/CTABlock'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Florida Cleaning Services — Deep Clean, Maid Service, Move-In/Out & More | The Florida Maid' },
-  description: 'All cleaning services by The Florida Maid from $49/hr. Deep cleaning, weekly maid service, move-in/out, post-construction, Airbnb, same-day. Miami, Tampa, Orlando, Fort Lauderdale & Jacksonville.',
+  title: { absolute: 'Florida Cleaning Services — Deep Clean, Maid Service, Move-In/Out & More | The Florida Maid Cleaning Service Cleaning Service' },
+  description: 'All cleaning services by The Florida Maid Cleaning Service Cleaning Service from $49/hr. Deep cleaning, weekly maid service, move-in/out, post-construction, Airbnb, same-day. Miami, Tampa, Orlando, Fort Lauderdale & Jacksonville.',
   alternates: { canonical: 'https://www.thefloridamaid.com/florida-maid-service-services-offered-by-the-florida-maid' },
   openGraph: {
-    title: 'Florida Cleaning Services — Deep Clean, Maid Service & More | The Florida Maid',
+    title: 'Florida Cleaning Services — Deep Clean, Maid Service & More | The Florida Maid Cleaning Service Cleaning Service',
     description: 'Professional cleaning services from $49/hr across Miami, Tampa, Orlando, Fort Lauderdale Florida Jacksonville. Licensed, insured, 5-star rated.',
     url: 'https://www.thefloridamaid.com/florida-maid-service-services-offered-by-the-florida-maid',
   },
@@ -130,7 +130,7 @@ export default function ServicesIndexPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div>
-            <h2 className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-3">Why Floridians Choose The Florida Maid</h2>
+            <h2 className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-3">Why Floridians Choose The Florida Maid Cleaning Service Cleaning Service</h2>
             <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#CC6222] tracking-wide leading-tight mb-6">Same Professional Standards — Every Service, Every Visit</p>
             <div className="w-12 h-[2px] bg-[#34D399] mb-6" />
             <p className="text-gray-600 leading-relaxed mb-5">

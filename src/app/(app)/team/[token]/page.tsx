@@ -24,7 +24,7 @@ interface Booking {
 }
 
 export default function TeamPortalPage() {
-  useEffect(() => { document.title = 'Team Portal | The Florida Maid' }, []);
+  useEffect(() => { document.title = 'Team Portal | The Florida Maid Cleaning Service Cleaning Service' }, []);
   const params = useParams()
   const token = params.token as string
   const [booking, setBooking] = useState<Booking | null>(null)
@@ -148,7 +148,7 @@ export default function TeamPortalPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-[#CC6222] text-white p-4">
-        <p className="text-sm opacity-80">The Florida Maid</p>
+        <p className="text-sm opacity-80">The Florida Maid Cleaning Service Cleaning Service</p>
         <h1 className="text-xl font-semibold">{booking.cleaners?.name || 'Team Member'}</h1>
       </div>
 

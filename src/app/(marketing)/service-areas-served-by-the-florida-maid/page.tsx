@@ -12,7 +12,7 @@ const allNeighborhoods = AREAS.flatMap(a => getNeighborhoodsByArea(a.slug))
 const totalNeighborhoods = allNeighborhoods.length
 
 const areaFAQs = [
-  { question: 'What areas does The Florida Maid serve?', answer: `We serve ${totalNeighborhoods}+ neighborhoods across Miami-Dade, Broward, Palm Beach, Tampa Bay, and Orlando. Same rates and same quality everywhere.` },
+  { question: 'What areas does The Florida Maid Cleaning Service serve?', answer: `We serve ${totalNeighborhoods}+ neighborhoods across Miami-Dade, Broward, Palm Beach, Tampa Bay, and Orlando. Same rates and same quality everywhere.` },
   { question: 'Do you charge extra for certain neighborhoods?', answer: 'No. Our rates are the same regardless of neighborhood or area — $49/hr with your supplies, $65/hr when we bring everything. No travel fees, no surge pricing.' },
   { question: 'Are all services available in every area?', answer: 'Yes. Every service we offer — deep cleaning, regular cleaning, move-in/out, post-renovation, Airbnb, office, same-day — is available in all neighborhoods we serve.' },
   { question: 'Do you serve areas outside of these neighborhoods?', answer: 'We may. If you don\'t see your neighborhood listed, call or text (954) 710-3636 and we\'ll let you know. We\'re always expanding.' },
@@ -23,8 +23,8 @@ const areaFAQs = [
 ]
 
 const pageUrl = 'https://www.thefloridamaid.com/service-areas-served-by-the-florida-maid'
-const pageTitle = `Service Areas — ${totalNeighborhoods}+ Neighborhoods Across Florida | The Florida Maid`
-const pageDescription = `The Florida Maid serves ${totalNeighborhoods}+ neighborhoods across Miami, Tampa, Orlando, Fort Lauderdale & Jacksonville. Same rates everywhere — $49/hr. Find professional cleaning in your neighborhood. (954) 710-3636`
+const pageTitle = `Service Areas — ${totalNeighborhoods}+ Neighborhoods Across Florida | The Florida Maid Cleaning Service`
+const pageDescription = `The Florida Maid Cleaning Service serves ${totalNeighborhoods}+ neighborhoods across Miami, Tampa, Orlando, Fort Lauderdale & Jacksonville. Same rates everywhere — $49/hr. Find professional cleaning in your neighborhood. (954) 710-3636`
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     description: pageDescription,
     url: pageUrl,
     type: 'website',
-    siteName: 'The Florida Maid',
+    siteName: 'The Florida Maid Cleaning Service Cleaning Service',
     locale: 'en_US',
-    images: [{ url: 'https://www.thefloridamaid.com/icon-512.png', width: 512, height: 512, alt: 'The Florida Maid' }],
+    images: [{ url: 'https://www.thefloridamaid.com/icon-512.png', width: 512, height: 512, alt: 'The Florida Maid Cleaning Service Cleaning Service' }],
   },
   twitter: {
     card: 'summary',

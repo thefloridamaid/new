@@ -22,7 +22,7 @@ export const emailWrapper = (content: string) => `
           <tr>
             <td bgcolor="#ffffff" style="background-color: #ffffff; border-radius: 12px; padding: 40px;">
               <div style="margin: 0 0 24px 0;">
-                <a href="https://www.thefloridamaid.com"><img src="https://www.thefloridamaid.com/logo.png" alt="The Florida Maid" width="160" height="48" style="width: 160px; height: auto; display: block;" /></a>
+                <a href="https://www.thefloridamaid.com"><img src="https://www.thefloridamaid.com/logo.png" alt="The Florida Maid Cleaning Service Cleaning Service" width="160" height="48" style="width: 160px; height: auto; display: block;" /></a>
               </div>
               ${content}
             </td>
@@ -30,7 +30,7 @@ export const emailWrapper = (content: string) => `
           <tr>
             <td style="padding: 24px 0 0 0; text-align: left;">
               <p style="color: #999; font-size: 12px; margin: 0;">
-                The Florida Maid · <a href="tel:9547103636" style="color: #999;">(954) 710-3636</a>
+                The Florida Maid Cleaning Service · <a href="tel:9547103636" style="color: #999;">(954) 710-3636</a>
               </p>
             </td>
           </tr>
@@ -103,7 +103,7 @@ export function clientBookingReceivedEmail(booking: any) {
 
   const content = `
     <h1 style="font-size: 24px; font-weight: 600; color: #000; margin: 0 0 8px 0;">We received your booking request!</h1>
-    <p style="color: #666; font-size: 15px; margin: 0 0 24px 0;">Hi ${clientName}, thank you for choosing The Florida Maid. We're reviewing your request and will confirm shortly.</p>
+    <p style="color: #666; font-size: 15px; margin: 0 0 24px 0;">Hi ${clientName}, thank you for choosing The Florida Maid Cleaning Service Cleaning Service. We're reviewing your request and will confirm shortly.</p>
 
     ${infoTable(`
       ${infoRow('Date', date)}
@@ -471,7 +471,7 @@ export function referralWelcomeEmail(referrer: { name: string; ref_code: string;
   
   const content = `
     <h1 style="font-size: 24px; font-weight: 600; color: #000; margin: 0 0 8px 0;">Welcome to the team, ${firstName}!</h1>
-    <p style="color: #666; font-size: 15px; margin: 0 0 24px 0;">You're now part of The Florida Maid referral program.</p>
+    <p style="color: #666; font-size: 15px; margin: 0 0 24px 0;">You're now part of The Florida Maid Cleaning Service Cleaning Service referral program.</p>
 
     <div style="background: #f5f5f5; border-radius: 8px; padding: 24px; margin: 24px 0; text-align: left;">
       <p style="margin: 0 0 8px 0; color: #666; font-size: 14px;">Your referral code</p>
@@ -498,7 +498,7 @@ export function referralWelcomeEmail(referrer: { name: string; ref_code: string;
     </p>
   `
 
-  return { subject: `Welcome to The Florida Maid, ${firstName}!`, html: emailWrapper(content) }
+  return { subject: `Welcome to The Florida Maid Cleaning Service, ${firstName}!`, html: emailWrapper(content) }
 }
 
 export function referralCommissionEmail(referrer: any, booking: any, commission: number) {
@@ -593,8 +593,8 @@ export function cleanerWelcomeEmail(cleaner: { name: string; pin: string; phone:
   const firstName = cleaner.name.split(' ')[0]
 
   const content = `
-    <h1 style="font-size: 24px; font-weight: 600; color: #000; margin: 0;">Welcome to The Florida Maid!</h1>
-    <p style="color: #666; font-size: 14px; margin: 4px 0 24px 0;">¡Bienvenido/a a The Florida Maid!</p>
+    <h1 style="font-size: 24px; font-weight: 600; color: #000; margin: 0;">Welcome to The Florida Maid Cleaning Service!</h1>
+    <p style="color: #666; font-size: 14px; margin: 4px 0 24px 0;">¡Bienvenido/a a The Florida Maid Cleaning Service!</p>
 
     <p style="color: #444; font-size: 15px; margin: 0 0 24px 0;">Hi ${firstName} / Hola ${firstName}</p>
 

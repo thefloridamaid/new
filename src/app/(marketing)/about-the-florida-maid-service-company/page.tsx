@@ -9,20 +9,20 @@ import Breadcrumbs from '@/components/marketing/Breadcrumbs'
 import CTABlock from '@/components/marketing/CTABlock'
 
 const url = 'https://www.thefloridamaid.com/about-the-florida-maid-service-company'
-const title = 'About The Florida Maid | Affordable, Reliable Florida Cleaning Since 2018'
-const description = 'The Florida Maid is Florida\'s most trusted cleaning service — affordable rates from $49/hr, reliable background-checked cleaners, and consistent quality since 2018. Serving 150+ neighborhoods. 5.0★ Google. (954) 710-3636'
+const title = 'About The Florida Maid Cleaning Service | Affordable, Reliable Florida Cleaning Since 2018'
+const description = 'The Florida Maid Cleaning Service is Florida\'s most trusted cleaning service — affordable rates from $49/hr, reliable background-checked cleaners, and consistent quality since 2018. Serving 150+ neighborhoods. 5.0★ Google. (954) 710-3636'
 
 export const metadata: Metadata = {
   title: { absolute: title },
   description,
   alternates: { canonical: url },
-  openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid', locale: 'en_US' },
+  openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid Cleaning Service Cleaning Service', locale: 'en_US' },
   twitter: { card: 'summary_large_image', title, description },
   other: { 'geo.region': 'US-FL', 'geo.placename': 'Florida', 'geo.position': '25.7617;-80.1918', 'ICBM': '25.7617, -80.1918' },
 }
 
 const aboutFaqs = [
-  { question: 'How long has The Florida Maid been in business?', answer: 'Since 2018. We started serving Miami-Dade and have expanded to Broward, Palm Beach, Tampa Bay, and Orlando. We\'ve completed thousands of cleanings and maintain a 5.0-star Google rating.' },
+  { question: 'How long has The Florida Maid Cleaning Service been in business?', answer: 'Since 2018. We started serving Miami-Dade and have expanded to Broward, Palm Beach, Tampa Bay, and Orlando. We\'ve completed thousands of cleanings and maintain a 5.0-star Google rating.' },
   { question: 'Are your cleaners employees or contractors?', answer: 'Our cleaners are independent professionals who work exclusively with us. Every cleaner is background-checked, trained on our quality standards, and covered by our general liability insurance while working in your home.' },
   { question: 'How do you keep prices so affordable?', answer: 'We keep overhead low — no storefront, no middle-management layer, no expensive marketing budgets. We pass those savings to you. Our cleaners earn competitive pay while you get rates well below the Florida average.' },
   { question: 'What makes you different from other cleaning companies?', answer: 'Three things: consistency (same cleaner every visit for recurring clients), affordability ($49/hr is among the lowest rates in Florida for licensed, insured service), and reliability (we show up on time, every time, and we don\'t cancel).' },
@@ -56,7 +56,7 @@ export default function AboutPage() {
             Affordable. Reliable. Friendly.
           </h1>
           <p className="text-white text-lg max-w-2xl mx-auto leading-relaxed">
-            The Florida Maid has been keeping Florida homes clean since 2018. No gimmicks, no corporate nonsense — just honest, dependable cleaning from people who care.
+            The Florida Maid Cleaning Service has been keeping Florida homes clean since 2018. No gimmicks, no corporate nonsense — just honest, dependable cleaning from people who care.
           </p>
         </div>
       </section>
@@ -74,7 +74,7 @@ export default function AboutPage() {
               <p className="font-[family-name:var(--font-bebas)] text-4xl text-[#CC6222] tracking-wide leading-tight mb-6">Built on a Simple Idea: Show Up, Do Great Work, Charge Fair Prices</p>
               <div className="space-y-5 text-gray-600 leading-relaxed">
                 <p>
-                  We started The Florida Maid in 2018 because we were frustrated with the cleaning industry in Florida. Prices were inflated, quality was inconsistent, and companies treated cleaners and clients like numbers. We knew there had to be a better way.
+                  We started The Florida Maid Cleaning Service in 2018 because we were frustrated with the cleaning industry in Florida. Prices were inflated, quality was inconsistent, and companies treated cleaners and clients like numbers. We knew there had to be a better way.
                 </p>
                 <p>
                   Our approach was simple from day one: hire great people, pay them well, charge honest prices, and show up on time. No surge pricing when demand is high. No bait-and-switch quotes. No cancelling on clients because a higher-paying job came in. Just reliable, thorough cleaning from people who genuinely take pride in their work.
@@ -169,7 +169,7 @@ export default function AboutPage() {
       <section className="py-16 bg-gradient-to-b from-[#CC6222] to-[#CC6222]">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-xs font-semibold text-[#34D399]/60 tracking-[0.25em] uppercase mb-3 text-center">How We Work</h2>
-          <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-white tracking-wide text-center mb-4">The Florida Maid Difference</p>
+          <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-white tracking-wide text-center mb-4">The Florida Maid Cleaning Service Difference</p>
           <p className="text-white text-center max-w-2xl mx-auto mb-12">Here&apos;s what happens when you book with us — no surprises, no fine print.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-2xl p-7">
@@ -252,7 +252,7 @@ export default function AboutPage() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-xs font-semibold text-gray-400 tracking-[0.25em] uppercase mb-3 text-center">Common Questions</h2>
-          <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#CC6222] tracking-wide text-center mb-12">About The Florida Maid</p>
+          <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#CC6222] tracking-wide text-center mb-12">About The Florida Maid Cleaning Service</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
             {aboutFaqs.map(faq => (
               <div key={faq.question}>

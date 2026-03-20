@@ -207,7 +207,7 @@ export default function DashboardHeader({ currentPage = 'dashboard' }: Dashboard
             </svg>
           </button>
           <Link href="/admin" className="text-xl font-bold text-[#CC6222]">
-            The Florida Maid
+            The Florida Maid Cleaning Service
           </Link>
           <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (

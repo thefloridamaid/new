@@ -7,17 +7,17 @@ import Breadcrumbs from '@/components/marketing/Breadcrumbs'
 import CTABlock from '@/components/marketing/CTABlock'
 
 export const metadata: Metadata = {
-  title: 'Blog | Florida Cleaning Tips & News | The Florida Maid',
-  description: 'The Florida Maid blog — cleaning tips, guides & news for Florida residents. Home care, eco-friendly products & pro advice. Service from $49/hr. (954) 710-3636',
+  title: 'Blog | Florida Cleaning Tips & News | The Florida Maid Cleaning Service Cleaning Service',
+  description: 'The Florida Maid Cleaning Service Cleaning Service Blog — cleaning tips, guides & news for Florida residents. Home care, eco-friendly products & pro advice. Service from $49/hr. (954) 710-3636',
   alternates: { canonical: 'https://www.thefloridamaid.com/florida-maid-service-blog' },
   openGraph: {
-    title: 'Blog | The Florida Maid',
+    title: 'Blog | The Florida Maid Cleaning Service Cleaning Service',
     description: 'Expert cleaning tips and guides for Florida residents.',
     url: 'https://www.thefloridamaid.com/florida-maid-service-blog',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog | Florida Cleaning Tips & News | The Florida Maid',
+    title: 'Blog | Florida Cleaning Tips & News | The Florida Maid Cleaning Service Cleaning Service',
     description: 'Expert cleaning tips and guides for Florida residents.',
   },
 }
@@ -39,7 +39,7 @@ export default function BlogIndexPage() {
       <section className="bg-gradient-to-b from-[#CC6222] to-[#CC6222] py-16 md:py-20">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <p className="text-xs font-semibold text-[#34D399] tracking-[0.25em] uppercase mb-4">From the Pros</p>
-          <h1 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl lg:text-6xl text-white tracking-wide mb-4">The Florida Maid Blog</h1>
+          <h1 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl lg:text-6xl text-white tracking-wide mb-4">The Florida Maid Cleaning Service Cleaning Service Blog</h1>
           <p className="text-white/60 text-lg max-w-3xl mx-auto">Real cleaning advice from people who do this every day — no fluff, no stock photos, just what actually works in Florida homes.</p>
         </div>
       </section>

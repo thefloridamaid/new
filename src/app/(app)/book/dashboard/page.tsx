@@ -22,7 +22,7 @@ interface Slot {
 }
 
 export default function ClientDashboardPage() {
-  useEffect(() => { document.title = 'My Bookings | The Florida Maid' }, []);
+  useEffect(() => { document.title = 'My Bookings | The Florida Maid Cleaning Service Cleaning Service' }, []);
   const [clientName, setClientName] = useState('')
   const [clientId, setClientId] = useState('')
   const [upcomingBookings, setUpcomingBookings] = useState<Booking[]>([])
@@ -239,7 +239,7 @@ export default function ClientDashboardPage() {
       <div className="bg-[#CC6222] text-white p-4">
         <div className="flex justify-between items-center">
           <div>
-            <p className="text-sm opacity-80">The Florida Maid</p>
+            <p className="text-sm opacity-80">The Florida Maid Cleaning Service Cleaning Service</p>
             <h1 className="text-xl font-semibold">Welcome back, {clientName.split(' ')[0]}!</h1>
           </div>
           <button onClick={handleLogout} className="text-sm opacity-80 hover:opacity-100">

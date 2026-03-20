@@ -115,7 +115,7 @@ const EXPENSE_CATEGORIES = [
 ]
 
 export default function FinancePage() {
-  useEffect(() => { document.title = 'Finance | The Florida Maid' }, [])
+  useEffect(() => { document.title = 'Finance | The Florida Maid Cleaning Service Cleaning Service' }, [])
 
   const [summary, setSummary] = useState<FinanceSummary | null>(null)
   const [expenses, setExpenses] = useState<Expense[]>([])
