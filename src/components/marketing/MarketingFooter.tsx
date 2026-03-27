@@ -108,6 +108,17 @@ export default function MarketingFooter() {
           <p className="text-xs text-white/80">&copy; {new Date().getFullYear()} The Florida Maid Cleaning Service &middot; <a href="tel:9547103636" className="text-[#34D399] hover:text-white">(954) 710-3636</a> &middot; Florida Web Design by{' '}<a href="https://www.consortiumnyc.com/" target="_blank" rel="noopener noreferrer" className="text-[#34D399] font-semibold hover:text-white underline underline-offset-2">Consortium NYC</a></p>
         </div>
       </div>
+
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-center">
+          <p className="text-[11px] text-white/50">
+            Built and managed by{' '}
+            <a href="https://www.fullloopcrm.com/" target="_blank" rel="noopener noreferrer" className="text-[#34D399]/70 hover:text-[#34D399] font-semibold underline underline-offset-2">
+              Full Loop CRM
+            </a>
+          </p>
+        </div>
+      </div>
     </footer>
   )
 }
