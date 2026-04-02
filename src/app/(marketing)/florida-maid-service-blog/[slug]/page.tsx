@@ -8,10 +8,6 @@ import Breadcrumbs from '@/components/marketing/Breadcrumbs'
 import CTABlock from '@/components/marketing/CTABlock'
 
 
-export async function generateStaticParams() {
-  return getAllBlogSlugs().map(slug => ({ slug }))
-}
-
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
   const post = getBlogPost(slug)

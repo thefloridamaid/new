@@ -120,14 +120,10 @@ function jobPostingSchema(region: string, locations: string) {
       },
     },
     applicantLocationRequirements: {
-      '@type': 'State',
-      name: 'Florida',
-      sameAs: 'https://en.wikipedia.org/wiki/Florida',
+      '@type': 'Country',
+      name: 'US',
     },
-    educationRequirements: {
-      '@type': 'EducationalOccupationalCredential',
-      credentialCategory: 'high school',
-    },
+    educationRequirements: 'No formal education required',
     directApply: true,
     industry: 'Cleaning Services',
     occupationalCategory: '37-2012.00',

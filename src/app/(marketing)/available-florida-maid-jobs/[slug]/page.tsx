@@ -10,9 +10,6 @@ import Breadcrumbs from '@/components/marketing/Breadcrumbs'
 // Revalidate every 3 days so datePosted stays fresh in Google Jobs
 export const revalidate = 259200
 
-export async function generateStaticParams() {
-  return ALL_NEIGHBORHOODS.map(n => ({ slug: n.slug }))
-}
 
 function getNeighborhood(slug: string): Neighborhood | undefined {
   return ALL_NEIGHBORHOODS.find(n => n.slug === slug)
@@ -95,14 +92,10 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
       value: { '@type': 'QuantitativeValue', value: 30, minValue: 30, maxValue: 75, unitText: 'HOUR' },
     },
     applicantLocationRequirements: {
-      '@type': 'State',
-      name: 'Florida',
-      sameAs: 'https://en.wikipedia.org/wiki/Florida',
+      '@type': 'Country',
+      name: 'US',
     },
-    educationRequirements: {
-      '@type': 'EducationalOccupationalCredential',
-      credentialCategory: 'high school',
-    },
+    educationRequirements: 'No formal education required',
     directApply: true,
     industry: 'Cleaning Services',
     occupationalCategory: '37-2012.00',

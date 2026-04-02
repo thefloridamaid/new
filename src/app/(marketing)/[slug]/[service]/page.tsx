@@ -19,11 +19,6 @@ interface Props {
   params: Promise<{ slug: string; service: string }>
 }
 
-export async function generateStaticParams() {
-  return ALL_NEIGHBORHOODS.flatMap(n =>
-    SERVICES.map(s => ({ slug: n.urlSlug, service: s.slug }))
-  )
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug, service: serviceSlug } = await params
