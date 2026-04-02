@@ -92,10 +92,14 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
       value: { '@type': 'QuantitativeValue', value: 30, minValue: 30, maxValue: 75, unitText: 'HOUR' },
     },
     applicantLocationRequirements: {
-      '@type': 'Country',
-      name: 'US',
+      '@type': 'State',
+      name: 'Florida',
+      sameAs: 'https://en.wikipedia.org/wiki/Florida',
     },
-    educationRequirements: 'No formal education required',
+    educationRequirements: {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'high school',
+    },
     directApply: true,
     industry: 'Cleaning Services',
     occupationalCategory: '37-2012.00',
