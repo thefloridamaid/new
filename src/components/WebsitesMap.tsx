@@ -73,7 +73,7 @@ export default function WebsitesMap({ websites }: WebsitesMapProps) {
       if (!window.L || !mapRef.current || mapInstanceRef.current) return
 
       // Create map
-      const map = window.L.map(mapRef.current).setView([27.99, -81.76], 7)
+      const map = window.L.map(mapRef.current).setView([27.99, -81.76], 10)
 
       // Add OpenStreetMap tiles
       window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -160,8 +160,8 @@ export default function WebsitesMap({ websites }: WebsitesMapProps) {
     if (bounds.length > 0) {
       map.fitBounds(bounds, { padding: [50, 50] })
     } else {
-      // If no markers, reset to Florida
-      map.setView([27.99, -81.76], 7)
+      // If no markers, reset to NYC
+      map.setView([27.99, -81.76], 10)
     }
   }, [websites]) // Update whenever websites change
 

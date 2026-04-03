@@ -21,7 +21,10 @@ interface Client {
   do_not_service: boolean
   email_marketing_opt_out: boolean
   sms_marketing_opt_out: boolean
+  pin: string | null
   status: string | null
+  pet_name: string | null
+  pet_type: string | null
 }
 
 interface Referrer {
@@ -56,7 +59,9 @@ export default function ClientsPage() {
     address: '',
     unit: '',
     notes: '',
-    referrer_id: ''
+    referrer_id: '',
+    pet_name: '',
+    pet_type: ''
   })
   const [addressChanged, setAddressChanged] = useState(false)
 
@@ -114,6 +119,8 @@ export default function ClientsPage() {
           ...(!editingClient || addressChanged ? { address: fullAddress } : {}),
           notes: form.notes,
           referrer_id: form.referrer_id || null,
+          pet_name: form.pet_name || null,
+          pet_type: form.pet_type || null,
           ...(editingClient && { do_not_service: editingClient.do_not_service })
         })
       })
@@ -121,7 +128,7 @@ export default function ClientsPage() {
       if (res.ok) {
         setShowAddModal(false)
         setEditingClient(null)
-        setForm({ name: '', email: '', phone: '', address: '', unit: '', notes: '', referrer_id: '' })
+        setForm({ name: '', email: '', phone: '', address: '', unit: '', notes: '', referrer_id: '', pet_name: '', pet_type: '' })
         setAddressChanged(false)
         fetchClients()
       } else {
@@ -142,7 +149,7 @@ export default function ClientsPage() {
       if (res.ok) {
         setShowAddModal(false)
         setEditingClient(null)
-        setForm({ name: '', email: '', phone: '', address: '', unit: '', notes: '', referrer_id: '' })
+        setForm({ name: '', email: '', phone: '', address: '', unit: '', notes: '', referrer_id: '', pet_name: '', pet_type: '' })
         setAddressChanged(false)
         fetchClients()
       } else {
@@ -168,7 +175,9 @@ export default function ClientsPage() {
       address: extractedUnit ? baseAddress : addr,
       unit: extractedUnit,
       notes: client.notes || '',
-      referrer_id: client.referrer_id || ''
+      referrer_id: client.referrer_id || '',
+      pet_name: client.pet_name || '',
+      pet_type: client.pet_type || ''
     })
     setAddressChanged(false)
     setShowAddModal(true)
@@ -177,7 +186,7 @@ export default function ClientsPage() {
   const closeModal = () => {
     setShowAddModal(false)
     setEditingClient(null)
-    setForm({ name: '', email: '', phone: '', address: '', unit: '', notes: '', referrer_id: '' })
+    setForm({ name: '', email: '', phone: '', address: '', unit: '', notes: '', referrer_id: '', pet_name: '', pet_type: '' })
     setAddressChanged(false)
   }
 
@@ -199,7 +208,7 @@ export default function ClientsPage() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'potential': return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-amber-50 text-amber-700 rounded-full text-[11px] font-medium border border-amber-200"><span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Potential</span>
-      case 'new': return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-[#34D399]/20 text-white rounded-full text-[11px] font-medium border border-[#34D399]/40"><span className="w-1.5 h-1.5 rounded-full bg-[#34D399]"></span>New</span>
+      case 'new': return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-[#A8F0DC]/20 text-[#1E2A4A] rounded-full text-[11px] font-medium border border-[#A8F0DC]/40"><span className="w-1.5 h-1.5 rounded-full bg-[#A8F0DC]"></span>New</span>
       case 'active': return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-green-50 text-green-700 rounded-full text-[11px] font-medium border border-green-200"><span className="w-1.5 h-1.5 rounded-full bg-green-400"></span>Active</span>
       case 'inactive': return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-gray-50 text-gray-500 rounded-full text-[11px] font-medium border border-gray-200"><span className="w-1.5 h-1.5 rounded-full bg-gray-300"></span>Inactive</span>
       default: return null
@@ -256,28 +265,38 @@ export default function ClientsPage() {
         <div className="flex justify-between items-start mb-2">
           <div>
             <h2 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">&#128100; CLIENTS</h2>
-            <p className="text-2xl font-bold text-[#CC6222]">{clients.length} <span className="text-base font-normal text-gray-400">total clients</span></p>
+            <p className="text-2xl font-bold text-[#1E2A4A]">{clients.length} <span className="text-base font-normal text-gray-400">total clients</span></p>
           </div>
-          <button onClick={() => setShowAddModal(true)} className="px-5 py-2.5 bg-[#CC6222] text-white rounded-xl hover:bg-[#CC6222]/90 font-medium shadow-sm transition-all hover:shadow-md">+ Add Client</button>
+          <div className="flex gap-2">
+            <button onClick={() => {
+              const rows = filteredClients.map(c => [c.name, c.email || '', c.phone || '', c.address || '', getClientStatus(c), c.totalBookings || 0, c.totalSpent ? '$' + (c.totalSpent / 100).toFixed(0) : '$0'].join(','))
+              const csv = 'Name,Email,Phone,Address,Status,Bookings,Total Spent\n' + rows.join('\n')
+              const blob = new Blob([csv], { type: 'text/csv' })
+              const url = URL.createObjectURL(blob)
+              const a = document.createElement('a'); a.href = url; a.download = `clients-${new Date().toISOString().split('T')[0]}.csv`; a.click()
+              URL.revokeObjectURL(url)
+            }} className="px-4 py-2.5 border border-gray-300 text-[#1E2A4A] rounded-xl hover:bg-gray-50 font-medium text-sm transition-colors">Export CSV</button>
+            <button onClick={() => setShowAddModal(true)} className="px-5 py-2.5 bg-[#1E2A4A] text-white rounded-xl hover:bg-[#1E2A4A]/90 font-medium shadow-sm transition-all hover:shadow-md">+ Add Client</button>
+          </div>
         </div>
         <div className="text-sm text-gray-400 mb-6">
-          Client portal: <a href="https://www.thefloridamaid.com/clients" target="_blank" className="text-[#CC6222]/70 hover:underline py-2 inline-block">thefloridamaid.com/clients</a> ·
-          New booking: <a href="https://www.thefloridamaid.com/clients/new" target="_blank" className="text-[#CC6222]/70 hover:underline ml-1 py-2 inline-block">thefloridamaid.com/clients/new</a> ·
-          Collect info: <a href="https://www.thefloridamaid.com/clients/collect" target="_blank" className="text-[#CC6222]/70 hover:underline ml-1 py-2 inline-block">thefloridamaid.com/clients/collect</a>
+          Client portal: <a href="https://www.thefloridamaid.com/clients" target="_blank" className="text-[#1E2A4A]/70 hover:underline py-2 inline-block">thefloridamaid.com/clients</a> ·
+          New booking: <a href="https://www.thefloridamaid.com/clients/new" target="_blank" className="text-[#1E2A4A]/70 hover:underline ml-1 py-2 inline-block">thefloridamaid.com/clients/new</a> ·
+          Collect info: <a href="https://www.thefloridamaid.com/clients/collect" target="_blank" className="text-[#1E2A4A]/70 hover:underline ml-1 py-2 inline-block">thefloridamaid.com/clients/collect</a>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3 mb-6">
-          <button onClick={() => setFilter('all')} className={`p-4 rounded-xl text-left transition-all hover:shadow-md ${filter === 'all' ? 'ring-2 ring-[#CC6222] shadow-md' : 'shadow-sm'} bg-gray-50`}>
+          <button onClick={() => setFilter('all')} className={`p-4 rounded-xl text-left transition-all hover:shadow-md ${filter === 'all' ? 'ring-2 ring-[#1E2A4A] shadow-md' : 'shadow-sm'} bg-gray-50`}>
             <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Total</p>
-            <p className="text-2xl font-bold text-[#CC6222]">{stats.total}</p>
+            <p className="text-2xl font-bold text-[#1E2A4A]">{stats.total}</p>
           </button>
           <button onClick={() => setFilter('potential')} className={`p-4 rounded-xl text-left transition-all hover:shadow-md ${filter === 'potential' ? 'ring-2 ring-amber-500 shadow-md' : 'shadow-sm'} bg-amber-50`}>
             <p className="text-xs font-semibold uppercase tracking-wider text-amber-500 mb-1">Potential</p>
             <p className="text-2xl font-bold text-amber-700">{stats.potential}</p>
           </button>
-          <button onClick={() => setFilter('new')} className={`p-4 rounded-xl text-left transition-all hover:shadow-md ${filter === 'new' ? 'ring-2 ring-[#CC6222] shadow-md' : 'shadow-sm'} bg-[#34D399]/20`}>
-            <p className="text-xs font-semibold uppercase tracking-wider text-[#CC6222]/60 mb-1">New</p>
-            <p className="text-2xl font-bold text-[#CC6222]">{stats.new}</p>
+          <button onClick={() => setFilter('new')} className={`p-4 rounded-xl text-left transition-all hover:shadow-md ${filter === 'new' ? 'ring-2 ring-[#1E2A4A] shadow-md' : 'shadow-sm'} bg-[#A8F0DC]/20`}>
+            <p className="text-xs font-semibold uppercase tracking-wider text-[#1E2A4A]/60 mb-1">New</p>
+            <p className="text-2xl font-bold text-[#1E2A4A]">{stats.new}</p>
           </button>
           <button onClick={() => setFilter('active')} className={`p-4 rounded-xl text-left transition-all hover:shadow-md ${filter === 'active' ? 'ring-2 ring-green-500 shadow-md' : 'shadow-sm'} bg-green-50`}>
             <p className="text-xs font-semibold uppercase tracking-wider text-green-500 mb-1">Active</p>
@@ -310,9 +329,9 @@ export default function ClientsPage() {
         <div className="flex gap-3 mb-6">
           <div className="flex-1 relative">
             <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-            <input type="text" placeholder="Search clients..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-[#CC6222] bg-white shadow-sm focus:ring-2 focus:ring-[#34D399] focus:border-transparent outline-none transition-all" />
+            <input type="text" placeholder="Search clients..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white shadow-sm focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all" />
           </div>
-          <select value={sortBy} onChange={(e) => setSortBy(e.target.value as typeof sortBy)} className="px-4 py-2.5 border border-gray-200 rounded-xl text-[#CC6222] bg-white shadow-sm focus:ring-2 focus:ring-[#34D399] focus:border-transparent outline-none transition-all">
+          <select value={sortBy} onChange={(e) => setSortBy(e.target.value as typeof sortBy)} className="px-4 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white shadow-sm focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all">
             <option value="created_at">Newest Added</option>
             <option value="name">Name A-Z</option>
             <option value="lastBooking">Last Booking</option>
@@ -321,11 +340,11 @@ export default function ClientsPage() {
           </select>
         </div>
 
-        {filter !== 'all' && <button onClick={() => setFilter('all')} className="mb-4 text-xs font-medium text-[#CC6222]/70 hover:text-[#CC6222] bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-full transition-colors">&larr; Show all clients</button>}
+        {filter !== 'all' && <button onClick={() => setFilter('all')} className="mb-4 text-xs font-medium text-[#1E2A4A]/70 hover:text-[#1E2A4A] bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-full transition-colors">&larr; Show all clients</button>}
 
         {loading ? (
           <div className="text-center py-16 text-gray-400">
-            <div className="inline-block w-6 h-6 border-2 border-gray-200 border-t-[#CC6222] rounded-full animate-spin mb-3"></div>
+            <div className="inline-block w-6 h-6 border-2 border-gray-200 border-t-[#1E2A4A] rounded-full animate-spin mb-3"></div>
             <p className="text-sm">Loading clients...</p>
           </div>
         ) : (
@@ -361,11 +380,11 @@ export default function ClientsPage() {
                         </td>
                         <td className="px-3 md:px-4 py-3.5">
                           <div className="flex items-center gap-2.5">
-                            <div className="w-8 h-8 rounded-full bg-[#CC6222] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">
+                            <div className="w-8 h-8 rounded-full bg-[#1E2A4A] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">
                               {client.name ? client.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) : '?'}
                             </div>
                             <div className="min-w-0">
-                              <p className="font-semibold text-[#CC6222] text-sm group-hover:text-[#CC6222]/80 transition-colors">{client.name}</p>
+                              <p className="font-semibold text-[#1E2A4A] text-sm group-hover:text-[#1E2A4A]/80 transition-colors">{client.name}</p>
                               <p className="text-xs text-gray-400 truncate max-w-[120px] md:max-w-[200px]">{client.address}</p>
                             </div>
                           </div>
@@ -377,7 +396,7 @@ export default function ClientsPage() {
                         <td className="px-4 py-3.5 text-sm text-gray-500 hidden lg:table-cell">
                           {formatDate(client.created_at)}
                         </td>
-                        <td className="px-3 md:px-4 py-3.5 font-semibold text-sm text-[#CC6222]">{client.totalBookings}</td>
+                        <td className="px-3 md:px-4 py-3.5 font-semibold text-sm text-[#1E2A4A]">{client.totalBookings}</td>
                         <td className="px-3 md:px-4 py-3.5 font-semibold text-green-600 text-sm">{formatMoney(client.totalSpent)}</td>
                         <td className="px-4 py-3.5 text-sm text-gray-500 hidden md:table-cell">
                           {formatDate(client.lastBooking)}
@@ -390,7 +409,7 @@ export default function ClientsPage() {
                         </td>
                         <td className="px-4 py-3.5 hidden md:table-cell" onClick={(e) => e.stopPropagation()}>
                           <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <button onClick={() => openEditModal(client)} className="text-[#CC6222]/70 hover:text-[#CC6222] text-xs font-medium px-2 py-1 rounded-lg hover:bg-gray-100 transition-colors">Edit</button>
+                            <button onClick={() => openEditModal(client)} className="text-[#1E2A4A]/70 hover:text-[#1E2A4A] text-xs font-medium px-2 py-1 rounded-lg hover:bg-gray-100 transition-colors">Edit</button>
                             <button onClick={() => { if (confirm(`Delete ${client.name}? This cannot be undone.`)) { fetch(`/api/clients/${client.id}`, { method: 'DELETE' }).then(res => { if (res.ok) fetchClients(); else res.json().then(err => alert(err.error || 'Failed to delete')) }) } }} className="text-red-500/70 hover:text-red-600 text-xs font-medium px-2 py-1 rounded-lg hover:bg-red-50 transition-colors">Delete</button>
                           </div>
                         </td>
@@ -422,14 +441,14 @@ export default function ClientsPage() {
                   <p className="text-sm text-gray-500">{mapClients.length} clients with addresses</p>
                 </div>
                 <div className="flex gap-1.5 flex-wrap">
-                  <button onClick={() => setMapFilter('all')} className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${mapFilter === 'all' ? 'bg-[#CC6222] text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+                  <button onClick={() => setMapFilter('all')} className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${mapFilter === 'all' ? 'bg-[#1E2A4A] text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
                     All <span className="opacity-70">{mapStatusCounts.all}</span>
                   </button>
                   <button onClick={() => setMapFilter('active')} className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${mapFilter === 'active' ? 'bg-green-600 text-white' : 'bg-green-50 text-green-700 hover:bg-green-100'}`}>
                     <span className="w-2 h-2 rounded-full bg-green-500 inline-block"></span> Active <span className="opacity-70">{mapStatusCounts.active}</span>
                   </button>
-                  <button onClick={() => setMapFilter('new')} className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${mapFilter === 'new' ? 'bg-[#CC6222] text-white' : 'bg-[#34D399]/20 text-white/70 hover:bg-[#34D399]/20'}`}>
-                    <span className="w-2 h-2 rounded-full bg-[#34D399] inline-block"></span> New <span className="opacity-70">{mapStatusCounts.new}</span>
+                  <button onClick={() => setMapFilter('new')} className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${mapFilter === 'new' ? 'bg-[#1E2A4A] text-white' : 'bg-[#A8F0DC]/20 text-[#1E2A4A]/70 hover:bg-[#A8F0DC]/20'}`}>
+                    <span className="w-2 h-2 rounded-full bg-[#A8F0DC] inline-block"></span> New <span className="opacity-70">{mapStatusCounts.new}</span>
                   </button>
                   <button onClick={() => setMapFilter('potential')} className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${mapFilter === 'potential' ? 'bg-amber-600 text-white' : 'bg-amber-50 text-amber-700 hover:bg-amber-100'}`}>
                     <span className="w-2 h-2 rounded-full bg-amber-500 inline-block"></span> Potential <span className="opacity-70">{mapStatusCounts.potential}</span>
@@ -476,11 +495,11 @@ export default function ClientsPage() {
                   <div className="mb-6">
                     {/* Client Identity Header */}
                     <div className="flex items-center gap-4 mb-5">
-                      <div className="w-14 h-14 rounded-full bg-[#CC6222] text-white flex items-center justify-center text-lg font-bold flex-shrink-0 shadow-md">
+                      <div className="w-14 h-14 rounded-full bg-[#1E2A4A] text-white flex items-center justify-center text-lg font-bold flex-shrink-0 shadow-md">
                         {s.name ? s.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) : '?'}
                       </div>
                       <div className="min-w-0 flex-1">
-                        <h3 className="text-lg font-bold text-[#CC6222] truncate">{s.name}</h3>
+                        <h3 className="text-lg font-bold text-[#1E2A4A] truncate">{s.name}</h3>
                         <div className="flex items-center gap-2 mt-1 flex-wrap">
                           {clientStatus && getStatusBadge(clientStatus)}
                           {s.totalBookings >= 3 && <span className="inline-flex items-center px-2.5 py-0.5 bg-purple-50 text-purple-700 rounded-full text-[11px] font-medium border border-purple-200">Recurring</span>}
@@ -492,15 +511,15 @@ export default function ClientsPage() {
                     <div className="grid grid-cols-3 gap-2.5">
                       <div className="bg-gray-50 rounded-xl p-3 text-center">
                         <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-0.5">Bookings</p>
-                        <p className="text-lg font-bold text-[#CC6222]">{s.totalBookings}</p>
+                        <p className="text-lg font-bold text-[#1E2A4A]">{s.totalBookings}</p>
                       </div>
                       <div className="bg-green-50 rounded-xl p-3 text-center">
                         <p className="text-xs font-semibold uppercase tracking-wider text-green-500 mb-0.5">Total Spent</p>
                         <p className="text-lg font-bold text-green-700">{formatMoney(s.totalSpent)}</p>
                       </div>
-                      <div className="bg-[#34D399]/20 rounded-xl p-3 text-center">
-                        <p className="text-xs font-semibold uppercase tracking-wider text-[#CC6222]/50 mb-0.5">Last Booking</p>
-                        <p className="text-sm font-semibold text-[#CC6222]">{formatDate(s.lastBooking)}</p>
+                      <div className="bg-[#A8F0DC]/20 rounded-xl p-3 text-center">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-[#1E2A4A]/50 mb-0.5">Last Booking</p>
+                        <p className="text-sm font-semibold text-[#1E2A4A]">{formatDate(s.lastBooking)}</p>
                       </div>
                     </div>
                   </div>
@@ -512,12 +531,12 @@ export default function ClientsPage() {
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Name *</label>
-                  <input type="text" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#CC6222] bg-white focus:ring-2 focus:ring-[#34D399] focus:border-transparent outline-none transition-all" placeholder="John Smith" />
+                  <input type="text" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all" placeholder="John Smith" />
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Email</label>
                   <div className="flex gap-2">
-                    <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="flex-1 px-3 py-2.5 border border-gray-200 rounded-xl text-[#CC6222] bg-white focus:ring-2 focus:ring-[#34D399] focus:border-transparent outline-none transition-all" placeholder="john@email.com" />
+                    <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="flex-1 px-3 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all" placeholder="john@email.com" />
                     {editingClient && form.email && (
                       <a href={`mailto:${form.email}`} className="px-4 py-2.5 bg-purple-50 text-purple-700 border border-purple-200 rounded-xl text-xs font-semibold hover:bg-purple-100 flex items-center transition-colors">Email</a>
                     )}
@@ -526,33 +545,45 @@ export default function ClientsPage() {
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Phone</label>
                   <div className="flex gap-2">
-                    <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })} className="flex-1 px-3 py-2.5 border border-gray-200 rounded-xl text-[#CC6222] bg-white focus:ring-2 focus:ring-[#34D399] focus:border-transparent outline-none transition-all" placeholder="954-555-1234" />
+                    <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })} className="flex-1 px-3 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all" placeholder="954-555-1234" />
                     {editingClient && form.phone && (
                       <>
                         <a href={`tel:${form.phone}`} className="px-4 py-2.5 bg-green-50 text-green-700 border border-green-200 rounded-xl text-xs font-semibold hover:bg-green-100 flex items-center transition-colors">Call</a>
-                        <a href={`sms:${form.phone}`} className="px-4 py-2.5 bg-[#34D399]/20 text-white/70 border border-[#34D399]/40 rounded-xl text-xs font-semibold hover:bg-[#34D399]/30 flex items-center transition-colors">Text</a>
+                        <a href={`sms:${form.phone}`} className="px-4 py-2.5 bg-[#A8F0DC]/20 text-[#1E2A4A]/70 border border-[#A8F0DC]/40 rounded-xl text-xs font-semibold hover:bg-[#A8F0DC]/30 flex items-center transition-colors">Text</a>
                       </>
                     )}
                   </div>
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Address</label>
-                  <AddressAutocomplete value={form.address} onChange={(val) => { setForm({ ...form, address: val }); setAddressChanged(true) }} placeholder="123 Main St, Orlando, FL 32801" />
+                  <AddressAutocomplete value={form.address} onChange={(val) => { setForm({ ...form, address: val }); setAddressChanged(true) }} placeholder="123 Main St, New York, NY 10001" />
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Unit / Apt</label>
-                  <input type="text" value={form.unit} onChange={(e) => { setForm({ ...form, unit: e.target.value }); setAddressChanged(true) }} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#CC6222] bg-white focus:ring-2 focus:ring-[#34D399] focus:border-transparent outline-none transition-all" placeholder="Apt 4B" />
+                  <input type="text" value={form.unit} onChange={(e) => { setForm({ ...form, unit: e.target.value }); setAddressChanged(true) }} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all" placeholder="Apt 4B" />
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Referred By</label>
-                  <select value={form.referrer_id} onChange={(e) => setForm({ ...form, referrer_id: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#CC6222] bg-white focus:ring-2 focus:ring-[#34D399] focus:border-transparent outline-none transition-all">
+                  <select value={form.referrer_id} onChange={(e) => setForm({ ...form, referrer_id: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all">
                     <option value="">None</option>
                     {referrers.filter(ref => ref.active).map(ref => <option key={ref.id} value={ref.id}>{ref.name} ({ref.ref_code})</option>)}
                   </select>
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Notes</label>
-                  <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#CC6222] bg-white focus:ring-2 focus:ring-[#34D399] focus:border-transparent outline-none transition-all" rows={3} placeholder="Any special instructions..." />
+                  <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all" rows={3} placeholder="Any special instructions..." />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Pet</label>
+                  <div className="grid grid-cols-2 gap-2">
+                    <input type="text" value={form.pet_name} onChange={(e) => setForm({ ...form, pet_name: e.target.value })} className="px-3 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all" placeholder="Pet name" />
+                    <select value={form.pet_type} onChange={(e) => setForm({ ...form, pet_type: e.target.value })} className="px-3 py-2.5 border border-gray-200 rounded-xl text-[#1E2A4A] bg-white focus:ring-2 focus:ring-[#A8F0DC] focus:border-transparent outline-none transition-all">
+                      <option value="">No pet</option>
+                      <option value="dog">Dog</option>
+                      <option value="cat">Cat</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
                 </div>
                 {editingClient && (
                   <div className="pt-4">
@@ -566,7 +597,7 @@ export default function ClientsPage() {
                     <div className="space-y-3">
                       <div className="flex justify-between items-center">
                         <div>
-                          <h4 className="font-medium text-[#CC6222] text-sm">Email Marketing</h4>
+                          <h4 className="font-medium text-[#1E2A4A] text-sm">Email Marketing</h4>
                           <p className="text-[11px] text-gray-400">Receive promotional emails</p>
                         </div>
                         <div
@@ -587,7 +618,7 @@ export default function ClientsPage() {
                       </div>
                       <div className="flex justify-between items-center">
                         <div>
-                          <h4 className="font-medium text-[#CC6222] text-sm">SMS Marketing</h4>
+                          <h4 className="font-medium text-[#1E2A4A] text-sm">SMS Marketing</h4>
                           <p className="text-[11px] text-gray-400">Receive promotional texts</p>
                         </div>
                         <div
@@ -606,6 +637,60 @@ export default function ClientsPage() {
                           <div className={`w-4 h-4 bg-white rounded-full absolute top-1 transition-transform ${!editingClient.sms_marketing_opt_out ? 'translate-x-5' : 'translate-x-1'}`} />
                         </div>
                       </div>
+                    </div>
+                  </div>
+                )}
+                {editingClient && (
+                  <div className="pt-4 border-t border-gray-100">
+                    <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">🔑 CLIENT PORTAL</h4>
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <p className="text-sm text-[#1E2A4A] font-medium">
+                          PIN: {editingClient.pin ? <span className="font-mono bg-gray-100 px-2 py-0.5 rounded">{editingClient.pin}</span> : <span className="text-gray-400">Not set (using last 4 of phone: {editingClient.phone?.replace(/\D/g, '').slice(-4) || '—'})</span>}
+                        </p>
+                        <p className="text-[11px] text-gray-400 mt-0.5">Client uses this PIN + email to log into thefloridamaid.com/clients</p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          const newPin = Math.floor(100000 + Math.random() * 900000).toString()
+                          await fetch(`/api/clients/${editingClient.id}`, {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ pin: newPin })
+                          })
+                          setEditingClient({ ...editingClient, pin: newPin })
+                          fetchClients()
+                        }}
+                        className="px-3 py-1.5 bg-[#A8F0DC] text-[#1E2A4A] rounded-lg text-xs font-semibold hover:bg-[#8DE8CC] transition-colors whitespace-nowrap"
+                      >
+                        {editingClient.pin ? 'Reset PIN' : 'Generate PIN'}
+                      </button>
+                      {editingClient.pin && editingClient.email && (
+                        <button
+                          type="button"
+                          onClick={async (e) => {
+                            const btn = e.currentTarget
+                            btn.disabled = true
+                            btn.textContent = 'Sending...'
+                            try {
+                              await fetch(`/api/clients/${editingClient.id}`, {
+                                method: 'PUT',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ send_pin: true })
+                              })
+                              btn.textContent = 'Sent!'
+                              setTimeout(() => { btn.textContent = 'Send PIN'; btn.disabled = false }, 2000)
+                            } catch {
+                              btn.textContent = 'Failed'
+                              setTimeout(() => { btn.textContent = 'Send PIN'; btn.disabled = false }, 2000)
+                            }
+                          }}
+                          className="px-3 py-1.5 bg-[#1E2A4A] text-white rounded-lg text-xs font-semibold hover:bg-[#2A3A5A] transition-colors whitespace-nowrap"
+                        >
+                          Send PIN
+                        </button>
+                      )}
                     </div>
                   </div>
                 )}
@@ -633,7 +718,29 @@ export default function ClientsPage() {
                   </div>
                 )}
                 {editingClient && !editingClient.do_not_service && (
-                  <a href={`/admin/bookings?new=1&client_id=${editingClient.id}`} className="block w-full text-center py-2.5 px-4 bg-[#CC6222]/5 text-[#CC6222] border border-gray-200 rounded-xl font-semibold hover:bg-[#CC6222]/10 transition-colors text-sm">+ Book for {form.name.split(' ')[0] || 'Client'}</a>
+                  <div className="flex flex-col gap-2">
+                    <a href={`/admin/bookings?new=1&client_id=${editingClient.id}`} className="block w-full text-center py-2.5 px-4 bg-[#1E2A4A]/5 text-[#1E2A4A] border border-gray-200 rounded-xl font-semibold hover:bg-[#1E2A4A]/10 transition-colors text-sm">+ Book for {form.name.split(' ')[0] || 'Client'}</a>
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        const res = await fetch('/api/deals', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ client_id: editingClient.id, source: 'client_page' }),
+                        })
+                        if (res.ok) {
+                          alert('Added to sales board! Set a follow-up on the Sales page.')
+                          window.open('/admin/sales', '_blank')
+                        } else {
+                          const err = await res.json()
+                          alert(err.error || 'Failed to add')
+                        }
+                      }}
+                      className="w-full text-center py-2.5 px-4 bg-amber-50 text-amber-700 border border-amber-200 rounded-xl font-semibold hover:bg-amber-100 transition-colors text-sm"
+                    >
+                      + Add to Sales Board
+                    </button>
+                  </div>
                 )}
                 {editingClient && (
                   <div className="pt-5 border-t border-gray-100">
@@ -647,7 +754,7 @@ export default function ClientsPage() {
                   ) : <div />}
                   <div className="flex gap-2">
                     <button type="button" onClick={closeModal} className="px-4 py-2.5 text-gray-500 hover:text-gray-700 text-sm font-medium hover:bg-gray-50 rounded-xl transition-colors">Cancel</button>
-                    <button type="submit" className="px-5 py-2.5 bg-[#CC6222] text-white rounded-xl hover:bg-[#CC6222]/90 font-semibold text-sm shadow-sm hover:shadow-md transition-all">{editingClient ? 'Update' : 'Add Client'}</button>
+                    <button type="submit" className="px-5 py-2.5 bg-[#1E2A4A] text-white rounded-xl hover:bg-[#1E2A4A]/90 font-semibold text-sm shadow-sm hover:shadow-md transition-all">{editingClient ? 'Update' : 'Add Client'}</button>
                   </div>
                 </div>
               </form>

@@ -150,7 +150,7 @@ export function smsUrgentBroadcast(booking: any): string {
   const date = new Date(booking.start_time).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
   const time = new Date(booking.start_time).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
   const payRate = booking.cleaner_pay_rate || 40
-  return `Florida Maid URGENT: $${payRate}/hr job available ${date} ${time}. Claim now: thefloridamaid.com/team\nURGENTE: Trabajo $${payRate}/hr ${date} ${time}. Reclamar: thefloridamaid.com/team${STOP_TEXT}`
+  return `The Florida Maid URGENT: $${payRate}/hr job available ${date} ${time}. Claim now: thefloridamaid.com/team\nURGENTE: Trabajo $${payRate}/hr ${date} ${time}. Reclamar: thefloridamaid.com/team${STOP_TEXT}`
 }
 
 // ============================================

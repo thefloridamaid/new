@@ -3,6 +3,9 @@
 import { useState, useEffect, useRef } from 'react'
 
 import SidePanel from '@/components/SidePanel'
+import { SERVICE_ZONES } from '@/lib/service-zones'
+import dynamic from 'next/dynamic'
+const CoverageMap = dynamic(() => import('@/components/CoverageMap'), { ssr: false })
 import AddressAutocomplete from '@/components/AddressAutocomplete'
 
 // Compress image client-side before upload (max 1200px, JPEG quality 0.8)
@@ -49,6 +52,10 @@ interface Cleaner {
   active: boolean
   priority: number | null
   photo_url: string | null
+  max_jobs_per_day?: number | null
+  service_zones?: string[]
+  has_car?: boolean
+  home_by_time?: string
   created_at?: string
 }
 
@@ -115,7 +122,11 @@ export default function CleanersPage() {
     pin: '',
     hourly_rate: 25,
     active: true,
-    photo_url: '' as string
+    photo_url: '' as string,
+    max_jobs_per_day: null as number | null,
+    service_zones: [] as string[],
+    has_car: false,
+    home_by_time: '18:00',
   })
   const [uploadingPhoto, setUploadingPhoto] = useState(false)
   const photoInputRef = useRef<HTMLInputElement>(null)
@@ -213,7 +224,11 @@ export default function CleanersPage() {
       pin: form.pin,
       hourly_rate: form.hourly_rate,
       active: form.active,
-      photo_url: form.photo_url || null
+      photo_url: form.photo_url || null,
+      max_jobs_per_day: form.max_jobs_per_day || null,
+      service_zones: form.service_zones,
+      has_car: form.has_car,
+      home_by_time: form.home_by_time,
     }
 
     let error: string | null = null
@@ -252,7 +267,7 @@ export default function CleanersPage() {
 
     setShowModal(false)
     setEditingId(null)
-    setForm({ name: '', email: '', phone: '', address: '', unit: '', working_days: [], schedule: {}, unavailable_dates: [], pin: '', hourly_rate: 25, active: true, photo_url: '' })
+    setForm({ name: '', email: '', phone: '', address: '', unit: '', working_days: [], schedule: {}, unavailable_dates: [], pin: '', hourly_rate: 25, active: true, photo_url: '', max_jobs_per_day: null, service_zones: [], has_car: false, home_by_time: '18:00' })
     setNewDateOff('')
     loadCleaners()
   }
@@ -271,7 +286,11 @@ export default function CleanersPage() {
       pin: cleaner.pin || '',
       hourly_rate: cleaner.hourly_rate || 25,
       active: cleaner.active,
-      photo_url: cleaner.photo_url || ''
+      photo_url: cleaner.photo_url || '',
+      max_jobs_per_day: cleaner.max_jobs_per_day || null,
+      service_zones: cleaner.service_zones || [],
+      has_car: cleaner.has_car || false,
+      home_by_time: cleaner.home_by_time || '18:00',
     })
     setNewDateOff('')
     setShowModal(true)
@@ -305,7 +324,9 @@ export default function CleanersPage() {
         active: true,
         working_days: [],
         schedule: {},
-        photo_url: app.photo_url || null
+        photo_url: app.photo_url || null,
+        service_zones: (app as any).service_zones || [],
+        has_car: (app as any).has_car || false,
       })
     })
 
@@ -482,44 +503,45 @@ export default function CleanersPage() {
     <>
       <main className="p-3 md:p-6">
         <div className="flex justify-between items-center mb-2">
-          <h2 className="text-2xl font-semibold text-[#CC6222]">Team</h2>
+          <h2 className="text-2xl font-semibold text-[#1E2A4A]">Team</h2>
           <button
             onClick={() => {
               setEditingId(null)
-              setForm({ name: '', email: '', phone: '', address: '', unit: '', working_days: [], schedule: {}, unavailable_dates: [], pin: generatePin(), hourly_rate: 25, active: true, photo_url: '' })
+              setForm({ name: '', email: '', phone: '', address: '', unit: '', working_days: [], schedule: {}, unavailable_dates: [], pin: generatePin(), hourly_rate: 25, active: true, photo_url: '', max_jobs_per_day: null, service_zones: [], has_car: false, home_by_time: '18:00' })
               setShowModal(true)
             }}
-            className="px-4 py-2 bg-[#CC6222] text-white rounded-lg hover:bg-[#CC6222]/90"
+            className="px-4 py-2 bg-[#1E2A4A] text-white rounded-lg hover:bg-[#1E2A4A]/90"
           >
             Add Team Member
           </button>
         </div>
         <div className="text-sm text-gray-500 mb-4">
-          Team portal: <a href="https://www.thefloridamaid.com/team" target="_blank" className="text-[#CC6222] hover:underline py-2 inline-block">thefloridamaid.com/team</a> ·
-          Client portal: <a href="https://www.thefloridamaid.com/clients" target="_blank" className="text-[#CC6222] hover:underline ml-1 py-2 inline-block">thefloridamaid.com/clients</a> ·
-          Apply form: <a href="https://www.thefloridamaid.com/apply" target="_blank" className="text-[#CC6222] hover:underline ml-1 py-2 inline-block">thefloridamaid.com/apply</a> ·
-          Ops Mgr: <a href="https://www.thefloridamaid.com/apply/virtual-operations-manager" target="_blank" className="text-[#CC6222] hover:underline ml-1 py-2 inline-block">thefloridamaid.com/apply/virtual-operations-manager</a>
+          Team portal: <a href="https://www.thefloridamaid.com/team" target="_blank" className="text-[#1E2A4A] hover:underline py-2 inline-block">thefloridamaid.com/team</a> ·
+          Client portal: <a href="https://www.thefloridamaid.com/clients" target="_blank" className="text-[#1E2A4A] hover:underline ml-1 py-2 inline-block">thefloridamaid.com/clients</a> ·
+          Apply form: <a href="https://www.thefloridamaid.com/apply" target="_blank" className="text-[#1E2A4A] hover:underline ml-1 py-2 inline-block">thefloridamaid.com/apply</a> ·
+          Ops Admin: <a href="https://www.thefloridamaid.com/apply/operations-coordinator" target="_blank" className="text-[#1E2A4A] hover:underline ml-1 py-2 inline-block">thefloridamaid.com/apply/operations-coordinator</a>
         </div>
+        <CoverageMap />
 
         {/* Tabs */}
         <div className="flex gap-4 mb-6 border-b">
           <button
             onClick={() => setActiveTab('team')}
-            className={`pb-3 px-1 ${activeTab === 'team' ? 'border-b-2 border-[#CC6222] font-semibold' : 'text-gray-500'}`}
+            className={`pb-3 px-1 ${activeTab === 'team' ? 'border-b-2 border-[#1E2A4A] font-semibold' : 'text-gray-500'}`}
           >
             Team ({cleaners.filter(c => c.active).length})
           </button>
           <button
             onClick={() => setActiveTab('applications')}
-            className={`pb-3 px-1 ${activeTab === 'applications' ? 'border-b-2 border-[#CC6222] font-semibold' : 'text-gray-500'}`}
+            className={`pb-3 px-1 ${activeTab === 'applications' ? 'border-b-2 border-[#1E2A4A] font-semibold' : 'text-gray-500'}`}
           >
             Applications {pendingApps.length > 0 && <span className="ml-1 px-2 py-0.5 bg-orange-100 text-orange-700 rounded-full text-xs">{pendingApps.length}</span>}
           </button>
           <button
             onClick={() => setActiveTab('ops-manager')}
-            className={`pb-3 px-1 ${activeTab === 'ops-manager' ? 'border-b-2 border-[#CC6222] font-semibold' : 'text-gray-500'}`}
+            className={`pb-3 px-1 ${activeTab === 'ops-manager' ? 'border-b-2 border-[#1E2A4A] font-semibold' : 'text-gray-500'}`}
           >
-            Ops Manager {mgmtApplications.filter(a => a.status === 'pending').length > 0 && <span className="ml-1 px-2 py-0.5 bg-orange-100 text-orange-700 rounded-full text-xs">{mgmtApplications.filter(a => a.status === 'pending').length}</span>}
+            Ops Admin {mgmtApplications.filter(a => a.status === 'pending').length > 0 && <span className="ml-1 px-2 py-0.5 bg-orange-100 text-orange-700 rounded-full text-xs">{mgmtApplications.filter(a => a.status === 'pending').length}</span>}
           </button>
         </div>
 
@@ -527,14 +549,14 @@ export default function CleanersPage() {
           <div className="space-y-4">
             {mgmtApplications.length === 0 ? (
               <div className="text-center py-12 text-gray-500">
-                No ops manager applications yet. Share the link: <a href="https://www.thefloridamaid.com/apply/virtual-operations-manager" className="text-[#CC6222]">thefloridamaid.com/apply/virtual-operations-manager</a>
+                No coordinator applications yet. Share the link: <a href="https://www.thefloridamaid.com/apply/operations-coordinator" className="text-[#1E2A4A]">thefloridamaid.com/apply/operations-coordinator</a>
               </div>
             ) : (
               <>
                 {mgmtApplications.filter(a => a.status === 'pending').length > 0 && (
                   <div className="bg-white rounded-lg border border-orange-200">
                     <div className="p-4 border-b bg-orange-50">
-                      <h3 className="font-semibold text-[#CC6222]">Pending Ops Manager Applications ({mgmtApplications.filter(a => a.status === 'pending').length})</h3>
+                      <h3 className="font-semibold text-[#1E2A4A]">Pending Ops Manager Applications ({mgmtApplications.filter(a => a.status === 'pending').length})</h3>
                     </div>
                     <div className="divide-y">
                       {mgmtApplications.filter(a => a.status === 'pending').map(app => (
@@ -549,7 +571,7 @@ export default function CleanersPage() {
                                 </div>
                               )}
                               <div>
-                                <p className="font-semibold text-[#CC6222]">{app.name}</p>
+                                <p className="font-semibold text-[#1E2A4A]">{app.name}</p>
                                 <p className="text-sm text-gray-600">{app.phone} · {app.email}</p>
                                 {app.location && <p className="text-sm text-gray-500">📍 {app.location}</p>}
                                 <p className="text-sm text-gray-500 mt-1">
@@ -597,7 +619,7 @@ export default function CleanersPage() {
                 {mgmtApplications.filter(a => a.status !== 'pending').length > 0 && (
                   <div className="bg-white rounded-lg border border-gray-200">
                     <div className="p-4 border-b">
-                      <h3 className="font-semibold text-[#CC6222]">Past Applications</h3>
+                      <h3 className="font-semibold text-[#1E2A4A]">Past Applications</h3>
                     </div>
                     <div className="divide-y">
                       {mgmtApplications.filter(a => a.status !== 'pending').map(app => (
@@ -609,7 +631,7 @@ export default function CleanersPage() {
                               <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 text-sm">👤</div>
                             )}
                             <div>
-                              <p className="font-medium text-[#CC6222]">{app.name}</p>
+                              <p className="font-medium text-[#1E2A4A]">{app.name}</p>
                               <p className="text-sm text-gray-500">{app.phone} · {app.email}</p>
                             </div>
                           </div>
@@ -647,7 +669,7 @@ export default function CleanersPage() {
                   onDrop={(e) => handleDrop(e, c.id)}
                   className={`bg-white rounded-xl border border-gray-200 p-5 cursor-move transition-all hover:shadow-md hover:border-gray-300 ${
                     draggedId === c.id ? 'opacity-50 scale-95' : ''
-                  } ${dragOverId === c.id ? 'border-[#34D399] bg-[#34D399]/5 shadow-md' : ''} ${!c.active ? 'opacity-60' : ''}`}
+                  } ${dragOverId === c.id ? 'border-[#A8F0DC] bg-[#A8F0DC]/5 shadow-md' : ''} ${!c.active ? 'opacity-60' : ''}`}
                 >
                   {/* Card Header: Avatar + Name + Status */}
                   <div className="flex items-start gap-3 mb-4">
@@ -658,12 +680,12 @@ export default function CleanersPage() {
                         className="w-12 h-12 rounded-full object-cover border-2 border-gray-100 flex-shrink-0"
                       />
                     ) : (
-                      <div className="w-12 h-12 rounded-full bg-[#CC6222] flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-[#1E2A4A] flex items-center justify-center flex-shrink-0">
                         <span className="text-white font-semibold text-sm">{getInitials(c.name)}</span>
                       </div>
                     )}
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-[#CC6222] text-sm truncate">{c.name}</h3>
+                      <h3 className="font-semibold text-[#1E2A4A] text-sm truncate">{c.name}</h3>
                       <div className="flex items-center gap-1.5 mt-0.5">
                         <span className={`inline-block w-2 h-2 rounded-full ${c.active ? 'bg-green-500' : 'bg-gray-400'}`} />
                         <span className={`text-xs ${c.active ? 'text-green-700' : 'text-gray-500'}`}>
@@ -681,19 +703,19 @@ export default function CleanersPage() {
                   <div className="grid grid-cols-2 gap-x-3 gap-y-2 mb-4">
                     <div>
                       <p className="text-xs uppercase tracking-wider text-gray-400 font-medium">Phone</p>
-                      <p className="text-xs text-[#CC6222] font-medium mt-0.5">{c.phone}</p>
+                      <p className="text-xs text-[#1E2A4A] font-medium mt-0.5">{c.phone}</p>
                     </div>
                     <div>
                       <p className="text-xs uppercase tracking-wider text-gray-400 font-medium">Rate</p>
-                      <p className="text-xs text-[#CC6222] font-medium mt-0.5">${(c.hourly_rate || 25).toFixed(2)}/hr</p>
+                      <p className="text-xs text-[#1E2A4A] font-medium mt-0.5">${(c.hourly_rate || 25).toFixed(2)}/hr</p>
                     </div>
                     <div>
                       <p className="text-xs uppercase tracking-wider text-gray-400 font-medium">PIN</p>
-                      <p className="text-xs text-[#CC6222] font-mono mt-0.5">{c.pin || '-'}</p>
+                      <p className="text-xs text-[#1E2A4A] font-mono mt-0.5">{c.pin || '-'}</p>
                     </div>
                     <div>
                       <p className="text-xs uppercase tracking-wider text-gray-400 font-medium">Days</p>
-                      <p className="text-xs text-[#CC6222] font-medium mt-0.5">
+                      <p className="text-xs text-[#1E2A4A] font-medium mt-0.5">
                         {getScheduleDays(c).length > 0 ? `${getScheduleDays(c).length} days/wk` : '-'}
                       </p>
                     </div>
@@ -707,7 +729,7 @@ export default function CleanersPage() {
                         <div
                           key={day}
                           className={`flex-1 text-center py-1 rounded text-xs font-medium ${
-                            isActive ? 'bg-[#CC6222] text-white' : 'bg-gray-100 text-gray-400'
+                            isActive ? 'bg-[#1E2A4A] text-white' : 'bg-gray-100 text-gray-400'
                           }`}
                           title={isActive && c.schedule?.[day] ? `${c.schedule[day]!.start} - ${c.schedule[day]!.end}` : undefined}
                         >
@@ -721,7 +743,7 @@ export default function CleanersPage() {
                   <div className="flex gap-2 border-t border-gray-100 pt-3">
                     <button
                       onClick={() => handleEdit(c)}
-                      className="flex-1 px-3 py-2.5 text-xs font-medium text-[#CC6222] bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
+                      className="flex-1 px-3 py-2.5 text-xs font-medium text-[#1E2A4A] bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
                     >
                       Edit
                     </button>
@@ -740,14 +762,14 @@ export default function CleanersPage() {
           <div className="space-y-4">
             {pendingApps.length === 0 && applications.length === 0 ? (
               <div className="text-center py-12 text-gray-500">
-                No applications yet. Share the apply link: <a href="https://www.thefloridamaid.com/apply" className="text-[#CC6222]">thefloridamaid.com/apply</a>
+                No applications yet. Share the apply link: <a href="https://www.thefloridamaid.com/apply" className="text-[#1E2A4A]">thefloridamaid.com/apply</a>
               </div>
             ) : (
               <>
                 {pendingApps.length > 0 && (
                   <div className="bg-white rounded-lg border border-orange-200">
                     <div className="p-4 border-b bg-orange-50">
-                      <h3 className="font-semibold text-[#CC6222]">Pending Applications ({pendingApps.length})</h3>
+                      <h3 className="font-semibold text-[#1E2A4A]">Pending Applications ({pendingApps.length})</h3>
                     </div>
                     <div className="divide-y">
                       {pendingApps.map(app => (
@@ -762,7 +784,7 @@ export default function CleanersPage() {
                                 </div>
                               )}
                             <div>
-                              <p className="font-semibold text-[#CC6222]">{app.name}</p>
+                              <p className="font-semibold text-[#1E2A4A]">{app.name}</p>
                               <p className="text-sm text-gray-600">{app.phone} · {app.email || 'No email'}</p>
                               {app.address && <p className="text-sm text-gray-500">📍 {app.address}</p>}
                               <p className="text-sm text-gray-500 mt-1">
@@ -803,13 +825,13 @@ export default function CleanersPage() {
                 {applications.filter(a => a.status !== 'pending').length > 0 && (
                   <div className="bg-white rounded-lg border border-gray-200">
                     <div className="p-4 border-b">
-                      <h3 className="font-semibold text-[#CC6222]">Past Applications</h3>
+                      <h3 className="font-semibold text-[#1E2A4A]">Past Applications</h3>
                     </div>
                     <div className="divide-y">
                       {applications.filter(a => a.status !== 'pending').map(app => (
                         <div key={app.id} className="p-4 flex justify-between items-center">
                           <div>
-                            <p className="font-medium text-[#CC6222]">{app.name}</p>
+                            <p className="font-medium text-[#1E2A4A]">{app.name}</p>
                             <p className="text-sm text-gray-500">{app.phone}</p>
                           </div>
                           <div className="flex items-center gap-3">
@@ -839,63 +861,63 @@ export default function CleanersPage() {
         <SidePanel open={showModal} onClose={() => { setShowModal(false); setEditingId(null) }} title={`${editingId ? 'Edit' : 'Add'} Team Member`} width="max-w-lg">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-[#CC6222] mb-1">Name</label>
+                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Name</label>
                 <input
                   type="text"
                   placeholder="Full name"
                   required
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222] focus:ring-2 focus:ring-[#CC6222] outline-none"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#1E2A4A] outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#CC6222] mb-1">Email</label>
+                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Email</label>
                 <input
                   type="email"
                   placeholder="email@example.com"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222] focus:ring-2 focus:ring-[#CC6222] outline-none"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#1E2A4A] outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#CC6222] mb-1">Phone</label>
+                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Phone</label>
                 <input
                   type="tel"
                   placeholder="9545551234"
                   required
                   value={form.phone}
                   onChange={(e) => handlePhoneChange(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222] focus:ring-2 focus:ring-[#CC6222] outline-none"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#1E2A4A] outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#CC6222] mb-1">Address</label>
+                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Address</label>
                 <AddressAutocomplete
                   value={form.address}
                   onChange={(val) => setForm({ ...form, address: val })}
-                  placeholder="123 Main St, Miami, FL"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222] focus:ring-2 focus:ring-[#CC6222] outline-none"
+                  placeholder="123 Main St, Brooklyn, NY"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#1E2A4A] outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#CC6222] mb-1">Unit / Apt</label>
+                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Unit / Apt</label>
                 <input
                   type="text"
                   placeholder="Apt 4B"
                   value={form.unit}
                   onChange={(e) => setForm({ ...form, unit: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222] focus:ring-2 focus:ring-[#CC6222] outline-none"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#1E2A4A] outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#CC6222] mb-1">Photo</label>
+                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Photo</label>
                 <div className="flex items-center gap-3">
                   {form.photo_url ? (
                     <img src={form.photo_url} alt="Photo" className="w-16 h-16 rounded-full object-cover border border-gray-200 flex-shrink-0" />
@@ -909,7 +931,7 @@ export default function CleanersPage() {
                       type="button"
                       onClick={() => photoInputRef.current?.click()}
                       disabled={uploadingPhoto}
-                      className="px-3 py-1.5 border border-gray-300 rounded-lg text-sm text-[#CC6222] hover:bg-gray-50 disabled:opacity-50"
+                      className="px-3 py-1.5 border border-gray-300 rounded-lg text-sm text-[#1E2A4A] hover:bg-gray-50 disabled:opacity-50"
                     >
                       {uploadingPhoto ? 'Uploading...' : form.photo_url ? 'Change Photo' : 'Upload Photo'}
                     </button>
@@ -930,14 +952,14 @@ export default function CleanersPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-[#CC6222] mb-1">PIN</label>
+                  <label className="block text-sm font-medium text-[#1E2A4A] mb-1">PIN</label>
                   <div className="flex gap-2">
                     <input
                       type="text"
                       placeholder="6-digit PIN"
                       value={form.pin}
                       onChange={(e) => setForm({ ...form, pin: e.target.value.replace(/\D/g, '').slice(0, 6) })}
-                      className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222] font-mono text-center tracking-widest"
+                      className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] font-mono text-center tracking-widest"
                       maxLength={6}
                     />
                     <button
@@ -952,9 +974,9 @@ export default function CleanersPage() {
                   <p className="text-xs text-gray-500 mt-1">For team portal login</p>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#CC6222] mb-1">Hourly Rate</label>
+                  <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Hourly Rate</label>
                   <div className="flex items-center">
-                    <span className="text-[#CC6222] text-lg mr-1">$</span>
+                    <span className="text-[#1E2A4A] text-lg mr-1">$</span>
                     <input
                       type="number"
                       step="0.01"
@@ -962,17 +984,61 @@ export default function CleanersPage() {
                       max="99.99"
                       value={form.hourly_rate}
                       onChange={(e) => setForm({ ...form, hourly_rate: parseFloat(e.target.value) || 0 })}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222] text-center font-mono"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] text-center font-mono"
                       placeholder="25.00"
                     />
-                    <span className="text-[#CC6222] ml-1">/hr</span>
+                    <span className="text-[#1E2A4A] ml-1">/hr</span>
                   </div>
                   <p className="text-xs text-gray-500 mt-1">Pay rate per hour worked</p>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Max Jobs/Day</label>
+                  <input
+                    type="number"
+                    min="1"
+                    max="10"
+                    value={form.max_jobs_per_day || ''}
+                    onChange={(e) => setForm({ ...form, max_jobs_per_day: e.target.value ? parseInt(e.target.value) : null })}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]"
+                    placeholder="Unlimited"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">Leave blank for unlimited</p>
+                </div>
+              </div>
+
+              {/* Service Zones */}
+              <div>
+                <label className="block text-sm font-medium text-[#1E2A4A] mb-2">Service Zones</label>
+                <div className="grid grid-cols-2 gap-1.5">
+                  {SERVICE_ZONES.map(zone => (
+                    <label key={zone.id} className="flex items-center gap-2 px-2 py-1.5 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 text-xs">
+                      <input
+                        type="checkbox"
+                        checked={form.service_zones.includes(zone.id)}
+                        onChange={(e) => setForm({ ...form, service_zones: e.target.checked ? [...form.service_zones, zone.id] : form.service_zones.filter(z => z !== zone.id) })}
+                        className="w-3.5 h-3.5 rounded border-gray-300"
+                      />
+                      <span className="text-[#1E2A4A]">{zone.label}</span>
+                      {zone.car_required && <span className="text-[9px] bg-yellow-100 text-yellow-700 px-1 rounded">Car</span>}
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Car + Home By */}
+              <div className="grid grid-cols-2 gap-4">
+                <label className="flex items-center gap-2 px-3 py-2 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                  <input type="checkbox" checked={form.has_car} onChange={(e) => setForm({ ...form, has_car: e.target.checked })} className="w-4 h-4 rounded border-gray-300" />
+                  <span className="text-sm text-[#1E2A4A]">Drives</span>
+                </label>
+                <div>
+                  <label className="block text-xs text-gray-500 mb-1">Home by</label>
+                  <input type="time" value={form.home_by_time} onChange={(e) => setForm({ ...form, home_by_time: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-[#1E2A4A]" />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#CC6222] mb-2">Schedule</label>
+                <label className="block text-sm font-medium text-[#1E2A4A] mb-2">Schedule</label>
                 <p className="text-xs text-gray-500 mb-3">Select working days, then set hours</p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -983,7 +1049,7 @@ export default function CleanersPage() {
                       onClick={() => toggleDay(day)}
                       className={`px-3 py-1.5 rounded-lg text-sm font-medium transition ${
                         form.working_days.includes(day)
-                          ? 'bg-[#CC6222] text-white'
+                          ? 'bg-[#1E2A4A] text-white'
                           : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                       }`}
                     >
@@ -996,11 +1062,11 @@ export default function CleanersPage() {
                   <div className="space-y-2 bg-gray-50 rounded-lg p-3">
                     {DAYS.filter(d => form.working_days.includes(d)).map(day => (
                       <div key={day} className="flex items-center gap-2">
-                        <span className="w-10 text-sm font-medium text-[#CC6222]">{day}</span>
+                        <span className="w-10 text-sm font-medium text-[#1E2A4A]">{day}</span>
                         <select
                           value={form.schedule[day]?.start || '9:00 AM'}
                           onChange={(e) => updateSchedule(day, 'start', e.target.value)}
-                          className="flex-1 px-2 py-1.5 border border-gray-300 rounded text-sm text-[#CC6222] bg-white"
+                          className="flex-1 px-2 py-1.5 border border-gray-300 rounded text-sm text-[#1E2A4A] bg-white"
                         >
                           {HOURS.map(h => <option key={h} value={h}>{h}</option>)}
                         </select>
@@ -1008,7 +1074,7 @@ export default function CleanersPage() {
                         <select
                           value={form.schedule[day]?.end || '5:00 PM'}
                           onChange={(e) => updateSchedule(day, 'end', e.target.value)}
-                          className="flex-1 px-2 py-1.5 border border-gray-300 rounded text-sm text-[#CC6222] bg-white"
+                          className="flex-1 px-2 py-1.5 border border-gray-300 rounded text-sm text-[#1E2A4A] bg-white"
                         >
                           {HOURS.map(h => <option key={h} value={h}>{h}</option>)}
                         </select>
@@ -1019,14 +1085,14 @@ export default function CleanersPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#CC6222] mb-2">Days Off</label>
+                <label className="block text-sm font-medium text-[#1E2A4A] mb-2">Days Off</label>
                 <div className="flex gap-2 mb-2">
                   <input
                     type="date"
                     value={newDateOff}
                     min={new Date().toISOString().split('T')[0]}
                     onChange={(e) => setNewDateOff(e.target.value)}
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]"
+                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]"
                   />
                   <button
                     type="button"
@@ -1039,7 +1105,7 @@ export default function CleanersPage() {
                       }
                       setNewDateOff('')
                     }}
-                    className="px-4 py-2 bg-gray-100 text-[#CC6222] rounded-lg font-medium hover:bg-gray-200"
+                    className="px-4 py-2 bg-gray-100 text-[#1E2A4A] rounded-lg font-medium hover:bg-gray-200"
                   >
                     Add
                   </button>
@@ -1064,11 +1130,11 @@ export default function CleanersPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#CC6222] mb-1">Status</label>
+                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Status</label>
                 <select
                   value={form.active ? 'active' : 'inactive'}
                   onChange={(e) => setForm({ ...form, active: e.target.value === 'active' })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222] focus:ring-2 focus:ring-[#CC6222] outline-none"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#1E2A4A] outline-none"
                 >
                   <option value="active">Active</option>
                   <option value="inactive">Inactive</option>
@@ -1079,13 +1145,13 @@ export default function CleanersPage() {
                 <button
                   type="button"
                   onClick={() => { setShowModal(false); setEditingId(null) }}
-                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-[#CC6222] hover:bg-gray-50"
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] hover:bg-gray-50"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 px-4 py-2 bg-[#CC6222] text-white rounded-lg hover:bg-[#CC6222]/90"
+                  className="flex-1 px-4 py-2 bg-[#1E2A4A] text-white rounded-lg hover:bg-[#1E2A4A]/90"
                 >
                   Save
                 </button>

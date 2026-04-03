@@ -24,7 +24,7 @@ const serviceFAQs = [
 ]
 
 const schedulingFAQs = [
-  { question: 'How do I book a cleaning?', answer: 'Text or call (954) 710-3636, or book online at thefloridamaid.com/clients/new. We typically schedule within 24–48 hours. Same-day availability for urgent requests.' },
+  { question: 'How do I book a cleaning?', answer: 'Text or call (954) 710-3636, or book online at thefloridamaid.com/book/new. We typically schedule within 24–48 hours. Same-day availability for urgent requests.' },
   { question: 'Can I get the same cleaner each time?', answer: 'Yes. For recurring clients, we assign the same dedicated cleaner to your home so they learn your preferences and layout. Consistency is one of the things our clients value most.' },
   { question: 'Do you offer same-day cleaning?', answer: 'Yes. Call or text (954) 710-3636 and we\'ll dispatch a professional cleaner within hours. Same-day service is $100/hr.' },
   { question: 'How do I reschedule or cancel?', answer: 'Text or call us at least 24 hours before your scheduled cleaning. We\'ll reschedule at no charge. Cancellations with less than 24 hours notice may incur a fee.' },
@@ -44,8 +44,8 @@ const trustFAQs = [
 const allFAQs = [...pricingFAQs, ...serviceFAQs, ...schedulingFAQs, ...trustFAQs]
 
 const pageUrl = 'https://www.thefloridamaid.com/florida-cleaning-service-frequently-asked-questions-in-2026'
-const pageTitle = 'Florida Cleaning Service FAQ — Pricing, Services & Scheduling | The Florida Maid'
-const pageDescription = 'Answers to 24 common questions about The Florida Maid — pricing ($49–$100/hr), what\'s included, scheduling, insurance, service areas, and more. Serving Miami, Fort Lauderdale, West Palm Beach, Tampa & Orlando. (954) 710-3636'
+const pageTitle = 'Florida Cleaning Service FAQ — Pricing, Services & Scheduling | The Florida Maid Cleaning Service Cleaning Service'
+const pageDescription = 'Answers to 24 common questions about The Florida Maid Cleaning Service Cleaning Service — pricing ($49–$100/hr), what\'s included, scheduling, insurance, service areas, and more. Serving Miami, Fort Lauderdale, West Palm Beach, Tampa & Orlando. (954) 710-3636'
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
     description: pageDescription,
     url: pageUrl,
     type: 'website',
-    siteName: 'The Florida Maid',
+    siteName: 'The Florida Maid Cleaning Service Cleaning Service',
     locale: 'en_US',
-    images: [{ url: 'https://www.thefloridamaid.com/icon-512.png', width: 512, height: 512, alt: 'The Florida Maid' }],
+    images: [{ url: 'https://www.thefloridamaid.com/icon-512.png', width: 512, height: 512, alt: 'The Florida Maid Cleaning Service Cleaning Service' }],
   },
   twitter: {
     card: 'summary',

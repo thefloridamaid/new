@@ -31,7 +31,7 @@ export async function GET() {
         { route: '/clients', title: 'Client Portal', description: 'Email verification login' },
         { route: '/clients/new', title: 'New Booking', description: '3-step form with SMS consent' },
         { route: '/clients/dashboard', title: 'My Bookings' },
-        { route: '/book/reschedule/[id]', title: 'Reschedule' },
+        { route: '/clients/reschedule/[id]', title: 'Reschedule' },
       ],
       team: [
         { route: '/team', title: 'Team Login', description: 'Phone + PIN' },

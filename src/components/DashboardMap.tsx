@@ -98,7 +98,7 @@ export default function DashboardMap({ jobs }: Props) {
     return <div className="h-[250px] md:h-[400px] bg-gray-100 rounded-lg flex items-center justify-center text-gray-500">Loading map...</div>
   }
 
-  // Default view: Florida (wider view)
+  // Default view: NYC metro area (wider view)
   const center: [number, number] = [27.99, -81.76]
   const defaultZoom = 7
 

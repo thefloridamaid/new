@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       url,
       type: 'website',
-      siteName: 'The Florida Maid',
+      siteName: 'The Florida Maid Cleaning Service Cleaning Service',
       locale: 'en_US',
     },
     twitter: {

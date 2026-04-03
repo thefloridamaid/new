@@ -1,3 +1,5 @@
+import { supabaseAdmin } from '@/lib/supabase'
+
 const RADAR_API_KEY = process.env.RADAR_API_KEY || process.env.NEXT_PUBLIC_RADAR_API_KEY || ''
 
 export const MAX_DISTANCE_MILES = 0.1
@@ -18,29 +20,6 @@ export async function geocodeAddress(address: string): Promise<{ lat: number; ln
   return null
 }
 
-export function estimateTransitMinutes(distanceMiles: number): number {
-  if (distanceMiles < 0.3) return 5
-  return Math.round(10 + distanceMiles * 5)
-}
-
-export async function geocodeClient(clientId: string, address: string): Promise<{ lat: number; lng: number } | null> {
-  const { supabaseAdmin } = await import('@/lib/supabase')
-  const coords = await geocodeAddress(address)
-  if (coords) {
-    await supabaseAdmin.from('clients').update({ latitude: coords.lat, longitude: coords.lng }).eq('id', clientId)
-  }
-  return coords
-}
-
-export async function geocodeCleaner(cleanerId: string, address: string): Promise<{ lat: number; lng: number } | null> {
-  const { supabaseAdmin } = await import('@/lib/supabase')
-  const coords = await geocodeAddress(address)
-  if (coords) {
-    await supabaseAdmin.from('cleaners').update({ home_latitude: coords.lat, home_longitude: coords.lng }).eq('id', cleanerId)
-  }
-  return coords
-}
-
 export function calculateDistance(
   lat1: number, lng1: number,
   lat2: number, lng2: number
@@ -54,4 +33,28 @@ export function calculateDistance(
     Math.sin(dLng / 2) * Math.sin(dLng / 2)
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
   return R * c
+}
+
+// Estimate NYC transit time from straight-line distance
+export function estimateTransitMinutes(distanceMiles: number): number {
+  if (distanceMiles < 0.3) return 5
+  return Math.round(10 + distanceMiles * 5)
+}
+
+// Geocode and cache lat/lng on a client record
+export async function geocodeClient(clientId: string, address: string): Promise<{ lat: number; lng: number } | null> {
+  const coords = await geocodeAddress(address)
+  if (coords) {
+    await supabaseAdmin.from('clients').update({ latitude: coords.lat, longitude: coords.lng }).eq('id', clientId)
+  }
+  return coords
+}
+
+// Geocode and cache lat/lng on a cleaner record
+export async function geocodeCleaner(cleanerId: string, address: string): Promise<{ lat: number; lng: number } | null> {
+  const coords = await geocodeAddress(address)
+  if (coords) {
+    await supabaseAdmin.from('cleaners').update({ home_latitude: coords.lat, home_longitude: coords.lng }).eq('id', cleanerId)
+  }
+  return coords
 }

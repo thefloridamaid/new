@@ -26,7 +26,7 @@ interface GeocodedClient extends ClientMarker {
   lng: number
 }
 
-const CACHE_KEY = 'floridamaid_geocode_cache'
+const CACHE_KEY = 'flmaid_geocode_cache'
 const FL_BOUNDS = { minLat: 24.5, maxLat: 31.0, minLng: -87.6, maxLng: -80.0 }
 
 function loadGeoCache(): Record<string, { lat: number; lng: number }> {

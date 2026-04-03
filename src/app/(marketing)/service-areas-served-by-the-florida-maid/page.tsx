@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     description: pageDescription,
     url: pageUrl,
     type: 'website',
-    siteName: 'The Florida Maid',
+    siteName: 'The Florida Maid Cleaning Service Cleaning Service',
     locale: 'en_US',
-    images: [{ url: 'https://www.thefloridamaid.com/icon-512.png', width: 512, height: 512, alt: 'The Florida Maid' }],
+    images: [{ url: 'https://www.thefloridamaid.com/icon-512.png', width: 512, height: 512, alt: 'The Florida Maid Cleaning Service Cleaning Service' }],
   },
   twitter: {
     card: 'summary',

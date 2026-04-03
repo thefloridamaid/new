@@ -119,7 +119,7 @@ export default function FeedbackPage() {
     if (s.includes('widget')) return 'bg-purple-100 text-purple-700'
     if (s.includes('email')) return 'bg-blue-100 text-blue-700'
     if (s.includes('sms') || s.includes('text')) return 'bg-green-100 text-green-700'
-    if (s.includes('portal') || s.includes('client')) return 'bg-[#34D399]/30 text-white'
+    if (s.includes('portal') || s.includes('client')) return 'bg-[#A8F0DC]/30 text-[#1E2A4A]'
     if (s.includes('cleaner')) return 'bg-orange-100 text-orange-700'
     if (s.includes('book')) return 'bg-yellow-100 text-yellow-700'
     if (s.includes('web') || s.includes('site')) return 'bg-indigo-100 text-indigo-700'
@@ -136,12 +136,12 @@ export default function FeedbackPage() {
       <main className="p-3 md:p-6">
         <div className="flex justify-between items-start mb-2">
           <div>
-            <h2 className="text-2xl font-bold text-[#CC6222]">Feedback</h2>
+            <h2 className="text-2xl font-bold text-[#1E2A4A]">Feedback</h2>
             <p className="text-sm text-gray-400 mt-0.5">{totalCount} total &middot; {unreadCount} unread</p>
           </div>
           <button
             onClick={fetchFeedback}
-            className="px-4 py-2.5 bg-[#CC6222] text-white rounded-xl hover:bg-[#CC6222]/90 font-medium text-sm shadow-sm transition-colors"
+            className="px-4 py-2.5 bg-[#1E2A4A] text-white rounded-xl hover:bg-[#1E2A4A]/90 font-medium text-sm shadow-sm transition-colors"
           >
             Refresh
           </button>
@@ -168,19 +168,19 @@ export default function FeedbackPage() {
         <div className="flex gap-2 mb-6">
           <button
             onClick={() => setFilter('all')}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filter === 'all' ? 'bg-[#CC6222] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filter === 'all' ? 'bg-[#1E2A4A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
           >
             All ({totalCount})
           </button>
           <button
             onClick={() => setFilter('unread')}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filter === 'unread' ? 'bg-[#CC6222] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filter === 'unread' ? 'bg-[#1E2A4A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
           >
             Unread ({unreadCount})
           </button>
           <button
             onClick={() => setFilter('read')}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filter === 'read' ? 'bg-[#CC6222] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filter === 'read' ? 'bg-[#1E2A4A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
           >
             Read ({totalCount - unreadCount})
           </button>
@@ -193,7 +193,7 @@ export default function FeedbackPage() {
             <div className="text-4xl mb-3">
               {filter === 'unread' ? '✅' : '📭'}
             </div>
-            <h3 className="text-lg font-semibold text-[#CC6222] mb-1">
+            <h3 className="text-lg font-semibold text-[#1E2A4A] mb-1">
               {filter === 'unread' ? 'All caught up!' : filter === 'read' ? 'No read feedback' : 'No feedback yet'}
             </h3>
             <p className="text-gray-400 text-sm max-w-sm mx-auto">
@@ -212,7 +212,7 @@ export default function FeedbackPage() {
               <div
                 key={item.id}
                 className={`bg-white border rounded-xl p-5 transition-all hover:shadow-md ${
-                  !item.read ? 'border-l-4 border-l-[#34D399] border-t border-r border-b border-t-gray-100 border-r-gray-100 border-b-gray-100 bg-[#34D399]/5 shadow-sm' : 'border-gray-100 shadow-sm'
+                  !item.read ? 'border-l-4 border-l-[#A8F0DC] border-t border-r border-b border-t-gray-100 border-r-gray-100 border-b-gray-100 bg-[#A8F0DC]/5 shadow-sm' : 'border-gray-100 shadow-sm'
                 }`}
               >
                 <div className="flex items-start justify-between gap-4">
@@ -223,7 +223,7 @@ export default function FeedbackPage() {
                         {getSourceLabel(item.source)}
                       </span>
                       {!item.read && (
-                        <span className="px-2.5 py-0.5 bg-[#34D399]/40 text-white rounded-full text-xs font-semibold">
+                        <span className="px-2.5 py-0.5 bg-[#A8F0DC]/40 text-[#1E2A4A] rounded-full text-xs font-semibold">
                           New
                         </span>
                       )}
@@ -239,7 +239,7 @@ export default function FeedbackPage() {
 
                     {/* Title if present */}
                     {item.title && (
-                      <h4 className="font-semibold text-[#CC6222] mb-1">{item.title}</h4>
+                      <h4 className="font-semibold text-[#1E2A4A] mb-1">{item.title}</h4>
                     )}
 
                     {/* Full message */}
@@ -251,7 +251,7 @@ export default function FeedbackPage() {
                     {!item.read && (
                       <button
                         onClick={() => markAsRead(item.id)}
-                        className="px-3 py-2.5 bg-[#CC6222] text-white rounded-lg text-xs font-medium hover:bg-[#CC6222]/90 transition-colors whitespace-nowrap"
+                        className="px-3 py-2.5 bg-[#1E2A4A] text-white rounded-lg text-xs font-medium hover:bg-[#1E2A4A]/90 transition-colors whitespace-nowrap"
                       >
                         Mark Read
                       </button>

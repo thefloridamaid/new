@@ -22,7 +22,7 @@ export const emailWrapper = (content: string) => `
           <tr>
             <td bgcolor="#ffffff" style="background-color: #ffffff; border-radius: 12px; padding: 40px;">
               <div style="margin: 0 0 24px 0;">
-                <a href="https://www.thefloridamaid.com"><img src="https://www.thefloridamaid.com/logo.png" alt="The Florida Maid Cleaning Service Cleaning Service" width="160" height="48" style="width: 160px; height: auto; display: block;" /></a>
+                <a href="https://www.thefloridamaid.com"><img src="https://www.thefloridamaid.com/logo.png" alt="The Florida Maid" width="160" height="48" style="width: 160px; height: auto; display: block;" /></a>
               </div>
               ${content}
             </td>
@@ -30,7 +30,7 @@ export const emailWrapper = (content: string) => `
           <tr>
             <td style="padding: 24px 0 0 0; text-align: left;">
               <p style="color: #999; font-size: 12px; margin: 0;">
-                The Florida Maid Cleaning Service · <a href="tel:9547103636" style="color: #999;">(954) 710-3636</a>
+                The Florida Maid · <a href="tel:9547103636" style="color: #999;">(954) 710-3636</a>
               </p>
             </td>
           </tr>
@@ -103,7 +103,7 @@ export function clientBookingReceivedEmail(booking: any) {
 
   const content = `
     <h1 style="font-size: 24px; font-weight: 600; color: #000; margin: 0 0 8px 0;">We received your booking request!</h1>
-    <p style="color: #666; font-size: 15px; margin: 0 0 24px 0;">Hi ${clientName}, thank you for choosing The Florida Maid Cleaning Service Cleaning Service. We're reviewing your request and will confirm shortly.</p>
+    <p style="color: #666; font-size: 15px; margin: 0 0 24px 0;">Hi ${clientName}, thank you for choosing The Florida Maid. We're reviewing your request and will confirm shortly.</p>
 
     ${infoTable(`
       ${infoRow('Date', date)}
@@ -115,6 +115,15 @@ export function clientBookingReceivedEmail(booking: any) {
     <p style="color: #333; font-size: 14px; line-height: 1.7; margin: 24px 0 0 0;">
       We'll assign a cleaner and send you a confirmation with all the details — including your cleaner's name, preparation tips, and payment info.
     </p>
+
+    ${booking.clients?.pin ? `
+    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin: 24px 0 0 0;">
+      <p style="margin: 0 0 4px 0; color: #333; font-size: 14px; font-weight: 600;">Your Client Portal</p>
+      <p style="margin: 4px 0; color: #333; font-size: 13px;"><strong>Login:</strong> <a href="https://www.thefloridamaid.com/clients" style="color: #000;">thefloridamaid.com/clients</a></p>
+      <p style="margin: 4px 0; color: #333; font-size: 13px;"><strong>Email:</strong> ${booking.clients.email}</p>
+      <p style="margin: 4px 0; color: #333; font-size: 13px;"><strong>PIN:</strong> <span style="font-family: monospace; background: #e2e8f0; padding: 2px 8px; border-radius: 4px; letter-spacing: 2px;">${booking.clients.pin}</span></p>
+    </div>
+    ` : ''}
 
     <p style="color: #333; font-size: 14px; line-height: 1.7; margin: 16px 0 0 0;">
       Questions? Call or text us at <a href="tel:9547103636" style="color: #000; font-weight: 500;">(954) 710-3636</a>
@@ -191,7 +200,23 @@ export function clientConfirmationEmail(booking: any) {
 
     ${noteBox(`<strong>Tipping:</strong> Tips are always appreciated but never required. 100% of all tips included with Apple Pay and Zelle (hi@thefloridamaid.com) go directly to your cleaner.`, 'info')}
 
-    ${noteBox(`<strong>Cancellation Policy:</strong> ${isRecurring ? 'Recurring clients require 7 days notice for cancellations or rescheduling.' : 'One-time services are non-cancellable and cannot be rescheduled. Please ensure all details are correct.'}`, 'info')}
+    ${noteBox(`<strong>Cancellation &amp; Reschedule Policy:</strong> ${isRecurring
+      ? 'Recurring (weekly, bi-weekly, monthly) services require <strong>7 days notice</strong> to reschedule. Cancellations are not permitted on recurring services unless the service is being discontinued entirely with 7 days notice.'
+      : 'First-time and one-time services <strong>cannot be cancelled or rescheduled</strong>.'
+    } We do not collect payment upfront — we hold your spot on our busy schedule, turning away other clients. Late cancellations and no-shows directly affect our team members who depend on this income.`, 'warning')}
+
+    ${booking.clients?.pin ? `
+    ${divider()}
+    <h2 style="font-size: 18px; font-weight: 600; color: #000; margin: 0 0 16px 0;">Your Client Portal</h2>
+    <p style="color: #333; font-size: 14px; line-height: 1.7; margin: 0 0 8px 0;">
+      View your bookings, update notes, and manage your account anytime:
+    </p>
+    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin: 12px 0;">
+      <p style="margin: 4px 0; color: #333; font-size: 14px;"><strong>Login:</strong> <a href="https://www.thefloridamaid.com/clients" style="color: #000;">thefloridamaid.com/clients</a></p>
+      <p style="margin: 4px 0; color: #333; font-size: 14px;"><strong>Email:</strong> ${booking.clients.email}</p>
+      <p style="margin: 4px 0; color: #333; font-size: 14px;"><strong>PIN:</strong> <span style="font-family: monospace; background: #e2e8f0; padding: 2px 8px; border-radius: 4px; letter-spacing: 2px;">${booking.clients.pin}</span></p>
+    </div>
+    ` : ''}
 
     ${primaryButton('View Your Portal', 'https://www.thefloridamaid.com/clients')}
 
@@ -226,10 +251,13 @@ export function clientReminderEmail(booking: any, daysOut: string) {
 
     ${primaryButton('View Details', 'https://www.thefloridamaid.com/clients')}
 
+    ${noteBox(`<strong>Reminder:</strong> ${isRecurring
+      ? 'Recurring services require <strong>7 days notice</strong> to reschedule. Cancellations are not permitted unless discontinuing the service entirely with 7 days notice.'
+      : 'First-time and one-time services <strong>cannot be cancelled or rescheduled</strong>.'
+    } We hold your spot without taking payment upfront, turning away other clients. Late changes directly affect our team members who depend on this income.`, 'warning')}
+
     <p style="color: #666; font-size: 14px; margin: 24px 0 0 0;">
-      ${isRecurring
-        ? `Need to reschedule? Visit your <a href="https://www.thefloridamaid.com/clients" style="color: #000;">portal</a> (7 days notice required) or call <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>`
-        : `Questions? <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>`}
+      Questions? <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>
     </p>
   `
 
@@ -317,7 +345,7 @@ export function clientPaymentDueEmail(booking: any, amount: string) {
 
     ${infoTable(`
       ${infoRow('Zelle', '<a href="mailto:hi@thefloridamaid.com" style="color: #0066cc;">hi@thefloridamaid.com</a>')}
-      ${infoRow('Apple Pay', '<a href="tel:9547103636" style="color: #0066cc;">(954) 710-3636</a>')}
+      ${infoRow('Apple Pay', '<a href="tel:9547103636" style="color: #0066cc;">(212) 029-2200</a>')}
     `)}
 
     ${noteBox('<strong>Important:</strong> Our team cannot leave until payment has been processed. Thank you for your prompt payment!', 'warning')}
@@ -471,7 +499,7 @@ export function referralWelcomeEmail(referrer: { name: string; ref_code: string;
   
   const content = `
     <h1 style="font-size: 24px; font-weight: 600; color: #000; margin: 0 0 8px 0;">Welcome to the team, ${firstName}!</h1>
-    <p style="color: #666; font-size: 15px; margin: 0 0 24px 0;">You're now part of The Florida Maid Cleaning Service Cleaning Service referral program.</p>
+    <p style="color: #666; font-size: 15px; margin: 0 0 24px 0;">You're now part of The Florida Maid referral program.</p>
 
     <div style="background: #f5f5f5; border-radius: 8px; padding: 24px; margin: 24px 0; text-align: left;">
       <p style="margin: 0 0 8px 0; color: #666; font-size: 14px;">Your referral code</p>
@@ -498,7 +526,7 @@ export function referralWelcomeEmail(referrer: { name: string; ref_code: string;
     </p>
   `
 
-  return { subject: `Welcome to The Florida Maid Cleaning Service, ${firstName}!`, html: emailWrapper(content) }
+  return { subject: `Welcome to The Florida Maid, ${firstName}!`, html: emailWrapper(content) }
 }
 
 export function referralCommissionEmail(referrer: any, booking: any, commission: number) {
@@ -593,8 +621,8 @@ export function cleanerWelcomeEmail(cleaner: { name: string; pin: string; phone:
   const firstName = cleaner.name.split(' ')[0]
 
   const content = `
-    <h1 style="font-size: 24px; font-weight: 600; color: #000; margin: 0;">Welcome to The Florida Maid Cleaning Service!</h1>
-    <p style="color: #666; font-size: 14px; margin: 4px 0 24px 0;">¡Bienvenido/a a The Florida Maid Cleaning Service!</p>
+    <h1 style="font-size: 24px; font-weight: 600; color: #000; margin: 0;">Welcome to The Florida Maid!</h1>
+    <p style="color: #666; font-size: 14px; margin: 4px 0 24px 0;">¡Bienvenido/a a The Florida Maid!</p>
 
     <p style="color: #444; font-size: 15px; margin: 0 0 24px 0;">Hi ${firstName} / Hola ${firstName}</p>
 

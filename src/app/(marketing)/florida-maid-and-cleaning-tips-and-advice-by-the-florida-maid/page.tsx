@@ -150,11 +150,11 @@ const faqData = [
 ]
 
 export const metadata: Metadata = {
-  title: 'The 100 Best Cleaning Tips for Florida Homes | The Florida Maid',
+  title: 'The 100 Best Cleaning Tips for Florida Homes | The Florida Maid Cleaning Service Cleaning Service',
   description: 'The definitive list — 100 expert cleaning tips for Florida homes from professional cleaners. Kitchen, bathroom, floors, pets & more. From $49/hr. (954) 710-3636',
   alternates: { canonical: 'https://www.thefloridamaid.com/florida-maid-and-cleaning-tips-and-advice-by-the-florida-maid' },
   openGraph: {
-    title: '100 Best Cleaning Tips | The Florida Maid',
+    title: '100 Best Cleaning Tips | The Florida Maid Cleaning Service Cleaning Service',
     description: 'The definitive cleaning tips guide for Florida homes — 100 expert tips organized by room.',
     url: 'https://www.thefloridamaid.com/florida-maid-and-cleaning-tips-and-advice-by-the-florida-maid',
   },

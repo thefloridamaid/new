@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation'
 import { RecurringOptions, generateRecurringDates, getRecurringDisplayName } from '@/components/RecurringOptions'
 import AddressAutocomplete from '@/components/AddressAutocomplete'
 import { useServiceTypes } from '@/lib/useServiceTypes'
+import BookingNotes from '@/components/BookingNotes'
 
 export default function BookingsPageWrapper() {
   return (
@@ -34,6 +35,7 @@ interface Booking {
   actual_hours: number | null
   cleaner_pay: number | null
   check_in_time: string | null
+  fifteen_min_alert_time: string | null
   check_out_time: string | null
   check_in_location: Record<string, unknown> | null
   check_out_location: Record<string, unknown> | null
@@ -42,11 +44,21 @@ interface Booking {
   cleaner_paid: boolean | null
   cleaner_paid_at: string | null
   cleaner_pay_rate: number | null
+  walkthrough_video_url: string | null
+  final_video_url: string | null
+  suggested_cleaner_id: string | null
+  suggested_reason: string | null
 }
 
 interface Client { id: string; name: string; phone: string; email: string; address: string; created_at: string; do_not_service?: boolean }
-interface Cleaner { id: string; name: string; hourly_rate?: number }
+interface Cleaner { id: string; name: string; hourly_rate?: number; working_days?: string[]; unavailable_dates?: string[]; schedule?: Record<string, unknown>; active?: boolean; max_jobs_per_day?: number }
 interface Referrer { id: string; name: string; ref_code: string; active: boolean }
+
+// Parse timestamp as UTC — Supabase may return without timezone offset
+const toEST = (ts: string) => {
+  const d = new Date(ts.endsWith('Z') || ts.includes('+') ? ts : ts + 'Z')
+  return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' })
+}
 
 function BookingsPage() {
   const searchParams = useSearchParams()
@@ -67,6 +79,7 @@ function BookingsPage() {
   const [showCreateModal, setShowCreateModal] = useState(false)
   const [showNewClientModal, setShowNewClientModal] = useState(false)
   const [showUpdateChoice, setShowUpdateChoice] = useState(false)
+  const [showCancelMenu, setShowCancelMenu] = useState(false)
   const [editingBooking, setEditingBooking] = useState<Booking | null>(null)
   const [form, setForm] = useState({
     status: '', payment_status: '', payment_method: '', notes: '', cleaner_id: '',
@@ -89,10 +102,14 @@ function BookingsPage() {
   const [newClientForm, setNewClientForm] = useState({ name: '', phone: '', email: '', address: '', unit: '', referrer_id: '', notes: '' })
   const [referrers, setReferrers] = useState<Referrer[]>([])
   const [saving, setSaving] = useState(false)
+  const [confirmCheckout, setConfirmCheckout] = useState(false)
   const [copied, setCopied] = useState(false)
   const [resendMenuId, setResendMenuId] = useState<string | null>(null)
   const [showCloseOut, setShowCloseOut] = useState(false)
   const [closeOutSaving, setCloseOutSaving] = useState<string | null>(null)
+  const [showWaitlist, setShowWaitlist] = useState(false)
+  const [waitlistEntries, setWaitlistEntries] = useState<Array<{ id: string; name: string | null; phone: string; service_type: string | null; preferred_date: string | null; preferred_time: string | null; created_at: string; client_id: string | null }>>([])
+  const [waitlistLoading, setWaitlistLoading] = useState(false)
 
   const [clientSearch, setClientSearch] = useState('')
   const [showClientDropdown, setShowClientDropdown] = useState(false)
@@ -111,7 +128,11 @@ function BookingsPage() {
   const [currentPage, setCurrentPage] = useState(1)
   const pageSize = 25
 
-  useEffect(() => { loadBookings(); loadClients(); loadCleaners(); loadReferrers() }, [])
+  useEffect(() => {
+    loadBookings(); loadClients(); loadCleaners(); loadReferrers()
+    const interval = setInterval(loadBookings, 60000) // Auto-refresh bookings every 60s
+    return () => clearInterval(interval)
+  }, [])
   useEffect(() => { applyFilters() }, [bookings, filters, searchQuery])
 
   useEffect(() => {
@@ -199,6 +220,105 @@ function BookingsPage() {
   const loadCleaners = async () => { const res = await fetch('/api/cleaners'); if (res.ok) setCleaners(await res.json()) }
   const loadReferrers = async () => { const res = await fetch('/api/referrers'); if (res.ok) setReferrers(await res.json()) }
 
+  const loadWaitlist = async () => {
+    setWaitlistLoading(true)
+    try {
+      const res = await fetch('/api/waitlist')
+      if (res.ok) setWaitlistEntries(await res.json())
+    } catch {}
+    setWaitlistLoading(false)
+  }
+
+  const getCleanerAvailability = (cleaner: Cleaner, dateStr: string, timeStr?: string, durationHours?: number): { available: boolean; reason?: string; dayBookings?: Array<{ time: string; client: string; hours: number }> } => {
+    if (!dateStr) return { available: true }
+    const dateObj = new Date(dateStr + 'T12:00:00')
+    const dayShort = dateObj.toLocaleDateString('en-US', { weekday: 'short' })
+
+    if (cleaner.unavailable_dates?.includes(dateStr)) {
+      return { available: false, reason: 'Requested off' }
+    }
+    if (cleaner.working_days && cleaner.working_days.length > 0 && !cleaner.working_days.includes(dayShort)) {
+      return { available: false, reason: 'Doesn\'t work ' + dayShort + 's' }
+    }
+    if (cleaner.schedule && Object.keys(cleaner.schedule).length > 0) {
+      const daySchedule = cleaner.schedule[dayShort] as { start?: string; end?: string } | null | undefined
+      if (daySchedule === null || daySchedule === undefined) {
+        return { available: false, reason: 'Not scheduled' }
+      }
+      // Check if requested time falls within cleaner's working hours
+      if (timeStr && daySchedule.start && daySchedule.end) {
+        const parseTimeToMin = (t: string): number => {
+          const match = t.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)?$/i)
+          if (!match) return 0
+          let hrs = parseInt(match[1])
+          const mins = parseInt(match[2])
+          const ampm = match[3]?.toUpperCase()
+          if (ampm === 'PM' && hrs < 12) hrs += 12
+          if (ampm === 'AM' && hrs === 12) hrs = 0
+          return hrs * 60 + mins
+        }
+        const schedStart = parseTimeToMin(daySchedule.start)
+        const schedEnd = parseTimeToMin(daySchedule.end)
+        const [rh, rm] = timeStr.split(':').map(Number)
+        const requestStart = rh * 60 + rm
+        const requestEnd = requestStart + (durationHours || 2) * 60
+        if (requestStart < schedStart) {
+          return { available: false, reason: `Starts at ${daySchedule.start}` }
+        }
+        if (requestEnd > schedEnd) {
+          return { available: false, reason: `Off by ${daySchedule.end}` }
+        }
+      }
+    }
+
+    // Check existing bookings on this date
+    const dayBookingCount = bookings.filter(b => b.cleaner_id === cleaner.id && b.start_time.startsWith(dateStr) && !['cancelled'].includes(b.status)).length
+
+    // Check max jobs per day
+    if (cleaner.max_jobs_per_day && dayBookingCount >= cleaner.max_jobs_per_day) {
+      return { available: false, reason: `Max ${cleaner.max_jobs_per_day} jobs/day (has ${dayBookingCount})` }
+    }
+
+    const dayBookings = bookings
+      .filter(b => b.cleaner_id === cleaner.id && b.start_time.startsWith(dateStr) && !['cancelled'].includes(b.status))
+      .map(b => {
+        const start = new Date(b.start_time)
+        const end = b.end_time ? new Date(b.end_time) : new Date(start.getTime() + 2 * 60 * 60 * 1000)
+        const hours = Math.round((end.getTime() - start.getTime()) / (1000 * 60 * 60) * 2) / 2
+        return {
+          time: start.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }),
+          client: b.clients?.name || 'Client',
+          hours,
+          startMin: start.getHours() * 60 + start.getMinutes(),
+          endMin: start.getHours() * 60 + start.getMinutes() + hours * 60,
+        }
+      })
+      .sort((a, b) => a.startMin - b.startMin)
+
+    // Check time conflict if time provided
+    if (timeStr && durationHours) {
+      const [h, m] = timeStr.split(':').map(Number)
+      const requestStart = h * 60 + m
+      const requestEnd = requestStart + durationHours * 60
+      const buffer = 60 // 60 min buffer between jobs
+      const conflict = dayBookings.find(b =>
+        requestStart < b.endMin + buffer && requestEnd + buffer > b.startMin
+      )
+      if (conflict) {
+        return {
+          available: false,
+          reason: `Conflict: ${conflict.time} ${conflict.client}`,
+          dayBookings: dayBookings.map(({ time, client, hours }) => ({ time, client, hours })),
+        }
+      }
+    }
+
+    return {
+      available: true,
+      dayBookings: dayBookings.map(({ time, client, hours }) => ({ time, client, hours })),
+    }
+  }
+
   const applyFilters = () => {
     let result = [...bookings]
     if (filters.status) result = result.filter(b => b.status === filters.status)
@@ -262,7 +382,7 @@ function BookingsPage() {
     // Derive rate: use stored hourly_rate, or calculate from price/hours, or default to 75
     const rate = booking.hourly_rate || (booking.price && hours ? Math.round(booking.price / 100 / hours) : 75)
     // Snap to nearest known rate option
-    const knownRates = [49, 65, 75]
+    const knownRates = [49, 65, 75, 100]
     const snappedRate = knownRates.reduce((best, r) => Math.abs(r - rate) < Math.abs(best - rate) ? r : best, 75)
     const fullPrice = (hours || 2) * snappedRate * 100
     const hasDiscount = booking.price < fullPrice && booking.price > 0
@@ -550,12 +670,21 @@ function BookingsPage() {
             )
 
         // Batch update all future bookings in one request (no email spam)
+        // Only send valid booking columns — exclude frontend-only form fields
         const batchUpdates = futureBookings.map(booking => ({
           id: booking.id,
           data: {
-            ...updateData,
             start_time: shiftNaive(booking.start_time, deltaMinutes),
             end_time: shiftNaive(booking.start_time, deltaMinutes + durationMinutes),
+            cleaner_id: form.cleaner_id || null,
+            price: pricingChanged() ? calculateEditPrice() : form._originalPrice,
+            hourly_rate: form.hourly_rate,
+            service_type: form.service_type,
+            status: form.status,
+            payment_status: form.payment_status,
+            payment_method: form.payment_method || null,
+            notes: form.notes || null,
+            recurring_type: recurringType,
           }
         }))
 
@@ -619,8 +748,9 @@ function BookingsPage() {
       }
     }
 
-    setShowModal(false)
-    setEditingBooking(null)
+    // Refresh booking in place — don't close panel
+    const { data: refreshed } = await fetch('/api/bookings/' + editingBooking?.id).then(r => r.ok ? r.json() : { data: null })
+    if (refreshed) setEditingBooking(refreshed)
     loadBookings()
     setSaving(false)
   }
@@ -652,9 +782,9 @@ function BookingsPage() {
         })
       }
     } else if (createForm.repeat_enabled && recurringType && recurringDates.length > 1) {
-      // Recurring: create schedule + first 4 weeks of bookings (cron generates the rest)
+      // Recurring: create schedule + first 6 weeks of bookings (cron generates the rest daily)
       const fourWeeksOut = new Date(createForm.start_date + 'T12:00:00')
-      fourWeeksOut.setDate(fourWeeksOut.getDate() + 28)
+      fourWeeksOut.setDate(fourWeeksOut.getDate() + 42)
       const cutoff = fourWeeksOut.toISOString().split('T')[0]
       const initialDates = recurringDates.filter(d => d <= cutoff)
 
@@ -708,38 +838,61 @@ function BookingsPage() {
     if (!editingBooking) return
     setSaving(true)
 
-    if (scope === 'all' && (editingBooking.schedule_id || editingBooking.recurring_type)) {
-      if (editingBooking.schedule_id) {
-        // Use schedule_id for precise series cancellation (server-side)
-        await fetch('/api/bookings/' + editingBooking.id + '?cancel_series=true', { method: 'DELETE' })
-      } else {
-        // Legacy fallback: batch cancel by client_id + recurring_type
-        const futureBookings = bookings.filter(b =>
-          b.client_id === editingBooking.client_id &&
-          b.recurring_type === editingBooking.recurring_type &&
-          b.status === 'scheduled' &&
-          b.start_time >= editingBooking.start_time
-        )
+    try {
+      if (scope === 'all' && (editingBooking.schedule_id || editingBooking.recurring_type)) {
+        if (editingBooking.schedule_id) {
+          // Use schedule_id for precise series cancellation (server-side)
+          const res = await fetch('/api/bookings/' + editingBooking.id + '?cancel_series=true', { method: 'DELETE' })
+          if (!res.ok) {
+            const err = await res.json().catch(() => ({ error: res.statusText }))
+            alert(`Failed to cancel series: ${err.error || 'Unknown error'}`)
+            setSaving(false)
+            return
+          }
+        } else {
+          // Legacy fallback: batch cancel by client_id + recurring_type
+          const futureBookings = bookings.filter(b =>
+            b.client_id === editingBooking.client_id &&
+            b.recurring_type === editingBooking.recurring_type &&
+            (b.status === 'scheduled' || b.status === 'pending') &&
+            b.start_time >= editingBooking.start_time
+          )
 
-        if (futureBookings.length > 0) {
-          // Cancel first with email, rest skip email
-          await fetch('/api/bookings/' + futureBookings[0].id, { method: 'DELETE' })
-          if (futureBookings.length > 1) {
-            await Promise.all(
-              futureBookings.slice(1).map(b =>
-                fetch('/api/bookings/' + b.id + '?skip_email=true', { method: 'DELETE' })
+          if (futureBookings.length > 0) {
+            // Cancel first with email, rest skip email
+            const res = await fetch('/api/bookings/' + futureBookings[0].id, { method: 'DELETE' })
+            if (!res.ok) {
+              const err = await res.json().catch(() => ({ error: res.statusText }))
+              alert(`Failed to cancel booking: ${err.error || 'Unknown error'}`)
+              setSaving(false)
+              return
+            }
+            if (futureBookings.length > 1) {
+              await Promise.all(
+                futureBookings.slice(1).map(b =>
+                  fetch('/api/bookings/' + b.id + '?skip_email=true', { method: 'DELETE' })
+                )
               )
-            )
+            }
           }
         }
+      } else {
+        const res = await fetch('/api/bookings/' + editingBooking.id, { method: 'DELETE' })
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({ error: res.statusText }))
+          alert(`Failed to cancel booking: ${err.error || 'Unknown error'}`)
+          setSaving(false)
+          return
+        }
       }
-    } else {
-      await fetch('/api/bookings/' + editingBooking.id, { method: 'DELETE' })
-    }
 
-    setShowModal(false)
-    setEditingBooking(null)
-    loadBookings()
+      // Refresh — booking now shows as cancelled
+      const res2 = await fetch('/api/bookings/' + editingBooking.id)
+      if (res2.ok) { const refreshed = await res2.json(); if (refreshed) setEditingBooking(refreshed) }
+      await loadBookings()
+    } catch (e) {
+      alert(`Failed to cancel booking: ${e instanceof Error ? e.message : 'Network error'}`)
+    }
     setSaving(false)
   }
 
@@ -829,8 +982,8 @@ function BookingsPage() {
   const statusPillClass = (status: string) => {
     const isActive = filters.status === status
     const base = 'px-3 py-2 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5'
-    if (status === '' && !filters.status) return base + ' bg-[#CC6222] text-white shadow-sm'
-    if (isActive) return base + ' bg-[#CC6222] text-white shadow-sm'
+    if (status === '' && !filters.status) return base + ' bg-[#1E2A4A] text-white shadow-sm'
+    if (isActive) return base + ' bg-[#1E2A4A] text-white shadow-sm'
     return base + ' bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50'
   }
 
@@ -841,20 +994,36 @@ function BookingsPage() {
         <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3 mb-6">
           <div>
             <h2 className="text-xs font-bold tracking-widest text-gray-400 uppercase mb-1">BOOKINGS</h2>
-            <p className="text-2xl font-bold text-[#CC6222]">Manage Bookings</p>
+            <p className="text-2xl font-bold text-[#1E2A4A]">Manage Bookings</p>
           </div>
           <div className="flex items-center gap-2">
-            <button onClick={() => setShowFilters(!showFilters)} className={'px-4 py-2.5 border rounded-xl font-medium text-sm transition-all ' + (showFilters || activeFilterCount > 0 ? 'border-[#CC6222] bg-[#CC6222] text-white' : 'border-gray-200 text-[#CC6222] hover:border-gray-300 hover:bg-gray-50')}>
+            <button onClick={() => setShowFilters(!showFilters)} className={'px-4 py-2.5 border rounded-xl font-medium text-sm transition-all ' + (showFilters || activeFilterCount > 0 ? 'border-[#1E2A4A] bg-[#1E2A4A] text-white' : 'border-gray-200 text-[#1E2A4A] hover:border-gray-300 hover:bg-gray-50')}>
               <span className="flex items-center gap-2">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" /></svg>
                 Filters{activeFilterCount > 0 ? ` (${activeFilterCount})` : ''}
               </span>
             </button>
-            <button onClick={() => setShowCloseOut(!showCloseOut)} className={'px-4 py-2.5 border rounded-xl font-medium text-sm transition-all flex items-center gap-2 ' + (showCloseOut ? 'border-emerald-600 bg-emerald-600 text-white' : 'border-gray-200 text-[#CC6222] hover:border-gray-300 hover:bg-gray-50')}>
+            <button onClick={() => { setShowWaitlist(!showWaitlist); if (!showWaitlist) loadWaitlist() }} className={'px-4 py-2.5 border rounded-xl font-medium text-sm transition-all flex items-center gap-2 ' + (showWaitlist ? 'border-purple-600 bg-purple-600 text-white' : 'border-gray-200 text-[#1E2A4A] hover:border-gray-300 hover:bg-gray-50')}>
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              Waitlist
+            </button>
+            <button onClick={() => setShowCloseOut(!showCloseOut)} className={'px-4 py-2.5 border rounded-xl font-medium text-sm transition-all flex items-center gap-2 ' + (showCloseOut ? 'border-emerald-600 bg-emerald-600 text-white' : 'border-gray-200 text-[#1E2A4A] hover:border-gray-300 hover:bg-gray-50')}>
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               Close Out{closeOutJobs.length > 0 ? ` (${closeOutJobs.length})` : ''}
             </button>
-            <button onClick={openCreate} className="bg-[#CC6222] text-white px-5 py-2.5 rounded-xl font-medium text-sm hover:bg-[#CC6222]/90 transition-all shadow-sm flex items-center gap-2">
+            <button onClick={() => {
+              const rows = filteredBookings.map(b => [
+                new Date(b.start_time).toLocaleDateString(), new Date(b.start_time).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }),
+                b.clients?.name || '', b.cleaners?.name || '', b.service_type || '', b.status,
+                b.hourly_rate ? '$' + b.hourly_rate : '', '$' + (b.price / 100).toFixed(0), b.payment_status || ''
+              ].map(v => `"${v}"`).join(','))
+              const csv = 'Date,Time,Client,Cleaner,Service,Status,Rate,Price,Payment\n' + rows.join('\n')
+              const blob = new Blob([csv], { type: 'text/csv' })
+              const url = URL.createObjectURL(blob)
+              const a = document.createElement('a'); a.href = url; a.download = `bookings-${new Date().toISOString().split('T')[0]}.csv`; a.click()
+              URL.revokeObjectURL(url)
+            }} className="px-4 py-2.5 border border-gray-200 text-[#1E2A4A] rounded-xl font-medium text-sm hover:bg-gray-50 transition-all">Export</button>
+            <button onClick={openCreate} className="bg-[#1E2A4A] text-white px-5 py-2.5 rounded-xl font-medium text-sm hover:bg-[#1E2A4A]/90 transition-all shadow-sm flex items-center gap-2">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
               New Booking
             </button>
@@ -863,13 +1032,13 @@ function BookingsPage() {
 
         {/* Quick Links */}
         <div className="text-xs text-gray-400 mb-4 hidden md:flex items-center gap-1 flex-wrap">
-          <a href="https://www.thefloridamaid.com/clients" target="_blank" className="text-gray-500 hover:text-[#CC6222] hover:underline">Client Portal</a>
+          <a href="https://www.thefloridamaid.com/clients" target="_blank" className="text-gray-500 hover:text-[#1E2A4A] hover:underline">Client Portal</a>
           <span className="text-gray-300 mx-1">/</span>
-          <a href="https://www.thefloridamaid.com/clients/new" target="_blank" className="text-gray-500 hover:text-[#CC6222] hover:underline">New Booking</a>
+          <a href="https://www.thefloridamaid.com/clients/new" target="_blank" className="text-gray-500 hover:text-[#1E2A4A] hover:underline">New Booking</a>
           <span className="text-gray-300 mx-1">/</span>
-          <a href="https://www.thefloridamaid.com/clients/collect" target="_blank" className="text-gray-500 hover:text-[#CC6222] hover:underline">Collect Info</a>
+          <a href="https://www.thefloridamaid.com/clients/collect" target="_blank" className="text-gray-500 hover:text-[#1E2A4A] hover:underline">Collect Info</a>
           <span className="text-gray-300 mx-1">/</span>
-          <a href="https://www.thefloridamaid.com/team" target="_blank" className="text-gray-500 hover:text-[#CC6222] hover:underline">Team Portal</a>
+          <a href="https://www.thefloridamaid.com/team" target="_blank" className="text-gray-500 hover:text-[#1E2A4A] hover:underline">Team Portal</a>
         </div>
 
         {/* Stat Cards */}
@@ -899,7 +1068,7 @@ function BookingsPage() {
           <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
             <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           </div>
-          <input type="text" placeholder="Search client, cleaner, address..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm text-[#CC6222] bg-white focus:outline-none focus:ring-2 focus:ring-[#CC6222]/10 focus:border-[#CC6222] transition-all" />
+          <input type="text" placeholder="Search client, cleaner, address..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm text-[#1E2A4A] bg-white focus:outline-none focus:ring-2 focus:ring-[#1E2A4A]/10 focus:border-[#1E2A4A] transition-all" />
         </div>
 
         {/* Status Filter Pills */}
@@ -932,37 +1101,37 @@ function BookingsPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Service</label>
-                <select value={filters.service_type} onChange={(e) => setFilters({ ...filters, service_type: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#CC6222] text-sm bg-white focus:outline-none focus:border-[#CC6222]">
+                <select value={filters.service_type} onChange={(e) => setFilters({ ...filters, service_type: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#1E2A4A] text-sm bg-white focus:outline-none focus:border-[#1E2A4A]">
                   <option value="">All</option>
                   {serviceTypes.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
               </div>
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Cleaner</label>
-                <select value={filters.cleaner_id} onChange={(e) => setFilters({ ...filters, cleaner_id: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#CC6222] text-sm bg-white focus:outline-none focus:border-[#CC6222]">
+                <select value={filters.cleaner_id} onChange={(e) => setFilters({ ...filters, cleaner_id: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#1E2A4A] text-sm bg-white focus:outline-none focus:border-[#1E2A4A]">
                   <option value="">All</option>
                   {cleaners.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                 </select>
               </div>
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Client</label>
-                <select value={filters.client_id} onChange={(e) => setFilters({ ...filters, client_id: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#CC6222] text-sm bg-white focus:outline-none focus:border-[#CC6222]">
+                <select value={filters.client_id} onChange={(e) => setFilters({ ...filters, client_id: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#1E2A4A] text-sm bg-white focus:outline-none focus:border-[#1E2A4A]">
                   <option value="">All</option>
                   {[...clients].sort((a,b) => a.name.localeCompare(b.name)).map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                 </select>
               </div>
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">From</label>
-                <input type="date" value={filters.date_from} onChange={(e) => setFilters({ ...filters, date_from: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#CC6222] text-sm bg-white focus:outline-none focus:border-[#CC6222]" />
+                <input type="date" value={filters.date_from} onChange={(e) => setFilters({ ...filters, date_from: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#1E2A4A] text-sm bg-white focus:outline-none focus:border-[#1E2A4A]" />
               </div>
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">To</label>
-                <input type="date" value={filters.date_to} onChange={(e) => setFilters({ ...filters, date_to: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#CC6222] text-sm bg-white focus:outline-none focus:border-[#CC6222]" />
+                <input type="date" value={filters.date_to} onChange={(e) => setFilters({ ...filters, date_to: e.target.value })} className="w-full px-3 py-2 border border-gray-200 rounded-xl text-[#1E2A4A] text-sm bg-white focus:outline-none focus:border-[#1E2A4A]" />
               </div>
             </div>
             <div className="flex justify-between items-center pt-2">
               <p className="text-sm text-gray-500">{filteredBookings.length} booking{filteredBookings.length !== 1 ? 's' : ''} found</p>
-              <button onClick={clearFilters} className="text-sm text-gray-400 hover:text-[#CC6222] transition-colors">Clear All</button>
+              <button onClick={clearFilters} className="text-sm text-gray-400 hover:text-[#1E2A4A] transition-colors">Clear All</button>
             </div>
           </div>
         )}
@@ -978,16 +1147,96 @@ function BookingsPage() {
               {bookings.filter(b => b.status === 'pending').map((b) => (
                 <div key={b.id} onClick={() => openEdit(b)} className="flex items-center justify-between bg-white/80 backdrop-blur-sm border border-red-200/40 rounded-xl p-3.5 cursor-pointer hover:bg-white hover:shadow-sm transition-all">
                   <div>
-                    <p className="text-[#CC6222] font-semibold text-sm">{b.clients?.name || '-'}</p>
+                    <p className="text-[#1E2A4A] font-semibold text-sm">{b.clients?.name || '-'}</p>
                     <p className="text-gray-500 text-xs mt-0.5">{formatDate(b.start_time)} · {b.service_type}</p>
                     <p className="text-gray-400 text-xs mt-0.5">{b.clients?.address || ''}</p>
+                    {b.suggested_cleaner_id && (() => {
+                      const suggested = cleaners.find(c => c.id === b.suggested_cleaner_id)
+                      return suggested ? (
+                        <p className="text-green-600 text-xs mt-1 font-medium">Suggested: {suggested.name}{b.suggested_reason ? ` — ${b.suggested_reason}` : ''}</p>
+                      ) : null
+                    })()}
                   </div>
                   <div className="text-right flex flex-col items-end gap-1.5">
                     <span className="px-2.5 py-1 bg-red-100 text-red-700 rounded-full text-xs font-semibold">Pending</span>
-                    <p className="text-[#CC6222] text-sm font-semibold">~${(b.price / 100).toFixed(0)}</p>
+                    <p className="text-[#1E2A4A] text-sm font-semibold">~${(b.price / 100).toFixed(0)}</p>
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        )}
+
+        {/* Waitlist Panel */}
+        {showWaitlist && (
+          <div className="mb-5">
+            <div className="bg-gradient-to-r from-purple-50 to-violet-50 border border-purple-200/60 rounded-xl p-4 mb-4">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-purple-500" />
+                  <h3 className="text-xs font-bold text-purple-700 uppercase tracking-wide">Waiting List ({waitlistEntries.length})</h3>
+                </div>
+                <button onClick={() => setShowWaitlist(false)} className="text-gray-400 hover:text-gray-600 text-sm">Close</button>
+              </div>
+              {waitlistLoading ? (
+                <div className="flex items-center justify-center py-6">
+                  <div className="w-6 h-6 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
+                </div>
+              ) : waitlistEntries.length === 0 ? (
+                <p className="text-purple-600 text-sm py-4 text-center">No one on the waiting list!</p>
+              ) : (
+                <div className="space-y-3">
+                  {waitlistEntries.map((entry) => (
+                    <div key={entry.id} className="bg-white rounded-xl border border-gray-200 p-4 transition-all">
+                      <div className="flex items-start justify-between">
+                        <div>
+                          <p className="text-[#1E2A4A] font-semibold text-sm">{entry.name || 'Unknown'}</p>
+                          <p className="text-gray-500 text-xs mt-0.5">{entry.phone}</p>
+                          {entry.service_type && <p className="text-gray-400 text-xs mt-0.5">{entry.service_type}</p>}
+                        </div>
+                        <div className="text-right">
+                          {entry.preferred_date && (
+                            <p className="text-purple-700 font-medium text-sm">
+                              {new Date(entry.preferred_date + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
+                            </p>
+                          )}
+                          {entry.preferred_time && <p className="text-gray-400 text-xs">{entry.preferred_time}</p>}
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 mt-3">
+                        <button
+                          onClick={() => {
+                            const tomorrow = new Date()
+                            tomorrow.setDate(tomorrow.getDate() + 1)
+                            const endDate = new Date()
+                            endDate.setMonth(endDate.getMonth() + 3)
+                            setCreateForm({
+                              client_id: entry.client_id || '',
+                              cleaner_id: '', start_date: entry.preferred_date || tomorrow.toISOString().split('T')[0],
+                              start_time: entry.preferred_time ? entry.preferred_time.replace(/\s*(am|pm)/i, (_, ap) => ap.toLowerCase() === 'am' ? ':00' : ':00').replace(/(\d{1,2})(am|pm)/i, (_, h, ap) => { const hr = parseInt(h); const hour = ap.toLowerCase() === 'pm' && hr < 12 ? hr + 12 : ap.toLowerCase() === 'am' && hr === 12 ? 0 : hr; return `${String(hour).padStart(2, '0')}:00` }) : '09:00',
+                              hours: 2, hourly_rate: 75, service_type: entry.service_type || 'Standard Cleaning', notes: 'Booked from waitlist',
+                              repeat_enabled: false, repeat_type: 'weekly', repeat_end: 'never',
+                              repeat_end_count: 10, repeat_end_date: endDate.toISOString().split('T')[0], custom_interval: 3,
+                              discount_enabled: false, is_emergency: false, cleaner_pay_rate: 40, status: 'scheduled'
+                            })
+                            if (entry.name) setClientSearch(entry.name + ' - ' + entry.phone)
+                            setShowClientDropdown(false)
+                            setShowCreateModal(true)
+                          }}
+                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-purple-50 border border-purple-200 text-purple-700 hover:bg-purple-100 transition-all"
+                        >
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                          Book Now
+                        </button>
+                        <a href={`sms:+1${entry.phone.replace(/\D/g, '')}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-50 border border-gray-200 text-gray-600 hover:bg-gray-100 transition-all">
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                          Text
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -1014,12 +1263,12 @@ function BookingsPage() {
                         {/* Job header */}
                         <div className="flex items-start justify-between mb-3">
                           <div>
-                            <p className="text-[#CC6222] font-semibold text-sm">{b.clients?.name || '-'}</p>
+                            <p className="text-[#1E2A4A] font-semibold text-sm">{b.clients?.name || '-'}</p>
                             <p className="text-gray-500 text-xs mt-0.5">{formatDate(b.start_time)} · {b.cleaners?.name || 'Unassigned'}</p>
                             <p className="text-gray-400 text-xs mt-0.5">{b.service_type}</p>
                           </div>
                           <div className="text-right">
-                            <p className="text-[#CC6222] font-bold text-lg">${(b.price / 100).toFixed(0)}</p>
+                            <p className="text-[#1E2A4A] font-bold text-lg">${(b.price / 100).toFixed(0)}</p>
                             {b.cleaner_pay && <p className="text-gray-400 text-xs">Pay: ${Number(b.cleaner_pay).toFixed(0)}</p>}
                           </div>
                         </div>
@@ -1119,13 +1368,13 @@ function BookingsPage() {
                       <div className="flex items-center gap-3">
                         <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                         <div>
-                          <p className="text-sm text-[#CC6222] font-medium">{b.clients?.name || '-'}</p>
+                          <p className="text-sm text-[#1E2A4A] font-medium">{b.clients?.name || '-'}</p>
                           <p className="text-xs text-gray-400">{formatDate(b.start_time)} · {b.cleaners?.name || '-'}</p>
                         </div>
                       </div>
                       <div className="text-right flex items-center gap-3">
                         <span className="text-xs text-gray-400">{b.payment_method === 'zelle' ? 'Zelle' : 'Apple'}</span>
-                        <span className="text-sm font-semibold text-[#CC6222]">${(b.price / 100).toFixed(0)}</span>
+                        <span className="text-sm font-semibold text-[#1E2A4A]">${(b.price / 100).toFixed(0)}</span>
                       </div>
                     </div>
                   ))}
@@ -1140,7 +1389,7 @@ function BookingsPage() {
           {loading ? (
             <div className="flex items-center justify-center py-16">
               <div className="flex flex-col items-center gap-3">
-                <div className="w-8 h-8 border-2 border-[#CC6222] border-t-transparent rounded-full animate-spin" />
+                <div className="w-8 h-8 border-2 border-[#1E2A4A] border-t-transparent rounded-full animate-spin" />
                 <p className="text-gray-400 text-sm">Loading bookings...</p>
               </div>
             </div>
@@ -1183,7 +1432,7 @@ function BookingsPage() {
                   >
                     <td className="px-4 py-3.5">
                       <div>
-                        <p className={'text-sm font-medium ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-[#CC6222]')}>{b.clients?.name || '-'}</p>
+                        <p className={'text-sm font-medium ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-[#1E2A4A]')}>{b.clients?.name || '-'}</p>
                         <p className="text-xs text-gray-400 mt-0.5 truncate max-w-[180px]">{b.clients?.address || ''}</p>
                       </div>
                     </td>
@@ -1191,7 +1440,7 @@ function BookingsPage() {
                       <span className={'text-sm ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-gray-600')}>{b.service_type}</span>
                     </td>
                     <td className="px-4 py-3.5">
-                      <span className={'text-sm ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-[#CC6222]')}>{formatDate(b.start_time)}</span>
+                      <span className={'text-sm ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-[#1E2A4A]')}>{formatDate(b.start_time)}</span>
                     </td>
                     <td className="px-4 py-3.5">
                       <span className={'text-sm ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-gray-600')}>{b.cleaners?.name || <span className="text-gray-300">--</span>}</span>
@@ -1200,7 +1449,7 @@ function BookingsPage() {
                       <span className={'text-sm ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-gray-500')}>${(() => { const hours = Math.max(1, Math.round((new Date(b.end_time).getTime() - new Date(b.start_time).getTime()) / (1000 * 60 * 60))); return b.hourly_rate ? b.hourly_rate : b.price ? Math.round(b.price / 100 / hours) : 75 })()}/hr</span>
                     </td>
                     <td className="px-4 py-3.5">
-                      <span className={'text-sm font-semibold ' + (b.status === 'cancelled' ? 'text-gray-400 line-through' : 'text-[#CC6222]')}>~${(b.price / 100).toFixed(0)}</span>
+                      <span className={'text-sm font-semibold ' + (b.status === 'cancelled' ? 'text-gray-400 line-through' : 'text-[#1E2A4A]')}>~${(b.price / 100).toFixed(0)}</span>
                     </td>
                     <td className="px-4 py-3.5 hidden lg:table-cell">
                       {b.recurring_type ? <span className="px-2 py-1 bg-purple-50 text-purple-600 rounded-full text-xs font-medium border border-purple-100">{b.recurring_type}</span> : <span className="text-gray-300">--</span>}
@@ -1228,13 +1477,13 @@ function BookingsPage() {
                             </button>
                             {resendMenuId === b.id && (
                               <div className="absolute right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-20 py-1 min-w-[100px]">
-                                <button onClick={() => handleResend(b.id, 'email')} className="w-full text-left px-3 py-1.5 text-sm text-[#CC6222] hover:bg-gray-50 transition-colors">Email</button>
-                                <button onClick={() => handleResend(b.id, 'sms')} className="w-full text-left px-3 py-1.5 text-sm text-[#CC6222] hover:bg-gray-50 transition-colors">Text</button>
+                                <button onClick={() => handleResend(b.id, 'email')} className="w-full text-left px-3 py-1.5 text-sm text-[#1E2A4A] hover:bg-gray-50 transition-colors">Email</button>
+                                <button onClick={() => handleResend(b.id, 'sms')} className="w-full text-left px-3 py-1.5 text-sm text-[#1E2A4A] hover:bg-gray-50 transition-colors">Text</button>
                               </div>
                             )}
                           </div>
                         )}
-                        <button onClick={() => openEdit(b)} className="p-1.5 rounded-lg text-gray-400 hover:text-[#CC6222] hover:bg-gray-100 transition-colors" title="Edit">
+                        <button onClick={() => openEdit(b)} className="p-1.5 rounded-lg text-gray-400 hover:text-[#1E2A4A] hover:bg-gray-100 transition-colors" title="Edit">
                           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
                         </button>
                         {b.status === 'cancelled' ? (
@@ -1242,7 +1491,7 @@ function BookingsPage() {
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                           </button>
                         ) : (
-                          <button onClick={() => { if (confirm(`Cancel booking for ${b.clients?.name || 'this client'}?`)) { fetch('/api/bookings/' + b.id, { method: 'DELETE' }).then(() => loadBookings()) } }} className="p-1.5 rounded-lg text-gray-400 hover:text-red-600 hover:bg-red-50 transition-colors" title="Cancel">
+                          <button onClick={async () => { if (confirm(`Cancel booking for ${b.clients?.name || 'this client'}?`)) { const res = await fetch('/api/bookings/' + b.id, { method: 'DELETE' }); if (!res.ok) { const err = await res.json().catch(() => ({ error: res.statusText })); alert(`Failed to cancel: ${err.error || 'Unknown error'}`); } await loadBookings() } }} className="p-1.5 rounded-lg text-gray-400 hover:text-red-600 hover:bg-red-50 transition-colors" title="Cancel">
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                           </button>
                         )}
@@ -1283,7 +1532,7 @@ function BookingsPage() {
                           onClick={() => setCurrentPage(p as number)}
                           className={
                             'min-w-[28px] h-7 rounded-lg text-xs font-medium transition-colors ' +
-                            (currentPage === p ? 'bg-[#CC6222] text-white' : 'text-gray-500 hover:bg-gray-100')
+                            (currentPage === p ? 'bg-[#1E2A4A] text-white' : 'text-gray-500 hover:bg-gray-100')
                           }
                         >
                           {p}
@@ -1308,7 +1557,7 @@ function BookingsPage() {
         <div className="md:hidden space-y-3">
           {loading ? (
             <div className="flex items-center justify-center py-12">
-              <div className="w-7 h-7 border-2 border-[#CC6222] border-t-transparent rounded-full animate-spin" />
+              <div className="w-7 h-7 border-2 border-[#1E2A4A] border-t-transparent rounded-full animate-spin" />
             </div>
           ) : filteredBookings.length === 0 ? (
             <div className="text-center py-12">
@@ -1330,7 +1579,7 @@ function BookingsPage() {
                 >
                   <div className="flex items-start justify-between mb-2">
                     <div className="flex-1 min-w-0">
-                      <p className={'font-semibold text-sm ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-[#CC6222]')}>{b.clients?.name || '-'}</p>
+                      <p className={'font-semibold text-sm ' + (b.status === 'cancelled' ? 'text-gray-400' : 'text-[#1E2A4A]')}>{b.clients?.name || '-'}</p>
                       <p className="text-xs text-gray-400 truncate mt-0.5">{b.clients?.address || ''}</p>
                     </div>
                     <span className={
@@ -1358,7 +1607,7 @@ function BookingsPage() {
                       {b.cleaners?.name && <span className="text-gray-400">/ {b.cleaners.name}</span>}
                       {b.recurring_type && <span className="px-1.5 py-0.5 bg-purple-50 text-purple-600 rounded-full text-xs font-medium">{b.recurring_type}</span>}
                     </div>
-                    <span className={'text-sm font-bold ' + (b.status === 'cancelled' ? 'text-gray-400 line-through' : 'text-[#CC6222]')}>~${(b.price / 100).toFixed(0)}</span>
+                    <span className={'text-sm font-bold ' + (b.status === 'cancelled' ? 'text-gray-400 line-through' : 'text-[#1E2A4A]')}>~${(b.price / 100).toFixed(0)}</span>
                   </div>
                 </div>
               ))}
@@ -1390,26 +1639,45 @@ function BookingsPage() {
       </main>
 
       {showModal && editingBooking && (
-        <SidePanel open={showModal} onClose={() => { setShowModal(false); setEditingBooking(null) }} title="Edit Booking">
-            <p className="text-[#CC6222] font-medium">{editingBooking.clients?.name}</p>
+        <SidePanel open={showModal} onClose={() => { setShowModal(false); setEditingBooking(null) }} title={editingBooking.clients?.name || 'Booking'} width="max-w-lg">
+          <form onSubmit={handleSubmit}>
+            {/* ── CLIENT HEADER ── */}
             {editingBooking.client_id && clients.find(c => c.id === editingBooking.client_id)?.do_not_service && (
-              <div className="bg-red-50 border-2 border-red-300 rounded-lg p-3 my-2">
+              <div className="bg-red-50 border-2 border-red-300 rounded-lg p-3 mb-3">
                 <p className="text-red-700 font-bold text-sm">DO NOT SERVICE</p>
-                <p className="text-red-600 text-sm">This client is flagged. Check notes before proceeding.</p>
               </div>
             )}
-            {editingBooking.clients?.address && (
-              <p className="text-[#CC6222] text-base">{editingBooking.clients.address}</p>
-            )}
-            {editingBooking.clients?.phone && (
-              <div className="flex items-center gap-3 mt-2 mb-4">
-                <span className="text-[#CC6222] text-base font-medium">{editingBooking.clients.phone}</span>
-                <a href={`tel:${editingBooking.clients.phone}`} className="px-4 py-1.5 bg-green-50 text-green-700 border border-green-200 rounded-full text-sm font-medium hover:bg-green-100">Call</a>
-                <a href={`sms:${editingBooking.clients.phone}`} className="px-4 py-1.5 bg-[#34D399]/20 text-white/70 border border-[#34D399]/30 rounded-full text-sm font-medium hover:bg-[#34D399]/20">Text</a>
+            <div className="flex items-start justify-between mb-1">
+              <div>
+                {editingBooking.clients?.address && <p className="text-sm text-gray-600">{editingBooking.clients.address}</p>}
+                {editingBooking.clients?.phone && (
+                  <div className="flex items-center gap-2 mt-1">
+                    <span className="text-sm font-medium text-[#1E2A4A]">{editingBooking.clients.phone}</span>
+                    <a href={`tel:${editingBooking.clients.phone}`} className="px-2.5 py-1 bg-green-50 text-green-700 border border-green-200 rounded-full text-xs font-medium">Call</a>
+                    <a href={`sms:${editingBooking.clients.phone}`} className="px-2.5 py-1 bg-gray-50 text-gray-600 border border-gray-200 rounded-full text-xs font-medium">Text</a>
+                  </div>
+                )}
               </div>
+              <div className="flex items-center gap-1.5 flex-shrink-0">
+                <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })} className={`text-xs font-medium px-2 py-1 rounded-full border-0 appearance-none cursor-pointer ${
+                  form.status === 'pending' ? 'bg-red-100 text-red-700' : form.status === 'scheduled' ? 'bg-green-100 text-green-700' : form.status === 'in_progress' ? 'bg-blue-100 text-blue-700' : form.status === 'completed' ? 'bg-gray-100 text-gray-700' : 'bg-gray-100 text-gray-500'
+                }`}>
+                  <option value="pending">Pending</option>
+                  <option value="scheduled">Scheduled</option>
+                  <option value="in_progress">In Progress</option>
+                  <option value="completed">Completed</option>
+                  <option value="cancelled">Cancelled</option>
+                </select>
+                {(editingBooking.recurring_type || editingBooking.schedule_id) && (
+                  <span className="px-2 py-1 bg-purple-50 text-purple-600 rounded-full text-xs font-medium">{editingBooking.recurring_type || 'Recurring'}</span>
+                )}
+              </div>
+            </div>
+            {editingBooking.cleaner_token && (
+              <button type="button" onClick={copyTeamLink} className="text-xs text-[#1E2A4A]/50 hover:text-[#1E2A4A] mb-2 block">{copied ? 'Copied!' : 'Copy team link'}</button>
             )}
-            {!editingBooking.clients?.phone && <div className="mb-4" />}
-            {/* GPS Distance */}
+
+            {/* ── JOB PROGRESS ── */}
             {(() => {
               const locations = [
                 { label: 'Check-in', loc: editingBooking.check_in_location },
@@ -1417,306 +1685,216 @@ function BookingsPage() {
               ].filter(l => l.loc && typeof l.loc === 'object' && 'distance_miles' in (l.loc as Record<string, unknown>))
               if (locations.length === 0) return null
               return (
-                <div className="mb-4 space-y-1">
+                <div className="mb-3 space-y-1">
                   {locations.map(({ label, loc }) => {
-                    const l = loc as Record<string, unknown>
-                    const flagged = l.flagged as boolean
-                    const dist = l.distance_miles as number
-                    return (
-                      <div key={label} className={`text-sm px-3 py-2 rounded-lg ${flagged ? 'bg-red-50 text-red-700 font-medium' : 'bg-green-50 text-green-700'}`}>
-                        {flagged ? '⚠️' : '✓'} {label}: {dist.toFixed(2)} mi from address
-                      </div>
-                    )
+                    const l = loc as Record<string, unknown>; const flagged = l.flagged as boolean; const dist = l.distance_miles as number
+                    return <div key={label} className={`text-xs px-3 py-1.5 rounded-lg ${flagged ? 'bg-red-50 text-red-700 font-medium' : 'bg-green-50 text-green-700'}`}>{flagged ? '⚠️' : '✓'} {label}: {dist.toFixed(2)} mi</div>
                   })}
                 </div>
               )
             })()}
-            {/* Admin Check-In / Check-Out */}
             {editingBooking.status === 'scheduled' && !editingBooking.check_in_time && (
-              <button
-                type="button"
-                onClick={async () => {
-                  if (!confirm('Check in this booking now? This will set the start time to now.')) return
-                  setSaving(true)
-                  const now = new Date().toISOString()
-                  await fetch('/api/bookings/' + editingBooking.id, {
-                    method: 'PUT',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ status: 'in_progress', check_in_time: now, cleaner_id: form.cleaner_id || null, skip_email: true })
-                  })
-                  setShowModal(false)
-                  setEditingBooking(null)
-                  loadBookings()
-                  setSaving(false)
-                }}
-                className="w-full mb-3 py-2.5 px-4 bg-[#CC6222] text-white rounded-lg font-medium hover:bg-[#CC6222]/90"
-              >
-                Check In (Admin)
-              </button>
+              <button type="button" onClick={async () => { setSaving(true); const now = new Date().toISOString(); await fetch('/api/bookings/' + editingBooking.id, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ status: 'in_progress', check_in_time: now, cleaner_id: form.cleaner_id || null, skip_email: true }) }); setEditingBooking({ ...editingBooking, status: 'in_progress', check_in_time: now }); setForm({ ...form, status: 'in_progress' }); loadBookings(); setSaving(false) }} className="w-full mb-3 py-2 bg-[#1E2A4A] text-white rounded-lg text-sm font-medium">Check In (Admin)</button>
             )}
-            {editingBooking.check_in_time && !editingBooking.check_out_time && (
-              <div className="mb-3">
-                <p className="text-sm text-green-700 bg-green-50 px-3 py-2 rounded-lg mb-2">
-                  Checked in: {new Date(editingBooking.check_in_time + (editingBooking.check_in_time.endsWith('Z') ? '' : 'Z')).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' })}
-                </p>
-                <button
-                  type="button"
-                  onClick={async () => {
-                    if (!confirm('Check out this booking now? This will calculate actual hours and payment.')) return
-                    setSaving(true)
-                    const now = new Date()
-                    const ciStr = editingBooking.check_in_time!
-                    const checkIn = new Date(ciStr + (ciStr.endsWith('Z') ? '' : 'Z'))
-                    const rawHours = (now.getTime() - checkIn.getTime()) / (1000 * 60 * 60)
-                    const actualHours = Math.ceil(rawHours * 2) / 2 // round to half hour
-                    const clientRate = editingBooking.hourly_rate || 75
-                    const cleanerRate = 25
-                    const updatedPrice = Math.round(actualHours * clientRate * 100)
-                    const cleanerPay = Math.round(actualHours * cleanerRate * 100)
-                    await fetch('/api/bookings/' + editingBooking.id, {
-                      method: 'PUT',
-                      headers: { 'Content-Type': 'application/json' },
-                      body: JSON.stringify({
-                        status: 'completed',
-                        check_out_time: now.toISOString(),
-                        actual_hours: actualHours,
-                        price: updatedPrice,
-                        cleaner_pay: cleanerPay,
-                        cleaner_id: form.cleaner_id || null,
-                        skip_email: true
-                      })
-                    })
-                    setShowModal(false)
-                    setEditingBooking(null)
-                    loadBookings()
-                    setSaving(false)
-                  }}
-                  className="w-full py-2.5 px-4 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700"
-                >
-                  Check Out (Admin)
-                </button>
-              </div>
-            )}
-            {editingBooking.check_in_time && editingBooking.check_out_time && (
-              <div className="mb-3 space-y-1">
-                <p className="text-sm text-green-700 bg-green-50 px-3 py-2 rounded-lg">
-                  Checked in: {new Date(editingBooking.check_in_time + (editingBooking.check_in_time.endsWith('Z') ? '' : 'Z')).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' })}
-                </p>
-                <p className="text-sm text-green-700 bg-green-50 px-3 py-2 rounded-lg">
-                  Checked out: {new Date(editingBooking.check_out_time + (editingBooking.check_out_time.endsWith('Z') ? '' : 'Z')).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' })}
-                  {editingBooking.actual_hours ? ` (${editingBooking.actual_hours}hrs)` : ''}
-                </p>
-              </div>
-            )}
-            {(editingBooking.recurring_type || editingBooking.schedule_id) && (
-              <p className="text-purple-600 text-sm mb-4 bg-purple-50 px-3 py-2 rounded-lg">🔄 Recurring: {editingBooking.recurring_type || 'Linked to schedule'}</p>
-            )}
-            {editingBooking.cleaner_token && (
-              <button type="button" onClick={copyTeamLink} className="w-full mb-4 py-2 px-4 bg-[#34D399]/20 text-white/70 border border-[#34D399]/30 rounded-lg font-medium hover:bg-[#34D399]/20">
-                {copied ? 'Copied!' : 'Copy Team Link'}
-              </button>
-            )}
-            <form onSubmit={handleSubmit}>
-              <div className="space-y-4">
-                {/* Date & Time */}
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-[#CC6222] mb-1">Date</label>
-                    <input type="date" value={form.start_date} onChange={(e) => setForm({ ...form, start_date: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-[#CC6222] mb-1">Time</label>
-                    <input type="time" value={form.start_time} onChange={(e) => setForm({ ...form, start_time: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]" />
-                  </div>
-                </div>
-                
-                {/* Service & Hours */}
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-[#CC6222] mb-1">Service</label>
-                    <select value={form.service_type} onChange={(e) => setForm({ ...form, service_type: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]">
-                      {serviceTypes.map(s => <option key={s} value={s}>{s}</option>)}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-[#CC6222] mb-1">Hours</label>
-                    <select value={form.hours} onChange={(e) => setForm({ ...form, hours: parseInt(e.target.value) })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]">
-                      {[1,2,3,4,5,6,7,8].map(h => <option key={h} value={h}>{h}hr</option>)}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Rate */}
-                <div>
-                  <label className="block text-sm font-medium text-[#CC6222] mb-1">Rate</label>
-                  <select value={form.hourly_rate} onChange={(e) => setForm({ ...form, hourly_rate: parseInt(e.target.value) })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]">
-                    <option value={49}>$49/hr</option>
-                    <option value={65}>$65/hr (Intro)</option>
-                    <option value={75}>$75/hr</option>
-                  </select>
-                </div>
-
-                {/* 10% Discount Toggle */}
-                <div className="flex justify-between items-center py-3 border-t border-b border-gray-200">
-                  <h4 className="font-medium text-[#CC6222]">10% Discount</h4>
-                  <div
-                    onClick={() => setForm({ ...form, discount_enabled: !form.discount_enabled })}
-                    className={`w-10 h-6 rounded-full transition-colors ${form.discount_enabled ? 'bg-green-600' : 'bg-gray-300'} relative cursor-pointer`}
-                  >
-                    <div className={`w-4 h-4 bg-white rounded-full absolute top-1 transition-transform ${form.discount_enabled ? 'translate-x-5' : 'translate-x-1'}`} />
-                  </div>
-                </div>
-
-                {/* Estimate display */}
-                <div className="bg-gray-50 rounded-lg p-3">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Estimate: ~{getEstimatedHoursRange(form.hours)}hrs × ${form.hourly_rate}/hr{form.discount_enabled ? ' − 10%' : ''}</span>
-                    <span className="font-semibold text-[#CC6222]">~${(calculateEditPrice() / 100).toFixed(0)}</span>
-                  </div>
-                </div>
-                {(form.status === 'completed' || form.actual_hours) && (
-                  <div className="bg-green-50 border border-green-200 rounded-lg p-3 space-y-3">
-                    <p className="text-xs font-medium text-green-700">ACTUAL LABOR</p>
-                    <div className="grid grid-cols-2 gap-3">
-                      <div>
-                        <label className="block text-xs text-green-700 mb-1">Hours Worked</label>
-                        <input
-                          type="number"
-                          step="0.5"
-                          min="0"
-                          value={form.actual_hours ?? ''}
-                          onChange={(e) => {
-                            const hrs = e.target.value ? parseFloat(e.target.value) : null
-                            const cleanerRate = cleaners.find(c => c.id === form.cleaner_id)?.hourly_rate || 25
-                            setForm({ ...form, actual_hours: hrs, cleaner_pay: hrs ? Math.round(hrs * cleanerRate * 100) : null })
-                          }}
-                          placeholder="e.g. 3"
-                          className="w-full px-3 py-2 border border-green-300 rounded-lg text-[#CC6222] bg-white text-sm"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-xs text-green-700 mb-1">Team Pay ($)</label>
-                        <input
-                          type="number"
-                          step="0.01"
-                          min="0"
-                          value={form.cleaner_pay != null ? (form.cleaner_pay / 100).toFixed(2) : ''}
-                          onChange={(e) => {
-                            const val = e.target.value ? Math.round(parseFloat(e.target.value) * 100) : null
-                            setForm({ ...form, cleaner_pay: val })
-                          }}
-                          placeholder="auto"
-                          className="w-full px-3 py-2 border border-green-300 rounded-lg text-[#CC6222] bg-white text-sm"
-                        />
-                      </div>
-                    </div>
-                    {form.actual_hours && (
-                      <div className="flex justify-between text-sm">
-                        <span className="text-green-700">Actual: {form.actual_hours}hrs × ${form.hourly_rate}/hr</span>
-                        <span className="font-semibold text-green-700">${(form.actual_hours * form.hourly_rate).toFixed(0)}</span>
+            {editingBooking.check_in_time && (
+              <div className="mb-3 space-y-1.5">
+                <p className="text-xs text-green-700 bg-green-50 px-3 py-1.5 rounded-lg">Checked in: {toEST(editingBooking.check_in_time)}</p>
+                {editingBooking.fifteen_min_alert_time && <p className="text-xs text-yellow-700 bg-yellow-50 px-3 py-1.5 rounded-lg">15-min warning: {toEST(editingBooking.fifteen_min_alert_time)}</p>}
+                {editingBooking.check_out_time && <p className="text-xs text-green-700 bg-green-50 px-3 py-1.5 rounded-lg">Checked out: {toEST(editingBooking.check_out_time)}{editingBooking.actual_hours ? ` (${editingBooking.actual_hours}hrs)` : ''}</p>}
+                {!editingBooking.check_out_time && (
+                  <div className="flex gap-2">
+                    {!editingBooking.fifteen_min_alert_time && (
+                      <button type="button" onClick={async () => { setSaving(true); try { await fetch('/api/team/15min-alert', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ bookingId: editingBooking.id }) }); setEditingBooking({ ...editingBooking, fifteen_min_alert_time: new Date().toISOString() }) } catch {} setSaving(false) }} className="flex-1 py-2 bg-yellow-500 text-white rounded-lg text-xs font-bold">15-Min Alert</button>
+                    )}
+                    {!confirmCheckout ? (
+                      <button type="button" onClick={() => setConfirmCheckout(true)} className="flex-1 py-2 bg-green-600 text-white rounded-lg text-xs font-medium">Check Out</button>
+                    ) : (
+                      <div className="flex-1 flex gap-1.5">
+                        <button type="button" onClick={() => setConfirmCheckout(false)} className="flex-1 py-2 border border-gray-300 text-gray-600 rounded-lg text-xs">Cancel</button>
+                        <button type="button" onClick={async () => { setConfirmCheckout(false); setSaving(true); const now = new Date(); const ciStr = editingBooking.check_in_time!; const checkIn = new Date(ciStr.endsWith('Z') || ciStr.includes('+') ? ciStr : ciStr + 'Z'); const totalMin = (now.getTime() - checkIn.getTime()) / 60000; const halfHrs = Math.floor(totalMin / 30); const rem = totalMin - halfHrs * 30; const actualHours = Math.max(0.5, rem >= 10 ? (halfHrs + 1) * 0.5 : halfHrs * 0.5); const clientRate = editingBooking.hourly_rate || 75; const updatedPrice = Math.round(actualHours * clientRate * 100); const cleanerPay = Math.round(actualHours * 25 * 100); await fetch('/api/bookings/' + editingBooking.id, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ status: 'completed', check_out_time: now.toISOString(), actual_hours: actualHours, price: updatedPrice, cleaner_pay: cleanerPay, cleaner_id: form.cleaner_id || null, skip_email: true }) }); setEditingBooking({ ...editingBooking, status: 'completed', check_out_time: now.toISOString(), actual_hours: actualHours, price: updatedPrice, cleaner_pay: cleanerPay }); setForm({ ...form, status: 'completed', actual_hours: actualHours, cleaner_pay: cleanerPay }); loadBookings(); setSaving(false) }} className="flex-1 py-2 bg-red-600 text-white rounded-lg text-xs font-bold">Confirm Check Out</button>
                       </div>
                     )}
                   </div>
                 )}
+              </div>
+            )}
+            {(editingBooking.walkthrough_video_url || editingBooking.final_video_url) && (
+              <div className="mb-3 grid grid-cols-2 gap-2">
+                {editingBooking.walkthrough_video_url && <div><p className="text-[10px] text-gray-400 mb-0.5">Before</p><video src={editingBooking.walkthrough_video_url} controls className="w-full rounded-lg max-h-[120px]" preload="metadata" /></div>}
+                {editingBooking.final_video_url && <div><p className="text-[10px] text-gray-400 mb-0.5">After</p><video src={editingBooking.final_video_url} controls className="w-full rounded-lg max-h-[120px]" preload="metadata" /></div>}
+              </div>
+            )}
 
-                <RecurringOptions
-                  startDate={form.start_date}
-                  enabled={form.repeat_enabled}
-                  onEnabledChange={(v) => setForm({ ...form, repeat_enabled: v })}
-                  repeatType={form.repeat_type}
-                  onRepeatTypeChange={(v) => setForm({ ...form, repeat_type: v })}
-                  repeatEnd={form.repeat_end}
-                  onRepeatEndChange={(v) => setForm({ ...form, repeat_end: v })}
-                  repeatEndCount={form.repeat_end_count}
-                  onRepeatEndCountChange={(v) => setForm({ ...form, repeat_end_count: v })}
-                  repeatEndDate={form.repeat_end_date}
-                  onRepeatEndDateChange={(v) => setForm({ ...form, repeat_end_date: v })}
-                  customInterval={form.custom_interval}
-                  onCustomIntervalChange={(v) => setForm({ ...form, custom_interval: v })}
-                  previewDates={!(editingBooking?.recurring_type || editingBooking?.schedule_id) ? editRecurringDates : []}
-                />
-
+            {/* ── BOOKING DETAILS (compact) ── */}
+            <div className="bg-gray-50 rounded-xl p-3 mb-3 space-y-2">
+              <div className="grid grid-cols-4 gap-2">
                 <div>
-                  <label className="block text-sm font-medium text-[#CC6222] mb-1">Cleaner</label>
-                  <select value={form.cleaner_id} onChange={(e) => setForm({ ...form, cleaner_id: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]">
-                    <option value="">Select...</option>
-                    {cleaners.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
+                  <label className="block text-[10px] text-gray-400 uppercase">Date</label>
+                  <input type="date" value={form.start_date} onChange={(e) => setForm({ ...form, start_date: e.target.value })} className="w-full px-2 py-1.5 border border-gray-200 rounded-lg text-sm text-[#1E2A4A] bg-white" />
+                </div>
+                <div>
+                  <label className="block text-[10px] text-gray-400 uppercase">Time</label>
+                  <input type="time" value={form.start_time} onChange={(e) => setForm({ ...form, start_time: e.target.value })} className="w-full px-2 py-1.5 border border-gray-200 rounded-lg text-sm text-[#1E2A4A] bg-white" />
+                </div>
+                <div>
+                  <label className="block text-[10px] text-gray-400 uppercase">Hours</label>
+                  <select value={form.hours} onChange={(e) => setForm({ ...form, hours: parseInt(e.target.value) })} className="w-full px-2 py-1.5 border border-gray-200 rounded-lg text-sm text-[#1E2A4A] bg-white">
+                    {[1,2,3,4,5,6,7,8].map(h => <option key={h} value={h}>{h}hr</option>)}
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#CC6222] mb-1">Status</label>
-                  <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]">
-                    <option value="pending">Pending</option>
-                    <option value="scheduled">Scheduled</option>
-                    <option value="in_progress">In Progress</option>
-                    <option value="completed">Completed</option>
-                    <option value="cancelled">Cancelled</option>
+                  <label className="block text-[10px] text-gray-400 uppercase">Rate</label>
+                  <select value={form.hourly_rate} onChange={(e) => setForm({ ...form, hourly_rate: parseInt(e.target.value) })} className="w-full px-2 py-1.5 border border-gray-200 rounded-lg text-sm text-[#1E2A4A] bg-white">
+                    <option value={49}>$49</option><option value={59}>$59</option><option value={65}>$65</option><option value={75}>$75</option><option value={100}>$100</option>
                   </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-[#CC6222] mb-1">Payment</label>
-                  <select value={form.payment_status} onChange={(e) => setForm({ ...form, payment_status: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]">
-                    <option value="pending">Pending</option>
-                    <option value="paid">Paid</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-[#CC6222] mb-1">Method</label>
-                  <select value={form.payment_method} onChange={(e) => setForm({ ...form, payment_method: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]">
-                    <option value="">-</option>
-                    <option value="zelle">Zelle</option>
-                    <option value="apple_pay">Apple Pay</option>
-                  </select>
-                </div>
-                {form.status === 'completed' && (
-                  <div>
-                    <label className="block text-sm font-medium text-[#CC6222] mb-1">Team Paid</label>
-                    <select value={form.cleaner_paid ? 'paid' : 'not_paid'} onChange={(e) => setForm({ ...form, cleaner_paid: e.target.value === 'paid' })} className={'w-full px-3 py-2 border rounded-lg ' + (form.cleaner_paid ? 'border-green-300 text-green-700 bg-green-50' : 'border-gray-300 text-[#CC6222]')}>
-                      <option value="not_paid">Not Paid</option>
-                      <option value="paid">Paid</option>
-                    </select>
-                  </div>
-                )}
-                <div>
-                  <label className="block text-sm font-medium text-[#CC6222] mb-1">Notes</label>
-                  <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]" rows={6} />
                 </div>
               </div>
-              <div className="flex gap-3 mt-6">
-                {(editingBooking.recurring_type || editingBooking.schedule_id) ? (
-                  <div className="relative group">
-                    <button type="button" className="px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg">Cancel ▾</button>
-                    <div className="absolute left-0 bottom-full mb-1 hidden group-hover:block bg-white border rounded-lg shadow-lg py-1 min-w-[180px]">
-                      <button type="button" onClick={() => handleCancel('single')} className="w-full px-4 py-2 text-left text-red-600 hover:bg-red-50 text-sm">This booking only</button>
-                      <button type="button" onClick={() => handleCancel('all')} className="w-full px-4 py-2 text-left text-red-600 hover:bg-red-50 text-sm">All future bookings</button>
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <label className="block text-[10px] text-gray-400 uppercase">Service</label>
+                  <select value={form.service_type} onChange={(e) => setForm({ ...form, service_type: e.target.value })} className="w-full px-2 py-1.5 border border-gray-200 rounded-lg text-sm text-[#1E2A4A] bg-white">
+                    {serviceTypes.map(s => <option key={s} value={s}>{s}</option>)}
+                  </select>
+                </div>
+                <div className="flex items-end">
+                  <div className="flex items-center justify-between w-full px-2 py-1.5 border border-gray-200 rounded-lg bg-white">
+                    <span className="text-sm text-[#1E2A4A]">10% Off</span>
+                    <div onClick={() => setForm({ ...form, discount_enabled: !form.discount_enabled })} className={`w-9 h-5 rounded-full transition-colors ${form.discount_enabled ? 'bg-green-600' : 'bg-gray-300'} relative cursor-pointer`}>
+                      <div className={`w-3.5 h-3.5 bg-white rounded-full absolute top-[3px] transition-transform ${form.discount_enabled ? 'translate-x-[18px]' : 'translate-x-[3px]'}`} />
                     </div>
                   </div>
-                ) : (
-                  <button type="button" onClick={() => handleCancel('single')} className="px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg">Cancel Booking</button>
-                )}
-                <button type="button" onClick={() => { setShowModal(false); setEditingBooking(null) }} className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-[#CC6222]">Close</button>
-                <button type="submit" disabled={saving} className="flex-1 px-4 py-2 bg-[#CC6222] text-white rounded-lg">{saving ? '...' : 'Save'}</button>
+                </div>
               </div>
-            </form>
+              <div className="flex justify-between text-xs pt-1 border-t border-gray-200">
+                <span className="text-gray-500">~{getEstimatedHoursRange(form.hours)}hrs × ${form.hourly_rate}{form.discount_enabled ? ' − 10%' : ''}</span>
+                <span className="font-semibold text-[#1E2A4A]">~${(calculateEditPrice() / 100).toFixed(0)}</span>
+              </div>
+              <div className="pt-2 border-t border-gray-200">
+                <RecurringOptions startDate={form.start_date} enabled={form.repeat_enabled} onEnabledChange={(v) => setForm({ ...form, repeat_enabled: v })} repeatType={form.repeat_type} onRepeatTypeChange={(v) => setForm({ ...form, repeat_type: v })} repeatEnd={form.repeat_end} onRepeatEndChange={(v) => setForm({ ...form, repeat_end: v })} repeatEndCount={form.repeat_end_count} onRepeatEndCountChange={(v) => setForm({ ...form, repeat_end_count: v })} repeatEndDate={form.repeat_end_date} onRepeatEndDateChange={(v) => setForm({ ...form, repeat_end_date: v })} customInterval={form.custom_interval} onCustomIntervalChange={(v) => setForm({ ...form, custom_interval: v })} previewDates={!(editingBooking?.recurring_type || editingBooking?.schedule_id) ? editRecurringDates : []} />
+              </div>
+            </div>
+
+            {/* ── ACTUAL LABOR (completed only) ── */}
+            {(form.status === 'completed' || form.actual_hours) && (
+              <div className="bg-green-50 border border-green-200 rounded-xl p-3 mb-3">
+                <div className="grid grid-cols-3 gap-2">
+                  <div>
+                    <label className="block text-[10px] text-green-600 uppercase">Hours</label>
+                    <input type="number" step="0.5" min="0" value={form.actual_hours ?? ''} onChange={(e) => { const hrs = e.target.value ? parseFloat(e.target.value) : null; const cr = cleaners.find(c => c.id === form.cleaner_id)?.hourly_rate || 25; setForm({ ...form, actual_hours: hrs, cleaner_pay: hrs ? Math.round(hrs * cr * 100) : null }) }} placeholder="—" className="w-full px-2 py-1.5 border border-green-300 rounded-lg text-sm text-[#1E2A4A] bg-white" />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] text-green-600 uppercase">Team Pay</label>
+                    <input type="number" step="0.01" min="0" value={form.cleaner_pay != null ? (form.cleaner_pay / 100).toFixed(2) : ''} onChange={(e) => setForm({ ...form, cleaner_pay: e.target.value ? Math.round(parseFloat(e.target.value) * 100) : null })} placeholder="auto" className="w-full px-2 py-1.5 border border-green-300 rounded-lg text-sm text-[#1E2A4A] bg-white" />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] text-green-600 uppercase">Team Paid</label>
+                    <select value={form.cleaner_paid ? 'paid' : 'not_paid'} onChange={(e) => setForm({ ...form, cleaner_paid: e.target.value === 'paid' })} className={'w-full px-2 py-1.5 border rounded-lg text-sm ' + (form.cleaner_paid ? 'border-green-300 text-green-700 bg-green-50' : 'border-green-300 text-[#1E2A4A] bg-white')}>
+                      <option value="not_paid">No</option><option value="paid">Yes</option>
+                    </select>
+                  </div>
+                </div>
+                {form.actual_hours && <p className="text-xs text-green-700 mt-1 text-right font-medium">{form.actual_hours}hrs × ${form.hourly_rate} = ${(form.actual_hours * form.hourly_rate).toFixed(0)}</p>}
+              </div>
+            )}
+
+            {/* ── PAYMENT ── */}
+            <div className="grid grid-cols-2 gap-2 mb-3">
+              <div>
+                <label className="block text-[10px] text-gray-400 uppercase">Payment</label>
+                <select value={form.payment_status} onChange={(e) => setForm({ ...form, payment_status: e.target.value })} className="w-full px-2 py-1.5 border border-gray-200 rounded-lg text-sm text-[#1E2A4A]">
+                  <option value="pending">Pending</option><option value="paid">Paid</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-[10px] text-gray-400 uppercase">Method</label>
+                <select value={form.payment_method} onChange={(e) => setForm({ ...form, payment_method: e.target.value })} className="w-full px-2 py-1.5 border border-gray-200 rounded-lg text-sm text-[#1E2A4A]">
+                  <option value="">—</option><option value="zelle">Zelle</option><option value="apple_pay">Apple Pay</option>
+                </select>
+              </div>
+            </div>
+
+            {/* ── CLEANER ── */}
+            <div className="mb-3">
+              <label className="block text-[10px] text-gray-400 uppercase mb-1">Cleaner</label>
+              {editingBooking.suggested_cleaner_id && !editingBooking.cleaner_id && (() => {
+                const suggested = cleaners.find(c => c.id === editingBooking.suggested_cleaner_id)
+                return suggested ? (
+                  <button type="button" onClick={() => setForm({ ...form, cleaner_id: suggested.id })} className="w-full mb-1.5 px-3 py-2 rounded-lg border-2 border-green-400 bg-green-50 text-left text-sm hover:bg-green-100 transition-colors">
+                    <div className="flex items-center justify-between">
+                      <span className="font-medium text-green-800">Suggested: {suggested.name}</span>
+                      <span className="text-[10px] text-green-600 font-medium">Tap to assign</span>
+                    </div>
+                    {editingBooking.suggested_reason && <p className="text-[10px] text-green-600 mt-0.5">{editingBooking.suggested_reason}</p>}
+                  </button>
+                ) : null
+              })()}
+              <div className="space-y-1 max-h-36 overflow-y-auto">
+                <button type="button" onClick={() => setForm({ ...form, cleaner_id: '' })} className={`w-full flex items-center px-3 py-1.5 rounded-lg border text-sm ${!form.cleaner_id ? 'border-indigo-500 bg-indigo-50 font-medium' : 'border-gray-200 hover:border-gray-300'} text-[#1E2A4A]`}>Unassigned</button>
+                {cleaners.filter(c => c.active !== false).map((c) => {
+                  const avail = getCleanerAvailability(c, form.start_date, form.start_time, form.hours)
+                  const selected = form.cleaner_id === c.id
+                  const isSuggested = c.id === editingBooking.suggested_cleaner_id
+                  return (
+                    <button key={c.id} type="button" onClick={() => setForm({ ...form, cleaner_id: c.id })} className={`w-full text-left px-3 py-1.5 rounded-lg border text-sm ${selected ? 'border-indigo-500 bg-indigo-50' : isSuggested ? 'border-green-300 bg-green-50/50' : avail.available ? 'border-gray-200 hover:border-gray-300' : 'border-gray-200 text-gray-400'}`}>
+                      <div className="flex items-center justify-between">
+                        <span className={selected ? 'font-medium text-[#1E2A4A]' : ''}>{c.name}{isSuggested && !selected ? ' ★' : ''}</span>
+                        {form.start_date && (avail.available ? <span className="text-[10px] text-green-600 font-medium">Available</span> : <span className="text-[10px] text-red-500">{avail.reason}</span>)}
+                      </div>
+                      {form.start_date && avail.dayBookings && avail.dayBookings.length > 0 && (
+                        <div className="mt-0.5 flex flex-wrap gap-1">{avail.dayBookings.map((b, i) => <span key={i} className="text-[9px] bg-gray-100 text-gray-500 px-1 py-0.5 rounded">{b.time} {b.client} ({b.hours}hr)</span>)}</div>
+                      )}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* ── NOTES ── */}
+            <div className="mt-3 mb-3">
+              <label className="block text-[10px] text-gray-400 uppercase mb-1">Notes</label>
+              {editingBooking.notes && <p className="text-xs text-gray-400 bg-gray-50 rounded-lg px-3 py-2 mb-2 italic">{editingBooking.notes}</p>}
+              <BookingNotes bookingId={editingBooking.id} mode="admin" authorName="Admin" />
+            </div>
+
+            {/* ── ACTIONS ── */}
+            <div className="flex gap-2 pt-3 border-t border-gray-100">
+              {(editingBooking.recurring_type || editingBooking.schedule_id) ? (
+                <div className="relative">
+                  <button type="button" onClick={() => setShowCancelMenu(!showCancelMenu)} className="px-3 py-2 text-red-600 hover:bg-red-50 rounded-lg text-sm">Cancel ▾</button>
+                  {showCancelMenu && (
+                    <div className="absolute left-0 bottom-full mb-1 bg-white border rounded-lg shadow-lg py-1 min-w-[160px] z-10">
+                      <button type="button" onClick={() => { setShowCancelMenu(false); handleCancel('single') }} className="w-full px-3 py-2 text-left text-red-600 hover:bg-red-50 text-sm">This booking</button>
+                      <button type="button" onClick={() => { setShowCancelMenu(false); handleCancel('all') }} className="w-full px-3 py-2 text-left text-red-600 hover:bg-red-50 text-sm">All future</button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <button type="button" onClick={() => handleCancel('single')} className="px-3 py-2 text-red-600 hover:bg-red-50 rounded-lg text-sm">Cancel</button>
+              )}
+              <div className="flex-1" />
+              <button type="button" onClick={() => { setShowModal(false); setEditingBooking(null) }} className="px-4 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] text-sm">Close</button>
+              <button type="submit" disabled={saving} className="px-6 py-2 bg-[#1E2A4A] text-white rounded-lg text-sm font-medium">{saving ? '...' : 'Save'}</button>
+            </div>
+          </form>
         </SidePanel>
       )}
 
       {showUpdateChoice && (
-        <div className="fixed inset-0 bg-[#CC6222]/50 flex items-center justify-center z-[10001]" onClick={() => setShowUpdateChoice(false)}>
+        <div className="fixed inset-0 bg-[#1E2A4A]/50 flex items-center justify-center z-[10001]" onClick={() => setShowUpdateChoice(false)}>
           <div className="bg-white rounded-lg p-6 w-full max-w-sm" onClick={e => e.stopPropagation()}>
-            <h3 className="text-lg font-semibold text-[#CC6222] mb-4">Update Recurring Booking</h3>
+            <h3 className="text-lg font-semibold text-[#1E2A4A] mb-4">Update Recurring Booking</h3>
             <p className="text-gray-600 mb-6">Apply changes to:</p>
             <div className="space-y-3">
-              <button onClick={() => saveBooking('single')} className="w-full py-3 px-4 border border-gray-300 rounded-lg text-[#CC6222] hover:bg-gray-50 text-left">
+              <button onClick={() => saveBooking('single')} className="w-full py-3 px-4 border border-gray-300 rounded-lg text-[#1E2A4A] hover:bg-gray-50 text-left">
                 <p className="font-medium">This booking only</p>
                 <p className="text-sm text-gray-500">Only update this appointment</p>
               </button>
-              <button onClick={() => saveBooking('all')} className="w-full py-3 px-4 border border-gray-300 rounded-lg text-[#CC6222] hover:bg-gray-50 text-left">
+              <button onClick={() => saveBooking('all')} className="w-full py-3 px-4 border border-gray-300 rounded-lg text-[#1E2A4A] hover:bg-gray-50 text-left">
                 <p className="font-medium">All future bookings</p>
                 <p className="text-sm text-gray-500">Update this and all upcoming appointments</p>
               </button>
             </div>
-            <button onClick={() => setShowUpdateChoice(false)} className="w-full mt-4 py-2 text-gray-500 hover:text-[#CC6222]">Cancel</button>
+            <button onClick={() => setShowUpdateChoice(false)} className="w-full mt-4 py-2 text-gray-500 hover:text-[#1E2A4A]">Cancel</button>
           </div>
         </div>
       )}
@@ -1726,7 +1904,7 @@ function BookingsPage() {
             <form onSubmit={handleCreate}>
               <div className="space-y-4">
                 <div className="relative">
-                  <label className="block text-sm font-medium text-[#CC6222] mb-1">Client *</label>
+                  <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Client *</label>
                   <input
                     type="text"
                     required={!createForm.client_id}
@@ -1734,16 +1912,16 @@ function BookingsPage() {
                     onChange={(e) => handleClientSearchChange(e.target.value)}
                     onFocus={() => setShowClientDropdown(true)}
                     placeholder="Search by name or phone..."
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]"
                   />
                   
                   {showClientDropdown && (
                     <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-64 overflow-y-auto">
-                      <button type="button" onClick={handleNewClientClick} className="w-full px-3 py-2 text-left hover:bg-gray-50 border-b border-gray-200 font-medium text-[#CC6222]">+ New Client</button>
+                      <button type="button" onClick={handleNewClientClick} className="w-full px-3 py-2 text-left hover:bg-gray-50 border-b border-gray-200 font-medium text-[#1E2A4A]">+ New Client</button>
                       {filteredClients.length > 0 ? (
                         filteredClients.map((client) => (
                           <button key={client.id} type="button" onClick={() => handleClientSelect(client)} className="w-full px-3 py-2 text-left hover:bg-gray-50 border-b border-gray-100 last:border-b-0">
-                            <div className="font-medium text-[#CC6222]">{client.name}</div>
+                            <div className="font-medium text-[#1E2A4A]">{client.name}</div>
                             <div className="text-sm text-gray-500">{client.phone}</div>
                           </button>
                         ))
@@ -1763,20 +1941,30 @@ function BookingsPage() {
                   </div>
                 )}
                 <div>
-                  <label className="block text-sm font-medium text-[#CC6222] mb-1">Service</label>
+                  <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Service</label>
                   <select value={createForm.service_type} onChange={(e) => {
                     const isEmergency = e.target.value === 'Emergency / Same-Day'
                     setCreateForm({ ...createForm, service_type: e.target.value, is_emergency: isEmergency, cleaner_id: isEmergency ? '' : createForm.cleaner_id })
-                  }} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]">
+                  }} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">
                     {serviceTypes.map(s => <option key={s}>{s}</option>)}
                   </select>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Date *</label>
+                    <input type="date" required value={createForm.start_date} onChange={(e) => setCreateForm({ ...createForm, start_date: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Time *</label>
+                    <input type="time" required value={createForm.start_time} onChange={(e) => setCreateForm({ ...createForm, start_time: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]" />
+                  </div>
                 </div>
                 {createForm.is_emergency ? (
                   <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
                     <p className="text-sm text-red-700 mb-3">🚨 Broadcasts to all team - first to claim gets it</p>
                     <label className="block text-sm font-medium text-red-700 mb-1">Team Pay Rate</label>
                     <div className="flex items-center">
-                      <span className="text-[#CC6222] text-lg mr-1">$</span>
+                      <span className="text-[#1E2A4A] text-lg mr-1">$</span>
                       <input
                         type="number"
                         step="1"
@@ -1784,44 +1972,70 @@ function BookingsPage() {
                         max="100"
                         value={createForm.cleaner_pay_rate}
                         onChange={(e) => setCreateForm({ ...createForm, cleaner_pay_rate: parseInt(e.target.value) || 40 })}
-                        className="w-24 px-3 py-2 border border-red-300 rounded-lg text-[#CC6222] text-center font-mono bg-white"
+                        className="w-24 px-3 py-2 border border-red-300 rounded-lg text-[#1E2A4A] text-center font-mono bg-white"
                       />
-                      <span className="text-[#CC6222] ml-1">/hr</span>
+                      <span className="text-[#1E2A4A] ml-1">/hr</span>
                     </div>
                   </div>
                 ) : (
                   <div>
-                    <label className="block text-sm font-medium text-[#CC6222] mb-1">Cleaner *</label>
-                    <select required value={createForm.cleaner_id} onChange={(e) => setCreateForm({ ...createForm, cleaner_id: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]">
-                      <option value="">Select...</option>
-                      {cleaners.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
-                    </select>
+                    <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Cleaner *</label>
+                    <div className="space-y-1">
+                      {cleaners.filter(c => c.active !== false).map((c) => {
+                        const avail = getCleanerAvailability(c, createForm.start_date, createForm.start_time, createForm.hours)
+                        const selected = createForm.cleaner_id === c.id
+                        return (
+                          <button
+                            key={c.id}
+                            type="button"
+                            onClick={() => setCreateForm({ ...createForm, cleaner_id: c.id })}
+                            className={`w-full text-left px-3 py-2 rounded-lg border text-sm transition-colors ${
+                              selected
+                                ? 'border-indigo-500 bg-indigo-50 text-[#1E2A4A]'
+                                : avail.available
+                                  ? 'border-gray-200 hover:border-gray-300 text-[#1E2A4A]'
+                                  : 'border-gray-200 text-gray-400'
+                            }`}
+                          >
+                            <div className="flex items-center justify-between">
+                              <span className={selected ? 'font-medium' : ''}>{c.name}</span>
+                              {createForm.start_date && (
+                                avail.available
+                                  ? <span className="text-xs text-green-600 font-medium">Available</span>
+                                  : <span className="text-xs text-red-500">{avail.reason}</span>
+                              )}
+                            </div>
+                            {createForm.start_date && avail.dayBookings && avail.dayBookings.length > 0 && (
+                              <div className="mt-1 flex flex-wrap gap-1">
+                                {avail.dayBookings.map((b, i) => (
+                                  <span key={i} className="text-[10px] bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">
+                                    {b.time} {b.client} ({b.hours}hr)
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+                          </button>
+                        )
+                      })}
+                    </div>
                   </div>
                 )}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-[#CC6222] mb-1">Hours</label>
-                    <select value={createForm.hours} onChange={(e) => setCreateForm({ ...createForm, hours: parseInt(e.target.value) })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]">
+                    <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Hours</label>
+                    <select value={createForm.hours} onChange={(e) => setCreateForm({ ...createForm, hours: parseInt(e.target.value) })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">
                       {[1,2,3,4,5,6,7,8].map(h => <option key={h} value={h}>{h}hr</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-[#CC6222] mb-1">Rate</label>
-                    <select value={createForm.hourly_rate} onChange={(e) => setCreateForm({ ...createForm, hourly_rate: parseInt(e.target.value) })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]">
-                      <option value={49}>$49/hr</option>
-                      <option value={65}>$65/hr (Intro)</option>
-                      <option value={75}>$75/hr</option>
+                    <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Rate</label>
+                    <select value={createForm.hourly_rate} onChange={(e) => setCreateForm({ ...createForm, hourly_rate: parseInt(e.target.value) })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">
+                      <option value={49}>$49/hr (Legacy)</option>
+                      <option value={59}>$49/hr</option>
+                      <option value={65}>$65/hr (Legacy)</option>
+                      <option value={75}>$65/hr</option>
+                      <option value={100}>$100/hr (Same-Day)</option>
                     </select>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-[#CC6222] mb-1">Date *</label>
-                    <input type="date" required value={createForm.start_date} onChange={(e) => setCreateForm({ ...createForm, start_date: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-[#CC6222] mb-1">Time *</label>
-                    <input type="time" required value={createForm.start_time} onChange={(e) => setCreateForm({ ...createForm, start_time: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]" />
                   </div>
                 </div>
 
@@ -1843,7 +2057,7 @@ function BookingsPage() {
                 />
 
                 <div className="flex justify-between items-center py-3 border-t border-b border-gray-200">
-                  <h4 className="font-medium text-[#CC6222]">10% Discount</h4>
+                  <h4 className="font-medium text-[#1E2A4A]">10% Discount</h4>
                   <div
                     onClick={() => setCreateForm({ ...createForm, discount_enabled: !createForm.discount_enabled })}
                     className={`w-10 h-6 rounded-full transition-colors ${createForm.discount_enabled ? 'bg-green-600' : 'bg-gray-300'} relative cursor-pointer`}
@@ -1862,8 +2076,8 @@ function BookingsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[#CC6222] mb-1">Status</label>
-                  <select value={createForm.status} onChange={(e) => setCreateForm({ ...createForm, status: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]">
+                  <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Status</label>
+                  <select value={createForm.status} onChange={(e) => setCreateForm({ ...createForm, status: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">
                     <option value="pending">Pending</option>
                     <option value="scheduled">Scheduled</option>
                     <option value="completed">Completed</option>
@@ -1871,13 +2085,13 @@ function BookingsPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#CC6222] mb-1">Notes</label>
-                  <textarea value={createForm.notes} onChange={(e) => setCreateForm({ ...createForm, notes: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]" rows={2} placeholder="Access codes..." />
+                  <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Notes</label>
+                  <textarea value={createForm.notes} onChange={(e) => setCreateForm({ ...createForm, notes: e.target.value })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]" rows={2} placeholder="Access codes..." />
                 </div>
               </div>
               <div className="flex gap-3 mt-6">
-                <button type="button" onClick={() => { setShowCreateModal(false); setShowClientDropdown(false) }} className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-[#CC6222]">Cancel</button>
-                <button type="submit" disabled={saving || !createForm.client_id} className="flex-1 px-4 py-2 bg-[#CC6222] text-white rounded-lg disabled:bg-gray-300">
+                <button type="button" onClick={() => { setShowCreateModal(false); setShowClientDropdown(false) }} className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">Cancel</button>
+                <button type="submit" disabled={saving || !createForm.client_id} className="flex-1 px-4 py-2 bg-[#1E2A4A] text-white rounded-lg disabled:bg-gray-300">
                   {saving ? 'Creating...' : recurringDates.length > 1 ? 'Create Schedule' : 'Create'}
                 </button>
               </div>
@@ -1886,44 +2100,44 @@ function BookingsPage() {
       )}
 
       {showNewClientModal && (
-        <div className="fixed inset-0 bg-[#CC6222]/50 flex items-center justify-center z-[60]" onClick={() => setShowNewClientModal(false)}>
+        <div className="fixed inset-0 bg-[#1E2A4A]/50 flex items-center justify-center z-[60]" onClick={() => setShowNewClientModal(false)}>
           <div className="bg-white rounded-lg p-6 w-full max-w-md max-h-[90vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
-            <h3 className="text-lg font-semibold text-[#CC6222] mb-4">New Client</h3>
+            <h3 className="text-lg font-semibold text-[#1E2A4A] mb-4">New Client</h3>
             <form onSubmit={handleNewClientSubmit} className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Name *</label>
-                <input type="text" required value={newClientForm.name} onChange={(e) => setNewClientForm({ ...newClientForm, name: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#CC6222]" placeholder="John Smith" />
+                <input type="text" required value={newClientForm.name} onChange={(e) => setNewClientForm({ ...newClientForm, name: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#1E2A4A]" placeholder="John Smith" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                <input type="email" value={newClientForm.email} onChange={(e) => setNewClientForm({ ...newClientForm, email: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#CC6222]" placeholder="john@email.com" />
+                <input type="email" value={newClientForm.email} onChange={(e) => setNewClientForm({ ...newClientForm, email: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#1E2A4A]" placeholder="john@email.com" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
-                <input type="tel" required value={newClientForm.phone} onChange={(e) => setNewClientForm({ ...newClientForm, phone: formatPhone(e.target.value) })} className="w-full px-3 py-2 border rounded-lg text-[#CC6222]" placeholder="954-555-1234" />
+                <input type="tel" required value={newClientForm.phone} onChange={(e) => setNewClientForm({ ...newClientForm, phone: formatPhone(e.target.value) })} className="w-full px-3 py-2 border rounded-lg text-[#1E2A4A]" placeholder="954-555-1234" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Address</label>
-                <AddressAutocomplete value={newClientForm.address} onChange={(val) => setNewClientForm({ ...newClientForm, address: val })} placeholder="123 Main St, Orlando, FL 32801" />
+                <AddressAutocomplete value={newClientForm.address} onChange={(val) => setNewClientForm({ ...newClientForm, address: val })} placeholder="123 Main St, New York, NY 10001" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Unit / Apt</label>
-                <input type="text" value={newClientForm.unit} onChange={(e) => setNewClientForm({ ...newClientForm, unit: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#CC6222]" placeholder="Apt 4B" />
+                <input type="text" value={newClientForm.unit} onChange={(e) => setNewClientForm({ ...newClientForm, unit: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#1E2A4A]" placeholder="Apt 4B" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Referred By</label>
-                <select value={newClientForm.referrer_id} onChange={(e) => setNewClientForm({ ...newClientForm, referrer_id: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#CC6222]">
+                <select value={newClientForm.referrer_id} onChange={(e) => setNewClientForm({ ...newClientForm, referrer_id: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#1E2A4A]">
                   <option value="">None</option>
                   {referrers.filter(ref => ref.active).map(ref => <option key={ref.id} value={ref.id}>{ref.name} ({ref.ref_code})</option>)}
                 </select>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Notes</label>
-                <textarea value={newClientForm.notes} onChange={(e) => setNewClientForm({ ...newClientForm, notes: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#CC6222]" rows={3} placeholder="Any special instructions..." />
+                <textarea value={newClientForm.notes} onChange={(e) => setNewClientForm({ ...newClientForm, notes: e.target.value })} className="w-full px-3 py-2 border rounded-lg text-[#1E2A4A]" rows={3} placeholder="Any special instructions..." />
               </div>
               <div className="flex gap-3 pt-2">
-                <button type="button" onClick={() => setShowNewClientModal(false)} className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-[#CC6222]">Cancel</button>
-                <button type="submit" disabled={saving} className="flex-1 px-4 py-2 bg-[#CC6222] text-white rounded-lg">{saving ? '...' : 'Create'}</button>
+                <button type="button" onClick={() => setShowNewClientModal(false)} className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]">Cancel</button>
+                <button type="submit" disabled={saving} className="flex-1 px-4 py-2 bg-[#1E2A4A] text-white rounded-lg">{saving ? '...' : 'Create'}</button>
               </div>
             </form>
           </div>

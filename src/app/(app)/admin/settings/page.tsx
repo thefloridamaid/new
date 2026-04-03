@@ -297,7 +297,7 @@ export default function SettingsPage() {
     <>
       <main className="p-3 md:p-6 max-w-5xl mx-auto">
         <div className="mb-6">
-          <h2 className="text-2xl font-bold text-[#CC6222]">Settings</h2>
+          <h2 className="text-2xl font-bold text-[#1E2A4A]">Settings</h2>
           <p className="text-sm text-gray-400 mt-0.5">Manage your business settings and tools</p>
         </div>
 
@@ -313,7 +313,7 @@ export default function SettingsPage() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${activeTab === tab.id ? 'bg-[#CC6222] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${activeTab === tab.id ? 'bg-[#1E2A4A] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
             >
               {tab.label}
             </button>
@@ -362,18 +362,18 @@ export default function SettingsPage() {
             <div className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400">SERVICE TYPES</h2>
-                <button onClick={openAddService} className="px-3.5 py-1.5 text-sm bg-[#CC6222] text-white rounded-lg hover:bg-[#CC6222]/90 font-medium transition-colors">+ Add Service</button>
+                <button onClick={openAddService} className="px-3.5 py-1.5 text-sm bg-[#1E2A4A] text-white rounded-lg hover:bg-[#1E2A4A]/90 font-medium transition-colors">+ Add Service</button>
               </div>
               <div className="space-y-2">
                 {settings.service_types.map((service, i) => (
                   <div key={i} className="flex items-center justify-between p-3.5 border border-gray-100 rounded-xl hover:bg-gray-50/50 transition-colors">
                     <div className="flex items-center gap-3">
                       <span className={`w-2.5 h-2.5 rounded-full ${service.active ? 'bg-green-500' : 'bg-gray-300'}`} />
-                      <span className="text-[#CC6222] font-medium">{service.name}</span>
+                      <span className="text-[#1E2A4A] font-medium">{service.name}</span>
                       <span className="text-gray-400 text-xs bg-gray-100 px-2 py-0.5 rounded-full">{service.default_hours}h default</span>
                     </div>
                     <div className="flex gap-2">
-                      <button onClick={() => openEditService(i)} className="text-gray-400 hover:text-[#CC6222] text-sm font-medium transition-colors">Edit</button>
+                      <button onClick={() => openEditService(i)} className="text-gray-400 hover:text-[#1E2A4A] text-sm font-medium transition-colors">Edit</button>
                       <button onClick={() => deleteService(i)} className="text-gray-400 hover:text-red-600 text-sm font-medium transition-colors">Delete</button>
                     </div>
                   </div>
@@ -392,7 +392,7 @@ export default function SettingsPage() {
                     <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Standard Rate</label>
                     <div className="flex items-center">
                       <span className="px-3 py-2.5 bg-gray-50 border border-r-0 rounded-l-lg text-gray-400 text-sm">$</span>
-                      <input type="number" value={settings.standard_rate} onChange={e => update('standard_rate', Number(e.target.value))} className="w-full px-3.5 py-2.5 border rounded-r-lg text-[#CC6222] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition" />
+                      <input type="number" value={settings.standard_rate} onChange={e => update('standard_rate', Number(e.target.value))} className="w-full px-3.5 py-2.5 border rounded-r-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#A8F0DC] focus:border-[#A8F0DC] outline-none transition" />
                       <span className="ml-2 text-gray-400 whitespace-nowrap text-sm">/hr</span>
                     </div>
                   </div>
@@ -400,7 +400,7 @@ export default function SettingsPage() {
                     <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Budget Rate (BYOS)</label>
                     <div className="flex items-center">
                       <span className="px-3 py-2.5 bg-gray-50 border border-r-0 rounded-l-lg text-gray-400 text-sm">$</span>
-                      <input type="number" value={settings.budget_rate} onChange={e => update('budget_rate', Number(e.target.value))} className="w-full px-3.5 py-2.5 border rounded-r-lg text-[#CC6222] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition" />
+                      <input type="number" value={settings.budget_rate} onChange={e => update('budget_rate', Number(e.target.value))} className="w-full px-3.5 py-2.5 border rounded-r-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#A8F0DC] focus:border-[#A8F0DC] outline-none transition" />
                       <span className="ml-2 text-gray-400 whitespace-nowrap text-sm">/hr</span>
                     </div>
                   </div>
@@ -411,14 +411,14 @@ export default function SettingsPage() {
                 <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-4">PAYMENT METHODS</h2>
                 <div className="flex flex-wrap gap-2">
                   {PAYMENT_OPTIONS.map(opt => (
-                    <label key={opt.value} className={`flex items-center gap-2 px-3.5 py-2.5 border rounded-xl cursor-pointer transition-all ${settings.payment_methods.includes(opt.value) ? 'border-[#34D399] bg-[#34D399]/10' : 'border-gray-100 hover:bg-gray-50'}`}>
+                    <label key={opt.value} className={`flex items-center gap-2 px-3.5 py-2.5 border rounded-xl cursor-pointer transition-all ${settings.payment_methods.includes(opt.value) ? 'border-[#A8F0DC] bg-[#A8F0DC]/10' : 'border-gray-100 hover:bg-gray-50'}`}>
                       <input
                         type="checkbox"
                         checked={settings.payment_methods.includes(opt.value)}
                         onChange={() => togglePayment(opt.value)}
-                        className="accent-[#CC6222]"
+                        className="accent-[#1E2A4A]"
                       />
-                      <span className="text-[#CC6222] text-sm font-medium">{opt.label}</span>
+                      <span className="text-[#1E2A4A] text-sm font-medium">{opt.label}</span>
                     </label>
                   ))}
                 </div>
@@ -443,7 +443,7 @@ export default function SettingsPage() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Start Hour</label>
-                    <select value={settings.business_hours_start} onChange={e => update('business_hours_start', Number(e.target.value))} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#CC6222] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition">
+                    <select value={settings.business_hours_start} onChange={e => update('business_hours_start', Number(e.target.value))} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#A8F0DC] focus:border-[#A8F0DC] outline-none transition">
                       {Array.from({ length: 24 }, (_, i) => (
                         <option key={i} value={i}>{formatHour(i)}</option>
                       ))}
@@ -451,7 +451,7 @@ export default function SettingsPage() {
                   </div>
                   <div>
                     <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">End Hour</label>
-                    <select value={settings.business_hours_end} onChange={e => update('business_hours_end', Number(e.target.value))} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#CC6222] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition">
+                    <select value={settings.business_hours_end} onChange={e => update('business_hours_end', Number(e.target.value))} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#A8F0DC] focus:border-[#A8F0DC] outline-none transition">
                       {Array.from({ length: 24 }, (_, i) => (
                         <option key={i} value={i}>{formatHour(i)}</option>
                       ))}
@@ -469,8 +469,8 @@ export default function SettingsPage() {
                   <div>
                     <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Same-Day Bookings</label>
                     <label className="flex items-center gap-2 mt-2 cursor-pointer">
-                      <input type="checkbox" checked={settings.allow_same_day} onChange={e => update('allow_same_day', e.target.checked)} className="accent-[#CC6222] w-4 h-4" />
-                      <span className="text-[#CC6222] text-sm">Allow same-day bookings</span>
+                      <input type="checkbox" checked={settings.allow_same_day} onChange={e => update('allow_same_day', e.target.checked)} className="accent-[#1E2A4A] w-4 h-4" />
+                      <span className="text-[#1E2A4A] text-sm">Allow same-day bookings</span>
                     </label>
                   </div>
                 </div>
@@ -539,7 +539,7 @@ export default function SettingsPage() {
                     <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Reminder Days Before Booking</label>
                     <div className="flex flex-wrap gap-2 mb-2">
                       {settings.reminder_days.map(day => (
-                        <span key={day} className="inline-flex items-center gap-1 px-2.5 py-1 bg-gray-100 rounded-full text-sm text-[#CC6222] font-medium">
+                        <span key={day} className="inline-flex items-center gap-1 px-2.5 py-1 bg-gray-100 rounded-full text-sm text-[#1E2A4A] font-medium">
                           {day}d
                           <button onClick={() => removeReminderDay(day)} className="text-gray-400 hover:text-red-500 ml-0.5">&times;</button>
                         </span>
@@ -552,17 +552,17 @@ export default function SettingsPage() {
                         onChange={e => setReminderInput(e.target.value)}
                         onKeyDown={e => e.key === 'Enter' && addReminderDay()}
                         placeholder="Add days..."
-                        className="w-28 px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#CC6222] text-sm focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition"
+                        className="w-28 px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#1E2A4A] text-sm focus:ring-2 focus:ring-[#A8F0DC] focus:border-[#A8F0DC] outline-none transition"
                         min={1}
                       />
-                      <button onClick={addReminderDay} className="px-3.5 py-2.5 bg-gray-100 border border-gray-200 rounded-lg text-sm text-[#CC6222] hover:bg-gray-200 font-medium transition-colors">Add</button>
+                      <button onClick={addReminderDay} className="px-3.5 py-2.5 bg-gray-100 border border-gray-200 rounded-lg text-sm text-[#1E2A4A] hover:bg-gray-200 font-medium transition-colors">Add</button>
                     </div>
                   </div>
                   <div>
                     <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Hours Before (Day-of)</label>
                     <div className="flex flex-wrap gap-2 mb-2">
                       {settings.reminder_hours_before.map(hour => (
-                        <span key={hour} className="inline-flex items-center gap-1 px-2.5 py-1 bg-gray-100 rounded-full text-sm text-[#CC6222] font-medium">
+                        <span key={hour} className="inline-flex items-center gap-1 px-2.5 py-1 bg-gray-100 rounded-full text-sm text-[#1E2A4A] font-medium">
                           {hour}h
                           <button onClick={() => removeReminderHour(hour)} className="text-gray-400 hover:text-red-500 ml-0.5">&times;</button>
                         </span>
@@ -575,10 +575,10 @@ export default function SettingsPage() {
                         onChange={e => setReminderHoursInput(e.target.value)}
                         onKeyDown={e => e.key === 'Enter' && addReminderHour()}
                         placeholder="Add hours..."
-                        className="w-28 px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#CC6222] text-sm focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition"
+                        className="w-28 px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#1E2A4A] text-sm focus:ring-2 focus:ring-[#A8F0DC] focus:border-[#A8F0DC] outline-none transition"
                         min={1}
                       />
-                      <button onClick={addReminderHour} className="px-3.5 py-2.5 bg-gray-100 border border-gray-200 rounded-lg text-sm text-[#CC6222] hover:bg-gray-200 font-medium transition-colors">Add</button>
+                      <button onClick={addReminderHour} className="px-3.5 py-2.5 bg-gray-100 border border-gray-200 rounded-lg text-sm text-[#1E2A4A] hover:bg-gray-200 font-medium transition-colors">Add</button>
                     </div>
                     <p className="text-xs text-gray-400 mt-1">Reminder sent this many hours before the booking</p>
                   </div>
@@ -589,31 +589,31 @@ export default function SettingsPage() {
                 <div className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm">
                   <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-4">DAILY SUMMARY</h2>
                   <label className="flex items-center gap-3 cursor-pointer p-3 border border-gray-100 rounded-xl hover:bg-gray-50 transition-colors">
-                    <input type="checkbox" checked={settings.daily_summary_enabled} onChange={e => update('daily_summary_enabled', e.target.checked)} className="accent-[#CC6222] w-4 h-4" />
-                    <span className="text-[#CC6222] text-sm font-medium">Send daily summary to cleaners at 7 PM EST</span>
+                    <input type="checkbox" checked={settings.daily_summary_enabled} onChange={e => update('daily_summary_enabled', e.target.checked)} className="accent-[#1E2A4A] w-4 h-4" />
+                    <span className="text-[#1E2A4A] text-sm font-medium">Send daily summary to cleaners at 7 PM EST</span>
                   </label>
                 </div>
 
                 <div className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm">
                   <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-4">CLIENT REMINDER CHANNELS</h2>
                   <div className="flex flex-wrap gap-2">
-                    <label className={`flex items-center gap-2 px-3.5 py-2.5 border rounded-xl cursor-pointer transition-all ${settings.client_reminder_email ? 'border-[#34D399] bg-[#34D399]/10' : 'border-gray-100 hover:bg-gray-50'}`}>
+                    <label className={`flex items-center gap-2 px-3.5 py-2.5 border rounded-xl cursor-pointer transition-all ${settings.client_reminder_email ? 'border-[#A8F0DC] bg-[#A8F0DC]/10' : 'border-gray-100 hover:bg-gray-50'}`}>
                       <input
                         type="checkbox"
                         checked={settings.client_reminder_email}
                         onChange={e => update('client_reminder_email', e.target.checked)}
-                        className="accent-[#CC6222]"
+                        className="accent-[#1E2A4A]"
                       />
-                      <span className="text-[#CC6222] text-sm font-medium">Email</span>
+                      <span className="text-[#1E2A4A] text-sm font-medium">Email</span>
                     </label>
-                    <label className={`flex items-center gap-2 px-3.5 py-2.5 border rounded-xl cursor-pointer transition-all ${settings.client_reminder_sms ? 'border-[#34D399] bg-[#34D399]/10' : 'border-gray-100 hover:bg-gray-50'}`}>
+                    <label className={`flex items-center gap-2 px-3.5 py-2.5 border rounded-xl cursor-pointer transition-all ${settings.client_reminder_sms ? 'border-[#A8F0DC] bg-[#A8F0DC]/10' : 'border-gray-100 hover:bg-gray-50'}`}>
                       <input
                         type="checkbox"
                         checked={settings.client_reminder_sms}
                         onChange={e => update('client_reminder_sms', e.target.checked)}
-                        className="accent-[#CC6222]"
+                        className="accent-[#1E2A4A]"
                       />
-                      <span className="text-[#CC6222] text-sm font-medium">SMS</span>
+                      <span className="text-[#1E2A4A] text-sm font-medium">SMS</span>
                     </label>
                   </div>
                 </div>
@@ -625,7 +625,7 @@ export default function SettingsPage() {
               <p className="text-gray-400 text-sm mb-4">Preview of all email templates sent by the system</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="border border-gray-100 rounded-xl p-4 hover:bg-gray-50/50 transition-colors">
-                  <h3 className="font-medium text-[#CC6222] text-sm">Client Emails</h3>
+                  <h3 className="font-medium text-[#1E2A4A] text-sm">Client Emails</h3>
                   <ul className="mt-2 space-y-1.5 text-sm text-gray-500">
                     <li>Booking Confirmation</li>
                     <li>Reminder (Tomorrow)</li>
@@ -635,7 +635,7 @@ export default function SettingsPage() {
                   </ul>
                 </div>
                 <div className="border border-gray-100 rounded-xl p-4 hover:bg-gray-50/50 transition-colors">
-                  <h3 className="font-medium text-[#CC6222] text-sm">Cleaner Emails</h3>
+                  <h3 className="font-medium text-[#1E2A4A] text-sm">Cleaner Emails</h3>
                   <ul className="mt-2 space-y-1.5 text-sm text-gray-500">
                     <li>Job Assignment</li>
                     <li>Daily Summary</li>
@@ -644,14 +644,14 @@ export default function SettingsPage() {
                   </ul>
                 </div>
                 <div className="border border-gray-100 rounded-xl p-4 hover:bg-gray-50/50 transition-colors">
-                  <h3 className="font-medium text-[#CC6222] text-sm">Referral Emails</h3>
+                  <h3 className="font-medium text-[#1E2A4A] text-sm">Referral Emails</h3>
                   <ul className="mt-2 space-y-1.5 text-sm text-gray-500">
                     <li>Welcome</li>
                     <li>Commission Earned</li>
                   </ul>
                 </div>
                 <div className="border border-gray-100 rounded-xl p-4 hover:bg-gray-50/50 transition-colors">
-                  <h3 className="font-medium text-[#CC6222] text-sm">Admin Emails</h3>
+                  <h3 className="font-medium text-[#1E2A4A] text-sm">Admin Emails</h3>
                   <ul className="mt-2 space-y-1.5 text-sm text-gray-500">
                     <li>New Booking</li>
                     <li>New Referrer</li>
@@ -663,7 +663,7 @@ export default function SettingsPage() {
               <button
                 onClick={() => runTool('/api/test-emails', 'test-emails', 'Sent {count} test emails to admin')}
                 disabled={loading === 'test-emails'}
-                className="mt-4 px-4 py-2.5 bg-[#CC6222] text-white rounded-lg hover:bg-[#CC6222]/90 disabled:bg-gray-300 text-sm font-medium transition-colors"
+                className="mt-4 px-4 py-2.5 bg-[#1E2A4A] text-white rounded-lg hover:bg-[#1E2A4A]/90 disabled:bg-gray-300 text-sm font-medium transition-colors"
               >
                 {loading === 'test-emails' ? 'Sending...' : 'Send All Test Emails to Admin'}
               </button>
@@ -694,7 +694,7 @@ export default function SettingsPage() {
                     onChange={e => updateGuideline('en', e.target.value)}
                     rows={12}
                     placeholder="Enter guidelines in English..."
-                    className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#CC6222] text-sm focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition font-mono leading-relaxed"
+                    className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#1E2A4A] text-sm focus:ring-2 focus:ring-[#A8F0DC] focus:border-[#A8F0DC] outline-none transition font-mono leading-relaxed"
                   />
                 </div>
 
@@ -705,7 +705,7 @@ export default function SettingsPage() {
                     onChange={e => updateGuideline('es', e.target.value)}
                     rows={12}
                     placeholder="Ingrese las reglas en español..."
-                    className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#CC6222] text-sm focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition font-mono leading-relaxed"
+                    className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#1E2A4A] text-sm focus:ring-2 focus:ring-[#A8F0DC] focus:border-[#A8F0DC] outline-none transition font-mono leading-relaxed"
                   />
                 </div>
               </div>
@@ -721,14 +721,14 @@ export default function SettingsPage() {
               <button
                 onClick={() => saveGuidelines(false)}
                 disabled={saving || translating}
-                className="px-6 py-3 min-h-[44px] border border-gray-200 text-[#CC6222] rounded-xl hover:bg-gray-50 font-medium transition-colors"
+                className="px-6 py-3 min-h-[44px] border border-gray-200 text-[#1E2A4A] rounded-xl hover:bg-gray-50 font-medium transition-colors"
               >
                 {translating ? 'Translating...' : saving ? 'Saving...' : 'Save Draft'}
               </button>
               <button
                 onClick={() => saveGuidelines(true)}
                 disabled={saving || translating || broadcasting}
-                className="px-6 py-3 min-h-[44px] bg-[#CC6222] text-white rounded-xl hover:bg-[#CC6222]/90 disabled:bg-gray-300 font-medium shadow-sm transition-colors"
+                className="px-6 py-3 min-h-[44px] bg-[#1E2A4A] text-white rounded-xl hover:bg-[#1E2A4A]/90 disabled:bg-gray-300 font-medium shadow-sm transition-colors"
               >
                 {translating ? 'Translating...' : broadcasting ? 'Sending...' : saving ? 'Saving...' : 'Save & Notify Team'}
               </button>
@@ -775,19 +775,19 @@ export default function SettingsPage() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="bg-gray-50 rounded-xl p-4">
                   <p className="text-xs font-medium uppercase tracking-wide text-gray-400">Environment</p>
-                  <p className="text-[#CC6222] font-semibold mt-1">Production</p>
+                  <p className="text-[#1E2A4A] font-semibold mt-1">Production</p>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-4">
                   <p className="text-xs font-medium uppercase tracking-wide text-gray-400">Platform</p>
-                  <p className="text-[#CC6222] font-semibold mt-1">Vercel</p>
+                  <p className="text-[#1E2A4A] font-semibold mt-1">Vercel</p>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-4">
                   <p className="text-xs font-medium uppercase tracking-wide text-gray-400">Database</p>
-                  <p className="text-[#CC6222] font-semibold mt-1">Supabase</p>
+                  <p className="text-[#1E2A4A] font-semibold mt-1">Supabase</p>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-4">
                   <p className="text-xs font-medium uppercase tracking-wide text-gray-400">Email Provider</p>
-                  <p className="text-[#CC6222] font-semibold mt-1">Resend</p>
+                  <p className="text-[#1E2A4A] font-semibold mt-1">Resend</p>
                 </div>
               </div>
             </div>
@@ -797,9 +797,9 @@ export default function SettingsPage() {
 
       {/* Service Type Modal */}
       {serviceModal.open && (
-        <div className="fixed inset-0 bg-[#CC6222]/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setServiceModal(s => ({ ...s, open: false }))}>
+        <div className="fixed inset-0 bg-[#1E2A4A]/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setServiceModal(s => ({ ...s, open: false }))}>
           <div className="bg-white rounded-xl p-6 w-full max-w-md shadow-xl" onClick={e => e.stopPropagation()}>
-            <h3 className="text-lg font-semibold text-[#CC6222] mb-1">{serviceModal.index !== null ? 'Edit Service' : 'Add Service'}</h3>
+            <h3 className="text-lg font-semibold text-[#1E2A4A] mb-1">{serviceModal.index !== null ? 'Edit Service' : 'Add Service'}</h3>
             <p className="text-sm text-gray-400 mb-5">{serviceModal.index !== null ? 'Update the service details below' : 'Configure a new service type'}</p>
             <div className="space-y-4">
               <div>
@@ -808,7 +808,7 @@ export default function SettingsPage() {
                   type="text"
                   value={serviceModal.name}
                   onChange={e => setServiceModal(s => ({ ...s, name: e.target.value }))}
-                  className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#CC6222] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition"
+                  className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#A8F0DC] focus:border-[#A8F0DC] outline-none transition"
                   placeholder="e.g. Deep Cleaning"
                   autoFocus
                 />
@@ -819,7 +819,7 @@ export default function SettingsPage() {
                   type="number"
                   value={serviceModal.hours}
                   onChange={e => setServiceModal(s => ({ ...s, hours: Number(e.target.value) }))}
-                  className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#CC6222] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition"
+                  className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#A8F0DC] focus:border-[#A8F0DC] outline-none transition"
                   min={1}
                   step={0.5}
                 />
@@ -829,14 +829,14 @@ export default function SettingsPage() {
                   type="checkbox"
                   checked={serviceModal.active}
                   onChange={e => setServiceModal(s => ({ ...s, active: e.target.checked }))}
-                  className="accent-[#CC6222] w-4 h-4"
+                  className="accent-[#1E2A4A] w-4 h-4"
                 />
-                <span className="text-[#CC6222] text-sm font-medium">Active</span>
+                <span className="text-[#1E2A4A] text-sm font-medium">Active</span>
               </label>
             </div>
             <div className="flex justify-end gap-3 mt-6">
-              <button onClick={() => setServiceModal(s => ({ ...s, open: false }))} className="px-4 py-2.5 border border-gray-200 rounded-lg text-[#CC6222] hover:bg-gray-50 font-medium transition-colors">Cancel</button>
-              <button onClick={saveService} className="px-5 py-2.5 bg-[#CC6222] text-white rounded-lg hover:bg-[#CC6222]/90 font-medium transition-colors">Save</button>
+              <button onClick={() => setServiceModal(s => ({ ...s, open: false }))} className="px-4 py-2.5 border border-gray-200 rounded-lg text-[#1E2A4A] hover:bg-gray-50 font-medium transition-colors">Cancel</button>
+              <button onClick={saveService} className="px-5 py-2.5 bg-[#1E2A4A] text-white rounded-lg hover:bg-[#1E2A4A]/90 font-medium transition-colors">Save</button>
             </div>
           </div>
         </div>
@@ -851,7 +851,7 @@ function Field({ label, value, onChange, type = 'text', hint }: { label: string;
   return (
     <div>
       <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">{label}</label>
-      <input type={type} value={value} onChange={e => onChange(e.target.value)} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#CC6222] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition" />
+      <input type={type} value={value} onChange={e => onChange(e.target.value)} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#A8F0DC] focus:border-[#A8F0DC] outline-none transition" />
       {hint && <p className="text-xs text-gray-400 mt-1">{hint}</p>}
     </div>
   )
@@ -862,7 +862,7 @@ function NumberField({ label, value, onChange, suffix, hint }: { label: string; 
     <div>
       <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">{label}</label>
       <div className="flex items-center">
-        <input type="number" value={value} onChange={e => onChange(Number(e.target.value))} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#CC6222] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition" />
+        <input type="number" value={value} onChange={e => onChange(Number(e.target.value))} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#A8F0DC] focus:border-[#A8F0DC] outline-none transition" />
         {suffix && <span className="ml-2 text-gray-400 whitespace-nowrap text-sm">{suffix}</span>}
       </div>
       {hint && <p className="text-xs text-gray-400 mt-1">{hint}</p>}
@@ -873,7 +873,7 @@ function NumberField({ label, value, onChange, suffix, hint }: { label: string; 
 function SaveButton({ saving, onClick }: { saving: boolean; onClick: () => void }) {
   return (
     <div className="flex justify-end">
-      <button onClick={onClick} disabled={saving} className="px-6 py-3 min-h-[44px] bg-[#CC6222] text-white rounded-xl hover:bg-[#CC6222]/90 disabled:bg-gray-300 font-medium shadow-sm transition-colors">
+      <button onClick={onClick} disabled={saving} className="px-6 py-3 min-h-[44px] bg-[#1E2A4A] text-white rounded-xl hover:bg-[#1E2A4A]/90 disabled:bg-gray-300 font-medium shadow-sm transition-colors">
         {saving ? 'Saving...' : 'Save Changes'}
       </button>
     </div>
@@ -883,9 +883,9 @@ function SaveButton({ saving, onClick }: { saving: boolean; onClick: () => void 
 function ToolCard({ title, description, loading, onClick }: { title: string; description: string; loading: boolean; onClick: () => void }) {
   return (
     <div className="border border-gray-100 rounded-xl p-4 hover:bg-gray-50/50 transition-colors">
-      <h3 className="font-medium text-[#CC6222] text-sm">{title}</h3>
+      <h3 className="font-medium text-[#1E2A4A] text-sm">{title}</h3>
       <p className="text-xs text-gray-400 mt-1 mb-3">{description}</p>
-      <button onClick={onClick} disabled={loading} className="px-3.5 py-2 bg-[#CC6222] text-white rounded-lg text-sm hover:bg-[#CC6222]/90 disabled:bg-gray-300 font-medium transition-colors">
+      <button onClick={onClick} disabled={loading} className="px-3.5 py-2 bg-[#1E2A4A] text-white rounded-lg text-sm hover:bg-[#1E2A4A]/90 disabled:bg-gray-300 font-medium transition-colors">
         {loading ? 'Running...' : 'Run Now'}
       </button>
     </div>

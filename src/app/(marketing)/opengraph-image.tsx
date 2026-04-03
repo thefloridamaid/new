@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
-export const alt = 'The Florida Maid — Florida House Cleaning & Maid Service From $49/hr'
+export const alt = 'The Florida Maid Cleaning Service Cleaning Service — Florida House Cleaning & Maid Service From $49/hr'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -10,7 +10,7 @@ export default function Image() {
     (
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', backgroundColor: '#CC6222', padding: '60px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-          <div style={{ fontSize: 80, fontWeight: 800, color: 'white', letterSpacing: '0.02em', marginBottom: 16 }}>The Florida Maid</div>
+          <div style={{ fontSize: 80, fontWeight: 800, color: 'white', letterSpacing: '0.02em', marginBottom: 16 }}>The Florida Maid Cleaning Service Cleaning Service</div>
           <div style={{ fontSize: 36, color: '#34D399', fontWeight: 600, marginBottom: 32 }}>Florida House Cleaning & Maid Service</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 24, fontSize: 26, color: 'rgba(255,255,255,0.75)' }}>
             <span>From $49/hr</span>

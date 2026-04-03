@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import FeedbackWidget from '@/components/FeedbackWidget'
 
 export default function BookLayout({ children }: { children: React.ReactNode }) {
@@ -5,6 +6,7 @@ export default function BookLayout({ children }: { children: React.ReactNode }) 
     <>
       {children}
       <FeedbackWidget source="Client Portal" />
+      <Script id="flmaid-analytics" src="/t.js" strategy="afterInteractive" />
     </>
   )
 }

@@ -5,7 +5,7 @@ import JsonLd from '@/components/marketing/JsonLd'
 import Breadcrumbs from '@/components/marketing/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Refund Policy | The Florida Maid',
+  title: 'Refund Policy | The Florida Maid Cleaning Service Cleaning Service',
   description: 'The Florida Maid Cleaning Service refund policy — no money upfront, pay only after cleaning is complete. No deposits. Service from $49/hr. (954) 710-3636',
   alternates: { canonical: 'https://www.thefloridamaid.com/refund-policy' },
 }

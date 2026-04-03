@@ -105,7 +105,7 @@ export default function ReschedulePage() {
   if (booking && !canReschedule()) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <div className="bg-[#CC6222] text-white p-4">
+        <div className="bg-[#1E2A4A] text-white p-4">
           <div className="flex items-center gap-4">
             <button onClick={() => router.back()} className="text-white">&larr;</button>
             <div>
@@ -116,16 +116,16 @@ export default function ReschedulePage() {
         </div>
         <div className="p-4">
           <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
-            <p className="text-lg font-semibold text-[#CC6222] mb-2">Unable to Reschedule</p>
+            <p className="text-lg font-semibold text-[#1E2A4A] mb-2">Unable to Reschedule</p>
             <p className="text-gray-600 text-sm mb-4">
               {!booking.recurring_type
-                ? 'One-time services cannot be rescheduled or cancelled.'
-                : 'Recurring services require at least 7 days notice to reschedule.'}
+                ? 'First-time and one-time services cannot be rescheduled or cancelled. We hold your spot without payment upfront, turning away other clients.'
+                : 'Recurring services require at least 7 days notice to reschedule. Cancellations only if discontinuing service entirely with 7 days notice.'}
             </p>
             <p className="text-gray-500 text-sm mb-4">Need help? Contact us directly:</p>
             <div className="flex gap-3">
-              <a href="tel:9547103636" className="flex-1 py-3 bg-[#CC6222] text-white rounded-lg text-center font-medium">Call (954) 710-3636</a>
-              <a href="sms:9547103636" className="flex-1 py-3 border border-gray-300 rounded-lg text-[#CC6222] text-center font-medium">Text Us</a>
+              <a href="tel:9547103636" className="flex-1 py-3 bg-[#1E2A4A] text-white rounded-lg text-center font-medium">Call (954) 710-3636</a>
+              <a href="sms:9547103636" className="flex-1 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-center font-medium">Text Us</a>
             </div>
             <button onClick={() => router.push('/clients/dashboard')} className="mt-4 text-gray-500 text-sm">Back to Dashboard</button>
           </div>
@@ -136,7 +136,7 @@ export default function ReschedulePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-[#CC6222] text-white p-4">
+      <div className="bg-[#1E2A4A] text-white p-4">
         <div className="flex items-center gap-4">
           <button onClick={() => router.back()} className="text-white">&larr;</button>
           <div>
@@ -149,22 +149,22 @@ export default function ReschedulePage() {
       <div className="p-4">
         {!selectedDate ? (
           <div>
-            <h2 className="text-lg font-semibold text-[#CC6222] mb-4">Select New Date</h2>
+            <h2 className="text-lg font-semibold text-[#1E2A4A] mb-4">Select New Date</h2>
             <div className="grid grid-cols-3 gap-2">
               {dates.map((date) => (
                 <button
                   key={date}
                   onClick={() => loadAvailability(date)}
-                  className="p-3 rounded-lg border border-gray-200 bg-white text-center hover:border-[#CC6222]"
+                  className="p-3 rounded-lg border border-gray-200 bg-white text-center hover:border-[#1E2A4A]"
                 >
-                  <p className="text-sm text-[#CC6222]">{formatDateLabel(date)}</p>
+                  <p className="text-sm text-[#1E2A4A]">{formatDateLabel(date)}</p>
                 </button>
               ))}
             </div>
           </div>
         ) : !selectedSlot ? (
           <div>
-            <h2 className="text-lg font-semibold text-[#CC6222] mb-2">Select Time</h2>
+            <h2 className="text-lg font-semibold text-[#1E2A4A] mb-2">Select Time</h2>
             <p className="text-gray-500 mb-4">{formatDateLabel(selectedDate)}</p>
             
             {loading ? (
@@ -172,7 +172,7 @@ export default function ReschedulePage() {
             ) : availableSlots.length === 0 ? (
               <div className="text-center py-8">
                 <p className="text-gray-500 mb-4">No available slots</p>
-                <button onClick={() => setSelectedDate('')} className="text-[#CC6222] underline">Choose another date</button>
+                <button onClick={() => setSelectedDate('')} className="text-[#1E2A4A] underline">Choose another date</button>
               </div>
             ) : (
               <div className="space-y-2">
@@ -180,9 +180,9 @@ export default function ReschedulePage() {
                   <button
                     key={slot.time}
                     onClick={() => setSelectedSlot(slot)}
-                    className="w-full p-4 rounded-xl border border-gray-200 bg-white text-left hover:border-[#CC6222]"
+                    className="w-full p-4 rounded-xl border border-gray-200 bg-white text-left hover:border-[#1E2A4A]"
                   >
-                    <p className="font-semibold text-[#CC6222]">{slot.time}</p>
+                    <p className="font-semibold text-[#1E2A4A]">{slot.time}</p>
                   </button>
                 ))}
               </div>
@@ -192,19 +192,19 @@ export default function ReschedulePage() {
         ) : (
           <div>
             <div className="bg-white rounded-xl p-4 mb-6">
-              <h3 className="font-semibold text-[#CC6222] mb-2">New Appointment</h3>
+              <h3 className="font-semibold text-[#1E2A4A] mb-2">New Appointment</h3>
               <p className="text-gray-600">{formatDateLabel(selectedDate)}</p>
               <p className="text-gray-600">{selectedSlot.time}</p>
             </div>
 
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 mb-6 text-sm">
-              <p className="text-gray-700"><span className="font-medium text-[#CC6222]">Cancellation Policy:</span> One-time services are non-cancellable. Recurring clients (weekly, bi-weekly, monthly) require 7 days notice for cancellations.</p>
+              <p className="text-gray-700"><span className="font-medium text-[#1E2A4A]">Cancellation Policy:</span> First-time and one-time services cannot be cancelled or rescheduled. Recurring services require 7 days notice to reschedule — cancellations only if discontinuing service entirely with 7 days notice. We hold your spot without payment upfront, turning away other clients.</p>
             </div>
 
             <button
               onClick={handleReschedule}
               disabled={saving}
-              className="w-full py-4 bg-[#CC6222] text-white text-lg font-semibold rounded-xl disabled:opacity-50"
+              className="w-full py-4 bg-[#1E2A4A] text-white text-lg font-semibold rounded-xl disabled:opacity-50"
             >
               {saving ? 'Rescheduling...' : 'Confirm Reschedule'}
             </button>

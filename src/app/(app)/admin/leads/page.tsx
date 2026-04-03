@@ -231,7 +231,6 @@ export default function LeadsPage() {
     { label: 'Conversion %', value: `${pConvPct}%`, type: 'conversionPct' },
     { label: 'Texts', value: pTexts, type: 'texts' },
     { label: 'Calls', value: pCalls, type: 'calls' },
-    { label: 'Bookings', value: pBooks, type: 'bookings' },
     { label: 'Total CTAs', value: pTotalCtas, type: 'totalCtas' },
     { label: 'New Sales', value: pSales, type: 'newSales' },
     { label: 'Close %', value: `${pClosePct}%`, type: 'closePct' },
@@ -240,7 +239,7 @@ export default function LeadsPage() {
   return (
     <main className="p-3 md:p-6 space-y-6">
       <div>
-        <h2 className="text-xl font-bold text-[#CC6222] tracking-tight">Dashboard</h2>
+        <h2 className="text-xl font-bold text-[#1E2A4A] tracking-tight">Dashboard</h2>
         <p className="text-gray-400 text-xs mt-0.5">{domains.length} domains tracked</p>
       </div>
 
@@ -253,10 +252,10 @@ export default function LeadsPage() {
             <button
               key={s.label}
               onClick={() => { setPeriod(s.period); setDrilldown(s.type) }}
-              className={`bg-white border rounded-xl shadow-sm px-5 py-4 text-center transition-all hover:shadow-md cursor-pointer ${period === s.period ? 'border-[#34D399] ring-1 ring-[#34D399]' : 'border-gray-200/80 hover:border-[#34D399]'}`}
+              className={`bg-white border rounded-xl shadow-sm px-5 py-4 text-center transition-all hover:shadow-md cursor-pointer ${period === s.period ? 'border-[#A8F0DC] ring-1 ring-[#A8F0DC]' : 'border-gray-200/80 hover:border-[#A8F0DC]'}`}
             >
-              <p className="text-2xl font-bold text-[#CC6222]">{s.value.toLocaleString()}</p>
-              <p className="text-[10px] font-bold tracking-widest text-[#CC6222]/50 uppercase mt-1">{s.label}</p>
+              <p className="text-2xl font-bold text-[#1E2A4A]">{s.value.toLocaleString()}</p>
+              <p className="text-[10px] font-bold tracking-widest text-[#1E2A4A]/50 uppercase mt-1">{s.label}</p>
               {s.prev > 0 && (
                 <p className={`text-[10px] mt-1.5 font-medium ${diff > 0 ? 'text-green-600' : diff < 0 ? 'text-red-500' : 'text-gray-400'}`}>
                   {diff > 0 ? '↑' : diff < 0 ? '↓' : '→'} {Math.abs(pctChange)}% vs {s.prevLabel} ({s.prev})
@@ -269,17 +268,17 @@ export default function LeadsPage() {
 
       {/* Row 2 — Conversions (filtered by selected period) */}
       <div>
-        {period !== 'all' && <p className="text-[10px] font-bold tracking-widest text-[#34D399] uppercase mb-2">Showing: {periodLabel}</p>}
+        {period !== 'all' && <p className="text-[10px] font-bold tracking-widest text-[#A8F0DC] uppercase mb-2">Showing: {periodLabel}</p>}
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
         {row2Cards.map(s => (
           <button
             key={s.label}
             onClick={() => setDrilldown(s.type)}
-            className="bg-white border border-gray-200/80 rounded-xl shadow-sm px-5 py-4 text-center transition-all hover:border-[#34D399] hover:shadow-md cursor-pointer"
+            className="bg-white border border-gray-200/80 rounded-xl shadow-sm px-5 py-4 text-center transition-all hover:border-[#A8F0DC] hover:shadow-md cursor-pointer"
           >
-            <p className="text-2xl font-bold text-[#CC6222]">{typeof s.value === 'number' ? s.value.toLocaleString() : s.value}</p>
-            <p className="text-[10px] font-bold tracking-widest text-[#CC6222]/50 uppercase mt-1">{s.label}</p>
+            <p className="text-2xl font-bold text-[#1E2A4A]">{typeof s.value === 'number' ? s.value.toLocaleString() : s.value}</p>
+            <p className="text-[10px] font-bold tracking-widest text-[#1E2A4A]/50 uppercase mt-1">{s.label}</p>
           </button>
         ))}
       </div>
@@ -295,7 +294,7 @@ export default function LeadsPage() {
             {/* Header */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 shrink-0">
               <div>
-                <h3 className="text-sm font-bold text-[#CC6222] uppercase tracking-widest">{drill.label}</h3>
+                <h3 className="text-sm font-bold text-[#1E2A4A] uppercase tracking-widest">{drill.label}</h3>
                 <p className="text-xs text-gray-400 mt-0.5">{drill.data.length} records</p>
               </div>
               <button onClick={() => setDrilldown(null)} className="text-gray-400 hover:text-gray-600 text-xl leading-none">&times;</button>
@@ -307,7 +306,7 @@ export default function LeadsPage() {
                 <p className="text-sm text-gray-400 py-4">No records.</p>
               ) : drill.kind === 'visitors' ? (
                 <table className="w-full text-sm">
-                  <thead className="bg-gray-50/80 border-b border-gray-100 text-left text-[10px] font-bold tracking-wider uppercase text-[#CC6222]/50 whitespace-nowrap">
+                  <thead className="bg-gray-50/80 border-b border-gray-100 text-left text-[10px] font-bold tracking-wider uppercase text-[#1E2A4A]/50 whitespace-nowrap">
                     <tr>
                       <th className="px-3 py-2.5 w-10">#</th>
                       <th className="px-3 py-2.5">Domain</th>
@@ -325,7 +324,7 @@ export default function LeadsPage() {
                     {(drill.data as FeedEvent[]).map((e, i) => (
                       <tr key={e.id} className="hover:bg-gray-50/50 transition-colors whitespace-nowrap">
                         <td className="px-3 py-2 text-xs text-gray-400">{i + 1}</td>
-                        <td className="px-3 py-2 text-[#CC6222] font-medium">{e.domain}</td>
+                        <td className="px-3 py-2 text-[#1E2A4A] font-medium">{e.domain}</td>
                         <td className="px-3 py-2 text-center">
                           <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${e.manual_conversion || e.cta_actions.length > 0 ? 'bg-green-100 text-green-700' : 'text-gray-300'}`}>{e.manual_conversion || e.cta_actions.length > 0 ? 'CONV' : '—'}</span>
                         </td>
@@ -344,7 +343,7 @@ export default function LeadsPage() {
                 </table>
               ) : drill.kind === 'cta' ? (
                 <table className="w-full text-sm">
-                  <thead className="bg-gray-50/80 border-b border-gray-100 text-left text-[10px] font-bold tracking-wider uppercase text-[#CC6222]/50 whitespace-nowrap">
+                  <thead className="bg-gray-50/80 border-b border-gray-100 text-left text-[10px] font-bold tracking-wider uppercase text-[#1E2A4A]/50 whitespace-nowrap">
                     <tr>
                       <th className="px-3 py-2.5 w-10">#</th>
                       <th className="px-3 py-2.5">Action</th>
@@ -359,7 +358,7 @@ export default function LeadsPage() {
                       <tr key={i} className="hover:bg-gray-50/50 transition-colors whitespace-nowrap">
                         <td className="px-3 py-2 text-xs text-gray-400">{i + 1}</td>
                         <td className="px-3 py-2 text-amber-600 font-medium">{'action' in e ? e.action : 'book'}</td>
-                        <td className="px-3 py-2 text-[#CC6222] font-medium">{e.domain}</td>
+                        <td className="px-3 py-2 text-[#1E2A4A] font-medium">{e.domain}</td>
                         <td className="px-3 py-2 text-gray-500 max-w-[200px] truncate">{e.referrer || '—'}</td>
                         <td className="px-3 py-2 text-center text-gray-600">{e.device}</td>
                         <td className="px-3 py-2 text-right text-gray-400">{timeAgo(e.created_at)}</td>
@@ -369,7 +368,7 @@ export default function LeadsPage() {
                 </table>
               ) : (
                 <table className="w-full text-sm">
-                  <thead className="bg-gray-50/80 border-b border-gray-100 text-left text-[10px] font-bold tracking-wider uppercase text-[#CC6222]/50 whitespace-nowrap">
+                  <thead className="bg-gray-50/80 border-b border-gray-100 text-left text-[10px] font-bold tracking-wider uppercase text-[#1E2A4A]/50 whitespace-nowrap">
                     <tr>
                       <th className="px-3 py-2.5 w-10">#</th>
                       <th className="px-3 py-2.5">Client</th>
@@ -382,7 +381,7 @@ export default function LeadsPage() {
                     {(drill.data as SaleDetail[]).map((e, i) => (
                       <tr key={e.client_id} className="hover:bg-gray-50/50 transition-colors whitespace-nowrap">
                         <td className="px-3 py-2 text-xs text-gray-400">{i + 1}</td>
-                        <td className="px-3 py-2 text-[#CC6222] font-medium">{e.name}</td>
+                        <td className="px-3 py-2 text-[#1E2A4A] font-medium">{e.name}</td>
                         <td className="px-3 py-2 text-gray-600">{e.service}</td>
                         <td className="px-3 py-2 text-right text-gray-600">{e.price > 0 ? `$${e.price}` : '—'}</td>
                         <td className="px-3 py-2 text-right text-gray-400">{e.date ? new Date(e.date).toLocaleDateString() : '—'}</td>
@@ -403,7 +402,7 @@ export default function LeadsPage() {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
-              <thead className="bg-gray-50/80 border-b border-gray-100 text-left text-[10px] font-bold tracking-wider uppercase text-[#CC6222]/50 whitespace-nowrap">
+              <thead className="bg-gray-50/80 border-b border-gray-100 text-left text-[10px] font-bold tracking-wider uppercase text-[#1E2A4A]/50 whitespace-nowrap">
                 <tr>
                   <th className="px-3 py-2.5 w-8"></th>
                   <th className="px-3 py-2.5 w-10">#</th>
@@ -431,7 +430,7 @@ export default function LeadsPage() {
                       >block</button>
                     </td>
                     <td className="px-3 py-2 text-xs text-gray-400">{i + 1}</td>
-                    <td className="px-3 py-2 text-[#CC6222] font-medium">{e.domain}</td>
+                    <td className="px-3 py-2 text-[#1E2A4A] font-medium">{e.domain}</td>
                     <td className="px-3 py-2 text-center">
                       <button
                         onClick={() => toggleOverride(e.id, 'conversion')}
@@ -469,7 +468,7 @@ export default function LeadsPage() {
       <Section title="Site List">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
-            <thead className="bg-gray-50/80 border-b border-gray-100 text-left text-[10px] font-bold tracking-wider uppercase text-[#CC6222]/50 whitespace-nowrap">
+            <thead className="bg-gray-50/80 border-b border-gray-100 text-left text-[10px] font-bold tracking-wider uppercase text-[#1E2A4A]/50 whitespace-nowrap">
               <tr>
                 <th className="px-3 py-2.5 w-10">#</th>
                 <th className="px-3 py-2.5">Domain</th>
@@ -490,7 +489,7 @@ export default function LeadsPage() {
               {domains.map((d, i) => (
                 <tr key={d.domain} className="hover:bg-gray-50/50 transition-colors whitespace-nowrap">
                   <td className="px-3 py-2 text-xs text-gray-400">{i + 1}</td>
-                  <td className="px-3 py-2 text-[#CC6222] font-medium">{d.domain}</td>
+                  <td className="px-3 py-2 text-[#1E2A4A] font-medium">{d.domain}</td>
                   <td className="px-3 py-2 text-center text-gray-600">{v(d.visits)}</td>
                   <td className="px-3 py-2 text-center text-green-600 font-medium">{v(d.calls)}</td>
                   <td className="px-3 py-2 text-center text-blue-600 font-medium">{v(d.texts)}</td>
@@ -522,7 +521,7 @@ export default function LeadsPage() {
                   disabled={blocking !== null}
                   className="text-[10px] text-green-500 hover:text-green-700 disabled:opacity-30"
                 >unblock</button>
-                <span className="text-sm text-[#CC6222]">{d}</span>
+                <span className="text-sm text-[#1E2A4A]">{d}</span>
               </div>
             ))}
           </div>
@@ -536,7 +535,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   return (
     <div className="bg-white border border-gray-200/80 rounded-xl shadow-sm">
       <div className="px-5 py-4 border-b border-gray-100">
-        <h3 className="text-xs font-bold tracking-widest text-[#CC6222]/60 uppercase">{title}</h3>
+        <h3 className="text-xs font-bold tracking-widest text-[#1E2A4A]/60 uppercase">{title}</h3>
       </div>
       <div className="p-5">{children}</div>
     </div>

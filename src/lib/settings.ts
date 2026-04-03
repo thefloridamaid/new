@@ -51,12 +51,12 @@ export interface Settings {
 }
 
 export const DEFAULT_SETTINGS: Omit<Settings, 'id' | 'updated_at'> = {
-  business_name: 'The Florida Maid Cleaning Service',
+  business_name: 'The Florida Maid',
   business_phone: '(954) 710-3636',
   business_email: 'hi@thefloridamaid.com',
   business_website: 'https://www.thefloridamaid.com',
-  admin_email: 'hi@thefloridamaid.com',
-  email_from_name: 'The Florida Maid Cleaning Service',
+  admin_email: 'thefloridamaid@gmail.com',
+  email_from_name: 'The Florida Maid',
   email_from_address: 'hi@thefloridamaid.com',
   service_types: [
     { name: 'Standard Cleaning', default_hours: 2, active: true },
@@ -69,7 +69,7 @@ export const DEFAULT_SETTINGS: Omit<Settings, 'id' | 'updated_at'> = {
   payment_methods: ['zelle', 'apple_pay'],
   business_hours_start: 9,
   business_hours_end: 16,
-  booking_buffer_minutes: 90,
+  booking_buffer_minutes: 60,
   default_duration_hours: 2,
   min_days_ahead: 1,
   allow_same_day: false,
@@ -79,7 +79,7 @@ export const DEFAULT_SETTINGS: Omit<Settings, 'id' | 'updated_at'> = {
   at_risk_threshold_days: 90,
   reschedule_notice_recurring_days: 7,
   reschedule_notice_onetime_hours: 48,
-  reminder_days: [3, 1],
+  reminder_days: [7, 3, 1],
   reminder_hours_before: [2],
   daily_summary_enabled: true,
   client_reminder_email: true,

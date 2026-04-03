@@ -1,4 +1,5 @@
 import { supabaseAdmin } from '@/lib/supabase'
+import { isHoliday } from '@/lib/holidays'
 
 export interface AvailabilitySlot {
   time: string
@@ -18,14 +19,15 @@ export interface CleanerAvailability {
   conflict?: string
 }
 
-const BUSINESS_START = 9
-const BUSINESS_END = 17 // 5PM — last slot must finish by this time
+const BUSINESS_START = 8  // First appointment at 8am
+const BUSINESS_END = 18  // Last appointment starts at 4pm, must finish by 6pm
 const BUFFER_MINUTES = 90
 
+// Preferred scheduling pockets — try to fill these first
 const PREFERRED_POCKETS = [8, 12, 16] // 8am, 12pm, 4pm
 
 const TIME_LABELS: Record<number, string> = {
-  9: '9:00 AM', 10: '10:00 AM', 11: '11:00 AM', 12: '12:00 PM',
+  8: '8:00 AM', 9: '9:00 AM', 10: '10:00 AM', 11: '11:00 AM', 12: '12:00 PM',
   13: '1:00 PM', 14: '2:00 PM', 15: '3:00 PM', 16: '4:00 PM'
 }
 
@@ -36,8 +38,11 @@ const toMinutes = (timeStr: string) => {
   return h * 60 + m
 }
 
-// Get cleaners available on a given day (filters by working_days, schedule, unavailable_dates)
+// Get cleaners available on a given day (filters by holidays, working_days, schedule, unavailable_dates)
 async function getCleanersForDay(date: string) {
+  // Block holidays — no one works
+  if (isHoliday(date)) return []
+
   const dayOfWeek = new Date(date + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short' })
 
   const { data: allCleaners } = await supabaseAdmin
@@ -57,7 +62,7 @@ async function getCleanersForDay(date: string) {
     if (c.schedule && typeof c.schedule === 'object' && Object.keys(c.schedule).length > 0) {
       return c.schedule[dayOfWeek] !== null && c.schedule[dayOfWeek] !== undefined
     }
-    return dayOfWeek !== 'Sun'
+    return true // Available 7 days a week by default
   })
 }
 
@@ -112,11 +117,17 @@ function hasConflict(
 /**
  * Public availability: which time slots have at least one available cleaner?
  * Duration-aware — a 4hr deep clean won't show 3PM as available.
+ * Returns all slots, with preferred pockets (8am, 12pm, 4pm) first.
  */
 export async function checkAvailability(date: string, durationHours: number = 2): Promise<AvailabilityResult> {
   const today = new Date().toLocaleDateString('en-CA')
   if (date === today) {
     return { slots: [], sameDay: true, message: 'Same-day bookings require confirmation' }
+  }
+
+  const holidayName = isHoliday(date)
+  if (holidayName) {
+    return { slots: [], message: `Closed for ${holidayName}` }
   }
 
   const cleaners = await getCleanersForDay(date)
@@ -149,6 +160,11 @@ export async function checkAvailability(date: string, durationHours: number = 2)
   return { slots }
 }
 
+/**
+ * Smart scheduling: returns the best available times for a date,
+ * prioritizing preferred pockets (8am, 12pm, 4pm) first.
+ * Used by Selena to suggest optimal times.
+ */
 export async function getSmartSuggestions(date: string, durationHours: number = 2): Promise<string[]> {
   const result = await checkAvailability(date, durationHours)
   if (result.sameDay || result.slots.length === 0) return []
@@ -156,6 +172,7 @@ export async function getSmartSuggestions(date: string, durationHours: number = 
   const available = result.slots.filter(s => s.available)
   if (available.length === 0) return []
 
+  // Sort: preferred pockets first (8am, 12pm, 4pm), then everything else
   const pocketTimes = PREFERRED_POCKETS.map(h => TIME_LABELS[h]).filter(Boolean)
 
   const preferred = available.filter(s => pocketTimes.includes(s.time))

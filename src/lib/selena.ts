@@ -22,7 +22,7 @@ export interface BookingChecklist {
   service_type: 'regular' | 'deep' | 'move_in_out' | 'airbnb' | 'emergency' | null
   bedrooms: number | null
   bathrooms: number | null
-  rate: 49 | 59 | 75 | 100 | null
+  rate: 49 | 49 | 65 | 100 | null
   day: string | null
   date: string | null
   time: string | null
@@ -69,7 +69,7 @@ export function getNextStep(cl: BookingChecklist): NextStep {
   if (!cl.phone) return { field: 'phone', instruction: 'Ask for their best phone number.' }
   if (!cl.service_type) return { field: 'service_type', instruction: 'Ask what type of cleaning — regular, deep, move-in/out, airbnb, or emergency. Use numbered options on SMS.' }
   if (cl.bedrooms === null || cl.bathrooms === null) return { field: 'bedrooms', instruction: 'Ask how many bedrooms and bathrooms.' }
-  if (!cl.rate) return { field: 'rate', instruction: 'Give time estimate RANGE for their size (e.g. "typically runs 2-4 hours"), then pricing: $59/hr (client supplies), $75/hr (we bring everything), $100/hr (same-day). Use numbered options on SMS.' }
+  if (!cl.rate) return { field: 'rate', instruction: 'Give time estimate RANGE for their size (e.g. "typically runs 2-4 hours"), then pricing: $49/hr (client supplies), $65/hr (we bring everything), $100/hr (same-day). Use numbered options on SMS.' }
   if (!cl.day) return { field: 'day', instruction: 'Ask what day works best. Use numbered options on SMS.' }
   if (!cl.time) return { field: 'time', instruction: 'Ask what time — morning or afternoon, or suggest available times. Use numbered options on SMS.' }
   if (!cl.address) return { field: 'address', instruction: 'Ask for full address — street, apt/unit, city, zip.' }
@@ -164,10 +164,9 @@ const SERVICE_TYPE_MAP: Record<string, BookingChecklist['service_type']> = {
   '5': 'emergency', 'emergency': 'emergency', 'same day': 'emergency', 'same-day': 'emergency', 'asap': 'emergency', 'today': 'emergency',
 }
 
-const RATE_MAP: Record<string, 49 | 59 | 75 | 100> = {
-  '1': 59, '49': 49, '$49': 49,
-  '59': 59, '$59': 59,
-  '2': 75, '75': 75, '$75': 75,
+const RATE_MAP: Record<string, 49 | 65 | 100> = {
+  '1': 49, '49': 49, '$49': 49,
+  '2': 65, '65': 65, '$65': 65,
   '3': 100, '100': 100, '$100': 100,
 }
 
@@ -280,13 +279,13 @@ async function extractAndSave(
       const rateNum = lower.match(/\$?(\d{2,3})(?:\s*(?:\/hr|per hour|an hour|one))?/)
       if (rateNum) {
         const val = parseInt(rateNum[1])
-        if (val === 49 || val === 59 || val === 75 || val === 100) extracted.rate = val as 49 | 59 | 75 | 100
+        if (val === 49 || val === 65 || val === 100) extracted.rate = val as 49 | 65 | 100
       }
     }
     // "you bring everything" / "I have supplies"
     if (!extracted.rate) {
-      if (/you bring|you provide|bring everything|full service/i.test(lower)) extracted.rate = 75
-      if (/i have supplies|my supplies|i provide|client supplies/i.test(lower)) extracted.rate = 59
+      if (/you bring|you provide|bring everything|full service/i.test(lower)) extracted.rate = 65
+      if (/i have supplies|my supplies|i provide|client supplies/i.test(lower)) extracted.rate = 49
     }
   }
 
@@ -478,10 +477,10 @@ STYLE:
 - If Spanish detected, respond entirely in Spanish.
 
 PRICING:
-$59/hr — client provides supplies and equipment
-$75/hr — we provide everything needed
+$49/hr — client provides supplies and equipment
+$65/hr — we provide everything needed
 $100/hr — same-day/emergency
-RECURRING DISCOUNT: Weekly/bi-weekly/monthly get 10% off $75/hr = $67.50/hr.
+RECURRING DISCOUNT: Weekly/bi-weekly/monthly get 10% off $65/hr = $58.50/hr.
 Estimates (ALWAYS give a RANGE, never a single number):
 1BR/1BA: 2-3 hours | 2BR/1BA: 2-4 hours | 2BR/2BA: 3-4 hours | 3BR/2BA: 3-5 hours
 Deep/first-time: add 1-2 hours to the range.
@@ -491,13 +490,16 @@ COMMON QUESTIONS:
 "Can I leave?" → "Yes totally fine as long as payment is made before completion."
 "Same cleaner?" → "We do our best to keep the same cleaner each time"
 "Insured?" → "Yes, fully insured"
-"Supplies?" → "At $75/hr we bring everything. At $59/hr you provide."
+"Supplies?" → "At $65/hr we bring everything. At $49/hr you provide."
 "Deep clean?" → "Full top to bottom — kitchen, bathrooms, all surfaces, floors."
 "Move out?" → "Yes, typically 4-6 hours depending on size."
 
 SERVICE AREA:
-All of Florida — Miami-Dade, Broward, Palm Beach, Tampa Bay, Orlando, Jacksonville, Southwest Florida, Space Coast, Florida Keys, North Central Florida, Panhandle.
-Outside Florida: "We only serve Florida at this time but we're always expanding — check back soon 😊"
+Manhattan, Brooklyn, Queens — yes
+Long Island — west half (Nassau County, western Suffolk)
+New Jersey — along Hudson, under 30 min from NYC
+Bronx, Staten Island — case by case
+Outside: "We don't currently cover that area but we're expanding — text us at (954) 710-3636 😊"
 
 CANCELLATION POLICY:
 First-time/one-time: NO cancellations, NO rescheduling.

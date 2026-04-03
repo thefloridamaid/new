@@ -1,6 +1,6 @@
 const SPAM_REFERRERS = [
   'siteground', 'sgcaptcha', 'telnyx.io',
-  'consortium',
+  'consortium', 'nycsidehustle',
   'twicsy.com', 'merobase.com', 'notidc.com', 'wicked.cc', 'vatrouver.com',
   'nerdydata.com', 'pptsearch365.com', 'zhongsou.com', 'schoolbox.cloud',
   'satchelone.com', 'askboth.com', 'activesearchresults.com',
@@ -35,6 +35,8 @@ const OWNED_HOSTS = new Set([
   ...ALL_DOMAINS.map(d => 'www.' + d.toLowerCase()),
   'thefloridamaid.com',
   'www.thefloridamaid.com',
+  'theflmaidservice.com',
+  'www.theflmaidservice.com',
 ])
 
 const ENGAGEMENT_ACTIONS = new Set([

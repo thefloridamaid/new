@@ -69,7 +69,7 @@ export async function GET(request: Request) {
         periodStart = thirtyDaysStart
     }
 
-    const SITE_DOMAINS = ['thefloridamaid.com', 'www.thefloridamaid.com']
+    const NYCMAID_DOMAINS = ['thefloridamaid.com', 'www.thefloridamaid.com']
     const CTA_ACTIONS = ['call', 'text', 'book']
 
     // Bot UA patterns to exclude from analytics
@@ -80,7 +80,7 @@ export async function GET(request: Request) {
       supabaseAdmin
         .from('lead_clicks')
         .select('*')
-        .in('domain', SITE_DOMAINS)
+        .in('domain', NYCMAID_DOMAINS)
         .gte('created_at', periodStart.toISOString())
         .order('created_at', { ascending: true }),
       10000

@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: { absolute: title },
     description,
     alternates: { canonical: url },
-    openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid', locale: 'en_US' },
+    openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid Cleaning Service Cleaning Service', locale: 'en_US' },
     twitter: { card: 'summary_large_image', title, description },
     other: { 'geo.region': `US-${area.state}`, 'geo.placename': neighborhood.name, 'geo.position': `${neighborhood.lat};${neighborhood.lng}`, 'ICBM': `${neighborhood.lat}, ${neighborhood.lng}` },
   }

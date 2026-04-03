@@ -61,12 +61,12 @@ export default function ClientTranscript({ clientId }: { clientId: string }) {
   return (
     <div>
       {!expanded && messages.length > 6 && (
-        <button onClick={() => setExpanded(true)} className="text-xs text-[#CC6222] hover:underline mb-2">
+        <button onClick={() => setExpanded(true)} className="text-xs text-[#1E2A4A] hover:underline mb-2">
           Show all {messages.length} messages
         </button>
       )}
       {expanded && messages.length > 6 && (
-        <button onClick={() => setExpanded(false)} className="text-xs text-[#CC6222] hover:underline mb-2">
+        <button onClick={() => setExpanded(false)} className="text-xs text-[#1E2A4A] hover:underline mb-2">
           Show recent only
         </button>
       )}
@@ -79,8 +79,8 @@ export default function ClientTranscript({ clientId }: { clientId: string }) {
                 <div key={msg.id} className={`flex ${msg.direction === 'outbound' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`max-w-[85%] px-3 py-2 rounded-xl text-sm whitespace-pre-wrap ${
                     msg.direction === 'outbound'
-                      ? 'bg-[#CC6222] text-white rounded-br-sm'
-                      : 'bg-gray-100 text-[#CC6222] rounded-bl-sm'
+                      ? 'bg-[#1E2A4A] text-white rounded-br-sm'
+                      : 'bg-gray-100 text-[#1E2A4A] rounded-bl-sm'
                   }`}>
                     {msg.message}
                     <p className={`text-[10px] mt-0.5 ${msg.direction === 'outbound' ? 'text-gray-400' : 'text-gray-400'}`}>

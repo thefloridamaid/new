@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import SidePanel from '@/components/SidePanel'
 import PushPrompt from '@/components/PushPrompt'
 
-type PageType = 'dashboard' | 'calendar' | 'bookings' | 'cleaners' | 'clients' | 'team' | 'websites' | 'leads' | 'referrals' | 'finance' | 'feedback' | 'analytics' | 'docs' | 'settings'
+type PageType = 'dashboard' | 'calendar' | 'bookings' | 'cleaners' | 'clients' | 'team' | 'websites' | 'leads' | 'referrals' | 'finance' | 'feedback' | 'analytics' | 'docs' | 'settings' | 'selena'
 
 interface DashboardHeaderProps {
   currentPage?: PageType
@@ -197,7 +197,7 @@ export default function DashboardHeader({ currentPage = 'dashboard' }: Dashboard
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2.5 -ml-1 text-gray-600 hover:text-[#CC6222]"
+            className="md:hidden p-2.5 -ml-1 text-gray-600 hover:text-[#1E2A4A]"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {mobileMenuOpen
@@ -206,8 +206,8 @@ export default function DashboardHeader({ currentPage = 'dashboard' }: Dashboard
               }
             </svg>
           </button>
-          <Link href="/admin" className="text-xl font-bold text-[#CC6222]">
-            The Florida Maid Cleaning Service
+          <Link href="/admin" className="text-xl font-bold text-[#1E2A4A]">
+            The Florida Maid
           </Link>
           <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
@@ -216,8 +216,8 @@ export default function DashboardHeader({ currentPage = 'dashboard' }: Dashboard
                 href={item.href}
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                   currentPage === item.page
-                    ? 'bg-[#CC6222]/10 text-[#CC6222]'
-                    : 'text-gray-600 hover:text-[#CC6222] hover:bg-gray-50'
+                    ? 'bg-[#1E2A4A]/10 text-[#1E2A4A]'
+                    : 'text-gray-600 hover:text-[#1E2A4A] hover:bg-gray-50'
                 }`}
               >
                 {item.name}
@@ -230,7 +230,7 @@ export default function DashboardHeader({ currentPage = 'dashboard' }: Dashboard
           {/* Settings */}
           <Link
             href="/admin/settings"
-            className={`p-2 rounded-lg transition-colors ${currentPage === 'settings' ? 'bg-[#CC6222]/10 text-[#CC6222]' : 'text-gray-500 hover:text-[#CC6222] hover:bg-gray-50'}`}
+            className={`p-2 rounded-lg transition-colors ${currentPage === 'settings' ? 'bg-[#1E2A4A]/10 text-[#1E2A4A]' : 'text-gray-500 hover:text-[#1E2A4A] hover:bg-gray-50'}`}
             title="Settings"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -242,7 +242,7 @@ export default function DashboardHeader({ currentPage = 'dashboard' }: Dashboard
           {/* Notifications */}
           <button
             onClick={() => setShowNotifications(!showNotifications)}
-            className="relative p-2 text-gray-500 hover:text-[#CC6222] hover:bg-gray-50 rounded-lg transition-colors"
+            className="relative p-2 text-gray-500 hover:text-[#1E2A4A] hover:bg-gray-50 rounded-lg transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
@@ -260,7 +260,7 @@ export default function DashboardHeader({ currentPage = 'dashboard' }: Dashboard
             </div>
             {unreadCount > 0 && (
               <div className="flex justify-end mb-4">
-                <button onClick={markAllRead} className="text-sm text-[#CC6222] hover:text-[#CC6222] font-medium">Mark all read</button>
+                <button onClick={markAllRead} className="text-sm text-[#1E2A4A] hover:text-[#1E2A4A] font-medium">Mark all read</button>
               </div>
             )}
             {notifications.length === 0 ? (
@@ -280,25 +280,25 @@ export default function DashboardHeader({ currentPage = 'dashboard' }: Dashboard
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex justify-between items-start gap-2">
-                          <p className="font-medium text-sm text-[#CC6222]">{line1}</p>
+                          <p className="font-medium text-sm text-[#1E2A4A]">{line1}</p>
                           <span className="text-xs text-gray-400 whitespace-nowrap">{formatTimeAgo(n.created_at)}</span>
                         </div>
                         <p className="text-sm text-gray-600 mt-0.5">{line2}</p>
                         {line3 && <p className="text-xs text-gray-400 mt-1">{line3}</p>}
                       </div>
-                      {!n.read && <div className="w-2 h-2 bg-[#34D399] rounded-full flex-shrink-0 mt-2" />}
+                      {!n.read && <div className="w-2 h-2 bg-[#A8F0DC] rounded-full flex-shrink-0 mt-2" />}
                     </div>
                   )
                   return link ? (
                     <button
                       key={n.id}
                       onClick={() => { setShowNotifications(false); router.push(link) }}
-                      className={`w-full text-left px-6 py-4 hover:bg-gray-50 transition cursor-pointer ${!n.read ? 'bg-[#34D399]/10' : ''}`}
+                      className={`w-full text-left px-6 py-4 hover:bg-gray-50 transition cursor-pointer ${!n.read ? 'bg-[#A8F0DC]/10' : ''}`}
                     >
                       {content}
                     </button>
                   ) : (
-                    <div key={n.id} className={`px-6 py-4 ${!n.read ? 'bg-[#34D399]/10' : ''}`}>
+                    <div key={n.id} className={`px-6 py-4 ${!n.read ? 'bg-[#A8F0DC]/10' : ''}`}>
                       {content}
                     </div>
                   )
@@ -308,8 +308,8 @@ export default function DashboardHeader({ currentPage = 'dashboard' }: Dashboard
           </SidePanel>
 
           {/* Logout */}
-          <button onClick={handleLogout} className="text-sm text-gray-500 hover:text-[#CC6222] ml-1 md:ml-2 hidden md:block">Logout</button>
-          <button onClick={handleLogout} className="md:hidden p-2 text-gray-500 hover:text-[#CC6222]" title="Logout">
+          <button onClick={handleLogout} className="text-sm text-gray-500 hover:text-[#1E2A4A] ml-1 md:ml-2 hidden md:block">Logout</button>
+          <button onClick={handleLogout} className="md:hidden p-2 text-gray-500 hover:text-[#1E2A4A]" title="Logout">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
             </svg>
@@ -328,8 +328,8 @@ export default function DashboardHeader({ currentPage = 'dashboard' }: Dashboard
                 onClick={() => setMobileMenuOpen(false)}
                 className={`px-3 py-3 rounded-lg text-sm font-medium text-center transition-colors ${
                   currentPage === item.page
-                    ? 'bg-[#CC6222] text-white'
-                    : 'text-gray-600 hover:text-[#CC6222] bg-gray-50'
+                    ? 'bg-[#1E2A4A] text-white'
+                    : 'text-gray-600 hover:text-[#1E2A4A] bg-gray-50'
                 }`}
               >
                 {item.name}

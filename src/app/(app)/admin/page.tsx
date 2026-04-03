@@ -3,6 +3,17 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic'
 
+interface ScheduleIssue {
+  id: string
+  type: string
+  severity: 'critical' | 'warning' | 'info'
+  message: string
+  booking_id: string | null
+  date: string | null
+  status: string
+  created_at: string
+}
+
 const MapComponent = dynamic(() => import('@/components/DashboardMap'), { 
   ssr: false,
   loading: () => <div className="h-[250px] md:h-[400px] bg-gray-100 rounded-lg flex items-center justify-center text-gray-500">Loading map...</div>
@@ -54,12 +65,36 @@ export default function DashboardPage() {
   const [cleanerFilter, setCleanerFilter] = useState<string>('all')
   const [cleanersList, setCleanersList] = useState<Cleaner[]>([])
   const [loading, setLoading] = useState(true)
+  const [scheduleIssues, setScheduleIssues] = useState<ScheduleIssue[]>([])
+
+  const loadIssues = async () => {
+    const res = await fetch('/api/admin/schedule-issues')
+    if (res.ok) setScheduleIssues(await res.json())
+  }
+
+  const resolveIssue = async (id: string, status: 'resolved' | 'dismissed') => {
+    await fetch('/api/admin/schedule-issues', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, status }),
+    })
+    setScheduleIssues(prev => prev.filter(i => i.id !== id))
+  }
   const [showJobsModal, setShowJobsModal] = useState(false)
   const [modalTitle, setModalTitle] = useState('')
   const [modalJobs, setModalJobs] = useState<Booking[]>([])
 
-  // Check auth on mount
+  // Check auth on mount + auto-refresh every 60s
   useEffect(() => {
+    loadDashboardInitial()
+    loadIssues()
+    const interval = setInterval(() => {
+      if (authed) { loadDashboard(); loadIssues() }
+    }, 60000)
+    return () => clearInterval(interval)
+  }, [authed])
+
+  const loadDashboardInitial = () => {
     fetch('/api/dashboard').then(res => {
       if (res.ok) {
         setAuthed(true)
@@ -77,8 +112,11 @@ export default function DashboardPage() {
         setAuthed(false)
         setLoading(false)
       }
+    }).catch(() => {
+      setAuthed(false)
+      setLoading(false)
     })
-  }, [])
+  }
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -235,20 +273,30 @@ export default function DashboardPage() {
         <div className="w-full max-w-sm">
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
             <div className="text-center mb-6">
-              <h1 className="text-2xl font-bold text-[#CC6222]">The Florida Maid</h1>
+              <h1 className="text-2xl font-bold text-[#1E2A4A]">The Florida Maid</h1>
               <p className="text-gray-500 mt-1">Admin Portal</p>
             </div>
             <form onSubmit={handleLogin}>
+              <div className="mb-3">
+                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Email</label>
+                <input
+                  type="email"
+                  value={loginEmail}
+                  onChange={(e) => setLoginEmail(e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#1E2A4A] outline-none"
+                  placeholder="Email address"
+                  disabled={attempts >= 5}
+                />
+              </div>
               <div>
-                <label className="block text-sm font-medium text-[#CC6222] mb-1">PIN</label>
+                <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Password</label>
                 <input
                   type="password"
                   required
-                  inputMode="numeric"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#CC6222] focus:ring-2 focus:ring-[#CC6222] outline-none"
-                  placeholder="Enter your PIN"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#1E2A4A] outline-none"
+                  placeholder="Password or PIN"
                   disabled={attempts >= 5}
                 />
               </div>
@@ -256,10 +304,11 @@ export default function DashboardPage() {
               <button
                 type="submit"
                 disabled={loginLoading || attempts >= 5}
-                className="w-full mt-4 py-3 bg-[#CC6222] text-white font-semibold rounded-lg hover:bg-[#CC6222]/90 disabled:opacity-50"
+                className="w-full mt-4 py-3 bg-[#1E2A4A] text-white font-semibold rounded-lg hover:bg-[#1E2A4A]/90 disabled:opacity-50"
               >
                 {loginLoading ? 'Signing in...' : 'Sign In'}
               </button>
+              <p className="text-xs text-gray-400 text-center mt-3">Owner PIN login still works — leave email blank</p>
             </form>
           </div>
         </div>
@@ -270,6 +319,39 @@ export default function DashboardPage() {
   return (
     <>
       <main className="p-3 md:p-6 max-w-7xl mx-auto">
+
+        {/* SCHEDULE ISSUES */}
+        {scheduleIssues.length > 0 && (
+          <div className="mb-4 md:mb-6">
+            <h2 className="text-sm font-semibold text-red-600 mb-2">
+              {scheduleIssues.filter(i => i.severity === 'critical').length > 0 ? '🚨' : '⚠️'} SCHEDULE ISSUES ({scheduleIssues.length})
+            </h2>
+            <div className="space-y-2">
+              {scheduleIssues.slice(0, 10).map(issue => (
+                <div key={issue.id} className={`flex items-start justify-between gap-3 rounded-xl px-4 py-3 border ${
+                  issue.severity === 'critical' ? 'bg-red-50 border-red-200' : issue.severity === 'warning' ? 'bg-yellow-50 border-yellow-200' : 'bg-blue-50 border-blue-200'
+                }`}>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <span className={`text-[10px] font-bold uppercase px-1.5 py-0.5 rounded ${
+                        issue.severity === 'critical' ? 'bg-red-200 text-red-800' : issue.severity === 'warning' ? 'bg-yellow-200 text-yellow-800' : 'bg-blue-200 text-blue-800'
+                      }`}>{issue.severity}</span>
+                      <span className="text-[10px] text-gray-400">{issue.type.replace(/_/g, ' ')}</span>
+                    </div>
+                    <p className="text-sm text-[#1E2A4A] font-medium">{issue.message}</p>
+                  </div>
+                  <div className="flex gap-1.5 flex-shrink-0">
+                    {issue.booking_id && (
+                      <button onClick={() => router.push(`/admin/bookings?edit=${issue.booking_id}`)} className="px-2.5 py-1.5 text-xs bg-white border border-gray-200 rounded-lg hover:bg-gray-50 text-[#1E2A4A]">View</button>
+                    )}
+                    <button onClick={() => resolveIssue(issue.id, 'resolved')} className="px-2.5 py-1.5 text-xs bg-green-600 text-white rounded-lg hover:bg-green-700">Resolve</button>
+                    <button onClick={() => resolveIssue(issue.id, 'dismissed')} className="px-2.5 py-1.5 text-xs text-gray-400 hover:text-gray-600">Dismiss</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* COLLECTED + TO COLLECT ROW */}
         <div className="mb-4 md:mb-6">
@@ -304,20 +386,20 @@ export default function DashboardPage() {
         <div className="mb-4 md:mb-6">
           <h2 className="text-sm font-semibold text-gray-500 mb-2 md:mb-3">📅 SCHEDULED (Upcoming)</h2>
           <div className="flex gap-2 overflow-x-auto pb-2 -mx-3 px-3 md:mx-0 md:px-0">
-            <button onClick={() => openJobsModal('Today - Scheduled', scheduledToday.jobs)} className="flex-shrink-0 w-[120px] md:w-auto md:flex-1 bg-[#34D399]/20 rounded-xl p-3 shadow-sm border border-[#34D399]/30 text-left hover:shadow-md transition">
-              <p className="text-[#CC6222] text-xs">Today</p>
-              <p className="text-lg font-bold text-[#CC6222]/70">{formatMoney(scheduledToday.revenue)}</p>
-              <p className="text-xs text-[#CC6222]/70">{scheduledToday.jobs.length} jobs</p>
+            <button onClick={() => openJobsModal('Today - Scheduled', scheduledToday.jobs)} className="flex-shrink-0 w-[120px] md:w-auto md:flex-1 bg-[#A8F0DC]/20 rounded-xl p-3 shadow-sm border border-[#A8F0DC]/30 text-left hover:shadow-md transition">
+              <p className="text-[#1E2A4A] text-xs">Today</p>
+              <p className="text-lg font-bold text-[#1E2A4A]/70">{formatMoney(scheduledToday.revenue)}</p>
+              <p className="text-xs text-[#1E2A4A]/70">{scheduledToday.jobs.length} jobs</p>
             </button>
-            <button onClick={() => openJobsModal('This Week - Scheduled', scheduledWeek.jobs)} className="flex-shrink-0 w-[120px] md:w-auto md:flex-1 bg-[#34D399]/20 rounded-xl p-3 shadow-sm border border-[#34D399]/30 text-left hover:shadow-md transition">
-              <p className="text-[#CC6222] text-xs">Week</p>
-              <p className="text-lg font-bold text-[#CC6222]/70">{formatMoney(scheduledWeek.revenue)}</p>
-              <p className="text-xs text-[#CC6222]/70">{scheduledWeek.jobs.length} jobs</p>
+            <button onClick={() => openJobsModal('This Week - Scheduled', scheduledWeek.jobs)} className="flex-shrink-0 w-[120px] md:w-auto md:flex-1 bg-[#A8F0DC]/20 rounded-xl p-3 shadow-sm border border-[#A8F0DC]/30 text-left hover:shadow-md transition">
+              <p className="text-[#1E2A4A] text-xs">Week</p>
+              <p className="text-lg font-bold text-[#1E2A4A]/70">{formatMoney(scheduledWeek.revenue)}</p>
+              <p className="text-xs text-[#1E2A4A]/70">{scheduledWeek.jobs.length} jobs</p>
             </button>
-            <button onClick={() => openJobsModal('This Month - Scheduled', scheduledMonth.jobs)} className="flex-shrink-0 w-[120px] md:w-auto md:flex-1 bg-[#34D399]/20 rounded-xl p-3 shadow-sm border border-[#34D399]/30 text-left hover:shadow-md transition">
-              <p className="text-[#CC6222] text-xs">Month</p>
-              <p className="text-lg font-bold text-[#CC6222]/70">{formatMoney(scheduledMonth.revenue)}</p>
-              <p className="text-xs text-[#CC6222]/70">{scheduledMonth.jobs.length} jobs</p>
+            <button onClick={() => openJobsModal('This Month - Scheduled', scheduledMonth.jobs)} className="flex-shrink-0 w-[120px] md:w-auto md:flex-1 bg-[#A8F0DC]/20 rounded-xl p-3 shadow-sm border border-[#A8F0DC]/30 text-left hover:shadow-md transition">
+              <p className="text-[#1E2A4A] text-xs">Month</p>
+              <p className="text-lg font-bold text-[#1E2A4A]/70">{formatMoney(scheduledMonth.revenue)}</p>
+              <p className="text-xs text-[#1E2A4A]/70">{scheduledMonth.jobs.length} jobs</p>
             </button>
             {forecast.map((m) => (
               <button key={m.name} onClick={() => openJobsModal(`${m.name} - Scheduled`, m.jobs)} className="flex-shrink-0 w-[120px] md:w-auto md:flex-1 bg-indigo-50 rounded-xl p-3 shadow-sm border border-indigo-100 text-left hover:shadow-md transition">
@@ -333,10 +415,10 @@ export default function DashboardPage() {
         <div className="mb-4 md:mb-6">
           <h2 className="text-sm font-semibold text-gray-500 mb-2 md:mb-3">📊 OVERVIEW</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
-            <div className="bg-[#34D399]/20 rounded-xl p-3 md:p-4 border border-[#34D399]/30">
-              <p className="text-[#CC6222] text-xs md:text-sm">Scheduled</p>
-              <p className="text-xl md:text-2xl font-bold text-[#CC6222]/70">{stats.scheduled}</p>
-              <p className="text-xs text-[#CC6222]/70">upcoming</p>
+            <div className="bg-[#A8F0DC]/20 rounded-xl p-3 md:p-4 border border-[#A8F0DC]/30">
+              <p className="text-[#1E2A4A] text-xs md:text-sm">Scheduled</p>
+              <p className="text-xl md:text-2xl font-bold text-[#1E2A4A]/70">{stats.scheduled}</p>
+              <p className="text-xs text-[#1E2A4A]/70">upcoming</p>
             </div>
             <div className="bg-green-50 rounded-xl p-3 md:p-4 border border-green-100">
               <p className="text-green-600 text-xs md:text-sm">Completed</p>
@@ -371,11 +453,11 @@ export default function DashboardPage() {
                     <a key={job.id} href="/admin/bookings" className="block p-4 hover:bg-gray-50">
                       <div className="flex justify-between items-start">
                         <div>
-                          <p className="font-medium text-[#CC6222]">{job.clients?.name || 'No client'}</p>
+                          <p className="font-medium text-[#1E2A4A]">{job.clients?.name || 'No client'}</p>
                           <p className="text-sm text-gray-500">{job.service_type} • {job.cleaners?.name || 'Unassigned'}</p>
                         </div>
                         <div className="text-right">
-                          <p className="font-medium text-[#CC6222]">{formatTime(job.start_time)}</p>
+                          <p className="font-medium text-[#1E2A4A]">{formatTime(job.start_time)}</p>
                           <span className={'text-xs px-2 py-1 rounded-full ' + 
                             (job.status === 'completed' ? 'bg-green-100 text-green-700' : 
                              job.status === 'in_progress' ? 'bg-yellow-100 text-yellow-700' : 
@@ -404,11 +486,11 @@ export default function DashboardPage() {
                     <a key={job.id} href="/admin/bookings" className="block p-4 hover:bg-gray-50">
                       <div className="flex justify-between items-start">
                         <div>
-                          <p className="font-medium text-[#CC6222]">{job.clients?.name || 'No client'}</p>
+                          <p className="font-medium text-[#1E2A4A]">{job.clients?.name || 'No client'}</p>
                           <p className="text-sm text-gray-500">{job.service_type} • {job.cleaners?.name || 'Unassigned'}</p>
                         </div>
                         <div className="text-right">
-                          <p className="font-medium text-[#CC6222]">{formatDate(job.start_time)}</p>
+                          <p className="font-medium text-[#1E2A4A]">{formatDate(job.start_time)}</p>
                           <p className="text-sm text-gray-500">{formatTime(job.start_time)}</p>
                         </div>
                       </div>
@@ -428,7 +510,7 @@ export default function DashboardPage() {
               <select
                 value={cleanerFilter}
                 onChange={(e) => setCleanerFilter(e.target.value)}
-                className="px-3 py-1.5 bg-gray-100 border-0 rounded-lg text-xs font-medium text-gray-700 focus:ring-2 focus:ring-[#CC6222]"
+                className="px-3 py-1.5 bg-gray-100 border-0 rounded-lg text-xs font-medium text-gray-700 focus:ring-2 focus:ring-[#1E2A4A]"
               >
                 <option value="all">All Cleaners</option>
                 {cleanersList.map(c => (
@@ -436,10 +518,10 @@ export default function DashboardPage() {
                 ))}
               </select>
               <div className="flex gap-1 bg-gray-100 p-1 rounded-lg overflow-x-auto">
-                <button onClick={() => setStatusFilter('all')} className={'px-2 md:px-3 py-2 rounded-md text-xs font-medium transition whitespace-nowrap ' + (statusFilter === 'all' ? 'bg-white text-[#CC6222] shadow-sm' : 'text-gray-600 hover:text-[#CC6222]')}>
+                <button onClick={() => setStatusFilter('all')} className={'px-2 md:px-3 py-2 rounded-md text-xs font-medium transition whitespace-nowrap ' + (statusFilter === 'all' ? 'bg-white text-[#1E2A4A] shadow-sm' : 'text-gray-600 hover:text-[#1E2A4A]')}>
                   All ({statusCounts.all})
                 </button>
-                <button onClick={() => setStatusFilter('scheduled')} className={'px-2 md:px-3 py-2 rounded-md text-xs font-medium transition whitespace-nowrap ' + (statusFilter === 'scheduled' ? 'bg-[#CC6222] text-white' : 'text-[#CC6222] hover:bg-[#34D399]/20')}>
+                <button onClick={() => setStatusFilter('scheduled')} className={'px-2 md:px-3 py-2 rounded-md text-xs font-medium transition whitespace-nowrap ' + (statusFilter === 'scheduled' ? 'bg-[#1E2A4A] text-white' : 'text-[#1E2A4A] hover:bg-[#A8F0DC]/20')}>
                   Scheduled ({statusCounts.scheduled})
                 </button>
                 <button onClick={() => setStatusFilter('completed')} className={'px-2 md:px-3 py-2 rounded-md text-xs font-medium transition whitespace-nowrap ' + (statusFilter === 'completed' ? 'bg-green-500 text-white' : 'text-green-600 hover:bg-green-50')}>
@@ -450,9 +532,9 @@ export default function DashboardPage() {
                 </button>
               </div>
               <div className="flex gap-1 bg-gray-100 p-1 rounded-lg">
-                <button onClick={() => setMapView('today')} className={'px-2 md:px-3 py-2 rounded-md text-xs font-medium transition ' + (mapView === 'today' ? 'bg-white text-[#CC6222] shadow-sm' : 'text-gray-600 hover:text-[#CC6222]')}>Today</button>
-                <button onClick={() => setMapView('week')} className={'px-2 md:px-3 py-2 rounded-md text-xs font-medium transition ' + (mapView === 'week' ? 'bg-white text-[#CC6222] shadow-sm' : 'text-gray-600 hover:text-[#CC6222]')}>Week</button>
-                <button onClick={() => setMapView('month')} className={'px-2 md:px-3 py-2 rounded-md text-xs font-medium transition ' + (mapView === 'month' ? 'bg-white text-[#CC6222] shadow-sm' : 'text-gray-600 hover:text-[#CC6222]')}>Month</button>
+                <button onClick={() => setMapView('today')} className={'px-2 md:px-3 py-2 rounded-md text-xs font-medium transition ' + (mapView === 'today' ? 'bg-white text-[#1E2A4A] shadow-sm' : 'text-gray-600 hover:text-[#1E2A4A]')}>Today</button>
+                <button onClick={() => setMapView('week')} className={'px-2 md:px-3 py-2 rounded-md text-xs font-medium transition ' + (mapView === 'week' ? 'bg-white text-[#1E2A4A] shadow-sm' : 'text-gray-600 hover:text-[#1E2A4A]')}>Week</button>
+                <button onClick={() => setMapView('month')} className={'px-2 md:px-3 py-2 rounded-md text-xs font-medium transition ' + (mapView === 'month' ? 'bg-white text-[#1E2A4A] shadow-sm' : 'text-gray-600 hover:text-[#1E2A4A]')}>Month</button>
               </div>
             </div>
           </div>
@@ -465,11 +547,11 @@ export default function DashboardPage() {
 
       {/* JOBS MODAL */}
       {showJobsModal && (
-        <div className="fixed inset-0 bg-[#CC6222]/50 flex items-end md:items-center justify-center z-[1000]" onClick={() => setShowJobsModal(false)}>
+        <div className="fixed inset-0 bg-[#1E2A4A]/50 flex items-end md:items-center justify-center z-[1000]" onClick={() => setShowJobsModal(false)}>
           <div className="bg-white rounded-t-xl md:rounded-xl p-4 md:p-6 w-full md:max-w-2xl max-h-[85vh] md:max-h-[80vh] overflow-hidden flex flex-col" onClick={e => e.stopPropagation()}>
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold text-[#CC6222]">{modalTitle}</h3>
-              <button onClick={() => setShowJobsModal(false)} className="text-gray-400 hover:text-[#CC6222] text-2xl">&times;</button>
+              <h3 className="text-lg font-semibold text-[#1E2A4A]">{modalTitle}</h3>
+              <button onClick={() => setShowJobsModal(false)} className="text-gray-400 hover:text-[#1E2A4A] text-2xl">&times;</button>
             </div>
             <div className="overflow-y-auto flex-1">
               {modalJobs.length === 0 ? (
@@ -484,12 +566,12 @@ export default function DashboardPage() {
                     >
                       <div className="flex justify-between items-start">
                         <div>
-                          <p className="font-medium text-[#CC6222]">{job.clients?.name || 'No client'}</p>
+                          <p className="font-medium text-[#1E2A4A]">{job.clients?.name || 'No client'}</p>
                           <p className="text-sm text-gray-500">{job.service_type} • {job.cleaners?.name || 'Unassigned'}</p>
                           <p className="text-xs text-gray-400">{job.clients?.address}</p>
                         </div>
                         <div className="text-right">
-                          <p className="font-medium text-[#CC6222]">{formatMoney(job.price || 0)}</p>
+                          <p className="font-medium text-[#1E2A4A]">{formatMoney(job.price || 0)}</p>
                           <p className="text-sm text-gray-500">{formatDate(job.start_time)}</p>
                           <span className={'text-xs px-2 py-1 rounded-full ' +
                             (job.payment_status === 'paid' ? 'bg-green-100 text-green-700' :
@@ -506,7 +588,7 @@ export default function DashboardPage() {
             </div>
             <div className="pt-4 border-t mt-4 flex justify-between items-center">
               <p className="text-sm text-gray-500">{modalJobs.length} job{modalJobs.length !== 1 ? 's' : ''}</p>
-              <p className="font-semibold text-[#CC6222]">Total: {formatMoney(modalJobs.reduce((sum, j) => sum + (j.price || 0), 0))}</p>
+              <p className="font-semibold text-[#1E2A4A]">Total: {formatMoney(modalJobs.reduce((sum, j) => sum + (j.price || 0), 0))}</p>
             </div>
           </div>
         </div>

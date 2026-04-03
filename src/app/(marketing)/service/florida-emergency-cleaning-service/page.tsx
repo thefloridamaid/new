@@ -182,11 +182,11 @@ const faqData = [
 ]
 
 export const metadata: Metadata = {
-  title: 'Emergency Cleaning Service Florida — 24/7 Response | The Florida Maid',
+  title: 'Emergency Cleaning Service Florida — 24/7 Response | The Florida Maid Cleaning Service Cleaning Service',
   description: 'Florida emergency cleaning — water damage, fire, sewage, biohazard & mold. 24/7 rapid response with pro equipment. What to do, what not to do. Call (954) 710-3636.',
   alternates: { canonical: 'https://www.thefloridamaid.com/service/florida-emergency-cleaning-service' },
   openGraph: {
-    title: 'Emergency Cleaning Service Florida | The Florida Maid',
+    title: 'Emergency Cleaning Service Florida | The Florida Maid Cleaning Service Cleaning Service',
     description: 'Rapid-response emergency cleaning across Florida. Water damage, fire, biohazard & more. Available 24/7.',
     url: 'https://www.thefloridamaid.com/service/florida-emergency-cleaning-service',
   },
@@ -210,7 +210,7 @@ export default function EmergencyCleaningPage() {
     description: 'Professional emergency cleaning service for Florida homes — water damage, fire, sewage, biohazard, mold, and disaster cleanup. Available 24/7.',
     provider: {
       '@type': 'LocalBusiness',
-      name: 'The Florida Maid',
+      name: 'The Florida Maid Cleaning Service Cleaning Service',
       url: 'https://www.thefloridamaid.com',
       telephone: '+19547103636',
       address: { '@type': 'PostalAddress', addressLocality: 'Miami', addressRegion: 'FL', addressCountry: 'US' },

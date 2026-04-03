@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     description: 'The Florida Maid Cleaning Service is hiring a remote admin/ops manager starting at $500/wk + 10% of total revenue. Work from home. Perfect for admins, receptionists, and secretaries looking to upgrade their careers. Apply now.',
     url: pageUrl,
     type: 'article',
-    siteName: 'The Florida Maid',
+    siteName: 'The Florida Maid Cleaning Service Cleaning Service',
     locale: 'en_US',
-    images: [{ url: 'https://www.thefloridamaid.com/icon-512.png', width: 512, height: 512, alt: 'Help Wanted Remote Ops Manager — The Florida Maid — Now Hiring' }],
+    images: [{ url: 'https://www.thefloridamaid.com/icon-512.png', width: 512, height: 512, alt: 'Help Wanted Remote Ops Manager — The Florida Maid Cleaning Service Cleaning Service — Now Hiring' }],
     publishedTime: '2026-03-15T00:00:00Z',
     modifiedTime: new Date().toISOString(),
   },
@@ -62,7 +62,7 @@ function opsManagerJobPostingSchema() {
     title: 'Operations Manager (Virtual)',
     datePosted,
     validThrough,
-    description: `<h2>Operations Manager (Virtual) — The Florida Maid — Remote Work From Home</h2>
+    description: `<h2>Operations Manager (Virtual) — The Florida Maid Cleaning Service Cleaning Service — Remote Work From Home</h2>
 <p>The Florida Maid Cleaning Service is hiring an <strong>Operations Manager (Virtual)</strong> to own scheduling, customer service, team management, and payment coordination across all Florida service areas. This role combines the responsibilities of a <strong>customer service manager</strong>, <strong>scheduling coordinator</strong>, <strong>office manager</strong>, and <strong>operations coordinator</strong> — all from home. Part-time to start, growing into full-time as volume scales. We currently manage 15–20 cleanings per week and are growing 50–100% monthly.</p>
 
 <h3>Compensation</h3>
@@ -126,7 +126,7 @@ function opsManagerJobPostingSchema() {
 
     hiringOrganization: {
       '@type': 'Organization',
-      name: 'The Florida Maid',
+      name: 'The Florida Maid Cleaning Service Cleaning Service',
       sameAs: 'https://www.thefloridamaid.com',
       url: 'https://www.thefloridamaid.com',
       logo: {
@@ -200,7 +200,7 @@ function opsManagerJobPostingSchema() {
     // ── IDENTIFIER ──
     identifier: {
       '@type': 'PropertyValue',
-      name: 'The Florida Maid',
+      name: 'The Florida Maid Cleaning Service Cleaning Service',
       value: 'floridamaid-virtual-ops-manager-2026',
     },
 
@@ -227,7 +227,10 @@ function opsManagerJobPostingSchema() {
     responsibilities: 'Own the full job lifecycle from scheduling through completion and payment. Monitor operations dashboard daily for jobs, cleaners, scheduling, completions, and system alerts. Coordinate the entire cleaning team including confirmations, check-ins, late arrivals, reschedules, and coverage gaps. Be the primary contact for all client communications 8 AM–6 PM ET, 7 days per week. Resolve client complaints before they become cancellations. Follow up after every job to ensure client satisfaction. Recruit, interview, hire, and onboard new cleaners. Build genuine relationships with the cleaning team. Confirm all incoming payments via Zelle and Apple Pay and log against completed jobs. Follow up on every unpaid balance without exception. Send owner a concise daily summary of completed jobs, payments received, and issues handled. Manage additional operations staff as volume grows.',
     skills: 'Operations management, customer service, scheduling, team leadership, team management, payment coordination, bilingual English and Spanish communication, process design, conflict resolution, recruiting, onboarding, client relationship management, problem solving, attention to detail, time management, multitasking',
 
-    educationRequirements: 'no requirements',
+    educationRequirements: {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'No formal education required',
+    },
     experienceRequirements: {
       '@type': 'OccupationalExperienceRequirements',
       monthsOfExperience: 24,
@@ -891,8 +894,8 @@ export default function VirtualOpsManagerPage() {
           <p className="text-white/50 text-xs italic mb-2">Por qué esto está creciendo tan rápido</p>
           <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-white tracking-wide mb-3">100+ Websites. Organic Growth. No Paid Ads.</h2>
           <p className="text-white italic mb-3">100+ sitios web. Crecimiento orgánico. Sin anuncios pagados.</p>
-          <p className="text-white max-w-3xl mb-3">The owner has built a network of over 100 websites across Florida &mdash; all driving organic traffic to The Florida Maid. This is not a company that relies on paid ads or lead generation services. Every client comes through our own channels. That&apos;s why the growth is real, sustainable, and accelerating.</p>
-          <p className="text-white/50 text-xs italic max-w-3xl mb-10">El dueño ha construido una red de más de 100 sitios web en todo Florida — de Miami a Jacksonville — todos generando tráfico orgánico para The Florida Maid. Esta no es una empresa que depende de anuncios pagados o servicios de generación de prospectos. Cada cliente llega por nuestros propios canales. Por eso el crecimiento es real, sostenible y se está acelerando.</p>
+          <p className="text-white max-w-3xl mb-3">The owner has built a network of over 100 websites across Florida &mdash; all driving organic traffic to The Florida Maid Cleaning Service Cleaning Service. This is not a company that relies on paid ads or lead generation services. Every client comes through our own channels. That&apos;s why the growth is real, sustainable, and accelerating.</p>
+          <p className="text-white/50 text-xs italic max-w-3xl mb-10">El dueño ha construido una red de más de 100 sitios web en todo Florida — de Miami a Jacksonville — todos generando tráfico orgánico para The Florida Maid Cleaning Service Cleaning Service. Esta no es una empresa que depende de anuncios pagados o servicios de generación de prospectos. Cada cliente llega por nuestros propios canales. Por eso el crecimiento es real, sostenible y se está acelerando.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <p className="font-[family-name:var(--font-bebas)] text-5xl text-[#34D399] tracking-wide mb-2">100+</p>

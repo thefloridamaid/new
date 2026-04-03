@@ -19,7 +19,9 @@ function CollectFormContent() {
     address: '',
     apt: '',
     referrer_name: '',
-    referrer_phone: ''
+    referrer_phone: '',
+    pet_name: '',
+    pet_type: ''
   })
   const [loading, setLoading] = useState(false)
   const [done, setDone] = useState(false)
@@ -67,6 +69,8 @@ function CollectFormContent() {
           address: fullAddress,
           referrer_name: form.referrer_name || null,
           referrer_phone: form.referrer_phone || null,
+          pet_name: form.pet_name || null,
+          pet_type: form.pet_type || null,
           src: srcDomain || null,
           convo_id: convoId || null
         })
@@ -88,13 +92,13 @@ function CollectFormContent() {
   if (done) {
     return (
       <div className="min-h-screen bg-white flex flex-col">
-        <div className="bg-[#CC6222] px-6 py-4">
+        <div className="bg-[#1E2A4A] px-6 py-4">
           <h1 className="text-white text-xl font-bold">The Florida Maid</h1>
         </div>
         <div className="flex-1 flex items-center justify-center p-6">
           <div className="text-center max-w-sm">
             <div className="text-5xl mb-4">&#10003;</div>
-            <h2 className="text-2xl font-bold text-[#CC6222] mb-2">All set!</h2>
+            <h2 className="text-2xl font-bold text-[#1E2A4A] mb-2">All set!</h2>
             <p className="text-gray-600">
               {convoId
                 ? `Thanks, ${form.name.split(' ')[0]}! Your cleaning request is submitted. We'll confirm your date and time shortly.`
@@ -108,97 +112,120 @@ function CollectFormContent() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-[#CC6222] px-6 py-4">
+      <div className="bg-[#1E2A4A] px-6 py-4">
         <h1 className="text-white text-xl font-bold">The Florida Maid</h1>
         <p className="text-gray-400 text-sm">New Client Info</p>
       </div>
 
       {convoId && (
-          <div className="bg-[#34D399]/20 border-b border-[#34D399]/30 px-6 py-3">
-            <p className="text-[#CC6222] text-sm font-medium text-center">Almost done! Fill in your info below to complete your booking.</p>
+          <div className="bg-[#A8F0DC]/20 border-b border-[#A8F0DC]/30 px-6 py-3">
+            <p className="text-[#1E2A4A] text-sm font-medium text-center">Almost done! Fill in your info below to complete your booking.</p>
           </div>
         )}
 
       <div className="max-w-lg mx-auto p-4 pt-6">
         <form onSubmit={handleSubmit} onFocusCapture={trackStart} className="bg-white rounded-xl border border-gray-200 p-6 space-y-5">
-          <h2 className="text-xl font-bold text-[#CC6222]">Your Information</h2>
+          <h2 className="text-xl font-bold text-[#1E2A4A]">Your Information</h2>
 
           <div>
-            <label className="block text-sm font-medium text-[#CC6222] mb-1">Full Name *</label>
+            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Full Name *</label>
             <input
               type="text"
               required
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#CC6222] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
               placeholder="John Smith"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#CC6222] mb-1">Email</label>
+            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Email</label>
             <input
               type="email"
               value={form.email}
               onChange={(e) => { setForm({ ...form, email: e.target.value }); setEmailSuggestion('') }}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#CC6222] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
               placeholder="john@example.com"
             />
             {emailSuggestion && (
-              <button type="button" onClick={() => { setForm({ ...form, email: emailSuggestion }); setEmailSuggestion(''); setError('') }} className="mt-1 text-sm text-[#CC6222] hover:underline">
+              <button type="button" onClick={() => { setForm({ ...form, email: emailSuggestion }); setEmailSuggestion(''); setError('') }} className="mt-1 text-sm text-[#1E2A4A] hover:underline">
                 Use {emailSuggestion}?
               </button>
             )}
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#CC6222] mb-1">Phone *</label>
+            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Phone *</label>
             <input
               type="tel"
               required
               value={form.phone}
               onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#CC6222] text-base"
-              placeholder="(954) 555-1234"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              placeholder="(212) 555-1234"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#CC6222] mb-1">Address *</label>
+            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Address *</label>
             <AddressAutocomplete
               value={form.address}
               onChange={(val) => setForm({ ...form, address: val })}
               placeholder="Start typing address..."
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#CC6222] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#CC6222] mb-1">Apt / Unit</label>
+            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Apt / Unit</label>
             <input
               type="text"
               value={form.apt}
               onChange={(e) => setForm({ ...form, apt: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#CC6222] text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
               placeholder="Apt 4B"
             />
           </div>
 
+          <div>
+            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Have a pet? <span className="text-gray-400 font-normal">(optional)</span></label>
+            <div className="grid grid-cols-2 gap-3">
+              <input
+                type="text"
+                value={form.pet_name}
+                onChange={(e) => setForm({ ...form, pet_name: e.target.value })}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+                placeholder="Pet's name"
+              />
+              <select
+                value={form.pet_type}
+                onChange={(e) => setForm({ ...form, pet_type: e.target.value })}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
+              >
+                <option value="">Type</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
           <div className="border-t border-gray-200 pt-5">
-            <label className="block text-sm font-medium text-[#CC6222] mb-2">Referred by someone? <span className="text-gray-400 font-normal">(optional)</span></label>
+            <label className="block text-sm font-medium text-[#1E2A4A] mb-2">Referred by someone? <span className="text-gray-400 font-normal">(optional)</span></label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <input
                 type="text"
                 value={form.referrer_name}
                 onChange={(e) => setForm({ ...form, referrer_name: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#CC6222] text-base"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
                 placeholder="Their name"
               />
               <input
                 type="tel"
                 value={form.referrer_phone}
                 onChange={(e) => setForm({ ...form, referrer_phone: formatPhone(e.target.value) })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#CC6222] text-base"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-[#1E2A4A] text-base"
                 placeholder="Their phone"
               />
             </div>
@@ -211,14 +238,14 @@ function CollectFormContent() {
           <div className="my-5 p-4 border border-gray-200 rounded-lg bg-gray-50">
             <label className="flex items-start gap-3 cursor-pointer text-[13px] leading-relaxed text-gray-600">
               <input type="checkbox" name="sms_consent" required className="mt-1 min-w-[18px] min-h-[18px]" />
-              <span>By checking this box, I consent to receive transactional text messages from <strong>The Florida Maid</strong> for appointment confirmations, reminders, and customer support. Reply STOP to opt out. Reply HELP for help. Msg frequency may vary. Msg &amp; data rates may apply. <a href="https://www.thefloridamaid.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#CC6222] hover:underline">Privacy Policy</a> | <a href="https://www.thefloridamaid.com/terms-conditions" target="_blank" rel="noopener noreferrer" className="text-[#CC6222] hover:underline">Terms &amp; Conditions</a></span>
+              <span>By checking this box, I consent to receive transactional text messages from <strong>The Florida Maid</strong> for appointment confirmations, reminders, and customer support. Reply STOP to opt out. Reply HELP for help. Msg frequency may vary. Msg &amp; data rates may apply. <a href="https://www.thefloridamaid.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#1E2A4A] hover:underline">Privacy Policy</a> | <a href="https://www.thefloridamaid.com/terms-conditions" target="_blank" rel="noopener noreferrer" className="text-[#1E2A4A] hover:underline">Terms &amp; Conditions</a></span>
             </label>
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 bg-[#CC6222] text-white rounded-lg text-lg font-semibold hover:bg-[#CC6222]/90 disabled:opacity-50"
+            className="w-full py-4 bg-[#1E2A4A] text-white rounded-lg text-lg font-semibold hover:bg-[#1E2A4A]/90 disabled:opacity-50"
           >
             {loading ? 'Submitting...' : 'Submit'}
           </button>

@@ -45,7 +45,11 @@ const notificationConfig: Record<string, { icon: string; iconBg: string; title: 
   feedback: { icon: '💬', iconBg: 'bg-blue-100', title: 'Feedback' },
   referral_lead: { icon: '🔗', iconBg: 'bg-purple-100', title: 'Referral Lead' },
   error: { icon: '🚨', iconBg: 'bg-red-100', title: 'System Alert' },
-  security: { icon: '🔒', iconBg: 'bg-gray-100', title: 'Security' }
+  security: { icon: '🔒', iconBg: 'bg-gray-100', title: 'Security' },
+  video_uploaded: { icon: '🎥', iconBg: 'bg-indigo-100', title: 'Video Uploaded' },
+  '15min_warning': { icon: '⏱️', iconBg: 'bg-yellow-100', title: '15-Min Heads Up' },
+  'time_off_request': { icon: '🏖️', iconBg: 'bg-orange-100', title: 'Time Off Request' },
+  'sales_follow_up': { icon: '📞', iconBg: 'bg-amber-100', title: 'Sales Follow-Up' }
 }
 
 const defaultConfig = { icon: '🔔', iconBg: 'bg-gray-100', title: 'Notification' }
@@ -78,14 +82,47 @@ function getNotificationLink(n: Notification): string | null {
     case 'job_claimed':
     case 'job_complete':
     case 'unpaid_team':
+    case 'time_off_request':
       return '/admin/cleaners'
     case 'feedback':
       return '/admin/feedback'
     case 'security':
       return '/admin/settings'
+    case 'sales_follow_up':
+      return '/admin/sales'
     default:
       return null
   }
+}
+
+// Map href → role page key
+const PAGE_KEY_MAP: Record<string, string> = {
+  '/admin': 'dashboard',
+  '/admin/bookings': 'bookings',
+  '/admin/calendar': 'calendar',
+  '/admin/clients': 'clients',
+  '/admin/selena': 'selena',
+  '/admin/leads': 'leads',
+  '/admin/finance': 'finance',
+  '/admin/cleaners': 'team',
+  '/admin/websites': 'websites',
+  '/admin/analytics': 'analytics',
+  '/admin/referrals': 'referrals',
+  '/admin/feedback': 'feedback',
+  '/admin/marketing': 'marketing',
+  '/admin/google': 'google-profile',
+  '/admin/users': 'users',
+  '/admin/sales': 'sales',
+  '/admin/settings': 'settings',
+  '/admin/docs': 'docs',
+}
+
+// Role → accessible page keys
+const ROLE_PAGES: Record<string, string[]> = {
+  owner: ['*'],
+  admin: ['dashboard', 'bookings', 'calendar', 'clients', 'team', 'finance', 'feedback'],
+  manager: ['dashboard', 'bookings', 'calendar', 'clients', 'selena', 'leads', 'sales', 'feedback'],
+  viewer: ['dashboard', 'bookings', 'calendar'],
 }
 
 const navGroups = [
@@ -117,6 +154,7 @@ const navGroups = [
   {
     label: 'SYSTEM',
     items: [
+      { name: 'Users', href: '/admin/users', icon: '◻' },
       { name: 'Settings', href: '/admin/settings', icon: '◻' },
       { name: 'Docs', href: '/admin/docs', icon: '◻' },
     ]
@@ -131,13 +169,33 @@ export default function AdminSidebar() {
   const [unreadCount, setUnreadCount] = useState(0)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [badgeCounts, setBadgeCounts] = useState<Record<string, number>>({})
+  const [userRole, setUserRole] = useState<string>('owner')
 
   useEffect(() => {
     fetchNotifications()
     fetchBadgeCounts()
+    fetchUserRole()
     const interval = setInterval(() => { fetchNotifications(); fetchBadgeCounts() }, 60000)
     return () => clearInterval(interval)
   }, [])
+
+  const fetchUserRole = async () => {
+    try {
+      const res = await fetch('/api/auth/me')
+      if (res.ok) {
+        const data = await res.json()
+        setUserRole(data.role || 'owner')
+      }
+    } catch {}
+  }
+
+  const canAccess = (href: string): boolean => {
+    const pageKey = PAGE_KEY_MAP[href]
+    if (!pageKey) return true
+    const allowed = ROLE_PAGES[userRole]
+    if (!allowed) return true
+    return allowed.includes('*') || allowed.includes(pageKey)
+  }
 
   // Close mobile menu on navigation
   useEffect(() => {
@@ -172,7 +230,8 @@ export default function AdminSidebar() {
     '/admin/calendar': 'calendar',
     '/admin/clients': 'clients',
     '/admin/feedback': 'feedback',
-    '/admin/referrals': 'referrals'
+    '/admin/referrals': 'referrals',
+    '/admin/sales': 'sales'
   }
 
   const markAllRead = async () => {
@@ -232,68 +291,71 @@ export default function AdminSidebar() {
 
   const sidebarContent = (
     <>
-      {/* Brand */}
+      {/* Brand + Notifications */}
       <div className="px-5 pt-6 pb-4">
-        <Link href="/admin" className="block">
-          <span className="text-[#34D399] font-bold text-lg tracking-wide">FL MAID</span>
-        </Link>
+        <div className="flex items-center justify-between">
+          <Link href="/admin" className="block">
+            <span className="text-[#A8F0DC] font-bold text-lg tracking-wide">FL MAID</span>
+          </Link>
+          <button
+            onClick={() => { if (!showNotifications && unreadCount > 0) markAllRead(); setShowNotifications(!showNotifications) }}
+            className="relative p-2 rounded-lg text-white/50 hover:text-white/80 hover:bg-white/[0.04] transition-all"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+            </svg>
+            {unreadCount > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                {unreadCount > 9 ? '9+' : unreadCount}
+              </span>
+            )}
+          </button>
+        </div>
         <div className="mt-3 h-px bg-white/10" />
       </div>
 
       {/* Nav Groups */}
       <nav className="flex-1 px-3 overflow-y-auto admin-sidebar-scroll">
-        {navGroups.map((group) => (
-          <div key={group.label} className="mb-4">
-            <p className="px-3 mb-1.5 text-xs font-bold tracking-[0.12em] text-white/30 uppercase">
-              {group.label}
-            </p>
-            {group.items.map((item) => {
-              const active = isActive(item.href)
-              const badgeKey = badgeMap[item.href]
-              const count = badgeKey ? (badgeCounts[badgeKey] || 0) : 0
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-medium transition-all duration-150 ${
-                    active
-                      ? 'bg-[#34D399]/12 text-[#34D399] border-l-[3px] border-[#34D399] -ml-px'
-                      : 'text-white/50 hover:text-white/80 hover:bg-white/[0.04]'
-                  }`}
-                >
-                  {active && <span className="text-[#34D399] text-xs">▸</span>}
-                  {item.name}
-                  {count > 0 && (
-                    <span className="ml-auto bg-white/15 text-white/70 text-[11px] font-semibold min-w-[20px] h-5 flex items-center justify-center rounded-full px-1.5">
-                      {count > 99 ? '99+' : count}
-                    </span>
-                  )}
-                </Link>
-              )
-            })}
-          </div>
-        ))}
+        {navGroups.map((group) => {
+          const visibleItems = group.items.filter(item => canAccess(item.href))
+          if (visibleItems.length === 0) return null
+          return (
+            <div key={group.label} className="mb-4">
+              <p className="px-3 mb-1.5 text-xs font-bold tracking-[0.12em] text-white/30 uppercase">
+                {group.label}
+              </p>
+              {visibleItems.map((item) => {
+                const active = isActive(item.href)
+                const badgeKey = badgeMap[item.href]
+                const count = badgeKey ? (badgeCounts[badgeKey] || 0) : 0
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-medium transition-all duration-150 ${
+                      active
+                        ? 'bg-[#A8F0DC]/12 text-[#A8F0DC] border-l-[3px] border-[#A8F0DC] -ml-px'
+                        : 'text-white/50 hover:text-white/80 hover:bg-white/[0.04]'
+                    }`}
+                  >
+                    {active && <span className="text-[#A8F0DC] text-xs">▸</span>}
+                    {item.name}
+                    {count > 0 && (
+                      <span className="ml-auto bg-white/15 text-white/70 text-[11px] font-semibold min-w-[20px] h-5 flex items-center justify-center rounded-full px-1.5">
+                        {count > 99 ? '99+' : count}
+                      </span>
+                    )}
+                  </Link>
+                )
+              })}
+            </div>
+          )
+        })}
       </nav>
 
       {/* Bottom section */}
       <div className="px-3 pb-4 mt-auto">
         <div className="h-px bg-white/10 mb-3" />
-
-        {/* Notifications */}
-        <button
-          onClick={() => { if (!showNotifications && unreadCount > 0) markAllRead(); setShowNotifications(!showNotifications) }}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-medium text-white/50 hover:text-white/80 hover:bg-white/[0.04] transition-all"
-        >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-          </svg>
-          Notifications
-          {unreadCount > 0 && (
-            <span className="ml-auto bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
-              {unreadCount > 9 ? '9+' : unreadCount}
-            </span>
-          )}
-        </button>
 
         {/* Logout */}
         <button
@@ -314,7 +376,7 @@ export default function AdminSidebar() {
         </div>
         {unreadCount > 0 && (
           <div className="flex justify-end mb-4">
-            <button onClick={markAllRead} className="text-sm text-[#CC6222] hover:text-[#CC6222] font-medium">Mark all read</button>
+            <button onClick={markAllRead} className="text-sm text-[#1E2A4A] hover:text-[#1E2A4A] font-medium">Mark all read</button>
           </div>
         )}
         {notifications.length === 0 ? (
@@ -334,25 +396,25 @@ export default function AdminSidebar() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-start gap-2">
-                      <p className="font-medium text-sm text-[#CC6222]">{line1}</p>
+                      <p className="font-medium text-sm text-[#1E2A4A]">{line1}</p>
                       <span className="text-xs text-gray-400 whitespace-nowrap">{formatTimeAgo(n.created_at)}</span>
                     </div>
                     <p className="text-sm text-gray-600 mt-0.5">{line2}</p>
                     {line3 && <p className="text-xs text-gray-400 mt-1">{line3}</p>}
                   </div>
-                  {!n.read && <div className="w-2 h-2 bg-[#34D399] rounded-full flex-shrink-0 mt-2" />}
+                  {!n.read && <div className="w-2 h-2 bg-[#A8F0DC] rounded-full flex-shrink-0 mt-2" />}
                 </div>
               )
               return link ? (
                 <button
                   key={n.id}
                   onClick={() => { setShowNotifications(false); router.push(link) }}
-                  className={`w-full text-left px-6 py-4 hover:bg-gray-50 transition cursor-pointer ${!n.read ? 'bg-[#34D399]/10' : ''}`}
+                  className={`w-full text-left px-6 py-4 hover:bg-gray-50 transition cursor-pointer ${!n.read ? 'bg-[#A8F0DC]/10' : ''}`}
                 >
                   {content}
                 </button>
               ) : (
-                <div key={n.id} className={`px-6 py-4 ${!n.read ? 'bg-[#34D399]/10' : ''}`}>
+                <div key={n.id} className={`px-6 py-4 ${!n.read ? 'bg-[#A8F0DC]/10' : ''}`}>
                   {content}
                 </div>
               )
@@ -368,7 +430,7 @@ export default function AdminSidebar() {
       {/* Mobile hamburger button */}
       <button
         onClick={() => setMobileOpen(true)}
-        className="md:hidden fixed top-3 left-3 z-50 p-2 bg-[#CC6222] text-white rounded-lg shadow-lg"
+        className="md:hidden fixed top-3 left-3 z-50 p-2 bg-[#1E2A4A] text-white rounded-lg shadow-lg"
       >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -384,7 +446,7 @@ export default function AdminSidebar() {
       <aside
         className={`
           fixed md:sticky top-0 left-0 z-40 h-screen w-60
-          bg-[#CC6222] flex flex-col
+          bg-[#1E2A4A] flex flex-col
           transition-transform duration-200 ease-out
           md:translate-x-0
           ${mobileOpen ? 'translate-x-0' : '-translate-x-full'}

@@ -1,5 +1,6 @@
 // Shared recurring date generation logic
 // Used by both RecurringOptions.tsx (client) and cron/generate-recurring (server)
+import { filterHolidays } from '@/lib/holidays'
 
 export function generateRecurringDates(
   startDate: string,
@@ -122,14 +123,59 @@ export function generateScheduleDates(
 ): string[] {
   const dates: string[] = []
   const start = new Date(startFromDate + 'T12:00:00')
+  const lower = recurringType.toLowerCase()
+  // For monthly patterns, look further ahead to ensure we catch next occurrence
+  const effectiveWeeks = (lower.includes('monthly') || recurringType.match(/^\d(st|nd|rd|th)\s/)) ? Math.max(weeksOut, 16) : weeksOut
   const endDate = new Date(start)
-  endDate.setDate(endDate.getDate() + weeksOut * 7)
+  endDate.setDate(endDate.getDate() + effectiveWeeks * 7)
 
   // Map display name back to repeat interval
   const intervalDays = getIntervalDays(recurringType)
-  if (intervalDays === 0) return dates
 
-  // Find next occurrence on the right day of week
+  // Handle monthly patterns FIRST — both display names and raw types
+  const isMonthlyDate = lower === 'monthly' || lower === 'monthly_date'
+  const isMonthlyDay = lower === 'monthly_day' || recurringType.match(/^\d(st|nd|rd|th)\s/)
+  if (isMonthlyDate || isMonthlyDay) {
+    const targetWeek = recurringType.match(/^(\d)(st|nd|rd|th)\s/)
+      ? parseInt(recurringType[0])
+      : Math.ceil(start.getDate() / 7)
+
+    let month = start.getMonth()
+    let year = start.getFullYear()
+
+    while (dates.length < 12) {
+      if (isMonthlyDate) {
+        // Monthly on same date
+        const d = new Date(year, month, start.getDate())
+        if (d > start && d <= endDate) {
+          dates.push(d.toISOString().split('T')[0])
+        }
+      } else {
+        // Monthly on Nth weekday (e.g., "3rd Fri" or monthly_day)
+        const firstOfMonth = new Date(year, month, 1)
+        let firstOccurrence = 1
+        while (new Date(year, month, firstOccurrence).getDay() !== dayOfWeek) {
+          firstOccurrence++
+        }
+        const targetDate = firstOccurrence + (targetWeek - 1) * 7
+        const lastDay = new Date(year, month + 1, 0).getDate()
+        if (targetDate <= lastDay) {
+          const d = new Date(year, month, targetDate)
+          if (d >= start && d <= endDate) {
+            dates.push(d.toISOString().split('T')[0])
+          }
+        }
+      }
+      month++
+      if (month > 11) { month = 0; year++ }
+      if (new Date(year, month, 1) > endDate) break
+    }
+    return filterHolidays(dates)
+  }
+
+  // Standard interval-based types (weekly, biweekly, etc.)
+  if (intervalDays === 0) return filterHolidays(dates) // unknown type, bail
+
   let current = new Date(start)
   // Advance to next occurrence of dayOfWeek
   while (current.getDay() !== dayOfWeek) {
@@ -140,64 +186,30 @@ export function generateScheduleDates(
     current.setDate(current.getDate() + intervalDays)
   }
 
-  // Handle monthly patterns
-  if (recurringType === 'Monthly' || recurringType.match(/^\d(st|nd|rd|th)\s/)) {
-    const targetWeek = recurringType.match(/^(\d)(st|nd|rd|th)\s/)
-      ? parseInt(recurringType[0])
-      : Math.ceil(start.getDate() / 7)
-
-    let month = current.getMonth()
-    let year = current.getFullYear()
-
-    while (dates.length < 8) {
-      if (recurringType === 'Monthly') {
-        // Monthly on same date
-        const d = new Date(year, month, start.getDate())
-        if (d > start && d <= endDate) {
-          dates.push(d.toISOString().split('T')[0])
-        }
-      } else {
-        // Monthly on Nth weekday
-        const firstOfMonth = new Date(year, month, 1)
-        let firstOccurrence = 1
-        while (new Date(year, month, firstOccurrence).getDay() !== dayOfWeek) {
-          firstOccurrence++
-        }
-        const targetDate = firstOccurrence + (targetWeek - 1) * 7
-        const lastDay = new Date(year, month + 1, 0).getDate()
-        if (targetDate <= lastDay) {
-          const d = new Date(year, month, targetDate)
-          if (d > start && d <= endDate) {
-            dates.push(d.toISOString().split('T')[0])
-          }
-        }
-      }
-      month++
-      if (month > 11) { month = 0; year++ }
-      if (new Date(year, month, 1) > endDate) break
-    }
-    return dates
-  }
-
-  // Standard interval-based types
   while (current <= endDate && dates.length < 20) {
     dates.push(current.toISOString().split('T')[0])
     current.setDate(current.getDate() + intervalDays)
   }
 
-  return dates
+  return filterHolidays(dates)
 }
 
 function getIntervalDays(recurringType: string): number {
-  switch (recurringType) {
-    case 'Daily': return 1
-    case 'Weekly': return 7
-    case 'Bi-weekly': return 14
-    case 'Tri-weekly': return 21
-    case 'Monthly': return 0 // handled separately
-    case 'Custom': return 7 // fallback
+  const lower = recurringType.toLowerCase()
+  // Handle both display names ('Weekly', 'Bi-weekly') and raw types ('weekly', 'biweekly')
+  switch (lower) {
+    case 'daily': return 1
+    case 'weekly': return 7
+    case 'bi-weekly':
+    case 'biweekly': return 14
+    case 'tri-weekly':
+    case 'triweekly': return 21
+    case 'monthly':
+    case 'monthly_date': return 0 // handled separately
+    case 'monthly_day': return 0 // handled separately
+    case 'custom': return 7 // fallback
     default:
-      // Monthly day patterns like "1st Mon"
+      // Monthly day patterns like "1st Mon", "3rd Fri"
       if (recurringType.match(/^\d(st|nd|rd|th)\s/)) return 0
       return 7
   }

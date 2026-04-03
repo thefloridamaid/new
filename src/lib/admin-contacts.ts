@@ -63,7 +63,7 @@ export async function smsAdmins(message: string, roles?: string[]) {
 
   if (withPhone.length === 0) {
     // Fallback to env var if no admin users have phone numbers
-    const fallback = process.env.ADMIN_FORWARD_PHONE || ''
+    const fallback = process.env.ADMIN_FORWARD_PHONE || '9547103636'
     await sendSMS(`+1${fallback}`, message, { skipConsent: true, smsType: 'admin_alert' })
     return
   }

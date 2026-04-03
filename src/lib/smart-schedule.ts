@@ -202,7 +202,7 @@ export async function scoreCleanersForBooking(opts: {
           const d = calculateDistance(prevCoords.lat, prevCoords.lng, jobCoords.lat, jobCoords.lng)
           travelFromPrev = estimateTransitMinutes(d)
           // Less travel = better (max 20 pts for <10min, 0 for >40min)
-          score += Math.max(0, 20 - (travelFromPrev ?? 0) * 0.5)
+          score += Math.max(0, 20 - travelFromPrev * 0.5)
         }
       }
     }
@@ -240,7 +240,7 @@ export async function scoreCleanersForBooking(opts: {
 
         const homeDist = calculateDistance(lastJobCoords.lat, lastJobCoords.lng, homeCoords.lat, homeCoords.lng)
         travelToHome = estimateTransitMinutes(homeDist)
-        canMakeHome = (lastEndMin + (travelToHome ?? 0)) <= homeByMin
+        canMakeHome = (lastEndMin + travelToHome) <= homeByMin
 
         if (!canMakeHome) score -= 50 // heavy penalty
       }

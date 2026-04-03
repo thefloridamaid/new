@@ -44,9 +44,11 @@ interface Booking {
   notes: string | null
   status: string
   check_in_time: string | null
+  fifteen_min_alert_time: string | null
   check_out_time: string | null
   cleaner_token: string
   cleaner_pay_rate?: number
+  hourly_rate: number | null
   clients: {
     name: string
     phone: string
@@ -135,8 +137,10 @@ export default function TeamDashboardPage() {
   const [schedule, setSchedule] = useState<Schedule>({})
   const [unavailableDates, setUnavailableDates] = useState<string[]>([])
   const [newDateOff, setNewDateOff] = useState('')
+  const [maxJobsPerDay, setMaxJobsPerDay] = useState<number | null>(null)
   const [savingAvailability, setSavingAvailability] = useState(false)
   const [availabilitySaved, setAvailabilitySaved] = useState(false)
+  const [availabilityLoaded, setAvailabilityLoaded] = useState(false)
   const [showMap, setShowMap] = useState(true)
   const [showAvailability, setShowAvailability] = useState(false)
   const [showPhoto, setShowPhoto] = useState(false)
@@ -276,7 +280,9 @@ export default function TeamDashboardPage() {
       setWorkingDays(data.working_days || [])
       setSchedule(data.schedule || {})
       setUnavailableDates(data.unavailable_dates || [])
+      setMaxJobsPerDay(data.max_jobs_per_day || null)
       if (data.photo_url) setPhotoUrl(data.photo_url)
+      setAvailabilityLoaded(true)
     }
   }
 
@@ -300,7 +306,8 @@ export default function TeamDashboardPage() {
     setUploadingPhoto(false)
   }
 
-  const saveAvailability = async () => {
+  const saveAvailability = async (overrideDates?: string[]) => {
+    if (!availabilityLoaded) return
     setSavingAvailability(true)
     setAvailabilitySaved(false)
     const res = await fetch('/api/team/availability', {
@@ -310,14 +317,16 @@ export default function TeamDashboardPage() {
         cleaner_id: cleanerId,
         working_days: workingDays,
         schedule,
-        unavailable_dates: unavailableDates
+        unavailable_dates: overrideDates ?? unavailableDates,
+        max_jobs_per_day: maxJobsPerDay
       })
     })
     if (res.ok) {
       setAvailabilitySaved(true)
       setTimeout(() => setAvailabilitySaved(false), 3000)
     } else {
-      alert('Error saving / Error al guardar')
+      const err = await res.json().catch(() => ({}))
+      alert(err.error || 'Error saving / Error al guardar')
     }
     setSavingAvailability(false)
   }
@@ -344,17 +353,21 @@ export default function TeamDashboardPage() {
   }
 
   const addDateOff = () => {
-    if (!newDateOff) return
+    if (!newDateOff || !availabilityLoaded) return
     const today = new Date().toISOString().split('T')[0]
     if (newDateOff < today) return
     if (!unavailableDates.includes(newDateOff)) {
-      setUnavailableDates([...unavailableDates, newDateOff].sort())
+      const updated = [...unavailableDates, newDateOff].sort()
+      setUnavailableDates(updated)
+      saveAvailability(updated)
     }
     setNewDateOff('')
   }
 
   const removeDateOff = (date: string) => {
-    setUnavailableDates(unavailableDates.filter(d => d !== date))
+    const updated = unavailableDates.filter(d => d !== date)
+    setUnavailableDates(updated)
+    saveAvailability(updated)
   }
 
   const markAllRead = async () => {
@@ -422,7 +435,7 @@ export default function TeamDashboardPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-[#CC6222] text-white p-4">
+      <div className="bg-[#1E2A4A] text-white p-4">
         <div className="flex justify-between items-center">
           <div>
             <p className="text-sm opacity-80">The Florida Maid</p>
@@ -474,7 +487,7 @@ export default function TeamDashboardPage() {
         <div className="space-y-6">
           {guidelinesEn && (
             <div>
-              <h3 className="text-sm font-semibold text-[#CC6222] mb-2 uppercase tracking-wide">English</h3>
+              <h3 className="text-sm font-semibold text-[#1E2A4A] mb-2 uppercase tracking-wide">English</h3>
               <div className="text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">{guidelinesEn}</div>
             </div>
           )}
@@ -483,7 +496,7 @@ export default function TeamDashboardPage() {
           )}
           {guidelinesEs && (
             <div>
-              <h3 className="text-sm font-semibold text-[#CC6222] mb-2 uppercase tracking-wide">Español</h3>
+              <h3 className="text-sm font-semibold text-[#1E2A4A] mb-2 uppercase tracking-wide">Español</h3>
               <div className="text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">{guidelinesEs}</div>
             </div>
           )}
@@ -495,7 +508,7 @@ export default function TeamDashboardPage() {
         {unreadCount > 0 && (
           <button
             onClick={markAllRead}
-            className="w-full mb-4 py-2 text-sm text-[#CC6222] bg-gray-100 rounded-lg font-medium hover:bg-gray-200"
+            className="w-full mb-4 py-2 text-sm text-[#1E2A4A] bg-gray-100 rounded-lg font-medium hover:bg-gray-200"
           >
             Mark all read / Marcar todo leido
           </button>
@@ -520,7 +533,7 @@ export default function TeamDashboardPage() {
                         {notif.type === 'job_rescheduled' && '📅'}
                         {notif.type === 'broadcast' && '📢'}
                       </span>
-                      <p className="text-sm font-semibold text-[#CC6222] truncate">{notif.title}</p>
+                      <p className="text-sm font-semibold text-[#1E2A4A] truncate">{notif.title}</p>
                     </div>
                     <p className="text-sm text-gray-600 mt-1">{notif.message}</p>
                     <p className="text-xs text-gray-400 mt-1">{timeAgo(notif.created_at)}</p>
@@ -545,7 +558,7 @@ export default function TeamDashboardPage() {
 
         {/* My Rate */}
         {earnings && (
-          <div className="mb-4 bg-[#CC6222] text-white rounded-xl p-4 flex justify-between items-center">
+          <div className="mb-4 bg-[#1E2A4A] text-white rounded-xl p-4 flex justify-between items-center">
             <div>
               <p className="text-sm opacity-80">My Rate / Mi Tarifa</p>
               <p className="text-3xl font-bold">${earnings.hourlyRate}<span className="text-lg font-normal">/hr</span></p>
@@ -560,14 +573,14 @@ export default function TeamDashboardPage() {
 
         {/* Today's Potential */}
         {earnings && todayJobs.length > 0 && (
-          <div className="mb-4 bg-[#34D399]/20 border border-[#34D399]/30 rounded-xl p-4">
-            <p className="text-sm text-[#CC6222]/70 font-medium">Today / Hoy</p>
+          <div className="mb-4 bg-[#A8F0DC]/20 border border-[#A8F0DC]/30 rounded-xl p-4">
+            <p className="text-sm text-[#1E2A4A]/70 font-medium">Today / Hoy</p>
             <div className="flex justify-between items-end">
               <div>
-                <p className="text-2xl font-bold text-[#CC6222]">${earnings.todayPotentialPay.toFixed(0)}</p>
-                <p className="text-xs text-[#CC6222]">{earnings.todayPotentialHours}hrs scheduled · {todayJobs.length} job{todayJobs.length > 1 ? 's' : ''}</p>
+                <p className="text-2xl font-bold text-[#1E2A4A]">${earnings.todayPotentialPay.toFixed(0)}</p>
+                <p className="text-xs text-[#1E2A4A]">{earnings.todayPotentialHours}hrs scheduled · {todayJobs.length} job{todayJobs.length > 1 ? 's' : ''}</p>
               </div>
-              <p className="text-xs text-[#CC6222]">Complete all to earn ↑</p>
+              <p className="text-xs text-[#1E2A4A]">Complete all to earn ↑</p>
             </div>
           </div>
         )}
@@ -602,7 +615,7 @@ export default function TeamDashboardPage() {
             onClick={() => setShowMap(!showMap)}
             className="w-full flex justify-between items-center bg-white border border-gray-200 rounded-xl p-4"
           >
-            <span className="font-semibold text-[#CC6222]">My Jobs Map / Mapa de Trabajos</span>
+            <span className="font-semibold text-[#1E2A4A]">My Jobs Map / Mapa de Trabajos</span>
             <span className="text-gray-400">{showMap ? '▲' : '▼'}</span>
           </button>
 
@@ -633,7 +646,7 @@ export default function TeamDashboardPage() {
             onClick={() => setShowAvailability(!showAvailability)}
             className="w-full flex justify-between items-center bg-white border border-gray-200 rounded-xl p-4"
           >
-            <span className="font-semibold text-[#CC6222]">My Availability / Mi Disponibilidad</span>
+            <span className="font-semibold text-[#1E2A4A]">My Availability / Mi Disponibilidad</span>
             <span className="text-gray-400">{showAvailability ? '▲' : '▼'}</span>
           </button>
 
@@ -641,7 +654,7 @@ export default function TeamDashboardPage() {
             <div className="mt-2 bg-white border border-gray-200 rounded-xl p-4 space-y-4">
               {/* Day toggles */}
               <div>
-                <p className="text-sm font-medium text-[#CC6222] mb-2">Working Days / Días Laborales</p>
+                <p className="text-sm font-medium text-[#1E2A4A] mb-2">Working Days / Días Laborales</p>
                 <div className="flex flex-wrap gap-2">
                   {DAYS.map(day => (
                     <button
@@ -650,7 +663,7 @@ export default function TeamDashboardPage() {
                       onClick={() => toggleDay(day)}
                       className={`px-3 py-1.5 rounded-lg text-sm font-medium transition ${
                         workingDays.includes(day)
-                          ? 'bg-[#CC6222] text-white'
+                          ? 'bg-[#1E2A4A] text-white'
                           : 'bg-gray-100 text-gray-600'
                       }`}
                     >
@@ -663,14 +676,14 @@ export default function TeamDashboardPage() {
               {/* Per-day times */}
               {workingDays.length > 0 && (
                 <div className="space-y-2">
-                  <p className="text-sm font-medium text-[#CC6222]">Hours / Horario</p>
+                  <p className="text-sm font-medium text-[#1E2A4A]">Hours / Horario</p>
                   {DAYS.filter(d => workingDays.includes(d)).map(day => (
                     <div key={day} className="flex items-center gap-2">
-                      <span className="w-10 text-sm font-medium text-[#CC6222]">{day}</span>
+                      <span className="w-10 text-sm font-medium text-[#1E2A4A]">{day}</span>
                       <select
                         value={schedule[day]?.start || '9:00 AM'}
                         onChange={(e) => updateSchedule(day, 'start', e.target.value)}
-                        className="flex-1 px-2 py-1.5 border border-gray-300 rounded text-sm text-[#CC6222] bg-white"
+                        className="flex-1 px-2 py-1.5 border border-gray-300 rounded text-sm text-[#1E2A4A] bg-white"
                       >
                         {HOURS.map(h => <option key={h} value={h}>{h}</option>)}
                       </select>
@@ -678,7 +691,7 @@ export default function TeamDashboardPage() {
                       <select
                         value={schedule[day]?.end || '5:00 PM'}
                         onChange={(e) => updateSchedule(day, 'end', e.target.value)}
-                        className="flex-1 px-2 py-1.5 border border-gray-300 rounded text-sm text-[#CC6222] bg-white"
+                        className="flex-1 px-2 py-1.5 border border-gray-300 rounded text-sm text-[#1E2A4A] bg-white"
                       >
                         {HOURS.map(h => <option key={h} value={h}>{h}</option>)}
                       </select>
@@ -687,21 +700,38 @@ export default function TeamDashboardPage() {
                 </div>
               )}
 
+              {/* Max jobs per day */}
+              <div>
+                <p className="text-sm font-medium text-[#1E2A4A] mb-2">Max Jobs Per Day / Máx Trabajos Por Día</p>
+                <select
+                  value={maxJobsPerDay || ''}
+                  onChange={(e) => setMaxJobsPerDay(e.target.value ? parseInt(e.target.value) : null)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] bg-white"
+                >
+                  <option value="">No limit / Sin límite</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+
               {/* Days off */}
               <div>
-                <p className="text-sm font-medium text-[#CC6222] mb-2">Days Off / Días Libres</p>
+                <p className="text-sm font-medium text-[#1E2A4A] mb-2">Days Off / Días Libres</p>
                 <div className="flex gap-2 mb-2">
                   <input
                     type="date"
                     value={newDateOff}
                     min={new Date().toISOString().split('T')[0]}
                     onChange={(e) => setNewDateOff(e.target.value)}
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-[#CC6222]"
+                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A]"
                   />
                   <button
                     type="button"
                     onClick={addDateOff}
-                    className="px-4 py-2 bg-gray-100 text-[#CC6222] rounded-lg font-medium hover:bg-gray-200"
+                    className="px-4 py-2 bg-gray-100 text-[#1E2A4A] rounded-lg font-medium hover:bg-gray-200"
                   >
                     Add
                   </button>
@@ -720,9 +750,9 @@ export default function TeamDashboardPage() {
 
               {/* Save */}
               <button
-                onClick={saveAvailability}
-                disabled={savingAvailability}
-                className="w-full py-3 bg-[#CC6222] text-white font-semibold rounded-lg disabled:opacity-50"
+                onClick={() => saveAvailability()}
+                disabled={savingAvailability || !availabilityLoaded}
+                className="w-full py-3 bg-[#1E2A4A] text-white font-semibold rounded-lg disabled:opacity-50"
               >
                 {savingAvailability ? 'Saving... / Guardando...' : availabilitySaved ? 'Saved! / Guardado!' : 'Save Availability / Guardar Disponibilidad'}
               </button>
@@ -736,7 +766,7 @@ export default function TeamDashboardPage() {
             onClick={() => setShowPhoto(!showPhoto)}
             className="w-full flex justify-between items-center bg-white border border-gray-200 rounded-xl p-4"
           >
-            <span className="font-semibold text-[#CC6222]">My Photo / Mi Foto</span>
+            <span className="font-semibold text-[#1E2A4A]">My Photo / Mi Foto</span>
             <span className="text-gray-400">{showPhoto ? '▲' : '▼'}</span>
           </button>
 
@@ -757,7 +787,7 @@ export default function TeamDashboardPage() {
                   type="button"
                   onClick={() => photoInputRef.current?.click()}
                   disabled={uploadingPhoto}
-                  className="px-4 py-2 bg-[#CC6222] text-white rounded-lg font-medium disabled:opacity-50"
+                  className="px-4 py-2 bg-[#1E2A4A] text-white rounded-lg font-medium disabled:opacity-50"
                 >
                   {uploadingPhoto ? 'Uploading... / Subiendo...' : photoUrl ? 'Change Photo / Cambiar Foto' : 'Upload Photo / Subir Foto'}
                 </button>
@@ -783,7 +813,7 @@ export default function TeamDashboardPage() {
             onClick={() => setShowNotifPrefs(!showNotifPrefs)}
             className="w-full flex justify-between items-center bg-white border border-gray-200 rounded-xl p-4"
           >
-            <span className="font-semibold text-[#CC6222]">Notifications / Notificaciones</span>
+            <span className="font-semibold text-[#1E2A4A]">Notifications / Notificaciones</span>
             <span className="text-gray-400">{showNotifPrefs ? '▲' : '▼'}</span>
           </button>
 
@@ -792,7 +822,7 @@ export default function TeamDashboardPage() {
               {/* SMS Consent */}
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-[#CC6222]">SMS Messages</p>
+                  <p className="text-sm font-medium text-[#1E2A4A]">SMS Messages</p>
                   <p className="text-xs text-gray-500">Reply STOP anytime / Responda STOP en cualquier momento</p>
                 </div>
                 <button
@@ -805,7 +835,7 @@ export default function TeamDashboardPage() {
 
               {/* Per-type toggles */}
               <div>
-                <p className="text-sm font-medium text-[#CC6222] mb-2">Notification Types / Tipos</p>
+                <p className="text-sm font-medium text-[#1E2A4A] mb-2">Notification Types / Tipos</p>
                 <div className="space-y-2">
                   {[
                     { key: 'job_assignment', label: 'Job Assignment / Asignacion' },
@@ -827,7 +857,7 @@ export default function TeamDashboardPage() {
                               onClick={() => togglePref(key, ch)}
                               className={`px-2 py-0.5 text-xs rounded font-medium ${
                                 pref[ch]
-                                  ? 'bg-[#CC6222] text-white'
+                                  ? 'bg-[#1E2A4A] text-white'
                                   : 'bg-gray-100 text-gray-400'
                               }`}
                             >
@@ -843,13 +873,13 @@ export default function TeamDashboardPage() {
 
               {/* Quiet Hours */}
               <div>
-                <p className="text-sm font-medium text-[#CC6222] mb-1">Quiet Hours / Horas Silenciosas</p>
+                <p className="text-sm font-medium text-[#1E2A4A] mb-1">Quiet Hours / Horas Silenciosas</p>
                 <p className="text-xs text-gray-500 mb-2">No push notifications / Email & SMS still delivered</p>
                 <div className="flex items-center gap-2">
                   <select
                     value={notifPrefs.quiet_start || '22:00'}
                     onChange={(e) => setNotifPrefs({ ...notifPrefs, quiet_start: e.target.value })}
-                    className="flex-1 px-2 py-1.5 border border-gray-300 rounded text-sm text-[#CC6222] bg-white"
+                    className="flex-1 px-2 py-1.5 border border-gray-300 rounded text-sm text-[#1E2A4A] bg-white"
                   >
                     {Array.from({ length: 24 }, (_, i) => {
                       const h = String(i).padStart(2, '0')
@@ -860,7 +890,7 @@ export default function TeamDashboardPage() {
                   <select
                     value={notifPrefs.quiet_end || '07:00'}
                     onChange={(e) => setNotifPrefs({ ...notifPrefs, quiet_end: e.target.value })}
-                    className="flex-1 px-2 py-1.5 border border-gray-300 rounded text-sm text-[#CC6222] bg-white"
+                    className="flex-1 px-2 py-1.5 border border-gray-300 rounded text-sm text-[#1E2A4A] bg-white"
                   >
                     {Array.from({ length: 24 }, (_, i) => {
                       const h = String(i).padStart(2, '0')
@@ -874,7 +904,7 @@ export default function TeamDashboardPage() {
               <button
                 onClick={savePreferences}
                 disabled={savingPrefs}
-                className="w-full py-3 bg-[#CC6222] text-white font-semibold rounded-lg disabled:opacity-50"
+                className="w-full py-3 bg-[#1E2A4A] text-white font-semibold rounded-lg disabled:opacity-50"
               >
                 {savingPrefs ? 'Saving... / Guardando...' : prefsSaved ? 'Saved! / Guardado!' : 'Save / Guardar'}
               </button>
@@ -884,10 +914,10 @@ export default function TeamDashboardPage() {
 
         {/* Quick Actions */}
         <div className="mb-6 flex gap-2">
-          <a href="tel:9547103636" className="flex-1 py-3 bg-white border border-gray-200 rounded-xl text-center font-medium text-[#CC6222]">
+          <a href="tel:9547103636" className="flex-1 py-3 bg-white border border-gray-200 rounded-xl text-center font-medium text-[#1E2A4A]">
             📞 Call Office
           </a>
-          <a href="sms:9547103636" className="flex-1 py-3 bg-white border border-gray-200 rounded-xl text-center font-medium text-[#CC6222]">
+          <a href="sms:9547103636" className="flex-1 py-3 bg-white border border-gray-200 rounded-xl text-center font-medium text-[#1E2A4A]">
             💬 Text Office
           </a>
         </div>
@@ -903,7 +933,7 @@ export default function TeamDashboardPage() {
                   <div key={job.id} className="bg-white rounded-lg p-4 border border-red-200">
                     <div className="flex justify-between items-start mb-2">
                       <div>
-                        <p className="font-semibold text-[#CC6222]">{new Date(job.start_time).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</p>
+                        <p className="font-semibold text-[#1E2A4A]">{new Date(job.start_time).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</p>
                         <p className="text-gray-600">{new Date(job.start_time).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })} - {new Date(job.end_time).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}</p>
                       </div>
                       <div className="text-right">
@@ -914,7 +944,7 @@ export default function TeamDashboardPage() {
                     <p className="text-gray-600 mb-1">{job.clients?.name}</p>
                     <p className="text-sm text-gray-500 mb-3">{job.clients?.address}</p>
                     {(job.clients?.notes || job.notes) && (
-                      <div className="text-sm text-white bg-[#34D399]/20 p-2 rounded mb-3">
+                      <div className="text-sm text-[#1E2A4A]/70 bg-[#A8F0DC]/20 p-2 rounded mb-3">
                         <TranslatedNotes text={[job.clients?.notes, job.notes].filter(Boolean).join('\n\n')} label="Notes / Notas" />
                       </div>
                     )}
@@ -934,7 +964,7 @@ export default function TeamDashboardPage() {
 
         {/* Today's Jobs */}
         <div className="mb-6">
-          <h2 className="text-lg font-semibold text-[#CC6222] mb-3">Today / Hoy ({todayJobs.length})</h2>
+          <h2 className="text-lg font-semibold text-[#1E2A4A] mb-3">Today / Hoy ({todayJobs.length})</h2>
           {todayJobs.length === 0 ? (
             <div className="bg-white rounded-xl p-6 text-center text-gray-500 border border-gray-200">
               No jobs scheduled for today / No hay trabajos para hoy
@@ -950,7 +980,7 @@ export default function TeamDashboardPage() {
 
         {/* Upcoming Jobs */}
         <div>
-          <h2 className="text-lg font-semibold text-[#CC6222] mb-3">Upcoming / Próximos</h2>
+          <h2 className="text-lg font-semibold text-[#1E2A4A] mb-3">Upcoming / Próximos</h2>
           {upcomingJobs.length === 0 ? (
             <div className="bg-white rounded-xl p-6 text-center text-gray-500 border border-gray-200">
               No upcoming jobs / No hay trabajos próximos
@@ -985,7 +1015,11 @@ function timeAgo(dateStr: string): string {
 function JobCard({ job, onUpdate, showDate }: { job: Booking; onUpdate: () => void; showDate?: boolean }) {
   const [checkingIn, setCheckingIn] = useState(false)
   const [checkingOut, setCheckingOut] = useState(false)
+  const [alertsSent, setAlertsSent] = useState<Set<string>>(new Set())
   const [expanded, setExpanded] = useState(false)
+  const [runningLate, setRunningLate] = useState(false)
+  const [lateSent, setLateSent] = useState(false)
+  const [lateEta, setLateEta] = useState('15')
 
   const formatTime = (dateStr: string) => {
     return new Date(dateStr).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
@@ -1042,7 +1076,7 @@ function JobCard({ job, onUpdate, showDate }: { job: Booking; onUpdate: () => vo
         <div className="flex justify-between items-start">
           <div>
             {showDate && <p className="text-sm text-gray-500 mb-1">{formatDate(job.start_time)}</p>}
-            <p className="font-semibold text-[#CC6222]">{formatTime(job.start_time)} - {formatTime(job.end_time)}</p>
+            <p className="font-semibold text-[#1E2A4A]">{formatTime(job.start_time)} - {formatTime(job.end_time)}</p>
             <p className="text-gray-600">{job.clients?.name}</p>
           </div>
           <div className="flex items-center gap-2">
@@ -1067,31 +1101,31 @@ function JobCard({ job, onUpdate, showDate }: { job: Booking; onUpdate: () => vo
                 href={`https://maps.google.com/?q=${encodeURIComponent(job.clients?.address || '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#CC6222] underline"
+                className="text-[#1E2A4A] underline"
               >
                 {job.clients?.address || 'N/A'}
               </a>
             </div>
             <div>
               <p className="text-sm text-gray-500">Phone / Teléfono</p>
-              <a href={`tel:${job.clients?.phone}`} className="text-[#CC6222] underline">
+              <a href={`tel:${job.clients?.phone}`} className="text-[#1E2A4A] underline">
                 {job.clients?.phone || 'N/A'}
               </a>
             </div>
             <div>
               <p className="text-sm text-gray-500">Service / Servicio</p>
-              <p className="text-[#CC6222]">{job.service_type}</p>
+              <p className="text-[#1E2A4A]">{job.service_type}</p>
             </div>
             {/* Notes - combined client + admin */}
             {(() => {
               const allNotes = [job.clients?.notes, job.notes].filter(Boolean).join('\n\n')
               return (
-                <div className={`p-4 rounded-xl border-2 ${allNotes ? 'bg-[#34D399]/20 border-[#34D399]/30' : 'bg-gray-50 border-gray-200'}`}>
+                <div className={`p-4 rounded-xl border-2 ${allNotes ? 'bg-[#A8F0DC]/20 border-[#A8F0DC]/30' : 'bg-gray-50 border-gray-200'}`}>
                   {allNotes ? (
                     <TranslatedNotes text={allNotes} label="Notes / Notas" />
                   ) : (
                     <>
-                      <p className="text-sm font-semibold mb-1 text-[#CC6222]">Notes / Notas</p>
+                      <p className="text-sm font-semibold mb-1 text-[#1E2A4A]">Notes / Notas</p>
                       <p className="text-base text-gray-400 italic">No notes / Sin notas</p>
                     </>
                   )}
@@ -1113,42 +1147,99 @@ function JobCard({ job, onUpdate, showDate }: { job: Booking; onUpdate: () => vo
                 href={`https://maps.google.com/?q=${encodeURIComponent(job.clients?.address || '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 py-2 bg-gray-100 text-[#CC6222] text-center font-medium rounded-lg text-sm"
+                className="flex-1 py-2 bg-gray-100 text-[#1E2A4A] text-center font-medium rounded-lg text-sm"
               >
                 📍 Navigate
               </a>
               <a
                 href={`tel:${job.clients?.phone}`}
-                className="flex-1 py-2 bg-gray-100 text-[#CC6222] text-center font-medium rounded-lg text-sm"
+                className="flex-1 py-2 bg-gray-100 text-[#1E2A4A] text-center font-medium rounded-lg text-sm"
               >
                 📞 Call
               </a>
               <a
                 href={`sms:${job.clients?.phone}`}
-                className="flex-1 py-2 bg-gray-100 text-[#CC6222] text-center font-medium rounded-lg text-sm"
+                className="flex-1 py-2 bg-gray-100 text-[#1E2A4A] text-center font-medium rounded-lg text-sm"
               >
                 💬 Text
               </a>
             </div>
 
-            {/* Check In/Out */}
+            {/* Running Late + Check In/Out */}
             {!isCheckedIn && !isCheckedOut && (
-              <button
-                onClick={handleCheckIn}
-                disabled={checkingIn}
-                className="w-full py-3 bg-green-600 text-white font-semibold rounded-lg disabled:opacity-50"
-              >
-                {checkingIn ? 'Checking In... / Registrando...' : 'Check In / Registrar Entrada'}
-              </button>
+              <div className="space-y-2">
+                {!lateSent && !runningLate && (
+                  <button onClick={() => setRunningLate(true)} className="w-full py-2.5 border-2 border-yellow-400 bg-yellow-50 text-yellow-800 font-semibold rounded-lg">
+                    Running Late / Voy Tarde
+                  </button>
+                )}
+                {runningLate && !lateSent && (
+                  <div className="bg-yellow-50 border border-yellow-300 rounded-lg p-3 space-y-2">
+                    <p className="text-sm font-medium text-yellow-800">How many minutes? / ¿Cuántos minutos?</p>
+                    <div className="flex gap-2">
+                      {['10', '15', '20', '30'].map(m => (
+                        <button key={m} onClick={() => setLateEta(m)} className={`flex-1 py-2 rounded-lg text-sm font-medium ${lateEta === m ? 'bg-yellow-500 text-white' : 'bg-white border border-yellow-300 text-yellow-800'}`}>{m}</button>
+                      ))}
+                    </div>
+                    <div className="flex gap-2">
+                      <button onClick={() => setRunningLate(false)} className="flex-1 py-2 border border-gray-300 text-gray-600 rounded-lg text-sm">Cancel</button>
+                      <button onClick={async () => {
+                        const cleanerId = localStorage.getItem('cleaner_id')
+                        await fetch('/api/team/running-late', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ bookingId: job.id, cleanerId, eta: parseInt(lateEta) }) })
+                        setLateSent(true)
+                        setRunningLate(false)
+                      }} className="flex-1 py-2 bg-yellow-500 text-white rounded-lg text-sm font-bold">Send / Enviar</button>
+                    </div>
+                  </div>
+                )}
+                {lateSent && (
+                  <div className="w-full py-2.5 bg-yellow-100 text-yellow-700 font-medium rounded-lg text-center text-sm">
+                    ✓ Client & admin notified / Cliente y admin notificados
+                  </div>
+                )}
+                <button
+                  onClick={handleCheckIn}
+                  disabled={checkingIn}
+                  className="w-full py-3 bg-green-600 text-white font-semibold rounded-lg disabled:opacity-50"
+                >
+                  {checkingIn ? 'Checking In... / Registrando...' : 'Check In / Registrar Entrada'}
+                </button>
+              </div>
             )}
             {isCheckedIn && !isCheckedOut && (
-              <button
-                onClick={handleCheckOut}
-                disabled={checkingOut}
-                className="w-full py-3 bg-red-600 text-white font-semibold rounded-lg disabled:opacity-50"
-              >
-                {checkingOut ? 'Checking Out... / Registrando...' : 'Check Out / Registrar Salida'}
-              </button>
+              <>
+                {alertsSent.has(job.id) ? (
+                  <div className="w-full py-3 bg-green-100 text-green-700 font-bold rounded-lg text-center">
+                    ✓ Text & notification sent / Texto y aviso enviados
+                  </div>
+                ) : (
+                  <button
+                    onClick={async () => {
+                      try {
+                        const res = await fetch('/api/team/15min-alert', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ bookingId: job.id }),
+                        })
+                        if (!res.ok) throw new Error('Failed')
+                        setAlertsSent(prev => new Set(prev).add(job.id))
+                      } catch {
+                        alert('Error sending / Error al enviar')
+                      }
+                    }}
+                    className="w-full py-3 bg-yellow-500 text-white font-bold rounded-lg hover:bg-yellow-600"
+                  >
+                    15-Min Heads Up / Aviso de 15 Min
+                  </button>
+                )}
+                <button
+                  onClick={handleCheckOut}
+                  disabled={checkingOut}
+                  className="w-full py-3 bg-red-600 text-white font-semibold rounded-lg disabled:opacity-50"
+                >
+                  {checkingOut ? 'Checking Out... / Registrando...' : 'Check Out / Registrar Salida'}
+                </button>
+              </>
             )}
           </div>
         </div>

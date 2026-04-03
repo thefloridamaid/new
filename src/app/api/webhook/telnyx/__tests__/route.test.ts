@@ -32,7 +32,7 @@ function makeRequest(event: any): Request {
   })
 }
 
-function inboundEvent(text: string, from = '+12125551234') {
+function inboundEvent(text: string, from = '+19545551234') {
   return {
     event_type: 'message.received',
     payload: {

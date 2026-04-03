@@ -856,9 +856,13 @@ function BookingsPage() {
                     setSaving(true)
                     const now = new Date()
                     const ciStr = editingBooking.check_in_time!
-                    const checkIn = new Date(ciStr + (ciStr.endsWith('Z') ? '' : 'Z'))
+                    const checkIn = new Date(ciStr)
                     const rawHours = (now.getTime() - checkIn.getTime()) / (1000 * 60 * 60)
-                    const actualHours = Math.ceil(rawHours * 2) / 2 // round to half hour
+                    // 10-min grace: 3:09 → 3.0hrs, 3:10 → 3.5hrs
+                    const totalMin = rawHours * 60
+                    const halfHrs = Math.floor(totalMin / 30)
+                    const rem = totalMin - halfHrs * 30
+                    const actualHours = rem >= 10 ? (halfHrs + 1) * 0.5 : halfHrs * 0.5
                     const clientRate = editingBooking.hourly_rate || 75
                     const cleanerRate = 25
                     const updatedPrice = Math.round(actualHours * clientRate * 100)
@@ -940,9 +944,9 @@ function BookingsPage() {
                 <div>
                   <label className="block text-sm font-medium text-black mb-1">Rate</label>
                   <select value={form.hourly_rate} onChange={(e) => setForm({ ...form, hourly_rate: parseInt(e.target.value) })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-black">
-                    <option value={49}>$49/hr</option>
-                    <option value={65}>$65/hr (Intro)</option>
-                    <option value={75}>$75/hr</option>
+                    <option value={59}>$49/hr</option>
+                    <option value={75}>$65/hr</option>
+                    <option value={100}>$100/hr (Same-Day)</option>
                   </select>
                 </div>
 
@@ -1198,9 +1202,9 @@ function BookingsPage() {
                   <div>
                     <label className="block text-sm font-medium text-black mb-1">Rate</label>
                     <select value={createForm.hourly_rate} onChange={(e) => setCreateForm({ ...createForm, hourly_rate: parseInt(e.target.value) })} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-black">
-                      <option value={49}>$49/hr</option>
-                      <option value={65}>$65/hr (Intro)</option>
-                      <option value={75}>$75/hr</option>
+                      <option value={59}>$49/hr</option>
+                      <option value={75}>$65/hr</option>
+                      <option value={100}>$100/hr (Same-Day)</option>
                     </select>
                   </div>
                 </div>
@@ -1294,7 +1298,7 @@ function BookingsPage() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Address</label>
-                <AddressAutocomplete value={newClientForm.address} onChange={(val) => setNewClientForm({ ...newClientForm, address: val })} placeholder="123 Main St, Orlando, FL 32801" />
+                <AddressAutocomplete value={newClientForm.address} onChange={(val) => setNewClientForm({ ...newClientForm, address: val })} placeholder="123 Main St, New York, NY 10001" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Unit / Apt</label>
