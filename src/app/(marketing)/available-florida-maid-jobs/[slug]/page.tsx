@@ -60,7 +60,7 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
     description: `Now hiring experienced house cleaners in ${n.name}, ${areaName}. Starting at $30/hr paid via Zelle within 30 minutes of every completed job. Bonus programs for retention, client satisfaction, and five-star reviews. 100% of tips are yours. Flexible schedule 24/7. Full bilingual team portal (English/Spanish) with GPS, job details, and payment tracking. Apply at thefloridamaid.com/apply or text (954) 710-3636.`,
     identifier: {
       '@type': 'PropertyValue',
-      name: 'The Florida Maid Cleaning Service Cleaning Service',
+      name: 'The Florida Maid',
       value: `floridamaid-cleaner-${n.slug}`,
     },
     datePosted: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
@@ -70,7 +70,7 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
     totalJobOpenings: 5,
     hiringOrganization: {
       '@type': 'Organization',
-      name: 'The Florida Maid Cleaning Service Cleaning Service',
+      name: 'The Florida Maid',
       sameAs: 'https://www.thefloridamaid.com',
       logo: 'https://www.thefloridamaid.com/icon-512.png',
     },
@@ -96,10 +96,7 @@ export default async function NeighborhoodJobPage({ params }: { params: Promise<
       name: 'Florida',
       sameAs: 'https://en.wikipedia.org/wiki/Florida',
     },
-    educationRequirements: {
-      '@type': 'EducationalOccupationalCredential',
-      credentialCategory: 'high school',
-    },
+    educationRequirements: 'no requirements',
     directApply: true,
     industry: 'Cleaning Services',
     occupationalCategory: '37-2012.00',

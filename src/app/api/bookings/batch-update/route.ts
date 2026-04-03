@@ -30,7 +30,8 @@ export async function PUT(request: Request) {
         .update(u.data)
         .eq('id', u.id)
         .select('*, clients(*), cleaners(*)')
-        .single()
+        .maybeSingle()
+      if (!data && !error) return { id: u.id, data: null, error: { message: `Booking ${u.id} not found` } }
       return { id: u.id, data, error }
     })
   )

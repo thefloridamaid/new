@@ -171,7 +171,7 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
         }
         // Client push notification
         if (booking.client_id) {
-          sendPushToClient(booking.client_id, 'Schedule Cancelled', 'Your recurring cleaning schedule has been cancelled', '/book/dashboard').catch(() => {})
+          sendPushToClient(booking.client_id, 'Schedule Cancelled', 'Your recurring cleaning schedule has been cancelled', '/clients/dashboard').catch(() => {})
         }
       }
     } catch {

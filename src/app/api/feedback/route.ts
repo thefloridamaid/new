@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
-import { sendEmail } from '@/lib/email'
 import { sendSMS } from '@/lib/sms'
 import { supabaseAdmin } from '@/lib/supabase'
+import { emailAdmins } from '@/lib/admin-contacts'
 
 // Rate limiting: 3 submissions per 10 minutes per IP
 const rateLimits = new Map<string, { count: number; resetAt: number }>()
@@ -42,11 +42,11 @@ export async function POST(request: Request) {
   `
 
   try {
-    await sendEmail(process.env.ADMIN_EMAIL || '', `Feedback: ${source || 'Anonymous'}`, html)
+    await emailAdmins(`Feedback: ${source || 'Anonymous'}`, html)
 
     // SMS to admin
     const truncated = message.trim().length > 100 ? message.trim().slice(0, 100) + '...' : message.trim()
-    await sendSMS('+19547103636', `Florida Maid Feedback (${source || 'Anonymous'}): ${truncated}`, {
+    await sendSMS('+19547103636', `The Florida Maid Feedback (${source || 'Anonymous'}): ${truncated}`, {
       skipConsent: true,
       smsType: 'feedback_alert'
     })

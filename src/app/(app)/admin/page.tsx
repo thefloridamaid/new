@@ -235,7 +235,7 @@ export default function DashboardPage() {
         <div className="w-full max-w-sm">
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
             <div className="text-center mb-6">
-              <h1 className="text-2xl font-bold text-[#CC6222]">The Florida Maid Cleaning Service Cleaning Service</h1>
+              <h1 className="text-2xl font-bold text-[#CC6222]">The Florida Maid</h1>
               <p className="text-gray-500 mt-1">Admin Portal</p>
             </div>
             <form onSubmit={handleLogin}>

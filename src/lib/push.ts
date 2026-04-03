@@ -57,7 +57,7 @@ export async function sendPushToClient(clientId: string, title: string, body: st
     .eq('client_id', clientId)
 
   if (!subscriptions || subscriptions.length === 0) return
-  await sendToSubscriptions(subscriptions, title, body, url || '/book/dashboard')
+  await sendToSubscriptions(subscriptions, title, body, url || '/clients/dashboard')
 }
 
 export async function sendPushToAllCleaners(title: string, body: string, url?: string) {

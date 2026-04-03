@@ -17,6 +17,7 @@ export async function GET() {
     { count: newClients },
     { count: unreadFeedback },
     { count: unpaidCommissions },
+    { count: overdueFollowUps },
   ] = await Promise.all([
     // Bookings: pending (need assignment/confirmation)
     supabaseAdmin.from('bookings').select('id', { count: 'exact', head: true }).eq('status', 'pending'),
@@ -34,6 +35,10 @@ export async function GET() {
     // Referrals: unpaid commissions
     supabaseAdmin.from('referral_commissions').select('id', { count: 'exact', head: true })
       .eq('status', 'pending'),
+    // Sales: overdue follow-ups
+    supabaseAdmin.from('deals').select('id', { count: 'exact', head: true })
+      .lt('follow_up_at', now.toISOString())
+      .eq('stage', 'active'),
   ])
 
   return NextResponse.json({
@@ -41,6 +46,7 @@ export async function GET() {
     calendar: todayJobs || 0,
     clients: newClients || 0,
     feedback: unreadFeedback || 0,
-    referrals: unpaidCommissions || 0
+    referrals: unpaidCommissions || 0,
+    sales: overdueFollowUps || 0
   })
 }

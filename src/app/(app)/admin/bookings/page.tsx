@@ -50,7 +50,7 @@ interface Referrer { id: string; name: string; ref_code: string; active: boolean
 
 function BookingsPage() {
   const searchParams = useSearchParams()
-  useEffect(() => { document.title = 'Bookings | The Florida Maid Cleaning Service Cleaning Service' }, []);
+  useEffect(() => { document.title = 'Bookings | The Florida Maid' }, []);
   const formatPhone = (value: string) => {
     const cleaned = value.replace(/\D/g, '')
     if (cleaned.length <= 3) return cleaned
@@ -863,11 +863,11 @@ function BookingsPage() {
 
         {/* Quick Links */}
         <div className="text-xs text-gray-400 mb-4 hidden md:flex items-center gap-1 flex-wrap">
-          <a href="https://www.thefloridamaid.com/book" target="_blank" className="text-gray-500 hover:text-[#CC6222] hover:underline">Client Portal</a>
+          <a href="https://www.thefloridamaid.com/clients" target="_blank" className="text-gray-500 hover:text-[#CC6222] hover:underline">Client Portal</a>
           <span className="text-gray-300 mx-1">/</span>
-          <a href="https://www.thefloridamaid.com/book/new" target="_blank" className="text-gray-500 hover:text-[#CC6222] hover:underline">New Booking</a>
+          <a href="https://www.thefloridamaid.com/clients/new" target="_blank" className="text-gray-500 hover:text-[#CC6222] hover:underline">New Booking</a>
           <span className="text-gray-300 mx-1">/</span>
-          <a href="https://www.thefloridamaid.com/book/collect" target="_blank" className="text-gray-500 hover:text-[#CC6222] hover:underline">Collect Info</a>
+          <a href="https://www.thefloridamaid.com/clients/collect" target="_blank" className="text-gray-500 hover:text-[#CC6222] hover:underline">Collect Info</a>
           <span className="text-gray-300 mx-1">/</span>
           <a href="https://www.thefloridamaid.com/team" target="_blank" className="text-gray-500 hover:text-[#CC6222] hover:underline">Team Portal</a>
         </div>
@@ -1900,7 +1900,7 @@ function BookingsPage() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
-                <input type="tel" required value={newClientForm.phone} onChange={(e) => setNewClientForm({ ...newClientForm, phone: formatPhone(e.target.value) })} className="w-full px-3 py-2 border rounded-lg text-[#CC6222]" placeholder="212-555-1234" />
+                <input type="tel" required value={newClientForm.phone} onChange={(e) => setNewClientForm({ ...newClientForm, phone: formatPhone(e.target.value) })} className="w-full px-3 py-2 border rounded-lg text-[#CC6222]" placeholder="954-555-1234" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Address</label>

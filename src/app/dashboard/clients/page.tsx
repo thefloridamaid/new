@@ -39,7 +39,7 @@ interface ClientWithStats extends Client {
 }
 
 export default function ClientsPage() {
-  useEffect(() => { document.title = 'Clients | The Florida Maid Cleaning Service Cleaning Service' }, []);
+  useEffect(() => { document.title = 'Clients | The Florida Maid' }, []);
   const [clients, setClients] = useState<ClientWithStats[]>([])
   const [referrers, setReferrers] = useState<Referrer[]>([])
   const [loading, setLoading] = useState(true)
@@ -257,9 +257,9 @@ export default function ClientsPage() {
           <button onClick={() => setShowAddModal(true)} className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800">+ Add Client</button>
         </div>
         <div className="text-sm text-gray-500 mb-6">
-          Client portal: <a href="https://www.thefloridamaid.com/book" target="_blank" className="text-blue-600 hover:underline">thefloridamaid.com/book</a> ·
-          New booking: <a href="https://www.thefloridamaid.com/book/new" target="_blank" className="text-blue-600 hover:underline ml-1">thefloridamaid.com/book/new</a> ·
-          Collect info: <a href="https://www.thefloridamaid.com/book/collect" target="_blank" className="text-blue-600 hover:underline ml-1">thefloridamaid.com/book/collect</a>
+          Client portal: <a href="https://www.thefloridamaid.com/clients" target="_blank" className="text-blue-600 hover:underline">thefloridamaid.com/clients</a> ·
+          New booking: <a href="https://www.thefloridamaid.com/clients/new" target="_blank" className="text-blue-600 hover:underline ml-1">thefloridamaid.com/clients/new</a> ·
+          Collect info: <a href="https://www.thefloridamaid.com/clients/collect" target="_blank" className="text-blue-600 hover:underline ml-1">thefloridamaid.com/clients/collect</a>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 mb-6">
@@ -501,7 +501,7 @@ export default function ClientsPage() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
                   <div className="flex gap-2">
-                    <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })} className="flex-1 px-3 py-2 border rounded-lg text-black" placeholder="212-555-1234" />
+                    <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })} className="flex-1 px-3 py-2 border rounded-lg text-black" placeholder="954-555-1234" />
                     {editingClient && form.phone && (
                       <>
                         <a href={`tel:${form.phone}`} className="px-4 py-2 bg-green-50 text-green-700 border border-green-200 rounded-lg text-sm font-medium hover:bg-green-100 flex items-center">Call</a>

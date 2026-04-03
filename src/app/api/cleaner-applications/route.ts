@@ -3,6 +3,7 @@ import { supabaseAdmin } from '@/lib/supabase'
 import { protectAdminAPI } from '@/lib/auth'
 import { sendEmail } from '@/lib/email'
 import { sendSMS } from '@/lib/sms'
+import { emailAdmins } from '@/lib/admin-contacts'
 import { smsNewApplication } from '@/lib/sms-templates'
 
 
@@ -43,7 +44,7 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json()
-    const { name, email, phone, address, unit, experience, availability, referral_source, references, notes, photo_url } = body
+    const { name, email, phone, address, unit, experience, availability, referral_source, references, notes, photo_url, service_zones, has_car, max_travel_minutes } = body
 
     if (!name || !phone || !address || !photo_url) {
       return NextResponse.json({ error: 'Name, phone, address, and photo are required' }, { status: 400 })
@@ -77,6 +78,9 @@ export async function POST(request: Request) {
         references: references || null,
         notes: notes || null,
         photo_url: photo_url || null,
+        service_zones: service_zones || [],
+        has_car: has_car || false,
+        max_travel_minutes: max_travel_minutes ? parseInt(max_travel_minutes) : null,
         status: 'pending'
       })
       .select()
@@ -92,25 +96,26 @@ export async function POST(request: Request) {
     })
 
     // Email admin
-    if (process.env.ADMIN_EMAIL) {
-      const html = `
-        <div style="font-family: sans-serif; max-width: 500px;">
-          <h2 style="color: #000;">New Cleaner Application</h2>
-          ${photo_url ? `<div style="margin: 16px 0;"><img src="${photo_url}" alt="${name}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #eee;" /></div>` : ''}
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Phone:</strong> ${phone}</p>
-          <p><strong>Email:</strong> ${email || 'Not provided'}</p>
-          <p><strong>Address:</strong> ${fullAddress}</p>
-          <p><strong>Experience:</strong> ${experience || 'Not provided'}</p>
-          <p><strong>Availability:</strong> ${availability || 'Not provided'}</p>
-          <p><strong>How they found us:</strong> ${referral_source || 'Not provided'}</p>
-          ${references && Array.isArray(references) ? `<p><strong>References:</strong></p><ul>${references.map((r: { name: string; phone: string }, i: number) => `<li>${i + 1}. ${r.name} — ${r.phone}</li>`).join('')}</ul>` : ''}
-          ${notes ? `<p><strong>Notes:</strong> ${notes}</p>` : ''}
-          <p style="margin-top: 20px;"><a href="https://www.thefloridamaid.com/admin/cleaners" style="color: #2563eb;">Review in Dashboard →</a></p>
-        </div>
-      `
-      await sendEmail(process.env.ADMIN_EMAIL, `New Cleaner Application: ${name}`, html)
-    }
+    const adminHtml = `
+      <div style="font-family: sans-serif; max-width: 500px;">
+        <h2 style="color: #000;">New Cleaner Application</h2>
+        ${photo_url ? `<div style="margin: 16px 0;"><img src="${photo_url}" alt="${name}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #eee;" /></div>` : ''}
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Email:</strong> ${email || 'Not provided'}</p>
+        <p><strong>Address:</strong> ${fullAddress}</p>
+        <p><strong>Experience:</strong> ${experience || 'Not provided'}</p>
+        <p><strong>Availability:</strong> ${availability || 'Not provided'}</p>
+        <p><strong>How they found us:</strong> ${referral_source || 'Not provided'}</p>
+        ${references && Array.isArray(references) ? `<p><strong>References:</strong></p><ul>${references.map((r: { name: string; phone: string }, i: number) => `<li>${i + 1}. ${r.name} — ${r.phone}</li>`).join('')}</ul>` : ''}
+        ${service_zones?.length ? `<p><strong>Service Areas:</strong> ${service_zones.join(', ')}</p>` : ''}
+        <p><strong>Drives:</strong> ${has_car ? 'Yes' : 'No'}</p>
+        ${max_travel_minutes ? `<p><strong>Max Travel:</strong> ${max_travel_minutes} min</p>` : ''}
+        ${notes ? `<p><strong>Notes:</strong> ${notes}</p>` : ''}
+        <p style="margin-top: 20px;"><a href="https://www.thefloridamaid.com/admin/cleaners" style="color: #2563eb;">Review in Dashboard →</a></p>
+      </div>
+    `
+    await emailAdmins(`New Cleaner Application: ${name}`, adminHtml)
 
     // No admin SMS — notifications via email + dashboard only
 
@@ -120,12 +125,12 @@ export async function POST(request: Request) {
         <div style="font-family: sans-serif; max-width: 500px;">
           <h2 style="color: #000;">Application Received! / ¡Solicitud Recibida!</h2>
           <p>Hi ${name.split(' ')[0]},</p>
-          <p>Thanks for applying to join The Florida Maid Cleaning Service team! We've received your application and will review it shortly.</p>
-          <p>Gracias por solicitar unirse al equipo de The Florida Maid Cleaning Service Cleaning Service. Hemos recibido su solicitud y la revisaremos pronto.</p>
+          <p>Thanks for applying to join The Florida Maid team! We've received your application and will review it shortly.</p>
+          <p>Gracias por solicitar unirse al equipo de The Florida Maid. Hemos recibido su solicitud y la revisaremos pronto.</p>
           <p style="margin-top: 20px; color: #666;">Questions? / ¿Preguntas?<br><a href="tel:9547103636" style="color: #000;">(954) 710-3636</a></p>
         </div>
       `
-      await sendEmail(email, 'Application Received / Solicitud Recibida – The Florida Maid Cleaning Service Cleaning Service', applicantHtml)
+      await sendEmail(email, 'Application Received / Solicitud Recibida – The Florida Maid', applicantHtml)
     }
 
     return NextResponse.json({ success: true, id: data.id })

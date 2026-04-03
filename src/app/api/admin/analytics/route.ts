@@ -69,7 +69,7 @@ export async function GET(request: Request) {
         periodStart = thirtyDaysStart
     }
 
-    const NYCMAID_DOMAINS = ['thefloridamaid.com', 'www.thefloridamaid.com']
+    const SITE_DOMAINS = ['thefloridamaid.com', 'www.thefloridamaid.com']
     const CTA_ACTIONS = ['call', 'text', 'book']
 
     // Bot UA patterns to exclude from analytics
@@ -80,7 +80,7 @@ export async function GET(request: Request) {
       supabaseAdmin
         .from('lead_clicks')
         .select('*')
-        .in('domain', NYCMAID_DOMAINS)
+        .in('domain', SITE_DOMAINS)
         .gte('created_at', periodStart.toISOString())
         .order('created_at', { ascending: true }),
       10000
@@ -292,8 +292,8 @@ export async function GET(request: Request) {
     // ── Form Funnels ──
 
     const FORM_PAGES = [
-      { page: '/book/new', label: 'Booking' },
-      { page: '/book/collect', label: 'Collect' },
+      { page: '/clients/new', label: 'Booking' },
+      { page: '/clients/collect', label: 'Collect' },
       { page: '/referral/signup', label: 'Referral' },
     ]
 
@@ -306,7 +306,7 @@ export async function GET(request: Request) {
 
       // Step breakdown for booking form
       let steps: { step: number; count: number }[] | undefined
-      if (page === '/book/new') {
+      if (page === '/clients/new') {
         const step2 = pageEvents.filter((e: any) => e.action === 'form_step' && e.placement === 'step_2').length
         const step3 = pageEvents.filter((e: any) => e.action === 'form_step' && e.placement === 'step_3').length
         steps = [

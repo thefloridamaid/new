@@ -46,7 +46,7 @@ interface Referrer { id: string; name: string; ref_code: string; active: boolean
 
 function BookingsPage() {
   const searchParams = useSearchParams()
-  useEffect(() => { document.title = 'Bookings | The Florida Maid Cleaning Service Cleaning Service' }, []);
+  useEffect(() => { document.title = 'Bookings | The Florida Maid' }, []);
   const formatPhone = (value: string) => {
     const cleaned = value.replace(/\D/g, '')
     if (cleaned.length <= 3) return cleaned
@@ -646,9 +646,9 @@ function BookingsPage() {
           </div>
         </div>
         <div className="text-sm text-gray-500 mb-4 hidden md:block">
-          Client portal: <a href="https://www.thefloridamaid.com/book" target="_blank" className="text-blue-600 hover:underline">thefloridamaid.com/book</a> ·
-          New booking: <a href="https://www.thefloridamaid.com/book/new" target="_blank" className="text-blue-600 hover:underline ml-1">thefloridamaid.com/book/new</a> ·
-          Collect info: <a href="https://www.thefloridamaid.com/book/collect" target="_blank" className="text-blue-600 hover:underline ml-1">thefloridamaid.com/book/collect</a> ·
+          Client portal: <a href="https://www.thefloridamaid.com/clients" target="_blank" className="text-blue-600 hover:underline">thefloridamaid.com/clients</a> ·
+          New booking: <a href="https://www.thefloridamaid.com/clients/new" target="_blank" className="text-blue-600 hover:underline ml-1">thefloridamaid.com/clients/new</a> ·
+          Collect info: <a href="https://www.thefloridamaid.com/clients/collect" target="_blank" className="text-blue-600 hover:underline ml-1">thefloridamaid.com/clients/collect</a> ·
           Team portal: <a href="https://www.thefloridamaid.com/team" target="_blank" className="text-blue-600 hover:underline ml-1">thefloridamaid.com/team</a>
         </div>
         <input type="text" placeholder="Search client, cleaner, address..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-black mb-4 focus:outline-none focus:border-black" />
@@ -1290,7 +1290,7 @@ function BookingsPage() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
-                <input type="tel" required value={newClientForm.phone} onChange={(e) => setNewClientForm({ ...newClientForm, phone: formatPhone(e.target.value) })} className="w-full px-3 py-2 border rounded-lg text-black" placeholder="212-555-1234" />
+                <input type="tel" required value={newClientForm.phone} onChange={(e) => setNewClientForm({ ...newClientForm, phone: formatPhone(e.target.value) })} className="w-full px-3 py-2 border rounded-lg text-black" placeholder="954-555-1234" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Address</label>

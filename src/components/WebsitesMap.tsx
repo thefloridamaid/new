@@ -27,14 +27,14 @@ export default function WebsitesMap({ websites }: WebsitesMapProps) {
 
   const getRegionColor = (region: string) => {
     const colors: Record<string, string> = {
-      'Manhattan': '#3b82f6',
-      'Brooklyn': '#10b981',
-      'Queens': '#f59e0b',
-      'Long Island': '#8b5cf6',
-      'New Jersey': '#ec4899',
-      'Florida': '#ef4444',
-      'NYC Metro': '#6366f1',
-      'National': '#64748b'
+      'Miami-Dade': '#3b82f6',
+      'Broward': '#10b981',
+      'Palm Beach': '#f59e0b',
+      'Tampa Bay': '#8b5cf6',
+      'Orlando': '#ec4899',
+      'Jacksonville': '#ef4444',
+      'Southwest FL': '#6366f1',
+      'Panhandle': '#64748b'
     }
     return colors[region] || '#000000'
   }
@@ -73,7 +73,7 @@ export default function WebsitesMap({ websites }: WebsitesMapProps) {
       if (!window.L || !mapRef.current || mapInstanceRef.current) return
 
       // Create map
-      const map = window.L.map(mapRef.current).setView([40.7589, -73.9851], 10)
+      const map = window.L.map(mapRef.current).setView([27.99, -81.76], 7)
 
       // Add OpenStreetMap tiles
       window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -160,8 +160,8 @@ export default function WebsitesMap({ websites }: WebsitesMapProps) {
     if (bounds.length > 0) {
       map.fitBounds(bounds, { padding: [50, 50] })
     } else {
-      // If no markers, reset to NYC
-      map.setView([40.7589, -73.9851], 10)
+      // If no markers, reset to Florida
+      map.setView([27.99, -81.76], 7)
     }
   }, [websites]) // Update whenever websites change
 
@@ -174,7 +174,7 @@ export default function WebsitesMap({ websites }: WebsitesMapProps) {
       
       {/* Legend */}
       <div className="mt-4 flex flex-wrap gap-4 justify-center">
-        {['Manhattan', 'Brooklyn', 'Queens', 'Long Island', 'New Jersey', 'Florida', 'NYC Metro', 'National'].map(region => (
+        {['Miami-Dade', 'Broward', 'Palm Beach', 'Tampa Bay', 'Orlando', 'Jacksonville', 'Southwest FL', 'Panhandle'].map(region => (
           <div key={region} className="flex items-center gap-2">
             <div
               className="w-3 h-3 rounded-full border border-white shadow"

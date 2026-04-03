@@ -82,7 +82,7 @@ function ReferrerPortalContent() {
     if (days < 7) return days + 'd ago'
     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
   }
-  const copyLink = () => { if (referrer) { navigator.clipboard.writeText('https://www.thefloridamaid.com/book/new?ref=' + referrer.ref_code); alert('Copied!') } }
+  const copyLink = () => { if (referrer) { navigator.clipboard.writeText('https://www.thefloridamaid.com/clients/new?ref=' + referrer.ref_code); alert('Copied!') } }
   const pendingAmount = referrer ? referrer.total_earned - referrer.total_paid : 0
 
   const actionLabels: Record<string, string> = {
@@ -123,7 +123,7 @@ function ReferrerPortalContent() {
     <div className="min-h-screen bg-gray-50">
       <header className="bg-[#CC6222] text-white py-4 px-6">
         <div className="max-w-4xl mx-auto flex justify-between items-center">
-          <div><h1 className="text-xl font-bold">The Florida Maid Cleaning Service Cleaning Service</h1><p className="text-gray-400 text-sm">Referral Portal</p></div>
+          <div><h1 className="text-xl font-bold">The Florida Maid</h1><p className="text-gray-400 text-sm">Referral Portal</p></div>
           <div className="text-right"><p className="font-medium">{referrer?.name}</p><p className="text-gray-400 text-sm">{referrer?.ref_code}</p></div>
         </div>
       </header>
@@ -136,7 +136,7 @@ function ReferrerPortalContent() {
         <div className="bg-white rounded-lg shadow p-6 mb-6">
           <h2 className="font-semibold text-[#CC6222] mb-3">Your Referral Link</h2>
           <div className="flex gap-3">
-            <input type="text" value={'https://www.thefloridamaid.com/book/new?ref=' + referrer?.ref_code} readOnly className="flex-1 px-4 py-2 bg-gray-50 border rounded-lg text-gray-600 text-sm" />
+            <input type="text" value={'https://www.thefloridamaid.com/clients/new?ref=' + referrer?.ref_code} readOnly className="flex-1 px-4 py-2 bg-gray-50 border rounded-lg text-gray-600 text-sm" />
             <button onClick={copyLink} className="px-4 py-2 bg-[#CC6222] text-white rounded-lg hover:bg-[#CC6222]/90">Copy</button>
           </div>
           <p className="text-sm text-gray-500 mt-2">Share this link. You earn 10% of every cleaning!</p>
@@ -193,6 +193,6 @@ function ReferrerPortalContent() {
 }
 
 export default function ReferrerPortalPage() {
-  useEffect(() => { document.title = 'Referral Program | The Florida Maid Cleaning Service Cleaning Service' }, []);
+  useEffect(() => { document.title = 'Referral Program | The Florida Maid' }, []);
   return <Suspense fallback={<div className="min-h-screen bg-gray-50 flex items-center justify-center"><p className="text-gray-500">Loading...</p></div>}><ReferrerPortalContent /></Suspense>
 }

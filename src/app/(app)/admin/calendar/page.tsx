@@ -45,7 +45,7 @@ const CLEANER_COLORS = [
 ]
 
 export default function CalendarPage() {
-  useEffect(() => { document.title = 'Calendar | The Florida Maid Cleaning Service Cleaning Service' }, [])
+  useEffect(() => { document.title = 'Calendar | The Florida Maid' }, [])
   const [bookings, setBookings] = useState<BookingEvent[]>([])
   const [allBookings, setAllBookings] = useState<Booking[]>([])
   const [cleaners, setCleaners] = useState<Cleaner[]>([])

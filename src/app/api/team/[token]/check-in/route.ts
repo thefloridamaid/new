@@ -3,6 +3,7 @@ import { supabaseAdmin } from '@/lib/supabase'
 import { geocodeAddress, calculateDistance, MAX_DISTANCE_MILES } from '@/lib/geo'
 import { notify } from '@/lib/notify'
 import { sendPushToClient } from '@/lib/push'
+import { sendSMS } from '@/lib/sms'
 
 export async function POST(request: Request, { params }: { params: Promise<{ token: string }> }) {
   const { token } = await params
@@ -16,6 +17,18 @@ export async function POST(request: Request, { params }: { params: Promise<{ tok
 
   if (!booking) {
     return NextResponse.json({ error: 'Invalid token' }, { status: 404 })
+  }
+
+  // Prevent check-in on future bookings (must be today or earlier)
+  const bookingDate = booking.start_time.split('T')[0]
+  const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' })
+  if (bookingDate > today) {
+    return NextResponse.json({ error: 'Cannot check in for a future booking. This job is scheduled for ' + bookingDate }, { status: 400 })
+  }
+
+  // Prevent double check-in
+  if (booking.check_in_time) {
+    return NextResponse.json({ error: 'Already checked in' }, { status: 400 })
   }
 
   // GPS verification
@@ -66,8 +79,18 @@ export async function POST(request: Request, { params }: { params: Promise<{ tok
 
   // Push to client
   if (data.client_id) {
-    sendPushToClient(data.client_id, 'Your cleaner has arrived!', `${data.cleaners?.name} has checked in`, '/book/dashboard').catch(() => {})
+    sendPushToClient(data.client_id, 'Your cleaner has arrived!', `${data.cleaners?.name} has checked in`, '/clients/dashboard').catch(() => {})
   }
+
+  // Auto-text client: cleaner has arrived (DISABLED — enable when ready)
+  // if (data.clients?.phone) {
+  //   const cleanerFirst = data.cleaners?.name?.split(' ')[0] || 'Your cleaner'
+  //   sendSMS(
+  //     data.clients.phone.startsWith('+') ? data.clients.phone : `+1${data.clients.phone.replace(/\D/g, '')}`,
+  //     `Hi ${data.clients.name?.split(' ')[0] || 'there'}! ${cleanerFirst} has arrived and is getting started. If you have any questions, text or call (954) 710-3636. Thank you for choosing The Florida Maid!`,
+  //     { skipConsent: false, smsType: 'check_in' }
+  //   ).catch(() => {})
+  // }
 
   return NextResponse.json(data)
 }

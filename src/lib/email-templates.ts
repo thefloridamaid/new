@@ -193,10 +193,10 @@ export function clientConfirmationEmail(booking: any) {
 
     ${noteBox(`<strong>Cancellation Policy:</strong> ${isRecurring ? 'Recurring clients require 7 days notice for cancellations or rescheduling.' : 'One-time services are non-cancellable and cannot be rescheduled. Please ensure all details are correct.'}`, 'info')}
 
-    ${primaryButton('View Your Portal', 'https://www.thefloridamaid.com/book')}
+    ${primaryButton('View Your Portal', 'https://www.thefloridamaid.com/clients')}
 
     <p style="color: #666; font-size: 14px; margin: 16px 0 0 0;">
-      You can update your notes and view upcoming bookings anytime at <a href="https://www.thefloridamaid.com/book" style="color: #000; font-weight: 500;">thefloridamaid.com/book</a>
+      You can update your notes and view upcoming bookings anytime at <a href="https://www.thefloridamaid.com/clients" style="color: #000; font-weight: 500;">thefloridamaid.com/clients</a>
     </p>
 
     <p style="color: #666; font-size: 14px; margin: 16px 0 0 0;">
@@ -224,11 +224,11 @@ export function clientReminderEmail(booking: any, daysOut: string) {
       ${infoRow('Cleaner', cleanerName)}
     `)}
 
-    ${primaryButton('View Details', 'https://www.thefloridamaid.com/book')}
+    ${primaryButton('View Details', 'https://www.thefloridamaid.com/clients')}
 
     <p style="color: #666; font-size: 14px; margin: 24px 0 0 0;">
       ${isRecurring
-        ? `Need to reschedule? Visit your <a href="https://www.thefloridamaid.com/book" style="color: #000;">portal</a> (7 days notice required) or call <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>`
+        ? `Need to reschedule? Visit your <a href="https://www.thefloridamaid.com/clients" style="color: #000;">portal</a> (7 days notice required) or call <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>`
         : `Questions? <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>`}
     </p>
   `
@@ -249,7 +249,7 @@ export function clientCancellationEmail(booking: any) {
       ${infoRow('Service', booking.service_type)}
     `)}
 
-    ${primaryButton('Book Again', 'https://www.thefloridamaid.com/book')}
+    ${primaryButton('Book Again', 'https://www.thefloridamaid.com/clients')}
 
     <p style="color: #666; font-size: 14px; margin: 24px 0 0 0;">
       Questions? <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>
@@ -290,7 +290,7 @@ export function clientThankYouEmail(clientName: string) {
 
     <p style="color: #333; font-size: 15px; margin: 0 0 16px 0; font-weight: 600;">Ready to book again?</p>
 
-    ${primaryButton('Visit Your Portal', 'https://www.thefloridamaid.com/book')}
+    ${primaryButton('Visit Your Portal', 'https://www.thefloridamaid.com/clients')}
 
     <p style="color: #666; font-size: 14px; margin: 24px 0 0 0;">
       Questions? <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>
@@ -467,7 +467,7 @@ export function cleanerCancellationEmail(booking: any) {
 
 export function referralWelcomeEmail(referrer: { name: string; ref_code: string; preferred_payout: string }) {
   const firstName = referrer.name.split(' ')[0]
-  const referralLink = `https://www.thefloridamaid.com/book?ref=${referrer.ref_code}`
+  const referralLink = `https://www.thefloridamaid.com/clients?ref=${referrer.ref_code}`
   
   const content = `
     <h1 style="font-size: 24px; font-weight: 600; color: #000; margin: 0 0 8px 0;">Welcome to the team, ${firstName}!</h1>
@@ -520,7 +520,7 @@ export function referralCommissionEmail(referrer: any, booking: any, commission:
     ${primaryButton('View Dashboard', `https://www.thefloridamaid.com/referral-dashboard?code=${referrer.ref_code}`)}
 
     <p style="color: #666; font-size: 14px; text-align: left; margin: 24px 0 0 0;">
-      Keep sharing: <strong>thefloridamaid.com/book?ref=${referrer.ref_code}</strong>
+      Keep sharing: <strong>thefloridamaid.com/clients?ref=${referrer.ref_code}</strong>
     </p>
   `
 
@@ -883,7 +883,7 @@ export function clientRescheduleEmail(booking: any, oldDate: string, oldTime: st
       ${infoRow('Service', booking.service_type)}
     `)}
 
-    ${primaryButton('View in Portal', 'https://www.thefloridamaid.com/book')}
+    ${primaryButton('View in Portal', 'https://www.thefloridamaid.com/clients')}
 
     <p style="color: #666; font-size: 14px; margin: 24px 0 0 0;">
       Questions? <a href="tel:9547103636" style="color: #000;">(954) 710-3636</a>

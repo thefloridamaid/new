@@ -5,8 +5,8 @@ import JsonLd from '@/components/marketing/JsonLd'
 import Breadcrumbs from '@/components/marketing/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | The Florida Maid Cleaning Service Cleaning Service',
-  description: 'The Florida Maid Cleaning Service Cleaning Service privacy policy — how we protect your data. We never sell or share your information. Florida cleaning from $49/hr. (954) 710-3636',
+  title: 'Privacy Policy | The Florida Maid',
+  description: 'The Florida Maid privacy policy — how we protect your data. We never sell or share your information. Florida cleaning from $49/hr. (954) 710-3636',
   alternates: { canonical: 'https://www.thefloridamaid.com/privacy-policy' },
 }
 

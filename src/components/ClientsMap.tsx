@@ -27,7 +27,7 @@ interface GeocodedClient extends ClientMarker {
 }
 
 const CACHE_KEY = 'floridamaid_geocode_cache'
-const NYC_BOUNDS = { minLat: 40.4, maxLat: 41.0, minLng: -74.3, maxLng: -73.6 }
+const FL_BOUNDS = { minLat: 24.5, maxLat: 31.0, minLng: -87.6, maxLng: -80.0 }
 
 function loadGeoCache(): Record<string, { lat: number; lng: number }> {
   try {
@@ -58,18 +58,18 @@ const icons = {
 
 import { geocodeAddress } from '@/lib/geo'
 
-function isInNYC(lat: number, lng: number) {
-  return lat >= NYC_BOUNDS.minLat && lat <= NYC_BOUNDS.maxLat &&
-         lng >= NYC_BOUNDS.minLng && lng <= NYC_BOUNDS.maxLng
+function isInFlorida(lat: number, lng: number) {
+  return lat >= FL_BOUNDS.minLat && lat <= FL_BOUNDS.maxLat &&
+         lng >= FL_BOUNDS.minLng && lng <= FL_BOUNDS.maxLng
 }
 
 function FitBounds({ clients }: { clients: GeocodedClient[] }) {
   const map = useMap()
 
   useEffect(() => {
-    const nycClients = clients.filter(c => isInNYC(c.lat, c.lng))
-    if (nycClients.length > 0) {
-      const bounds = L.latLngBounds(nycClients.map(c => [c.lat, c.lng]))
+    const flClients = clients.filter(c => isInFlorida(c.lat, c.lng))
+    if (flClients.length > 0) {
+      const bounds = L.latLngBounds(flClients.map(c => [c.lat, c.lng]))
       map.fitBounds(bounds, { padding: [50, 50], maxZoom: 13 })
     }
   }, [clients, map])
@@ -159,7 +159,7 @@ export default function ClientsMap({ clients, onClientClick, onClientDelete }: P
     return <div className="h-[1000px] bg-gray-100 rounded-lg flex items-center justify-center text-gray-500">Loading map...</div>
   }
 
-  const center: [number, number] = [40.75, -73.95]
+  const center: [number, number] = [27.99, -81.76]
   const defaultZoom = 11
 
   const formatMoney = (cents: number) => '$' + (cents / 100).toFixed(0)

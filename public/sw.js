@@ -15,7 +15,7 @@ self.addEventListener('push', function(event) {
   }
 
   event.waitUntil(
-    self.registration.showNotification(data.title || 'NYC Maid', options)
+    self.registration.showNotification(data.title || 'Florida Maid', options)
   )
 })
 

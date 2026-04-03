@@ -73,10 +73,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'client_id, recurring_type, and start_date are required' }, { status: 400 })
   }
 
-  // Calculate 4 weeks from start date for initial generation
-  const fourWeeksOut = new Date(start_date + 'T12:00:00')
-  fourWeeksOut.setDate(fourWeeksOut.getDate() + 28)
-  const nextGenerateAfter = fourWeeksOut.toISOString().split('T')[0]
+  // Set next_generate_after to the last date in the initial batch (or 6 weeks from start)
+  const dates = body.dates as string[] | undefined
+  const lastInitialDate = dates && dates.length > 0 ? dates[dates.length - 1] : null
+  const sixWeeksOut = new Date(start_date + 'T12:00:00')
+  sixWeeksOut.setDate(sixWeeksOut.getDate() + 42)
+  const nextGenerateAfter = lastInitialDate || sixWeeksOut.toISOString().split('T')[0]
 
   // Create the schedule
   const { data: schedule, error } = await supabaseAdmin
@@ -101,14 +103,16 @@ export async function POST(request: Request) {
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
 
   // Generate initial bookings using the provided dates or generate them
-  const dates = body.dates as string[] | undefined
   if (dates && dates.length > 0) {
     // Dates were provided by the frontend (from generateRecurringDates)
     const rows = dates.map((date: string) => {
       const token = generateToken()
-      const startTime = `${date}T${preferred_time || '09:00'}:00`
-      const endHour = parseInt((preferred_time || '09:00').split(':')[0]) + (duration_hours || 3)
-      const endTime = `${date}T${String(Math.floor(endHour)).padStart(2, '0')}:${(preferred_time || '09:00').split(':')[1]}:00`
+      const normalizedTime = (preferred_time || '09:00').split(':').slice(0, 2).join(':')
+      const startTime = `${date}T${normalizedTime}:00`
+      const sH = parseInt(normalizedTime.split(':')[0])
+      const sM = parseInt(normalizedTime.split(':')[1])
+      const totalEnd = (sH + (duration_hours || 3)) * 60 + sM
+      const endTime = `${date}T${String(Math.floor(totalEnd / 60) % 24).padStart(2, '0')}:${String(totalEnd % 60).padStart(2, '0')}:00`
       const tokenExpires = new Date(startTime)
       tokenExpires.setHours(tokenExpires.getHours() + 24)
 
@@ -161,7 +165,7 @@ export async function POST(request: Request) {
         // Client push
         const bookingDate = new Date(first.start_time).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
         if (first.client_id) {
-          sendPushToClient(first.client_id, 'Booking Confirmed', `Your ${recurring_type} cleaning starts ${bookingDate}`, '/book/dashboard').catch(() => {})
+          sendPushToClient(first.client_id, 'Booking Confirmed', `Your ${recurring_type} cleaning starts ${bookingDate}`, '/clients/dashboard').catch(() => {})
         }
         // Cleaner email
         if (first.cleaners?.email) {

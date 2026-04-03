@@ -57,9 +57,9 @@ export const metadata: Metadata = {
     description: pageDescription,
     url: pageUrl,
     type: 'website',
-    siteName: 'The Florida Maid Cleaning Service Cleaning Service',
+    siteName: 'The Florida Maid',
     locale: 'en_US',
-    images: [{ url: 'https://www.thefloridamaid.com/icon-512.png', width: 512, height: 512, alt: 'The Florida Maid Cleaning Service Cleaning Service' }],
+    images: [{ url: 'https://www.thefloridamaid.com/icon-512.png', width: 512, height: 512, alt: 'The Florida Maid' }],
   },
   twitter: {
     card: 'summary',
@@ -83,7 +83,7 @@ function jobPostingSchema(region: string, locations: string) {
     description: `Now hiring experienced house cleaners in ${locations}. Starting at $30/hr paid via Zelle within 30 minutes of every completed job. Bonus programs available for retention, client satisfaction, and five-star reviews. Flexible schedule. Open 24/7. You provide your own cleaning supplies and equipment. Background check required. Apply at thefloridamaid.com/apply or text (954) 710-3636. Bilingual workplace (English/Spanish). 100% of tips are yours.`,
     identifier: {
       '@type': 'PropertyValue',
-      name: 'The Florida Maid Cleaning Service Cleaning Service',
+      name: 'The Florida Maid',
       value: `floridamaid-cleaner-${regionSlug}`,
     },
     datePosted: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
@@ -93,7 +93,7 @@ function jobPostingSchema(region: string, locations: string) {
     totalJobOpenings: 10,
     hiringOrganization: {
       '@type': 'Organization',
-      name: 'The Florida Maid Cleaning Service Cleaning Service',
+      name: 'The Florida Maid',
       sameAs: 'https://www.thefloridamaid.com',
       logo: 'https://www.thefloridamaid.com/icon-512.png',
     },
@@ -124,10 +124,7 @@ function jobPostingSchema(region: string, locations: string) {
       name: 'Florida',
       sameAs: 'https://en.wikipedia.org/wiki/Florida',
     },
-    educationRequirements: {
-      '@type': 'EducationalOccupationalCredential',
-      credentialCategory: 'high school',
-    },
+    educationRequirements: 'no requirements',
     directApply: true,
     industry: 'Cleaning Services',
     occupationalCategory: '37-2012.00',
@@ -180,7 +177,7 @@ export default function CareersPage() {
             <p className="text-white/60 text-sm">Open 24/7</p>
           </div>
           <h1 className="font-[family-name:var(--font-bebas)] text-4xl md:text-6xl lg:text-7xl text-white tracking-wide leading-[0.95] mb-6">
-            Join The Florida Maid Cleaning Service Cleaning Service Cleaning Service — Starting at $30/hr, Bonus Programs Available
+            Join The Florida Maid Cleaning Service — Starting at $30/hr, Bonus Programs Available
           </h1>
           <p className="text-white text-lg max-w-2xl leading-relaxed mb-3">
             We&apos;re hiring experienced cleaners across Florida — South Florida, Tampa Bay, and Central Florida. You bring your own supplies and equipment — we bring a steady stream of clients, a flexible schedule, and starting at $30/hr paid via Zelle within 30 minutes of every completed job. Bonus programs let top performers earn even more.

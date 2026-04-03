@@ -74,7 +74,7 @@ export async function GET(request: Request) {
       if (type === 'reminder_1day') {
         const reminderDate = new Date(booking.start_time).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
         if (booking.client_id) {
-          sendPushToClient(booking.client_id, 'Cleaning Tomorrow', `Your cleaning is ${label} - ${reminderDate}`, '/book/dashboard').catch(() => {})
+          sendPushToClient(booking.client_id, 'Cleaning Tomorrow', `Your cleaning is ${label} - ${reminderDate}`, '/clients/dashboard').catch(() => {})
         }
         if (booking.cleaner_id) {
           notifyCleaner({
@@ -147,7 +147,7 @@ export async function GET(request: Request) {
 
       // Push notification
       if (booking.client_id) {
-        sendPushToClient(booking.client_id, `Cleaning in ${hours} Hour${hours === 1 ? '' : 's'}`, `Your cleaner ${booking.cleaners?.name || ''} arrives soon`, '/book/dashboard').catch(() => {})
+        sendPushToClient(booking.client_id, `Cleaning in ${hours} Hour${hours === 1 ? '' : 's'}`, `Your cleaner ${booking.cleaners?.name || ''} arrives soon`, '/clients/dashboard').catch(() => {})
       }
       if (booking.cleaner_id) {
         notifyCleaner({

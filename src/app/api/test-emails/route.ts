@@ -17,7 +17,7 @@ import {
   verificationCodeEmail
 } from '@/lib/email-templates'
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'hi@thefloridamaid.com'
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'thefloridamaid@gmail.com'
 
 export async function POST() {
   const authError = await protectAdminAPI()
@@ -37,7 +37,7 @@ export async function POST() {
       name: 'Sarah Johnson',
       email: 'test@example.com',
       phone: '(212) 555-1234',
-      address: '123 Ocean Drive, Miami, FL 33139'
+      address: '123 West 72nd Street, Apt 4B, New York, NY 10023'
     },
     cleaners: {
       name: 'Maria Garcia',

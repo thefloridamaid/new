@@ -3,6 +3,7 @@ import { supabaseAdmin } from '@/lib/supabase'
 import { generateToken } from '@/lib/tokens'
 import { sendEmail } from '@/lib/email'
 import { sendSMS } from '@/lib/sms'
+import { emailAdmins } from '@/lib/admin-contacts'
 import { adminNewBookingRequestEmail, referralSignupNotifyEmail, clientBookingReceivedEmail } from '@/lib/email-templates'
 import { smsNewBooking, smsBookingReceived } from '@/lib/sms-templates'
 import { autoAttributeBooking } from '@/lib/attribution'
@@ -73,7 +74,8 @@ export async function POST(request: Request) {
             email: emailLower,
             phone: phone,
             address: body.address + (body.unit ? ', ' + body.unit : ''),
-            notes: body.notes || ''
+            notes: body.notes || '',
+            pin: Math.floor(100000 + Math.random() * 900000).toString()
           })
           .select().single()
 
@@ -177,6 +179,26 @@ export async function POST(request: Request) {
     const tokenExpiresAt = new Date(startTime)
     tokenExpiresAt.setHours(tokenExpiresAt.getHours() + 24)
 
+    // ===== BLOCK HOLIDAYS =====
+    const { isHoliday } = await import('@/lib/holidays')
+    const holidayName = isHoliday(startTime.split('T')[0])
+    if (holidayName) {
+      return NextResponse.json({ error: `We're closed for ${holidayName}. Please choose another date.` }, { status: 400 })
+    }
+
+    // ===== PREVENT DUPLICATE BOOKING ON SAME DATE =====
+    const bookingDate = startTime.split('T')[0]
+    const { count: existingCount } = await supabaseAdmin
+      .from('bookings')
+      .select('id', { count: 'exact', head: true })
+      .eq('client_id', clientId)
+      .gte('start_time', bookingDate + 'T00:00:00')
+      .lte('start_time', bookingDate + 'T23:59:59')
+      .in('status', ['scheduled', 'pending', 'confirmed', 'in_progress'])
+    if ((existingCount || 0) > 0) {
+      return NextResponse.json({ error: 'You already have a booking on this date.' }, { status: 409 })
+    }
+
     // ===== CREATE BOOKING (always pending from public form) =====
     const { data, error } = await supabaseAdmin
       .from('bookings')
@@ -201,6 +223,29 @@ export async function POST(request: Request) {
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 })
 
+    // ===== SMART CLEANER SUGGESTION =====
+    try {
+      const { scoreCleanersForBooking } = await import('@/lib/smart-schedule')
+      const [sh] = (startTime.split('T')[1] || '09:00').split(':')
+      const duration = body.estimated_hours || 2
+      const scores = await scoreCleanersForBooking({
+        date: startTime.split('T')[0],
+        startTime: startTime.split('T')[1]?.slice(0, 5) || '09:00',
+        durationHours: duration,
+        clientAddress: body.address || '',
+        clientId,
+      })
+      const best = scores.find(s => s.available && s.score > 0)
+      if (best) {
+        await supabaseAdmin.from('bookings').update({
+          suggested_cleaner_id: best.id,
+          suggested_reason: best.reason,
+        }).eq('id', data.id)
+      }
+    } catch (e) {
+      console.error('Smart suggestion error:', e)
+    }
+
     // ===== NOTIFICATION =====
     const bookingMsg = 'New booking from ' + (data.clients?.name || 'Unknown') + (body.ref_code ? ' (Ref: ' + body.ref_code + ')' : '') + ' • by Client'
     await notify({ type: 'new_booking', title: 'New Booking Request', message: bookingMsg, booking_id: data.id, url: '/admin/bookings' })
@@ -223,17 +268,12 @@ export async function POST(request: Request) {
     // ===== EMAILS =====
     try {
       // Admin only - to review and confirm
-      if (process.env.ADMIN_EMAIL) {
-        const adminEmail = adminNewBookingRequestEmail(data, {
-          time: body.time,
-          ref_code: body.ref_code,
-          referred_by: body.referred_by
-        })
-        const result = await sendEmail(process.env.ADMIN_EMAIL, adminEmail.subject, adminEmail.html)
-        if (!result.success) {
-          await notify({ type: 'error', title: 'Email Failed', message: `Failed to send booking email for ${data.clients?.name || 'Unknown'}` })
-        }
-      }
+      const adminEmail = adminNewBookingRequestEmail(data, {
+        time: body.time,
+        ref_code: body.ref_code,
+        referred_by: body.referred_by
+      })
+      await emailAdmins(adminEmail.subject, adminEmail.html)
 
       // Referrer gets notified of signup
       if (referrerData?.email) {

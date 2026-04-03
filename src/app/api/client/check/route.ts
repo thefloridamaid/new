@@ -39,6 +39,7 @@ async function findClient(input: string) {
     if (clients) {
       const match = clients.find(c => {
         const cDigits = (c.phone || '').replace(/\D/g, '')
+        if (!cDigits || cDigits.length < 7) return false
         return cDigits === digits || cDigits.endsWith(digits) || digits.endsWith(cDigits)
       })
       if (match) return match

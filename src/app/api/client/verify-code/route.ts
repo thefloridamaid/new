@@ -27,13 +27,26 @@ export async function POST(request: Request) {
 
     const { email, code, phone } = await request.json()
 
-    // Check code
-    const { data: verification, error } = await supabaseAdmin
-      .from('verification_codes')
-      .select('*')
-      .eq('email', email.toLowerCase())
-      .eq('code', code)
-      .single()
+    // Check code — try email key first, then SMS key
+    const phoneDigitsRaw = phone ? phone.replace(/\D/g, '') : ''
+    const lookupKeys = []
+    if (email) lookupKeys.push(email.toLowerCase())
+    if (phoneDigitsRaw) lookupKeys.push(`sms:${phoneDigitsRaw}`)
+
+    let verification = null
+    let verifyError = null
+    for (const key of lookupKeys) {
+      const { data, error: err } = await supabaseAdmin
+        .from('verification_codes')
+        .select('*')
+        .eq('email', key)
+        .eq('code', code)
+        .single()
+      if (data) { verification = data; break }
+      verifyError = err
+    }
+
+    const error = verification ? null : verifyError
 
     if (error || !verification) {
       return NextResponse.json({ error: 'Invalid code' }, { status: 401 })
@@ -43,8 +56,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Code expired' }, { status: 401 })
     }
 
-    // Delete used code
-    await supabaseAdmin.from('verification_codes').delete().eq('email', email.toLowerCase())
+    // Delete used code (both email and SMS keys)
+    if (email) await supabaseAdmin.from('verification_codes').delete().eq('email', email.toLowerCase())
+    if (phoneDigitsRaw) await supabaseAdmin.from('verification_codes').delete().eq('email', `sms:${phoneDigitsRaw}`)
 
     // Get or create client — try phone first (most reliable), then email
     let client = null

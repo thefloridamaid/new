@@ -37,7 +37,7 @@ export default function MarketingFooter() {
     <footer className="bg-[#CC6222] text-white">
       {/* Main footer brand */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-8">
-        <h2 className="font-[family-name:var(--font-bebas)] text-white text-3xl md:text-4xl tracking-wide text-center mb-2">The Florida Maid Cleaning Service Cleaning Service</h2>
+        <h2 className="font-[family-name:var(--font-bebas)] text-white text-3xl md:text-4xl tracking-wide text-center mb-2">The Florida Maid</h2>
         <div className="w-16 h-[2px] bg-[#34D399] mx-auto mb-12" />
       </div>
 
@@ -83,7 +83,7 @@ export default function MarketingFooter() {
             <ul className="space-y-2.5">
               <li><a href="#" target="_blank" rel="noopener noreferrer" className="text-sm text-white/80 hover:text-white transition-colors">Make a Payment</a></li>
               <li><Link href="/get-paid-for-cleaning-referrals-every-time-they-are-serviced" target="_blank" className="text-sm text-white/80 hover:text-white transition-colors">Referral Program</Link></li>
-              <li><Link href="/book/new" target="_blank" className="text-sm text-white/80 hover:text-white transition-colors">Book a Cleaning</Link></li>
+              <li><Link href="/clients/new" target="_blank" className="text-sm text-white/80 hover:text-white transition-colors">Book a Cleaning</Link></li>
               <li><Link href="/florida-cleaning-service-frequently-asked-questions-in-2026" className="text-sm text-white/80 hover:text-white transition-colors">FAQ</Link></li>
               <li><Link href="/florida-maid-service-blog" className="text-sm text-white/80 hover:text-white transition-colors">Blog</Link></li>
               <li><Link href="/florida-maid-and-cleaning-tips-and-advice-by-the-florida-maid" className="text-sm text-white/80 hover:text-white transition-colors">Cleaning Tips</Link></li>

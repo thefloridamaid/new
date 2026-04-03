@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: { absolute: title },
   description,
   alternates: { canonical: url },
-  openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid Cleaning Service Cleaning Service', locale: 'en_US' },
+  openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid', locale: 'en_US' },
   twitter: { card: 'summary_large_image', title, description },
   other: { 'geo.region': 'US-FL', 'geo.placename': 'Florida', 'geo.position': '25.7617;-80.1918', 'ICBM': '25.7617, -80.1918' },
 }

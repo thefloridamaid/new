@@ -6,7 +6,7 @@ export async function GET() {
   if (authError) return authError
 
   return NextResponse.json({
-    platform: 'The Florida Maid Cleaning Service Cleaning Service',
+    platform: 'The Florida Maid',
     updated: '2026-02-05',
     stack: { framework: 'Next.js 16', language: 'TypeScript', database: 'Supabase PostgreSQL', hosting: 'Vercel', email: 'Resend', styling: 'Tailwind CSS' },
     domain: 'thefloridamaid.com',
@@ -28,9 +28,9 @@ export async function GET() {
         { route: '/admin/docs', title: 'Documentation' },
       ],
       client: [
-        { route: '/book', title: 'Client Portal', description: 'Email verification login' },
-        { route: '/book/new', title: 'New Booking', description: '3-step form with SMS consent' },
-        { route: '/book/dashboard', title: 'My Bookings' },
+        { route: '/clients', title: 'Client Portal', description: 'Email verification login' },
+        { route: '/clients/new', title: 'New Booking', description: '3-step form with SMS consent' },
+        { route: '/clients/dashboard', title: 'My Bookings' },
         { route: '/book/reschedule/[id]', title: 'Reschedule' },
       ],
       team: [

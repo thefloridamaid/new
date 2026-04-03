@@ -84,7 +84,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
         }
         // Client push notification
         if (booking.client_id) {
-          sendPushToClient(booking.client_id, 'Schedule Paused', `Your recurring cleaning has been paused until ${paused_until}`, '/book/dashboard').catch(() => {})
+          sendPushToClient(booking.client_id, 'Schedule Paused', `Your recurring cleaning has been paused until ${paused_until}`, '/clients/dashboard').catch(() => {})
         }
       }
     } catch {

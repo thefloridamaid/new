@@ -5,8 +5,8 @@ import JsonLd from '@/components/marketing/JsonLd'
 import Breadcrumbs from '@/components/marketing/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions | The Florida Maid Cleaning Service Cleaning Service',
-  description: 'Terms & conditions for The Florida Maid Cleaning Service Cleaning Service — cancellation policy, payment terms, scheduling & service agreement. Cleaning from $49/hr. (954) 710-3636',
+  title: 'Terms & Conditions | The Florida Maid',
+  description: 'Terms & conditions for The Florida Maid — cancellation policy, payment terms, scheduling & service agreement. Cleaning from $49/hr. (954) 710-3636',
   alternates: { canonical: 'https://www.thefloridamaid.com/terms-conditions' },
 }
 

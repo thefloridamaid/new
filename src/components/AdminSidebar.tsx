@@ -96,7 +96,9 @@ const navGroups = [
       { name: 'Bookings', href: '/admin/bookings', icon: '◻' },
       { name: 'Calendar', href: '/admin/calendar', icon: '◻' },
       { name: 'Clients', href: '/admin/clients', icon: '◻' },
+      { name: 'Selena', href: '/admin/selena', icon: '◻' },
       { name: 'Leads', href: '/admin/leads', icon: '◻' },
+      { name: 'Sales', href: '/admin/sales', icon: '◻' },
       { name: 'Finance', href: '/admin/finance', icon: '◻' },
       { name: 'Team', href: '/admin/cleaners', icon: '◻' },
     ]

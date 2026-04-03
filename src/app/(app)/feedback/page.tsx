@@ -4,7 +4,7 @@ import { useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
 
 function FeedbackForm() {
-  useEffect(() => { document.title = 'Leave Feedback | The Florida Maid Cleaning Service Cleaning Service' }, [])
+  useEffect(() => { document.title = 'Leave Feedback | The Florida Maid' }, [])
   const searchParams = useSearchParams()
   const source = searchParams.get('from') || 'Email Link'
   const [message, setMessage] = useState('')

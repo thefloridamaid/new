@@ -14,7 +14,7 @@ interface Website {
 const ITEMS_PER_PAGE = 24
 
 export default function WebsitesPage() {
-  useEffect(() => { document.title = 'Websites | The Florida Maid Cleaning Service Cleaning Service' }, []);
+  useEffect(() => { document.title = 'Websites | The Florida Maid' }, []);
   const [websites, setWebsites] = useState<Website[]>([])
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedRegion, setSelectedRegion] = useState('all')
@@ -56,14 +56,14 @@ export default function WebsitesPage() {
 
   const getRegionColor = (region: string) => {
     const colors: Record<string, string> = {
-      'Manhattan': '#3b82f6',
-      'Brooklyn': '#10b981',
-      'Queens': '#f59e0b',
-      'Long Island': '#8b5cf6',
-      'New Jersey': '#ec4899',
-      'Florida': '#ef4444',
-      'NYC Metro': '#6366f1',
-      'National': '#64748b',
+      'Miami-Dade': '#3b82f6',
+      'Broward': '#10b981',
+      'Palm Beach': '#f59e0b',
+      'Tampa Bay': '#8b5cf6',
+      'Orlando': '#ec4899',
+      'Jacksonville': '#ef4444',
+      'Southwest FL': '#6366f1',
+      'Panhandle': '#64748b',
       'Other': '#14b8a6'
     }
     return colors[region] || '#000000'
@@ -87,7 +87,7 @@ export default function WebsitesPage() {
           <h2 className="text-2xl font-bold text-[#CC6222] mb-1">
             Website Network
           </h2>
-          <p className="text-sm text-gray-500">Coverage across NYC, NJ, FL, and national reach</p>
+          <p className="text-sm text-gray-500">Coverage across all Florida regions</p>
         </div>
 
         {/* Stat Cards Row */}

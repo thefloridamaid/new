@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { sendEmail } from '@/lib/email'
+import { emailAdmins } from '@/lib/admin-contacts'
 import { clientRescheduleEmail, adminRescheduleEmail, cleanerRescheduleEmail } from '@/lib/email-templates'
 import { notifyCleaner } from '@/lib/notify-cleaner'
 import { smsJobRescheduled, smsReschedule } from '@/lib/sms-templates'
@@ -68,14 +69,12 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
     // 3. Client push notification
     if (data.client_id) {
       const newDate = new Date(body.start_time).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
-      await sendPushToClient(data.client_id, 'Booking Rescheduled', `Your cleaning has been moved to ${newDate}`, '/book/dashboard')
+      await sendPushToClient(data.client_id, 'Booking Rescheduled', `Your cleaning has been moved to ${newDate}`, '/clients/dashboard')
     }
 
     // 4. Admin notification email
-    if (process.env.ADMIN_EMAIL) {
-      const email = adminRescheduleEmail(data, oldDate, oldTime)
-      await sendEmail(process.env.ADMIN_EMAIL, email.subject, email.html)
-    }
+    const adminEmail = adminRescheduleEmail(data, oldDate, oldTime)
+    await emailAdmins(adminEmail.subject, adminEmail.html)
 
     // 5. Cleaner notification email
     if (data.cleaners?.email) {

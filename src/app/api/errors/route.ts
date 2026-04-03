@@ -23,6 +23,10 @@ const IGNORABLE_PATTERNS = [
   'Socket server did not execute', // Tawk.to socket callback timeout
   'i18next',                     // Tawk.to i18n race condition
   'invalid origin',              // Cross-origin widget noise
+  'Maximum call stack size exceeded', // Tawk.to widget infinite recursion
+  '@context',                    // Browser extension parsing JSON-LD
+  'opts is not defined',         // Tawk.to / third-party script variable leak
+  'BufferLoader',                // Tawk.to audio notification loading failure
 ]
 
 export async function POST(request: Request) {

@@ -69,13 +69,41 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
 
         // Check schedule
         if (cleaner.schedule && typeof cleaner.schedule === 'object' && Object.keys(cleaner.schedule).length > 0) {
-          const daySchedule = cleaner.schedule[dayOfWeek]
+          const daySchedule = cleaner.schedule[dayOfWeek] as { start?: string; end?: string } | null | undefined
           if (daySchedule === null || daySchedule === undefined) {
             return NextResponse.json({
               error: `${cleaner.name} is not scheduled to work on ${dayOfWeek}s.`,
               unavailable: true,
               reason: 'not_scheduled'
             }, { status: 409 })
+          }
+          // Check if booking falls within cleaner's working hours
+          if (daySchedule.start && daySchedule.end) {
+            const parseSchedTime = (t: string): number => {
+              const m = t.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)?$/i)
+              if (!m) return 0
+              let h = parseInt(m[1]); const min = parseInt(m[2]); const ap = m[3]?.toUpperCase()
+              if (ap === 'PM' && h < 12) h += 12; if (ap === 'AM' && h === 12) h = 0
+              return h * 60 + min
+            }
+            const schedStart = parseSchedTime(daySchedule.start)
+            const schedEnd = parseSchedTime(daySchedule.end)
+            const bTime = bookingStartTime.split('T')[1]?.substring(0, 5) || '09:00'
+            const [bh, bm] = bTime.split(':').map(Number)
+            const bookStart = bh * 60 + bm
+            const bookEnd = bookStart + (body.estimated_hours || 2) * 60
+            if (bookStart < schedStart) {
+              return NextResponse.json({
+                error: `${cleaner.name} doesn't start until ${daySchedule.start} on ${dayOfWeek}s.`,
+                unavailable: true, reason: 'before_schedule'
+              }, { status: 409 })
+            }
+            if (bookEnd > schedEnd) {
+              return NextResponse.json({
+                error: `${cleaner.name} is off by ${daySchedule.end} on ${dayOfWeek}s.`,
+                unavailable: true, reason: 'after_schedule'
+              }, { status: 409 })
+            }
           }
         }
       }
@@ -108,9 +136,10 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
     .update(updatePayload)
     .eq('id', id)
     .select('*, clients(*), cleaners(*)')
-    .single()
+    .maybeSingle()
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (!data) return NextResponse.json({ error: 'Booking not found' }, { status: 404 })
 
   // Notification: booking confirmed
   if (oldBooking?.status === 'pending' && body.status === 'scheduled') {
@@ -158,7 +187,7 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
       // Push notification to client
       const bookingDate = new Date(data.start_time).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
       if (data.client_id) {
-        sendPushToClient(data.client_id, 'Booking Confirmed', `Your cleaning on ${bookingDate} is confirmed`, '/book/dashboard').catch(() => {})
+        sendPushToClient(data.client_id, 'Booking Confirmed', `Your cleaning on ${bookingDate} is confirmed`, '/clients/dashboard').catch(() => {})
       }
       // Cleaner notification via unified dispatch
       if (data.cleaner_id) {
@@ -462,7 +491,7 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
       }
       // Push notification to client
       if (booking.client_id) {
-        sendPushToClient(booking.client_id, 'Booking Cancelled', `Your cleaning on ${bookingDate} has been cancelled`, '/book/dashboard').catch(() => {})
+        sendPushToClient(booking.client_id, 'Booking Cancelled', `Your cleaning on ${bookingDate} has been cancelled`, '/clients/dashboard').catch(() => {})
       }
       // Cleaner notification via unified dispatch
       if (booking.cleaner_id) {

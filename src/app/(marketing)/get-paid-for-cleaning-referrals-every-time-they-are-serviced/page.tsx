@@ -7,11 +7,11 @@ import CTABlock from '@/components/marketing/CTABlock'
 import ReferralSignupForm from '@/components/marketing/ReferralSignupForm'
 
 export const metadata: Metadata = {
-  title: 'Get Paid for Cleaning Referrals | Earn 10% Commission | The Florida Maid Cleaning Service Cleaning Service',
+  title: 'Get Paid for Cleaning Referrals | Earn 10% Commission | The Florida Maid',
   description: 'Earn 10% commission every time your referral books a cleaning (from $49/hr). Recurring income, fast payouts via Zelle or Apple Cash. (954) 710-3636',
   alternates: { canonical: 'https://www.thefloridamaid.com/get-paid-for-cleaning-referrals-every-time-they-are-serviced' },
   openGraph: {
-    title: 'Get Paid for Cleaning Referrals | The Florida Maid Cleaning Service Cleaning Service',
+    title: 'Get Paid for Cleaning Referrals | The Florida Maid',
     description: 'Earn 10% commission every time someone you refer books a cleaning. Recurring income, fast payouts.',
     url: 'https://www.thefloridamaid.com/get-paid-for-cleaning-referrals-every-time-they-are-serviced',
   },
@@ -45,7 +45,7 @@ export default function ReferralPage() {
             Get Paid for Cleaning Referrals
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl leading-relaxed">
-            Earn 10% commission every time someone you refer books a cleaning with The Florida Maid Cleaning Service Cleaning Service. No limit on referrals. Recurring income for as long as they stay a customer.
+            Earn 10% commission every time someone you refer books a cleaning with The Florida Maid. No limit on referrals. Recurring income for as long as they stay a customer.
           </p>
         </div>
       </section>

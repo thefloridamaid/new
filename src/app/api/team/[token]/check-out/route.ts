@@ -1,13 +1,20 @@
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { sendEmail } from '@/lib/email'
+import { emailAdmins } from '@/lib/admin-contacts'
 import { referralCommissionEmail } from '@/lib/email-templates'
 import { geocodeAddress, calculateDistance, MAX_DISTANCE_MILES } from '@/lib/geo'
 import { notify } from '@/lib/notify'
 import { sendPushToClient } from '@/lib/push'
+import { parseTimestamp } from '@/lib/dates'
 
-// Round up to nearest half hour: 2.25 → 2.5, 2.1 → 2.5, 2.75 → 3.0
-const roundToHalfHour = (hours: number) => Math.ceil(hours * 2) / 2
+// Round to half hour with 10-min grace: 3:09 → 3.0hrs, 3:10 → 3.5hrs
+const roundToHalfHour = (hours: number) => {
+  const totalMinutes = hours * 60
+  const halfHours = Math.floor(totalMinutes / 30)
+  const remainder = totalMinutes - halfHours * 30
+  return remainder >= 10 ? (halfHours + 1) * 0.5 : halfHours * 0.5
+}
 
 export async function POST(request: Request, { params }: { params: Promise<{ token: string }> }) {
   const { token } = await params
@@ -25,8 +32,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ tok
 
   // Calculate actual hours worked (rounded to half hour)
   const checkOutTime = new Date()
-  const ciStr = booking.check_in_time as string | null
-  const checkInTime = ciStr ? new Date(ciStr.endsWith('Z') ? ciStr : ciStr + 'Z') : null
+  const checkInTime = parseTimestamp(booking.check_in_time as string)
   let actualHours = null
   let cleanerPay = null
   let updatedPrice = booking.price // Keep original if no check-in
@@ -98,8 +104,28 @@ export async function POST(request: Request, { params }: { params: Promise<{ tok
 
   // Push to client
   if (data.client_id) {
-    sendPushToClient(data.client_id, 'Cleaning complete!', `${data.cleaners?.name} has finished your cleaning`, '/book/dashboard').catch(() => {})
+    sendPushToClient(data.client_id, 'Cleaning complete!', `${data.cleaners?.name} has finished your cleaning`, '/clients/dashboard').catch(() => {})
   }
+
+  // Auto-text client: job complete with payment info (DISABLED — enable when ready)
+  // if (data.clients?.phone) {
+  //   const clientFirst = data.clients.name?.split(' ')[0] || 'there'
+  //   const paymentMsg = [
+  //     `Hi ${clientFirst}! Your cleaning is complete — ${actualHours}hrs.`,
+  //     `Total due: $${clientTotal}`,
+  //     ``,
+  //     `Pay via:`,
+  //     `Zelle: hi@thefloridamaid.com`,
+  //     `Apple Pay: (954) 710-3636`,
+  //     ``,
+  //     `Thank you for choosing The Florida Maid! We appreciate you.`,
+  //   ].join('\n')
+  //   sendSMS(
+  //     data.clients.phone.startsWith('+') ? data.clients.phone : `+1${data.clients.phone.replace(/\D/g, '')}`,
+  //     paymentMsg,
+  //     { skipConsent: false, smsType: 'check_out' }
+  //   ).catch(() => {})
+  // }
 
   // Send email notification to admin
   const cleanerRate = data.cleaners?.hourly_rate || booking.cleaner_pay_rate || 25
@@ -142,9 +168,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ tok
       </div>
     </div>
   `
-  if (process.env.ADMIN_EMAIL) {
-    await sendEmail(process.env.ADMIN_EMAIL, `Job Done: ${data.clients?.name} • Collect $${clientTotal} → Pay $${cleanerPayAmount}`, jobCompleteEmail)
-  }
+  await emailAdmins(`Job Done: ${data.clients?.name} • Collect $${clientTotal} → Pay $${cleanerPayAmount}`, jobCompleteEmail)
 
   // ===== REFERRAL COMMISSION =====
   // Check if client has a referrer

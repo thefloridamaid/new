@@ -10,18 +10,18 @@
   // session_id: per-browser session (resets when localStorage clears)
   // visitor_id: persistent across sessions via cookie fallback
   // session_id resets per browser session (tab close = new session)
-  var s;try{s=sessionStorage.getItem('nycmaid_sid');}catch(e){}
+  var s;try{s=sessionStorage.getItem('flmaid_sid');}catch(e){}
   s=s||Math.random().toString(36).substr(2,9);
-  try{sessionStorage.setItem('nycmaid_sid',s);}catch(e){}
+  try{sessionStorage.setItem('flmaid_sid',s);}catch(e){}
 
   // Persistent visitor ID — survives localStorage clears via cookie
-  var vid;try{vid=localStorage.getItem('nycmaid_vid');}catch(e){}
+  var vid;try{vid=localStorage.getItem('flmaid_vid');}catch(e){}
   if(!vid){
-    try{var m=document.cookie.match(/nycmaid_vid=([^;]+)/);}catch(e){var m=null;}
+    try{var m=document.cookie.match(/flmaid_vid=([^;]+)/);}catch(e){var m=null;}
     vid=m?m[1]:Math.random().toString(36).substr(2,12);
-    try{localStorage.setItem('nycmaid_vid',vid);}catch(e){}
+    try{localStorage.setItem('flmaid_vid',vid);}catch(e){}
   }
-  try{document.cookie='nycmaid_vid='+vid+';max-age=31536000;path=/;SameSite=Lax';}catch(e){}
+  try{document.cookie='flmaid_vid='+vid+';max-age=31536000;path=/;SameSite=Lax';}catch(e){}
 
   var start=Date.now(),maxScroll=0,engaged=false,sent={},ctaSent={};
   var activeTime=0,lastActive=Date.now(),tabHidden=false;
@@ -42,7 +42,7 @@
     utm_medium:u.get('utm_medium'),
     utm_campaign:u.get('utm_campaign')
   };
-  var endpoint='https://www.thenycmaid.com/api/track';
+  var endpoint='https://www.thefloridamaid.com/api/track';
 
   // ── Reliable send: beacon → fetch → pixel fallback ──
   function track(action,extra){

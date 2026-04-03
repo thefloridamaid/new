@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { protectAdminAPI } from '@/lib/auth'
+import { geocodeCleaner } from '@/lib/geo'
 
 export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
   // Protect admin route
@@ -29,13 +30,21 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
       unavailable_dates: futureDates,
       pin: body.pin ?? undefined,
       hourly_rate: body.hourly_rate ?? undefined,
-      active: body.active ?? undefined
+      active: body.active ?? undefined,
+      home_by_time: body.home_by_time ?? undefined,
+      max_jobs_per_day: body.max_jobs_per_day ?? undefined,
+      service_zones: body.service_zones ?? undefined,
+      has_car: body.has_car ?? undefined,
     })
     .eq('id', id)
     .select()
     .single()
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+
+  // Re-geocode if address changed
+  if (body.address) geocodeCleaner(id, body.address).catch(() => {})
+
   return NextResponse.json(data)
 }
 

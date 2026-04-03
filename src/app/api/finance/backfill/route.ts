@@ -2,8 +2,13 @@ import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { protectAdminAPI } from '@/lib/auth'
 
-// Round up to nearest half hour
-const roundToHalfHour = (hours: number) => Math.ceil(hours * 2) / 2
+// Round to half hour with 10-min grace: 3:09 → 3.0hrs, 3:10 → 3.5hrs
+const roundToHalfHour = (hours: number) => {
+  const totalMinutes = hours * 60
+  const halfHours = Math.floor(totalMinutes / 30)
+  const remainder = totalMinutes - halfHours * 30
+  return remainder >= 10 ? (halfHours + 1) * 0.5 : halfHours * 0.5
+}
 
 export async function POST() {
   const authError = await protectAdminAPI()

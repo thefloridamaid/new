@@ -28,7 +28,7 @@ export function formatEmail(email: string): string {
 // Format address - capitalize properly
 export function formatAddress(address: string): string {
   // Common abbreviations to keep uppercase
-  const abbrevs = ['NY', 'NYC', 'NJ', 'CT', 'ST', 'AVE', 'BLVD', 'DR', 'LN', 'RD', 'PL', 'APT', 'FL']
+  const abbrevs = ['FL', 'ST', 'AVE', 'BLVD', 'DR', 'LN', 'RD', 'PL', 'APT', 'NE', 'NW', 'SE', 'SW']
   
   return address
     .split(' ')

@@ -15,14 +15,14 @@ export const metadata: Metadata = {
   title: { absolute: title },
   description,
   alternates: { canonical: url },
-  openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid Cleaning Service Cleaning Service', locale: 'en_US' },
+  openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid', locale: 'en_US' },
   twitter: { card: 'summary_large_image', title, description },
   other: { 'geo.region': 'US-FL', 'geo.placename': 'Florida', 'geo.position': '25.7617;-80.1918', 'ICBM': '25.7617, -80.1918' },
 }
 
 const contactFaqs = [
   { question: 'What\'s the fastest way to get a quote?', answer: 'Text (954) 710-3636 with your address, home size (bedrooms/bathrooms), and what type of cleaning you need. Most quotes are delivered within 15 minutes.' },
-  { question: 'Do I need to call to book, or can I text?', answer: 'Texting is our preferred method — it\'s faster for both of us. You can also call, email hi@thefloridamaid.com, or book online at thefloridamaid.com/book/new.' },
+  { question: 'Do I need to call to book, or can I text?', answer: 'Texting is our preferred method — it\'s faster for both of us. You can also call, email hi@thefloridamaid.com, or book online at thefloridamaid.com/clients/new.' },
   { question: 'What information do you need for a quote?', answer: 'Your address (or neighborhood), number of bedrooms and bathrooms, the type of cleaning you need (regular, deep, move-in/out, etc.), and your preferred date. That\'s it — we\'ll handle the rest.' },
   { question: 'How quickly can you schedule a cleaning?', answer: 'Usually within 24–48 hours. For same-day service, text us before 10am for the best chance of afternoon availability. Same-day is $100/hr.' },
   { question: 'What areas do you serve?', answer: 'All of Miami-Dade, Broward, Palm Beach, Tampa Bay (including St. Petersburg, Clearwater, Brandon), and Orlando (Winter Park, Kissimmee, Lake Nona, Dr. Phillips). Same rates everywhere.' },
@@ -108,9 +108,9 @@ export default function ContactPage() {
                 <span className="text-[#CC6222] text-2xl">&#128197;</span>
               </div>
               <h2 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-2">Book Online</h2>
-              <p className="text-[#CC6222] text-lg font-bold">thefloridamaid.com/book</p>
+              <p className="text-[#CC6222] text-lg font-bold">thefloridamaid.com/clients</p>
               <p className="text-gray-500 text-sm mt-3">Submit your details online and we&apos;ll confirm your appointment within the hour.</p>
-              <Link href="/book/new" target="_blank" className="inline-block mt-5 bg-[#CC6222] text-white px-6 py-3 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#CC6222]/90 transition-colors">
+              <Link href="/clients/new" target="_blank" className="inline-block mt-5 bg-[#CC6222] text-white px-6 py-3 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#CC6222]/90 transition-colors">
                 Book Now
               </Link>
             </div>

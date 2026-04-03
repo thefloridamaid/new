@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: content.title,
     description: content.metaDescription,
     url: 'https://www.thefloridamaid.com',
-    siteName: 'The Florida Maid Cleaning Service Cleaning Service',
+    siteName: 'The Florida Maid',
     type: 'website',
     locale: 'en_US',
   },
@@ -435,7 +435,7 @@ export default function HomePage() {
                 <p className="font-[family-name:var(--font-bebas)] text-2xl text-black tracking-wide">$75–$120/hr</p>
               </div>
               <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-4">
-                <p className="text-xs text-[#34D399] font-semibold tracking-wide uppercase mb-1">The Florida Maid Cleaning Service Cleaning Service</p>
+                <p className="text-xs text-[#34D399] font-semibold tracking-wide uppercase mb-1">The Florida Maid</p>
                 <p className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide">$49–$65/hr</p>
               </div>
               <div className="bg-gray-50 rounded-xl p-4">
@@ -518,7 +518,7 @@ export default function HomePage() {
                   { name: 'Courtney Gamble', time: '6 months ago', text: "Best cleaning service I've used in the 20 years I've lived in Florida! Consistently efficient, thorough...", initial: 'C', color: 'bg-purple-400' },
                   { name: 'Shilpa Ray', time: '6 months ago', text: 'Perfect for post move deep cleaning. Appliances were spotless. Looked brand new.', initial: 'S', color: 'bg-blue-400' },
                   { name: 'Greg Farr', time: '6 months ago', text: 'The very best service every time, amazing!!', initial: 'G', color: 'bg-indigo-400' },
-                  { name: 'Maria Lina', time: '6 months ago', text: 'The Florida Maid Cleaning Service Cleaning Service is so efficient and professional! I know I can always count on them.', initial: 'M', color: 'bg-rose-400' },
+                  { name: 'Maria Lina', time: '6 months ago', text: 'The Florida Maid is so efficient and professional! I know I can always count on them.', initial: 'M', color: 'bg-rose-400' },
                   { name: 'Timothy Wojcik', time: '7 months ago', text: 'Excellent service and a great price! Prompt and thorough, would highly recommend!', initial: 'T', color: 'bg-amber-500' },
                   { name: 'Jenni Martinez', time: '7 months ago', text: '5 Stars \u2013 Absolutely the Best Cleaning Service in Florida! I gotta say, The Florida Maid Cleaning Service is truly the best.', initial: 'J', color: 'bg-emerald-500' },
                   { name: 'Jenna M', time: '7 months ago', text: 'After trying three different cleaning companies in Florida, The Florida Maid Cleaning Service is hands down the most affordable and thorough.', initial: 'J', color: 'bg-sky-500' },
@@ -629,7 +629,7 @@ export default function HomePage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
           <p className="text-xs font-semibold text-black tracking-[0.25em] uppercase mb-3 text-center">What Makes The Florida Maid Cleaning Service Different From Other Florida Cleaning Services</p>
-          <h2 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-[#CC6222] tracking-wide text-center mb-4">Why Clients Choose The Florida Maid Cleaning Service Cleaning Service Over Every Other Cleaning Company</h2>
+          <h2 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-[#CC6222] tracking-wide text-center mb-4">Why Clients Choose The Florida Maid Over Every Other Cleaning Company</h2>
           <p className="text-black text-center max-w-3xl mx-auto mb-14">
             No money upfront — you pay only after your cleaning is complete. Flat <Link href="/updated-florida-maid-service-industry-pricing" className="text-[#CC6222] underline underline-offset-2">hourly pricing</Link> with no surprise fees. Experienced, professional cleaners — not random gig workers. <Link href="/services/weekly-maid-service-in-florida" className="text-[#CC6222] underline underline-offset-2">Weekly</Link> and <Link href="/services/bi-weekly-cleaning-service-in-florida" className="text-[#CC6222] underline underline-offset-2">bi-weekly recurring service</Link> available. No contracts — stay because you&apos;re happy.
           </p>

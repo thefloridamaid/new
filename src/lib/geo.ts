@@ -18,6 +18,29 @@ export async function geocodeAddress(address: string): Promise<{ lat: number; ln
   return null
 }
 
+export function estimateTransitMinutes(distanceMiles: number): number {
+  if (distanceMiles < 0.3) return 5
+  return Math.round(10 + distanceMiles * 5)
+}
+
+export async function geocodeClient(clientId: string, address: string): Promise<{ lat: number; lng: number } | null> {
+  const { supabaseAdmin } = await import('@/lib/supabase')
+  const coords = await geocodeAddress(address)
+  if (coords) {
+    await supabaseAdmin.from('clients').update({ latitude: coords.lat, longitude: coords.lng }).eq('id', clientId)
+  }
+  return coords
+}
+
+export async function geocodeCleaner(cleanerId: string, address: string): Promise<{ lat: number; lng: number } | null> {
+  const { supabaseAdmin } = await import('@/lib/supabase')
+  const coords = await geocodeAddress(address)
+  if (coords) {
+    await supabaseAdmin.from('cleaners').update({ home_latitude: coords.lat, home_longitude: coords.lng }).eq('id', cleanerId)
+  }
+  return coords
+}
+
 export function calculateDistance(
   lat1: number, lng1: number,
   lat2: number, lng2: number

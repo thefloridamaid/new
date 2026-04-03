@@ -615,7 +615,7 @@ export function howToBookSchema() {
       {
         '@type': 'HowToStep',
         name: 'Contact Us',
-        text: 'Call (954) 710-3636, text us, or book online at thefloridamaid.com/book/new',
+        text: 'Call (954) 710-3636, text us, or book online at thefloridamaid.com/clients/new',
         url: `${BUSINESS.url}/book/new`,
         position: 1,
       },

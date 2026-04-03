@@ -12,7 +12,7 @@ interface FeedbackItem {
 }
 
 export default function FeedbackPage() {
-  useEffect(() => { document.title = 'Feedback | The Florida Maid Cleaning Service Cleaning Service' }, [])
+  useEffect(() => { document.title = 'Feedback | The Florida Maid' }, [])
   const [feedback, setFeedback] = useState<FeedbackItem[]>([])
   const [totalCount, setTotalCount] = useState(0)
   const [unreadCount, setUnreadCount] = useState(0)

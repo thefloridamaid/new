@@ -89,7 +89,7 @@ export default function CleanerJobsMap({ jobs }: Props) {
     geocodeAll()
   }, [jobs])
 
-  const center: [number, number] = [40.78, -73.97]
+  const center: [number, number] = [27.99, -81.76]
 
   return (
     <div className="relative h-[250px] rounded-lg overflow-hidden">

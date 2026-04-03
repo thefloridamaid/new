@@ -51,7 +51,7 @@ export default function ReferralSignupForm() {
   }
 
   const copyLink = () => {
-    navigator.clipboard.writeText(`https://www.thefloridamaid.com/book?ref=${refCode}`)
+    navigator.clipboard.writeText(`https://www.thefloridamaid.com/clients?ref=${refCode}`)
     alert('Link copied!')
   }
 
@@ -64,7 +64,7 @@ export default function ReferralSignupForm() {
           </svg>
         </div>
         <h3 className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide mb-2">You&apos;re In!</h3>
-        <p className="text-gray-600 mb-6">Welcome to The Florida Maid Cleaning Service Cleaning Service referral program.</p>
+        <p className="text-gray-600 mb-6">Welcome to The Florida Maid referral program.</p>
 
         <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-6 mb-6">
           <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-2">Your Referral Code</p>
@@ -73,7 +73,7 @@ export default function ReferralSignupForm() {
 
         <div className="bg-gray-50 rounded-xl p-6 mb-6">
           <p className="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase mb-2">Your Referral Link</p>
-          <p className="text-sm font-mono text-gray-700 break-all mb-3">https://www.thefloridamaid.com/book?ref={refCode}</p>
+          <p className="text-sm font-mono text-gray-700 break-all mb-3">https://www.thefloridamaid.com/clients?ref={refCode}</p>
           <button
             onClick={copyLink}
             className="bg-[#34D399] text-white px-6 py-2.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors"
@@ -152,7 +152,7 @@ export default function ReferralSignupForm() {
             value={form.phone}
             onChange={(e) => setForm({ ...form, phone: e.target.value })}
             className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 focus:border-[#34D399] focus:ring-1 focus:ring-[#34D399] outline-none"
-            placeholder="212-555-1234"
+            placeholder="954-555-1234"
           />
         </div>
 
@@ -185,7 +185,7 @@ export default function ReferralSignupForm() {
         <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
           <label className="flex items-start gap-3 cursor-pointer text-sm text-gray-600 leading-relaxed">
             <input type="checkbox" name="sms_consent" required className="mt-1 min-w-[18px] min-h-[18px]" />
-            <span>By checking this box, I consent to receive transactional text messages from <strong>The Florida Maid Cleaning Service Cleaning Service</strong> for appointment confirmations, reminders, and customer support. Reply STOP to opt out. Reply HELP for help. Msg frequency may vary. Msg &amp; data rates may apply. <a href="/privacy-policy" className="text-[#CC6222] underline underline-offset-2">Privacy Policy</a> | <a href="/terms-conditions" className="text-[#CC6222] underline underline-offset-2">Terms &amp; Conditions</a></span>
+            <span>By checking this box, I consent to receive transactional text messages from <strong>The Florida Maid</strong> for appointment confirmations, reminders, and customer support. Reply STOP to opt out. Reply HELP for help. Msg frequency may vary. Msg &amp; data rates may apply. <a href="/privacy-policy" className="text-[#CC6222] underline underline-offset-2">Privacy Policy</a> | <a href="/terms-conditions" className="text-[#CC6222] underline underline-offset-2">Terms &amp; Conditions</a></span>
           </label>
         </div>
 

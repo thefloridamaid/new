@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
-import { createSessionCookie } from '@/lib/auth'
-import { sendEmail } from '@/lib/email'
+import { createSessionCookie, hashPassword } from '@/lib/auth'
+import { supabaseAdmin } from '@/lib/supabase'
+import { emailAdmins } from '@/lib/admin-contacts'
 import { notify } from '@/lib/notify'
 
 // In-memory rate limiting
@@ -28,39 +29,89 @@ export async function POST(request: Request) {
 
     const adminPassword = (process.env.ADMIN_PASSWORD || '').trim()
 
+    // Try user-based login first (email + password)
+    if (email && password) {
+      const passwordHash = hashPassword(password)
+      const { data: user } = await supabaseAdmin
+        .from('admin_users')
+        .select('id, email, name, role, status')
+        .eq('email', email.toLowerCase().trim())
+        .eq('password_hash', passwordHash)
+        .single()
+
+      if (user) {
+        if (user.status === 'disabled') {
+          return NextResponse.json({ error: 'Account disabled. Contact your administrator.' }, { status: 403 })
+        }
+
+        loginAttempts.delete(ip)
+
+        // Update last_login
+        await supabaseAdmin
+          .from('admin_users')
+          .update({ last_login: new Date().toISOString() })
+          .eq('id', user.id)
+
+        // Set session cookie with userId
+        const session = createSessionCookie(user.id)
+        const cookieStore = await cookies()
+        cookieStore.set('admin_session', session, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'strict',
+          maxAge: 60 * 60 * 24,
+          path: '/'
+        })
+        // Role cookie for middleware page-level enforcement (not httpOnly — middleware reads it)
+        cookieStore.set('admin_role', user.role, {
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'strict',
+          maxAge: 60 * 60 * 24,
+          path: '/'
+        })
+
+        const timeET = new Date().toLocaleString('en-US')
+        await notify({ type: 'security', title: 'Admin Login', message: `${user.name} (${user.role}) logged in from ${ip} at ${timeET}` })
+
+        return NextResponse.json({ success: true, user: { name: user.name, role: user.role } })
+      }
+    }
+
+    // Fallback: legacy PIN-based login
     if (password === adminPassword) {
       loginAttempts.delete(ip)
 
-      // Set signed session cookie
       const session = createSessionCookie()
       const cookieStore = await cookies()
       cookieStore.set('admin_session', session, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
-        maxAge: 60 * 60 * 24, // 24 hours
+        maxAge: 60 * 60 * 24,
+        path: '/'
+      })
+      cookieStore.set('admin_role', 'owner', {
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict',
+        maxAge: 60 * 60 * 24,
         path: '/'
       })
 
-      // Log successful login + notify
       const timeET = new Date().toLocaleString('en-US')
-      await notify({ type: 'security', title: 'Admin Login', message: `Login from ${ip} at ${timeET}` })
+      await notify({ type: 'security', title: 'Admin Login', message: `PIN login from ${ip} at ${timeET}` })
 
-      // Email alert
-      if (process.env.ADMIN_EMAIL) {
-        const html = `
-          <div style="font-family: sans-serif; max-width: 400px;">
-            <h3 style="color: #000;">Admin Login Alert</h3>
-            <p><strong>IP:</strong> ${ip}</p>
-            <p><strong>Time:</strong> ${timeET}</p>
-            <p><strong>Device:</strong> ${ua.substring(0, 100)}</p>
-            <p style="color: #666; font-size: 12px;">If this wasn't you, change ADMIN_PASSWORD immediately.</p>
-          </div>
-        `
-        try { await sendEmail(process.env.ADMIN_EMAIL, 'Admin Login Alert', html) } catch {}
-      }
+      const html = `
+        <div style="font-family: sans-serif; max-width: 400px;">
+          <h3 style="color: #000;">Admin Login Alert</h3>
+          <p><strong>IP:</strong> ${ip}</p>
+          <p><strong>Time:</strong> ${timeET}</p>
+          <p><strong>Device:</strong> ${ua.substring(0, 100)}</p>
+          <p style="color: #666; font-size: 12px;">If this wasn't you, change ADMIN_PASSWORD immediately.</p>
+        </div>
+      `
+      try { await emailAdmins('Admin Login Alert', html, ['owner']) } catch {}
 
-      return NextResponse.json({ success: true })
+      return NextResponse.json({ success: true, user: { name: 'Admin', role: 'owner' } })
     }
 
     // Track failed attempt
@@ -68,7 +119,6 @@ export async function POST(request: Request) {
     const newCount = currentAttempts.count + 1
     loginAttempts.set(ip, { count: newCount, lastAttempt: now })
 
-    // Log failed attempts (3+ only to avoid noise)
     if (newCount >= 3) {
       await notify({ type: 'security', title: 'Failed Login', message: `${newCount} failed login attempts from ${ip}` })
     }

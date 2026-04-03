@@ -80,7 +80,7 @@ export async function POST(request: Request) {
       // Push notification to client
       const bookingDate = new Date(first.start_time).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
       if (first.client_id) {
-        sendPushToClient(first.client_id, 'Booking Confirmed', `Your cleaning on ${bookingDate} is confirmed`, '/book/dashboard').catch(() => {})
+        sendPushToClient(first.client_id, 'Booking Confirmed', `Your cleaning on ${bookingDate} is confirmed`, '/clients/dashboard').catch(() => {})
       }
       // Cleaner notification via unified dispatch
       if (first.cleaner_id) {

@@ -72,7 +72,7 @@ export default function MarketingNav() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-[72px]">
             <Link href="/" className="flex-shrink-0">
-              <Image src="/logo.png" alt="The Florida Maid Cleaning Service Cleaning Service" width={160} height={48} className="h-10 sm:h-12 w-auto" priority />
+              <Image src="/logo.png" alt="The Florida Maid" width={160} height={48} className="h-10 sm:h-12 w-auto" priority />
             </Link>
 
             <nav className="hidden lg:flex items-center justify-center flex-1 gap-8 mx-8">
@@ -116,13 +116,13 @@ export default function MarketingNav() {
               </div>
             </nav>
 
-            <a href="/book/new" target="_blank" className="hidden lg:inline-block bg-[#34D399] text-white px-6 py-2.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors whitespace-nowrap">
+            <a href="/clients/new" target="_blank" className="hidden lg:inline-block bg-[#34D399] text-white px-6 py-2.5 rounded-md font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors whitespace-nowrap">
               Book Yourself in 30 Sec
             </a>
 
             {/* Mobile hamburger */}
             <div className="lg:hidden flex items-center gap-3">
-              <a href="/book/new" target="_blank" className="bg-[#34D399] text-white px-4 py-2 rounded-md font-bold text-xs tracking-widest uppercase">
+              <a href="/clients/new" target="_blank" className="bg-[#34D399] text-white px-4 py-2 rounded-md font-bold text-xs tracking-widest uppercase">
                 Book in 30 Sec
               </a>
               <button onClick={() => setMobileOpen(!mobileOpen)} aria-label="Open navigation menu" aria-expanded={mobileOpen} className="p-2 text-[#CC6222]">
@@ -145,7 +145,7 @@ export default function MarketingNav() {
           {/* White header with logo + close */}
           <div className="bg-white flex items-center justify-between px-5 py-4">
             <Link href="/" onClick={closeMenu}>
-              <Image src="/logo.png" alt="The Florida Maid Cleaning Service Cleaning Service" width={140} height={42} className="h-9 w-auto" />
+              <Image src="/logo.png" alt="The Florida Maid" width={140} height={42} className="h-9 w-auto" />
             </Link>
             <button onClick={closeMenu} aria-label="Close navigation menu" className="p-2 text-[#CC6222]">
               <svg aria-hidden="true" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -191,7 +191,7 @@ export default function MarketingNav() {
               )}
 
               <div className="border-t border-white/10 mt-4 pt-4 space-y-1">
-                <Link href="/book/new" target="_blank" onClick={closeMenu} className="block py-3 text-[#34D399] font-medium">Book Online</Link>
+                <Link href="/clients/new" target="_blank" onClick={closeMenu} className="block py-3 text-[#34D399] font-medium">Book Online</Link>
                 <Link href="/get-paid-for-cleaning-referrals-every-time-they-are-serviced" onClick={closeMenu} className="block py-3 text-[#34D399] font-medium">Referral Program</Link>
               </div>
 

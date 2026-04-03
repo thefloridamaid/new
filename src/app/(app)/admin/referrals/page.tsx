@@ -66,7 +66,7 @@ interface Analytics {
 }
 
 export default function ReferralsPage() {
-  useEffect(() => { document.title = 'Referrals | The Florida Maid Cleaning Service Cleaning Service' }, []);
+  useEffect(() => { document.title = 'Referrals | The Florida Maid' }, []);
   const [referrers, setReferrers] = useState<Referrer[]>([])
   const [commissions, setCommissions] = useState<Commission[]>([])
   const [analytics, setAnalytics] = useState<Analytics | null>(null)
@@ -137,7 +137,7 @@ export default function ReferralsPage() {
   }
 
   const copyLink = (refCode: string) => {
-    navigator.clipboard.writeText(`https://www.thefloridamaid.com/book?ref=${refCode}`)
+    navigator.clipboard.writeText(`https://www.thefloridamaid.com/clients?ref=${refCode}`)
     alert('Link copied!')
   }
 
@@ -460,7 +460,7 @@ export default function ReferralsPage() {
                 </div>
                 <div>
                   <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Phone</label>
-                  <input type="tel" value={newReferrer.phone} onChange={(e) => setNewReferrer({ ...newReferrer, phone: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#CC6222] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition" placeholder="212-555-1234" />
+                  <input type="tel" value={newReferrer.phone} onChange={(e) => setNewReferrer({ ...newReferrer, phone: e.target.value })} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-[#CC6222] focus:ring-2 focus:ring-[#34D399] focus:border-[#34D399] outline-none transition" placeholder="954-555-1234" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium uppercase tracking-wide text-gray-500 mb-1.5">Zelle Email/Phone</label>

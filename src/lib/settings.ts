@@ -51,12 +51,12 @@ export interface Settings {
 }
 
 export const DEFAULT_SETTINGS: Omit<Settings, 'id' | 'updated_at'> = {
-  business_name: 'The Florida Maid Cleaning Service Cleaning Service',
+  business_name: 'The Florida Maid Cleaning Service',
   business_phone: '(954) 710-3636',
   business_email: 'hi@thefloridamaid.com',
   business_website: 'https://www.thefloridamaid.com',
   admin_email: 'hi@thefloridamaid.com',
-  email_from_name: 'The Florida Maid Cleaning Service Cleaning Service',
+  email_from_name: 'The Florida Maid Cleaning Service',
   email_from_address: 'hi@thefloridamaid.com',
   service_types: [
     { name: 'Standard Cleaning', default_hours: 2, active: true },

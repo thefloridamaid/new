@@ -5,7 +5,7 @@ import { sendEmail } from '@/lib/email'
 import { sendSMS } from '@/lib/sms'
 import { smsNewReferrer } from '@/lib/sms-templates'
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'hi@thefloridamaid.com'
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'thefloridamaid@gmail.com'
 
 // Rate limiting for public lookups: 10 per 10 minutes per IP
 const rateLimits = new Map<string, { count: number; resetAt: number }>()
@@ -169,7 +169,7 @@ export async function POST(request: Request) {
     const baseCode = name.toUpperCase().replace(/[^A-Z]/g, '').slice(0, 4)
     const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0')
     const ref_code = baseCode + random
-    const referralLink = `https://www.thefloridamaid.com/book?ref=${ref_code}`
+    const referralLink = `https://www.thefloridamaid.com/clients?ref=${ref_code}`
     const dashboardLink = `https://www.thefloridamaid.com/referral-dashboard?code=${ref_code}`
 
     const { data, error } = await supabaseAdmin
@@ -219,7 +219,7 @@ export async function POST(request: Request) {
             </div>
             <div class="content">
               <p>Hey ${name},</p>
-              <p>You're officially part of <strong>The Florida Maid Cleaning Service Cleaning Service</strong> referral program! We're excited to have you on board.</p>
+              <p>You're officially part of <strong>The Florida Maid</strong> referral program! We're excited to have you on board.</p>
               
               <div class="highlight-box">
                 <p style="margin: 0 0 10px 0; color: #666;">Your Unique Referral Code</p>
@@ -254,10 +254,10 @@ export async function POST(request: Request) {
               
               <p>Questions? Just reply to this email - we're here to help!</p>
               <p>Let's get those referrals rolling! 🚀</p>
-              <p>— The Florida Maid Cleaning Service Team</p>
+              <p>— The Florida Maid Team</p>
             </div>
             <div class="footer">
-              <p>The Florida Maid Cleaning Service | Professional Cleaning Services</p>
+              <p>The Florida Maid | Professional Cleaning Services</p>
               <p>Florida</p>
             </div>
           </div>
@@ -267,7 +267,7 @@ export async function POST(request: Request) {
 
       await sendEmail(
         email.toLowerCase(),
-        `Welcome to The Florida Maid Cleaning Service Referral Program, ${name}! 🎉`,
+        `Welcome to The Florida Maid Referral Program, ${name}! 🎉`,
         referrerEmailHtml
       )
 

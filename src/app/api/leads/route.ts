@@ -18,6 +18,20 @@ export async function GET() {
 
   const blockedSet = new Set((blockedRows || []).map(r => r.domain.toLowerCase()))
 
+  // Pages that are NOT potential clients — job seekers, team, existing clients, legal, admin
+  const NON_LEAD_PREFIXES = [
+    '/careers', '/available-nyc-maid-jobs', '/apply',
+    '/team', '/admin',
+    '/clients/collect', '/clients/dashboard',
+    '/privacy-policy', '/terms-conditions', '/refund-policy',
+    '/unsubscribe',
+  ]
+  const isLeadPage = (page: string | null) => {
+    if (!page) return true // no page recorded = assume lead
+    const p = page.toLowerCase()
+    return !NON_LEAD_PREFIXES.some(prefix => p.startsWith(prefix))
+  }
+
   const isCleanVisit = (ref: string | null) => {
     if (!ref || ref === 'direct') return false
     const r = ref.toLowerCase()
@@ -29,22 +43,22 @@ export async function GET() {
   // Site list stats — visits only from clean sources
   const { data: clicks } = await supabaseAdmin
     .from('lead_clicks')
-    .select('domain, action, referrer, final_time, device, final_scroll, engaged_30s, load_time_ms, utm_source, utm_medium, utm_campaign, active_time, cta_clicked, session_id')
+    .select('domain, action, referrer, final_time, device, final_scroll, engaged_30s, load_time_ms, utm_source, utm_medium, utm_campaign, active_time, cta_clicked, session_id, page')
     .in('domain', allVariants)
     .in('action', VALID_ACTIONS)
+    .limit(50000)
 
-  // Build set of clean visit session_ids first
+  // Build set of clean visit session_ids first (clean referrer + lead page)
   const cleanSessionIds = new Set<string>()
   for (const c of (clicks || [])) {
-    if (c.action === 'visit' && c.session_id && isCleanVisit(c.referrer)) {
+    if (c.action === 'visit' && c.session_id && isCleanVisit(c.referrer) && isLeadPage(c.page)) {
       cleanSessionIds.add(c.session_id)
     }
   }
 
-  // Now filter: visits must be clean, CTAs must belong to a clean session
+  // Now filter: visits must be clean + lead page, CTAs keep their own filter
   const cleanClicks = (clicks || []).filter(c => {
-    if (c.action === 'visit') return isCleanVisit(c.referrer)
-    // CTAs only count if their session had a clean visit
+    if (c.action === 'visit') return isCleanVisit(c.referrer) && isLeadPage(c.page)
     return c.session_id && cleanSessionIds.has(c.session_id)
   })
 
@@ -77,10 +91,18 @@ export async function GET() {
     }
   }
 
+  // Track seen session:domain:action combos to dedup visits and CTAs per session
+  const seenDomainSessions = new Set<string>()
+
   for (const c of cleanClicks) {
     const bare = c.domain?.replace(/^www\./, '') || ''
     const s = stats[bare]
     if (!s) continue
+
+    // Dedup visits and CTAs by session_id per domain
+    const dedupKey = `${c.session_id || ''}:${bare}:${c.action}`
+    if (c.session_id && seenDomainSessions.has(dedupKey)) continue
+    if (c.session_id) seenDomainSessions.add(dedupKey)
 
     if (c.action === 'visit') s.visits++
     if (c.action === 'call') s.calls++
@@ -134,10 +156,11 @@ export async function GET() {
   // Live feed — all valid visits, newest first (include id + manual overrides)
   const { data: feedRaw } = await supabaseAdmin
     .from('lead_clicks')
-    .select('id, domain, device, referrer, final_scroll, final_time, active_time, engaged_30s, load_time_ms, cta_clicked, utm_source, utm_medium, utm_campaign, created_at, session_id, manual_conversion, manual_sale')
+    .select('id, domain, device, referrer, final_scroll, final_time, active_time, engaged_30s, load_time_ms, cta_clicked, utm_source, utm_medium, utm_campaign, created_at, session_id, manual_conversion, manual_sale, page')
     .in('domain', allVariants)
     .eq('action', 'visit')
     .order('created_at', { ascending: false })
+    .limit(50000)
 
   // CTA events — only from clean sessions
   const { data: ctaRaw } = await supabaseAdmin
@@ -145,20 +168,21 @@ export async function GET() {
     .select('session_id, action, domain, referrer, device, created_at')
     .in('domain', allVariants)
     .in('action', ['call', 'text', 'book'])
+    .limit(50000)
 
-  // Build session_id → CTA actions map (only clean sessions)
+  // Build session_id → CTA actions map (all sessions — a CTA is real regardless of referrer)
   const ctaMap: Record<string, string[]> = {}
   for (const c of (ctaRaw || [])) {
-    if (!c.session_id || !cleanSessionIds.has(c.session_id)) continue
+    if (!c.session_id) continue
     if (!ctaMap[c.session_id]) ctaMap[c.session_id] = []
     if (!ctaMap[c.session_id].includes(c.action)) ctaMap[c.session_id].push(c.action)
   }
 
-  // Build ctaDetails — one record per unique session_id:action pair (clean sessions only)
+  // Build ctaDetails — one record per unique session_id:action pair
   const ctaSeenKeys = new Set<string>()
   const ctaDetails: { session_id: string; action: string; domain: string; referrer: string | null; device: string; created_at: string }[] = []
   for (const c of (ctaRaw || [])) {
-    if (!c.session_id || !cleanSessionIds.has(c.session_id)) continue
+    if (!c.session_id) continue
     const key = `${c.session_id}:${c.action}`
     if (ctaSeenKeys.has(key)) continue
     ctaSeenKeys.add(key)
@@ -187,22 +211,37 @@ export async function GET() {
     saleDomains[d].push(b.created_at)
   }
 
-  const liveFeed = (feedRaw || []).filter(c => isCleanVisit(c.referrer)).map(e => {
+  // Build liveFeed — deduplicate by session_id so 1 session = 1 visitor
+  // feedRaw is ordered newest-first, so first hit per session has the best engagement data
+  const seenSessions = new Set<string>()
+  const liveFeed: {
+    id: string; domain: string; device: string; referrer: string | null
+    final_scroll: number; final_time: number; active_time: number
+    engaged_30s: boolean; load_time_ms: number; cta_clicked: boolean
+    cta_actions: string[]; manual_conversion: boolean; manual_sale: boolean
+    auto_sale: boolean; utm_source: string | null; utm_medium: string | null
+    utm_campaign: string | null; created_at: string; session_id: string | null
+    visits: number; calls: number; texts: number; books: number
+    mobile: number; desktop: number
+  }[] = []
+
+  for (const e of (feedRaw || [])) {
+    if (!isCleanVisit(e.referrer) || !isLeadPage(e.page)) continue
+    const sid = e.session_id || e.id
+    if (seenSessions.has(sid)) continue
+    seenSessions.add(sid)
+
     const bare = e.domain?.replace(/^www\./, '') || ''
     const s = stats[bare]
     const sessionCtas = e.session_id ? (ctaMap[e.session_id] || []) : []
 
-    // Auto-detect sale: visit has CTA + domain has an attributed booking after this visit
     const visitTime = new Date(e.created_at).getTime()
     let autoSale = false
     if (sessionCtas.length > 0 && saleDomains[bare]) {
-      autoSale = saleDomains[bare].some(bDate => {
-        const bookTime = new Date(bDate).getTime()
-        return bookTime >= visitTime
-      })
+      autoSale = saleDomains[bare].some(bDate => new Date(bDate).getTime() >= visitTime)
     }
 
-    return {
+    liveFeed.push({
       id: e.id,
       domain: bare,
       device: e.device,
@@ -221,18 +260,18 @@ export async function GET() {
       utm_medium: e.utm_medium || null,
       utm_campaign: e.utm_campaign || null,
       created_at: e.created_at,
+      session_id: e.session_id || null,
       visits: s?.visits || 0,
       calls: s?.calls || 0,
       texts: s?.texts || 0,
       books: s?.books || 0,
       mobile: s?.mobile || 0,
       desktop: s?.desktop || 0,
-    }
-  })
+    })
+  }
 
   const blocked = Array.from(blockedSet).sort()
 
-  // Dashboard — all numbers derived from liveFeed (single source of truth)
   const totalVisitors = liveFeed.length
   const now = new Date()
   const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime()
@@ -262,10 +301,10 @@ export async function GET() {
     if (t >= startOfLastYear && t < endOfLastYear) lastYear++
   }
 
-  // CTA stats — unique sessions from clean visitors only
-  const cleanCtaEvents = (ctaRaw || []).filter(c => c.session_id && cleanSessionIds.has(c.session_id))
-  const callSessions = new Set(cleanCtaEvents.filter(c => c.action === 'call').map(c => c.session_id))
-  const textSessions = new Set(cleanCtaEvents.filter(c => c.action === 'text').map(c => c.session_id))
+  // CTA stats — ALL unique sessions (a call is a call regardless of referrer)
+  const allCtaEvents = (ctaRaw || []).filter(c => c.session_id)
+  const callSessions = new Set(allCtaEvents.filter(c => c.action === 'call').map(c => c.session_id))
+  const textSessions = new Set(allCtaEvents.filter(c => c.action === 'text').map(c => c.session_id))
   const totalCalls = callSessions.size
   const totalTexts = textSessions.size
   // Bookings = real form submissions via /book/new only (must have session + referrer)
@@ -274,7 +313,7 @@ export async function GET() {
     .select('id, referrer, session_id, domain, device, created_at')
     .in('domain', allVariants)
     .eq('action', 'form_success')
-    .eq('page', '/book/new')
+    .eq('page', '/clients/new')
   const validBookings = (formBookings || []).filter(b => b.session_id && b.referrer && b.referrer !== 'direct')
   const totalBooks = validBookings.length
   const bookingDetails = validBookings.map(b => ({
@@ -292,41 +331,21 @@ export async function GET() {
   // Conversion % = total CTAs / total visitors
   const conversionPct = totalVisitors > 0 ? parseFloat(((totalCtas / totalVisitors) * 100).toFixed(1)) : 0
 
-  // New Sales = unique clients with completed bookings + manual sale overrides
-  const { data: completedBookings } = await supabaseAdmin
-    .from('bookings')
-    .select('client_id, service_type, price, start_time, clients(name, email, phone)')
-    .eq('status', 'completed')
-  const salesSeenClients = new Set<string>()
-  const salesDetails: { client_id: string; name: string; email: string; phone: string; service: string; price: number; date: string }[] = []
-  for (const b of (completedBookings || [])) {
-    if (salesSeenClients.has(b.client_id)) continue
-    salesSeenClients.add(b.client_id)
-    const client = b.clients as any
-    salesDetails.push({
-      client_id: b.client_id,
-      name: client?.name || '—',
-      email: client?.email || '—',
-      phone: client?.phone || '—',
-      service: b.service_type || '—',
-      price: b.price || 0,
-      date: b.start_time || '',
-    })
-  }
-  // Count manual sale overrides not already counted via completed bookings
-  const manualSaleLeads = liveFeed.filter(e => e.manual_sale && !e.auto_sale)
-  for (const e of manualSaleLeads) {
-    salesDetails.push({
-      client_id: e.id,
-      name: `Manual — ${e.domain}`,
-      email: e.referrer || '—',
-      phone: '—',
-      service: 'Manual Override',
-      price: 0,
-      date: e.created_at,
-    })
-  }
-  const totalSales = salesSeenClients.size + manualSaleLeads.length
+  // New Sales = every client is a real sale
+  const { data: allClients } = await supabaseAdmin
+    .from('clients')
+    .select('id, name, email, phone, created_at')
+    .order('created_at', { ascending: false })
+  const salesDetails = (allClients || []).map(c => ({
+    client_id: c.id,
+    name: c.name || '—',
+    email: c.email || '—',
+    phone: c.phone || '—',
+    service: '—',
+    price: 0,
+    date: c.created_at || '',
+  }))
+  const totalSales = salesDetails.length
   // Close % = sales / total CTAs
   const closePct = totalCtas > 0 ? parseFloat(((totalSales / totalCtas) * 100).toFixed(1)) : 0
 

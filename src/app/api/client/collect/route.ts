@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
-import { sendEmail } from '@/lib/email'
 import { sendSMS } from '@/lib/sms'
+import { emailAdmins } from '@/lib/admin-contacts'
 import { adminNewClientEmail } from '@/lib/email-templates'
 import { trackError } from '@/lib/error-tracking'
 import { attributeCollectForm } from '@/lib/attribution'
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json()
-    const { name, email, phone, address, notes, referrer_name, referrer_phone, src, convo_id } = body
+    const { name, email, phone, address, notes, referrer_name, referrer_phone, src, convo_id, pet_name, pet_type } = body
 
     if (!name || !phone) {
       return NextResponse.json({ error: 'Name and phone are required' }, { status: 400 })
@@ -112,6 +112,8 @@ export async function POST(request: Request) {
           referrer_id: referrerId || undefined,
           active: true,
           status: 'active',
+          ...(pet_name ? { pet_name } : {}),
+          ...(pet_type ? { pet_type } : {}),
         })
         .eq('id', existingClient.id)
         .select()
@@ -130,6 +132,8 @@ export async function POST(request: Request) {
           address: address || null,
           notes: notesValue,
           referrer_id: referrerId,
+          pet_name: pet_name || null,
+          pet_type: pet_type || null,
         })
         .select()
         .single()
@@ -141,23 +145,15 @@ export async function POST(request: Request) {
     // Dashboard notification + push
     await notify({ type: 'new_client', title: 'New Client Collected', message: name + (src ? ' • from ' + src : '') + (referralInfo ? ' (Ref: ' + referralInfo + ')' : '') + ' • via Collect Form' })
 
-    // Admin email + SMS
+    // Admin email
     try {
-      if (process.env.ADMIN_EMAIL) {
-        const clientEmail = adminNewClientEmail({
-          name, phone, email, address,
-          notes: clientNotes || undefined,
-          referral_info: referralInfo || undefined,
-          referrer_matched: !!referrerId
-        })
-        const result = await sendEmail(process.env.ADMIN_EMAIL, clientEmail.subject, clientEmail.html)
-        if (!result.success) {
-          await notify({ type: 'error', title: 'Email Failed', message: `Failed to send new-client email for ${name}: ${JSON.stringify(result.error).slice(0, 100)}` })
-        } else {
-          console.log('Collect email sent:', result.data)
-        }
-      }
-      // No admin SMS — all admin notifications via email + dashboard only
+      const clientEmail = adminNewClientEmail({
+        name, phone, email, address,
+        notes: clientNotes || undefined,
+        referral_info: referralInfo || undefined,
+        referrer_matched: !!referrerId
+      })
+      await emailAdmins(clientEmail.subject, clientEmail.html)
     } catch (emailErr) {
       console.error('Collect email error:', emailErr)
       await notify({ type: 'error', title: 'Email Failed', message: `Failed to send new-client email for ${name}` })
@@ -185,9 +181,9 @@ export async function POST(request: Request) {
         if (convoErr || !convo) {
           console.error('Chatbot conversation not found:', convo_id, convoErr)
         } else if (convo.client_id) {
-          // ── Active Selenas conversation: form submitted mid-chat ──
+          // ── Active Selena conversation: form submitted mid-chat ──
           // Don't set completed_at (keeps conversation alive)
-          // Don't send generic confirmation (Selenas handles acknowledgment)
+          // Don't send generic confirmation (Selena handles acknowledgment)
           // Just link the conversation to the updated client and note form is done
           await supabaseAdmin
             .from('sms_conversations')
@@ -253,7 +249,7 @@ export async function POST(request: Request) {
             message: recapMsg,
           }).then(() => {}, () => {})
         } else {
-          // ── Legacy flow: no active Selenas chat, complete conversation ──
+          // ── Legacy flow: no active Selena chat, complete conversation ──
           let bookingId: string | null = convo.booking_id || null
 
           if (!bookingId && convo.service_type && convo.hourly_rate) {
@@ -271,7 +267,7 @@ export async function POST(request: Request) {
                 status: 'pending',
                 service_type: convo.service_type,
                 hourly_rate: convo.hourly_rate,
-                price: (convo.hourly_rate || 65) * 2 * 100,
+                price: (convo.hourly_rate || 59) * 2 * 100,
                 notes: `SMS chatbot booking | ${convo.bedrooms ?? 0}BR/${convo.bathrooms ?? 0}BA | ${convo.pricing_choice === 'client_supplies' ? 'client supplies' : 'we provide'} | NEEDS DATE/TIME`,
               })
               .select()
@@ -317,8 +313,8 @@ export async function POST(request: Request) {
           }
 
           const confirmMsg = bookingId
-            ? `Thanks for signing up with Florida Maid! 🎉\n\nWe got your info and cleaning details. We'll be in touch shortly to confirm your date and time.\n\nQuestions? Just text us back here!`
-            : `Thanks for signing up with Florida Maid! 🎉\n\nWe got your info. We'll be in touch shortly to get you scheduled.\n\nQuestions? Just text us back here!`
+            ? `Thanks for signing up with The Florida Maid! 🎉\n\nWe got your info and cleaning details. We'll be in touch shortly to confirm your date and time.\n\nQuestions? Just text us back here!`
+            : `Thanks for signing up with The Florida Maid! 🎉\n\nWe got your info. We'll be in touch shortly to get you scheduled.\n\nQuestions? Just text us back here!`
           await sendSMS(convo.phone, confirmMsg, { skipConsent: true, smsType: 'chatbot' })
           await supabaseAdmin.from('client_sms_messages').insert({
             client_id: data.id,

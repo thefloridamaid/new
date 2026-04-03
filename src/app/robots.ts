@@ -11,7 +11,7 @@ export default function robots(): MetadataRoute.Robots {
           '/admin/',
           '/admin',
           '/book/',
-          '/book',
+          '/clients',
           '/team/',
           '/team',
           '/referral/',

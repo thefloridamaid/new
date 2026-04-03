@@ -96,7 +96,7 @@ const HOURS = [
 ]
 
 export default function CleanersPage() {
-  useEffect(() => { document.title = 'Team | The Florida Maid Cleaning Service Cleaning Service' }, []);
+  useEffect(() => { document.title = 'Team | The Florida Maid' }, []);
   const [activeTab, setActiveTab] = useState<'team' | 'applications' | 'ops-manager'>('team')
   const [cleaners, setCleaners] = useState<Cleaner[]>([])
   const [applications, setApplications] = useState<Application[]>([])
@@ -496,7 +496,7 @@ export default function CleanersPage() {
         </div>
         <div className="text-sm text-gray-500 mb-4">
           Team portal: <a href="https://www.thefloridamaid.com/team" target="_blank" className="text-[#CC6222] hover:underline py-2 inline-block">thefloridamaid.com/team</a> ·
-          Client portal: <a href="https://www.thefloridamaid.com/book" target="_blank" className="text-[#CC6222] hover:underline ml-1 py-2 inline-block">thefloridamaid.com/book</a> ·
+          Client portal: <a href="https://www.thefloridamaid.com/clients" target="_blank" className="text-[#CC6222] hover:underline ml-1 py-2 inline-block">thefloridamaid.com/clients</a> ·
           Apply form: <a href="https://www.thefloridamaid.com/apply" target="_blank" className="text-[#CC6222] hover:underline ml-1 py-2 inline-block">thefloridamaid.com/apply</a> ·
           Ops Mgr: <a href="https://www.thefloridamaid.com/apply/virtual-operations-manager" target="_blank" className="text-[#CC6222] hover:underline ml-1 py-2 inline-block">thefloridamaid.com/apply/virtual-operations-manager</a>
         </div>
@@ -865,7 +865,7 @@ export default function CleanersPage() {
                 <label className="block text-sm font-medium text-[#CC6222] mb-1">Phone</label>
                 <input
                   type="tel"
-                  placeholder="2125551234"
+                  placeholder="9545551234"
                   required
                   value={form.phone}
                   onChange={(e) => handlePhoneChange(e.target.value)}

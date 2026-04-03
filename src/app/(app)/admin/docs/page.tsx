@@ -30,7 +30,7 @@ const Card = ({ title, children, accent }: { title: string, children: React.Reac
 )
 
 export default function DocsPage() {
-  useEffect(() => { document.title = 'Documentation | The Florida Maid Cleaning Service Cleaning Service' }, [])
+  useEffect(() => { document.title = 'Documentation | The Florida Maid' }, [])
   const [s, setS] = useState('overview')
 
   const sections = [
@@ -79,7 +79,7 @@ export default function DocsPage() {
 
         {s === 'overview' && (
           <div>
-            <h1 className="text-3xl font-bold text-[#CC6222] mb-2">The Florida Maid Cleaning Service Cleaning Service Platform</h1>
+            <h1 className="text-3xl font-bold text-[#CC6222] mb-2">The Florida Maid Platform</h1>
             <p className="text-gray-500 mb-6">Complete cleaning service management system</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
@@ -142,10 +142,10 @@ export default function DocsPage() {
               ['/', 'Home page', 'Public'],
               ['/login', 'Admin login', 'Public'],
               ['/admin', 'Admin dashboard (11 sub-pages)', 'Admin'],
-              ['/book', 'Client portal entry', 'Public'],
-              ['/book/new', 'New booking flow (3 steps)', 'Public'],
-              ['/book/collect', 'Client info collection (mobile)', 'Public'],
-              ['/book/dashboard', 'Client appointment management', 'Client'],
+              ['/clients', 'Client portal entry', 'Public'],
+              ['/clients/new', 'New booking flow (3 steps)', 'Public'],
+              ['/clients/collect', 'Client info collection (mobile)', 'Public'],
+              ['/clients/dashboard', 'Client appointment management', 'Client'],
               ['/apply', 'Team member application', 'Public'],
               ['/team', 'Team login (PIN)', 'Public'],
               ['/team/dashboard', 'Daily jobs, check-in/out, earnings', 'Team'],
@@ -172,10 +172,10 @@ export default function DocsPage() {
 
             <h3 className="text-lg font-semibold text-[#CC6222] mt-6 mb-3">Client Portal</h3>
             <T headers={['Route', 'What it does']} rows={[
-              ['/book', 'Client login (phone + email verification)'],
-              ['/book/new', 'New booking wizard (3 steps: info → service → date/confirm)'],
-              ['/book/collect', 'Collect client info form'],
-              ['/book/dashboard', 'Client views/manages their bookings'],
+              ['/clients', 'Client login (phone + email verification)'],
+              ['/clients/new', 'New booking wizard (3 steps: info → service → date/confirm)'],
+              ['/clients/collect', 'Collect client info form'],
+              ['/clients/dashboard', 'Client views/manages their bookings'],
               ['/book/reschedule/[id]', 'Reschedule an existing booking'],
             ]} />
 
@@ -496,10 +496,10 @@ export default function DocsPage() {
 
             <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Client Portal (5)</h2>
             <T headers={['File', 'Route', 'Purpose']} rows={[
-              ['book/page.tsx', '/book', 'Client login (email + verification code)'],
-              ['book/new/page.tsx', '/book/new', '3-step booking flow with availability check'],
-              ['book/collect/page.tsx', '/book/collect', 'Mobile client info collection form'],
-              ['book/dashboard/page.tsx', '/book/dashboard', 'Client appointment management'],
+              ['book/page.tsx', '/clients', 'Client login (email + verification code)'],
+              ['book/new/page.tsx', '/clients/new', '3-step booking flow with availability check'],
+              ['book/collect/page.tsx', '/clients/collect', 'Mobile client info collection form'],
+              ['book/dashboard/page.tsx', '/clients/dashboard', 'Client appointment management'],
               ['book/reschedule/[id]/page.tsx', '/book/reschedule/:id', 'Self-service reschedule'],
             ]} />
 
@@ -721,7 +721,7 @@ export default function DocsPage() {
           <div>
             <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Selenas AI Chatbot</h1>
             <Card title="" accent="blue">
-              <p><strong>Character:</strong> Selenas, 47, from Queens. Married to Carlos. Grammy energy but hip. 20+ years cleaning. Bilingual — naturally drops Spanglish.</p>
+              <p><strong>Character:</strong> Selena, 47, from South Florida. Married to Carlos. Grammy energy but hip. 20+ years cleaning. Bilingual — naturally drops Spanglish.</p>
               <p><strong>Architecture:</strong> Deterministic state machine — no LLM, no inference costs, no hallucination. Every response is hand-written.</p>
               <p><strong>Phone:</strong> +1 (888) 316-4019 via Telnyx</p>
             </Card>
@@ -740,7 +740,7 @@ export default function DocsPage() {
               ['ask_bedrooms', '"How many bathrooms?"', 'Bedroom count (0=studio)'],
               ['ask_bathrooms', '"A) $49/hr you supply or B) $65/hr we bring everything"', 'Bathroom count'],
               ['ask_pricing', 'Introduces herself as Selenas, sends booking form URL', 'Pricing choice (A or B)'],
-              ['form_sent', 'Conversation complete', 'Booking form: thefloridamaid.com/book/collect?src=sms-chatbot&convo_id={id}'],
+              ['form_sent', 'Conversation complete', 'Booking form: thefloridamaid.com/clients/collect?src=sms-chatbot&convo_id={id}'],
             ]} />
 
             <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">Existing Client Intents</h2>
@@ -765,7 +765,7 @@ export default function DocsPage() {
               ['Insurance', 'Licensed, bonded, insured, background-checked'],
               ['Cancellation', '24 hours free, less than 24 may incur fee, but flexible'],
               ['Payment', 'Zelle or Apple Pay, 15 min before end of service'],
-              ['Area', 'Manhattan only'],
+              ['Area', 'All of Florida'],
               ['About', 'Since 2018, 15,000+ cleanings, 4.9 stars, 98% retention'],
               ['Satisfaction', '24-hour guarantee, handled personally'],
               ['Eco-friendly', 'All eco-friendly, professional grade'],
@@ -1102,7 +1102,7 @@ export default function DocsPage() {
             <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">How It Works</h2>
             <ol className="list-decimal pl-6 space-y-2 text-gray-700 mb-6">
               <li>Referrer signs up at <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm">/referral/signup</code></li>
-              <li>Gets unique ref code and link: <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm">thefloridamaid.com/book?ref=CODE</code></li>
+              <li>Gets unique ref code and link: <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm">thefloridamaid.com/clients?ref=CODE</code></li>
               <li>Client books using the referral link</li>
               <li>Client is tagged with referrer_id</li>
               <li>When cleaner checks out → commission auto-created</li>
@@ -1133,8 +1133,8 @@ export default function DocsPage() {
             <h1 className="text-3xl font-bold text-[#CC6222] mb-6">Lead Tracking</h1>
             <p className="text-gray-700 mb-4">View at <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm">/admin/leads</code></p>
 
-            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">99 EMD Domains</h2>
-            <p className="text-gray-700 mb-4">Each NYC neighborhood has an Exact Match Domain pointing to a landing page with tracking.</p>
+            <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">EMD Domains</h2>
+            <p className="text-gray-700 mb-4">Each Florida neighborhood has an Exact Match Domain pointing to a landing page with tracking.</p>
 
             <h2 className="text-lg font-semibold text-[#CC6222] mt-8 mb-3">What Gets Tracked</h2>
             <ul className="list-disc pl-6 space-y-1 text-gray-700 mb-6">
@@ -1325,7 +1325,7 @@ export default function DocsPage() {
               <p><strong>All cron routes require CRON_SECRET header</strong></p>
             </Card>
 
-            <T headers={['Job', 'Cron', 'NYC Time', 'What It Does']} rows={[
+            <T headers={['Job', 'Cron', 'ET Time', 'What It Does']} rows={[
               ['/api/cron/reminders', '0 * * * *', 'Every hour', '7/3/1-day reminders (email+SMS+push), 2-hour reminders, thank-you emails (3d post-first booking), pending booking alerts (8am/2pm), unpaid cleaner alerts'],
               ['/api/cron/daily-summary', '0 0 * * *', '7pm EST', 'Email + SMS each cleaner tomorrow\'s jobs, check recurring booking expiry (30-day warning)'],
               ['/api/cron/backup', '0 5 * * *', 'Midnight EST', 'CSV backup emailed to admin (clients + 6 months bookings)'],

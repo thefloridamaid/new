@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { protectAdminAPI } from '@/lib/auth'
-import { sendEmail } from '@/lib/email'
+import { emailAdmins } from '@/lib/admin-contacts'
 import { adminNewClientEmail } from '@/lib/email-templates'
 
 export async function GET(request: Request) {
@@ -90,7 +90,7 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json()
-    const { name, email, phone, address, notes, referrer_id, ref_code } = body
+    const { name, email, phone, address, notes, referrer_id, ref_code, pet_name, pet_type } = body
 
     if (!name) {
       return NextResponse.json({ error: 'Name is required' }, { status: 400 })
@@ -119,12 +119,20 @@ export async function POST(request: Request) {
         phone: phone || null,
         address: address || null,
         notes: notes || null,
-        referrer_id: finalReferrerId
+        referrer_id: finalReferrerId,
+        pet_name: pet_name || null,
+        pet_type: pet_type || null,
+        pin: Math.floor(100000 + Math.random() * 900000).toString()
       })
       .select()
       .single()
 
     if (error) throw error
+
+    // Auto-geocode address
+    if (data?.id && address) {
+      import('@/lib/geo').then(({ geocodeClient }) => geocodeClient(data.id, address).catch(() => {}))
+    }
 
     // Dashboard notification
     await supabaseAdmin.from('notifications').insert({
@@ -134,10 +142,8 @@ export async function POST(request: Request) {
 
     // Admin email
     try {
-      if (process.env.ADMIN_EMAIL) {
-        const clientEmail = adminNewClientEmail({ name, phone, email, address })
-        await sendEmail(process.env.ADMIN_EMAIL, clientEmail.subject, clientEmail.html)
-      }
+      const clientEmail = adminNewClientEmail({ name, phone, email, address })
+      await emailAdmins(clientEmail.subject, clientEmail.html)
     } catch (emailErr) {
       console.error('Client add email error:', emailErr)
     }

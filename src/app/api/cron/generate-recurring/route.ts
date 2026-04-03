@@ -60,15 +60,18 @@ export async function GET(request: Request) {
         .in('status', ['scheduled', 'pending'])
         .gte('start_time', today.toISOString())
 
-      // Only generate if fewer than 4 future bookings
-      if ((count || 0) >= 4) continue
+      // Only generate if fewer than 6 future bookings
+      if ((count || 0) >= 6) continue
 
-      // Generate dates for next 4 weeks
+      // Generate dates — look further ahead for monthly patterns
+      const isMonthly = schedule.recurring_type?.toLowerCase().includes('monthly') ||
+                        schedule.recurring_type?.match(/^\d(st|nd|rd|th)\s/)
+      const weeksOut = isMonthly ? 16 : 6
       const dates = generateScheduleDates(
         generateFrom,
         schedule.recurring_type,
         schedule.day_of_week,
-        4
+        weeksOut
       )
 
       if (dates.length === 0) continue
@@ -88,15 +91,20 @@ export async function GET(request: Request) {
       if (newDates.length === 0) continue
 
       // Build booking rows
-      const timeStr = schedule.preferred_time || '09:00'
+      const rawTime = schedule.preferred_time || '09:00'
+      // Normalize to HH:MM — some rows store HH:MM:SS
+      const timeStr = rawTime.split(':').slice(0, 2).join(':')
       const hours = Number(schedule.duration_hours) || 3
-      const endHour = parseInt(timeStr.split(':')[0]) + hours
-      const endMinute = timeStr.split(':')[1]
+      const startH = parseInt(timeStr.split(':')[0])
+      const startM = parseInt(timeStr.split(':')[1])
+      const totalEndMinutes = (startH + hours) * 60 + startM
+      const endH = Math.floor(totalEndMinutes / 60) % 24
+      const endM = totalEndMinutes % 60
 
       const rows = newDates.map((date: string) => {
         const token = generateToken()
         const startTime = `${date}T${timeStr}:00`
-        const endTime = `${date}T${String(Math.floor(endHour)).padStart(2, '0')}:${endMinute}:00`
+        const endTime = `${date}T${String(endH).padStart(2, '0')}:${String(endM).padStart(2, '0')}:00`
         const tokenExpires = new Date(date + 'T' + timeStr)
         tokenExpires.setHours(tokenExpires.getHours() + 24)
 

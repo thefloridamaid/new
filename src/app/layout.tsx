@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | The Florida Maid Cleaning Service Cleaning Service',
+    template: '%s | The Florida Maid',
     default: 'The Florida Maid Cleaning Service - Professional Cleaning Services in Florida From $49/hr',
   },
   description: 'Florida house cleaning & maid service from $49/hr. Orlando, Tampa, Miami, Jacksonville & statewide. Licensed, insured, 5.0★ Google rated. Book online or call (954) 710-3636.',
@@ -20,10 +20,10 @@ export const metadata: Metadata = {
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
   },
-  applicationName: 'The Florida Maid Cleaning Service Cleaning Service',
-  authors: [{ name: 'The Florida Maid Cleaning Service Cleaning Service', url: 'https://www.thefloridamaid.com' }],
-  creator: 'The Florida Maid Cleaning Service Cleaning Service LLC',
-  publisher: 'The Florida Maid Cleaning Service Cleaning Service',
+  applicationName: 'The Florida Maid',
+  authors: [{ name: 'The Florida Maid', url: 'https://www.thefloridamaid.com' }],
+  creator: 'The Florida Maid LLC',
+  publisher: 'The Florida Maid',
   category: 'Home Services',
   classification: 'Cleaning Service',
   referrer: 'origin-when-cross-origin',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    siteName: 'The Florida Maid Cleaning Service Cleaning Service',
+    siteName: 'The Florida Maid',
     title: 'The Florida Maid Cleaning Service - Professional Cleaning Services in Florida From $49/hr',
     description: 'Florida house cleaning & maid service from $49/hr. Orlando, Tampa, Miami, Jacksonville & statewide. Licensed, insured, 5.0★ Google rated.',
     url: 'https://www.thefloridamaid.com',

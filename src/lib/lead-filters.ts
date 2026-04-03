@@ -1,6 +1,6 @@
 const SPAM_REFERRERS = [
   'siteground', 'sgcaptcha', 'telnyx.io',
-  'consortium', 'nycsidehustle',
+  'consortium',
   'twicsy.com', 'merobase.com', 'notidc.com', 'wicked.cc', 'vatrouver.com',
   'nerdydata.com', 'pptsearch365.com', 'zhongsou.com', 'schoolbox.cloud',
   'satchelone.com', 'askboth.com', 'activesearchresults.com',
@@ -20,7 +20,7 @@ const BOT_USER_AGENTS = [
   'amazonbot', 'anthropic-ai', 'applebot/',
 ]
 
-const BLOCKED_PAGES = ['/admin', '/team', '/book/dashboard']
+const BLOCKED_PAGES = ['/admin', '/team', '/clients/dashboard']
 
 import { ALL_DOMAINS } from './domains'
 
@@ -65,7 +65,7 @@ export function isAdminReferrer(referrer: string | null | undefined): boolean {
   return (
     referrer.includes('thefloridamaid.com/admin') ||
     referrer.includes('thefloridamaid.com/team') ||
-    referrer.includes('thefloridamaid.com/book/dashboard') ||
+    referrer.includes('thefloridamaid.com/clients/dashboard') ||
     referrer.includes('/administrator')
   )
 }

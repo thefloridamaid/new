@@ -22,6 +22,8 @@ const BUSINESS_START = 9
 const BUSINESS_END = 17 // 5PM — last slot must finish by this time
 const BUFFER_MINUTES = 90
 
+const PREFERRED_POCKETS = [8, 12, 16] // 8am, 12pm, 4pm
+
 const TIME_LABELS: Record<number, string> = {
   9: '9:00 AM', 10: '10:00 AM', 11: '11:00 AM', 12: '12:00 PM',
   13: '1:00 PM', 14: '2:00 PM', 15: '3:00 PM', 16: '4:00 PM'
@@ -145,6 +147,21 @@ export async function checkAvailability(date: string, durationHours: number = 2)
   }
 
   return { slots }
+}
+
+export async function getSmartSuggestions(date: string, durationHours: number = 2): Promise<string[]> {
+  const result = await checkAvailability(date, durationHours)
+  if (result.sameDay || result.slots.length === 0) return []
+
+  const available = result.slots.filter(s => s.available)
+  if (available.length === 0) return []
+
+  const pocketTimes = PREFERRED_POCKETS.map(h => TIME_LABELS[h]).filter(Boolean)
+
+  const preferred = available.filter(s => pocketTimes.includes(s.time))
+  const others = available.filter(s => !pocketTimes.includes(s.time))
+
+  return [...preferred.map(s => s.time), ...others.map(s => s.time)]
 }
 
 /**
