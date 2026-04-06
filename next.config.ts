@@ -29,6 +29,31 @@ const nextConfig: NextConfig = {
       destination: '/sitemap.xml',
       permanent: true,
     },
+    {
+      source: '/book/collect',
+      destination: '/clients/collect',
+      permanent: true,
+    },
+    {
+      source: '/book/new',
+      destination: '/clients/new',
+      permanent: true,
+    },
+    {
+      source: '/book/reschedule/:id',
+      destination: '/clients/reschedule/:id',
+      permanent: true,
+    },
+    {
+      source: '/available-nyc-maid-jobs',
+      destination: '/available-florida-maid-jobs',
+      permanent: true,
+    },
+    {
+      source: '/careers/operations-coordinator',
+      destination: '/careers/virtual-operations-manager',
+      permanent: true,
+    },
   ],
   headers: async () => [
     {
