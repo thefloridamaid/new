@@ -175,8 +175,11 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* CTA: text or call */}
+          {/* CTA: book, text, or call */}
           <div className="flex flex-col sm:flex-row items-start gap-5">
+            <Link href="/clients/collect" className="bg-white text-[#CC6222] px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-gray-100 transition-colors">
+              Book Online Now
+            </Link>
             <a href="sms:9547103636" className="bg-[#34D399] text-white px-10 py-4 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#8DE8CC] transition-colors">
               Text (954) 710-3636
             </a>
