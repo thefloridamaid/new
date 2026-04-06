@@ -4,24 +4,24 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
 const serviceLinks = [
-  { name: 'Deep Cleaning', href: '/services/deep-cleaning-service-in-nyc' },
-  { name: 'Regular Apartment Cleaning', href: '/services/apartment-cleaning-service-in-nyc' },
-  { name: 'Weekly Service', href: '/services/weekly-maid-service-in-nyc' },
-  { name: 'Bi-Weekly Cleaning', href: '/services/bi-weekly-cleaning-service-in-nyc' },
-  { name: 'Move-In/Move-Out', href: '/services/move-in-move-out-cleaning-service-in-nyc' },
-  { name: 'Post-Construction', href: '/services/post-construction-cleanup-service-in-nyc' },
-  { name: 'Airbnb Cleaning', href: '/services/airbnb-cleaning-in-nyc' },
-  { name: 'Same-Day Cleaning', href: '/services/same-day-cleaning-service-in-nyc' },
-  { name: 'All Services', href: '/nyc-maid-service-services-offered-by-the-nyc-maid' },
+  { name: 'Deep Cleaning', href: '/services/deep-cleaning-service-in-florida' },
+  { name: 'House Cleaning', href: '/services/house-cleaning-service-in-florida' },
+  { name: 'Weekly Service', href: '/services/weekly-maid-service-in-florida' },
+  { name: 'Bi-Weekly Cleaning', href: '/services/bi-weekly-cleaning-service-in-florida' },
+  { name: 'Move-In/Move-Out', href: '/services/move-in-move-out-cleaning-service-in-florida' },
+  { name: 'Post-Construction', href: '/services/post-construction-cleanup-service-in-florida' },
+  { name: 'Airbnb Cleaning', href: '/services/airbnb-cleaning-in-florida' },
+  { name: 'Same-Day Cleaning', href: '/services/same-day-cleaning-service-in-florida' },
+  { name: 'All Services', href: '/florida-maid-service-services-offered-by-the-florida-maid' },
 ]
 
 const moreLinks = [
-  { name: 'About', href: '/about-the-nyc-maid-service-company' },
-  { name: 'FAQ', href: '/nyc-cleaning-service-frequently-asked-questions-in-2025' },
-  { name: 'Careers — Cleaning Jobs', href: '/available-nyc-maid-jobs' },
-  { name: 'Careers — Operations Admin', href: '/careers/operations-coordinator' },
-  { name: 'Locations', href: '/service-areas-served-by-the-nyc-maid' },
-  { name: 'Reviews', href: '/nyc-customer-reviews-for-the-nyc-maid' },
+  { name: 'About', href: '/about-the-florida-maid-service-company' },
+  { name: 'FAQ', href: '/florida-cleaning-service-frequently-asked-questions-in-2026' },
+  { name: 'Careers — Cleaning Jobs', href: '/available-florida-maid-jobs' },
+  { name: 'Careers — Operations Admin', href: '/careers/virtual-operations-manager' },
+  { name: 'Locations', href: '/service-areas-served-by-the-florida-maid' },
+  { name: 'Reviews', href: '/florida-customer-reviews-for-the-florida-maid' },
   { name: 'Referral Program', href: '/get-paid-for-cleaning-referrals-every-time-they-are-serviced' },
 ]
 
@@ -45,12 +45,9 @@ export default function MarketingNav() {
         <div className="bg-[#1E2A4A] text-gray-300 text-xs">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center lg:justify-between h-9">
             <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] tracking-widest uppercase">
-              <span className="text-white/80 font-semibold hidden sm:inline">Maid Service:</span>
-              <Link href="/service-areas-served-by-the-nyc-maid" className="hover:text-white transition-colors font-semibold text-white/80 hidden sm:inline">NYC</Link>
-              <span className="text-white/20 hidden sm:inline">|</span>
-              <Link href="/long-island-maid-service" className="hover:text-white transition-colors font-semibold text-white/80 hidden sm:inline">L.I.</Link>
-              <span className="text-white/20 hidden sm:inline">|</span>
-              <Link href="/new-jersey-maid-service" className="hover:text-white transition-colors font-semibold text-white/80 hidden sm:inline">NJ</Link>
+              <span className="text-white/80 font-semibold hidden sm:inline">Florida Maid Service</span>
+              <span className="text-white/20 hidden sm:inline">·</span>
+              <Link href="/service-areas-served-by-the-florida-maid" className="hover:text-white transition-colors font-semibold text-white/80 hidden sm:inline">Service Areas</Link>
               <span className="text-white/20 hidden sm:inline">-</span>
               <span className="text-white/80 font-semibold hidden sm:inline">Open 24/7</span>
               <span className="text-white/20 hidden sm:inline">·</span>
@@ -100,8 +97,8 @@ export default function MarketingNav() {
                 </div>
               </div>
 
-              <Link href="/updated-nyc-maid-service-industry-pricing" className="text-[#1E2A4A] hover:text-[#1E2A4A]/70 font-medium text-[15px] tracking-wide">Pricing</Link>
-              <Link href="/contact-the-nyc-maid-service-today" className="text-[#1E2A4A] hover:text-[#1E2A4A]/70 font-medium text-[15px] tracking-wide">Contact</Link>
+              <Link href="/updated-florida-maid-service-industry-pricing" className="text-[#1E2A4A] hover:text-[#1E2A4A]/70 font-medium text-[15px] tracking-wide">Pricing</Link>
+              <Link href="/contact-the-florida-maid-service-today" className="text-[#1E2A4A] hover:text-[#1E2A4A]/70 font-medium text-[15px] tracking-wide">Contact</Link>
 
               {/* More Dropdown */}
               <div className="relative group">
@@ -178,8 +175,8 @@ export default function MarketingNav() {
                 </div>
               )}
 
-              <Link href="/updated-nyc-maid-service-industry-pricing" onClick={closeMenu} className="block py-3 text-white font-medium text-lg">Pricing</Link>
-              <Link href="/contact-the-nyc-maid-service-today" onClick={closeMenu} className="block py-3 text-white font-medium text-lg">Contact</Link>
+              <Link href="/updated-florida-maid-service-industry-pricing" onClick={closeMenu} className="block py-3 text-white font-medium text-lg">Pricing</Link>
+              <Link href="/contact-the-florida-maid-service-today" onClick={closeMenu} className="block py-3 text-white font-medium text-lg">Contact</Link>
 
               <button onClick={() => setMoreOpen(!moreOpen)} aria-expanded={moreOpen} className="w-full flex items-center justify-between py-3 text-white font-medium text-lg">
                 More

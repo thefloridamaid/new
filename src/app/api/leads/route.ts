@@ -20,7 +20,7 @@ export async function GET() {
 
   // Pages that are NOT potential clients — job seekers, team, existing clients, legal, admin
   const NON_LEAD_PREFIXES = [
-    '/careers', '/available-nyc-maid-jobs', '/apply',
+    '/careers', '/available-florida-maid-jobs', '/apply',
     '/team', '/admin',
     '/clients/collect', '/clients/dashboard',
     '/privacy-policy', '/terms-conditions', '/refund-policy',

@@ -1,41 +1,41 @@
 import Link from 'next/link'
 
-const manhattanLinks = [
-  { name: 'Upper East Side', href: '/upper-east-side-maid-service' },
-  { name: 'Upper West Side', href: '/upper-west-side-maid-service' },
-  { name: 'Midtown', href: '/midtown-manhattan-maid-service' },
-  { name: "Hell's Kitchen", href: '/hells-kitchen-maid-service' },
-  { name: 'Chelsea', href: '/chelsea-maid-service' },
-  { name: 'SoHo', href: '/soho-maid-service' },
-  { name: 'Tribeca', href: '/tribeca-maid-service' },
-  { name: 'West Village', href: '/west-village-maid-service' },
-  { name: 'East Village', href: '/east-village-maid-service' },
-  { name: 'Financial District', href: '/financial-district-maid-service' },
-  { name: 'Gramercy', href: '/gramercy-maid-service' },
-  { name: 'Murray Hill', href: '/murray-hill-maid-service' },
+const southFloridaLinks = [
+  { name: 'Miami Beach', href: '/miami-beach-maid-service' },
+  { name: 'Brickell', href: '/brickell-maid-service' },
+  { name: 'Coral Gables', href: '/coral-gables-maid-service' },
+  { name: 'Fort Lauderdale', href: '/fort-lauderdale-maid-service' },
+  { name: 'Hollywood', href: '/hollywood-maid-service' },
+  { name: 'Boca Raton', href: '/boca-raton-maid-service' },
+  { name: 'West Palm Beach', href: '/west-palm-beach-maid-service' },
+  { name: 'Pembroke Pines', href: '/pembroke-pines-maid-service' },
+  { name: 'Weston', href: '/weston-maid-service' },
+  { name: 'Aventura', href: '/aventura-maid-service' },
+  { name: 'Coconut Grove', href: '/coconut-grove-maid-service' },
+  { name: 'Doral', href: '/doral-maid-service' },
 ]
 
 const otherAreaLinks = [
-  { name: 'Brooklyn Heights', href: '/brooklyn-heights-maid-service' },
-  { name: 'Park Slope', href: '/park-slope-maid-service' },
-  { name: 'DUMBO', href: '/dumbo-maid-service' },
-  { name: 'Williamsburg', href: '/williamsburg-maid-service' },
-  { name: 'Long Island City', href: '/long-island-city-maid-service' },
-  { name: 'Astoria', href: '/astoria-maid-service' },
-  { name: 'Forest Hills', href: '/forest-hills-maid-service' },
-  { name: 'Hoboken', href: '/hoboken-maid-service' },
-  { name: 'Jersey City', href: '/jersey-city-maid-service' },
-  { name: 'Great Neck', href: '/great-neck-maid-service' },
+  { name: 'Tampa', href: '/tampa-maid-service' },
+  { name: 'St. Petersburg', href: '/st-petersburg-maid-service' },
+  { name: 'Orlando', href: '/orlando-maid-service' },
+  { name: 'Winter Park', href: '/winter-park-maid-service' },
+  { name: 'Jacksonville', href: '/jacksonville-maid-service' },
+  { name: 'Naples', href: '/naples-maid-service' },
+  { name: 'Sarasota', href: '/sarasota-maid-service' },
+  { name: 'Clearwater', href: '/clearwater-maid-service' },
+  { name: 'Key West', href: '/key-west-maid-service' },
+  { name: 'All Areas', href: '/service-areas-served-by-the-florida-maid' },
 ]
 
 const serviceFooterLinks = [
-  { name: 'Deep Cleaning', href: '/services/deep-cleaning-service-in-nyc' },
-  { name: 'Regular Cleaning', href: '/services/apartment-cleaning-service-in-nyc' },
-  { name: 'Weekly Service', href: '/services/weekly-maid-service-in-nyc' },
-  { name: 'Move-In/Move-Out', href: '/services/move-in-move-out-cleaning-service-in-nyc' },
-  { name: 'Post-Construction', href: '/services/post-construction-cleanup-service-in-nyc' },
-  { name: 'Airbnb Cleaning', href: '/services/airbnb-cleaning-in-nyc' },
-  { name: 'Same-Day Cleaning', href: '/services/same-day-cleaning-service-in-nyc' },
+  { name: 'Deep Cleaning', href: '/services/deep-cleaning-service-in-florida' },
+  { name: 'House Cleaning', href: '/services/house-cleaning-service-in-florida' },
+  { name: 'Weekly Service', href: '/services/weekly-maid-service-in-florida' },
+  { name: 'Move-In/Move-Out', href: '/services/move-in-move-out-cleaning-service-in-florida' },
+  { name: 'Post-Construction', href: '/services/post-construction-cleanup-service-in-florida' },
+  { name: 'Airbnb Cleaning', href: '/services/airbnb-cleaning-in-florida' },
+  { name: 'Same-Day Cleaning', href: '/services/same-day-cleaning-service-in-florida' },
 ]
 
 export default function MarketingFooter() {
@@ -51,9 +51,9 @@ export default function MarketingFooter() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
           <div>
-            <h3 className="text-xs font-semibold text-gray-300 tracking-[0.2em] uppercase mb-5">Manhattan</h3>
+            <h3 className="text-xs font-semibold text-gray-300 tracking-[0.2em] uppercase mb-5">South Florida</h3>
             <ul className="space-y-2.5">
-              {manhattanLinks.map(link => (
+              {southFloridaLinks.map(link => (
                 <li key={link.href}><Link href={link.href} className="text-sm hover:text-white transition-colors">{link.name}</Link></li>
               ))}
             </ul>
@@ -77,11 +77,11 @@ export default function MarketingFooter() {
           <div>
             <h3 className="text-xs font-semibold text-gray-300 tracking-[0.2em] uppercase mb-5">Company</h3>
             <ul className="space-y-2.5">
-              <li><Link href="/about-the-nyc-maid-service-company" className="text-sm hover:text-white transition-colors">About Us</Link></li>
-              <li><Link href="/contact-the-nyc-maid-service-today" className="text-sm hover:text-white transition-colors">Contact</Link></li>
-              <li><Link href="/updated-nyc-maid-service-industry-pricing" className="text-sm hover:text-white transition-colors">Pricing</Link></li>
-              <li><Link href="/nyc-customer-reviews-for-the-nyc-maid" className="text-sm hover:text-white transition-colors">Reviews</Link></li>
-              <li><Link href="/available-nyc-maid-jobs" className="text-sm hover:text-white transition-colors">Careers</Link></li>
+              <li><Link href="/about-the-florida-maid-service-company" className="text-sm hover:text-white transition-colors">About Us</Link></li>
+              <li><Link href="/contact-the-florida-maid-service-today" className="text-sm hover:text-white transition-colors">Contact</Link></li>
+              <li><Link href="/updated-florida-maid-service-industry-pricing" className="text-sm hover:text-white transition-colors">Pricing</Link></li>
+              <li><Link href="/florida-customer-reviews-for-the-florida-maid" className="text-sm hover:text-white transition-colors">Reviews</Link></li>
+              <li><Link href="/available-florida-maid-jobs" className="text-sm hover:text-white transition-colors">Careers</Link></li>
             </ul>
           </div>
           <div>
@@ -90,10 +90,10 @@ export default function MarketingFooter() {
               <li><a href="https://buy.stripe.com/8x2aEZ4FL0wYfxe5f0fnO03" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-white transition-colors">Make a Payment</a></li>
               <li><Link href="/get-paid-for-cleaning-referrals-every-time-they-are-serviced" target="_blank" className="text-sm hover:text-white transition-colors">Referral Program</Link></li>
               <li><a href="sms:9547103636" className="text-sm hover:text-white transition-colors">Text to Book</a></li>
-              <li><Link href="/nyc-cleaning-service-frequently-asked-questions-in-2025" className="text-sm hover:text-white transition-colors">FAQ</Link></li>
-              <li><Link href="/nyc-maid-service-blog" className="text-sm hover:text-white transition-colors">Blog</Link></li>
-              <li><Link href="/nyc-maid-and-cleaning-tips-and-advice-by-the-nyc-maid" className="text-sm hover:text-white transition-colors">Cleaning Tips</Link></li>
-              <li><Link href="/service/nyc-emergency-cleaning-service" className="text-sm hover:text-white transition-colors">Emergency Cleaning</Link></li>
+              <li><Link href="/florida-cleaning-service-frequently-asked-questions-in-2026" className="text-sm hover:text-white transition-colors">FAQ</Link></li>
+              <li><Link href="/florida-maid-service-blog" className="text-sm hover:text-white transition-colors">Blog</Link></li>
+              <li><Link href="/florida-maid-and-cleaning-tips-and-advice-by-the-florida-maid" className="text-sm hover:text-white transition-colors">Cleaning Tips</Link></li>
+              <li><Link href="/service/florida-emergency-cleaning-service" className="text-sm hover:text-white transition-colors">Emergency Cleaning</Link></li>
               <li><Link href="/apply" className="text-sm hover:text-white transition-colors">Apply to Clean</Link></li>
               <li><Link href="/feedback" className="text-sm hover:text-white transition-colors">Leave Feedback</Link></li>
             </ul>
