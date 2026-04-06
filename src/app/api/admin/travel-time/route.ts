@@ -14,7 +14,7 @@ interface TravelResult {
   duration_minutes: number | null
 }
 
-// Estimate NYC transit time from straight-line distance
+// Estimate transit time from straight-line distance
 // ~10 min base (walk to stop + wait) + ~5 min per mile
 function estimateTransitMinutes(distanceMiles: number): number {
   if (distanceMiles < 0.3) return 5 // same block, walking

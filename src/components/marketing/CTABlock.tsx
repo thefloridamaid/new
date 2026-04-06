@@ -7,7 +7,7 @@ export default function CTABlock({ title, subtitle }: { title?: string; subtitle
             {title || 'Ready for a Spotless Home?'}
           </h2>
           <p className="text-[#1E2A4A]/70 text-lg mt-2">
-            {subtitle || 'Call or text us today — trusted by thousands of NYC residents.'}
+            {subtitle || 'Call or text us today — trusted by Florida residents statewide.'}
           </p>
         </div>
         <div className="flex flex-col sm:flex-row items-center gap-4 flex-shrink-0">

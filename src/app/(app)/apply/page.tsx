@@ -139,8 +139,8 @@ export default function ApplyPage() {
         <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-gray-200 p-6 space-y-5">
           <div>
             <h2 className="text-xl font-bold text-[#1E2A4A]">Apply to Join Our Team / Solicite Unirse a Nuestro Equipo</h2>
-            <p className="text-gray-500 text-sm mt-1">We&apos;re looking for reliable, detail-oriented cleaners in NYC.</p>
-            <p className="text-gray-500 text-sm">Buscamos limpiadores confiables y detallistas en NYC.</p>
+            <p className="text-gray-500 text-sm mt-1">We&apos;re looking for reliable, detail-oriented cleaners across Florida.</p>
+            <p className="text-gray-500 text-sm">Buscamos limpiadores confiables y detallistas en Florida.</p>
           </div>
 
           <div>
@@ -296,9 +296,9 @@ export default function ApplyPage() {
               />
               <div>
                 <span className="text-sm font-medium text-[#1E2A4A]">I drive / Yo manejo</span>
-                <p className="text-xs text-gray-500">Required for Long Island, Staten Island, and some outer borough areas</p>
-                <p className="text-xs text-gray-500">Requerido para Long Island, Staten Island, y algunas áreas exteriores</p>
-                <p className="text-xs text-green-600 font-medium mt-1">+$5/hr bonus for driving locations (Long Island, NJ) / +$5/hr bonificación para ubicaciones con manejo</p>
+                <p className="text-xs text-gray-500">Required for all Florida service areas</p>
+                <p className="text-xs text-gray-500">Requerido para todas las áreas de servicio en Florida</p>
+                <p className="text-xs text-green-600 font-medium mt-1">A car is strongly preferred for Florida jobs / Se prefiere carro para trabajos en Florida</p>
               </div>
             </label>
           </div>

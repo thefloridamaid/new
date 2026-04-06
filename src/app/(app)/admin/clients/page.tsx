@@ -556,7 +556,7 @@ export default function ClientsPage() {
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Address</label>
-                  <AddressAutocomplete value={form.address} onChange={(val) => { setForm({ ...form, address: val }); setAddressChanged(true) }} placeholder="123 Main St, New York, NY 10001" />
+                  <AddressAutocomplete value={form.address} onChange={(val) => { setForm({ ...form, address: val }); setAddressChanged(true) }} placeholder="123 Main St, Miami, FL 33101" />
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Unit / Apt</label>

@@ -160,7 +160,7 @@ export default function WebsitesMap({ websites }: WebsitesMapProps) {
     if (bounds.length > 0) {
       map.fitBounds(bounds, { padding: [50, 50] })
     } else {
-      // If no markers, reset to NYC
+      // If no markers, reset to Florida
       map.setView([27.99, -81.76], 10)
     }
   }, [websites]) // Update whenever websites change

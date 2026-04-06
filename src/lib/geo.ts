@@ -35,7 +35,7 @@ export function calculateDistance(
   return R * c
 }
 
-// Estimate NYC transit time from straight-line distance
+// Estimate transit time from straight-line distance
 export function estimateTransitMinutes(distanceMiles: number): number {
   if (distanceMiles < 0.3) return 5
   return Math.round(10 + distanceMiles * 5)

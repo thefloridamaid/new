@@ -900,7 +900,7 @@ export default function CleanersPage() {
                 <AddressAutocomplete
                   value={form.address}
                   onChange={(val) => setForm({ ...form, address: val })}
-                  placeholder="123 Main St, Brooklyn, NY"
+                  placeholder="123 Main St, Fort Lauderdale, FL"
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] focus:ring-2 focus:ring-[#1E2A4A] outline-none"
                 />
               </div>

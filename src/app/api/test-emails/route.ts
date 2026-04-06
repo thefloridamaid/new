@@ -37,7 +37,7 @@ export async function POST() {
       name: 'Sarah Johnson',
       email: 'test@example.com',
       phone: '(212) 555-1234',
-      address: '123 West 72nd Street, Apt 4B, New York, NY 10023'
+      address: '123 Ocean Dr, Apt 4B, Miami Beach, FL 33139'
     },
     cleaners: {
       name: 'Maria Garcia',

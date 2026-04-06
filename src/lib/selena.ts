@@ -495,11 +495,11 @@ COMMON QUESTIONS:
 "Move out?" → "Yes, typically 4-6 hours depending on size."
 
 SERVICE AREA:
-Manhattan, Brooklyn, Queens — yes
-Long Island — west half (Nassau County, western Suffolk)
-New Jersey — along Hudson, under 30 min from NYC
-Bronx, Staten Island — case by case
-Outside: "We don't currently cover that area but we're expanding — text us at (954) 710-3636 😊"
+South Florida (Miami-Dade, Broward, Palm Beach) — yes
+Tampa Bay (Tampa, St. Petersburg, Clearwater) — yes
+Central Florida (Orlando, Winter Park, Kissimmee) — yes
+Jacksonville, Southwest Florida, Space Coast, Florida Keys, Panhandle — yes
+Outside Florida: "We only serve Florida right now — text us at (954) 710-3636 if you have questions 😊"
 
 CANCELLATION POLICY:
 First-time/one-time: NO cancellations, NO rescheduling.
