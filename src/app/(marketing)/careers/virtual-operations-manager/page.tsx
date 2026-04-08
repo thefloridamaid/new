@@ -8,7 +8,7 @@ export const revalidate = 259200
 
 const pageUrl = 'https://www.thefloridamaid.com/careers/virtual-operations-manager'
 const pageTitle = 'Help Wanted: Remote Ops Mgr — $500/wk+10% Rev | Growing 100% Monthly'
-const pageDescription = 'The Florida Maid Cleaning Service is hiring a remote admin/ops manager — $500/wk + 10% of total revenue. Growing 50–100% every month. Work from home. Perfect for admins, receptionists, secretaries ready to upgrade. Ground-floor opportunity. Apply now.'
+const pageDescription = 'The Florida Maid is hiring a remote admin/ops manager — $500/wk + 10% of total revenue. Growing 50–100% every month. Work from home. Perfect for admins, receptionists, secretaries ready to upgrade. Ground-floor opportunity. Apply now.'
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -23,19 +23,19 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Help Wanted: Remote Ops Mgr — $500/wk+10% Rev | Growing 100% Monthly',
-    description: 'The Florida Maid Cleaning Service is hiring a remote admin/ops manager starting at $500/wk + 10% of total revenue. Work from home. Perfect for admins, receptionists, and secretaries looking to upgrade their careers. Apply now.',
+    description: 'The Florida Maid is hiring a remote admin/ops manager starting at $500/wk + 10% of total revenue. Work from home. Perfect for admins, receptionists, and secretaries looking to upgrade their careers. Apply now.',
     url: pageUrl,
     type: 'article',
-    siteName: 'The Florida Maid Cleaning Service Cleaning Service',
+    siteName: 'The Florida Maid',
     locale: 'en_US',
-    images: [{ url: 'https://www.thefloridamaid.com/icon-512.png', width: 512, height: 512, alt: 'Help Wanted Remote Ops Manager — The Florida Maid Cleaning Service Cleaning Service — Now Hiring' }],
+    images: [{ url: 'https://www.thefloridamaid.com/icon-512.png', width: 512, height: 512, alt: 'Help Wanted Remote Ops Manager — The Florida Maid — Now Hiring' }],
     publishedTime: '2026-03-15T00:00:00Z',
     modifiedTime: new Date().toISOString(),
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Help Wanted: Remote Ops Mgr — $500/wk+10% Rev | Growing 100% Monthly',
-    description: 'The Florida Maid Cleaning Service is hiring a remote admin/ops manager starting at $500/wk + 10% of total revenue. Perfect for admins, receptionists, secretaries looking to upgrade. Apply now.',
+    description: 'The Florida Maid is hiring a remote admin/ops manager starting at $500/wk + 10% of total revenue. Perfect for admins, receptionists, secretaries looking to upgrade. Apply now.',
     images: ['https://www.thefloridamaid.com/icon-512.png'],
   },
   keywords: 'operations manager, operations manager remote, operations manager work from home, operations manager virtual, operations manager Florida, operations manager Miami, operations manager Tampa, operations manager Orlando, virtual operations manager, remote operations manager, customer service manager, customer service manager remote, customer service manager Florida, scheduling manager, scheduling coordinator, scheduling coordinator remote, office manager remote, office manager Florida, office manager work from home, operations coordinator, service coordinator, remote dispatcher, team manager remote, virtual assistant manager, bilingual operations manager, bilingual customer service manager, cleaning company operations manager, cleaning service manager, administrative assistant to operations manager, secretary to manager, receptionist to operations, work from home manager Florida, remote manager job Florida, operations manager part time, work from home jobs Florida, remote jobs Florida, work from home jobs Florida, service business operations manager',
@@ -62,8 +62,8 @@ function opsManagerJobPostingSchema() {
     title: 'Operations Manager (Virtual)',
     datePosted,
     validThrough,
-    description: `<h2>Operations Manager (Virtual) — The Florida Maid Cleaning Service Cleaning Service — Remote Work From Home</h2>
-<p>The Florida Maid Cleaning Service is hiring an <strong>Operations Manager (Virtual)</strong> to own scheduling, customer service, team management, and payment coordination across all Florida service areas. This role combines the responsibilities of a <strong>customer service manager</strong>, <strong>scheduling coordinator</strong>, <strong>office manager</strong>, and <strong>operations coordinator</strong> — all from home. Part-time to start, growing into full-time as volume scales. We currently manage 15–20 cleanings per week and are growing 50–100% monthly.</p>
+    description: `<h2>Operations Manager (Virtual) — The Florida Maid — Remote Work From Home</h2>
+<p>The Florida Maid is hiring an <strong>Operations Manager (Virtual)</strong> to own scheduling, customer service, team management, and payment coordination across all Florida service areas. This role combines the responsibilities of a <strong>customer service manager</strong>, <strong>scheduling coordinator</strong>, <strong>office manager</strong>, and <strong>operations coordinator</strong> — all from home. Part-time to start, growing into full-time as volume scales. We currently manage 15–20 cleanings per week and are growing 50–100% monthly.</p>
 
 <h3>Compensation</h3>
 <p><strong>$500/week base salary + 10% of gross weekly revenue to start.</strong> Paid every Friday. We currently do 15–20 cleanings per week and are growing 50–100% month over month. Your revenue share grows with the business — no renegotiating required. At $10,000 gross revenue/week you earn $1,500. At $20,000/week you earn $2,500.</p>
@@ -71,8 +71,8 @@ function opsManagerJobPostingSchema() {
 <h3>Schedule</h3>
 <p>Part-time to start, growing into full-time. Work from home. 8:00 AM – 6:00 PM Eastern Time, 7 days per week.</p>
 
-<h3>About The Florida Maid Cleaning Service</h3>
-<p>The Florida Maid Cleaning Service has been serving Florida since 2018. Rebranded and rebuilt from the ground up in 2025, the company is now doubling in size month over month. We operate over 100 websites across Florida — driving organic growth across every market we touch. The owner drives all sales, marketing, and growth. You own everything else.</p>
+<h3>About The Florida Maid</h3>
+<p>The Florida Maid has been serving Florida since 2018. Rebranded and rebuilt from the ground up in 2025, the company is now doubling in size month over month. We operate over 100 websites across Florida — driving organic growth across every market we touch. The owner drives all sales, marketing, and growth. You own everything else.</p>
 
 <h3>About the Role</h3>
 <p>You are the primary point of contact for all clients and the entire cleaning team. From the moment a job is scheduled to the moment it is completed and paid, you run the operation. You monitor the dashboard daily, coordinate cleaners, manage scheduling, confirm payments, resolve complaints, recruit and onboard new team members, and send a daily operations summary to the owner.</p>
@@ -126,7 +126,7 @@ function opsManagerJobPostingSchema() {
 
     hiringOrganization: {
       '@type': 'Organization',
-      name: 'The Florida Maid Cleaning Service Cleaning Service',
+      name: 'The Florida Maid',
       sameAs: 'https://www.thefloridamaid.com',
       url: 'https://www.thefloridamaid.com',
       logo: {
@@ -200,7 +200,7 @@ function opsManagerJobPostingSchema() {
     // ── IDENTIFIER ──
     identifier: {
       '@type': 'PropertyValue',
-      name: 'The Florida Maid Cleaning Service Cleaning Service',
+      name: 'The Florida Maid',
       value: 'floridamaid-virtual-ops-manager-2026',
     },
 
@@ -252,7 +252,7 @@ function opsManagerJobPostingSchema() {
     },
 
     // ── EMPLOYER OVERVIEW ──
-    employerOverview: 'The Florida Maid Cleaning Service is a professional house cleaning service that has been serving Florida since 2018. Rebranded and rebuilt from the ground up in 2025, the company operates over 100 websites across Florida. The Florida Maid Cleaning Service is rated 5.0 stars on Google with 28 verified reviews. The company is doubling in size month over month and is looking for an operations leader to own the day-to-day while the owner focuses on sales, marketing, and growth.',
+    employerOverview: 'The Florida Maid is a professional house cleaning service that has been serving Florida since 2018. Rebranded and rebuilt from the ground up in 2025, the company operates over 100 websites across Florida. The Florida Maid is rated 5.0 stars on Google with 28 verified reviews. The company is doubling in size month over month and is looking for an operations leader to own the day-to-day while the owner focuses on sales, marketing, and growth.',
   }
 }
 
@@ -295,12 +295,12 @@ const faqs = [
   {
     question: 'What does growth look like in this role?',
     questionEs: '¿Cómo se ve el crecimiento en este puesto?',
-    answer: 'As The Florida Maid Cleaning Service scales, so does your role. You will manage additional operations staff as volume grows. Your compensation scales automatically through the revenue-sharing model. This is a ground-floor leadership opportunity with a company that is doubling in size month over month.',
+    answer: 'As The Florida Maid scales, so does your role. You will manage additional operations staff as volume grows. Your compensation scales automatically through the revenue-sharing model. This is a ground-floor leadership opportunity with a company that is doubling in size month over month.',
   },
   {
     question: 'How much does a virtual operations manager make?',
     questionEs: '¿Cuánto gana un gerente de operaciones virtual?',
-    answer: 'At The Florida Maid Cleaning Service, the Operations Manager (Virtual) earns $500/week guaranteed base salary plus 10% of gross weekly revenue to start. We currently do 15–20 cleanings per week, so total compensation starts around $500–$815/week. This is a part-time workload right now — work from home, no commute, manageable hours. The business is growing 50–100% every single month. As volume scales, total weekly compensation grows to $1,500+ at $10,000/week revenue and $2,250+ at $17,500/week revenue.',
+    answer: 'At The Florida Maid, the Operations Manager (Virtual) earns $500/week guaranteed base salary plus 10% of gross weekly revenue to start. We currently do 15–20 cleanings per week, so total compensation starts around $500–$815/week. This is a part-time workload right now — work from home, no commute, manageable hours. The business is growing 50–100% every single month. As volume scales, total weekly compensation grows to $1,500+ at $10,000/week revenue and $2,250+ at $17,500/week revenue.',
   },
   {
     question: 'Can I work from home as an operations manager?',
@@ -310,7 +310,7 @@ const faqs = [
   {
     question: 'What is a virtual operations manager?',
     questionEs: '¿Qué es un gerente de operaciones virtual?',
-    answer: 'A virtual operations manager oversees the day-to-day operations of a business remotely. At The Florida Maid Cleaning Service, this means owning the full job lifecycle — from scheduling cleaning appointments to coordinating the team, handling client communications, confirming payments, and reporting daily to the owner. You are the operational backbone of the company.',
+    answer: 'A virtual operations manager oversees the day-to-day operations of a business remotely. At The Florida Maid, this means owning the full job lifecycle — from scheduling cleaning appointments to coordinating the team, handling client communications, confirming payments, and reporting daily to the owner. You are the operational backbone of the company.',
   },
   {
     question: 'Do I need management experience to apply?',
@@ -362,7 +362,7 @@ export default function VirtualOpsManagerPage() {
             Operations Manager (Virtual) — $500/wk + 10% Revenue to Start
           </h1>
           <p className="text-white text-lg max-w-3xl leading-relaxed mb-3">
-            The Florida Maid Cleaning Service &mdash; Miami | Tampa | Orlando
+            The Florida Maid &mdash; Miami | Tampa | Orlando
           </p>
           <p className="text-white max-w-3xl leading-relaxed mb-4">
             This is a ground-floor opportunity to get in early with a company that is scaling fast. Work from home. Start part-time &mdash; the workload is manageable right now &mdash; and grow into full-time as volume increases weekly. No commute. No office. No ceiling on where this goes.
@@ -434,7 +434,7 @@ export default function VirtualOpsManagerPage() {
           <p className="text-gray-400 text-sm italic mb-6">Este no es un trabajo para cualquiera</p>
           <div className="space-y-4 text-gray-600 leading-relaxed max-w-3xl">
             <p>
-              The Florida Maid Cleaning Service has been serving Florida since 2018. Rebranded and rebuilt from the ground up in 2025, we are now doubling in size month over month. We operate over 100 websites across Florida &mdash; from Miami to Jacksonville &mdash; driving organic growth across every market we touch &mdash; and the volume of business coming through our platform is accelerating fast.
+              The Florida Maid has been serving Florida since 2018. Rebranded and rebuilt from the ground up in 2025, we are now doubling in size month over month. We operate over 100 websites across Florida &mdash; from Miami to Jacksonville &mdash; driving organic growth across every market we touch &mdash; and the volume of business coming through our platform is accelerating fast.
             </p>
             <p>
               The owner, Jeff, brings 20+ years of experience in service-based businesses and marketing. He is caring, supportive, and genuinely invested in the people around him. He is also laser-focused, consistent, and operates with clear plans and expectations that must be met. He has an old-school customer service mentality combined with a modern marketing strategy that blends organic grassroots hustle with cutting-edge AI. When things go wrong he expects solutions &mdash; and he expects them to never happen again. When things run right, everyone wins.
@@ -876,7 +876,7 @@ export default function VirtualOpsManagerPage() {
             <div className="border border-gray-200 rounded-2xl p-6 hover:border-[#34D399] transition-colors">
               <h3 className="font-semibold text-[#CC6222] mb-3">The Person Who Wants to Put Their Thumbprint on a Real Business</h3>
               <p className="text-gray-400 text-xs italic mb-2">La persona que quiere dejar su huella en un negocio real</p>
-              <p className="text-gray-500 text-sm leading-relaxed">You&apos;re not looking for a job. You&apos;re looking for something to build. You want to walk into a growing company, take ownership of the operation, build a team under you, and know that what you built is the reason the business runs. You want your work to matter. At The Florida Maid Cleaning Service, it will.</p>
+              <p className="text-gray-500 text-sm leading-relaxed">You&apos;re not looking for a job. You&apos;re looking for something to build. You want to walk into a growing company, take ownership of the operation, build a team under you, and know that what you built is the reason the business runs. You want your work to matter. At The Florida Maid, it will.</p>
             </div>
           </div>
 
@@ -894,8 +894,8 @@ export default function VirtualOpsManagerPage() {
           <p className="text-white/50 text-xs italic mb-2">Por qué esto está creciendo tan rápido</p>
           <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-white tracking-wide mb-3">100+ Websites. Organic Growth. No Paid Ads.</h2>
           <p className="text-white italic mb-3">100+ sitios web. Crecimiento orgánico. Sin anuncios pagados.</p>
-          <p className="text-white max-w-3xl mb-3">The owner has built a network of over 100 websites across Florida &mdash; all driving organic traffic to The Florida Maid Cleaning Service Cleaning Service. This is not a company that relies on paid ads or lead generation services. Every client comes through our own channels. That&apos;s why the growth is real, sustainable, and accelerating.</p>
-          <p className="text-white/50 text-xs italic max-w-3xl mb-10">El dueño ha construido una red de más de 100 sitios web en todo Florida — de Miami a Jacksonville — todos generando tráfico orgánico para The Florida Maid Cleaning Service Cleaning Service. Esta no es una empresa que depende de anuncios pagados o servicios de generación de prospectos. Cada cliente llega por nuestros propios canales. Por eso el crecimiento es real, sostenible y se está acelerando.</p>
+          <p className="text-white max-w-3xl mb-3">The owner has built a network of over 100 websites across Florida &mdash; all driving organic traffic to The Florida Maid. This is not a company that relies on paid ads or lead generation services. Every client comes through our own channels. That&apos;s why the growth is real, sustainable, and accelerating.</p>
+          <p className="text-white/50 text-xs italic max-w-3xl mb-10">El dueño ha construido una red de más de 100 sitios web en todo Florida — de Miami a Jacksonville — todos generando tráfico orgánico para The Florida Maid. Esta no es una empresa que depende de anuncios pagados o servicios de generación de prospectos. Cada cliente llega por nuestros propios canales. Por eso el crecimiento es real, sostenible y se está acelerando.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <p className="font-[family-name:var(--font-bebas)] text-5xl text-[#34D399] tracking-wide mb-2">100+</p>

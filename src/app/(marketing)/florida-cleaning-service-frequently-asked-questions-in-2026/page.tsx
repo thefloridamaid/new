@@ -44,8 +44,8 @@ const trustFAQs = [
 const allFAQs = [...pricingFAQs, ...serviceFAQs, ...schedulingFAQs, ...trustFAQs]
 
 const pageUrl = 'https://www.thefloridamaid.com/florida-cleaning-service-frequently-asked-questions-in-2026'
-const pageTitle = 'Florida Cleaning Service FAQ — Pricing, Services & Scheduling | The Florida Maid Cleaning Service Cleaning Service'
-const pageDescription = 'Answers to 24 common questions about The Florida Maid Cleaning Service Cleaning Service — pricing ($49–$100/hr), what\'s included, scheduling, insurance, service areas, and more. Serving Miami, Fort Lauderdale, West Palm Beach, Tampa & Orlando. (954) 710-3636'
+const pageTitle = 'Florida Cleaning Service FAQ — Pricing, Services & Scheduling | The Florida Maid'
+const pageDescription = 'Answers to 24 common questions about The Florida Maid — pricing ($49–$100/hr), what\'s included, scheduling, $1M insurance, service areas & more. 25,000+ homes served. (954) 710-3636'
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
     description: pageDescription,
     url: pageUrl,
     type: 'website',
-    siteName: 'The Florida Maid Cleaning Service Cleaning Service',
+    siteName: 'The Florida Maid',
     locale: 'en_US',
-    images: [{ url: 'https://www.thefloridamaid.com/icon-512.png', width: 512, height: 512, alt: 'The Florida Maid Cleaning Service Cleaning Service' }],
+    images: [{ url: 'https://www.thefloridamaid.com/icon-512.png', width: 512, height: 512, alt: 'The Florida Maid' }],
   },
   twitter: {
     card: 'summary',

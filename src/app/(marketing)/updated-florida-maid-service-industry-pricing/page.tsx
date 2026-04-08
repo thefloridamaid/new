@@ -7,14 +7,14 @@ import Breadcrumbs from '@/components/marketing/Breadcrumbs'
 import CTABlock from '@/components/marketing/CTABlock'
 
 const url = 'https://www.thefloridamaid.com/updated-florida-maid-service-industry-pricing'
-const title = 'Florida Maid Service Pricing From $49/hr | Transparent Rates | The Florida Maid Cleaning Service Cleaning Service'
-const description = 'Transparent hourly cleaning rates across Miami, Tampa, Orlando, Fort Lauderdale Florida Jacksonville. $49/hr your supplies, $65/hr we bring everything, $100/hr same-day. No hidden fees. 5.0★ Google. (954) 710-3636'
+const title = 'Florida Cleaning Pricing From $49/hr | Transparent Rates | The Florida Maid'
+const description = 'Transparent hourly cleaning rates across Florida. $49/hr your supplies, $65/hr we bring everything, $100/hr same-day. Over 25,000 homes served. 5.0★ rated, $1M insured. No hidden fees. (954) 710-3636'
 
 export const metadata: Metadata = {
   title: { absolute: title },
   description,
   alternates: { canonical: url },
-  openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid Cleaning Service Cleaning Service', locale: 'en_US' },
+  openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid', locale: 'en_US' },
   twitter: { card: 'summary_large_image', title, description },
   other: { 'geo.region': 'US-FL', 'geo.placename': 'Florida', 'geo.position': '25.7617;-80.1918', 'ICBM': '25.7617, -80.1918' },
 }

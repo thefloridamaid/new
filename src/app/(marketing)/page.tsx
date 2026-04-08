@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: content.title,
     description: content.metaDescription,
     url: 'https://www.thefloridamaid.com',
-    siteName: 'The Florida Maid Cleaning Service Cleaning Service',
+    siteName: 'The Florida Maid',
     type: 'website',
     locale: 'en_US',
   },
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 const testimonials = [
   { text: 'We just had our apartment painted and needed a deep clean to get rid of loads of dust. Florida Maid sent a wonderful cleaner who was prompt, professional and did an amazing job. Highly recommend!!!', name: 'Julie Salamon', location: 'Florida' },
   { text: 'Best cleaning service I\'ve used in the 20 years I\'ve lived in Florida! Consistently efficient, thorough...', name: 'Courtney Gamble', location: 'Florida' },
-  { text: 'After trying three different cleaning companies in Florida, The Florida Maid Cleaning Service is hands down the most affordable and thorough.', name: 'Jenna M', location: 'Florida' },
+  { text: 'After trying three different cleaning companies in Florida, The Florida Maid is hands down the most affordable and thorough.', name: 'Jenna M', location: 'Florida' },
 ]
 
 const homepageFAQs = [
@@ -99,7 +99,7 @@ const homepageFAQs = [
   { question: 'What if I am not happy with the cleaning?', answer: 'Your satisfaction is guaranteed. If you are not happy with any aspect of the clean, contact us within 24 hours and we will send someone back to make it right at no extra charge.' },
   { question: 'How do you maintain quality?', answer: 'We use detailed checklists, conduct regular quality reviews, and only work with experienced, vetted cleaners. Every clean is held to the same high standard.' },
   { question: 'Do you have reviews I can read?', answer: 'Yes! We have a 5.0-star Google rating. You can read verified reviews on our Reviews page or on Google directly.' },
-  { question: 'How long have you been in business?', answer: 'The Florida Maid Cleaning Service has been serving the Florida metro area since 2018. We have cleaned thousands of homes and built a loyal client base through consistent quality.' },
+  { question: 'How long have you been in business?', answer: 'The Florida Maid has been serving the Florida metro area since 2018. We have cleaned thousands of homes and built a loyal client base through consistent quality.' },
 
   // Special Situations
   { question: 'Can you clean if I have pets?', answer: 'Absolutely. We love pets! Just let us know so we can plan accordingly. We are experienced with homes that have dogs, cats, and other animals.' },
@@ -197,7 +197,7 @@ export default function HomePage() {
             {/* Left — story */}
             <div>
               <p className="text-xs font-semibold text-black tracking-[0.25em] uppercase mb-3">Florida&apos;s Trusted Home Cleaning Company Since 2018</p>
-              <h2 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-[#CC6222] tracking-wide leading-tight mb-4">Welcome to The Florida Maid Cleaning Service</h2>
+              <h2 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-[#CC6222] tracking-wide leading-tight mb-4">Welcome to The Florida Maid</h2>
               <div className="w-12 h-[2px] bg-[#34D399] mb-6" />
               <p className="text-black text-lg leading-relaxed mb-5">
                 We&apos;re a small, dedicated cleaning company that treats every home like our own. No apps, no algorithms, no random strangers — just experienced, professional cleaners who show up on time, do beautiful work, and earn your trust visit after visit.
@@ -230,7 +230,7 @@ export default function HomePage() {
             {/* Right — at a glance + quick stats */}
             <div className="space-y-6">
               <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-2xl p-8">
-                <h3 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-5">The Florida Maid Cleaning Service at a Glance</h3>
+                <h3 className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide mb-5">The Florida Maid at a Glance</h3>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
                     <p className="font-[family-name:var(--font-bebas)] text-3xl text-[#CC6222] tracking-wide">2018</p>
@@ -438,7 +438,7 @@ export default function HomePage() {
                 <p className="font-[family-name:var(--font-bebas)] text-2xl text-black tracking-wide">$75–$120/hr</p>
               </div>
               <div className="bg-[#F5FBF8] border border-[#34D399]/30 rounded-xl p-4">
-                <p className="text-xs text-[#34D399] font-semibold tracking-wide uppercase mb-1">The Florida Maid Cleaning Service Cleaning Service</p>
+                <p className="text-xs text-[#34D399] font-semibold tracking-wide uppercase mb-1">The Florida Maid</p>
                 <p className="font-[family-name:var(--font-bebas)] text-2xl text-[#CC6222] tracking-wide">$49–$65/hr</p>
               </div>
               <div className="bg-gray-50 rounded-xl p-4">
@@ -521,10 +521,10 @@ export default function HomePage() {
                   { name: 'Courtney Gamble', time: '6 months ago', text: "Best cleaning service I've used in the 20 years I've lived in Florida! Consistently efficient, thorough...", initial: 'C', color: 'bg-purple-400' },
                   { name: 'Shilpa Ray', time: '6 months ago', text: 'Perfect for post move deep cleaning. Appliances were spotless. Looked brand new.', initial: 'S', color: 'bg-blue-400' },
                   { name: 'Greg Farr', time: '6 months ago', text: 'The very best service every time, amazing!!', initial: 'G', color: 'bg-indigo-400' },
-                  { name: 'Maria Lina', time: '6 months ago', text: 'The Florida Maid Cleaning Service Cleaning Service is so efficient and professional! I know I can always count on them.', initial: 'M', color: 'bg-rose-400' },
+                  { name: 'Maria Lina', time: '6 months ago', text: 'The Florida Maid is so efficient and professional! I know I can always count on them.', initial: 'M', color: 'bg-rose-400' },
                   { name: 'Timothy Wojcik', time: '7 months ago', text: 'Excellent service and a great price! Prompt and thorough, would highly recommend!', initial: 'T', color: 'bg-amber-500' },
-                  { name: 'Jenni Martinez', time: '7 months ago', text: '5 Stars \u2013 Absolutely the Best Cleaning Service in Florida! I gotta say, The Florida Maid Cleaning Service is truly the best.', initial: 'J', color: 'bg-emerald-500' },
-                  { name: 'Jenna M', time: '7 months ago', text: 'After trying three different cleaning companies in Florida, The Florida Maid Cleaning Service is hands down the most affordable and thorough.', initial: 'J', color: 'bg-sky-500' },
+                  { name: 'Jenni Martinez', time: '7 months ago', text: '5 Stars \u2013 Absolutely the Best Cleaning Service in Florida! I gotta say, The Florida Maid is truly the best.', initial: 'J', color: 'bg-emerald-500' },
+                  { name: 'Jenna M', time: '7 months ago', text: 'After trying three different cleaning companies in Florida, The Florida Maid is hands down the most affordable and thorough.', initial: 'J', color: 'bg-sky-500' },
                 ].map((review, i) => (
                   <div key={i} className="border border-gray-200 rounded-xl p-5">
                     <div className="flex items-center gap-2.5 mb-2">
@@ -573,7 +573,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div>
             <p className="text-xs font-semibold text-black tracking-[0.2em] uppercase mb-3">Licensed &amp; Insured Florida Cleaning Company</p>
-            <h2 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-[#CC6222] tracking-wide leading-tight mb-6">Why Thousands of Floridians Trust The Florida Maid Cleaning Service</h2>
+            <h2 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-[#CC6222] tracking-wide leading-tight mb-6">Why Thousands of Floridians Trust The Florida Maid</h2>
             <div className="w-12 h-[2px] bg-[#34D399] mb-6" />
             <p className="text-black text-lg leading-relaxed mb-4">
               We provide personalized, hourly <Link href="/updated-florida-maid-service-industry-pricing" className="text-[#CC6222] underline underline-offset-2">cleaning service pricing</Link> for each unique space — ensuring high-quality cleaning tailored to your needs. No contracts, no hidden fees, no surprises.
@@ -631,8 +631,8 @@ export default function HomePage() {
       {/* Why Clients Choose Us */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
-          <p className="text-xs font-semibold text-black tracking-[0.25em] uppercase mb-3 text-center">What Makes The Florida Maid Cleaning Service Different From Other Florida Cleaning Services</p>
-          <h2 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-[#CC6222] tracking-wide text-center mb-4">Why Clients Choose The Florida Maid Cleaning Service Cleaning Service Over Every Other Cleaning Company</h2>
+          <p className="text-xs font-semibold text-black tracking-[0.25em] uppercase mb-3 text-center">What Makes The Florida Maid Different From Other Florida Cleaning Services</p>
+          <h2 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-[#CC6222] tracking-wide text-center mb-4">Why Clients Choose The Florida Maid Over Every Other Cleaning Company</h2>
           <p className="text-black text-center max-w-3xl mx-auto mb-14">
             No money upfront — you pay only after your cleaning is complete. Flat <Link href="/updated-florida-maid-service-industry-pricing" className="text-[#CC6222] underline underline-offset-2">hourly pricing</Link> with no surprise fees. Experienced, professional cleaners — not random gig workers. <Link href="/services/weekly-maid-service-in-florida" className="text-[#CC6222] underline underline-offset-2">Weekly</Link> and <Link href="/services/bi-weekly-cleaning-service-in-florida" className="text-[#CC6222] underline underline-offset-2">bi-weekly recurring service</Link> available. No contracts — stay because you&apos;re happy.
           </p>
@@ -908,7 +908,7 @@ export default function HomePage() {
           <p className="text-xs font-semibold text-black tracking-[0.25em] uppercase mb-3">Earn Passive Income With Our Florida Cleaning Referral Program</p>
           <h2 className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#CC6222] tracking-wide mb-4">Get Paid 10% Every Time Your Referral Books a Cleaning</h2>
           <p className="text-black max-w-2xl mx-auto mb-8">
-            Refer friends, family, or neighbors to The Florida Maid Cleaning Service and earn 10% recurring commission on every cleaning they book — not just the first. Paid via Zelle or Apple Cash after each completed visit. No limit on referrals, no cap on earnings.
+            Refer friends, family, or neighbors to The Florida Maid and earn 10% recurring commission on every cleaning they book — not just the first. Paid via Zelle or Apple Cash after each completed visit. No limit on referrals, no cap on earnings.
           </p>
           <Link href="/get-paid-for-cleaning-referrals-every-time-they-are-serviced" target="_blank" className="inline-block bg-[#CC6222] text-white px-8 py-3.5 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#CC6222]/90 transition-colors">
             Join the Referral Program &rarr;

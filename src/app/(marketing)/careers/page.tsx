@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description: pageDescription,
     url: pageUrl,
     type: 'website',
-    siteName: 'The Florida Maid Cleaning Service',
+    siteName: 'The Florida Maid',
     locale: 'en_US',
   },
   twitter: {

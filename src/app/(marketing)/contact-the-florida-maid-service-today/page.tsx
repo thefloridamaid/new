@@ -8,14 +8,14 @@ import Breadcrumbs from '@/components/marketing/Breadcrumbs'
 import CTABlock from '@/components/marketing/CTABlock'
 
 const url = 'https://www.thefloridamaid.com/contact-the-florida-maid-service-today'
-const title = 'Contact The Florida Maid Cleaning Service | Call or Text (954) 710-3636 | Free Quote'
-const description = 'Contact The Florida Maid Cleaning Service for a free cleaning quote. Text or call (954) 710-3636, email hi@thefloridamaid.com, or book online. Service from $49/hr across Florida. 5.0★ Google.'
+const title = 'Contact The Florida Maid | Call or Text (954) 710-3636 | Free Quote'
+const description = 'Contact The Florida Maid for a free cleaning quote. Text or call (954) 710-3636, email hi@thefloridamaid.com, or book online. From $49/hr. 25,000+ homes served. $1M insured.'
 
 export const metadata: Metadata = {
   title: { absolute: title },
   description,
   alternates: { canonical: url },
-  openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid Cleaning Service Cleaning Service', locale: 'en_US' },
+  openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid', locale: 'en_US' },
   twitter: { card: 'summary_large_image', title, description },
   other: { 'geo.region': 'US-FL', 'geo.placename': 'Florida', 'geo.position': '25.7617;-80.1918', 'ICBM': '25.7617, -80.1918' },
 }

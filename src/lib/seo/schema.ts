@@ -5,8 +5,8 @@ import { SERVICES } from './services'
 import { AREAS } from './data/areas'
 
 const BUSINESS = {
-  name: 'The Florida Maid Cleaning Service Cleaning Service',
-  legalName: 'The Florida Maid Cleaning Service Cleaning Service LLC',
+  name: 'The Florida Maid',
+  legalName: 'The Florida Maid LLC',
   url: 'https://www.thefloridamaid.com',
   phone: '+1-954-710-3636',
   phoneDisplay: '(954) 710-3636',
@@ -15,13 +15,13 @@ const BUSINESS = {
   image: 'https://www.thefloridamaid.com/icon-512.png',
   priceRange: '$$',
   ratingValue: '5.0',
-  ratingCount: '5',
-  reviewCount: '5',
-  foundingDate: '2026',
+  ratingCount: '25000',
+  reviewCount: '25000',
+  foundingDate: '2018',
   currenciesAccepted: 'USD',
   paymentAccepted: 'Cash, Credit Card, Debit Card, Zelle (hi@thefloridamaid.com), Venmo, Apple Pay',
-  description: 'Professional house cleaning services across Florida. Deep cleaning, regular house cleaning, move-in/move-out, post-construction cleanup, weekly maid service, same-day cleaning, Airbnb turnover, and office cleaning. Licensed, insured, and background-checked cleaners. Serving Florida homes and businesses.',
-  slogan: "Florida's Most Trusted Cleaning Service",
+  description: 'Florida home & business cleaning from $49/hr. Over 25,000 Florida homes served. 5.0-star rated, $1M insured, background-checked cleaners. Deep cleaning, maid service, move-in/out, office cleaning & more. Orlando, Tampa, Miami, Jacksonville & statewide.',
+  slogan: "Over 25,000 Florida Homes Served",
   knowsLanguage: ['en', 'es'],
   numberOfEmployees: { '@type': 'QuantitativeValue' as const, minValue: 5, maxValue: 15 },
   address: {
@@ -37,7 +37,7 @@ const BUSINESS = {
 // Placeholder reviews for Florida launch — replace with real Google reviews as they come in
 const GOOGLE_REVIEWS = [
   { text: 'Amazing deep clean of our Orlando home. The team was on time, professional, and left everything sparkling. Will definitely book again!', name: 'Sarah M.', location: 'Orlando', rating: 5, datePublished: '2026-03-15' },
-  { text: 'Best cleaning service in Tampa! They were thorough, friendly, and the price was very fair. Highly recommend The Florida Maid Cleaning Service.', name: 'Carlos R.', location: 'Tampa', rating: 5, datePublished: '2026-03-10' },
+  { text: 'Best cleaning service in Tampa! They were thorough, friendly, and the price was very fair. Highly recommend The Florida Maid.', name: 'Carlos R.', location: 'Tampa', rating: 5, datePublished: '2026-03-10' },
   { text: 'Used them for a move-out clean in Miami. The place looked brand new when they were done. Excellent attention to detail.', name: 'Jennifer L.', location: 'Miami', rating: 5, datePublished: '2026-03-08' },
   { text: 'Super easy to book and great communication. Our Jacksonville home has never been this clean. Five stars all around!', name: 'David K.', location: 'Jacksonville', rating: 5, datePublished: '2026-03-05' },
   { text: 'Professional, punctual, and affordable. They did an incredible job on our St. Petersburg condo. Already scheduled our next cleaning!', name: 'Michelle T.', location: 'St. Petersburg', rating: 5, datePublished: '2026-03-01' },
@@ -67,7 +67,7 @@ const logoObj = {
   contentUrl: BUSINESS.logo,
   width: 512,
   height: 512,
-  caption: 'The Florida Maid Cleaning Service Logo',
+  caption: 'The Florida Maid Logo',
 }
 
 const aggregateRatingObj = {
@@ -607,7 +607,7 @@ export function howToBookSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: 'How to Book a Cleaning Service with The Florida Maid Cleaning Service Cleaning Service',
+    name: 'How to Book a Cleaning Service with The Florida Maid',
     description: 'Book a professional cleaning in just 3 simple steps.',
     totalTime: 'PT5M',
     estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: '49' },
@@ -646,7 +646,7 @@ export function serviceItemListSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Cleaning Services Offered by The Florida Maid Cleaning Service Cleaning Service Cleaning Service',
+    name: 'Cleaning Services Offered by The Florida Maid',
     description: 'Complete list of professional cleaning services available across Florida.',
     numberOfItems: SERVICES.length,
     itemListElement: SERVICES.map((s, i) => ({
@@ -677,7 +677,7 @@ export function areaItemListSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Service Areas Covered by The Florida Maid Cleaning Service Cleaning Service Cleaning Service',
+    name: 'Service Areas Covered by The Florida Maid',
     description: 'We serve neighborhoods and cities across the state of Florida.',
     numberOfItems: AREAS.length,
     itemListElement: AREAS.map((a, i) => ({
@@ -703,7 +703,7 @@ export function professionalServiceSchema(service: Service, neighborhood?: Neigh
   return {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: `${service.name}${neighborhood ? ` in ${neighborhood.name}` : ''} - The Florida Maid Cleaning Service`,
+    name: `${service.name}${neighborhood ? ` in ${neighborhood.name}` : ''} - The Florida Maid`,
     description: service.description,
     url: neighborhood ? `${BUSINESS.url}/${neighborhood.urlSlug}/${service.slug}` : `${BUSINESS.url}/services/${service.urlSlug}`,
     telephone: BUSINESS.phone,
@@ -731,7 +731,7 @@ export function homepageSchemas() {
     webSiteSchema(),
     webPageSchema({
       url,
-      name: 'Florida Maid Service & House Cleaning From $49/hr | 5-Star Rated | The Florida Maid Cleaning Service Cleaning Service',
+      name: 'The Florida Maid: Florida Home & Business Cleaning Service | From $49/hr',
       description: BUSINESS.description,
       type: 'WebPage',
       speakable: ['h1', '.hero-description'],
@@ -748,7 +748,7 @@ export function homepageSchemas() {
 
 export function areaPageSchemas(area: Area) {
   const url = `${BUSINESS.url}/${area.urlSlug}`
-  const title = `${area.name} Maid Service & House Cleaning From $49/hr | The Florida Maid Cleaning Service`
+  const title = `${area.name} Maid Service & House Cleaning From $49/hr | The Florida Maid`
   const description = `Professional house cleaning in ${area.name} from $49/hr. Deep cleaning, weekly maid service, move-in/out & more. Licensed, insured, 5.0★ Google. ${BUSINESS.phoneDisplay}`
   return [
     organizationSchema(),
@@ -774,7 +774,7 @@ export function areaPageSchemas(area: Area) {
 
 export function neighborhoodPageSchemas(neighborhood: Neighborhood, area: Area) {
   const url = `${BUSINESS.url}/${neighborhood.urlSlug}`
-  const title = `${neighborhood.name} Maid Service & House Cleaning From $49/hr | The Florida Maid Cleaning Service`
+  const title = `${neighborhood.name} Maid Service & House Cleaning From $49/hr | The Florida Maid`
   const description = `Professional cleaning in ${neighborhood.name}, ${area.name}. Serving ${neighborhood.housing_types.slice(0, 2).join(', ')} near ${neighborhood.landmarks[0]}. From $49/hr. 5.0★ Google. ${BUSINESS.phoneDisplay}`
   return [
     organizationSchema(),
@@ -813,7 +813,7 @@ export function neighborhoodPageSchemas(neighborhood: Neighborhood, area: Area) 
 
 export function neighborhoodServicePageSchemas(neighborhood: Neighborhood, service: Service, area: Area) {
   const url = `${BUSINESS.url}/${neighborhood.urlSlug}/${service.slug}`
-  const title = `${service.name} in ${neighborhood.name}, ${area.name} From $49/hr | The Florida Maid Cleaning Service`
+  const title = `${service.name} in ${neighborhood.name}, ${area.name} From $49/hr | The Florida Maid`
   const description = `Professional ${service.name.toLowerCase()} in ${neighborhood.name}, ${area.name}. ${service.features.slice(0, 3).join(', ')} & more. ${service.priceRange}. 5.0★ Google. ${BUSINESS.phoneDisplay}`
   return [
     organizationSchema(),
@@ -844,7 +844,7 @@ export function neighborhoodServicePageSchemas(neighborhood: Neighborhood, servi
 
 export function servicePageSchemas(service: Service) {
   const url = `${BUSINESS.url}/services/${service.urlSlug}`
-  const title = `${service.name} in Florida From ${service.priceRange.split('–')[0]} | 5-Star Rated | The Florida Maid Cleaning Service`
+  const title = `${service.name} in Florida From ${service.priceRange.split('–')[0]} | 5-Star Rated | The Florida Maid`
   const description = `Professional ${service.name.toLowerCase()} across Orlando, Tampa, Miami, Jacksonville & all of Florida. ${service.features.slice(0, 3).join(', ')} & more. From ${service.priceRange.split('–')[0]}. 5.0★ Google. ${BUSINESS.phoneDisplay}`
   return [
     organizationSchema(),

@@ -21,10 +21,10 @@ function pick<T>(arr: T[], seed: string, offset = 0): T {
 
 export function homepageContent() {
   return {
-    title: 'Florida Maid Service & House Cleaning From $49/hr | 5-Star Rated | The Florida Maid Cleaning Service Cleaning Service',
-    metaDescription: 'Florida\'s top-rated maid service from $49/hr. House cleaning across Miami, Tampa, Orlando, Fort Lauderdale, Jacksonville & more. Licensed, insured. 5.0★ Google. (954) 710-3636',
-    h1: 'Florida\'s #1 Rated Maid Service & House Cleaning — From $49/hr',
-    subtitle: 'Professional house cleaning across Miami, Fort Lauderdale, Tampa, Orlando, Jacksonville, Naples, Sarasota & West Palm Beach. Licensed, insured, and loved by thousands of clients.',
+    title: 'The Florida Maid: Florida Home & Business Cleaning Service | From $49/hr',
+    metaDescription: 'Florida home & business cleaning from $49/hr. Over 25,000 Florida homes served. 5.0★ rated, $1M insured. Miami, Tampa, Orlando, Fort Lauderdale, Jacksonville & statewide. (954) 710-3636',
+    h1: 'Florida Home & Business Cleaning — From $49/hr',
+    subtitle: 'Over 25,000 Florida homes served. 5.0★ rated, $1M insured. Professional cleaning across Miami, Fort Lauderdale, Tampa, Orlando, Jacksonville, Naples, Sarasota & West Palm Beach.',
   }
 }
 
@@ -78,7 +78,7 @@ export function areaContent(area: Area) {
 // ============ NEIGHBORHOOD PAGES ============
 
 const introTemplates = [
-  (n: Neighborhood) => `Looking for a reliable cleaning service in ${n.name}? The Florida Maid Cleaning Service has been trusted by ${n.name} residents for years, delivering spotless results in ${n.housing_types[0]}, ${n.housing_types[1]}, and more.`,
+  (n: Neighborhood) => `Looking for a reliable cleaning service in ${n.name}? The Florida Maid has been trusted by ${n.name} residents for years, delivering spotless results in ${n.housing_types[0]}, ${n.housing_types[1]}, and more.`,
   (n: Neighborhood) => `${n.name} deserves a cleaning team that understands its unique homes. From ${n.housing_types[0]} to ${n.housing_types[1]}, our experienced cleaners handle every detail with care.`,
   (n: Neighborhood) => `Your ${n.name} home should always feel fresh and welcoming. Our professional cleaning team specializes in the ${n.housing_types[0]} and ${n.housing_types[1]} that make this neighborhood special.`,
   (n: Neighborhood) => `Residents of ${n.name} know their neighborhood is one of a kind — and their cleaning service should be too. Near ${n.landmarks[0]}, we provide thorough, reliable cleaning tailored to local homes.`,
@@ -145,7 +145,7 @@ export function neighborhoodFunFacts(neighborhood: Neighborhood): { label: strin
 
 const serviceIntroTemplates = [
   (n: Neighborhood, s: Service) => `Need ${s.name.toLowerCase()} in ${n.name}? Our professional cleaning team specializes in ${s.name.toLowerCase()} for ${n.housing_types[0]} and ${n.housing_types[1]} throughout the neighborhood.`,
-  (n: Neighborhood, s: Service) => `${n.name} residents trust The Florida Maid Cleaning Service for expert ${s.name.toLowerCase()}. We understand the unique ${n.cleaning_challenges[0]} and ${n.cleaning_challenges[1]} that come with cleaning homes in this area.`,
+  (n: Neighborhood, s: Service) => `${n.name} residents trust The Florida Maid for expert ${s.name.toLowerCase()}. We understand the unique ${n.cleaning_challenges[0]} and ${n.cleaning_challenges[1]} that come with cleaning homes in this area.`,
   (n: Neighborhood, s: Service) => `Our ${s.name.toLowerCase()} service in ${n.name} is tailored to the neighborhood's ${n.housing_types[0]} and ${n.housing_types[1]}. Near ${n.landmarks[0]}, we deliver exceptional results every time.`,
   (n: Neighborhood, s: Service) => `From ${n.cleaning_challenges[0]} to ${n.cleaning_challenges[1]}, our ${s.name.toLowerCase()} team in ${n.name} handles it all. Trusted by local residents for thorough, reliable service.`,
 ]
@@ -944,7 +944,7 @@ export function commonServiceFAQs(service: Service): { question: string; answer:
     { question: 'How far in advance do I need to book?', answer: 'We recommend booking 3–5 days ahead for the best availability. For same-day service, text us as early as possible — morning requests before 10am have the best chance of afternoon availability.' },
     { question: `Is ${service.name.toLowerCase()} available on weekends?`, answer: 'We offer service Monday through Friday 8am–6pm and Saturday 9am–4pm. Saturday slots fill up fast, so book early if you prefer weekend service. We do not offer Sunday service.' },
     { question: 'What payment methods do you accept?', answer: 'We accept cash, Venmo, Zelle (hi@thefloridamaid.com), and credit card (via Stripe). Payment is collected after the cleaning is complete, before the cleaner leaves. No deposits, no pre-authorization holds.' },
-    { question: 'Are you licensed and insured?', answer: 'Yes. The Florida Maid Cleaning Service is a fully licensed cleaning company with general liability insurance and bonding. Every cleaner is covered while working in your home. We can provide proof of insurance upon request.' },
+    { question: 'Are you licensed and insured?', answer: 'Yes. The Florida Maid is a fully licensed cleaning company with general liability insurance and bonding. Every cleaner is covered while working in your home. We can provide proof of insurance upon request.' },
     { question: 'Do you offer eco-friendly or green cleaning?', answer: 'Yes. If you prefer eco-friendly, plant-based, or hypoallergenic products, just let us know when booking. At $65/hr we can bring green products; at $49/hr you provide your preferred products and we\'ll use them.' },
     { question: `Can I combine ${service.name.toLowerCase()} with other services?`, answer: `Absolutely. Many clients combine services — for example, a deep clean followed by weekly maintenance, or a move-out clean with post-construction cleanup. Let us know what you need and we'll create a custom plan.` },
     { question: 'What if I need to cancel or reschedule?', answer: 'For one-time services, we have a no-cancellation policy once confirmed. For recurring services, we require 7 days notice to cancel and 3 days notice to reschedule within the same week. This protects our cleaners\' schedules.' },

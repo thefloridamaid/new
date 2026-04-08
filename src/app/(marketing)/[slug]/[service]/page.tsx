@@ -28,14 +28,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const area = getArea(neighborhood.area)!
   const url = `https://www.thefloridamaid.com/${slug}/${serviceSlug}`
-  const title = `${service.name} in ${neighborhood.name}, ${area.name} From $49/hr | The Florida Maid Cleaning Service`
+  const title = `${service.name} in ${neighborhood.name}, ${area.name} From $49/hr | The Florida Maid`
   const description = `Professional ${service.name.toLowerCase()} in ${neighborhood.name}, ${area.name}. ${service.features.slice(0, 3).join(', ')} & more. ${service.priceRange}. 5.0★ Google. (954) 710-3636`
 
   return {
     title: { absolute: title },
     description,
     alternates: { canonical: url },
-    openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid Cleaning Service Cleaning Service', locale: 'en_US' },
+    openGraph: { title, description, url, type: 'website', siteName: 'The Florida Maid', locale: 'en_US' },
     twitter: { card: 'summary_large_image', title, description },
     other: { 'geo.region': `US-${area.state}`, 'geo.placename': neighborhood.name, 'geo.position': `${neighborhood.lat};${neighborhood.lng}`, 'ICBM': `${neighborhood.lat}, ${neighborhood.lng}` },
   }

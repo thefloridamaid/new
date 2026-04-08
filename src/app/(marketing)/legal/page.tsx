@@ -5,8 +5,8 @@ import JsonLd from '@/components/marketing/JsonLd'
 import Breadcrumbs from '@/components/marketing/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Legal Information | The Florida Maid Cleaning Service Cleaning Service',
-  description: 'Legal information for The Florida Maid Cleaning Service Cleaning Service — privacy policy, terms, refund policy & data sharing. Florida cleaning from $49/hr. (954) 710-3636',
+  title: 'Legal Information | The Florida Maid',
+  description: 'Legal information for The Florida Maid — privacy policy, terms, refund policy & data sharing. Florida cleaning from $49/hr. $1M insured. (954) 710-3636',
   alternates: { canonical: 'https://www.thefloridamaid.com/legal' },
 }
 
@@ -21,7 +21,7 @@ export default function LegalPage() {
       <section className="bg-gradient-to-b from-[#CC6222] to-[#CC6222] py-16 md:py-20">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <h1 className="font-[family-name:var(--font-bebas)] text-4xl md:text-5xl text-white tracking-wide">Legal Information</h1>
-          <p className="text-white mt-3">Policies and terms for The Florida Maid Cleaning Service</p>
+          <p className="text-white mt-3">Policies and terms for The Florida Maid</p>
         </div>
       </section>
 
