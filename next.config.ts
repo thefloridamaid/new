@@ -30,13 +30,18 @@ const nextConfig: NextConfig = {
       permanent: true,
     },
     {
+      source: '/book',
+      destination: '/clients/collect',
+      permanent: true,
+    },
+    {
       source: '/book/collect',
       destination: '/clients/collect',
       permanent: true,
     },
     {
       source: '/book/new',
-      destination: '/clients/new',
+      destination: '/clients/collect',
       permanent: true,
     },
     {

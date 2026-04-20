@@ -313,7 +313,7 @@ export async function GET() {
     .select('id, referrer, session_id, domain, device, created_at')
     .in('domain', allVariants)
     .eq('action', 'form_success')
-    .eq('page', '/clients/new')
+    .eq('page', '/clients/collect')
   const validBookings = (formBookings || []).filter(b => b.session_id && b.referrer && b.referrer !== 'direct')
   const totalBooks = validBookings.length
   const bookingDetails = validBookings.map(b => ({
