@@ -538,20 +538,6 @@ export default function CareersPage() {
           </div>
         </section>
 
-        {/* Operations Manager CTA */}
-        <section className="mb-16">
-          <div className="border-2 border-[#CC6222] rounded-2xl p-8 md:p-10 flex flex-col lg:flex-row items-center justify-between gap-6">
-            <div>
-              <p className="text-[#34D399] text-xs font-semibold tracking-[0.2em] uppercase mb-1">Also Hiring</p>
-              <p className="font-[family-name:var(--font-bebas)] text-2xl md:text-3xl text-[#CC6222] tracking-wide">Operations Manager (Virtual) — Work From Home, $500/wk + 10% Revenue to Start</p>
-              <p className="text-gray-500 text-sm mt-2 max-w-xl">Part-time to start, growing into full-time. Work from home. Own scheduling, customer service, team management. $500/wk base + 10% of revenue. Currently managing 15–20 cleanings/wk and growing weekly. Bilingual preferred.</p>
-            </div>
-            <Link href="/careers/virtual-operations-manager" className="bg-[#CC6222] text-white px-8 py-3.5 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-[#CC6222]/90 transition-colors whitespace-nowrap flex-shrink-0">
-              View Role
-            </Link>
-          </div>
-        </section>
-
         {/* Apply CTA */}
         <section className="bg-[#34D399] rounded-2xl p-8 md:p-12 text-center mb-16">
           <p className="font-[family-name:var(--font-bebas)] text-3xl md:text-4xl text-[#CC6222] tracking-wide mb-2">Ready to Start Earning? / ¿Listo para Empezar a Ganar?</p>

@@ -54,11 +54,6 @@ const nextConfig: NextConfig = {
       destination: '/available-florida-maid-jobs',
       permanent: true,
     },
-    {
-      source: '/careers/operations-coordinator',
-      destination: '/careers/virtual-operations-manager',
-      permanent: true,
-    },
   ],
   headers: async () => [
     {

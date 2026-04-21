@@ -23,7 +23,6 @@ export async function GET() {
     { path: '/florida-cleaning-service-frequently-asked-questions', freq: 'monthly', pri: '0.8' },
     { path: '/florida-customer-reviews-for-the-florida-maid', freq: 'weekly', pri: '0.8' },
     { path: '/available-florida-maid-jobs', freq: 'daily', pri: '0.8' },
-    { path: '/careers/virtual-operations-manager', freq: 'daily', pri: '0.8' },
     { path: '/florida-maid-service-blog', freq: 'weekly', pri: '0.7' },
     { path: '/florida-maid-cleaning-tips-and-advice-by-the-florida-maid', freq: 'weekly', pri: '0.7' },
     { path: '/service/florida-emergency-cleaning-service', freq: 'monthly', pri: '0.7' },

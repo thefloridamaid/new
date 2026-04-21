@@ -44,10 +44,13 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json()
-    const { name, email, phone, address, unit, experience, availability, referral_source, references, notes, photo_url, service_zones, has_car, max_travel_minutes } = body
+    const { name, email, phone, address, unit, experience, availability, referral_source, references, notes, photo_url, video_url, service_zones, has_car, max_travel_minutes } = body
 
     if (!name || !phone || !address || !photo_url) {
       return NextResponse.json({ error: 'Name, phone, address, and photo are required' }, { status: 400 })
+    }
+    if (!video_url) {
+      return NextResponse.json({ error: 'Intro video is required' }, { status: 400 })
     }
 
     const fullAddress = unit ? `${address}, ${unit}` : address
@@ -100,6 +103,7 @@ export async function POST(request: Request) {
       <div style="font-family: sans-serif; max-width: 500px;">
         <h2 style="color: #000;">New Cleaner Application</h2>
         ${photo_url ? `<div style="margin: 16px 0;"><img src="${photo_url}" alt="${name}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #eee;" /></div>` : ''}
+        ${video_url ? `<p><strong>Intro Video:</strong> <a href="${video_url}">${video_url}</a></p>` : ''}
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Phone:</strong> ${phone}</p>
         <p><strong>Email:</strong> ${email || 'Not provided'}</p>

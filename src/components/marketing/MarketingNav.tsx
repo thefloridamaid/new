@@ -19,7 +19,6 @@ const moreLinks = [
   { name: 'About', href: '/about-the-florida-maid-service-company' },
   { name: 'FAQ', href: '/florida-cleaning-service-frequently-asked-questions-in-2026' },
   { name: 'Careers — Cleaning Jobs', href: '/available-florida-maid-jobs' },
-  { name: 'Careers — Operations Admin', href: '/careers/virtual-operations-manager' },
   { name: 'Locations', href: '/service-areas-served-by-the-florida-maid' },
   { name: 'Reviews', href: '/florida-customer-reviews-for-the-florida-maid' },
   { name: 'Referral Program', href: '/get-paid-for-cleaning-referrals-every-time-they-are-serviced' },

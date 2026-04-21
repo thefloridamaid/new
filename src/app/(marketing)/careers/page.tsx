@@ -39,16 +39,6 @@ const positions = [
     href: '/available-florida-maid-jobs',
     highlights: ['Flexible schedule — you set your hours', 'Same-day pay via Zelle', '100% of tips are yours', 'Bonus programs for top performers', 'No forced hours or mandatory shifts'],
   },
-  {
-    title: 'Virtual Operations Manager',
-    titleEs: 'Gerente de Operaciones Virtual',
-    pay: '$500/wk + 10% Revenue',
-    payDetail: 'Remote — work from home',
-    description: 'We\'re looking for an experienced admin, receptionist, or ops coordinator to help manage scheduling, client communication, and team coordination. Fully remote. Ground-floor opportunity with a company growing 50–100% monthly.',
-    descriptionEs: 'Buscamos coordinador(a) de operaciones para gestionar programación, comunicación con clientes y coordinación del equipo. 100% remoto.',
-    href: '/careers/virtual-operations-manager',
-    highlights: ['100% remote — work from anywhere', '$500/wk base + 10% of total revenue', 'Ground-floor opportunity', 'Growing 50–100% every month', 'Perfect for admins & coordinators'],
-  },
 ]
 
 export default function CareersPage() {
