@@ -81,7 +81,9 @@ export async function POST(request: Request) {
         availability: availability || null,
         referral_source: referral_source || null,
         references: references || null,
-        notes: notes || null,
+        notes: video_url
+          ? `${notes ? notes + '\n\n' : ''}INTRO_VIDEO: ${video_url}`
+          : (notes || null),
         photo_url: photo_url || null,
         service_zones: service_zones || [],
         has_car: has_car || false,
