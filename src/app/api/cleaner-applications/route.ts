@@ -51,9 +51,6 @@ export async function POST(request: Request) {
     if (!name || !phone || !address || !photo_url) {
       return NextResponse.json({ error: 'Name, phone, address, and photo are required' }, { status: 400 })
     }
-    if (!video_url) {
-      return NextResponse.json({ error: 'Intro video is required' }, { status: 400 })
-    }
 
     const fullAddress = unit ? `${address}, ${unit}` : address
 

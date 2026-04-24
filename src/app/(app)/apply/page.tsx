@@ -27,10 +27,6 @@ export default function ApplyPage() {
   const [photoFile, setPhotoFile] = useState<File | null>(null)
   const [photoPreview, setPhotoPreview] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
-  const [videoFile, setVideoFile] = useState<File | null>(null)
-  const [videoPreview, setVideoPreview] = useState<string | null>(null)
-  const [videoDuration, setVideoDuration] = useState<number | null>(null)
-  const videoInputRef = useRef<HTMLInputElement>(null)
   const [loading, setLoading] = useState(false)
   const [done, setDone] = useState(false)
   const [error, setError] = useState('')
@@ -52,42 +48,6 @@ export default function ApplyPage() {
     setError('')
   }
 
-  const handleVideoSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (!file) return
-    if (!file.type.startsWith('video/')) {
-      setError('Please select a video file / Por favor seleccione un archivo de video')
-      return
-    }
-    if (file.size > 100 * 1024 * 1024) {
-      setError('Video must be under 100MB / El video debe ser menor de 100MB')
-      return
-    }
-    const url = URL.createObjectURL(file)
-    const probe = document.createElement('video')
-    probe.preload = 'metadata'
-    probe.onloadedmetadata = () => {
-      const duration = probe.duration
-      if (!isFinite(duration) || duration < 30) {
-        setError(`Video must be at least 30 seconds (yours is ${Math.round(duration)}s) / El video debe durar al menos 30 segundos`)
-        URL.revokeObjectURL(url)
-        setVideoFile(null)
-        setVideoPreview(null)
-        setVideoDuration(null)
-        return
-      }
-      setVideoFile(file)
-      setVideoPreview(url)
-      setVideoDuration(duration)
-      setError('')
-    }
-    probe.onerror = () => {
-      setError('Could not read video file. Try another file. / No se pudo leer el archivo de video.')
-      URL.revokeObjectURL(url)
-    }
-    probe.src = url
-  }
-
   const formatPhone = (value: string) => {
     const cleaned = value.replace(/\D/g, '')
     if (cleaned.length <= 3) return cleaned
@@ -99,14 +59,6 @@ export default function ApplyPage() {
     e.preventDefault()
     if (!photoFile) {
       setError('Please upload a photo of yourself smiling / Por favor suba una foto suya sonriendo')
-      return
-    }
-    if (!videoFile) {
-      setError('Please upload a 30+ second intro video / Por favor suba un video de presentación de 30+ segundos')
-      return
-    }
-    if (videoDuration !== null && videoDuration < 30) {
-      setError('Video must be at least 30 seconds / El video debe durar al menos 30 segundos')
       return
     }
     if (form.email) {
@@ -139,25 +91,10 @@ export default function ApplyPage() {
       const uploadJson = await uploadRes.json()
       photo_url = uploadJson.url
 
-      // Upload intro video
-      let video_url = ''
-      const videoFormData = new FormData()
-      videoFormData.append('file', videoFile)
-      videoFormData.append('type', 'video')
-      const videoRes = await fetch('/api/management-applications/upload', { method: 'POST', body: videoFormData })
-      if (!videoRes.ok) {
-        const errData = await videoRes.json().catch(() => ({}))
-        setError(errData.error || 'Failed to upload video / Error al subir el video')
-        setLoading(false)
-        return
-      }
-      const videoJson = await videoRes.json()
-      video_url = videoJson.url
-
       const res = await fetch('/api/cleaner-applications', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, photo_url, video_url })
+        body: JSON.stringify({ ...form, photo_url })
       })
 
       if (res.ok) {
@@ -269,39 +206,6 @@ export default function ApplyPage() {
                 type="file"
                 accept="image/jpeg,image/png,image/webp"
                 onChange={handlePhotoSelect}
-                className="hidden"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-[#1E2A4A] mb-1">Intro Video (30+ seconds) / Video de Presentación (30+ segundos) *</label>
-            <p className="text-xs text-gray-500 mb-2">Tell us about yourself — your experience, why you want to join, and when you can start. Bilingual? Speak in both languages. / Cuéntenos sobre usted — su experiencia, por qué quiere unirse y cuándo puede empezar. ¿Bilingüe? Hable en ambos idiomas.</p>
-            <div className="space-y-3">
-              {videoPreview ? (
-                <video src={videoPreview} controls className="w-full max-w-sm rounded-lg border-2 border-gray-300" />
-              ) : (
-                <div className="w-full max-w-sm h-40 rounded-lg bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center">
-                  <span className="text-3xl text-gray-400">🎥</span>
-                </div>
-              )}
-              <div className="flex items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => videoInputRef.current?.click()}
-                  className="px-4 py-2 border border-gray-300 rounded-lg text-[#1E2A4A] text-sm hover:bg-gray-50"
-                >
-                  {videoPreview ? 'Change Video / Cambiar Video' : 'Upload Video / Subir Video'}
-                </button>
-                {videoDuration !== null && (
-                  <span className="text-xs text-gray-500">{Math.round(videoDuration)}s</span>
-                )}
-              </div>
-              <input
-                ref={videoInputRef}
-                type="file"
-                accept="video/*"
-                onChange={handleVideoSelect}
                 className="hidden"
               />
             </div>
