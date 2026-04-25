@@ -46,7 +46,7 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json()
-    const { name, email, phone, address, unit, experience, availability, referral_source, references, notes, photo_url, video_url, service_zones, has_car, max_travel_minutes } = body
+    const { name, email, phone, address, unit, experience, availability, referral_source, references, notes, photo_url, video_url, service_zones, has_car, max_travel_minutes, attribution } = body
 
     if (!name || !phone || !address || !photo_url) {
       return NextResponse.json({ error: 'Name, phone, address, and photo are required' }, { status: 400 })
@@ -67,28 +67,55 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'You already have a pending application' }, { status: 400 })
     }
 
-    const { data, error } = await supabaseAdmin
+    const baseRow: Record<string, unknown> = {
+      name,
+      email: email || null,
+      phone: cleanPhone,
+      address: fullAddress,
+      experience: experience || null,
+      availability: availability || null,
+      referral_source: referral_source || null,
+      references: references || null,
+      notes: video_url
+        ? `${notes ? notes + '\n\n' : ''}INTRO_VIDEO: ${video_url}`
+        : (notes || null),
+      photo_url: photo_url || null,
+      service_zones: service_zones || [],
+      has_car: has_car || false,
+      max_travel_minutes: max_travel_minutes ? parseInt(max_travel_minutes) : null,
+      status: 'pending'
+    }
+
+    const attrRow = attribution && typeof attribution === 'object'
+      ? {
+          utm_source: attribution.utm_source || null,
+          utm_medium: attribution.utm_medium || null,
+          utm_campaign: attribution.utm_campaign || null,
+          referrer: attribution.referrer || null,
+          landing_page: attribution.landing_page || null,
+          visitor_id: attribution.visitor_id || null,
+          session_id: attribution.session_id || null,
+          device: attribution.device || null,
+          user_agent: typeof attribution.user_agent === 'string' ? attribution.user_agent.substring(0, 500) : null,
+        }
+      : {}
+
+    let { data, error } = await supabaseAdmin
       .from('cleaner_applications')
-      .insert({
-        name,
-        email: email || null,
-        phone: cleanPhone,
-        address: fullAddress,
-        experience: experience || null,
-        availability: availability || null,
-        referral_source: referral_source || null,
-        references: references || null,
-        notes: video_url
-          ? `${notes ? notes + '\n\n' : ''}INTRO_VIDEO: ${video_url}`
-          : (notes || null),
-        photo_url: photo_url || null,
-        service_zones: service_zones || [],
-        has_car: has_car || false,
-        max_travel_minutes: max_travel_minutes ? parseInt(max_travel_minutes) : null,
-        status: 'pending'
-      })
+      .insert({ ...baseRow, ...attrRow })
       .select()
       .single()
+
+    // Graceful fallback if attribution columns don't exist yet (migration not run)
+    if (error && Object.keys(attrRow).length > 0) {
+      const retry = await supabaseAdmin
+        .from('cleaner_applications')
+        .insert(baseRow)
+        .select()
+        .single()
+      data = retry.data
+      error = retry.error
+    }
 
     if (error) throw error
 

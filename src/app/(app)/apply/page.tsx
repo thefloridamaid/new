@@ -1,8 +1,9 @@
 'use client'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import AddressAutocomplete from '@/components/AddressAutocomplete'
 import { validateEmail } from '@/lib/validate-email'
 import { SERVICE_ZONES } from '@/lib/service-zones'
+import { trackApply, getAttribution } from '@/lib/apply-tracking'
 
 export default function ApplyPage() {
   const [form, setForm] = useState({
@@ -31,6 +32,28 @@ export default function ApplyPage() {
   const [done, setDone] = useState(false)
   const [error, setError] = useState('')
   const [emailSuggestion, setEmailSuggestion] = useState('')
+  const [started, setStarted] = useState(false)
+
+  const markStart = () => {
+    if (!started) {
+      setStarted(true)
+      trackApply('apply_start')
+    }
+  }
+
+  const handleFieldBlur = (e: React.FocusEvent<HTMLFormElement>) => {
+    const target = e.target as unknown as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    if (!target || !('value' in target)) return
+    const name = target.name || target.getAttribute('placeholder') || ''
+    const value = (target.value || '').trim()
+    if (value && name) {
+      trackApply('apply_field_complete', { field_name: name.toLowerCase().replace(/\s+/g, '_').slice(0, 40) })
+    }
+  }
+
+  useEffect(() => {
+    trackApply('apply_view')
+  }, [])
 
   const handlePhotoSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -57,8 +80,10 @@ export default function ApplyPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    trackApply('apply_submit_attempt')
     if (!photoFile) {
       setError('Please upload a photo of yourself smiling / Por favor suba una foto suya sonriendo')
+      trackApply('apply_submit_error', { reason: 'missing_photo' })
       return
     }
     if (form.email) {
@@ -70,6 +95,7 @@ export default function ApplyPage() {
         } else {
           setError(emailCheck.error || 'Please enter a valid email / Por favor ingrese un correo válido')
         }
+        trackApply('apply_submit_error', { reason: 'invalid_email' })
         return
       }
     }
@@ -85,26 +111,31 @@ export default function ApplyPage() {
       if (!uploadRes.ok) {
         const errData = await uploadRes.json().catch(() => ({}))
         setError(errData.error || 'Failed to upload photo / Error al subir la foto')
+        trackApply('apply_submit_error', { reason: 'photo_upload_failed' })
         setLoading(false)
         return
       }
       const uploadJson = await uploadRes.json()
       photo_url = uploadJson.url
 
+      const attribution = getAttribution()
       const res = await fetch('/api/cleaner-applications', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, photo_url })
+        body: JSON.stringify({ ...form, photo_url, attribution })
       })
 
       if (res.ok) {
+        trackApply('apply_submit_success')
         setDone(true)
       } else {
         const data = await res.json()
         setError(data.error || 'Something went wrong.')
+        trackApply('apply_submit_error', { reason: data.error || 'server_error' })
       }
     } catch {
       setError('Something went wrong. Please try again.')
+      trackApply('apply_submit_error', { reason: 'network_error' })
     }
     setLoading(false)
   }
@@ -136,7 +167,7 @@ export default function ApplyPage() {
       </div>
 
       <div className="max-w-lg mx-auto p-4 pt-6">
-        <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-gray-200 p-6 space-y-5">
+        <form onSubmit={handleSubmit} onFocusCapture={markStart} onBlurCapture={handleFieldBlur} className="bg-white rounded-xl border border-gray-200 p-6 space-y-5">
           <div>
             <h2 className="text-xl font-bold text-[#1E2A4A]">Apply to Join Our Team / Solicite Unirse a Nuestro Equipo</h2>
             <p className="text-gray-500 text-sm mt-1">We&apos;re looking for reliable, detail-oriented cleaners across Florida.</p>
